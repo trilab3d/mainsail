@@ -66,6 +66,8 @@ import TheUploadSnackbar from '@/components/TheUploadSnackbar.vue'
 import TheManualProbeDialog from '@/components/dialogs/TheManualProbeDialog.vue'
 import TheBedScrewsDialog from '@/components/dialogs/TheBedScrewsDialog.vue'
 import TheScrewsTiltAdjustDialog from '@/components/dialogs/TheScrewsTiltAdjustDialog.vue'
+import store from '@/store'
+
 
 Component.registerHooks(['metaInfo'])
 
@@ -303,11 +305,43 @@ export default class App extends Mixins(BaseMixin) {
         })
     }
 
+    handleKeyDown(event: any) {
+        var type = '';
+        let exclusionTags = ['input', 'textarea', 'select'];
+        if (exclusionTags.indexOf(event.target.tagName.toLowerCase()) === -1) {
+            console.log(event.target.tagName);
+            if (type != 'text') {
+                if (event.keyCode == 82 && event.shiftKey) { /// shift+r 
+                    store.commit('trilab/setHiddenView');
+                    console.log('shift+r');
+                }
+                else if (event.keyCode == 65 && event.shiftKey) { /// shift+a /// advancedview
+                    store.commit('trilab/setAdvancedFeatures');
+                    localStorage.setItem('trilabAdvancedFeatures', store.state.trilab?.settings.advanced_features.toString() ?? 'false');
+                    console.log('shift+a');
+
+                }
+                else if (event.keyCode == 81 && event.shiftKey) { /// shift+q (service view)
+                    store.commit('trilab/setServiceView');
+                    console.log('shift+q');
+
+                }
+            }
+        }
+    }
+
+
     mounted(): void {
         this.drawFavicon(this.print_percent)
         this.appHeight()
         window.addEventListener('resize', this.appHeight)
         window.addEventListener('orientationchange', this.appHeight)
+        window.addEventListener('keydown', this.handleKeyDown);
+        /// check local storage for item trilabAdvancedFeatures and if it exists and is true set the advanced features to true
+        if (localStorage.getItem('trilabAdvancedFeatures') == 'true') {
+            store.commit('trilab/setAdvancedFeatures');
+        }
     }
+
 }
 </script>

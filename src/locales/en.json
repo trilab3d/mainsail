@@ -67,7 +67,8 @@
             "SAVE_CONFIG": "SAVE CONFIG",
             "Uploading": "Uploading",
             "UploadOfFileSuccessful": "Upload of {file} successful!",
-            "UploadPrint": "Upload & Print"
+            "UploadPrint": "Upload & Print",
+            "HomeBtn": "Home all"
         },
         "TopCornerMenu": {
             "Cancel": "Cancel",

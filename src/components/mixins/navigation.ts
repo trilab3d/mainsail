@@ -4,6 +4,7 @@ import { Mixins, Watch } from 'vue-property-decorator'
 import { mdiLinkVariant, mdiViewDashboardOutline } from '@mdi/js'
 import BaseMixin from '@/components/mixins/base'
 import { PrinterStateKlipperConfig } from '@/store/printer/types'
+import store from '@/store'
 import { GuiNavigationStateEntry } from '@/store/gui/navigation/types'
 
 export interface NaviPoint {
@@ -152,12 +153,14 @@ export default class NavigationMixin extends Mixins(BaseMixin) {
     showInNavi(route: AppRoute): boolean {
         if (['shutdown', 'error', 'disconnected'].includes(this.klippy_state) && !route.alwaysShow) return false
         else if (route.title === 'Webcam' && this.webcamCount === 0) return false
+        else if (route.identificator == 'console' && store.state.trilab?.serviceView == false) return false
+        else if (route.identificator == 'machine' && store.state.trilab?.serviceView == false) return false
+        else if (route.identificator == 'heightmap' && store.state.trilab?.settings.advanced_features == false) return false
         else if (route.moonrakerComponent && !this.moonrakerComponents.includes(route.moonrakerComponent)) return false
         else if (route.registeredDirectory && !this.registeredDirectories.includes(route.registeredDirectory))
             return false
         else if (route.klipperComponent && !(route.klipperComponent in this.klipperConfigfileSettings)) return false
         else if (route.klipperIsConnected && !this.klippyIsConnected) return false
-
         return true
     }
 

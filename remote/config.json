@@ -1,7 +1,8 @@
 {
     "defaultLocale": "en",
-    "hostname": null,
-    "port": null,
-    "instancesDB": "browser",
-    "instances": []
+    "instancesDB": "json",
+    "instances": [
+        { "hostname" : "10.1.20.52", "port": 7125 }
+
+    ]
 }

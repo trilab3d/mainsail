@@ -43,6 +43,17 @@
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.SAVE_CONFIG') }}</span>
             </v-btn>
             <v-btn
+                tile
+                :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp"
+                color="primary"
+                class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button"
+                @click="doHome"
+                >
+                <v-icon class="mr-md-2" icon="mdi-home">{{ mdiHome }}</v-icon>
+                <span class="d-none d-md-inline">{{  $t('App.TopBar.HomeBtn') }}</span>
+            </v-btn>
+            <v-btn
                 v-if="boolShowUploadAndPrint"
                 tile
                 :icon="$vuetify.breakpoint.smAndDown"
@@ -119,7 +130,8 @@ import PrinterSelector from '@/components/ui/PrinterSelector.vue'
 import MainsailLogo from '@/components/ui/MainsailLogo.vue'
 import TheNotificationMenu from '@/components/notifications/TheNotificationMenu.vue'
 import { topbarHeight } from '@/store/variables'
-import { mdiAlertOctagonOutline, mdiContentSave, mdiFileUpload, mdiClose, mdiCloseThick } from '@mdi/js'
+import { mdiAlertOctagonOutline, mdiContentSave, mdiFileUpload, mdiClose, mdiCloseThick, mdiHome } from '@mdi/js'
+import ControlMixin from './mixins/control'
 
 type uploadSnackbar = {
     status: boolean
@@ -144,12 +156,14 @@ type uploadSnackbar = {
         TheNotificationMenu,
     },
 })
-export default class TheTopbar extends Mixins(BaseMixin) {
+export default class TheTopbar extends Mixins(BaseMixin, ControlMixin) {
     mdiAlertOctagonOutline = mdiAlertOctagonOutline
     mdiContentSave = mdiContentSave
     mdiFileUpload = mdiFileUpload
     mdiClose = mdiClose
     mdiCloseThick = mdiCloseThick
+    mdiHome = mdiHome
+
 
     topbarHeight = topbarHeight
 

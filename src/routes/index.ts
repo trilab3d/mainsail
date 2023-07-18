@@ -6,6 +6,7 @@ import Files from '../pages/Files.vue'
 import History from '../pages/History.vue'
 import Timelapse from '../pages/Timelapse.vue'
 import Machine from '../pages/Machine.vue'
+import TrilabSettings from '../pages/TrilabSettings.vue' 
 import { AsyncComponent, Component } from 'vue'
 
 import {
@@ -19,6 +20,7 @@ import {
     mdiTimelapse,
     mdiWrench,
 } from '@mdi/js'
+import store from '@/store'
 
 const routes: AppRoute[] = [
     {
@@ -53,6 +55,7 @@ const routes: AppRoute[] = [
         component: Console,
         alwaysShow: true,
         showInNavi: true,
+        identificator: 'console',
         klipperIsConnected: true,
         position: 30,
     },
@@ -63,6 +66,7 @@ const routes: AppRoute[] = [
         component: () => import('../pages/Heightmap.vue'),
         alwaysShow: false,
         showInNavi: true,
+        identificator: 'heightmap',
         klipperComponent: 'bed_mesh',
         position: 40,
     },
@@ -111,8 +115,19 @@ const routes: AppRoute[] = [
         icon: mdiWrench,
         component: Machine,
         alwaysShow: true,
+        identificator: 'machine',
         showInNavi: true,
         position: 90,
+    },
+    {
+        title: 'Trilab Settings',
+        path: '/configTrilab',
+        icon: mdiWrench,
+        component: TrilabSettings,
+        alwaysShow: true,
+        showInNavi: true,
+        position: 100,
+
     },
     {
         title: null,
@@ -134,6 +149,8 @@ export interface AppRoute {
     component: Component | AsyncComponent | null
     alwaysShow: boolean
     showInNavi: boolean
+    identificator?: string
+    condition?: any
     registeredDirectory?: string
     moonrakerComponent?: string
     klipperComponent?: string
