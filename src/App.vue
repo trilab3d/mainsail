@@ -53,6 +53,7 @@
 import Component from 'vue-class-component'
 import TheSidebar from '@/components/TheSidebar.vue'
 import BaseMixin from '@/components/mixins/base'
+import TrilabMixin from '@/components/mixins/trilab'
 import TheTopbar from '@/components/TheTopbar.vue'
 import { Mixins, Watch } from 'vue-property-decorator'
 import TheUpdateDialog from '@/components/TheUpdateDialog.vue'
@@ -87,7 +88,7 @@ Component.registerHooks(['metaInfo'])
         TheScrewsTiltAdjustDialog,
     },
 })
-export default class App extends Mixins(BaseMixin) {
+export default class App extends Mixins(BaseMixin, TrilabMixin) {
     public metaInfo(): any {
         let title = this.$store.getters['getTitle']
 
@@ -316,8 +317,7 @@ export default class App extends Mixins(BaseMixin) {
                     console.log('shift+r');
                 }
                 else if (event.keyCode == 65 && event.shiftKey) { /// shift+a /// advancedview
-                    store.commit('trilab/setAdvancedFeatures');
-                    localStorage.setItem('trilabAdvancedFeatures', store.state.trilab?.settings.advanced_features.toString() ?? 'false');
+                    this.AdvancedFeatures = !this.AdvancedFeatures;
                     console.log('shift+a');
 
                 }
@@ -339,7 +339,7 @@ export default class App extends Mixins(BaseMixin) {
         window.addEventListener('keydown', this.handleKeyDown);
         /// check local storage for item trilabAdvancedFeatures and if it exists and is true set the advanced features to true
         if (localStorage.getItem('trilabAdvancedFeatures') == 'true') {
-            store.commit('trilab/setAdvancedFeatures');
+            this.AdvancedFeatures = true;
         }
     }
 

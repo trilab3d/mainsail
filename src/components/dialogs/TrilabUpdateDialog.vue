@@ -3,27 +3,31 @@
         <v-card>
             <v-card-title>
                 <span class="headline">
-                    {{ $t('dialog.trilab.update.title') }}
+                    {{ $t('TrilabUpdateDialog.title') }}
                 </span>
             </v-card-title>
 
             <v-card-text>
-                <p>{{ customStatus }}</p>
-                <div v-if="uploadProgress < 100">
-                    <v-progress-linear v-if="uploadError === null" :indeterminate="uploadProgress === null"
-                        :value="uploadProgress" :color="uploadFileProgressbarColor" :height="10" striped
-                        absolute></v-progress-linear>
+                <div v-if="fileUploading">
+                    <p v-if="fileUploading">{{ uploadStatus }}<span v-if="uploadError == null">Progress: {{ uploadProgress
+                    }}
+                            %</span><v-btn v-if="uploadError != null" @click="showErrorDetails()">Show error technical
+                            details</v-btn></p>
+                    <div v-if="uploadProgress < 100">
+                        <v-progress-linear :indeterminate="uploadProgress === null" :value="uploadProgress"
+                            :color="uploadFileProgressbarColor" :height="10" striped absolute></v-progress-linear>
+                    </div>
                 </div>
 
-                <div v-if="uploadProgress >= 100">
+                <div v-if="true">
                     <p>STATUS: <span>{{ customStatus }}</span></p>
                     <v-progress-linear :indeterminate="updateProgressStatus === 'IDLE'"
                         :color="updateProgressStatus === 'IDLE' ? 'primary' : 'success'" :value="updateProgressValue"
                         :buffer-value="updateProgressValue" :height="5" striped absolute></v-progress-linear>
                     <v-list>
                         <v-btn color="danger" v-if="showRestartBtn"></v-btn>
-                        <v-list-item v-for="log in logs" :key="log.id">
-                            <span v-if="log.level">DANGER</span>
+                        <v-list-item v-for="log in logs" :key="log.id" class="ulog">
+                            <span color="danger" v-if="log.text.indexOf('ERROR') >= -1">DANGER</span>
                             <p>
                                 {{ log.text }}
                             </p>
@@ -35,7 +39,7 @@
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" v-if="dismissVisible" text>{{ $t('generic.ok') }}</v-btn>
+                <v-btn v-if="dismissVisible" color="blue darken-1" text @click="closeIt()">{{ $t('generic.ok') }}</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>
@@ -72,8 +76,35 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
     updateProgressValue: number | null = null;
     updateProgressStatus: string | null = null;
     showRestartBtn: boolean = false;
+    fileUploading: boolean = false;
     uploadError: string | null = null;
+    uploadStatus: string = "";
     updateDone: boolean = false;
+
+
+    showErrorDetails() {
+        alert(this.uploadError);
+    }
+
+
+    resetInternalData() {
+        this.uploadFileProgressbarColor = "primary"
+        this.dismissVisible = false
+        this.customStatus = "IDLE"
+        this.selectedFile = null
+        this.uploadProgress = 0
+        this.updateProgress = null
+        this.logs = []
+        this.updateProgressName = null
+        this.uploadStatus = "";
+        this.updateProgressValue = null
+        this.updateProgressStatus = null
+        this.showRestartBtn = false
+        this.uploadError = null
+        this.updateDone = false
+    }
+
+
 
     getStatus() {
         //let status = this.$t.generic.updateStatuses[this.customStatus]
@@ -96,6 +127,7 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
             this.updateProgress = null
             this.logs = []
             this.updateProgressName = null
+            this.uploadStatus = "";
             this.updateProgressValue = null
             this.updateProgressStatus = null
             this.showRestartBtn = false
@@ -114,7 +146,11 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
             let formData = new FormData()
             formData.append('file', newFile)
 
-            axios.post('/api/trilab/update', formData, {
+            //axios.post('/api/trilab/update', formData, {
+            //console.log(this.$store.state.trilab.connectedHostname + ':8080/upload');
+            this.fileUploading = true;
+            this.uploadStatus = "Update file upload in progres... please wait...";
+            axios.post("http://" + this.$store.state.trilab.connectedHostname + '/swupdate/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
@@ -131,38 +167,40 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
                 this.updateProgressValue = 0
                 this.updateProgressStatus = "IDLE"
                 this.showRestartBtn = false
+                this.uploadStatus = "";
                 this.uploadError = null
                 this.updateDone = false
+                this.fileUploading = false;
 
-                this.socket = new WebSocket('ws://' + window.location.host + '/api/trilab/update/socket')
-                this.socket.onmessage = (event) => {
-                    let data = JSON.parse(event.data)
-                    if (data.type === 'log') {
-                        this.logs.push(data)
-                    } else if (data.type === 'progress') {
-                        this.updateProgress = data.progress
-                        this.updateProgressValue = data.progress
-                        this.updateProgressStatus = data.status
-                        this.showRestartBtn = data.status === 'DONE'
-                        this.updateDone = data.status === 'DONE'
-                    } else if (data.type === 'error') {
-                        this.uploadError = data.error
-                    }
-                }
             }).catch((error) => {
                 this.uploadError = error
+                this.dismissVisible = true
+                this.uploadStatus = "Something happened while uploading | ERROR";
+                this.uploadError = error.toString();
+                this.uploadFileProgressbarColor = "danger";
             })
         }
     }
 
     closeIt() {
         this.$emit('close')
+        this.dialogVisible = false
+        this.resetInternalData();
+
     }
 
     createSocket() {
         var refe = this;
         let s = "https:" === window.location.protocol ? "wss:" : "ws:";
         ///uncomment below for production
+        if (this.socket != null) {
+            /// if socket is open
+            if (this.socket.readyState == 1) {
+                /// dont create a new one
+                return;
+            }
+
+        }
         this.socket = new WebSocket(s + "//" + this.$store.state.trilab.connectedHostname + "/swupdate/" + window.location.pathname.replace(/\/[^/]*$/, "") + "ws");
 
         //this.socket = new WebSocket(s + "//" + "10.1.20.237/swupdate/" + window.location.pathname.replace(/\/[^/]*$/, "") + "/ws");
@@ -191,30 +229,54 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
                 var e = JSON.parse(data.data);
                 switch (e.type) {
                     case "message":
-                        refe.logs.push(e); /// push whole message
+                        refe.logs.unshift(e); /// push whole message
+                        if (refe.logs.length > 2000) {
+                            refe.logs.shift(); /// if there is more than 2000 logs, remove the last one
+                        }
                         break;
                     case "status":
 
-                        //refe.updateStatus(e.status), refe.updateProgressBarStatus(e.status);
+                        refe.updateStatus(e.status), refe.updateProgressBarStatus(e.status);
                         break;
                     case "source":
                         break;
                     case "step":
                         var r = Math.round((100 * (Number(e.step) - 1) + Number(e.percent)) / Number(e.number)),
                             t = r + "% (" + e.step + " of " + e.number + ")";
-                        //refe.updateProgressBar(r, e.name, t);
+                        refe.updateProgressBar(r, e.name, t);
                         refe.dismissVisible = false;
                         refe.dialogVisible = true;
+                        break;
+                    case 'log':
+                        /// push message to the logs on the first position
+                        refe.logs.unshift(data.data);
+                        /// if there is more than 2000 logs, remove the last one
+                        if (refe.logs.length > 2000) {
+                            refe.logs.shift();
+                        }
+                        break;
+                    case 'progress':
+                        refe.updateProgress = e.progress
+                        refe.updateProgressValue = e.progress
+                        refe.updateProgressStatus = e.status
+                        refe.showRestartBtn = e.status === 'DONE'
+                        refe.updateDone = e.status === 'DONE'
+                        break;
+                    case 'error':
+                        refe.uploadError = data.data.error
+                        break;
+
+
                 }
             });
-            this.socket.onerror = function (e) {
-                console.log("SWU SOCKET ERROR: ");
-                console.log(e);
-                /// try to create the socket again
-            };
+        this.socket.onerror = function (e) {
+            console.log("SWU SOCKET ERROR: ");
+            console.log(e);
+            /// try to create the socket again
+        };
 
     }
-    
+
     updateStatus(e: any) {
         this.customStatus = e;
     }
@@ -231,9 +293,12 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
                 break;
             case "DONE":
                 this.uploadFileProgressbarColor = "success";
+                this.dismissVisible = true;
                 break;
             case "ERROR":
                 this.uploadFileProgressbarColor = "danger";
+                this.dismissVisible = true;
+                break;
         }
     }
     updateProgressBar(e: any, r: any, t: any) {
@@ -252,3 +317,11 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
 
 
 </script>
+
+
+<style scoped>
+.ulog p {
+    margin-left: 16px;
+    margin-bottom: 0px;
+}
+</style>

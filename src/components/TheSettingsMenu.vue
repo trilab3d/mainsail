@@ -81,6 +81,7 @@ import SettingsGCodeViewerTab from '@/components/settings/SettingsGCodeViewerTab
 import SettingsEditorTab from '@/components/settings/SettingsEditorTab.vue'
 import SettingsTimelapseTab from '@/components/settings/SettingsTimelapseTab.vue'
 import SettingsNavigationTab from '@/components/settings/SettingsNavigationTab.vue'
+import SettingsTrilabTab from '@/components/settings/SettingsTrilabTab.vue'
 
 import Panel from '@/components/ui/Panel.vue'
 import {
@@ -119,6 +120,7 @@ import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneou
         SettingsTimelapseTab,
         SettingsMiscellaneousTab,
         SettingsNavigationTab,
+        SettingsTrilabTab,
     },
 })
 export default class TheSettingsMenu extends Mixins(BaseMixin) {
@@ -202,6 +204,11 @@ export default class TheSettingsMenu extends Mixins(BaseMixin) {
                 name: 'navigation',
                 title: this.$t('Settings.NavigationTab.Navigation'),
             },
+            {
+                icon: mdiDipSwitch,
+                name: 'trilab',
+                title: this.$t('Settings.TrilabTab.Trilab')
+            }
         ]
 
         if (this.moonrakerComponents.includes('timelapse')) {

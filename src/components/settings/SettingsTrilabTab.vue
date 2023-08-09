@@ -5,7 +5,7 @@
             <v-tab href="#general">General</v-tab>
             <v-tab-item value="general">
                 <v-row class="pa-3" :dense="$vuetify.breakpoint.mobile">
-                    <v-col cols="12" md="4" sm="12">
+                    <v-col cols="12" md="12" sm="12">
                         <v-card elevation="25">
                             <v-card-title>System</v-card-title>
                             <v-card-text>
@@ -42,14 +42,16 @@
                             </v-card-text>
                         </v-card>
                     </v-col>
-                    <v-col cols="12" sm="12" md="4">
+                    <v-col cols="12" sm="12" md="12">
                         <v-card>
                             <v-card-title>Printer</v-card-title>
                             <v-card-text>
                                 <v-row>
                                     <v-col>Advanced features: </v-col>
                                     <v-col>
-                                        <v-switch v-model="$store.state.trilab.settings.advanced_features" outlined dense></v-switch>
+                                        <v-switch
+                                         v-model="AdvancedFeatures" outlined
+                                            dense></v-switch>
 
                                     </v-col>
                                 </v-row>
@@ -72,6 +74,7 @@
                         <settings-light-panel></settings-light-panel>
 
                     </v-col>
+
                 </v-row>
 
             </v-tab-item>
@@ -87,22 +90,33 @@
 
     </v-container>
 </template>
+
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator'
-import BaseMixin from '@/components/mixins/base'
+import BaseMixin from '../mixins/base'
+import TrilabMixin from '../mixins/trilab'
+import SettingsRow from '@/components/settings/SettingsRow.vue'
+import { GuiWebcamStateWebcam } from '@/store/gui/webcams/types'
+import { mdiMenuDown, mdiDelete, mdiPencil, mdiWebcam } from '@mdi/js'
+import WebcamMixin from '@/components/mixins/webcam'
+import { FileStateFile } from '@/store/files/types'
+
+
 import SettingsPrinterPanel from '@/components/panels/Settings/SettingsPrinterPanel.vue'
 import TrilabUpdateDialog from '@/components/dialogs/TrilabUpdateDialog.vue'
-
 import SystemPanel from '@/components/panels/Machine/SystemPanel.vue'
+import store from '@/store'
+
 @Component({
     components: {
+        SettingsRow,
         SystemPanel,
         SettingsPrinterPanel,
         TrilabUpdateDialog
+
     },
 })
-export default class PageTrilabSettings extends Mixins(BaseMixin) {
-
+export default class SettingsTrilabTab extends Mixins(BaseMixin, TrilabMixin) {
 
     handleFileImport() {
         (this.$refs.fileInputUpdate as HTMLInputElement).click();
@@ -118,7 +132,7 @@ export default class PageTrilabSettings extends Mixins(BaseMixin) {
     }
 
     file: File | null = null;
-    
+
     get printerName() {
         return "XXX"
     }
@@ -133,6 +147,5 @@ export default class PageTrilabSettings extends Mixins(BaseMixin) {
     get tab() {
         return null;
     }
-
 }
 </script>

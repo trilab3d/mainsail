@@ -4,6 +4,8 @@
     "port": null,
     "instancesDB": "json",
     "instances": [
-        { "hostname": "10.1.20.56", "port": 7125 }
+        { "hostname": "10.1.20.56", "port": 7125 },
+        { "hostname": "10.1.20.71", "port": 7125 },
+        { "hostname": "10.1.20.80", "port": 7125 }
     ]
 }
