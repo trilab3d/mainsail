@@ -13,4 +13,13 @@ export default class TrilabMixin extends Vue {
             this.$store.state.trilab?.settings.advanced_features.toString() ?? 'false'
         )
     }
+
+    get TrilabServiceView(): boolean {
+        return this.$store.state.trilab.serviceView;
+    }
+
+    set TrilabServiceView(value:boolean){
+        this.$store.commit('trilab/setServiceView')
+
+    }
 }

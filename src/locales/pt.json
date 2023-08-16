@@ -62,7 +62,8 @@
       "SAVE_CONFIG": "Salvar configuração",
       "Uploading": "Upload",
       "UploadOfFileSuccessful": "Carregamento de {file} com sucesso!",
-      "UploadPrint": "Carregar e imprimir"
+      "UploadPrint": "Carregar e imprimir",
+      "LightBtn": "Luz"
     },
     "TopCornerMenu": {
       "Cancel": "Cancelar",
@@ -693,6 +694,33 @@
       "SaveInfoHeadline": "Informação",
       "ToEndstop": "até o Endstop",
       "ToProbe": "até Sonda"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Configurações de acesso",
+      "enablePwdControl": "Ativar controle de senha",
+      "username": "Nome de usuário",
+      "password": "Senha",
+      "confirmPassword": "Confirme sua senha"
+    },
+    "TrilabRemote": {
+      "auto_off": "Desligamento automático",
+      "enable": "Habilitar",
+      "caption": "Acesso remoto"
+    },
+    "settingsTrilabWifi": {
+      "country": "País",
+      "mode": "Modo",
+      "caption": "Wi-fi",
+      "password": "Senha",
+      "accessPoint": "Ponto de acesso",
+      "ssid": "SSID",
+      "confirmPassword": "Confirme sua senha"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Brilho",
+      "timeoutTextFieldHint": "Tempo limite (s)",
+      "enable": "Habilitar",
+      "timeout": "Ativar tempo limite"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1159,5 +1187,8 @@
   "title": "Português",
   "TrilabUpdateDialog": {
     "title": "Atualização"
+  },
+  "General": {
+    "Save": "Salvar"
   }
 }

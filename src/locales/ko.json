@@ -62,7 +62,8 @@
       "SAVE_CONFIG": "설정 저장",
       "Uploading": "업로드 중..",
       "UploadOfFileSuccessful": "{file} 업로드 완료!",
-      "UploadPrint": "업로드 & 출력"
+      "UploadPrint": "업로드 & 출력",
+      "LightBtn": "빛"
     },
     "TopCornerMenu": {
       "Cancel": "취소",
@@ -687,6 +688,33 @@
       "SaveInfoHeadline": "정보",
       "ToEndstop": "Z 엔드스탑 높이 값으로 저장",
       "ToProbe": "프로브 높이 값으로 저장"
+    },
+    "TrilabAccessPassword": {
+      "caption": "액세스 설정",
+      "enablePwdControl": "암호 제어 활성화",
+      "username": "사용자 이름",
+      "password": "비밀번호",
+      "confirmPassword": "비밀번호 확인"
+    },
+    "TrilabRemote": {
+      "auto_off": "자동 꺼짐",
+      "enable": "할 수 있게 하다",
+      "caption": "원격 액세스"
+    },
+    "settingsTrilabWifi": {
+      "country": "국가",
+      "mode": "방법",
+      "caption": "와이파이",
+      "password": "비밀번호",
+      "accessPoint": "액세스 포인트",
+      "ssid": "SSID",
+      "confirmPassword": "비밀번호 확인"
+    },
+    "settingsTrilabLight": {
+      "brightness": "명도",
+      "timeoutTextFieldHint": "시간 초과",
+      "enable": "할 수 있게 하다",
+      "timeout": "시간 초과 활성화"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1138,5 +1166,8 @@
   "title": "한국어",
   "TrilabUpdateDialog": {
     "title": "활성화"
+  },
+  "General": {
+    "Save": "구하다"
   }
 }

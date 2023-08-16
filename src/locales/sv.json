@@ -60,7 +60,8 @@
       "SAVE_CONFIG": "SPARA KONFIGURATION",
       "Uploading": "Laddar upp",
       "UploadOfFileSuccessful": "Uppladdningen av {file} lyckades!",
-      "UploadPrint": "Ladda upp och skriv ut"
+      "UploadPrint": "Ladda upp och skriv ut",
+      "LightBtn": "Ljus"
     },
     "TopCornerMenu": {
       "Cancel": "Avbryt",
@@ -522,6 +523,33 @@
       "SaveInfoHeadline": "Information",
       "ToEndstop": "Endstop",
       "ToProbe": "till Sond"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Öppna inställningar",
+      "enablePwdControl": "Aktivera lösenordskontroll",
+      "username": "Användarnamn",
+      "password": "Lösenord",
+      "confirmPassword": "Bekräfta lösenord"
+    },
+    "TrilabRemote": {
+      "auto_off": "Automatisk avstängning",
+      "enable": "Gör det möjligt",
+      "caption": "Fjärranslutning"
+    },
+    "settingsTrilabWifi": {
+      "country": "Land",
+      "mode": "Läge",
+      "caption": "WiFi",
+      "password": "Lösenord",
+      "accessPoint": "Åtkomstpunkt",
+      "ssid": "SSID",
+      "confirmPassword": "Bekräfta lösenord"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Ljusstyrka",
+      "timeoutTextFieldHint": "Timeout (s)",
+      "enable": "Gör det möjligt",
+      "timeout": "Aktivera timeout"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -905,5 +933,8 @@
   "title": "Svenska",
   "TrilabUpdateDialog": {
     "title": "Aktualisera"
+  },
+  "General": {
+    "Save": "Spara"
   }
 }

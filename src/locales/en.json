@@ -68,7 +68,8 @@
       "Uploading": "Uploading",
       "UploadOfFileSuccessful": "Upload of {file} successful!",
       "UploadPrint": "Upload & Print",
-      "HomeBtn": "Home all"
+      "HomeBtn": "Home all",
+      "LightBtn": "Light"
     },
     "TopCornerMenu": {
       "Cancel": "Cancel",
@@ -506,6 +507,15 @@
     "Headline": "Manual Probe"
   },
   "Panels": {
+    "trilabSlicers": {
+      "prusa": {
+        "title": "PrusaSlicer",
+        "longTitle": "Prusa Slicer 2.5.0+",
+        "shortDescription": "PrusaSlicer is an open-source, feature-rich, frequently updated tool that contains everything you need to export the perfect print files",
+        "longDescription": "Use the button above to download the complete PrusaSlicer package, including slicer profiles. After downloading, unzip the archive to the destination location. On the Windows platform run the \"prusa-slicer.exe\" program, on the MacOS platform run \"PrusaSlicer.app\". After starting the program, the configuration wizard will appear. On the Prusa FFF tab, clear the predefined printers. Continue to the Other Vendors tab. Check the TRILAB box here. Then go to the TRILAB FFF tab below. Select your printer from the list of printer variants here. Then press the Finish button in the lower right corner of the window. This makes the slicer ready to use !",
+        "imgsrc": "/img/PrusaSlicer.png"
+      }
+    },
     "ExtruderControlPanel": {
       "Allowed": "Allowed",
       "EstimatedExtrusion": "Extrusion:",
@@ -699,6 +709,41 @@
       "SaveInfoHeadline": "Information",
       "ToEndstop": "to Endstop",
       "ToProbe": "to Probe"
+    },
+    "TrilabSlicerPanel": {
+      "notAvailableTitle": "Slicer profile not available",
+      "notAvailableText": "Slicer profile is not available for this printer or system platform, please contact TriLAB support"
+    },
+    "settingsTrilabLight": {
+      "caption": "Light",
+      "brightness": "Brightness",
+      "timeoutTextFieldHint": "Timeout (s)",
+      "enable": "Enable",
+      "timeout": "Enable timeout"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Access Settings",
+      "enablePwdControl": "Enable password control",
+      "username": "Username",
+      "password": "Password",
+      "confirmPassword": "Confirm password"
+    },
+    "TrilabRemote": {
+      "auto_off": "Auto off",
+      "enable": "Enable",
+      "caption": "Remote Access"
+    },
+    "settingsTrilabWifi": {
+      "caption": "WiFi",
+      "country": "Country",
+      "mode": "Mode",
+      "ssid": "SSID",
+      "client": "Client",
+      "selectCountry": "Select country",
+      "selectNetworkMode": "Select network mode",
+      "password": "Password",
+      "accessPoint": "Access point",
+      "confirmPassword": "Confirm password"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -718,7 +763,8 @@
     "Machine": "Machine",
     "Printers": "Printers",
     "Timelapse": "Timelapse",
-    "Webcam": "Webcam"
+    "Webcam": "Webcam",
+    "Slicers": "Slicers"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Add Printer",
@@ -1103,7 +1149,10 @@
       "WebrtcMediaMTX": "WebRTC (MediaMTX / rtsp-simple-server)"
     },
     "TrilabTab": {
-      "Trilab": "Trilab Settings"
+      "Trilab": "Versions",
+      "TrilabNetwork": "Network",
+      "TrilabSlicers": "Slicers",
+      "TrilabPrinter": "Printer"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1164,5 +1213,8 @@
     "Variable": "Variable",
     "Video": "Video"
   },
-  "title": "English"
+  "title": "English",
+  "General": {
+    "Save": "Save"
+  }
 }

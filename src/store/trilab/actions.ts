@@ -7,8 +7,9 @@ import { ActionTree } from 'vuex'
 export const actions: ActionTree<TrilabState, any> = {
     async toggleLight(context) {
         axios.post(context.getters.trilabPrefix + '/light/toggle').then((response) => {
-            context.commit('assignSetting', {
-                light_data: { state: response.data.state },
+            context.commit('setData', {
+                //light_data: { state: response.data.state },
+                light_state: response.data.state
             })
         })
     },
@@ -82,6 +83,7 @@ export const actions: ActionTree<TrilabState, any> = {
             })
     },
     async saveSettings(context) {
+        
         const result = await axios.post(context.getters.trilabPrefix + '/settings', context.state.settings)
         return result
     },

@@ -60,7 +60,8 @@
       "SAVE_CONFIG": "GUARDAR CONFIG.",
       "Uploading": "Cargando",
       "UploadOfFileSuccessful": "¡{file} cargado con éxito!",
-      "UploadPrint": "Cargar e imprimir"
+      "UploadPrint": "Cargar e imprimir",
+      "LightBtn": "Luz"
     },
     "TopCornerMenu": {
       "Cancel": "Cancelar",
@@ -616,6 +617,33 @@
       "SaveInfoHeadline": "Información",
       "ToEndstop": "al fin de carrera",
       "ToProbe": "a la sonda"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Configuración de acceso",
+      "enablePwdControl": "Habilitar control de contraseña",
+      "username": "Nombre de usuario",
+      "password": "Contraseña",
+      "confirmPassword": "Confirmar Contraseña"
+    },
+    "TrilabRemote": {
+      "auto_off": "Apagado automático",
+      "enable": "Permitir",
+      "caption": "Acceso remoto"
+    },
+    "settingsTrilabWifi": {
+      "country": "País",
+      "mode": "Modo",
+      "caption": "Wifi",
+      "password": "Contraseña",
+      "accessPoint": "Punto de acceso",
+      "ssid": "SSID",
+      "confirmPassword": "Confirmar Contraseña"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Brillo",
+      "timeoutTextFieldHint": "Tiempo de espera (s)",
+      "enable": "Permitir",
+      "timeout": "Habilitar tiempo de espera"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -954,7 +982,8 @@
       "Webcams": "Cámaras web"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "verze",
+      "TrilabPrinter": "Tiskárna"
     }
   },
   "Timelapse": {
@@ -1010,5 +1039,8 @@
   "title": "Español",
   "TrilabUpdateDialog": {
     "title": "Actualizar"
+  },
+  "General": {
+    "Save": "Ahorrar"
   }
 }

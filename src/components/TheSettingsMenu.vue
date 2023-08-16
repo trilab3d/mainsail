@@ -82,6 +82,8 @@ import SettingsEditorTab from '@/components/settings/SettingsEditorTab.vue'
 import SettingsTimelapseTab from '@/components/settings/SettingsTimelapseTab.vue'
 import SettingsNavigationTab from '@/components/settings/SettingsNavigationTab.vue'
 import SettingsTrilabTab from '@/components/settings/SettingsTrilabTab.vue'
+import SettingsTrilabNetworkTab from '@/components/settings/SettingsTrilabNetworkTab.vue'
+import SettingsTrilabPrinterTab from '@/components/settings/SettingsTrilabPrinterTab.vue'
 
 import Panel from '@/components/ui/Panel.vue'
 import {
@@ -100,6 +102,8 @@ import {
     mdiVideo3d,
     mdiWebcam,
     mdiDipSwitch,
+    mdiAccessPointNetwork,
+    mdiUpdate,
     mdiMenu,
 } from '@mdi/js'
 import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneousTab.vue'
@@ -121,6 +125,8 @@ import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneou
         SettingsMiscellaneousTab,
         SettingsNavigationTab,
         SettingsTrilabTab,
+        SettingsTrilabNetworkTab,
+        SettingsTrilabPrinterTab
     },
 })
 export default class TheSettingsMenu extends Mixins(BaseMixin) {
@@ -153,62 +159,84 @@ export default class TheSettingsMenu extends Mixins(BaseMixin) {
                 icon: mdiMonitorDashboard,
                 name: 'dashboard',
                 title: this.$t('Settings.DashboardTab.Dashboard'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiWebcam,
                 name: 'webcams',
                 title: this.$t('Settings.WebcamsTab.Webcams'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiCodeTags,
                 name: 'macros',
                 title: this.$t('Settings.MacrosTab.Macros'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiTune,
                 name: 'control',
                 title: this.$t('Settings.ControlTab.Control'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiConsoleLine,
                 name: 'console',
                 title: this.$t('Settings.ConsoleTab.Console'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiFire,
                 name: 'presets',
                 title: this.$t('Settings.PresetsTab.PreheatPresets'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiPrinter3d,
                 name: 'remote-printers',
                 title: this.$t('Settings.RemotePrintersTab.RemotePrinters'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiVideo3d,
                 name: 'g-code-viewer',
                 title: this.$t('Settings.GCodeViewerTab.GCodeViewer'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiFileDocumentEditOutline,
                 name: 'editor',
                 title: this.$t('Settings.EditorTab.Editor'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiDipSwitch,
                 name: 'miscellaneous',
                 title: this.$t('Settings.MiscellaneousTab.Miscellaneous'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
                 icon: mdiMenu,
                 name: 'navigation',
                 title: this.$t('Settings.NavigationTab.Navigation'),
+                condition: this.$store.state.trilab.serviceView == true
             },
             {
-                icon: mdiDipSwitch,
+                icon: mdiUpdate,
                 name: 'trilab',
                 title: this.$t('Settings.TrilabTab.Trilab')
-            }
+            },
+            {
+                icon: mdiAccessPointNetwork,
+                name: "trilab-network",
+                title: this.$t('Settings.TrilabTab.TrilabNetwork')
+            },
+            {
+                icon: mdiPrinter3d,
+                name: "trilab-printer",
+                title: this.$t('Settings.TrilabTab.TrilabPrinter')
+            },
+
         ]
 
         if (this.moonrakerComponents.includes('timelapse')) {
@@ -219,7 +247,7 @@ export default class TheSettingsMenu extends Mixins(BaseMixin) {
             })
         }
 
-        return tabs.sort((a, b) => {
+         tabs.sort((a, b) => {
             if (a.name === 'general') return -1
             if (b.name === 'general') return 1
 
@@ -231,6 +259,8 @@ export default class TheSettingsMenu extends Mixins(BaseMixin) {
 
             return 0
         })
+        /// filter tabs by condition
+        return tabs.filter(tab => tab.condition == undefined || tab.condition == true)
     }
 
     @Watch('activeTab')

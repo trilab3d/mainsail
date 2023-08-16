@@ -60,7 +60,8 @@
       "SAVE_CONFIG": "BÁLLÍTÁS_MENTÉSE",
       "Uploading": "Feltöltés",
       "UploadOfFileSuccessful": " {file} feltöltése sikeres!",
-      "UploadPrint": "Feltöltés és nyomtatás"
+      "UploadPrint": "Feltöltés és nyomtatás",
+      "LightBtn": "Fény"
     },
     "TopCornerMenu": {
       "Cancel": "Mégsem",
@@ -615,6 +616,33 @@
       "SaveInfoHeadline": "Információ",
       "ToEndstop": "a végállásig",
       "ToProbe": "szondáig"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Hozzáférés a beállításokhoz",
+      "enablePwdControl": "Jelszóvezérlés engedélyezése",
+      "username": "Felhasználónév",
+      "password": "Jelszó",
+      "confirmPassword": "Jelszó megerősítése"
+    },
+    "TrilabRemote": {
+      "auto_off": "Automatikus kikapcsolás",
+      "enable": "Engedélyezze",
+      "caption": "Távoli hozzáférés"
+    },
+    "settingsTrilabWifi": {
+      "country": "Ország",
+      "mode": "Mód",
+      "caption": "WiFi",
+      "password": "Jelszó",
+      "accessPoint": "Hozzáférési pont",
+      "ssid": "SSID",
+      "confirmPassword": "Jelszó megerősítése"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Fényerősség",
+      "timeoutTextFieldHint": "Időtúllépés (ek)",
+      "enable": "Engedélyezze",
+      "timeout": "Időtúllépés engedélyezése"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -957,7 +985,7 @@
       "Webcams": "Webkamerák"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Verze"
     }
   },
   "Timelapse": {
@@ -1013,5 +1041,8 @@
   "title": "Magyar",
   "TrilabUpdateDialog": {
     "title": "Frissítés"
+  },
+  "General": {
+    "Save": "Megment"
   }
 }

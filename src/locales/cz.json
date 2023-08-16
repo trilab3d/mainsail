@@ -62,7 +62,8 @@
       "SAVE_CONFIG": "ULOŽIT KONFIGURACI",
       "Uploading": "Nahrávání",
       "UploadOfFileSuccessful": "Soubor {file} byl úspěšně nahrán!",
-      "UploadPrint": "Nahrát a tisknout"
+      "UploadPrint": "Nahrát a tisknout",
+      "LightBtn": "Světlo"
     },
     "TopCornerMenu": {
       "Cancel": "Zrušit",
@@ -686,6 +687,34 @@
       "SaveInfoHeadline": "Informace",
       "ToEndstop": "ke koncovému spínači",
       "ToProbe": "ke snímači"
+    },
+    "settingsTrilabLight": {
+      "caption": "Světlo",
+      "brightness": "Jas",
+      "timeoutTextFieldHint": "Časový limit (s)",
+      "enable": "Aktivovat",
+      "timeout": "Aktivovat časový limit"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Přístup s heslem",
+      "enablePwdControl": "Povolit přístup s heslem",
+      "username": "Uživatelské jméno",
+      "password": "Password",
+      "confirmPassword": "Heslo znovu"
+    },
+    "TrilabRemote": {
+      "auto_off": "Automaticky vypnout",
+      "enable": "Aktivovat",
+      "caption": "Vzdálený přístup"
+    },
+    "settingsTrilabWifi": {
+      "country": "Stát",
+      "mode": "Mód",
+      "caption": "WiFi",
+      "password": "Password",
+      "accessPoint": "Přístupový bod",
+      "ssid": "SSID",
+      "confirmPassword": "Confirm password"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1074,7 +1103,10 @@
       "WebrtcCameraStreamer": "WebRTC (streamer z kamery)"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Verze",
+      "TrilabNetwork": "Síť",
+      "TrilabSlicers": "Slicery",
+      "TrilabPrinter": "Tiskárna"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1137,5 +1169,8 @@
   "title": "Čeština",
   "TrilabUpdateDialog": {
     "title": "Aktualizace"
+  },
+  "General": {
+    "Save": "Uložit"
   }
 }

@@ -2,19 +2,16 @@
 <template>
 	<v-card outlined :disabled="this.uiFrozen">
 		<v-card-title class="pb-0">
-			<span v-html="$t('panel.settingsRemote.caption')"></span> 
+			<span v-html="$t('Panels.TrilabRemote.caption')"></span> 
 			<v-spacer></v-spacer>
-			<a v-show="!uiFrozen" href="javascript:void(0)" @click="showResetConfirmation = true" v-if="false">
-				<v-icon small class="mr-1">mdi-restore</v-icon> {{ $t('panel.settingsGeneral.factoryReset') }}
-			</a>
 		</v-card-title>
 
 		<v-card-text>
-			<v-switch :label="$t('panel.settingsRemote.enable')" hide-details
+			<v-switch :label="$t('Panels.TrilabRemote.enable')" hide-details
 				v-model="enabledstate"></v-switch>
 
-				<v-switch :label="$t('panel.settingsRemote.auto_off')" v-if="isEnabled"
-				v-model="autooff"></v-switch>
+				<v-switch v-if="isEnabled" v-model="autooff" :label="$t('Panels.TrilabRemote.auto_off')"
+				></v-switch>
 
 		</v-card-text>
 </v-card>

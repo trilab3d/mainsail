@@ -67,7 +67,8 @@
       "SAVE_CONFIG": "SAVE CONFIG",
       "Uploading": "Hochladen",
       "UploadOfFileSuccessful": "Hochladen von {file} erfolgreich!",
-      "UploadPrint": "Hochladen & Drucken"
+      "UploadPrint": "Hochladen & Drucken",
+      "LightBtn": "Licht"
     },
     "TopCornerMenu": {
       "Cancel": "Abbrechen",
@@ -698,6 +699,36 @@
       "SaveInfoHeadline": "Information",
       "ToEndstop": "bis Endschalter",
       "ToProbe": "bis Sensor"
+    },
+    "TrilabSlicerPanel": {
+      "notAvailableTitle": ""
+    },
+    "TrilabAccessPassword": {
+      "caption": "Greifen Sie auf Einstellungen zu",
+      "enablePwdControl": "Aktivieren Sie die Passwortkontrolle",
+      "username": "Nutzername",
+      "password": "Passwort",
+      "confirmPassword": "Bestätige das Passwort"
+    },
+    "TrilabRemote": {
+      "auto_off": "Automatische Abschaltung",
+      "enable": "Aktivieren",
+      "caption": "Fernzugriff"
+    },
+    "settingsTrilabWifi": {
+      "country": "Land",
+      "mode": "Modus",
+      "caption": "W-lan",
+      "password": "Passwort",
+      "accessPoint": "Zugangspunkt",
+      "ssid": "SSID",
+      "confirmPassword": "Bestätige das Passwort"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Helligkeit",
+      "timeoutTextFieldHint": "Timeout(s)",
+      "enable": "Aktivieren",
+      "timeout": "Zeitüberschreitung aktivieren"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1102,7 +1133,7 @@
       "WebrtcMediaMTX": "WebRTC (MediaMTX / rtsp-simple-server)"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Verze"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1166,5 +1197,8 @@
   "title": "Deutsch",
   "TrilabUpdateDialog": {
     "title": "Aktualisierung"
+  },
+  "General": {
+    "Save": "Speichern"
   }
 }

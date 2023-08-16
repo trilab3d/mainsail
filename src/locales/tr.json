@@ -61,7 +61,8 @@
       "SAVE_CONFIG": "YAPILANDIRMAYI KAYDET",
       "Uploading": "Yükleniyor",
       "UploadOfFileSuccessful": "{file} yüklemesi başarılı!",
-      "UploadPrint": "Yükle ve Yazdır"
+      "UploadPrint": "Yükle ve Yazdır",
+      "LightBtn": "Işık"
     },
     "TopCornerMenu": {
       "Cancel": "İptal Et",
@@ -653,6 +654,33 @@
       "SaveInfoHeadline": "Bilgi",
       "ToEndstop": "Endstop'a",
       "ToProbe": "Prob'a"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Erişim Ayarları",
+      "enablePwdControl": "Şifre kontrolünü etkinleştir",
+      "username": "Kullanıcı adı",
+      "password": "Şifre",
+      "confirmPassword": "Şifreyi Onayla"
+    },
+    "TrilabRemote": {
+      "auto_off": "Otomatik kapalı",
+      "enable": "Olanak vermek",
+      "caption": "Uzaktan erişim"
+    },
+    "settingsTrilabWifi": {
+      "country": "Ülke",
+      "mode": "mod",
+      "caption": "Wifi",
+      "password": "Şifre",
+      "accessPoint": "Erişim noktası",
+      "ssid": "SSID",
+      "confirmPassword": "Şifreyi Onayla"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Parlaklık",
+      "timeoutTextFieldHint": "Zaman aşımı (s)",
+      "enable": "Olanak vermek",
+      "timeout": "Zaman aşımını etkinleştir"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1090,5 +1118,8 @@
   "title": "Türkçe",
   "TrilabUpdateDialog": {
     "title": "Gerçekleştirme"
+  },
+  "General": {
+    "Save": "Kaydetmek"
   }
 }

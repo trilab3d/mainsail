@@ -11,13 +11,15 @@
 		<v-card-text>
 			<v-row>
 				<v-col cols="12" sm="12">
-					<v-text-field
-					 v-model="printerName" type="text" step="any" min="0"
+					<v-text-field v-model="printerName" type="text" step="any" min="0"
 						:label="$t('panel.settingsPrinter.printerName', ['ms'])" hide-details>
 					</v-text-field>
 				</v-col>
 			</v-row>
-			<v-switch v-model="enableAdvancedFeatures" :label="$t('panel.settingsPrinter.enableAdvancedFeatures')"  hide-details></v-switch>
+			
+			<v-switch v-model="enableAdvancedFeatures" :label="$t('panel.settingsPrinter.enableAdvancedFeatures')"
+				hide-details></v-switch>
+
 		</v-card-text>
 	</v-card>
 </template>
@@ -41,7 +43,7 @@ export default {
 		},
 		printerName: {
 			get() { return this.$store.state.trilab.settings.network_data.hostname; },
-			set(value:any) { this.$store.commit('trilab/setData', { network_data: { hostname: value } }); }
+			set(value: any) { this.$store.commit('trilab/setData', { network_data: { hostname: value } }); }
 		},
 		enableAdvancedFeatures: {
 			get() { return this.$store.state.trilab.advanced_features; },

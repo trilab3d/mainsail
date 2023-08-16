@@ -62,7 +62,8 @@
       "SAVE_CONFIG": "Sauvegarde de la configuration",
       "Uploading": "Chargement",
       "UploadOfFileSuccessful": "le fichier {file} a été chargé",
-      "UploadPrint": "Chargement & impression"
+      "UploadPrint": "Chargement & impression",
+      "LightBtn": "Lumière"
     },
     "TopCornerMenu": {
       "Cancel": "Annuler",
@@ -669,6 +670,33 @@
       "SaveInfoHeadline": "Information",
       "ToEndstop": "jusqu'au fin de course",
       "ToProbe": "jusqu'à la sonde"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Paramètres d'accès",
+      "enablePwdControl": "Activer le contrôle par mot de passe",
+      "username": "Nom d'utilisateur",
+      "password": "Mot de passe",
+      "confirmPassword": "Confirmez le mot de passe"
+    },
+    "TrilabRemote": {
+      "auto_off": "Arrêt automatique",
+      "enable": "Activer",
+      "caption": "Accès à distance"
+    },
+    "settingsTrilabWifi": {
+      "country": "Pays",
+      "mode": "Mode",
+      "caption": "Wifi",
+      "password": "Mot de passe",
+      "accessPoint": "Point d'accès",
+      "ssid": "SSID",
+      "confirmPassword": "Confirmez le mot de passe"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Luminosité",
+      "timeoutTextFieldHint": "Délai(s)",
+      "enable": "Activer",
+      "timeout": "Activer le délai d'expiration"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1054,7 +1082,7 @@
     "Store": "magasin",
     "Update": "mise à jour",
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Verze"
     }
   },
   "Timelapse": {
@@ -1134,5 +1162,8 @@
   },
   "TrilabUpdateDialog": {
     "title": "Actualisation"
+  },
+  "General": {
+    "Save": "Sauvegarder"
   }
 }

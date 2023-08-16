@@ -33,7 +33,7 @@
                 </v-list-item-group>
             </v-list>
         </overlay-scrollbars>
-        <template #append>
+        <template  v-if="$store.state.trilab.hiddenView" #append>
             <v-list-item class="small-list-item mb-2">
                 <v-list-item-icon class="menu-item-icon">
                     <about-dialog />

@@ -61,7 +61,8 @@
       "SAVE_CONFIG": "ЗБЕРЕЖЕННЯ КОНФІГУРАЦІЇ",
       "Uploading": "Завантаження",
       "UploadOfFileSuccessful": "Завантаження {file} успішно!",
-      "UploadPrint": "Завантажити та Друканутити"
+      "UploadPrint": "Завантажити та Друканутити",
+      "LightBtn": "світло"
     },
     "TopCornerMenu": {
       "Cancel": "Скасувати",
@@ -627,6 +628,33 @@
       "SaveInfoHeadline": "Інформація",
       "ToEndstop": "до Кінцевика",
       "ToProbe": "Зондувати"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Доступ до налаштувань",
+      "enablePwdControl": "Увімкнути контроль пароля",
+      "username": "Ім'я користувача",
+      "password": "Пароль",
+      "confirmPassword": "Підтвердьте пароль"
+    },
+    "TrilabRemote": {
+      "auto_off": "Автоматичне вимкнення",
+      "enable": "Увімкнути",
+      "caption": "Віддалений доступ"
+    },
+    "settingsTrilabWifi": {
+      "country": "Країна",
+      "mode": "Режим",
+      "caption": "WiFi",
+      "password": "Пароль",
+      "accessPoint": "Точка доступу",
+      "ssid": "SSID",
+      "confirmPassword": "Підтвердьте пароль"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Яскравість",
+      "timeoutTextFieldHint": "Час очікування (с)",
+      "enable": "Увімкнути",
+      "timeout": "Увімкнути тайм-аут"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1035,5 +1063,8 @@
   "title": "Українська",
   "TrilabUpdateDialog": {
     "title": "Aktualizace"
+  },
+  "General": {
+    "Save": "зберегти"
   }
 }

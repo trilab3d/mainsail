@@ -61,7 +61,8 @@
       "SAVE_CONFIG": "CONFIG OPSLAAN",
       "UploadOfFileSuccessful": "Upload van {file} succesvol!",
       "UploadPrint": "Upload & Print",
-      "Uploading": "Uploaden"
+      "Uploading": "Uploaden",
+      "LightBtn": "Licht"
     },
     "TopCornerMenu": {
       "Cancel": "Annuleer",
@@ -685,6 +686,33 @@
       "SaveInfoHeadline": "Informatie",
       "ToEndstop": "naar Endstop",
       "ToProbe": "naar Probe"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Toegang Instellingen",
+      "enablePwdControl": "Wachtwoordbeheer inschakelen",
+      "username": "Gebruikersnaam",
+      "password": "Wachtwoord",
+      "confirmPassword": "Bevestig wachtwoord"
+    },
+    "TrilabRemote": {
+      "auto_off": "Automatische uitschakeling",
+      "enable": "Inschakelen",
+      "caption": "Toegang op afstand"
+    },
+    "settingsTrilabWifi": {
+      "country": "Land",
+      "mode": "modus",
+      "caption": "Wifi",
+      "password": "Wachtwoord",
+      "accessPoint": "Toegangspunt",
+      "ssid": "SSID",
+      "confirmPassword": "Bevestig wachtwoord"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Helderheid",
+      "timeoutTextFieldHint": "time-out(s)",
+      "enable": "Inschakelen",
+      "timeout": "Schakel time-out in"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1134,5 +1162,8 @@
   "title": "Nederlands",
   "TrilabUpdateDialog": {
     "title": "Actief"
+  },
+  "General": {
+    "Save": "Redden"
   }
 }

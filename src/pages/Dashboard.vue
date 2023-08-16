@@ -84,6 +84,7 @@ import Component from 'vue-class-component'
 import { Mixins } from 'vue-property-decorator'
 import ExtruderControlPanel from '@/components/panels/ExtruderControlPanel.vue'
 import DashboardMixin from '@/components/mixins/dashboard'
+import TrilabMixin from '@/components/mixins/trilab'
 import KlippyStatePanel from '@/components/panels/KlippyStatePanel.vue'
 import MachineSettingsPanel from '@/components/panels/MachineSettings/MachineSettingsPanel.vue'
 import MacrogroupPanel from '@/components/panels/MacrogroupPanel.vue'
@@ -115,7 +116,7 @@ import SettingsPrinterPanel from '@/components/panels/Settings/SettingsPrinterPa
         SettingsPrinterPanel,
     },
 })
-export default class PageDashboard extends Mixins(DashboardMixin) {
+export default class PageDashboard extends Mixins(DashboardMixin, TrilabMixin) {
     get mobileLayout() {
         return this.$store.getters['gui/getPanels']('mobile', 0, true)
     }

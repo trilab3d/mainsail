@@ -13,7 +13,7 @@
                 </v-btn>
             </template>
             <v-list dense>
-                <template v-if="klipperState !== 'disconnected'">
+                <template v-if="klipperState !== 'disconnected' && $store.state.trilab.serviceView">
                     <v-subheader class="" style="height: auto">
                         {{ $t('App.TopCornerMenu.KlipperControl') }}
                     </v-subheader>
@@ -36,7 +36,7 @@
                         </v-list-item-action>
                     </v-list-item>
                 </template>
-                <template v-if="services.length">
+                <template v-if="services.length && $store.state.trilab.serviceView">
                     <v-divider v-if="klipperState !== 'disconnected'" class="mt-0"></v-divider>
                     <v-subheader class="pt-2" style="height: auto">
                         {{ $t('App.TopCornerMenu.ServiceControl') }}
@@ -96,7 +96,7 @@
                         </v-list-item-action>
                     </v-list-item>
                 </template>
-                <v-divider class="mt-0"></v-divider>
+                <v-divider v-if="$store.state.trilab.serviceView" class="mt-0"></v-divider>
                 <v-subheader class="pt-2" style="height: auto">{{ $t('App.TopCornerMenu.HostControl') }}</v-subheader>
                 <v-list-item class="minheight30 pr-2" link @click="checkDialog(hostReboot, 'host', 'reboot')">
                     <v-list-item-title>{{ $t('App.TopCornerMenu.Reboot') }}</v-list-item-title>

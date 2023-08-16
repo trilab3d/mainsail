@@ -62,7 +62,8 @@
       "SAVE_CONFIG": "Сохранить конфигурацию",
       "Uploading": "Загрузка",
       "UploadOfFileSuccessful": "Загрузка {file} выполнена!",
-      "UploadPrint": "Загрузить и напечатать"
+      "UploadPrint": "Загрузить и напечатать",
+      "LightBtn": "Свет"
     },
     "TopCornerMenu": {
       "Cancel": "Отмена",
@@ -693,6 +694,33 @@
       "SaveInfoHeadline": "Информация",
       "ToEndstop": "до концевика",
       "ToProbe": "до датчика"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Доступ к настройкам",
+      "enablePwdControl": "Включить контроль пароля",
+      "username": "Имя пользователя",
+      "password": "Пароль",
+      "confirmPassword": "Подтвердите пароль"
+    },
+    "TrilabRemote": {
+      "auto_off": "Автоматическое отключение",
+      "enable": "Давать возможность",
+      "caption": "Удаленный доступ"
+    },
+    "settingsTrilabWifi": {
+      "country": "Страна",
+      "mode": "Режим",
+      "caption": "Wi-Fi",
+      "password": "Пароль",
+      "accessPoint": "Точка доступа",
+      "ssid": "SSID",
+      "confirmPassword": "Подтвердите пароль"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Яркость",
+      "timeoutTextFieldHint": "Время ожидания (с)",
+      "enable": "Давать возможность",
+      "timeout": "Включить тайм-аут"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1096,7 +1124,7 @@
       "WebrtcCameraStreamer": "WebRTC (camera-streamer)"
     },
     "TrilabTab": {
-      "Trilab": "Трилаб установлен"
+      "Trilab": "Verze"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1159,5 +1187,8 @@
   "title": "Русский",
   "TrilabUpdateDialog": {
     "title": "Актуализация"
+  },
+  "General": {
+    "Save": "Сохранять"
   }
 }

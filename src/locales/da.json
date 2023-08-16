@@ -61,7 +61,8 @@
       "SAVE_CONFIG": "GEM KONFIGURATION",
       "Uploading": "Uploader",
       "UploadOfFileSuccessful": "Upload af {file} udført",
-      "UploadPrint": "Upload & Print"
+      "UploadPrint": "Upload & Print",
+      "LightBtn": "Lys"
     },
     "TopCornerMenu": {
       "Cancel": "Annuller",
@@ -685,6 +686,33 @@
       "SaveInfoHeadline": "Information",
       "ToEndstop": "Til Endstop",
       "ToProbe": "Til Probe"
+    },
+    "TrilabAccessPassword": {
+      "caption": "Få adgang til indstillinger",
+      "enablePwdControl": "Aktiver adgangskodekontrol",
+      "username": "Brugernavn",
+      "password": "Adgangskode",
+      "confirmPassword": "Bekræft kodeord"
+    },
+    "TrilabRemote": {
+      "auto_off": "Auto slukket",
+      "enable": "Aktiver",
+      "caption": "Fjernadgang"
+    },
+    "settingsTrilabWifi": {
+      "country": "Land",
+      "mode": "Mode",
+      "caption": "Trådløst internet",
+      "password": "Adgangskode",
+      "accessPoint": "Adgangspunkt",
+      "ssid": "SSID",
+      "confirmPassword": "Bekræft kodeord"
+    },
+    "settingsTrilabLight": {
+      "brightness": "Lysstyrke",
+      "timeoutTextFieldHint": "Timeout (s)",
+      "enable": "Aktiver timeout",
+      "timeout": "Aktiver timeout"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1071,7 +1099,7 @@
       "Webcams": "Webcams"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Verze"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1134,5 +1162,8 @@
   "title": "Dansk",
   "TrilabUpdateDialog": {
     "title": "Aktualisering"
+  },
+  "General": {
+    "Save": "Gemme"
   }
 }

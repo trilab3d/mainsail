@@ -6,7 +6,7 @@ import Files from '../pages/Files.vue'
 import History from '../pages/History.vue'
 import Timelapse from '../pages/Timelapse.vue'
 import Machine from '../pages/Machine.vue'
-import TrilabSettings from '../pages/TrilabSettings.vue' 
+import TrilabSlicers from '../pages/TrilabSlicers.vue'
 import { AsyncComponent, Component } from 'vue'
 
 import {
@@ -35,6 +35,7 @@ const routes: AppRoute[] = [
     {
         title: 'Printers',
         path: '/allPrinters',
+        identificator: 'printers',
         component: Farm,
         alwaysShow: false,
         showInNavi: false,
@@ -120,14 +121,14 @@ const routes: AppRoute[] = [
         position: 90,
     },
     {
-        title: 'Trilab Settings',
-        path: '/configTrilab',
+        title: 'Slicers',
+        path: '/slicers',
         icon: mdiWrench,
-        component: TrilabSettings,
+        component: TrilabSlicers,
         alwaysShow: true,
+        identificator: 'slicers',
         showInNavi: true,
-        position: 100,
-
+        position: 90,
     },
     {
         title: null,

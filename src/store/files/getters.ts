@@ -196,13 +196,18 @@ export const getters: GetterTree<FileState, any> = {
 
     getThemeFileUrl: (state, getters, rootState, rootGetters) => (acceptName: string, acceptExtensions: string[]) => {
         const directory = getters['getDirectory']('config/' + themeDir)
-
         const file = directory?.childrens?.find(
             (element: FileStateFile) =>
                 element.filename?.slice(0, element.filename?.lastIndexOf('.')) === acceptName &&
                 acceptExtensions.includes(element.filename?.slice(element.filename?.lastIndexOf('.') + 1))
         )
+        console.log(acceptName);
+        console.log(themeDir);
+        console.log(getters['getDirectory']('config/' + themeDir));
         if (!file) return null
+        console.log(`${rootGetters['socket/getUrl']}/server/files/config/${themeDir}/${
+            file.filename
+        }?timestamp=${file.modified.getTime()}`);
 
         return `${rootGetters['socket/getUrl']}/server/files/config/${themeDir}/${
             file.filename

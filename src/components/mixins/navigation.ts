@@ -35,7 +35,7 @@ export default class NavigationMixin extends Mixins(BaseMixin) {
                 icon: mdiViewDashboardOutline,
                 to: '/allPrinters',
                 position: 0,
-                visible: true,
+                visible: this.$store.state.trilab.hiddenView,
             } as NaviPoint)
         }
 
@@ -154,6 +154,7 @@ export default class NavigationMixin extends Mixins(BaseMixin) {
         if (['shutdown', 'error', 'disconnected'].includes(this.klippy_state) && !route.alwaysShow) return false
         else if (route.title === 'Webcam' && this.webcamCount === 0) return false
         else if (route.identificator == 'console' && store.state.trilab?.serviceView == false) return false
+        else if(route.identificator == 'printers' && store.state.trilab?.serviceView == false) return false
         else if (route.identificator == 'machine' && store.state.trilab?.serviceView == false) return false
         else if (route.identificator == 'heightmap' && store.state.trilab?.settings.advanced_features == false) return false
         else if (route.moonrakerComponent && !this.moonrakerComponents.includes(route.moonrakerComponent)) return false

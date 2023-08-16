@@ -42,6 +42,7 @@
                 <v-icon class="d-md-none">{{ mdiContentSave }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.SAVE_CONFIG') }}</span>
             </v-btn>
+            <t-light-btn></t-light-btn>
             <v-btn
                 tile
                 :icon="$vuetify.breakpoint.smAndDown"
@@ -50,7 +51,7 @@
                 class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button"
                 @click="doHome"
                 >
-                <v-icon class="mr-md-2" icon="mdi-home">{{ mdiHome }}</v-icon>
+                <v-icon class="mr-md-2">{{ mdiHome }}</v-icon>
                 <span class="d-none d-md-inline">{{  $t('App.TopBar.HomeBtn') }}</span>
             </v-btn>
             <v-btn
@@ -119,6 +120,7 @@
 <script lang="ts">
 import { Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
+import TrilabMixin from './mixins/trilab'
 import { validGcodeExtensions } from '@/store/variables'
 import Component from 'vue-class-component'
 import axios from 'axios'
@@ -130,7 +132,7 @@ import PrinterSelector from '@/components/ui/PrinterSelector.vue'
 import MainsailLogo from '@/components/ui/MainsailLogo.vue'
 import TheNotificationMenu from '@/components/notifications/TheNotificationMenu.vue'
 import { topbarHeight } from '@/store/variables'
-import { mdiAlertOctagonOutline, mdiContentSave, mdiFileUpload, mdiClose, mdiCloseThick, mdiHome } from '@mdi/js'
+import { mdiAlertOctagonOutline, mdiContentSave, mdiFileUpload, mdiClose, mdiCloseThick, mdiHome, mdiLightbulbOff, mdiLightbulbOn } from '@mdi/js'
 import ControlMixin from './mixins/control'
 
 type uploadSnackbar = {
@@ -156,14 +158,18 @@ type uploadSnackbar = {
         TheNotificationMenu,
     },
 })
-export default class TheTopbar extends Mixins(BaseMixin, ControlMixin) {
+export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMixin) {
     mdiAlertOctagonOutline = mdiAlertOctagonOutline
     mdiContentSave = mdiContentSave
     mdiFileUpload = mdiFileUpload
     mdiClose = mdiClose
     mdiCloseThick = mdiCloseThick
     mdiHome = mdiHome
+    mdiLightbulbOff = mdiLightbulbOff
+    mdiLightbulbOn = mdiLightbulbOn
 
+
+    lightFirstRun = false
 
     topbarHeight = topbarHeight
 
@@ -194,6 +200,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin) {
         return validGcodeExtensions
     }
 
+
     get naviDrawer() {
         return this.$store.state.naviDrawer
     }
@@ -216,8 +223,8 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin) {
 
     get showSaveConfigButton() {
         if (!this.klipperReadyForGui) return false
+        if(!this.TrilabServiceView) {return false;}
         if (!this.hideSaveConfigForBedMash) return this.saveConfigPending
-
         let pendingKeys = Object.keys(this.$store.state.printer.configfile?.save_config_pending_items ?? {})
         pendingKeys = pendingKeys.filter((key: string) => !key.startsWith('bed_mesh '))
 
@@ -257,6 +264,11 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin) {
             ['standby', 'complete', 'cancelled'].includes(this.printer_state) &&
             !this.boolHideUploadAndPrintButton
         )
+    }
+
+
+    lightBtn(){
+
     }
 
     btnEmergencyStop() {

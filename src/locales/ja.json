@@ -62,7 +62,8 @@
       "SAVE_CONFIG": "設定保存",
       "Uploading": "アップロード中",
       "UploadOfFileSuccessful": "{file}のアップロードが完了しました!",
-      "UploadPrint": "アップロード & 印刷"
+      "UploadPrint": "アップロード & 印刷",
+      "LightBtn": "ライト"
     },
     "TopCornerMenu": {
       "Cancel": "取り消し",
@@ -686,6 +687,33 @@
       "SaveInfoHeadline": "情報",
       "ToEndstop": "エンドストップまで",
       "ToProbe": "プローブまで"
+    },
+    "TrilabAccessPassword": {
+      "caption": "設定へのアクセス",
+      "enablePwdControl": "パスワード制御を有効にする",
+      "username": "ユーザー名",
+      "password": "パスワード",
+      "confirmPassword": "パスワードを認証する"
+    },
+    "TrilabRemote": {
+      "auto_off": "オートオフ",
+      "enable": "有効にする",
+      "caption": "リモートアクセス"
+    },
+    "settingsTrilabWifi": {
+      "country": "国",
+      "mode": "モード",
+      "caption": "Wi-Fi",
+      "password": "パスワード",
+      "accessPoint": "アクセス・ポイント",
+      "ssid": "SSID",
+      "confirmPassword": "パスワードを認証する"
+    },
+    "settingsTrilabLight": {
+      "brightness": "輝度",
+      "timeoutTextFieldHint": "タイムアウト (秒)",
+      "enable": "有効にする",
+      "timeout": "タイムアウトを有効にする"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1135,5 +1163,8 @@
   "title": "日本語",
   "TrilabUpdateDialog": {
     "title": "アクチュアリザス"
+  },
+  "General": {
+    "Save": "保存"
   }
 }

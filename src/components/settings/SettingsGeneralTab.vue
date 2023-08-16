@@ -73,8 +73,8 @@
                         outlined
                         attach></v-select>
                 </settings-row>
-                <v-divider class="my-2"></v-divider>
-                <settings-row :title="$t('Settings.GeneralTab.MoonrakerDb').toString()" :dynamic-slot-width="true">
+                <v-divider v-if="$store.state.trilab.serviceView == true" class="my-2"></v-divider>
+                <settings-row v-if="$store.state.trilab.serviceView == true" :title="$t('Settings.GeneralTab.MoonrakerDb').toString()" :dynamic-slot-width="true">
                     <input
                         ref="uploadBackupFile"
                         type="file"
@@ -88,8 +88,8 @@
                         {{ $t('Settings.GeneralTab.Restore') }}
                     </v-btn>
                 </settings-row>
-                <v-divider class="my-2"></v-divider>
-                <settings-row :title="$t('Settings.GeneralTab.FactoryReset').toString()" :dynamic-slot-width="true">
+                <v-divider v-if="$store.state.trilab.serviceView == true" class="my-2"></v-divider>
+                <settings-row v-if="$store.state.trilab.serviceView == true" :title="$t('Settings.GeneralTab.FactoryReset').toString()" :dynamic-slot-width="true">
                     <v-btn color="error" small @click="resetMainsail">
                         {{ $t('Settings.GeneralTab.FactoryReset') }}
                     </v-btn>
