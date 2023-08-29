@@ -3,7 +3,6 @@
         <v-row class="pa-3" :dense="$vuetify.breakpoint.mobile">
             <v-col cols="12" md="12" sm="12">
                 <v-card elevation="25">
-                    <v-card-title>Printer</v-card-title>
                     <v-card-text>
                         <v-row justify="center" align="center">
                             <v-col>Advanced features: </v-col>
@@ -57,7 +56,7 @@ export default class SettingsPrinterTab extends Mixins(BaseMixin, TrilabMixin) {
 
     async save() {
         try {
-            const result = await this.$store.dispatch('trilab/saveSettings');
+            const result = await this.$store.dispatch('trilab/saveSettings', "printer");
             console.log(result);
             this.$toast.success(this.$t('Files.SuccessfullyUploaded').toString())
         } catch (error) {

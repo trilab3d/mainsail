@@ -44,14 +44,12 @@
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
-import SettingsPrinterPanel from '@/components/panels/Settings/SettingsPrinterPanel.vue'
 import TrilabUpdateDialog from '@/components/dialogs/TrilabUpdateDialog.vue'
 
 import SystemPanel from '@/components/panels/Machine/SystemPanel.vue'
 @Component({
     components: {
         SystemPanel,
-        SettingsPrinterPanel,
         TrilabUpdateDialog
     },
 })

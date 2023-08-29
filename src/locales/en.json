@@ -510,9 +510,9 @@
     "trilabSlicers": {
       "prusa": {
         "title": "PrusaSlicer",
-        "longTitle": "Prusa Slicer 2.5.0+",
+        "longTitle": "PrusaSlicer 2.6.0",
         "shortDescription": "PrusaSlicer is an open-source, feature-rich, frequently updated tool that contains everything you need to export the perfect print files",
-        "longDescription": "Use the button above to download the complete PrusaSlicer package, including slicer profiles. After downloading, unzip the archive to the destination location. On the Windows platform run the \"prusa-slicer.exe\" program, on the MacOS platform run \"PrusaSlicer.app\". After starting the program, the configuration wizard will appear. On the Prusa FFF tab, clear the predefined printers. Continue to the Other Vendors tab. Check the TRILAB box here. Then go to the TRILAB FFF tab below. Select your printer from the list of printer variants here. Then press the Finish button in the lower right corner of the window. This makes the slicer ready to use !",
+        "longDescription": "Use the button above to download the complete PrusaSlicer package, including slicer profiles. After downloading, unzip the archive to the destination location. On the Windows platform run the \"prusa-slicer.exe\" program, on the MacOS platform run \"PrusaSlicer.app\".<br>After starting the program, the configuration wizard will appear. On the Prusa FFF tab, clear the predefined printers. Continue to the Other Vendors tab. Check the TRILAB box here. Then go to the TRILAB FFF tab below. Select your printer from the list of printer variants here. Then press the Finish button in the lower right corner of the window. This makes the slicer ready to use !",
         "imgsrc": "/img/PrusaSlicer.png"
       }
     },
@@ -764,7 +764,7 @@
     "Printers": "Printers",
     "Timelapse": "Timelapse",
     "Webcam": "Webcam",
-    "Slicers": "Slicers"
+    "Slicers": "Slicer"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Add Printer",
@@ -912,7 +912,7 @@
       "RestoreDialog": "Please select all the sections you want to restore:",
       "TimeFormat": "Time Format"
     },
-    "InterfaceSettings": "Interface Settings",
+    "InterfaceSettings": "Settings",
     "MacrosTab": {
       "Add": "add",
       "AddGroup": "add Group",

@@ -82,10 +82,31 @@ export const actions: ActionTree<TrilabState, any> = {
                 console.error(error)
             })
     },
-    async saveSettings(context) {
+    async saveSettings(context, specific = false) {
+        const disallowedToSave = ['last_running_version', 'camera_data', 'factory_device_name'];
+        const customSettings = context.state.settings;
+        for (const key in customSettings) {
+            if (disallowedToSave.indexOf(key) > -1) {
+                delete customSettings[key as keyof typeof customSettings];
+            }
+        }
+
+        if (specific != false) {
+            const customObject :any = {};
+            if(specific == "printer"){
+                customObject.light_data = context.state.settings.light_data;
+            }
+            if(specific == "network"){
+                customObject.login = context.state.settings.login;
+                customObject.network_data = context.state.settings.network_data;
+            }
+            const result = await axios.post(context.getters.trilabPrefix + '/settings', customObject)
+            return result
+        } else {
         
         const result = await axios.post(context.getters.trilabPrefix + '/settings', context.state.settings)
         return result
+        }
     },
     getStatisticsCounters(context) {
         axios

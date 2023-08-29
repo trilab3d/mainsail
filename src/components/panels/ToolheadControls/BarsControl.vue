@@ -103,7 +103,7 @@
             </v-col>
         </v-row>
         <!-- X MOVEMENT BUTTONGROUPS -->
-        <v-row dense>
+        <v-row v-if="AdvancedFeatures" dense>
             <v-col class="text-center">
                 <v-item-group class="_btn-group row no-gutters">
                     <v-btn
@@ -134,7 +134,7 @@
             </v-col>
         </v-row>
         <!-- Y MOVEMENT BUTTONGROUPS -->
-        <v-row dense>
+        <v-row v-if="AdvancedFeatures" dense>
             <v-col class="text-center">
                 <v-item-group class="_btn-group row no-gutters">
                     <v-btn
@@ -165,7 +165,7 @@
             </v-col>
         </v-row>
         <!-- Z MOVEMENT BUTTONGROUPS -->
-        <v-row dense>
+        <v-row v-if="AdvancedFeatures" dense>
             <v-col class="text-center">
                 <v-item-group class="_btn-group row no-gutters">
                     <v-btn
@@ -202,10 +202,11 @@
 import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
 import ControlMixin from '@/components/mixins/control'
+import TrilabMixin from '@/components/mixins/trilab'
 import { mdiEngineOff, mdiHome } from '@mdi/js'
 
 @Component
-export default class BarsControl extends Mixins(BaseMixin, ControlMixin) {
+export default class BarsControl extends Mixins(BaseMixin, ControlMixin, TrilabMixin) {
     mdiEngineOff = mdiEngineOff
     mdiHome = mdiHome
 

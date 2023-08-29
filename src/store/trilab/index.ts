@@ -15,6 +15,7 @@ export const getDefaultState = (): TrilabState => {
     return {
             ///trilab
             connectedHostname: '',
+            advancedView: false,
             hiddenView: false,
             serviceView: false,
             data: {},
@@ -52,6 +53,7 @@ export const getDefaultState = (): TrilabState => {
                 remote_access: {
                     auto_off: false,
                     enabled: true,
+                    username: '',
                 },
                 serial_number: '',
                 light_status: 0,

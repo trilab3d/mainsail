@@ -50,11 +50,12 @@ import MiscellaneousSlider from '@/components/inputs/MiscellaneousSlider.vue'
 import MiscellaneousLight from '@/components/inputs/MiscellaneousLight.vue'
 import FilamentSensor from '@/components/inputs/FilamentSensor.vue'
 import Panel from '@/components/ui/Panel.vue'
+import TrilabMixin from '@/components/mixins/trilab'
 import { mdiDipSwitch } from '@mdi/js'
 @Component({
     components: { Panel, FilamentSensor, MiscellaneousSlider, MiscellaneousLight },
 })
-export default class MiscellaneousPanel extends Mixins(BaseMixin) {
+export default class MiscellaneousPanel extends Mixins(BaseMixin, TrilabMixin) {
     mdiDipSwitch = mdiDipSwitch
 
     get filamentSensors() {
@@ -62,6 +63,10 @@ export default class MiscellaneousPanel extends Mixins(BaseMixin) {
     }
 
     get miscellaneous() {
+        /// filter miscellaneous with name "pson" if it is not serviceView
+        if(!this.TrilabServiceView){
+            return this.$store.getters['printer/getMiscellaneous'].filter((item : any) => item.name !== 'pson') ?? []
+        }
         return this.$store.getters['printer/getMiscellaneous'] ?? []
     }
 

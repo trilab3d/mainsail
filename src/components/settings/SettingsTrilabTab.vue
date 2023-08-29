@@ -49,7 +49,6 @@ import WebcamMixin from '@/components/mixins/webcam'
 import { FileStateFile } from '@/store/files/types'
 
 
-import SettingsPrinterPanel from '@/components/panels/Settings/SettingsPrinterPanel.vue'
 import TrilabUpdateDialog from '@/components/dialogs/TrilabUpdateDialog.vue'
 import SystemPanel from '@/components/panels/Machine/SystemPanel.vue'
 import store from '@/store'
@@ -58,7 +57,6 @@ import store from '@/store'
     components: {
         SettingsRow,
         SystemPanel,
-        SettingsPrinterPanel,
         TrilabUpdateDialog
 
     },

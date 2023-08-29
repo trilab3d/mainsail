@@ -3,6 +3,7 @@ import routes, { AppRoute } from '@/routes'
 import { Mixins, Watch } from 'vue-property-decorator'
 import { mdiLinkVariant, mdiViewDashboardOutline } from '@mdi/js'
 import BaseMixin from '@/components/mixins/base'
+import TrilabMixin from '@/components/mixins/trilab'
 import { PrinterStateKlipperConfig } from '@/store/printer/types'
 import store from '@/store'
 import { GuiNavigationStateEntry } from '@/store/gui/navigation/types'
@@ -14,12 +15,14 @@ export interface NaviPoint {
     href?: string
     target?: string
     icon: string
+    iconString?: string
+    customIcon?: any
     position: number
     visible: boolean
 }
 
 @Component
-export default class NavigationMixin extends Mixins(BaseMixin) {
+export default class NavigationMixin extends Mixins(BaseMixin, TrilabMixin) {
     private customNaviLinks: NaviPoint[] = []
 
     get countPrinters() {
@@ -55,6 +58,8 @@ export default class NavigationMixin extends Mixins(BaseMixin) {
                     type: 'route',
                     title: this.$t(`Router.${element.title}`),
                     icon: element.icon,
+                    iconString: element.iconString,
+                    customIcon: element.customIcon,
                     to: element.path,
                     position,
                     visible,
@@ -74,6 +79,7 @@ export default class NavigationMixin extends Mixins(BaseMixin) {
                     type: 'link',
                     title: element.title,
                     icon: element.icon,
+                    customIcon: element.customIcon,
                     href: element.href,
                     target: element.target,
                     position,
@@ -153,10 +159,11 @@ export default class NavigationMixin extends Mixins(BaseMixin) {
     showInNavi(route: AppRoute): boolean {
         if (['shutdown', 'error', 'disconnected'].includes(this.klippy_state) && !route.alwaysShow) return false
         else if (route.title === 'Webcam' && this.webcamCount === 0) return false
-        else if (route.identificator == 'console' && store.state.trilab?.serviceView == false) return false
-        else if(route.identificator == 'printers' && store.state.trilab?.serviceView == false) return false
-        else if (route.identificator == 'machine' && store.state.trilab?.serviceView == false) return false
-        else if (route.identificator == 'heightmap' && store.state.trilab?.settings.advanced_features == false) return false
+        else if (route.identificator == 'console' && this.AdvancedFeatures == false) return false
+        else if(route.identificator == 'printers' && this.TrilabServiceView == false) return false
+        else if (route.identificator == 'machine' && this.TrilabServiceView == false) return false
+        else if (route.identificator == 'heightmap' && this.AdvancedFeatures == false) return false
+        else if (route.identificator == 'gviewer' && this.AdvancedFeatures == false) return false
         else if (route.moonrakerComponent && !this.moonrakerComponents.includes(route.moonrakerComponent)) return false
         else if (route.registeredDirectory && !this.registeredDirectories.includes(route.registeredDirectory))
             return false

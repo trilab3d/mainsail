@@ -2,16 +2,10 @@
     <div>
         <v-tooltip right :open-delay="500" :disabled="navigationStyle !== 'iconsOnly'">
             <template #activator="{ on, attrs }">
-                <v-list-item
-                    router
-                    :to="to"
-                    :href="href"
-                    :target="target"
-                    class="small-list-item"
-                    v-bind="attrs"
-                    v-on="on">
+                <v-list-item router :to="to" :href="href" :target="target" class="small-list-item" v-bind="attrs" v-on="on">
                     <v-list-item-icon class="my-3 mr-3 menu-item-icon">
-                        <v-icon>{{ icon }}</v-icon>
+                        <v-icon v-if="iconString == false">{{ icon }}</v-icon>
+                        <div style="width:24px; height:24px" v-if="iconString != false" v-html="iconString"></div>
                     </v-list-item-icon>
                     <v-list-item-content>
                         <v-list-item-title tile class="menu-item-title">
@@ -31,10 +25,12 @@ import Component from 'vue-class-component'
 import { Mixins, Prop } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
 import { NaviPoint } from '@/components/mixins/navigation'
+import SlicerIcon from '@/components/icons/SlicerIcon.vue'
 
 @Component
 export default class SidebarItem extends Mixins(BaseMixin) {
     @Prop({ type: Object, required: true }) item!: NaviPoint
+
 
     get navigationStyle() {
         return this.$store.state.gui.uiSettings.navigationStyle
@@ -42,6 +38,13 @@ export default class SidebarItem extends Mixins(BaseMixin) {
 
     get icon() {
         return this.item.icon
+    }
+    get iconString(){
+        return this.item.iconString ?? false; 
+    }
+
+    get customIcon(){
+        return this.item.customIcon ?? false;
     }
 
     get title() {

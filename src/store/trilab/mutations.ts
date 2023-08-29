@@ -39,7 +39,7 @@ export const mutations: MutationTree<TrilabState> = {
         state.network = updateObject
     },
     setAdvancedFeatures(state) {
-        state.settings.advanced_features = !state.settings.advanced_features
+        state.advancedView = !state.advancedView
     },
     setServiceView(state) {
         state.serviceView = !state.serviceView

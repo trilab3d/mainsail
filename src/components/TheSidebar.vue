@@ -1,24 +1,12 @@
 <template>
-    <v-navigation-drawer
-        :key="navigationStyle"
-        v-model="naviDrawer"
-        :src="sidebarBackground"
-        :mini-variant="navigationStyle === 'iconsOnly'"
-        :width="navigationWidth"
-        :temporary="boolNaviTemp"
-        clipped
-        app
+    <v-navigation-drawer :key="navigationStyle" v-model="naviDrawer" :src="sidebarBackground"
+        :mini-variant="navigationStyle === 'iconsOnly'" :width="navigationWidth" :temporary="boolNaviTemp" clipped app
         :style="sidebarCssVars">
         <overlay-scrollbars class="nav-scrollbar">
             <v-list class="pr-0 pt-0 ml-0">
                 <v-list-item-group active-class="active-nav-item">
-                    <v-list-item
-                        v-if="isMobile"
-                        router
-                        to="/"
-                        :class="mobileLogoClass"
-                        :style="'height: ' + topbarHeight + 'px'"
-                        :ripple="false">
+                    <v-list-item v-if="isMobile" router to="/" :class="mobileLogoClass"
+                        :style="'height: ' + topbarHeight + 'px'" :ripple="false">
                         <template v-if="sidebarLogo">
                             <img :src="sidebarLogo" :style="logoCssVars" class="nav-logo" alt="Logo" />
                         </template>
@@ -32,14 +20,27 @@
                     <sidebar-item v-for="(category, index) in visibleNaviPoints" :key="index" :item="category" />
                 </v-list-item-group>
             </v-list>
+            <div class="viewsBadges">
+                <v-chip v-if="$store.state.trilab.hiddenView" color="#31FF3C">
+                    <b>Hidden View Enabled</b>
+                </v-chip>
+                <v-chip v-if="$store.state.trilab.serviceView" color="#FF4820">
+                    <b>Service View Enabled</b>
+                </v-chip>
+                <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
+                    <b>Advanced View Enabled</b>
+                </v-chip>
+            </div>
+
         </overlay-scrollbars>
-        <template  v-if="$store.state.trilab.hiddenView" #append>
+        <template v-if="$store.state.trilab.hiddenView" #append>
             <v-list-item class="small-list-item mb-2">
                 <v-list-item-icon class="menu-item-icon">
                     <about-dialog />
                 </v-list-item-icon>
             </v-list-item>
         </template>
+
     </v-navigation-drawer>
 </template>
 
@@ -47,6 +48,7 @@
 import Component from 'vue-class-component'
 import { Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
+import TrilabMixin from '@/components/mixins/trilab'
 import TheSelectPrinterDialog from '@/components/TheSelectPrinterDialog.vue'
 import AboutDialog from '@/components/dialogs/AboutDialog.vue'
 import { navigationWidth, topbarHeight } from '@/store/variables'
@@ -62,7 +64,7 @@ import NavigationMixin from '@/components/mixins/navigation'
         MainsailLogo,
     },
 })
-export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin) {
+export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, TrilabMixin) {
     navigationWidth = navigationWidth
     topbarHeight = topbarHeight
 
@@ -164,5 +166,14 @@ export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin) {
 
 .nav-scrollbar {
     height: 100%;
+}
+
+.v-chip {
+    display:inline-block;
+    margin-bottom:8px;
+    text-shadow: 0px 0px 4px #1e1e1e;
+}
+.viewsBadges{
+    text-align: center;
 }
 </style>

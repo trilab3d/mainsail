@@ -1,35 +1,54 @@
 <style scoped>
-.slicer-icon {
-	display: flex;
-	justify-content: center;
+.panel-image {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 35%;
+}
+
+/* under 900 */
+@media (max-width: 900px) {
+	.panel-image {
+		position: static;
+		margin: 0 auto;
+	}
+
+	.slicerTitle {
+		display:block;
+		text-align: center;
+		margin:0 auto;
+	}
+	.hiddenS {
+		display: none;
+	}
+	.v-card{
+		text-align:center;
+	}
 }
 
 .slicer-icon img {
-	width: 64px;
-	height: 64px;
+	width: 35%;
 }
 </style>
 <template>
 	<v-card outlined>
 		<v-card-title class="pb-0">
-			<span v-html="$t(`Panels.trilabSlicers.${target}.title`)"></span>
-			<v-spacer></v-spacer>
+			<span class="slicerTitle" v-html="$t(`Panels.trilabSlicers.${target}.title`)"></span>
+			<v-spacer class="hiddenS"></v-spacer>
 		</v-card-title>
 
 		<v-card-text>
 			<div class="panel">
 				<h3 class="panel-subheading">{{ $t(`Panels.trilabSlicers.${target}.longTitle`) }}</h3>
+				<img class="panel-image v-card__title" :src="$t(`Panels.trilabSlicers.${target}.imgsrc`)" alt="">
 				<v-row>
 					<v-col cols="12" md="8">
-						<p class="panel-description">{{ $t(`Panels.trilabSlicers.${target}.shortDescription`) }}</p>
-					</v-col>
-					<v-col cols=12 md="4" class="slicer-icon">
-						<img class="panel-image" :src="$t(`Panels.trilabSlicers.${target}.imgsrc`)" alt="">
+						<p class="panel-description" v-html="$t(`Panels.trilabSlicers.${target}.shortDescription`)"></p>
 					</v-col>
 				</v-row>
-				<v-btn class="panel-download-btn mt-3 mb-3" href="" @click="downloadSP()" color="primary"
+				<v-btn class="panel-download-btn mt-3 mb-3" :href="getHrefLink" @click="downloadSP()" color="primary"
 					block>Download</v-btn>
-				<p class="panel-long-description">{{ $t(`Panels.trilabSlicers.${target}.longDescription`) }}</p>
+				<p class="panel-long-description" v-html="$t(`Panels.trilabSlicers.${target}.longDescription`)"></p>
 			</div>
 
 
@@ -65,14 +84,32 @@ export default {
 		//...mapState('trilab', ['settings']),
 		//...mapGetters(['uiFrozen']),
 		//...mapGetters('trilab', ['trilabPrefix', 'corePrefix']),
-
+		getHrefLink() {
+			var platform = this.getOS();
+			var href = "";
+			if (platform == "mac64" || platform == "macos" || platform == "ios") {
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+MacOS-universal-202306191415.dmg";
+			} else if (platform == "win64") {
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+win64-202306191221_signed.zip";
+			} else if (platform == "archlinux") {
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+linux-aarch64-GTK3-202307170801.AppImage";
+			} else if (platform == "armv7l") {
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+linux-armv7l-GTK2-202306191220.AppImage";
+			} else if (platform == "linux") {
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+linux-x64-GTK3-202306191220.AppImage";
+			} else {
+				this.$toast.warning(this.$t('Panels.TrilabSlicerPanel.notAvailableText').toString());
+				return "#";
+			}
+			return href;
+		}
 
 
 
 	},
 	methods: {
 		...mapMutations('trilab', ['assignRoot', 'assignSetting']),
-		downloadSP() {
+		/*downloadSP() {
 			var data = {
 				"slicer": this.slicer,
 				"platform": this.getOS(),
@@ -83,6 +120,7 @@ export default {
 					const responseData = data.data; // Get the data from the response
 					if (responseData.type == "download-local") {
 						let link = document.createElement("a");
+						//link.setAttribute("href", this.$store.getters['trilab/trilabPrefix'] + "/downloads/files/local/" + responseData.filename);
 						link.setAttribute("href", this.$store.getters['trilab/trilabPrefix'] + "/downloads/files/local/" + responseData.filename);
 						link.setAttribute("download", responseData.filename);
 						link.setAttribute("target", "_blank");
@@ -104,26 +142,73 @@ export default {
 
 				});
 
+		},*/
+		downloadSP() {
+			if (this.getHrefLink == "#") {
+				this.$toast.warning(this.$t('Panels.TrilabSlicerPanel.notAvailableText').toString());
+				return;
+			}
+
+			/*var platform = this.getOS();
+			var href = "";
+			if (platform == "mac64" || platform == "macos" || platform == "ios") {
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+MacOS-universal-202306191415.dmg";
+			} else if (platform == "win64") {
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+win64-202306191221_signed.zip";
+			} else if (platform == "linux") {
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+linux-aarch64-GTK2-202307141454.AppImage";
+			} else {
+				this.$toast.warning(this.$t('Panels.TrilabSlicerPanel.notAvailableText').toString());
+				return;
+			}
+			let link = document.createElement("a");
+			link.setAttribute("href", href);
+			link.setAttribute("target", "_blank");
+			link.click();*/
+
 		},
 		getOS() {
 			var userAgent = window.navigator.userAgent,
 				platform = window.navigator.platform,
-				macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+				macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K', 'Mac OS'],
 				windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
-				iosPlatforms = ['iPhone', 'iPad', 'iPod'],
+				archLinuxPlatforms = ['ArchLinux', 'Arch Linux'],
+				armv7LinuxPlatforms = ["armv7l"],
+				linuxPlatforms = ['Linux'],
 				os = null;
 
-			if (macosPlatforms.indexOf(platform) !== -1) {
-				os = 'mac64';
-			} else if (iosPlatforms.indexOf(platform) !== -1) {
-				os = 'ios';
-			} else if (windowsPlatforms.indexOf(platform) !== -1) {
-				os = 'win64';
-			} else if (/Android/.test(userAgent)) {
-				os = 'android';
-			} else if (!os && /Linux/.test(platform)) {
-				os = 'linux';
+
+			for (let i = 0; i < macosPlatforms.length; i++) {
+				if (userAgent.indexOf(macosPlatforms[i]) !== -1) {
+					return 'macos';
+				}
 			}
+			for (let i = 0; i < windowsPlatforms.length; i++) {
+				if (userAgent.indexOf(windowsPlatforms[i]) !== -1) {
+					return 'win64';
+				}
+			}
+
+			for (let i = 0; i < archLinuxPlatforms.length; i++) {
+				if (userAgent.indexOf(archLinuxPlatforms[i]) !== -1) {
+					return 'archlinux';
+				}
+			}
+
+			for (let i = 0; i < armv7LinuxPlatforms.length; i++) {
+				if (userAgent.indexOf(armv7LinuxPlatforms[i]) !== -1) {
+					return 'armv7l';
+				}
+			}
+
+			for (let i = 0; i < linuxPlatforms.length; i++) {
+				if (userAgent.indexOf(linuxPlatforms[i]) !== -1) {
+					return 'linux';
+				}
+			}
+
+
+
 			return os;
 		}
 

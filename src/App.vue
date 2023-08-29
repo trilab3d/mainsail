@@ -46,6 +46,7 @@
         </template>
         <the-select-printer-dialog v-else-if="instancesDB !== 'moonraker'"></the-select-printer-dialog>
         <the-connecting-dialog v-else></the-connecting-dialog>
+        <trilab-service-dialog :showp="isLoginPopupOpen" :requestedacess="reqAccess"  @close="onCloseServiceLogin"></trilab-service-dialog>
     </v-app>
 </template>
 
@@ -67,6 +68,7 @@ import TheUploadSnackbar from '@/components/TheUploadSnackbar.vue'
 import TheManualProbeDialog from '@/components/dialogs/TheManualProbeDialog.vue'
 import TheBedScrewsDialog from '@/components/dialogs/TheBedScrewsDialog.vue'
 import TheScrewsTiltAdjustDialog from '@/components/dialogs/TheScrewsTiltAdjustDialog.vue'
+import TrilabServiceDialog from './components/dialogs/TrilabServiceDialog.vue'
 import store from '@/store'
 
 
@@ -86,9 +88,12 @@ Component.registerHooks(['metaInfo'])
         TheManualProbeDialog,
         TheBedScrewsDialog,
         TheScrewsTiltAdjustDialog,
+        TrilabServiceDialog,
     },
 })
 export default class App extends Mixins(BaseMixin, TrilabMixin) {
+    public isLoginPopupOpen: boolean = false;
+    public reqAccess: string = 'service';
     public metaInfo(): any {
         let title = this.$store.getters['getTitle']
 
@@ -100,6 +105,9 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
         }
     }
 
+    onCloseServiceLogin(){
+    this.isLoginPopupOpen = false;
+    }
     get title(): string {
         return this.$store.getters['getTitle']
     }
@@ -312,7 +320,12 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
         if (exclusionTags.indexOf(event.target.tagName.toLowerCase()) === -1) {
             console.log(event.target.tagName);
             if (type != 'text') {
-                if (event.keyCode == 82 && event.shiftKey) { /// shift+r 
+                if (event.keyCode == 82 && event.shiftKey) { /// shift+r
+                    if (this.TrilabServiceView == false) {
+                        this.reqAccess = "hidden";
+                        this.isLoginPopupOpen = true;
+                        return;
+                    } 
                     store.commit('trilab/setHiddenView');
                     console.log('shift+r');
                 }
@@ -322,6 +335,11 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
 
                 }
                 else if (event.keyCode == 81 && event.shiftKey) { /// shift+q (service view)
+                    if (this.TrilabServiceView == false) {
+                        this.reqAccess = "service";
+                        this.isLoginPopupOpen = true;
+                        return;
+                    }
                     store.commit('trilab/setServiceView');
                     console.log('shift+q');
 

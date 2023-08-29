@@ -102,11 +102,11 @@ export const getters: GetterTree<GuiState, any> = {
                 panels = panels.filter((element: any) => element.visible)
             }            
             /// hardcoded filter
-            var advancedViewPanels = ['machine-settings'];
+            const advancedViewPanels = ['machine-settings', 'extruder-control', "miniconsole", 'miscellaneous'];
             panels = panels.filter((element:any) => {
                 console.log(element.name);
                 if(advancedViewPanels.indexOf(element.name) !== -1){
-                    if(rootState.trilab.settings.advanced_features == false)
+                    if(rootState.trilab.advancedView == false && rootState.trilab.hiddenView == false)
                     {
                         return false;
                     }

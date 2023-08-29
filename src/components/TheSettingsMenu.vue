@@ -68,6 +68,7 @@
 import Component from 'vue-class-component'
 import { Mixins, Watch } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
+import TrilabMixin from '@/components/mixins/trilab'
 import SettingsGeneralTab from '@/components/settings/SettingsGeneralTab.vue'
 import SettingsWebcamsTab from '@/components/settings/SettingsWebcamsTab.vue'
 import SettingsMacrosTab from '@/components/settings/SettingsMacrosTab.vue'
@@ -129,7 +130,7 @@ import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneou
         SettingsTrilabPrinterTab
     },
 })
-export default class TheSettingsMenu extends Mixins(BaseMixin) {
+export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
     private showSettings = false
     private activeTab = 'general'
 
@@ -154,72 +155,73 @@ export default class TheSettingsMenu extends Mixins(BaseMixin) {
                 icon: mdiPalette,
                 name: 'ui-settings',
                 title: this.$t('Settings.UiSettingsTab.UiSettings'),
+                condition: this.AdvancedFeatures == true
             },
             {
                 icon: mdiMonitorDashboard,
                 name: 'dashboard',
                 title: this.$t('Settings.DashboardTab.Dashboard'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiWebcam,
                 name: 'webcams',
                 title: this.$t('Settings.WebcamsTab.Webcams'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiCodeTags,
                 name: 'macros',
                 title: this.$t('Settings.MacrosTab.Macros'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiTune,
                 name: 'control',
                 title: this.$t('Settings.ControlTab.Control'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiConsoleLine,
                 name: 'console',
                 title: this.$t('Settings.ConsoleTab.Console'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiFire,
                 name: 'presets',
                 title: this.$t('Settings.PresetsTab.PreheatPresets'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiPrinter3d,
                 name: 'remote-printers',
                 title: this.$t('Settings.RemotePrintersTab.RemotePrinters'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiVideo3d,
                 name: 'g-code-viewer',
                 title: this.$t('Settings.GCodeViewerTab.GCodeViewer'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiFileDocumentEditOutline,
                 name: 'editor',
                 title: this.$t('Settings.EditorTab.Editor'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiDipSwitch,
                 name: 'miscellaneous',
                 title: this.$t('Settings.MiscellaneousTab.Miscellaneous'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiMenu,
                 name: 'navigation',
                 title: this.$t('Settings.NavigationTab.Navigation'),
-                condition: this.$store.state.trilab.serviceView == true
+                condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiUpdate,

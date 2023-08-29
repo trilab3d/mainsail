@@ -15,7 +15,7 @@
                 existsScrewsTilt
             "
             #buttons>
-            <v-menu left offset-y :close-on-content-click="false" class="pa-0">
+            <v-menu left offset-y :close-on-content-click="false" class="pa-0" v-if="AdvancedFeatures">
                 <template #activator="{ on, attrs }">
                     <v-btn icon tile v-bind="attrs" :disabled="['printing'].includes(printer_state)" v-on="on">
                         <v-icon>{{ mdiDotsVertical }}</v-icon>
@@ -98,8 +98,8 @@
             <component :is="`${controlStyle}-control`"></component>
         </v-container>
         <!-- Z-OFFSET CONTROL -->
-        <v-divider></v-divider>
-        <v-container>
+        <v-divider v-if="AdvancedFeatures"></v-divider>
+        <v-container v-if="AdvancedFeatures">
             <zoffset-control></zoffset-control>
         </v-container>
         <!-- SPEED FACTOR -->
@@ -127,6 +127,7 @@ import BarsControl from '@/components/panels/ToolheadControls/BarsControl.vue'
 import BaseMixin from '../mixins/base'
 import CircleControl from '@/components/panels/ToolheadControls/CircleControl.vue'
 import ControlMixin from '@/components/mixins/control'
+import TrilabMixin from '@/components/mixins/trilab'
 import CrossControl from '@/components/panels/ToolheadControls/CrossControl.vue'
 import MoveToControl from '@/components/panels/ToolheadControls/MoveToControl.vue'
 import Panel from '@/components/ui/Panel.vue'
@@ -145,7 +146,7 @@ import { mdiDotsVertical, mdiEngineOff, mdiGamepad, mdiSpeedometer, mdiMenuDown,
         ZoffsetControl,
     },
 })
-export default class ToolheadControlPanel extends Mixins(BaseMixin, ControlMixin) {
+export default class ToolheadControlPanel extends Mixins(BaseMixin, ControlMixin, TrilabMixin) {
     mdiDotsVertical = mdiDotsVertical
     mdiEngineOff = mdiEngineOff
     mdiGamepad = mdiGamepad

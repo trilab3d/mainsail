@@ -212,7 +212,9 @@ export const getters: GetterTree<PrinterState, RootState> = {
                     let icon = mdiPrinter3dNozzleAlert
                     let color = colorOff
                     if (value.target) color = colorHot
-
+                    if(name.toLowerCase().endsWith("panel") && rootState.trilab?.serviceView == false){
+                        continue;
+                    }
                     if (nameSplit[0].startsWith('extruder')) {
                         const min_extrude_temp =
                             key in state.configfile.config && 'min_extrude_temp' in state.configfile.config[key]

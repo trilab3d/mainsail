@@ -1,6 +1,7 @@
  
   export interface TrilabState {
     connectedHostname: string;
+    advancedView: boolean;
     hiddenView: boolean;
     serviceView: boolean;
     isConnected: boolean;
@@ -39,6 +40,7 @@
       remote_access: {
         auto_off: boolean;
         enabled: boolean;
+        username: string;
       };
       serial_number: string;
       light_status: number;

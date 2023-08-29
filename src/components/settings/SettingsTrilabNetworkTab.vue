@@ -7,7 +7,7 @@
             <v-col cols="12" sm="12" md="6">
                 <settings-access-password-panel></settings-access-password-panel>
             </v-col>
-            <v-col cols="12" sm="12" md="6">
+            <v-col cols="12" sm="12" md="6" v-if="false">
                 <settings-remote-panel></settings-remote-panel>
             </v-col>
 
@@ -50,7 +50,7 @@ export default class SettingsNetworkTab extends Mixins(BaseMixin, TrilabMixin) {
 
     async save() {
         try {
-            const result = await this.$store.dispatch('trilab/saveSettings');
+            const result = await this.$store.dispatch('trilab/saveSettings', "network");
             console.log(result);
             this.$toast.success(this.$t('Files.SuccessfullyUploaded').toString())
         } catch (error) {

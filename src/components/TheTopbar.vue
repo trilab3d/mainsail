@@ -44,10 +44,12 @@
             </v-btn>
             <t-light-btn></t-light-btn>
             <v-btn
+                v-if="TrilabServiceView"
                 tile
                 :icon="$vuetify.breakpoint.smAndDown"
                 :text="$vuetify.breakpoint.mdAndUp"
                 color="primary"
+                :disabled="['printing'].includes(printer_state)"
                 class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button"
                 @click="doHome"
                 >
