@@ -320,6 +320,14 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
         if (exclusionTags.indexOf(event.target.tagName.toLowerCase()) === -1) {
             console.log(event.target.tagName);
             if (type != 'text') {
+                /// if it is escape
+                if (event.keyCode == 27) {
+                    if (this.isLoginPopupOpen) {
+                        this.isLoginPopupOpen = false;
+                        return;
+                    }
+                }
+
                 if (event.keyCode == 82 && event.shiftKey) { /// shift+r
                     if (this.TrilabServiceView == false) {
                         this.reqAccess = "hidden";

@@ -27,9 +27,6 @@
                 <v-chip v-if="$store.state.trilab.serviceView" color="#FF4820">
                     <b>Service View Enabled</b>
                 </v-chip>
-                <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
-                    <b>Advanced View Enabled</b>
-                </v-chip>
             </div>
 
         </overlay-scrollbars>

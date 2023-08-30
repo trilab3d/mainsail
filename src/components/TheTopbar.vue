@@ -4,79 +4,46 @@
             <v-app-bar-nav-icon tile @click.stop="naviDrawer = !naviDrawer"></v-app-bar-nav-icon>
             <router-link to="/">
                 <template v-if="sidebarLogo">
-                    <img
-                        :src="sidebarLogo"
-                        style="height: 32px"
-                        class="nav-logo ml-4 mr-1 d-none d-sm-flex"
-                        alt="Logo" />
+                    <img :src="sidebarLogo" style="height: 32px" class="nav-logo ml-4 mr-1 d-none d-sm-flex" alt="Logo" />
                 </template>
                 <template v-else>
-                    <mainsail-logo
-                        :color="logoColor"
-                        style="height: 32px"
-                        class="nav-logo ml-4 mr-1 d-none d-sm-flex"
-                        router
-                        to="/"
-                        :ripple="false"></mainsail-logo>
+                    <mainsail-logo :color="logoColor" style="height: 32px" class="nav-logo ml-4 mr-1 d-none d-sm-flex"
+                        router to="/" :ripple="false"></mainsail-logo>
                 </template>
             </router-link>
             <v-toolbar-title class="text-no-wrap ml-0 pl-2 mr-2">{{ printerName }}</v-toolbar-title>
             <printer-selector v-if="countPrinters"></printer-selector>
+            <v-divider v-if="$store.state.trilab.advancedView" class="mx-2" vertical></v-divider>
+            <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
+                <b>Advanced View Enabled</b>
+            </v-chip>
             <v-spacer></v-spacer>
-            <input
-                ref="fileUploadAndStart"
-                type="file"
-                :accept="gcodeInputFileAccept.join(', ')"
-                style="display: none"
+            <input ref="fileUploadAndStart" type="file" :accept="gcodeInputFileAccept.join(', ')" style="display: none"
                 @change="uploadAndStart" />
-            <v-btn
-                v-if="showSaveConfigButton"
-                tile
-                :icon="$vuetify.breakpoint.smAndDown"
-                :text="$vuetify.breakpoint.mdAndUp"
-                color="primary"
-                class="button-min-width-auto px-3 d-none d-sm-flex save-config-button"
-                :disabled="printerIsPrinting"
-                :loading="loadings.includes('topbarSaveConfig')"
-                @click="saveConfig">
+            <v-btn v-if="showSaveConfigButton" tile :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp" color="primary"
+                class="button-min-width-auto px-3 d-none d-sm-flex save-config-button" :disabled="printerIsPrinting"
+                :loading="loadings.includes('topbarSaveConfig')" @click="saveConfig">
                 <v-icon class="d-md-none">{{ mdiContentSave }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.SAVE_CONFIG') }}</span>
             </v-btn>
             <t-light-btn></t-light-btn>
-            <v-btn
-                v-if="TrilabServiceView"
-                tile
-                :icon="$vuetify.breakpoint.smAndDown"
-                :text="$vuetify.breakpoint.mdAndUp"
-                color="primary"
-                :disabled="['printing'].includes(printer_state)"
-                class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button"
-                @click="doHome"
-                >
+            <v-btn v-if="TrilabServiceView" tile :icon="$vuetify.breakpoint.smAndDown" :text="$vuetify.breakpoint.mdAndUp"
+                color="primary" :disabled="['printing'].includes(printer_state)"
+                class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button" @click="doHome">
                 <v-icon class="mr-md-2">{{ mdiHome }}</v-icon>
-                <span class="d-none d-md-inline">{{  $t('App.TopBar.HomeBtn') }}</span>
+                <span class="d-none d-md-inline">{{ $t('App.TopBar.HomeBtn') }}</span>
             </v-btn>
-            <v-btn
-                v-if="boolShowUploadAndPrint"
-                tile
-                :icon="$vuetify.breakpoint.smAndDown"
-                :text="$vuetify.breakpoint.mdAndUp"
-                color="primary"
+            <v-btn v-if="boolShowUploadAndPrint" tile :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp" color="primary"
                 class="button-min-width-auto px-3 d-none d-sm-flex upload-and-start-button"
-                :loading="loadings.includes('btnUploadAndStart')"
-                @click="btnUploadAndStart">
+                :loading="loadings.includes('btnUploadAndStart')" @click="btnUploadAndStart">
                 <v-icon class="mr-md-2">{{ mdiFileUpload }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.UploadPrint') }}</span>
             </v-btn>
-            <v-btn
-                v-if="klippyIsConnected"
-                tile
-                :icon="$vuetify.breakpoint.smAndDown"
-                :text="$vuetify.breakpoint.mdAndUp"
-                color="error"
-                class="button-min-width-auto px-3 emergency-button"
-                :loading="loadings.includes('topbarEmergencyStop')"
-                @click="btnEmergencyStop">
+            <v-btn v-if="klippyIsConnected" tile :icon="$vuetify.breakpoint.smAndDown" :text="$vuetify.breakpoint.mdAndUp"
+                color="error" class="button-min-width-auto px-3 emergency-button"
+                :loading="loadings.includes('topbarEmergencyStop')" @click="btnEmergencyStop">
                 <v-icon class="mr-md-2">{{ mdiAlertOctagonOutline }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.EmergencyStop') }}</span>
             </v-btn>
@@ -97,12 +64,8 @@
             </template>
         </v-snackbar>
         <v-dialog v-model="showEmergencyStopDialog" width="400" :fullscreen="isMobile">
-            <panel
-                :title="$t('EmergencyStopDialog.EmergencyStop').toString()"
-                toolbar-color="error"
-                card-class="emergency-stop-dialog"
-                :icon="mdiAlertOctagonOutline"
-                :margin-bottom="false">
+            <panel :title="$t('EmergencyStopDialog.EmergencyStop').toString()" toolbar-color="error"
+                card-class="emergency-stop-dialog" :icon="mdiAlertOctagonOutline" :margin-bottom="false">
                 <template #buttons>
                     <v-btn icon tile @click="showEmergencyStopDialog = false">
                         <v-icon>{{ mdiCloseThick }}</v-icon>
@@ -225,7 +188,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
 
     get showSaveConfigButton() {
         if (!this.klipperReadyForGui) return false
-        if(!this.TrilabServiceView) {return false;}
+        if (!this.TrilabServiceView) { return false; }
         if (!this.hideSaveConfigForBedMash) return this.saveConfigPending
         let pendingKeys = Object.keys(this.$store.state.printer.configfile?.save_config_pending_items ?? {})
         pendingKeys = pendingKeys.filter((key: string) => !key.startsWith('bed_mesh '))
@@ -269,7 +232,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     }
 
 
-    lightBtn(){
+    lightBtn() {
 
     }
 
@@ -381,16 +344,19 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
 .button-min-width-auto {
     min-width: auto !important;
 }
+
 /*noinspection CssUnusedSymbol*/
 .topbar .v-btn {
     height: 100% !important;
     max-height: none;
 }
+
 /*noinspection CssUnusedSymbol*/
 .topbar .v-btn.v-btn--icon {
     /*noinspection CssUnresolvedCustomProperty*/
     width: var(--topbar-icon-btn-width) !important;
 }
+
 /*noinspection CssUnusedSymbol*/
 @media (min-width: 768px) {
     header.topbar {

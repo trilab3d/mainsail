@@ -4,13 +4,15 @@
 	top: 0;
 	right: 0;
 	width: 35%;
+	max-width:150px;
 }
 
-/* under 900 */
-@media (max-width: 900px) {
+/* under 1000 */
+@media (max-width: 1000px) {
 	.panel-image {
 		position: static;
 		margin: 0 auto;
+		max-width:unset;
 	}
 
 	.slicerTitle {

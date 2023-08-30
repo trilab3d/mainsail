@@ -1,13 +1,11 @@
 <template>
-  <v-dialog v-model="showp" max-width="400px">
+  <v-dialog v-model="localShowp" max-width="400px" persistent>
     <v-card>
       <v-card-title class="headline">Service Login</v-card-title>
       <v-card-text>
-        <v-form @submit.prevent="login">
-          <v-text-field v-model="username" v-if="false" label="Username" outlined></v-text-field>
-          <v-text-field v-model="password" label="Password" outlined type="password"></v-text-field>
-          <v-btn text @click="$emit('close')">Cancel</v-btn>
-        </v-form>
+        <v-text-field v-model="username" v-if="false" label="Username" outlined></v-text-field>
+        <v-text-field ref="password" v-model="password" label="Password" outlined type="password"></v-text-field>
+        <v-btn text @click="$emit('close')">Cancel</v-btn>
       </v-card-text>
     </v-card>
   </v-dialog>
@@ -25,14 +23,16 @@ export default class TrilabServiceDialog extends Mixins(TrilabMixin) {
   @Prop({ required: false, default: 'service' })
   declare requestedacess: string
 
-
+  localShowp: boolean = false;
   username = '';
   correctPasswordHash = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
   password: string = '';
   computeHash(inputval: string) {
     return SHA256(inputval).toString();
   }
-
+  created() {
+    this.localShowp = this.showp; // Initialize localShowp in the created hook
+  }
 
   login() {
     console.log('Logging in...');
@@ -51,6 +51,20 @@ export default class TrilabServiceDialog extends Mixins(TrilabMixin) {
       this.password = '';
     }
   }
+  @Watch('showp')
+  // Watch for changes in the prop and update the local data property
+  onShowpChanged(newVal: any) {
+    this.localShowp = newVal;
+    if (newVal === true) {
+        setTimeout(() => {
+            const input = this.$refs.password as HTMLInputElement;
+            input.focus();
+        }, 100);
+    }
+  }
+
+
+
 
 }
 </script>

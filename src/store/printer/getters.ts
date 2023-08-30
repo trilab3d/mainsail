@@ -212,7 +212,7 @@ export const getters: GetterTree<PrinterState, RootState> = {
                     let icon = mdiPrinter3dNozzleAlert
                     let color = colorOff
                     if (value.target) color = colorHot
-                    if(name.toLowerCase().endsWith("panel") && rootState.trilab?.serviceView == false){
+                    if(name.toLowerCase().endsWith("panel") && rootState.trilab?.serviceView == false && rootState.trilab?.hiddenView == false){
                         continue;
                     }
                     if (nameSplit[0].startsWith('extruder')) {

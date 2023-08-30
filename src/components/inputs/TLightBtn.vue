@@ -50,7 +50,7 @@ export default class TLightBtn extends Mixins(BaseMixin) {
         if (this.getLightStatus == true) {
             gcode = `SET_LED LED=${this.getLight.name} ${this.ledChannelName}=${parseInt("0").toFixed(2)} SYNC=0 TRANSMIT=1`
         } else {
-            gcode = `SET_LED LED=${this.getLight.name} ${this.ledChannelName}=${parseInt("8000").toFixed(2)} SYNC=0 TRANSMIT=1`
+            gcode = `SET_LED LED=${this.getLight.name} ${this.ledChannelName}=${parseFloat("0.8").toFixed(2)} SYNC=0 TRANSMIT=1`
         }
         if (gcode !== '') {
             this.$store.dispatch('server/addEvent', { message: gcode, type: 'command' })
