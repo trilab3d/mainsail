@@ -37,8 +37,12 @@ export default class TrilabServiceDialog extends Mixins(TrilabMixin) {
   login() {
     console.log('Logging in...');
     if (this.requestedacess === 'service') {
+      this.AdvancedFeatures = false;
       this.TrilabServiceView = true;
+      /// disable less privileged modes
     } else if (this.requestedacess === 'hidden') {
+      this.TrilabServiceView = false;
+      this.AdvancedFeatures = false;
       this.TrilabHiddenView = true;
     }
     this.$emit('close');

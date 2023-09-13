@@ -179,6 +179,7 @@ export const getters: GetterTree<PrinterState, RootState> = {
 
                 const variables = state[prop] ?? {}
 
+                console.log(name);
                 array.push({
                     name,
                     description: settings[propLower].description ?? null,
@@ -188,7 +189,24 @@ export const getters: GetterTree<PrinterState, RootState> = {
                 })
             })
 
-        return caseInsensitiveSort(array, 'name')
+        const macroSortNames: any = { "LOAD_FILAMENT": 0, "UNLOAD_FILAMENT": 1 }
+        array.sort((a, b) => {
+            const indexA = macroSortNames[a.name] !== undefined ? macroSortNames[a.name] : Number.MAX_VALUE
+            const indexB = macroSortNames[b.name] !== undefined ? macroSortNames[b.name] : Number.MAX_VALUE
+
+            // Compare by index in the macroSortNames object
+            const indexComparison = indexA - indexB
+
+            if (indexComparison !== 0) {
+                return indexComparison // If index is different, return the comparison result
+            }
+
+            // If index is the same, compare by macro name
+            return a.name.localeCompare(b.name)
+        })
+
+        // Now, 'array' is sorted based on both index and macro name
+        return array
     },
 
     getMacro: (state, getters) => (name: string) => {
@@ -212,8 +230,13 @@ export const getters: GetterTree<PrinterState, RootState> = {
                     let icon = mdiPrinter3dNozzleAlert
                     let color = colorOff
                     if (value.target) color = colorHot
-                    if(name.toLowerCase().endsWith("panel") && rootState.trilab?.serviceView == false && rootState.trilab?.hiddenView == false){
-                        continue;
+                    //console.log(name.toLowerCase());
+                    if (
+                        name.toLowerCase().endsWith('panel') &&
+                        rootState.trilab?.serviceView == false &&
+                        rootState.trilab?.hiddenView == false
+                    ) {
+                        continue
                     }
                     if (nameSplit[0].startsWith('extruder')) {
                         const min_extrude_temp =
@@ -429,6 +452,7 @@ export const getters: GetterTree<PrinterState, RootState> = {
         const temperature_sensors = getters['getTemperatureSensors']
         if (temperature_sensors.length) {
             temperature_sensors.forEach((sensor: PrinterStateTemperatureSensor) => {
+                //console.log(sensor);
                 objects.push({
                     name: sensor.name,
                     type: 'temperature_sensor',
@@ -574,7 +598,7 @@ export const getters: GetterTree<PrinterState, RootState> = {
 
     getMiscellaneous: (state) => {
         const output: PrinterStateMiscellaneous[] = []
-        const supportedObjects = ['controller_fan', 'heater_fan', 'fan_generic', 'fan', 'output_pin']
+        const supportedObjects = ['controller_fan', 'heater_fan', 'fan_generic', 'fan', 'output_pin', 'servo_flap', 'stepper_flap']
 
         const controllableFans = ['fan_generic', 'fan']
 

@@ -11,8 +11,15 @@ export const getters: GetterTree<RootState, any> = {
     },
 
     getTitle: (state, getters) => {
+        let printerNameToDisplay = 'Mainsail'
+        if (state.gui?.general.printername) {
+            printerNameToDisplay = state.gui?.general.printername
+        } else if (state.printer?.hostname) {
+            printerNameToDisplay = state.printer?.hostname
+        }
+
         if (!state.socket?.isConnected) return 'Mainsail'
-        if (state.server?.klippy_state !== 'ready') return i18n.t('App.Titles.Error')
+        if (state.server?.klippy_state !== 'ready') return printerNameToDisplay + " - " + i18n.t('App.Titles.Error')
 
         // get printer_state
         let printer_state = state.printer?.print_stats?.state ?? ''
@@ -21,18 +28,15 @@ export const getters: GetterTree<RootState, any> = {
             printer_state = 'printing'
 
         // return pause title
-        if (printer_state === 'paused') return i18n.t('App.Titles.Pause')
+        if (printer_state === 'paused') return printerNameToDisplay + " - " + i18n.t('App.Titles.Pause')
 
         // return complete title
         if (state.printer?.print_stats?.state === 'complete') {
-            let output = i18n.t('App.Titles.Complete', {
+            const output = i18n.t('App.Titles.Complete', {
                 filename: state.printer.print_stats.filename,
             })
 
-            // add printer name to title if it exists
-            if (state.gui?.general.printername) output += `- ${state.gui?.general.printername}`
-
-            return output
+            return printerNameToDisplay + " - " + output
         }
 
         // return printing title
@@ -41,30 +45,25 @@ export const getters: GetterTree<RootState, any> = {
             const percent = (getters['printer/getPrintPercent'] * 100).toFixed(0)
 
             if (eta !== '--') {
-                let output = i18n.t('App.Titles.PrintingETA', {
+                const output = i18n.t('App.Titles.PrintingETA', {
                     percent: percent,
                     filename: state.printer?.print_stats?.filename,
                     eta,
                 })
 
-                // add printer name to title if it exists
-                if (state.gui?.general.printername) output += `- ${state.gui?.general.printername}`
-
-                return output
+                return printerNameToDisplay + " - " + output
             }
 
-            let output = i18n.t('App.Titles.Printing', {
-                percent: percent,
-                filename: state.printer?.print_stats?.filename,
-            })
+            const output =
+                i18n.t('App.Titles.Printing', {
+                    percent: percent,
+                    filename: state.printer?.print_stats?.filename,
+                })
 
-            // add printer name to title if it exists
-            if (state.gui?.general.printername) output += `- ${state.gui?.general.printername}`
-
-            return output
+            return printerNameToDisplay + " - " + output
         }
 
-        return state.gui?.general.printername ?? state.printer?.hostname ?? 'Mainsail'
+        return printerNameToDisplay;
     },
 
     getDependencies: (state) => {

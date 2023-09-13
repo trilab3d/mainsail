@@ -4,17 +4,17 @@ import Component from 'vue-class-component'
 @Component
 export default class TrilabMixin extends Vue {
     get AdvancedFeatures(): boolean {
-        if(this.$store.state.trilab.advancedView == true || this.$store.state.trilab.hiddenView == true){
+        if(this.$store.state.trilab.advancedView == true || this.$store.state.trilab.hiddenView == true || this.$store.state.trilab.serviceView == true){
             return true;
         } else {
             return false;
         }
     }
     set AdvancedFeatures(value: boolean) {
-        this.$store.commit('trilab/setAdvancedFeatures')
+        this.$store.commit('trilab/setAdvancedFeatures', value)
         localStorage.setItem(
             'trilabAdvancedFeatures',
-            this.$store.state.trilab?.advancedView.toString() ?? 'false'
+            value.toString()
         )
     }
 
@@ -27,7 +27,7 @@ export default class TrilabMixin extends Vue {
     }
 
     set TrilabServiceView(value:boolean){
-        this.$store.commit('trilab/setServiceView')
+        this.$store.commit('trilab/setServiceView', value)
 
     }
 
@@ -35,6 +35,6 @@ export default class TrilabMixin extends Vue {
         return this.$store.state.trilab.hiddenView;
     }
     set TrilabHiddenView(value:boolean){
-        this.$store.commit('trilab/setHiddenView')
+        this.$store.commit('trilab/setHiddenView', value)
     }
 }

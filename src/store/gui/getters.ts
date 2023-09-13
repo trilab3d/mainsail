@@ -104,9 +104,9 @@ export const getters: GetterTree<GuiState, any> = {
             /// hardcoded filter
             const advancedViewPanels = ['machine-settings', 'extruder-control', "miniconsole", 'miscellaneous'];
             panels = panels.filter((element:any) => {
-                console.log(element.name);
+               // console.log(element.name);
                 if(advancedViewPanels.indexOf(element.name) !== -1){
-                    if(rootState.trilab.advancedView == false && rootState.trilab.hiddenView == false)
+                    if(rootState.trilab.advancedView == false && rootState.trilab.hiddenView == false && rootState.trilab.serviceView == false)
                     {
                         return false;
                     }

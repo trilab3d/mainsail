@@ -13,10 +13,17 @@
             </router-link>
             <v-toolbar-title class="text-no-wrap ml-0 pl-2 mr-2">{{ printerName }}</v-toolbar-title>
             <printer-selector v-if="countPrinters"></printer-selector>
-            <v-divider v-if="$store.state.trilab.advancedView" class="mx-2" vertical></v-divider>
+            <v-divider v-if="$store.state.trilab.advancedView || $store.state.trilab.hiddenView || $store.state.trilab.serviceView" class="mx-2" vertical></v-divider>
             <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
                 <b>Advanced View Enabled</b>
             </v-chip>
+            <v-chip v-if="$store.state.trilab.hiddenView" color="#31FF3C">
+                <b>Hidden View Enabled</b>
+            </v-chip>
+            <v-chip v-if="$store.state.trilab.serviceView" color="#FF4820">
+                <b>Service View Enabled</b>
+            </v-chip>
+
             <v-spacer></v-spacer>
             <input ref="fileUploadAndStart" type="file" :accept="gcodeInputFileAccept.join(', ')" style="display: none"
                 @change="uploadAndStart" />
@@ -99,6 +106,7 @@ import TheNotificationMenu from '@/components/notifications/TheNotificationMenu.
 import { topbarHeight } from '@/store/variables'
 import { mdiAlertOctagonOutline, mdiContentSave, mdiFileUpload, mdiClose, mdiCloseThick, mdiHome, mdiLightbulbOff, mdiLightbulbOn } from '@mdi/js'
 import ControlMixin from './mixins/control'
+import { Watch } from 'vue-property-decorator'
 
 type uploadSnackbar = {
     status: boolean
@@ -231,7 +239,6 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         )
     }
 
-
     lightBtn() {
 
     }
@@ -330,6 +337,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         this.uploadSnackbar.cancelTokenSource.cancel()
         this.uploadSnackbar.status = false
     }
+
 }
 </script>
 

@@ -46,7 +46,8 @@
         </template>
         <the-select-printer-dialog v-else-if="instancesDB !== 'moonraker'"></the-select-printer-dialog>
         <the-connecting-dialog v-else></the-connecting-dialog>
-        <trilab-service-dialog :showp="isLoginPopupOpen" :requestedacess="reqAccess"  @close="onCloseServiceLogin"></trilab-service-dialog>
+        <trilab-service-dialog :showp="isLoginPopupOpen" :requestedacess="reqAccess"
+            @close="onCloseServiceLogin"></trilab-service-dialog>
     </v-app>
 </template>
 
@@ -105,10 +106,10 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
         }
     }
 
-    onCloseServiceLogin(){
-    this.isLoginPopupOpen = false;
+    onCloseServiceLogin() {
+        this.isLoginPopupOpen = false;
     }
-    get title(): string {
+    get title(): any {
         return this.$store.getters['getTitle']
     }
 
@@ -318,7 +319,7 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
         var type = '';
         let exclusionTags = ['input', 'textarea', 'select'];
         if (exclusionTags.indexOf(event.target.tagName.toLowerCase()) === -1) {
-            console.log(event.target.tagName);
+            //console.log(event.target.tagName);
             if (type != 'text') {
                 /// if it is escape
                 if (event.keyCode == 27) {
@@ -329,26 +330,56 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
                 }
 
                 if (event.keyCode == 82 && event.shiftKey) { /// shift+r
-                    if (this.TrilabServiceView == false) {
+                    if (this.TrilabServiceView == false && this.TrilabHiddenView == false) {
                         this.reqAccess = "hidden";
+                        console.log("debugStavs");
                         this.isLoginPopupOpen = true;
                         return;
-                    } 
-                    store.commit('trilab/setHiddenView');
+                    }
+                    if (this.$store.state.trilab.hiddenView == true) {
+                        this.TrilabHiddenView = false;
+                        console.log("nastavuju HW na false");
+                    } else {
+                        this.TrilabHiddenView = true;
+                        console.log("nastavuju HW na true");
+                    }
+                    this.AdvancedFeatures = false;
+                    this.TrilabServiceView = false;
                     console.log('shift+r');
                 }
                 else if (event.keyCode == 65 && event.shiftKey) { /// shift+a /// advancedview
-                    this.AdvancedFeatures = !this.AdvancedFeatures;
+                    if (this.TrilabHiddenView == true || this.TrilabServiceView == true) {
+                        console.log("debugStavs");
+                        console.log("endDebugStavs");
+                        return false; /// it shouldnt work in more privileged view 
+                    }
+                    if (this.$store.state.trilab.advancedView == false) {
+                        this.AdvancedFeatures = true;
+                        /// nastavuji AF na true
+                    } else {
+                        this.AdvancedFeatures = false;
+
+                        /// nastavuji AF na false
+                    }
                     console.log('shift+a');
 
                 }
                 else if (event.keyCode == 81 && event.shiftKey) { /// shift+q (service view)
+                    if (this.TrilabHiddenView == true) {
+                        return false; /// it shouldnt work in more privileged view
+                    }
                     if (this.TrilabServiceView == false) {
                         this.reqAccess = "service";
                         this.isLoginPopupOpen = true;
                         return;
                     }
-                    store.commit('trilab/setServiceView');
+
+                    if (this.$store.state.trilab.serviceView == true) {
+                        this.TrilabServiceView = false;
+                    } else {
+                        this.TrilabServiceView = true;
+                    }
+
                     console.log('shift+q');
 
                 }

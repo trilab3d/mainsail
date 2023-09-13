@@ -1,19 +1,10 @@
 <template>
-    <panel
-        v-if="klipperReadyForGui && macros.length > 0"
-        :icon="mdiCodeTags"
-        :title="$t('Panels.MacrosPanel.Headline')"
-        :collapsible="true"
-        card-class="macros-panel">
-        <v-card-text class="py-2">
-            <v-row>
-                <v-col class="text-center">
-                    <macro-button
-                        v-for="(macro, index) in macros"
-                        :key="'macro_' + index"
-                        :macro="macro"
-                        color="primary"
-                        class="mx-1 my-1" />
+    <panel v-if="klipperReadyForGui && macros.length > 0" :icon="mdiCodeTags" :title="$t('Panels.MacrosPanel.Headline')"
+        :collapsible="true" card-class="macros-panel">
+        <v-card-text class="py-4">
+            <v-row v-for="(macro, index) in macros" :key="'macro_' + index">
+                <v-col cols="12" class="py-2">
+                <macro-button :macro="macro" color="primary" class="" style="" />
                 </v-col>
             </v-row>
         </v-card-text>

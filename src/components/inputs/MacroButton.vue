@@ -1,23 +1,13 @@
 <template>
-    <v-item-group class="d-inline-block">
-        <v-btn
-            small
-            :color="color"
-            :class="paramArray.length ? 'macroWithParameters' : ''"
-            :loading="loadings.includes('macro_' + macro.name)"
-            :disabled="disabled"
-            @click="doSendMacro(macro.name)">
+    <v-item-group class="vItemGroup">
+        <v-btn style="width:100%" small :color="color" :class="paramArray.length ? 'macroWithParameters' : ''"
+            :loading="loadings.includes('macro_' + macro.name)" :disabled="disabled" @click="doSendMacro(macro.name)">
             {{ alias ? alias : macro.name.replace(/_/g, ' ') }}
         </v-btn>
         <template v-if="paramArray.length">
             <v-menu v-if="!isMobile" offset-y :close-on-content-click="false">
                 <template #activator="{ on, attrs }">
-                    <v-btn
-                        :disabled="disabled"
-                        :color="color"
-                        v-bind="attrs"
-                        class="minwidth-0 px-1 btnMacroMenu"
-                        small
+                    <v-btn style="position:absolute; right:0;" :disabled="disabled" :color="color" v-bind="attrs" class="minwidth-0 px-1 btnMacroMenu" small
                         v-on="on">
                         <v-icon>{{ mdiMenuDown }}</v-icon>
                     </v-btn>
@@ -26,17 +16,9 @@
                     <v-card-text class="py-2">
                         <v-row class="my-2">
                             <v-col v-for="(name, key) in paramArray" :key="'param_' + key" :cols="paramCssCols">
-                                <v-text-field
-                                    v-model="params[name].value"
-                                    :label="name"
-                                    :placeholder="params[name].default"
-                                    :persistent-placeholder="true"
-                                    hide-details
-                                    outlined
-                                    dense
-                                    clearable
-                                    :clear-icon="mdiRefresh"
-                                    @keyup.enter="sendWithParams"></v-text-field>
+                                <v-text-field v-model="params[name].value" :label="name" :placeholder="params[name].default"
+                                    :persistent-placeholder="true" hide-details outlined dense clearable
+                                    :clear-icon="mdiRefresh" @keyup.enter="sendWithParams"></v-text-field>
                             </v-col>
                         </v-row>
                         <v-row class="my-2">
@@ -50,11 +32,7 @@
                 </v-card>
             </v-menu>
             <template v-else>
-                <v-btn
-                    :disabled="disabled"
-                    :color="color"
-                    class="minwidth-0 px-1 btnMacroMenu"
-                    small
+                <v-btn :disabled="disabled" :color="color" style="position:absolute; right:0;" class="minwidth-0 px-1 btnMacroMenu" small
                     @click="paramsDialog = true">
                     <v-icon>{{ mdiMenuDown }}</v-icon>
                 </v-btn>
@@ -68,16 +46,9 @@
                         <v-card-text>
                             <v-row>
                                 <v-col v-for="(name, key) in paramArray" :key="'param_mobile_' + key" :cols="6">
-                                    <v-text-field
-                                        v-model="params[name].value"
-                                        :label="name"
-                                        :placeholder="params[name].default"
-                                        :persistent-placeholder="true"
-                                        hide-details
-                                        outlined
-                                        dense
-                                        clearable
-                                        :clear-icon="mdiRefresh"
+                                    <v-text-field v-model="params[name].value" :label="name"
+                                        :placeholder="params[name].default" :persistent-placeholder="true" hide-details
+                                        outlined dense clearable :clear-icon="mdiRefresh"
                                         @keyup.enter="sendWithParams"></v-text-field>
                                 </v-col>
                             </v-row>
@@ -226,5 +197,11 @@ export default class MacroButton extends Mixins(BaseMixin) {
 .macroWithParameters {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+}
+
+.vItemGroup {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -4px;
 }
 </style>

@@ -20,15 +20,6 @@
                     <sidebar-item v-for="(category, index) in visibleNaviPoints" :key="index" :item="category" />
                 </v-list-item-group>
             </v-list>
-            <div class="viewsBadges">
-                <v-chip v-if="$store.state.trilab.hiddenView" color="#31FF3C">
-                    <b>Hidden View Enabled</b>
-                </v-chip>
-                <v-chip v-if="$store.state.trilab.serviceView" color="#FF4820">
-                    <b>Service View Enabled</b>
-                </v-chip>
-            </div>
-
         </overlay-scrollbars>
         <template v-if="$store.state.trilab.hiddenView" #append>
             <v-list-item class="small-list-item mb-2">

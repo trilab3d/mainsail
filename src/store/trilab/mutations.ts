@@ -38,14 +38,14 @@ export const mutations: MutationTree<TrilabState> = {
     setNetwork(state, updateObject) {
         state.network = updateObject
     },
-    setAdvancedFeatures(state) {
-        state.advancedView = !state.advancedView
+    setAdvancedFeatures(state, value) {
+        state.advancedView = value
     },
-    setServiceView(state) {
-        state.serviceView = !state.serviceView
+    setServiceView(state, value) {
+        state.serviceView = value
     },
-    setHiddenView(state) {
-        state.hiddenView = !state.hiddenView
+    setHiddenView(state, value) {
+        state.hiddenView = value
     },
     setChangelog(state, val) {
         state.updates.changelog = val

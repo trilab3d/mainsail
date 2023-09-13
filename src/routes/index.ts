@@ -7,6 +7,7 @@ import History from '../pages/History.vue'
 import Timelapse from '../pages/Timelapse.vue'
 import Machine from '../pages/Machine.vue'
 import TrilabSlicers from '../pages/TrilabSlicers.vue'
+import TrilabCalibrations from '../pages/TrilabCalibrations.vue'
 import { AsyncComponent, Component } from 'vue'
 
 const iconString = `<svg class="v-icon__svg" width="100%" height="100%" x="0" y="0" viewBox='0 0 320 320' xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -145,6 +146,16 @@ const routes: AppRoute[] = [
         component: TrilabSlicers,
         alwaysShow: true,
         identificator: 'slicers',
+        showInNavi: true,
+        position: 90,
+    },
+    {
+        title: 'Calibration',
+        path: '/trilabcalibration',
+        iconString: iconString,
+        component: TrilabCalibrations,
+        alwaysShow: true,
+        identificator: 'trilabcalibration',
         showInNavi: true,
         position: 90,
     },
