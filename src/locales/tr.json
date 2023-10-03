@@ -1121,5 +1121,14 @@
   },
   "General": {
     "Save": "Kaydetmek"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "USB'den güncelleme",
+      "DownloadUpdate": "Güncellemeyi indir"
+    },
+    "restartWarning": "Bu adım sırasında yazıcınız yeniden başlatılacak ve bu yazıcıyla bağlantınız kısa bir süreliğine kesilecektir.",
+    "printerIsPrinting": "Yazıcınız bazı işler yaptığından bu adımı şu anda gerçekleştiremezsiniz. \nLütfen bir süre bekleyin, bu adım hazır olduğunda bu pencere otomatik olarak yenilenecektir.",
+    "installAndRebootBtn": "DÜZENLEMEK"
   }
 }

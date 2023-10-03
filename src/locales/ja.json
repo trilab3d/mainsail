@@ -1166,5 +1166,14 @@
   },
   "General": {
     "Save": "保存"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "USBからアップデートする",
+      "DownloadUpdate": "アップデートをダウンロード"
+    },
+    "restartWarning": "プリンターが再起動され、この手順中にしばらくの間、このプリンターへの接続が失われます。",
+    "printerIsPrinting": "プリンターが何らかの作業を行っているため、現在この手順を実行することはできません。\nしばらくお待ちください。この手順の準備が完了すると、このウィンドウは自動的に更新されます",
+    "installAndRebootBtn": "インストール"
   }
 }

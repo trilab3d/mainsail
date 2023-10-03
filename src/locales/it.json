@@ -908,5 +908,14 @@
   },
   "General": {
     "Save": "Salva"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "Aggiornamento da USB",
+      "DownloadUpdate": "Scarica l'aggiornamento"
+    },
+    "restartWarning": "La stampante si riavvierà e perderai la connessione alla stampante per un breve periodo durante questo passaggio",
+    "printerIsPrinting": "Non è possibile eseguire questo passaggio in questo momento perché la stampante sta eseguendo alcuni lavori. \nAttendi qualche istante, questa finestra si aggiornerà automaticamente quando questo passaggio sarà pronto",
+    "installAndRebootBtn": "INSTALLARE"
   }
 }

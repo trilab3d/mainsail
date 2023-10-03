@@ -1165,5 +1165,14 @@
   },
   "General": {
     "Save": "Sauvegarder"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "Mise à jour depuis USB",
+      "DownloadUpdate": "Télécharger la mise à jour"
+    },
+    "restartWarning": "Votre imprimante redémarrera et vous perdrez la connexion à cette imprimante pendant un court instant au cours de cette étape",
+    "printerIsPrinting": "Vous ne pouvez pas effectuer cette étape pour le moment, car votre imprimante est en train d'effectuer du travail. \nVeuillez patienter un peu, cette fenêtre s'actualisera automatiquement lorsque cette étape sera prête",
+    "installAndRebootBtn": "INSTALLER"
   }
 }

@@ -8,11 +8,11 @@
                             <v-card-text>
                                 <v-row>
                                     <v-col>System version: </v-col>
-                                    <v-col>XXX</v-col>
+                                    <v-col>{{ hostStats.os }}</v-col>
                                 </v-row>
                                 <v-row>
                                     <v-col>Web interface version: </v-col>
-                                    <v-col>XXX</v-col>
+                                    <v-col>1.0.0</v-col>
                                 </v-row>
                                 <v-row justify="center" align="center">
                                     <v-col>Automatic check for updates: </v-col>
@@ -21,7 +21,7 @@
                                     </v-col>
                                 </v-row>
                                 <v-row justify="center" align="center">
-                                    <v-col>Update system</v-col>
+                                    <v-col>Upload update file</v-col>
                                     <v-col>
                                         <v-btn color="primary" block dark :loading="isSelecting" @click="handleFileImport"
                                             class="mt-3">
@@ -77,6 +77,12 @@ export default class SettingsTrilabTab extends Mixins(BaseMixin, TrilabMixin) {
     }
 
     file: File | null = null;
+
+
+
+    get hostStats() {
+        return this.$store.getters['server/getHostStats'] ?? null
+    }
 
     get printerName() {
         return "XXX"

@@ -9,7 +9,7 @@ export const actions: ActionTree<TrilabState, any> = {
         axios.post(context.getters.trilabPrefix + '/light/toggle').then((response) => {
             context.commit('setData', {
                 //light_data: { state: response.data.state },
-                light_state: response.data.state
+                light_state: response.data.state,
             })
         })
     },
@@ -42,13 +42,23 @@ export const actions: ActionTree<TrilabState, any> = {
     onConnected(context) {
         context.dispatch('loadSettings')
         context.dispatch('getWifiStatus')
-        if ((window as any)['statisticsInterval'] != undefined) {
+        context.dispatch('setupLiveUpdateTimer', 30000)
+        /*if ((window as any)['statisticsInterval'] != undefined) {
             clearInterval((window as any)['statisticsInterval'])
         }
-        ;(window as any)['statisticsInterval'] = setInterval(function () {
+        (window as any)['statisticsInterval'] = setInterval(function () {
             context.dispatch('getStatisticsCounters')
         }, 30000)
-        context.dispatch('getStatisticsCounters')
+        context.dispatch('getStatisticsCounters')*/
+    },
+    setupLiveUpdateTimer(context, intervalms) {
+        if ((window as any)['liveUpdateInterval'] != undefined) {
+            clearInterval((window as any)['liveUpdateInterval'])
+        }
+        ;(window as any)['liveUpdateInterval'] = setInterval(function () {
+            context.dispatch('getLiveUpdateStatus')
+        }, intervalms)
+        context.dispatch('getLiveUpdateStatus')
     },
     getWifiStatus(context) {
         axios
@@ -83,30 +93,41 @@ export const actions: ActionTree<TrilabState, any> = {
             })
     },
     async saveSettings(context, specific = false) {
-        const disallowedToSave = ['last_running_version', 'camera_data', 'factory_device_name'];
-        const customSettings = context.state.settings;
+        const disallowedToSave = ['last_running_version', 'camera_data', 'factory_device_name']
+        const customSettings = context.state.settings
         for (const key in customSettings) {
             if (disallowedToSave.indexOf(key) > -1) {
-                delete customSettings[key as keyof typeof customSettings];
+                delete customSettings[key as keyof typeof customSettings]
             }
         }
 
         if (specific != false) {
-            const customObject :any = {};
-            if(specific == "printer"){
-                customObject.light_data = context.state.settings.light_data;
+            const customObject: any = {}
+            if (specific == 'printer') {
+                customObject.light_data = context.state.settings.light_data
             }
-            if(specific == "network"){
-                customObject.login = context.state.settings.login;
-                customObject.network_data = context.state.settings.network_data;
+            if (specific == 'network') {
+                customObject.login = context.state.settings.login
+                customObject.network_data = context.state.settings.network_data
             }
             const result = await axios.post(context.getters.trilabPrefix + '/settings', customObject)
             return result
         } else {
-        
-        const result = await axios.post(context.getters.trilabPrefix + '/settings', context.state.settings)
-        return result
+            const result = await axios.post(context.getters.trilabPrefix + '/settings', context.state.settings)
+            return result
         }
+    },
+    async getLiveUpdateStatus(context) {
+        const response: any = await axios.get(context.getters.trilabPrefix + '/check_update').catch((error) => {
+            console.error(error)
+        })
+        const rd = response.data
+        context.commit('setData', { updateStateStatus: rd })
+        /// check if progress is in the response
+        if (rd.progress == undefined) {
+            context.commit('setData', { updateStateStatus: { progress: -1 } })
+        }
+        return rd;
     },
     getStatisticsCounters(context) {
         axios

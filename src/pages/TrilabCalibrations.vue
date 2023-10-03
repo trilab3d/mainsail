@@ -18,14 +18,15 @@
 import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
 import { mdiCog, mdiPackageVariantClosed, mdiDelta } from '@mdi/js'
+import TrilabDeltaCalibrationWizard from '@/components/panels/TrilabService/TrilabDeltaCalibrationWizard.vue'
 @Component({
     components: {
+        TrilabDeltaCalibrationWizard,
     },
 })
 export default class PageTrilabCalibrations extends Mixins(BaseMixin) {
     public activeTab = "delta";
-    public tabTitles =
-        [
+    public tabTitles = [
             {
                 title: "Delta",
                 name: "delta",
@@ -36,7 +37,7 @@ export default class PageTrilabCalibrations extends Mixins(BaseMixin) {
                 name: "box",
                 icon: mdiPackageVariantClosed
             },
-        ]
+        ];
 
 
 }

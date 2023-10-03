@@ -1165,5 +1165,14 @@
   },
   "General": {
     "Save": "Redden"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "Updaten vanaf USB",
+      "DownloadUpdate": "Download update"
+    },
+    "restartWarning": "Uw printer wordt opnieuw opgestart en tijdens deze stap wordt de verbinding met deze printer korte tijd verbroken",
+    "printerIsPrinting": "U kunt deze stap nu niet uitvoeren, omdat uw printer wat werk doet. \nWacht even, dit venster wordt automatisch vernieuwd wanneer deze stap gereed is",
+    "installAndRebootBtn": "INSTALLEREN"
   }
 }

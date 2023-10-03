@@ -1169,5 +1169,14 @@
   },
   "General": {
     "Save": "구하다"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "USB에서 업데이트",
+      "DownloadUpdate": "업데이트 다운로드"
+    },
+    "restartWarning": "프린터가 다시 시작되고 이 단계가 진행되는 동안 잠시 동안 이 프린터와의 연결이 끊어집니다.",
+    "printerIsPrinting": "프린터가 일부 작업을 수행 중이므로 지금은 이 단계를 수행할 수 없습니다. \n잠시 기다려 주십시오. 이 단계가 준비되면 이 창이 자동으로 새로 고쳐집니다.",
+    "installAndRebootBtn": "설치하다"
   }
 }

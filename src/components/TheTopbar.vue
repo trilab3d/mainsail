@@ -13,7 +13,9 @@
             </router-link>
             <v-toolbar-title class="text-no-wrap ml-0 pl-2 mr-2">{{ printerName }}</v-toolbar-title>
             <printer-selector v-if="countPrinters"></printer-selector>
-            <v-divider v-if="$store.state.trilab.advancedView || $store.state.trilab.hiddenView || $store.state.trilab.serviceView" class="mx-2" vertical></v-divider>
+            <v-divider
+                v-if="$store.state.trilab.advancedView || $store.state.trilab.hiddenView || $store.state.trilab.serviceView"
+                class="mx-2" vertical></v-divider>
             <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
                 <b>Advanced View Enabled</b>
             </v-chip>
@@ -22,6 +24,10 @@
             </v-chip>
             <v-chip v-if="$store.state.trilab.serviceView" color="#FF4820">
                 <b>Service View Enabled</b>
+            </v-chip>
+            <v-divider v-if="liveUpdateStatus != 'UP_TO_DATE'" class="mx-2" vertical></v-divider>
+            <v-chip v-if="liveUpdateStatus != 'UP_TO_DATE'" color="#FFA500" @click="showLiveUpdateDialogAction()">
+                <b> {{ $t('TrilabLiveUpdate.statuses.' + liveUpdateStatus) }} </b>
             </v-chip>
 
             <v-spacer></v-spacer>
@@ -86,6 +92,7 @@
                 </v-card-actions>
             </panel>
         </v-dialog>
+        <trilab-update-dialog-live :showp="showLiveUpdateDialog" @closeLiveUpdateDialog="closeLiveUpdateDialog()"></trilab-update-dialog-live>
     </div>
 </template>
 
@@ -99,6 +106,7 @@ import axios from 'axios'
 import { formatFilesize } from '@/plugins/helpers'
 import TheTopCornerMenu from '@/components/TheTopCornerMenu.vue'
 import TheSettingsMenu from '@/components/TheSettingsMenu.vue'
+import TrilabUpdateDialogLive from '@/components/dialogs/TrilabUpdateDialogLive.vue'
 import Panel from '@/components/ui/Panel.vue'
 import PrinterSelector from '@/components/ui/PrinterSelector.vue'
 import MainsailLogo from '@/components/ui/MainsailLogo.vue'
@@ -128,6 +136,7 @@ type uploadSnackbar = {
         TheTopCornerMenu,
         PrinterSelector,
         MainsailLogo,
+        TrilabUpdateDialogLive,
         TheNotificationMenu,
     },
 })
@@ -141,11 +150,11 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     mdiLightbulbOff = mdiLightbulbOff
     mdiLightbulbOn = mdiLightbulbOn
 
+    showLiveUpdateDialog = false
 
     lightFirstRun = false
 
     topbarHeight = topbarHeight
-
     showEmergencyStopDialog = false
 
     uploadSnackbar: uploadSnackbar = {
@@ -239,10 +248,16 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         )
     }
 
-    lightBtn() {
 
+    showLiveUpdateDialogAction(){
+        this.showLiveUpdateDialog = true;
+        this.$store.dispatch('trilab/setupLiveUpdateTimer', 2000);
     }
-
+    closeLiveUpdateDialog(){
+        this.showLiveUpdateDialog = false;
+        this.$store.dispatch('trilab/setupLiveUpdateTimer', 30000);
+    }
+    
     btnEmergencyStop() {
         const confirmOnEmergencyStop = this.$store.state.gui.uiSettings.confirmOnEmergencyStop
         if (confirmOnEmergencyStop) {

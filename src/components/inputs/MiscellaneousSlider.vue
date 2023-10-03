@@ -3,17 +3,16 @@
         <v-row>
             <v-col :class="pwm ? 'pb-1' : 'pb-3'">
                 <v-subheader class="_fan-slider-subheader">
-                    <v-icon
-                        v-if="type === 'led' && target > 0"
-                        class="mr-2"
-                        small
-                        :retain-focus-on-click="true"
+                    <v-icon v-if="type === 'led' && target > 0" class="mr-2" small :retain-focus-on-click="true"
                         @click="ledOff">
                         {{ mdiLightbulbOnOutline }}
                     </v-icon>
                     <v-icon v-else-if="type === 'led'" class="mr-2" small :retain-focus-on-click="true" @click="ledOn">
                         {{ mdiLightbulbOutline }}
                     </v-icon>
+                    <div v-else-if="type === 'servo_flap' || type == 'stepper_flap'" style="width:16px; height:16px" class="mr-2"
+                        :retain-focus-on-click="true" v-html="flapIcon">
+                    </div>
                     <v-icon v-else-if="type !== 'output_pin'" small :class="fanClasses">{{ mdiFan }}</v-icon>
                     <span>{{ convertName(name) }}</span>
                     <v-spacer></v-spacer>
@@ -25,19 +24,9 @@
                         {{ value ? mdiToggleSwitch : mdiToggleSwitchOffOutline }}
                     </v-icon>
                     <form @submit.prevent="submitInput">
-                        <v-text-field
-                            v-if="controllable && pwm"
-                            v-model="inputValue"
-                            :error="errors.length > 0"
-                            suffix="%"
-                            type="number"
-                            hide-spin-buttons
-                            hide-details
-                            outlined
-                            dense
-                            class="_slider-input pt-1"
-                            @blur="inputValue = Math.round(parseFloat(sliderValue) * 100)"
-                            @focus="$event.target.select()"
+                        <v-text-field v-if="controllable && pwm" v-model="inputValue" :error="errors.length > 0" suffix="%"
+                            type="number" hide-spin-buttons hide-details outlined dense class="_slider-input pt-1"
+                            @blur="inputValue = Math.round(parseFloat(sliderValue) * 100)" @focus="$event.target.select()"
                             @keydown="checkInvalidChars" />
                     </form>
                 </v-subheader>
@@ -48,27 +37,15 @@
                     </div>
                 </transition>
                 <v-card-text v-if="controllable && pwm" class="py-0 pb-2 d-flex align-center">
-                    <v-btn
-                        v-if="lockSliders && isTouchDevice && pwm"
-                        plain
-                        small
-                        icon
-                        class="_lock-button"
+                    <v-btn v-if="lockSliders && isTouchDevice && pwm" plain small icon class="_lock-button"
                         @click="isLocked = !isLocked">
                         <v-icon small :color="isLocked ? 'red' : ''">
                             {{ isLocked ? mdiLockOutline : mdiLockOpenVariantOutline }}
                         </v-icon>
                     </v-btn>
-                    <v-slider
-                        v-model="sliderValue"
-                        v-touch="{ start: resetLockTimer }"
-                        :disabled="isLocked"
-                        :min="0.0"
-                        :max="1.0"
-                        :step="0.01"
-                        :color="sliderValue < off_below && sliderValue > 0 ? 'red' : undefined"
-                        hide-details
-                        @change="changeSliderValue">
+                    <v-slider v-model="sliderValue" v-touch="{ start: resetLockTimer }" :disabled="isLocked" :min="0.0"
+                        :max="1.0" :step="0.01" :color="sliderValue < off_below && sliderValue > 0 ? 'red' : undefined"
+                        hide-details @change="changeSliderValue">
                         <template #prepend>
                             <v-icon :disabled="isLocked || sliderValue <= min" @click="decrement">
                                 {{ mdiMinus }}
@@ -113,7 +90,24 @@ export default class MiscellaneousSlider extends Mixins(BaseMixin) {
     mdiPlus = mdiPlus
     mdiLightbulbOutline = mdiLightbulbOutline
     mdiLightbulbOnOutline = mdiLightbulbOnOutline
+    flapIcon = `<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+    width="100%" height="100%" x="0" y="0" viewBox="0 0 225.000000 225.000000"
+ preserveAspectRatio="xMidYMid meet">
 
+<g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)"
+fill="#ffffff" stroke="none">
+<path d="M162 2088 c-17 -17 -17 -1909 0 -1926 12 -12 134 -17 162 -6 14 6 16
+100 16 969 0 869 -2 963 -16 969 -28 11 -150 6 -162 -6z"/>
+<path d="M1923 2093 c-10 -4 -13 -207 -13 -968 0 -869 2 -963 16 -969 28 -11
+150 -6 162 6 17 17 17 1909 0 1926 -12 12 -139 16 -165 5z"/>
+<path d="M1441 1576 l-193 -193 -46 13 c-106 32 -200 7 -283 -75 -82 -83 -107
+-177 -75 -283 l13 -46 -188 -188 c-104 -104 -189 -193 -189 -199 0 -13 112
+-125 125 -125 6 0 95 85 199 189 l188 188 46 -13 c59 -18 106 -18 172 2 75 22
+162 109 184 184 19 63 19 120 2 175 l-13 40 194 195 193 195 -68 68 -67 67
+-194 -194z"/>
+</g>
+</svg>
+`;
     convertName = convertName
     private declare timeout: ReturnType<typeof setTimeout>
     private isLocked: boolean = false
@@ -358,11 +352,11 @@ export default class MiscellaneousSlider extends Mixins(BaseMixin) {
     margin-left: 12px;
 }
 
-._slider-input >>> .v-input__slot {
+._slider-input>>>.v-input__slot {
     min-height: 1rem !important;
 }
 
-._slider-input >>> .v-text-field__slot input {
+._slider-input>>>.v-text-field__slot input {
     padding: 4px 0 4px;
 }
 </style>

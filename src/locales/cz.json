@@ -1172,5 +1172,24 @@
   },
   "General": {
     "Save": "Uložit"
+  },
+  "TrilabLiveUpdate": {
+    "statuses": {
+      "UP_TO_DATE": "AKTUÁLNÍ VERZE",
+      "UPDATE_AVAILABLE": "NOVÁ AKTUALIZACE",
+      "DOWNLOADING": "STAHOVÁNÍ AKTUALIZACE",
+      "UNPACKING": "ROZBALOVÁNÍ AKTUALIZACE",
+      "INSTALLED": "AKTUALIZACE PŘIPRAVENA K INSTALACI",
+      "USB_UPDATE_AVAILABLE": "USB - NOVÁ AKTUALIZACE",
+      "USB_UNPACKING": "ROZBALOVÁNÍ AKTUALIZACE",
+      "ERROR": "CHYBA"
+    },
+    "Buttons": {
+      "InstallFromUsb": "Aktualizovat z USB",
+      "DownloadUpdate": "Stáhnout aktualizaci"
+    },
+    "restartWarning": "Vaše tiskárna se restartuje a na krátko ztratíte připojení k této tiskárně při provádění tohoto kroku.",
+    "printerIsPrinting": "Teď tuto akci nemůžete provést, protože vaše tiskárna provádí nějakou práci. Prosím počkejte chvilku, toto okno se automaticky aktualizuje až bude akce připravena",
+    "installAndRebootBtn": "Instalovat & restartovat"
   }
 }

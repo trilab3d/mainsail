@@ -1216,5 +1216,27 @@
   "title": "English",
   "General": {
     "Save": "Save"
+  },
+  "TrilabLiveUpdate": {
+    "statuses": {
+      "UP_TO_DATE": "NEWEST VERSION",
+      "UPDATE_AVAILABLE": "NEW UPDATE AVAILABLE",
+      "DOWNLOADING": "DOWNLOADING UPDATE",
+      "UNPACKING": "UNPACKING UPDATE",
+      "INSTALLED": "UPDATE READY",
+      "USB_UPDATE_AVAILABLE": "USB - NEW UPDATE",
+      "USB_UNPACKING": "UNPACKING UPDATE",
+      "ERROR": "UPDATE ERROR"
+    },
+    "Buttons": {
+      "InstallFromUsb": "Update from USB",
+      "DownloadUpdate": "Download update"
+    },
+    "restartWarning": "Your printer will restart and you will lose connection to this printer for a short while during this step",
+    "printerIsPrinting": "You cannot perform this step right now, because your printer is doing some work. Please wait a while, this window will automatically refresh when this step is ready",
+    "installAndRebootBtn": "INSTALL & REBOOT"
+  },
+  "TrilabUpdateDialog": {
+    "title": "Update"
   }
 }

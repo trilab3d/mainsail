@@ -1165,5 +1165,14 @@
   },
   "General": {
     "Save": "Gemme"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "Opdatering fra USB",
+      "DownloadUpdate": "Download opdatering"
+    },
+    "restartWarning": "Din printer genstarter, og du vil miste forbindelsen til denne printer i et kort stykke tid under dette trin",
+    "printerIsPrinting": "Du kan ikke udføre dette trin lige nu, fordi din printer udfører noget arbejde. \nVent et stykke tid, dette vindue opdateres automatisk, når dette trin er klar",
+    "installAndRebootBtn": "INSTALLERE"
   }
 }

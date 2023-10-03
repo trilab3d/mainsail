@@ -1044,5 +1044,14 @@
   },
   "General": {
     "Save": "Megment"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "Frissítés USB-ről",
+      "DownloadUpdate": "Frissítés letöltése"
+    },
+    "restartWarning": "A nyomtató újraindul, és a lépés során rövid időre megszakad a kapcsolat ezzel a nyomtatóval",
+    "printerIsPrinting": "Ezt a lépést jelenleg nem tudja végrehajtani, mert a nyomtatója éppen dolgozik. \nKérjük, várjon egy kicsit, ez az ablak automatikusan frissül, ha ez a lépés készen áll",
+    "installAndRebootBtn": "TELEPÍTÉS"
   }
 }

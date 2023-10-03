@@ -1200,5 +1200,14 @@
   },
   "General": {
     "Save": "Speichern"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "Update von USB",
+      "DownloadUpdate": "Aktualisierung herunterladen"
+    },
+    "restartWarning": "Ihr Drucker wird neu gestartet und während dieses Schritts wird für kurze Zeit die Verbindung zu diesem Drucker unterbrochen",
+    "printerIsPrinting": "Sie können diesen Schritt derzeit nicht ausführen, da Ihr Drucker gerade arbeitet. \nBitte warten Sie eine Weile. Dieses Fenster wird automatisch aktualisiert, wenn dieser Schritt abgeschlossen ist",
+    "installAndRebootBtn": "INSTALLIEREN"
   }
 }

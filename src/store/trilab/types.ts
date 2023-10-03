@@ -1,5 +1,7 @@
  
   export interface TrilabState {
+    updateStateStatus : any;
+    askUpdateInterval: any;
     connectedHostname: string;
     advancedView: boolean;
     hiddenView: boolean;

@@ -37,4 +37,15 @@ export default class TrilabMixin extends Vue {
     set TrilabHiddenView(value:boolean){
         this.$store.commit('trilab/setHiddenView', value)
     }
+
+
+    get liveUpdateStatus() {
+        return this.$store.state.trilab?.updateStateStatus.update_status;
+    }
+
+    get LiveUpdateStatusObject(){
+        return this.$store.state.trilab?.updateStateStatus;
+    }
+
+
 }

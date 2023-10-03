@@ -936,5 +936,14 @@
   },
   "General": {
     "Save": "Spara"
+  },
+  "TrilabLiveUpdate": {
+    "Buttons": {
+      "InstallFromUsb": "Uppdatera från USB",
+      "DownloadUpdate": "Ladda ner uppdatering"
+    },
+    "restartWarning": "Din skrivare kommer att starta om och du kommer att förlora anslutningen till den här skrivaren under en kort stund under detta steg",
+    "printerIsPrinting": "Du kan inte utföra det här steget just nu eftersom din skrivare jobbar. \nVänta ett tag, det här fönstret uppdateras automatiskt när detta steg är klart",
+    "installAndRebootBtn": "INSTALLERA"
   }
 }
