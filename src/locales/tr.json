@@ -700,7 +700,8 @@
     "Machine": "Makine",
     "Printers": "Yazıcılar",
     "Timelapse": "Timelapse",
-    "Webcam": "Web Kamerası"
+    "Webcam": "Web Kamerası",
+    "Calibration": "Kalibrasyon"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Yazıcı Ekle",

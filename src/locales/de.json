@@ -748,7 +748,8 @@
     "Machine": "Maschine",
     "Printers": "Drucker",
     "Timelapse": "Zeitraffer",
-    "Webcam": "Webcam"
+    "Webcam": "Webcam",
+    "Calibration": "Kalibrierung"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Drucker hinzufügen",

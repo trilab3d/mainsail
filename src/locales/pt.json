@@ -740,7 +740,8 @@
     "Machine": "Máquina",
     "Printers": "Impressoras",
     "Timelapse": "Lapso de tempo",
-    "Webcam": "Webcam"
+    "Webcam": "Webcam",
+    "Calibration": "Calibração"
   },
   "ScrewsTiltAdjust": {
     "Accept": "Aceitar",

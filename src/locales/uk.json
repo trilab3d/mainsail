@@ -674,7 +674,8 @@
     "Machine": "Машина",
     "Printers": "Принтери",
     "Timelapse": "Таймлапс",
-    "Webcam": "Веб-камера"
+    "Webcam": "Веб-камера",
+    "Calibration": "Калібрування"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Додати Принтер",

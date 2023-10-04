@@ -73,7 +73,40 @@
 
 					</v-container>
 
+
 					<v-container v-if="step == 2">
+						<v-card outlined>
+							<v-card-title>
+								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
+							</v-card-title>
+							<v-card-text>
+
+								<p>Pokud byl objekt zmenšen na menší nebo větší velikost, uveďte faktor měřítka, který byl
+									použit při slicování objektu. Pokud velikost změněna nebyla, ponechte výchozí hodnotu.
+									<small>(Hodnota měřítka 2.0 by znamenala dvojnásobek původní velikosti objektu, hodnota
+										0.5 by znamenala polovinu původní velikosti.)</small>
+								</p>
+
+								<p>Nyní zadejte hodnotu (s desetinnými čísly - Použijte tečku místo desetinné
+									čárky):</p>
+
+								<v-row>
+									<v-text-field label="Měřítko velikosti" @input="isNumber($event)" v-model="scaleFactor"
+										:rules="[rules.required, rules.validFloat]"></v-text-field>
+
+								</v-row>
+
+								<v-btn color="primary" class="mt-4" :disabled="scaleValid() == false" block
+									@click="sendSaveScaleCommand()">Uložit hodnoty</v-btn>
+
+							</v-card-text>
+						</v-card>
+
+					</v-container>
+
+
+
+					<v-container v-if="step == 3">
 						<v-card outlined>
 							<v-card-title>
 								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
@@ -103,7 +136,7 @@
 
 								<v-row>
 
-									<v-col v-for="(field, index) in fields" :key="index" cols="2" md="12" lg="2">
+									<v-col v-for="(field, index) in fields" :key="index" cols="4" md="6" lg="4">
 										<v-text-field :label="field.label" v-model="field.value" @input="isNumber($event)"
 											:rules="[rules.required, rules.validFloat, rules.trilabFieldsCheck]"
 											:ref="field.label"></v-text-field>
@@ -115,7 +148,7 @@
 
 					</v-container>
 
-					<v-container v-if="step == 3">
+					<v-container v-if="step == 4">
 						<v-card outlined>
 							<v-card-title>
 								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
@@ -139,7 +172,7 @@
 
 								<v-row>
 
-									<v-col v-for="(field, index) in far_fields" :key="index" cols="2" md="12" lg="2">
+									<v-col v-for="(field, index) in far_fields" :key="index" cols="4" md="12" lg="4">
 										<v-text-field :label="field.label" v-model="field.value" @input="isNumber($event)"
 											:rules="[rules.required, rules.validFloat, rules.farsCheck]"
 											:ref="field.label"></v-text-field>
@@ -152,7 +185,7 @@
 					</v-container>
 
 
-					<v-container v-if="step == 4">
+					<v-container v-if="step == 5">
 						<v-card outlined>
 							<v-card-title>
 								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
@@ -178,7 +211,7 @@
 
 								<v-row>
 
-									<v-col v-for="(field, index) in pillarFields" :key="index" cols="2" md="12" lg="2">
+									<v-col v-for="(field, index) in pillarFields" :key="index" cols="4" md="6" lg="4">
 										<v-text-field :label="field.label" v-model="field.value" @input="isNumber($event)"
 											:rules="[rules.required, rules.validFloat, rules.pillarsCheck]"
 											:ref="field.label"></v-text-field>
@@ -191,7 +224,7 @@
 
 					</v-container>
 
-					<v-container v-if="step == 5">
+					<v-container v-if="step == 6">
 						<v-card outlined>
 							<v-card-title>
 								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
@@ -235,7 +268,7 @@
 
 
 
-					<v-container v-if="step == 6">
+					<v-container v-if="step == 7">
 						<v-card outlined>
 							<v-card-title>
 								<h3>Krok {{ step + 1 }}. UPOZORNĚNÍ</h3>
@@ -261,19 +294,36 @@
 						</v-card>
 
 					</v-container>
-
 					<v-row class="mt-3 mx-1">
 						<v-col cols="6">
-							<v-btn :disabled="isPrevDisabled" block @click="prevClick()">Prev</v-btn>
+							<v-btn :disabled="isPrevDisabled" block @click="prevClick()">
+								<v-icon left>
+									{{ mdiChevronLeft }}
+								</v-icon>
+								Předchozí
+							</v-btn>
 						</v-col>
 						<v-col cols="6">
-							<v-btn :disabled="isNextDisabled" block @click="nextClick()">Next</v-btn>
+							<v-btn :disabled="isNextDisabled" block @click="nextClick()">Další
+								<v-icon right>
+									{{ mdiChevronRight }}
+								</v-icon>
+							</v-btn>
 						</v-col>
 						<v-col v-if="skipVisible" cols="12">
-							<v-btn prepend-icon="mdi-skip-next" @click="skipStep()">Přeskočit</v-btn>
+							<v-btn block @click="skipStep()">Přeskočit
+								<v-icon right>
+									{{ mdiSkipNext }}
+								</v-icon>
+							</v-btn>
 						</v-col>
-						<v-col :disabled="printerIsPrinting">
-							<v-btn prepend-icon="mdi-restart" @click="startOver()">Začít znovu</v-btn>
+						<v-col cols="12" :disabled="printerIsPrinting">
+							<v-btn block color="red" prepend-icon="mdi-restart" @click="startOver()">
+								<v-icon left>
+									{{ mdiRestart }}
+								</v-icon>
+								Začít znovu
+							</v-btn>
 						</v-col>
 					</v-row>
 				</v-col>
@@ -287,8 +337,17 @@ import BaseMixin from '@/components/mixins/base'
 import TrilabMixin from '@/components/mixins/trilab'
 import ControlMixin from '@/components/mixins/control';
 import { Component, Mixins, Watch } from 'vue-property-decorator';
+import { mdiChevronRight, mdiRestart, mdiChevronLeft, mdiSkipNext } from '@mdi/js';
 @Component
 export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, ControlMixin, TrilabMixin) {
+	mdiChevronRight = mdiChevronRight;
+	mdiChevronLeft = mdiChevronLeft;
+	mdiRestart = mdiRestart;
+	mdiSkipNext = mdiSkipNext;
+
+
+
+
 	public calibrationstep: number = 0;
 	public last_step: number = 9;
 	public nextBtnEnabled = true;
@@ -298,8 +357,8 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 	public testPrintDone = false;
 
 
-	get skipVisible(){
-		if("skip_visible" in this.stepConfigObject){
+	get skipVisible() {
+		if ("skip_visible" in this.stepConfigObject) {
 			return this.stepConfigObject.skip_visible;
 		}
 		return false;
@@ -330,8 +389,8 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 	}
 
 
-	startOver(){
-		if(confirm("Opravdu chcete začít znovu? Smažou se všechna uložená data v databázi a wizard se vrátí na začátek")){
+	startOver() {
+		if (confirm("Opravdu chcete začít znovu? Smažou se všechna uložená data v databázi a wizard se vrátí na začátek")) {
 			this.deleteAllItemsInWizardDB();
 			this.resetWizard();
 		}
@@ -366,36 +425,43 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		},
 		{
 			index: 2,
+			next_enabled: this.scaleValid,
+			prev_enabled: true,
+			nextAction: this.sendSaveScaleCommand
+		},
+		{
+			index: 3,
 			next_enabled: this.distsValid,
 			prev_enabled: true,
 			nextAction: this.sendSaveDistsCommand
 		},
 		{
-			index: 3,
+			index: 4,
 			next_enabled: this.farsValid,
 			prev_enabled: true,
 			nextAction: this.sendSaveFarsCommand
 		},
 		{
-			index: 4,
+			index: 5,
 			next_enabled: this.pillarsValid,
 			prev_enabled: true,
 			nextAction: this.sendSavePillarsCommand
 		},
 		{
-			index: 5,
+			index: 6,
 			next_enabled: this.outerPillarsValid,
 			prev_enabled: true,
 			nextAction: this.sendSaveOuterPillarsCommand
 		},
 		{
-			index: 6,
+			index: 7,
 			next_enabled: false,
 			prev_enabled: true
 		},
 	];
 
-	public scaleFactor = 1.0;
+	public scaleFactor :any = "1.0";
+
 
 	created() {
 		this.init();
@@ -448,6 +514,9 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		}
 		if ("testPrintDone" in values.result.value) {
 			this.testPrintDone = true;
+		}
+		if ("scaleFactor" in values.result.value) {
+			this.scaleFactor = parseFloat(values.result.value["scaleFactor"]);
 		}
 	}
 
@@ -519,6 +588,10 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 			}
 			if (periodCount < 1) {
 				return "Zadejte alespoň jednu desetinnou tečku";
+			}
+			const afterPeriod = value.split('.')[1];
+			if (afterPeriod.length < 1) {
+				return "Zadejte alespoň jednu číslici za desetinnou tečkou";
 			}
 
 			const floatValue = parseFloat(value);
@@ -701,11 +774,17 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 
 	isNumber(evt: any) {
+		console.log(evt);
 		evt = (evt) ? evt : window.event;
 		var charCode = (evt.which) ? evt.which : evt.keyCode;
 		if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
+			console.log("char prevented");
 			evt.preventDefault();;
 		} else {
+			console.log("char allowed");
+			console.log(charCode);
+			console.log("event:");
+			console.log(evt);
 			return true;
 		}
 	}
@@ -725,10 +804,19 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 		console.log(this.step);
 		fetch(this.dbUrl("step", this.step.toString()), { method: 'POST' });
+		/// scroll to top of the page
+		setTimeout(function () {
+			window.scrollTo(0, 0);
+		}, 100);
 	}
 	prevClick() {
+		/// scroll to top of the page
 		this.step--;
 		fetch(this.dbUrl("step", this.step.toString()), { method: 'POST' });
+		setTimeout(function () {
+			window.scrollTo(0, 0);
+		}, 100);
+
 	}
 
 
@@ -795,8 +883,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		//this.$socket.emit('printer.gcode.script', { script: `DELTA_ANALYZE OUTER_PILLAR_WIDTHS=${this.pillar_a},${this.far_c},${this.pillar_b},${this.far_a},${this.pillar_c},${this.far_b}` })
 	}
 	sendSaveScaleCommand() {
-		this.$store.dispatch('server/addEvent', { message: `DELTA_ANALYZE SCALE=${this.scaleFactor}`, type: 'command' })
-		this.$socket.emit('printer.gcode.script', { script: `DELTA_ANALYZE SCALE=${this.scaleFactor}` })
+		var response = fetch(this.dbUrl("scaleFactor", this.scaleFactor.toString()), { method: 'POST' });
 	}
 
 	getField(label: string): any {
@@ -835,7 +922,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		let outer_dists = `DELTA_ANALYZE OUTER_DISTS=${this.getFarField('a_to_far_c')},${this.getFarField('far_c_to_b')},${this.getFarField('b_to_far_a')},${this.getFarField('far_a_to_c')},${this.getFarField('c_to_far_b')},${this.getFarField('far_b_to_a')}`;
 		let center_pillar_widths = `DELTA_ANALYZE CENTER_PILLAR_WIDTHS=${this.getPillarField('center_pillar_a')},${this.getPillarField('center_pillar_b')},${this.getPillarField('center_pillar_c')}`;
 		let outer_pillar_widths = `DELTA_ANALYZE OUTER_PILLAR_WIDTHS=${this.getOuterPillarField('pillar_a')},${this.getOuterPillarField('far_c')},${this.getOuterPillarField('pillar_b')},${this.getOuterPillarField('far_a')},${this.getOuterPillarField('pillar_c')},${this.getOuterPillarField('far_b')}`;
-
+		let scale = `DELTA_ANALYZE SCALE=${this.scaleFactor}`;
 
 		console.log(center_dists);
 		console.log(outer_dists);
@@ -854,6 +941,9 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 		await this.$store.dispatch('server/addEvent', { message: outer_pillar_widths, type: 'command' })
 		await this.$socket.emit('printer.gcode.script', { script: outer_pillar_widths })
+
+		await this.$store.dispatch('server/addEvent', { message: scale, type: 'command' })
+		await this.$socket.emit('printer.gcode.script', { script: scale })
 
 
 

@@ -734,7 +734,8 @@
     "Machine": "프린터 설정",
     "Printers": "원격 프린터",
     "Timelapse": "타임랩스",
-    "Webcam": "웹캠"
+    "Webcam": "웹캠",
+    "Calibration": "구경 측정"
   },
   "ScrewsTiltAdjust": {
     "Accept": "확인",

@@ -662,7 +662,8 @@
     "Machine": "Gép",
     "Printers": "Nyomtatók",
     "Timelapse": "Idővonal",
-    "Webcam": "Webkamera"
+    "Webcam": "Webkamera",
+    "Calibration": "Kalibráció"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Nyomtató hozzáadása",

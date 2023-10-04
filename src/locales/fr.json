@@ -716,7 +716,8 @@
     "Machine": "Machine",
     "Printers": "Imprimantes",
     "Timelapse": "Accéléré",
-    "Webcam": "Caméra"
+    "Webcam": "Caméra",
+    "Calibration": "Étalonnage"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Nouvelle d'imprimante",

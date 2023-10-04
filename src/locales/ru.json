@@ -740,7 +740,8 @@
     "Machine": "Настройка",
     "Printers": "Принтеры",
     "Timelapse": "Таймлапсы",
-    "Webcam": "Видеокамеры"
+    "Webcam": "Видеокамеры",
+    "Calibration": "Калибровка"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Добавить принтер",

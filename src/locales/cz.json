@@ -734,7 +734,8 @@
     "Machine": "Zařízení",
     "Printers": "Tiskárny",
     "Timelapse": "Time-lapse",
-    "Webcam": "Webkamera"
+    "Webcam": "Webkamera",
+    "Calibration": "Kalibrace"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Přidat tiskárnu",

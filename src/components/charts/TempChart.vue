@@ -1,12 +1,6 @@
 <template>
-    <e-chart
-        ref="tempchart"
-        v-observe-visibility="visibilityChanged"
-        :option="chartOptions"
-        :init-options="{ renderer: 'svg' }"
-        :autoresize="true"
-        :style="tempchartStyle"
-        class="tempchart" />
+    <e-chart ref="tempchart" v-observe-visibility="visibilityChanged" :option="chartOptions"
+        :init-options="{ renderer: 'svg' }" :autoresize="true" :style="tempchartStyle" class="tempchart" />
 </template>
 
 <script lang="ts">
@@ -14,11 +8,13 @@ import { convertName } from '@/plugins/helpers'
 import Component from 'vue-class-component'
 import { Mixins, Watch } from 'vue-property-decorator'
 import BaseMixin from '../mixins/base'
+import TrilabMixin from '../mixins/trilab'
 import { PrinterTempHistoryStateSerie, PrinterTempHistoryStateSourceEntry } from '@/store/printer/tempHistory/types'
 
 import type { ECharts } from 'echarts/core'
 import type { ECBasicOption } from 'echarts/types/dist/shared.d'
 import { mdiClock } from '@mdi/js'
+import { watch } from 'fs'
 
 interface echartsTooltipObj {
     [key: string]: any
@@ -27,7 +23,7 @@ interface echartsTooltipObj {
 @Component({
     components: {},
 })
-export default class TempChart extends Mixins(BaseMixin) {
+export default class TempChart extends Mixins(BaseMixin, TrilabMixin) {
     declare $refs: {
         tempchart: any
     }
@@ -204,6 +200,9 @@ export default class TempChart extends Mixins(BaseMixin) {
     }
 
     get series() {
+        if (!this.TrilabServiceView) {
+            return this.$store.state.printer.tempHistory.series?.filter((item: any) => !item.name.startsWith('panel') && !item.name.startsWith('pson')) ?? {}
+        }
         return this.$store.state.printer.tempHistory.series ?? {}
     }
 
@@ -365,15 +364,24 @@ export default class TempChart extends Mixins(BaseMixin) {
     }
 
     @Watch('series', { deep: true })
-    seriesChanged(newVal: PrinterTempHistoryStateSerie[]) {
-        if (this.chart && this.chart?.isDisposed() !== true) {
-            this.chart.setOption(
-                {
-                    series: newVal,
-                },
-                false,
-                true
-            )
+    seriesChanged(newVal: PrinterTempHistoryStateSerie[], oldVal: PrinterTempHistoryStateSerie[]) {
+
+        /// check if there is less or more series than before
+        if (newVal.length !== oldVal.length) {
+            this.chart?.clear(); /// this is needed to correctly update (or remove the series)
+            this.initChart()
+            return
+        } else {
+            if (this.chart && this.chart?.isDisposed() !== true) {
+                this.chart.setOption(
+                    {
+                        series: newVal,
+                    },
+                    false,
+                    true
+                )
+
+            }
         }
     }
 

@@ -764,7 +764,8 @@
     "Printers": "Printers",
     "Timelapse": "Timelapse",
     "Webcam": "Webcam",
-    "Slicers": "Slicer"
+    "Slicers": "Slicer",
+    "Calibration": "Calibration"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Add Printer",

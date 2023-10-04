@@ -36,6 +36,7 @@ import {
     mdiHistory,
     mdiTimelapse,
     mdiWrench,
+    mdiPencilRuler,
 } from '@mdi/js'
 import store from '@/store'
 
@@ -152,7 +153,7 @@ const routes: AppRoute[] = [
     {
         title: 'Calibration',
         path: '/trilabcalibration',
-        iconString: iconString,
+        icon: mdiPencilRuler,
         component: TrilabCalibrations,
         alwaysShow: true,
         identificator: 'trilabcalibration',

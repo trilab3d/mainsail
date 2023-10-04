@@ -569,7 +569,8 @@
     "Machine": "Maskin",
     "Printers": "Skrivare",
     "Timelapse": "Timelapse",
-    "Webcam": "Webbkamera"
+    "Webcam": "Webbkamera",
+    "Calibration": "Kalibrering"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Lägg till skrivare",

@@ -732,7 +732,8 @@
     "Machine": "Printer",
     "Printers": "Printere",
     "Timelapse": "Timelapse",
-    "Webcam": "Webcam"
+    "Webcam": "Webcam",
+    "Calibration": "Kalibrering"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Tilføj Printer",

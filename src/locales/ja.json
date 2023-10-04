@@ -733,7 +733,8 @@
     "Machine": "機器",
     "Printers": "プリンター",
     "Timelapse": "タイムラプス",
-    "Webcam": "カメラ"
+    "Webcam": "カメラ",
+    "Calibration": "較正"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "プリンター追加",

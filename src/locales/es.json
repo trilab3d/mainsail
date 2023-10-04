@@ -663,7 +663,8 @@
     "Machine": "Máquina",
     "Printers": "Impresoras",
     "Timelapse": "Timelapse",
-    "Webcam": "Cámara web"
+    "Webcam": "Cámara web",
+    "Calibration": "Calibración"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Agregar impresora",
