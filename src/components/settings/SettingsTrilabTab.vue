@@ -1,39 +1,48 @@
 <template>
     <v-container fluid py-0 px-0>
         <trilab-update-dialog :file="file"></trilab-update-dialog>
-                <v-row class="pa-3" :dense="$vuetify.breakpoint.mobile">
-                    <v-col cols="12" md="12" sm="12">
-                        <v-card elevation="25">
-                            <v-card-title>System</v-card-title>
-                            <v-card-text>
-                                <v-row>
-                                    <v-col>System version: </v-col>
-                                    <v-col>{{ hostStats.os }}</v-col>
-                                </v-row>
-                                <v-row>
-                                    <v-col>Web interface version: </v-col>
-                                    <v-col>1.0.0</v-col>
-                                </v-row>
-                                <v-row justify="center" align="center">
-                                    <v-col>Automatic check for updates: </v-col>
-                                    <v-col>
-                                        <v-switch v-model="$store.state.trilab.settings.automatic_check_update"></v-switch>
-                                    </v-col>
-                                </v-row>
-                                <v-row justify="center" align="center">
-                                    <v-col>Upload update file</v-col>
-                                    <v-col>
-                                        <v-btn color="primary" block dark :loading="isSelecting" @click="handleFileImport"
-                                            class="mt-3">
-                                            Upload
-                                        </v-btn>
-                                        <input ref="fileInputUpdate" class="d-none" type="file" @change="onFileSelected">
-                                    </v-col>
-                                </v-row>
-                            </v-card-text>
-                        </v-card>
-                    </v-col>
-                </v-row>
+        <v-row class="pa-3" :dense="$vuetify.breakpoint.mobile">
+            <v-col cols="12" md="12" sm="12">
+                <v-card elevation="25">
+                    <v-card-title>System</v-card-title>
+                    <v-card-text>
+                        <v-row>
+                            <v-col>System version: </v-col>
+                            <v-col>{{ hostStats.os }}</v-col>
+                        </v-row>
+                        <v-row>
+                            <v-col>Web interface version: </v-col>
+                            <v-col>1.0.0</v-col>
+                        </v-row>
+                        <v-row justify="center" align="center">
+                            <v-col>Automatic check for updates: </v-col>
+                            <v-col>
+                                <v-switch v-model="$store.state.trilab.settings.automatic_check_update"></v-switch>
+                            </v-col>
+                        </v-row>
+                        <v-row justify="center" align="center">
+                            <v-col>Upload update file</v-col>
+                            <v-col>
+                                <v-btn color="primary" block dark :loading="isSelecting" @click="handleFileImport"
+                                    class="mt-3">
+                                    Upload
+                                </v-btn>
+                                <input ref="fileInputUpdate" class="d-none" type="file" @change="onFileSelected">
+                            </v-col>
+                        </v-row>
+                        <v-row justify="center" align="center">
+                            <v-col>
+                                <v-btn color="primary" block dark :loading="checkingForUpdate" @click="checkForUpdate()"
+                                    class="mt-3">
+                                    Check for live update
+                                </v-btn>
+                            </v-col>
+                        </v-row>
+
+                    </v-card-text>
+                </v-card>
+            </v-col>
+        </v-row>
 
     </v-container>
 </template>
@@ -75,6 +84,20 @@ export default class SettingsTrilabTab extends Mixins(BaseMixin, TrilabMixin) {
             this.file = file;
         }
     }
+    public checkingForUpdate = false;
+    
+
+    async checkForUpdate() {
+        this.checkingForUpdate = true;
+        const result = await this.$store.dispatch('trilab/getLiveUpdateStatus');
+        if (result.update_status != "UP_TO_DATE") {
+            this.$store.commit('trilab/setData', { showLiveUpdateDialog: true })
+        } else {
+            this.$toast.info("No update available");
+        }
+        this.checkingForUpdate = false;
+    }
+
 
     file: File | null = null;
 

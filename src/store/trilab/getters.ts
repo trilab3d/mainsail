@@ -8,7 +8,7 @@ export const getters: GetterTree<TrilabState, any> = {
     },
     loading: (state) => state.loading,
     error: (state) => state.error,
-    trilabPrefix: (state) => {
-        return "http://" + state.connectedHostname + '/tpc'
+    trilabPrefix: (state, getters, rootState) => {
+        return "http://" + rootState.socket.hostname + '/tpc'
     },
 }

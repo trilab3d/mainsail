@@ -1,5 +1,6 @@
  
   export interface TrilabState {
+    showLiveUpdateDialog: boolean;
     updateStateStatus : any;
     askUpdateInterval: any;
     connectedHostname: string;
@@ -14,6 +15,7 @@
     recInterval: any;
     statisticsInterval: any;
     light_state: any;
+    interfaces: any;
     settings: {
       automatic_download_update: boolean;
       bluetooth_MAC: "",

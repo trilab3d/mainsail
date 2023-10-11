@@ -14,7 +14,6 @@ import { PrinterTempHistoryStateSerie, PrinterTempHistoryStateSourceEntry } from
 import type { ECharts } from 'echarts/core'
 import type { ECBasicOption } from 'echarts/types/dist/shared.d'
 import { mdiClock } from '@mdi/js'
-import { watch } from 'fs'
 
 interface echartsTooltipObj {
     [key: string]: any

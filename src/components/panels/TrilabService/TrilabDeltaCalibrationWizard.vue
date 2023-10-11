@@ -16,7 +16,7 @@
 								<p>Nejdřív ze všeho je <strong>nutné</strong> spustit základní kalibraci. Spustíte ji
 									tlačítkem dole a poté
 									počkejte na restart tiskárny</p>
-								<v-btn :disabled="printerIsPrinting" color="primary"
+								<v-btn :disabled="printerBusy" color="primary"
 									:loading="loadings.includes('delta_calibrate')" block
 									@click="sendBasicCalibrationCommand()">SPUSTIT
 									KALIBRACI</v-btn>
@@ -53,8 +53,8 @@
 								objektu
 								níže).
 								<br>
-								<v-btn :disabled="printerIsPrinting || loadings.includes('DeltaCalibrationWizardPrint')"
-									block @click="sendPrintTestObject()">Vytisknout testovací objekt</v-btn>
+								<v-btn :disabled="printerBusy || loadings.includes('DeltaCalibrationWizardPrint')" block
+									@click="sendPrintTestObject()">Vytisknout testovací objekt</v-btn>
 								<p class="mt-6 mb-2">Vytiskněte testovací objekt a počkejte, až zcela vychladne.</p>
 								<small>Dále zadávané hodnoty musí být spuštěny
 									se stejným nastavením tiskárny, které bylo použito při tisku kalibračního objektu (mezi
@@ -95,9 +95,6 @@
 										:rules="[rules.required, rules.validFloat]"></v-text-field>
 
 								</v-row>
-
-								<v-btn color="primary" class="mt-4" :disabled="scaleValid() == false" block
-									@click="sendSaveScaleCommand()">Uložit hodnoty</v-btn>
 
 							</v-card-text>
 						</v-card>
@@ -286,7 +283,7 @@
 								</p>
 								<p style="text-align:center; font-weight:bold">Po stisknutí tohoto tlačítka se tento wizard
 									a uložené hodnoty resetují a případné korekce je potřeba udělat odznova</p>
-								<v-btn :disabled="printerIsPrinting || sendCalibrateCommandEnabled == false" color="red"
+								<v-btn :disabled="printerBusy || sendCalibrateCommandEnabled == false" :loading="advancedCalibrationInProgress" color="red"
 									class="mt-4" block @click="sendCalibrateCommand()">Spustit
 									Kalibraci</v-btn>
 
@@ -338,6 +335,7 @@ import TrilabMixin from '@/components/mixins/trilab'
 import ControlMixin from '@/components/mixins/control';
 import { Component, Mixins, Watch } from 'vue-property-decorator';
 import { mdiChevronRight, mdiRestart, mdiChevronLeft, mdiSkipNext } from '@mdi/js';
+import { watch } from 'fs';
 @Component
 export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, ControlMixin, TrilabMixin) {
 	mdiChevronRight = mdiChevronRight;
@@ -348,6 +346,8 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 
 
+	public advancedCalibrationInProgress = false;
+	public advancedCalibrationStartTime = Date.now();
 	public calibrationstep: number = 0;
 	public last_step: number = 9;
 	public nextBtnEnabled = true;
@@ -397,7 +397,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 	}
 
 	checkDeltaCalibrationDone() {
-		if (this.printerIsPrinting || this.basicDeltaCalibrationDone == false) {
+		if (this.printerBusy || this.basicDeltaCalibrationDone == false) {
 			return false;
 		}
 		return true;
@@ -409,6 +409,17 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		}
 		return true;
 	}
+
+
+	get printerBusy() {
+		const idle_timeout_state = this.$store.state.printer.idle_timeout?.state
+		return this.printerIsPrinting || idle_timeout_state === "Printing";
+	}
+	@Watch('printer_state')
+	onPrinterStateChange(newVal: String, oldVal: String) {
+		console.log("Printer state changed from " + oldVal + " to " + newVal);
+	}
+
 
 	public stepConfig = [
 		{
@@ -460,11 +471,20 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		},
 	];
 
-	public scaleFactor :any = "1.0";
+	public scaleFactor: any = "1.0";
 
 
 	created() {
 		this.init();
+		var thisref = this;
+		if ((window as any)['printerStateIntervalDebug'] != undefined) {
+            clearInterval((window as any)['printerStateIntervalDebug'])
+        }
+
+		(window as any)["printerStateIntervalDebug"] = setInterval(function(){
+			const idle_timeout_state = thisref.$store.state.printer.idle_timeout?.state
+			console.log("printerState: " + thisref.printer_state + " idle_timeout_state: " + idle_timeout_state)
+		}, 1000)
 	}
 
 	async init() {
@@ -517,6 +537,13 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		}
 		if ("scaleFactor" in values.result.value) {
 			this.scaleFactor = parseFloat(values.result.value["scaleFactor"]);
+		}
+		if("advanced_calibration_finished_alert" in values.result.value){
+			alert("Kalibrace dokončena");
+			/// delete it from db
+			fetch(this.dbUrl("advanced_calibration_finished_alert"), {
+				method: 'DELETE',
+			});
 		}
 	}
 
@@ -825,6 +852,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		const filename = (".service-gcodes/calibrate_size_scale1_v1.1.gcode")
 		this.$socket.emit('printer.print.start', { filename: filename }, { loading: 'DeltaCalibrationWizardPrint' })
 		fetch(this.dbUrl("testPrintDone", "true"), { method: 'POST' });
+		this.testPrintDone = true;
 	}
 
 	async sendBasicCalibrationCommand() {
@@ -915,7 +943,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		}
 	}
 	async sendCalibrateCommand() {
-		//this.sendCalibrateCommandEnabled = false;
+		this.sendCalibrateCommandEnabled = false;
 
 
 		let center_dists = `DELTA_ANALYZE CENTER_DISTS=${this.getField('a_dist')},${this.getField('far_c_dist')},${this.getField('b_dist')},${this.getField('far_a_dist')},${this.getField('c_dist')},${this.getField('far_c_dist')}`;
@@ -948,11 +976,42 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 
 		/// remove all items in database
+		this.advancedCalibrationStartTime = Date.now();
+		this.advancedCalibrationInProgress = true;
 		this.deleteAllItemsInWizardDB();
-		var response = fetch(this.dbUrl("step"), { method: 'DELETE' });
 		this.$store.dispatch('printer/sendGcode', "_advanced_calibrate");
 		this.$store.dispatch('gui/gcodehistory/addToHistory', "_advanced_calibrate");
 	}
+
+
+	@Watch('events')
+	onEventsChange() {
+		/// events
+		if(this.advancedCalibrationInProgress == false){return;}
+		const events = this.events;
+		/// check each event if it includes 'Working on calibration' and from there to up, check if any message includes SAVE_CONFIG, if yes, advancedCalibrationInProgress to false and snackbar advanced calibration completed
+
+		for (let i = 0; i < events.length; i++) {
+			if (events[i].message.includes("Working on calibration")) {
+				for (let j = i; j >= 0; j--) {
+
+					if (events[j].message.includes("SAVE_CONFIG")) {
+						this.advancedCalibrationInProgress = false;
+						fetch(this.dbUrl("advanced_calibration_finished_alert", "1"), { method: 'POST' });
+						alert("Kalibrace dokončena");
+						return;
+					}
+				}
+			}
+		}
+		
+	}
+
+
+    get events() {
+        return this.$store.getters['server/getConsoleEvents'](false, 50);
+    }
+
 
 
 	resetWizard() {

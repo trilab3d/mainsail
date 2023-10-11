@@ -13,6 +13,7 @@ import { getters } from '@/store/trilab/getters'
 export const getDefaultState = (): TrilabState => {
     return {
         ///trilab
+        showLiveUpdateDialog: false,
         updateStateStatus: {
             update_status: 'UP_TO_DATE',
             progress: 0,
@@ -33,6 +34,9 @@ export const getDefaultState = (): TrilabState => {
         recInterval: null,
         statisticsInterval: null,
         light_state: null,
+        interfaces: {
+            
+        },
         settings: {
             model_name: '',
             model_revision: '',

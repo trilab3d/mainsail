@@ -150,7 +150,6 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     mdiLightbulbOff = mdiLightbulbOff
     mdiLightbulbOn = mdiLightbulbOn
 
-    showLiveUpdateDialog = false
 
     lightFirstRun = false
 
@@ -174,6 +173,14 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
 
     declare $refs: {
         fileUploadAndStart: HTMLFormElement
+    }
+
+
+    get showLiveUpdateDialog(){
+        return this.$store.state.trilab.showLiveUpdateDialog;
+    }
+    set showLiveUpdateDialog(value){
+        this.$store.commit('trilab/setData', { showLiveUpdateDialog: value })
     }
 
     get gcodeInputFileAccept() {

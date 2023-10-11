@@ -43,6 +43,7 @@ export const actions: ActionTree<TrilabState, any> = {
         context.dispatch('loadSettings')
         context.dispatch('getWifiStatus')
         context.dispatch('setupLiveUpdateTimer', 30000)
+        context.dispatch('loadInterfaces')
         /*if ((window as any)['statisticsInterval'] != undefined) {
             clearInterval((window as any)['statisticsInterval'])
         }
@@ -127,7 +128,7 @@ export const actions: ActionTree<TrilabState, any> = {
         if (rd.progress == undefined) {
             context.commit('setData', { updateStateStatus: { progress: -1 } })
         }
-        return rd;
+        return rd
     },
     getStatisticsCounters(context) {
         axios
@@ -179,6 +180,35 @@ export const actions: ActionTree<TrilabState, any> = {
                 return error
             })
     },
+    async loadInterfaces(context) {
+        const result = await (await fetch(context.getters.trilabPrefix + '/network-manager/list-interfaces')).json()
+
+        const result2 = await (await fetch(context.getters.trilabPrefix + '/network-manager/list-connections')).json()
+        /// first for each result.interfaces, empty the result.interfaces[i].connection['available-connections'] (make empty array)
+        for(let i = 0; i < result.interfaces.length; i++){
+            result.interfaces[i].CONNECTIONS['AVAILABLE-CONNECTIONS'] = [] ?? []
+        }
+
+
+
+        /// for each list-connections result, find the corresponding interface and compare it to the result[i].general.device and if it matches then add the connection to the interface (to available interfaces)
+        for(let i = 0; i < result2.connections.length; i++){
+            /// get its details
+            const resultDetail = await (await fetch(context.getters.trilabPrefix + '/network-manager/show-connection/' + result2.connections[i].UUID)).json()
+            /// attach the resultDetail to result2 object and then attach the result2 connection[i] to the result.interfaces that has the same DEVICE as the resultDetail.connection['interface-name']
+            result2.connections[i].details = resultDetail
+            for(let j = 0; j < result.interfaces.length; j++){
+                if(resultDetail.connection['interface-name'] == result.interfaces[j].GENERAL.DEVICE){
+                    result.interfaces[j].CONNECTIONS['AVAILABLE-CONNECTIONS'].push(result2.connections[i])
+                }
+            }
+        }
+        console.log("RESULT: ");
+        console.log(result);
+
+        context.commit('setData', { interfaces: result.interfaces })
+    },
+
     performUpdate(context, targets) {
         const data = {
             targets: targets,

@@ -1,11 +1,14 @@
 <template>
     <v-container fluid py-0 px-0>
         <v-row class="pa-3" :dense="$vuetify.breakpoint.mobile">
+            <v-col cols="12" class="mx-0 px-0 py-0">
+                <settings-interfaces-panel></settings-interfaces-panel>
+            </v-col>
             <v-col cols="12" sm="12" md="12">
-                <settings-wifi-panel></settings-wifi-panel>
+                <settings-wifi-panel v-if="false"></settings-wifi-panel>
             </v-col>
             <v-col cols="12" sm="12" md="6">
-                <settings-access-password-panel></settings-access-password-panel>
+                <settings-access-password-panel v-if="false"></settings-access-password-panel>
             </v-col>
             <v-col cols="12" sm="12" md="6" v-if="false">
                 <settings-remote-panel></settings-remote-panel>
@@ -58,5 +61,6 @@ export default class SettingsNetworkTab extends Mixins(BaseMixin, TrilabMixin) {
         }
 
     }
+
 }
 </script>

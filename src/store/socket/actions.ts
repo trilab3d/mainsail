@@ -29,12 +29,14 @@ export const actions: ActionTree<SocketState, RootState> = {
     onOpen({ commit, dispatch, rootState }) {
         //set socket connection to connected
         commit('setConnected')
-
         // init server
         dispatch('server/init', null, { root: true })
 
         if (!rootState?.server?.updateManager?.updateResponse.complete)
             commit('server/updateManager/setStatus', { busy: false }, { root: true })
+
+        dispatch('trilab/onConnected', null, { root: true })
+        commit('trilab/setConnectedHostname', rootState.socket?.hostname, { root: true })
     },
 
     onClose({ commit }) {

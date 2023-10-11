@@ -383,11 +383,9 @@ export default class TheSelectPrinterDialog extends Mixins(BaseMixin) {
             port: printer.socket.port,
         })
         let urloriginal = this.protocol + '://' + printer.socket.hostname + ':' + printer.socket.port + '/websocket';
-        let url =  printer.socket.hostname;
-        this.$store.commit('trilab/setConnectedHostname', url);
+        //let url =  printer.socket.hostname;
         this.$socket.setUrl(urloriginal)
         this.$socket.connect()
-        this.$store.dispatch('trilab/onConnected');
 
     }
 
