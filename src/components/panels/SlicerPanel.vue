@@ -90,15 +90,15 @@ export default {
 			var platform = this.getOS();
 			var href = "";
 			if (platform == "mac64" || platform == "macos" || platform == "ios") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+MacOS-universal-202306191415.dmg";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.1/PrusaSlicer-2.6.1+MacOS-universal-202309060812.dmg";
 			} else if (platform == "win64") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+win64-202306191221_signed.zip";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.1/PrusaSlicer-2.6.1+win64-202309060711_signed.zip";
 			} else if (platform == "archlinux") {
 				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+linux-aarch64-GTK3-202307170801.AppImage";
 			} else if (platform == "armv7l") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+linux-armv7l-GTK2-202306191220.AppImage";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.1/PrusaSlicer-2.6.1+linux-armv7l-GTK2-202309060711.AppImage";
 			} else if (platform == "linux") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+linux-x64-GTK3-202306191220.AppImage";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.1/PrusaSlicer-2.6.1+linux-x64-GTK3-202309060711.AppImage";
 			} else {
 				this.$toast.warning(this.$t('Panels.TrilabSlicerPanel.notAvailableText').toString());
 				return "#";
