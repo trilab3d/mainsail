@@ -16,15 +16,6 @@
 
         </v-row>
 
-        <v-container class="d-flex align-center justify-center">
-
-            <v-btn @click="save()" color="success">
-                <v-icon class="mr-1">mdi-content-save</v-icon>
-                {{ $t('General.Save') }}
-            </v-btn>
-        </v-container>
-
-
     </v-container>
 </template>
 

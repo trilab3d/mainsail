@@ -10,8 +10,8 @@
                     <v-icon v-else-if="type === 'led'" class="mr-2" small :retain-focus-on-click="true" @click="ledOn">
                         {{ mdiLightbulbOutline }}
                     </v-icon>
-                    <div v-else-if="type === 'servo_flap' || type == 'stepper_flap'" style="width:16px; height:16px" class="mr-2"
-                        :retain-focus-on-click="true" v-html="flapIcon">
+                    <div v-else-if="type === 'servo_flap' || type == 'stepper_flap'" style="width:16px; height:16px"
+                        class="mr-2" :retain-focus-on-click="true" v-html="flapIcon">
                     </div>
                     <v-icon v-else-if="type !== 'output_pin'" small :class="fanClasses">{{ mdiFan }}</v-icon>
                     <span>{{ convertName(name) }}</span>
@@ -197,7 +197,8 @@ fill="#ffffff" stroke="none">
         if (newVal < this.min) newVal = 0
         newVal = newVal * this.multi
         if (this.type === 'fan') gcode = `M106 S${newVal.toFixed(0)}`
-        if (this.type === 'fan_generic') gcode = `SET_FAN_SPEED FAN=${this.name} SPEED=${newVal}`
+        if (this.type === 'fan_generic' || this.type === 'servo_flap' || this.type === 'stepper_flap') gcode = `SET_FAN_SPEED FAN=${this.name} SPEED=${newVal}`
+        if (this.type === 'heater_fan') gcode = `HEATER_FAN_SET_SPEED FAN=${this.name} SPEED=${newVal}`
         if (this.type === 'output_pin') gcode = `SET_PIN PIN=${this.name} VALUE=${newVal.toFixed(2)}`
         if (this.type === 'led')
             gcode = `SET_LED LED=${this.name} ${this.ledChannelName}=${newVal.toFixed(2)} SYNC=0 TRANSMIT=1`

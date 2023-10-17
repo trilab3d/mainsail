@@ -600,11 +600,15 @@ export const getters: GetterTree<PrinterState, RootState> = {
         const output: PrinterStateMiscellaneous[] = []
         const supportedObjects = ['controller_fan', 'heater_fan', 'fan_generic', 'fan', 'output_pin', 'servo_flap', 'stepper_flap']
 
-        const controllableFans = ['fan_generic', 'fan']
+        const controllableFans = ['fan_generic', 'fan', 'servo_flap', 'stepper_flap', 'heater_fan']
 
         for (const [key, value] of Object.entries(state)) {
             const nameSplit = key.split(' ')
 
+            //console.log("debugkeyvalue:");
+            //console.log(key);
+            //console.log(value);
+            //console.log("enddebugkeyvalue;")
             if (supportedObjects.includes(nameSplit[0])) {
                 const name = nameSplit.length > 1 ? nameSplit[1] : nameSplit[0]
                 if (!name.startsWith('_')) {

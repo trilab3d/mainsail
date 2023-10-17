@@ -184,27 +184,72 @@ export const actions: ActionTree<TrilabState, any> = {
         const result = await (await fetch(context.getters.trilabPrefix + '/network-manager/list-interfaces')).json()
 
         const result2 = await (await fetch(context.getters.trilabPrefix + '/network-manager/list-connections')).json()
+
         /// first for each result.interfaces, empty the result.interfaces[i].connection['available-connections'] (make empty array)
-        for(let i = 0; i < result.interfaces.length; i++){
+        for (let i = 0; i < result.interfaces.length; i++) {
             result.interfaces[i].CONNECTIONS['AVAILABLE-CONNECTIONS'] = [] ?? []
         }
 
-
-
         /// for each list-connections result, find the corresponding interface and compare it to the result[i].general.device and if it matches then add the connection to the interface (to available interfaces)
-        for(let i = 0; i < result2.connections.length; i++){
+        for (let i = 0; i < result2.connections.length; i++) {
             /// get its details
-            const resultDetail = await (await fetch(context.getters.trilabPrefix + '/network-manager/show-connection/' + result2.connections[i].UUID)).json()
+            const resultDetail = await (
+                await fetch(
+                    context.getters.trilabPrefix + '/network-manager/show-connection/' + result2.connections[i].UUID
+                )
+            ).json()
+            /// if resultdetail failed then console log it
+            if (resultDetail.error != undefined) {
+                console.log('resultDetail error: ')
+                console.log(resultDetail.error)
+            }
+            /// for each key if it ends with -ethernet, change it to ethernet
+            /// for each key if it ends with -wireless, change it to wireless
+            /// for each key if it ends with -wireless-security, change it to wireless-security
+
+            //console.log("resultDetail: ");
+            //console.log(resultDetail);
+            for (const key in resultDetail) {
+                console.log('examining: ' + key)
+                if (key.endsWith('-ethernet')) {
+                    resultDetail['ethernet'] = resultDetail[key]
+                    delete resultDetail[key]
+                }
+                if (key.endsWith('-wireless')) {
+                    resultDetail['wireless'] = resultDetail[key]
+                    delete resultDetail[key]
+                }
+                if (key.endsWith('-wireless-security')) {
+                    resultDetail['wireless-security'] = resultDetail[key]
+                    delete resultDetail[key]
+                }
+                /// set all values which are '--' to empty string
+            }
+            /// in whole resultDetail, even nested objects, replace all '--' with empty string
+            for (const key in resultDetail) {
+                if (resultDetail[key] == '--') {
+                    resultDetail[key] = ''
+                }
+                if (typeof resultDetail[key] == 'object') {
+                    for (const key2 in resultDetail[key]) {
+                        if (resultDetail[key][key2] == '--') {
+                            resultDetail[key][key2] = ''
+                        }
+                    }
+                }
+            }
+
             /// attach the resultDetail to result2 object and then attach the result2 connection[i] to the result.interfaces that has the same DEVICE as the resultDetail.connection['interface-name']
             result2.connections[i].details = resultDetail
-            for(let j = 0; j < result.interfaces.length; j++){
-                if(resultDetail.connection['interface-name'] == result.interfaces[j].GENERAL.DEVICE){
+
+            for (let j = 0; j < result.interfaces.length; j++) {
+                if (resultDetail.connection['interface-name'] == result.interfaces[j].GENERAL.DEVICE) {
                     result.interfaces[j].CONNECTIONS['AVAILABLE-CONNECTIONS'].push(result2.connections[i])
                 }
             }
         }
-        console.log("RESULT: ");
-        console.log(result);
+        console.log('RESULT: ')
+        console.log(result)
 
         context.commit('setData', { interfaces: result.interfaces })
     },

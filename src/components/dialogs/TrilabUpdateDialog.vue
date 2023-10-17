@@ -257,7 +257,7 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
                         break;
                     case 'progress':
                         refe.updateProgress = e.progress
-                        refe.updateProgressValue = e.progress
+                        refe.updateProgressValue = e.progress * 2
                         refe.updateProgressStatus = e.status
                         refe.showRestartBtn = e.status === 'DONE'
                         refe.updateDone = e.status === 'DONE'
