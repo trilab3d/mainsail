@@ -526,6 +526,10 @@
         "Detected": "виявлено",
         "Disabled": "Не активно",
         "Empty": "Порожньо"
+      },
+      "DoorSensor": {
+        "Closed": "ЗАЧИНЕНО",
+        "Open": "Двері відчинені"
       }
     },
     "PowerControlPanel": {

@@ -595,6 +595,10 @@
         "Detected": "detected",
         "Disabled": "disabled",
         "Empty": "Empty"
+      },
+      "DoorSensor": {
+        "Closed": "Closed",
+        "Open": "Doors open"
       }
     },
     "PowerControlPanel": {

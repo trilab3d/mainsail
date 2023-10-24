@@ -573,6 +573,10 @@
         "Detected": "検出",
         "Disabled": "無効",
         "Empty": "空"
+      },
+      "DoorSensor": {
+        "Closed": "閉まっている",
+        "Open": "ドアが開きます"
       }
     },
     "PowerControlPanel": {

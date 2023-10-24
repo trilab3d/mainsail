@@ -156,6 +156,14 @@ export interface PrinterStateFilamentSensors {
     filament_detected: boolean
 }
 
+export interface PrinterStateDoorSensors {
+    name: string
+    enabled: boolean
+    door_closed: boolean
+}
+
+
+
 export interface PrinterStateBedMesh {
     name: string
     data: {

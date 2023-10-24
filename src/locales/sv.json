@@ -468,6 +468,10 @@
         "Detected": "upptäckt",
         "Disabled": "inaktiverad",
         "Empty": "Tom"
+      },
+      "DoorSensor": {
+        "Closed": "Stängd",
+        "Open": "Öppna dörrar"
       }
     },
     "PowerControlPanel": {

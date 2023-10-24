@@ -516,6 +516,10 @@
         "Detected": "érzékelt",
         "Disabled": "letiltott",
         "Empty": "Üres"
+      },
+      "DoorSensor": {
+        "Closed": "Zárva",
+        "Open": "Ajtók nyílnak"
       }
     },
     "PowerControlPanel": {

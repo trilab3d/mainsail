@@ -4,10 +4,20 @@
     "port": null,
     "instancesDB": "json",
     "instances": [
-        { "hostname": "10.1.20.56", "port": 7125 },
-        { "hostname": "10.1.20.71", "port": 7125 },
-        { "hostname": "10.1.20.80", "port": 7125 },
-        { "hostname": "10.1.20.175", "port": 7125 },
-        { "hostname": "10.1.20.76", "port": 7125 }
+        { "hostname": "negriq.local", "port": 7125 },
+        { "hostname": "ctveraq.local", "port": 7125 },
+        { "hostname": "hliniq.local", "port": 7125 },
+        { "hostname": "nahaceq.local", "port": 7125 },
+        { "hostname": "michalyocto.local", "port": 7125 },
+        { "hostname": "10.1.20.60", "port": 7125 },
+        { "hostname": "10.1.20.61", "port": 7125 },
+        { "hostname": "10.1.20.62", "port": 7125 },
+        { "hostname": "10.1.20.63", "port": 7125 },
+        { "hostname": "10.1.20.64", "port": 7125 },
+        { "hostname": "10.1.20.65", "port": 7125 },
+        { "hostname": "10.1.20.66", "port": 7125 },
+        { "hostname": "10.1.20.67", "port": 7125 },
+        { "hostname": "10.1.20.68", "port": 7125 },
+        { "hostname": "10.1.20.69", "port": 7125 }
     ]
 }

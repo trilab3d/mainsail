@@ -580,6 +580,10 @@
         "Detected": "присутствует",
         "Disabled": "отсутствует",
         "Empty": "Пусто"
+      },
+      "DoorSensor": {
+        "Closed": "Закрыто",
+        "Open": "Двери открыты"
       }
     },
     "PowerControlPanel": {

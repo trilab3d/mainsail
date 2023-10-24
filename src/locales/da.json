@@ -572,6 +572,10 @@
         "Detected": "Fundet",
         "Disabled": "Deaktiveret",
         "Empty": "Tom"
+      },
+      "DoorSensor": {
+        "Closed": "Lukket",
+        "Open": "Dørene åbnes"
       }
     },
     "PowerControlPanel": {

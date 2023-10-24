@@ -556,6 +556,10 @@
         "Green": "vert",
         "Red": "rouge",
         "White": "blanc"
+      },
+      "DoorSensor": {
+        "Closed": "Fermé",
+        "Open": "Portes ouvertes"
       }
     },
     "PowerControlPanel": {

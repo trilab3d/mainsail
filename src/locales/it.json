@@ -418,6 +418,10 @@
         "Detected": "rilevato",
         "Disabled": "disabilitato",
         "Empty": "Vuoto"
+      },
+      "DoorSensor": {
+        "Closed": "Chiuso",
+        "Open": "Porte aperte"
       }
     },
     "PowerControlPanel": {

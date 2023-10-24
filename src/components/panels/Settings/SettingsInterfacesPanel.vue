@@ -10,81 +10,56 @@
 <template>
 	<v-card class="mx-0 px-0" flat>
 
-
 		<!---- INTERFACES (LIST OF ALL INTERFACES) ----->
-		<v-container v-if="selectedInterface == null" class="interfaceWrapper px-8">
-			<v-row v-for="(i, index) in interfaces" :key="index" class="interface mb-2">
-				<v-col cols="1">
-					<v-icon v-if="i.GENERAL.TYPE == 'WIFI'" size="x-large"> {{ mdiWifi }}</v-icon>
-					<v-icon v-else size="x-large"> {{ mdiEthernet }}</v-icon>
-				</v-col>
-				<v-col cols="6">
-					<v-row>
-						<v-col cols="12">
-							<h3>{{ i.GENERAL.TYPE }}</h3>
-						</v-col>
-					</v-row>
-					<v-row class="my-0">
-						<v-col cols="6">
-							Interface
-						</v-col>
-						<v-col cols="6">
-							{{ i.GENERAL.DEVICE }}
-						</v-col>
-					</v-row>
-					<v-row class="my-0" v-if="i.GENERAL.TYPE == 'wifi'">
-						<v-col cols="6">
-							SSID
-						</v-col>
-						<v-col cols="6">
-							{{ i.GENERAL.CONNECTION }}
-						</v-col>
-					</v-row>
-					<v-row class="my-0" v-if="'ADDRESS' in i.IP4">
-						<v-col cols="6">
-							IP
-						</v-col>
-						<v-col cols="6">
-							<p v-for="(addr, index) in i.IP4.ADDRESS" :key="index">{{ addr }}</p>
-						</v-col>
-					</v-row>
-					<v-row class="my-0" v-if="'ADDRESS' in i.IP6">
-						<v-col cols="6">
-							IPv6
-						</v-col>
-						<v-col cols="6">
-							<p v-for="(addr, index) in i.IP6.ADDRESS" :key="index">{{ addr }}</p>
-						</v-col>
-					</v-row>
-					<v-row class="my-0">
-						<v-col cols="6">
-							MAC
-						</v-col>
-						<v-col cols="6">
-							{{ i.GENERAL.HWADDR }}
-						</v-col>
-					</v-row>
-				</v-col>
-				<v-col>
-					<v-btn icon @click="selectedInterface = i">
-						<v-icon> {{ mdiCog }}</v-icon>
-					</v-btn>
-				</v-col>
-			</v-row>
+		<v-container v-if="activeView == 'interface_list'" class="interfaceWrapper px-8">
+
+			<v-list>
+				<template v-for="(i, index) in interfaces">
+					<v-subheader v-if="i.header" :key="i.header" v-text="i.header"></v-subheader>
+					<v-list-item :key="i.GENERAL.DEVICE" :index="index" :item="i">
+						<v-list-item-avatar>
+							<v-icon v-if="i.GENERAL.TYPE == 'wifi'" size="x-large"> {{ mdiWifi }}</v-icon>
+							<v-icon v-else size="x-large"> {{ mdiEthernet }}</v-icon>
+						</v-list-item-avatar>
+
+						<v-list-item-content>
+							<v-list-item-title v-html="i.GENERAL.DEVICE"></v-list-item-title>
+							<v-list-item-subtitle>
+								<small v-if="i.GENERAL.TYPE == 'wifi'">SSID: {{ i.GENERAL.CONNECTION }}</small><br>
+								<small v-if="'ADDRESS' in i.IP4">IP addresses: {{ i.IP4.ADDRESS.join(',') }}</small><br>
+								<small v-if="'ADDRESS' in i.IP6">IPv6 addresses: {{ i.IP6.ADDRESS.join(',') }}</small><br>
+								<small>MAC: {{ i.GENERAL.HWADDR }}</small>
+							</v-list-item-subtitle>
+						</v-list-item-content>
+
+						<v-list-item-action>
+							<v-btn icon @click="selectedInterface = interfaces[index]; activeView = 'connections_list';">
+								<v-icon> {{ mdiCog }}</v-icon>
+							</v-btn>
+						</v-list-item-action>
+					</v-list-item>
+				</template>
+
+
+
+
+			</v-list>
+
+
 		</v-container>
 
-
 		<!---- CONNECTION (AVAILABLE CONNECTIONS TO EDIT) ----->
-		<v-container v-if="selectedInterface != null && selectedConnectionCopy == null">
+		<v-container v-if="activeView == 'connections_list'">
 			<!--- back button --->
 			<v-row class="d-flex">
 				<v-col>
-					<v-btn icon @click="selectedInterface = null">
+					<v-btn icon @click="selectedInterface = null; activeView = 'interface_list'">
 						<v-icon> {{ mdiArrowLeft }}</v-icon>
 					</v-btn>
 				</v-col>
 				<v-col>
-					<v-btn v-if="selectedInterface.GENERAL.TYPE == 'wifi'"> <v-icon class="mr-2"> {{ mdiWifiPlus }}</v-icon>
+					<v-btn @click="listWifi()" v-if="selectedInterface.GENERAL.TYPE == 'wifi'"> <v-icon class="mr-2"> {{
+						mdiWifiPlus }}</v-icon>
 						CONNECT WIFI
 					</v-btn>
 				</v-col>
@@ -96,27 +71,84 @@
 			</v-row>
 
 			<h3>Profiles in {{ selectedInterface.GENERAL.DEVICE }}</h3>
-			<v-row v-for="(i, index) in selectedInterface.CONNECTIONS['AVAILABLE-CONNECTIONS']" :key="index"
-				class="interface mb-2">
-				<v-col>{{ selectedInterface.CONNECTIONS['AVAILABLE-CONNECTIONS'][index].NAME }} <span
-						v-if="selectedInterface.CONNECTIONS['AVAILABLE-CONNECTIONS'][index].ACTIVE == 'yes'">AKTIVNÍ</span></v-col>
-				<v-col>
-					<v-btn icon @click="selectConnection(selectedInterface.CONNECTIONS['AVAILABLE-CONNECTIONS'][index])">
-						<v-icon> {{ mdiCog }}</v-icon>
-					</v-btn>
-					<v-btn icon
-						@click="removeProfile(selectedInterface, selectedInterface.CONNECTIONS['AVAILABLE-CONNECTIONS'][index], selectedInterface.CONNECTIONS['AVAILABLE-CONNECTIONS'][index].UUID)">
-						<v-icon> {{ mdiTrashCan }}</v-icon>
-					</v-btn>
 
-				</v-col>
-			</v-row>
+			<v-list>
+				<template v-for="(i, index) in selectedInterface.CONNECTIONS['AVAILABLE-CONNECTIONS']">
+					<v-subheader v-if="i.header" :key="i.header" v-text="i.header"></v-subheader>
+					<v-list-item :key="i.NAME" :index="index" :item="i">
+						<!--- <v-list-item-avatar>
+							<v-icon> {{ mdiCog }}</v-icon>
+						</v-list-item-avatar> --->
+
+						<v-list-item-content>
+							<v-list-item-title v-html="i.NAME"></v-list-item-title>
+							<v-list-item-subtitle>
+								<small v-if="i.ACTIVE == 'yes'">AKTIVNÍ</small><br>
+								<small v-if="i.ACTIVE == 'no'">NEAKTIVNÍ</small><br>
+							</v-list-item-subtitle>
+						</v-list-item-content>
+
+						<v-list-item-action>
+							<v-btn icon @click="selectConnection(i)">
+								<v-icon> {{ mdiCog }}</v-icon>
+							</v-btn>
+							<v-btn icon @click="removeProfile(selectedInterface, i, i.UUID)">
+								<v-icon> {{ mdiTrashCan }}</v-icon>
+							</v-btn>
+						</v-list-item-action>
+					</v-list-item>
+				</template>
+			</v-list>
+
+		</v-container>
+
+		<v-container v-if="activeView == 'wifi_list'">
+			<v-list>
+
+				<template v-for="(item, index) in wifiList">
+					<!-- <v-subheader v-if="item.header" :key="item.header" v-text="item.header"></v-subheader> -->
+					<v-list-item :key="item.BSSID" :index="index" :item="item">
+						<v-list-item-avatar>
+							<v-icon>{{ getWifiSignalIcon(item.BARS, item.SECURITY) }}</v-icon>
+						</v-list-item-avatar>
+
+						<v-list-item-content>
+							<v-list-item-title v-html="item.SSID"></v-list-item-title>
+							<v-list-item-subtitle>
+								<small>SIGNAL: {{ item.SIGNAL }}</small><br>
+								<small>BSSID: {{ item.BSSID }}</small>
+								<v-container
+									v-if="item.SECURITY != '--' && item.show_password_container == true && item.connecting == false">
+									<v-text-field v-model="item.user_selected_password" label="Password"
+										@input="$forceUpdate()"></v-text-field>
+									<v-btn @click="connectWifi(item)" :disabled="item.user_selected_password == ''"
+										color="success">Connect</v-btn>
+								</v-container>
+								<v-container v-if="item.connecting">
+									<p>Connection in progress...</p>
+									<v-progress-linear color="white" indeterminate></v-progress-linear>
+								</v-container>
+
+							</v-list-item-subtitle>
+						</v-list-item-content>
+
+						<v-list-item-action>
+							<v-btn icon @click="SlideOrConnect(item)">
+								<v-icon>{{ mdiChevronRight }}</v-icon>
+							</v-btn>
+						</v-list-item-action>
+					</v-list-item>
+				</template>
+
+			</v-list>
+
 
 
 		</v-container>
 
 
-		<v-tabs v-if="selectedConnectionCopy != null" v-model="activeTab">
+
+		<v-tabs v-if="activeView == 'connection_settings'" v-model="activeTab">
 			<v-tab v-for="(tab, index) of visibleTabTitles" :key="index" :href="'#' + tab.name" style="width: 200px">
 				<v-icon left></v-icon>
 				<span class="text-truncate">{{ tab.title }}</span>
@@ -126,14 +158,11 @@
 
 
 
-		<v-container v-if="selectedConnectionCopy != null">
+		<v-container v-if="activeView == 'connection_settings'">
 			<!--- BACK BUTTON --->
-			<v-btn @click="unselectConnection()">
-				<v-icon> {{ mdiArrowLeft }}</v-icon>
-				Discard
-			</v-btn>
+			<h3>Nastavení profilu {{ selectedInterface.GENERAL.DEVICE }} | {{ selectedConnection.details.connection.id }}</h3>
+
 			<v-container v-if="activeTab == 'general'">
-				<h3>Nastavení rozhraní {{ selectedInterface.GENERAL.DEVICE }}</h3>
 				<v-text-field v-model="selectedConnectionCopy.details.connection.id" label="Profile name"></v-text-field>
 				<!--- switch for connect automatically from selectedConnectionCopy.details.connection.autoconnect --->
 				<v-switch v-model="autoconnectValue" label="Connect automatically"></v-switch>
@@ -148,8 +177,6 @@
 			</v-container>
 
 			<v-container v-if="activeTab == 'ipv4'">
-				<h3>Nastavení rozhraní {{ selectedInterface.GENERAL.DEVICE }}</h3>
-
 				<v-select v-model="selectedConnectionCopy.details.ipv4.method" item-value="value" item-text="label"
 					:items="ipv4Methods" label="IPv4 Method"></v-select>
 
@@ -191,16 +218,20 @@
 					v-if="selectedConnectionCopy.details.ipv6.method == 'manual' || selectedConnectionCopy.details.ipv6.method == 'shared' || selectedConnectionCopy.details.ipv6.method == 'auto'">
 					<v-text-field v-for="(ip, index) in IPv6DNSList" v-model="IPv6DNSList[index]" :key="index" label="DNS"
 						:rules="[rules.IPv6]"></v-text-field>
-					<!--- a button to add a value to the list --->
+					<v-btn color="red" @click="unselectConnection()">
+						<v-icon> {{ mdiArrowLeft }}</v-icon>
+						Discard changes
+					</v-btn>
 					<v-btn icon @click="IPv6DNSList.push('')">
 						<v-icon> {{ mdiPlus }}</v-icon>
 					</v-btn>
+
 				</v-container>
 			</v-container>
 
 
 			<v-container v-if="activeTab == 'wireless'">
-				<h3>Nastavení rozhraní {{ selectedInterface.GENERAL.DEVICE }}</h3>
+				<h3>Nastavení profilu {{ selectedInterface.GENERAL.DEVICE }}</h3>
 				<!---             wireless_mode_label = Gtk.Label(label="IPv6 Method:")  --->
 
 				<v-select v-model="selectedConnectionCopy.details['wireless'].mode" item-value="value" item-text="label"
@@ -246,7 +277,7 @@ import { Component, Mixins } from 'vue-property-decorator'
 import { Watch } from 'vue-property-decorator'
 import BaseMixin from '../../mixins/base'
 import TrilabMixin from '../../mixins/trilab'
-import { mdiEthernet, mdiWifi, mdiCog, mdiTrashCan, mdiPlus, mdiWifiPlus, mdiArrowLeft } from '@mdi/js';
+import { mdiEthernet, mdiWifi, mdiCog, mdiTrashCan, mdiPlus, mdiWifiPlus, mdiArrowLeft, mdiWifiStrength1, mdiWifiStrength2, mdiWifiStrength3, mdiWifiStrength4, mdiWifiStrength1Lock, mdiWifiStrength2Lock, mdiWifiStrength3Lock, mdiWifiStrength4Lock, mdiChevronRight } from '@mdi/js';
 @Component
 export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMixin) {
 
@@ -257,6 +288,19 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 	mdiPlus = mdiPlus;
 	mdiWifiPlus = mdiWifiPlus;
 	mdiArrowLeft = mdiArrowLeft;
+	mdiWifiStrength1 = mdiWifiStrength1;
+	mdiWifiStrength2 = mdiWifiStrength2;
+	mdiWifiStrength3 = mdiWifiStrength3;
+	mdiWifiStrength4 = mdiWifiStrength4;
+	mdiWifiStrength1Lock = mdiWifiStrength1Lock;
+	mdiWifiStrength2Lock = mdiWifiStrength2Lock;
+	mdiWifiStrength3Lock = mdiWifiStrength3Lock;
+	mdiWifiStrength4Lock = mdiWifiStrength4Lock;
+	mdiChevronRight = mdiChevronRight;
+
+
+	public wifiListLoading: boolean = false;
+	public wifiList: any = [];
 
 	get IPv4Dns() {
 		/// trim all values 
@@ -280,6 +324,9 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 	public removeProfileBtnLoading = false;
 	public disabledProfilesBtns = false;
 	public addProfileLoading = false;
+
+
+	public activeView = 'interface_list';
 
 	public rules = {
 		IPv4: (value: string) => {
@@ -329,6 +376,40 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 	};
 
 
+	getWifiSignalIcon(bars: string, security: string) {
+
+		if (security == '--') {
+			if (bars == '****') {
+				return this.mdiWifiStrength4;
+			} else if (bars == "***") {
+				return this.mdiWifiStrength3;
+			} else if (bars == "**") {
+				return this.mdiWifiStrength2;
+			} else {
+				return this.mdiWifiStrength1;
+			}
+		} else {
+			if (bars == '****') {
+				return this.mdiWifiStrength4Lock;
+			} else if (bars == "***") {
+				return this.mdiWifiStrength3Lock;
+			} else if (bars == "**") {
+				return this.mdiWifiStrength2Lock;
+			} else {
+				return this.mdiWifiStrength1Lock;
+			}
+		}
+
+		/*
+		img = self._gtk.Image("wifi-signal-4", self._gtk.content_width * .1, self._gtk.content_height * .1)
+			elif sig_num > -65:
+		img = self._gtk.Image("wifi-signal-3", self._gtk.content_width * .1, self._gtk.content_height * .1)
+			elif sig_num > -80:
+		img = self._gtk.Image("wifi-signal-2", self._gtk.content_width * .1, self._gtk.content_height * .1)
+			else:
+		img = self._gtk.Image("wifi-signal-1", self._gtk.content_width * .1, self._gtk.content_height * .1)
+		*/
+	}
 
 	selectConnection(connection: any) {
 		this.selectedConnection = connection;
@@ -338,10 +419,12 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 		this.IPv6DNSList = this.selectedConnectionCopy?.details.ipv6?.dns.split(',').map((value: string) => value.trim());
 		console.log("SELECTED CONNECTION");
 		console.log(this.selectedConnectionCopy);
+		this.activeView = 'connection_settings';
 	}
 	unselectConnection() {
 		this.IPv4DNSList = [];
 		this.IPv6DNSList = [];
+		this.activeView = 'connections_list';
 		this.selectedConnection = null;
 		this.selectedConnectionCopy = null;
 	}
@@ -386,7 +469,150 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 		/// filter interfaces that have general.device == "lo"
 		return this.$store.state.trilab.interfaces.filter((i: any) => i.GENERAL.DEVICE != "lo") ?? [];
 	}
+	/// watch change of interfaces deep
+	@Watch('$store.state.trilab.interfaces', { deep: true })
+	onInterfacesChanged() {
+		/// we have to watch for the value changes and then only send which were changed, so we need to do copy of the object
+		/// reload the connections if the selected interface is not null
+		if (this.selectedInterface != null) {
+			this.selectedInterface = this.$store.state.trilab.interfaces.find((i: any) => i.GENERAL.DEVICE == this.selectedInterfaceCopy.GENERAL.DEVICE);
+		}
+	}
 
+
+	listWifi() {
+		this.activeView = 'wifi_list';
+		this.reloadWifies();
+	}
+
+	SlideOrConnect(item: any) {
+		/// show the container only if the wifi is with password
+		console.log("slide or connect");
+		if (item.SECURITY != '--') {
+			/// use Vue.set
+			/// https://vuejs.org/v2/guide/reactivity.html#Change-Detection-Caveats
+			/// set the show_password_container to true
+			item.show_password_container = !item.show_password_container;
+			this.$forceUpdate();  // Notice we have to use a $ here
+
+			console.log("connect wifi with password")
+			console.log(item);
+		} else {
+			this.connectWifi(item);
+			console.log("connect wifi without password")
+		}
+	}
+
+	async connectWifi(item: any) {
+		item.connecting = true;
+		this.$forceUpdate();
+		let password = item.user_selected_password;
+		let body: any = {
+			ifname: this.selectedInterface.GENERAL.DEVICE,
+			bssid: item.BSSID
+		}
+		if (item.SSID != "--") {
+			body['ssid'] = item.SSID;
+		}
+
+		if (item.SECURITY != '--') {
+			body['password'] = password;
+		}
+
+
+		let response = await fetch(this.$store.getters['trilab/trilabPrefix'] + '/network-manager/connect-wifi', {
+			method: 'POST',
+			body: JSON.stringify(body),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+
+
+
+
+		if (response.status == 200) {
+			await this.$store.dispatch('trilab/getInterfaces');
+			item.connecting = false;
+			this.$forceUpdate();
+			this.activeView = 'connections_list';
+			/// toast success message
+			this.$toast.success("Connected to: " + item.SSID);
+		}
+	}
+
+
+	async reloadWifies() {
+		this.wifiListLoading = true;
+		/*rsp = self._screen.tpcclient.send_request("network/wifi/list")
+		networks = rsp["networks"]
+	
+		def key_func(e):
+		v = float(e['signal'].split(' ')[0])
+		return v
+	
+		networks.sort(key = key_func, reverse = True)
+	
+		for child in self.network_box.get_children():
+			self.network_box.remove(child)
+	
+		for network in networks:
+			logging.info(f"Adding network {network}")
+		network_box = Gtk.Box(orientation = Gtk.Orientation.HORIZONTAL, spacing = 5)
+		network_box.get_style_context().add_class("frame-item")
+		network_box.set_hexpand(True)
+		network_box.set_vexpand(False)
+	
+		sig_num = float(network['signal'].split(' ')[0])
+		logging.info(f"signal numeric: {sig_num}")
+	
+		if sig_num > -40:
+			img = self._gtk.Image("wifi-signal-4", self._gtk.content_width * .1, self._gtk.content_height * .1)
+			elif sig_num > -65:
+		img = self._gtk.Image("wifi-signal-3", self._gtk.content_width * .1, self._gtk.content_height * .1)
+			elif sig_num > -80:
+		img = self._gtk.Image("wifi-signal-2", self._gtk.content_width * .1, self._gtk.content_height * .1)
+			else:
+		img = self._gtk.Image("wifi-signal-1", self._gtk.content_width * .1, self._gtk.content_height * .1)*/
+
+		let responselist = await fetch(this.$store.getters['trilab/trilabPrefix'] + '/network-manager/list-networks', {
+			method: 'GET',
+		});
+		if (responselist.status != 200) {
+			this.$toast.error("Error while loading wifi networks");
+			this.wifiListLoading = false;
+			return;
+		}
+
+		try {
+			var responseData = await responselist.json();
+		} catch (e) {
+			this.$toast.error("Error - bad response from printer");
+			this.wifiListLoading = false;
+			return;
+		}
+		/// if not connections in responseData then show toast error
+		if (!responseData['connections']) {
+			this.$toast.error("Error - bad response from printer - no connections");
+			this.wifiListLoading = false;
+			return;
+		}
+
+		this.wifiList = responseData['connections'];
+
+		///foreach wifiList add 'show_password_container'
+		for (let i = 0; i < this.wifiList.length; i++) {
+			this.wifiList[i].show_password_container = false;
+			this.wifiList[i].user_selected_password = '';
+			this.wifiList[i].connecting = false;
+		}
+
+
+		console.log(this.wifiList);
+		this.wifiListLoading = false;
+
+
+	}
 
 	saveChangedData() {
 		/// set the copy model values but skip empty values and trimmed empty values
@@ -448,8 +674,10 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 	async addProfile() {
 		const isWifi = this.isWirelessInterface;
 		let new_conn = {};
+		let urlname = 'ethernet';
 		let conn_name = "New-Profile";
 		if (isWifi) {
+			urlname = 'wifi';
 			new_conn = {
 				"connection.interface-name": this.selectedInterface['GENERAL']['DEVICE'],
 				"802-11-wireless.band": "bg",
@@ -476,16 +704,18 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 			}
 		}
 		var thisRef = this;
-		this.addProfileLoading =  true;
-		fetch(this.$store.getters['trilab/trilabPrefix'] + '/network-manager/add-connection/' + this.selectedInterface['GENERAL']['DEVICE'] + '/' + encodeURIComponent(conn_name), {
+		this.addProfileLoading = true;
+		fetch(this.$store.getters['trilab/trilabPrefix'] + '/network-manager/add-connection/' + urlname + '/' + encodeURIComponent(conn_name), {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(new_conn)
 		}).then(async function (response) {
+			console.log("RESPONSE:");
+			console.log(response);
 			if (response.status == 200) {
-				await thisRef.$store.dispatch('trilab/getInterfaces');
+				await thisRef.$store.dispatch('trilab/loadInterfaces');
 				thisRef.addProfileLoading = false;
 				thisRef.disabledProfilesBtns = false;
 				thisRef.removeProfileBtnLoading = false;
@@ -507,26 +737,25 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 		// network-manager/delete-connection/{connection['id']
 		var thisRef = this;
 		fetch(this.$store.getters['trilab/trilabPrefix'] + '/network-manager/delete-connection/' + uuid, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
+			method: 'POST'
 		}).then(async function (response) {
 			if (response.status == 200) {
-				await thisRef.$store.dispatch('trilab/getInterfaces');
+				await thisRef.$store.dispatch('trilab/loadInterfaces');
 				thisRef.disabledProfilesBtns = false;
 				thisRef.removeProfileBtnLoading = false;
 			} else {
 				console.log("ERROR");
 				console.log(response);
+				thisRef.$toast.error("Error while removing profile");
 			}
 		}).catch(function (error) {
 			console.log(error);
 			thisRef.disabledProfilesBtns = false;
 			thisRef.removeProfileBtnLoading = false;
+			thisRef.$toast.error("Error while removing profile");
 		});
 		this.selectedConnectionCopy = null;
-		this.selectedInterface = null;
+		this.selectedConnection = null;
 	}
 
 	get isWirelessInterface() {

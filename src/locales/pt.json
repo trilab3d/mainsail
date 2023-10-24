@@ -580,6 +580,10 @@
         "Detected": "detectado",
         "Disabled": "desabilitado",
         "Empty": "Vazio"
+      },
+      "DoorSensor": {
+        "Closed": "Fechado",
+        "Open": "Portas abertas"
       }
     },
     "PowerControlPanel": {

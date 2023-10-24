@@ -574,6 +574,10 @@
         "Detected": "필라멘트 있음",
         "Disabled": "비활성화됨",
         "Empty": "필라멘트 없음"
+      },
+      "DoorSensor": {
+        "Closed": "닫은",
+        "Open": "문 열림"
       }
     },
     "PowerControlPanel": {

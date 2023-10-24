@@ -573,6 +573,10 @@
         "Detected": "detekováno",
         "Disabled": "vypnuto",
         "Empty": "prázdné"
+      },
+      "DoorSensor": {
+        "Closed": "Zavřené",
+        "Open": "Dveře otevřeny"
       }
     },
     "PowerControlPanel": {

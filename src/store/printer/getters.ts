@@ -12,6 +12,7 @@ import {
     PrinterStateExtruderStepper,
     PrinterStateFan,
     PrinterStateFilamentSensors,
+    PrinterStateDoorSensors,
     PrinterStateHeater,
     PrinterStateTemperatureFan,
     PrinterStateMiscellaneous,
@@ -729,6 +730,27 @@ export const getters: GetterTree<PrinterState, RootState> = {
                     name: nameSplit[1],
                     enabled: value.enabled,
                     filament_detected: value.filament_detected,
+                })
+            }
+        }
+
+        return caseInsensitiveSort(sensors, 'name')
+    },
+
+    getDoorSensors: (state) => {
+        const sensorObjectNames = ['door_sensor']
+        const sensors: PrinterStateDoorSensors[] = []
+
+        console.log(Object.entries(state));
+
+        for (const [key, value] of Object.entries(state)) {
+            const nameSplit = key.split(' ')
+
+            if (sensorObjectNames.includes(nameSplit[0])) {
+                sensors.push({
+                    name: key,
+                    enabled: value.enabled,
+                    door_closed: value.door_closed,
                 })
             }
         }

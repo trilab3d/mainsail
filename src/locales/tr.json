@@ -552,6 +552,10 @@
         "Detected": "algılandı",
         "Disabled": "hizmet dışı kalmış",
         "Empty": "Boş"
+      },
+      "DoorSensor": {
+        "Closed": "Kapalı",
+        "Open": "Kapılar açık"
       }
     },
     "PowerControlPanel": {

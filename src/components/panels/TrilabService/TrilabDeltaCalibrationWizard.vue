@@ -159,7 +159,7 @@
 									<p><small>Měření - krok 2</small></p>
 								</div>
 								<div style="text-align:center" class="my-3 mx-3">
-									<img src="/img/delta_cal_e_step1.jpg" alt="step_1" style="width:100%; max-width:500px">
+									<img src="/img/delta_cal_e_step2.jpg" alt="step_1" style="width:100%; max-width:500px">
 									<p><small>Měření - krok 2</small></p>
 								</div>
 
