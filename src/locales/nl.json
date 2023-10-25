@@ -62,7 +62,10 @@
       "UploadOfFileSuccessful": "Upload van {file} succesvol!",
       "UploadPrint": "Upload & Print",
       "Uploading": "Uploaden",
-      "LightBtn": "Licht"
+      "LightBtn": "Licht",
+      "ViewStatus": {
+        "Advanced": "Geavanceerde weergave ingeschakeld"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Annuleer",
@@ -717,6 +720,16 @@
       "timeoutTextFieldHint": "time-out(s)",
       "enable": "Inschakelen",
       "timeout": "Schakel time-out in"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4-adressen",
+      "IP6addresses": "IPv6-adressen",
+      "connectWifi": "Maak verbinding met wifi",
+      "AddProfile": "Profiel toevoegen",
+      "ProfilesIn": "Profielen binnen",
+      "ProfileActive": "Actief",
+      "ProfileInactive": "Inactief",
+      "Interfaces": "Beschikbare interfaces"
     }
   },
   "PowerDeviceChangeDialog": {

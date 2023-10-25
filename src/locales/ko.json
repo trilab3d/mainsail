@@ -63,7 +63,10 @@
       "Uploading": "업로드 중..",
       "UploadOfFileSuccessful": "{file} 업로드 완료!",
       "UploadPrint": "업로드 & 출력",
-      "LightBtn": "빛"
+      "LightBtn": "빛",
+      "ViewStatus": {
+        "Advanced": "고급 보기 활성화됨"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "취소",
@@ -719,6 +722,16 @@
       "timeoutTextFieldHint": "시간 초과",
       "enable": "할 수 있게 하다",
       "timeout": "시간 초과 활성화"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4 주소",
+      "IP6addresses": "IPv6 주소",
+      "connectWifi": "Wi-Fi에 연결",
+      "AddProfile": "프로필 추가",
+      "ProfilesIn": "프로필",
+      "ProfileActive": "활동적인",
+      "ProfileInactive": "비활성",
+      "Interfaces": "사용 가능한 인터페이스"
     }
   },
   "PowerDeviceChangeDialog": {

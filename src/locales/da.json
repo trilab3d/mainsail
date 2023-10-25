@@ -62,7 +62,10 @@
       "Uploading": "Uploader",
       "UploadOfFileSuccessful": "Upload af {file} udført",
       "UploadPrint": "Upload & Print",
-      "LightBtn": "Lys"
+      "LightBtn": "Lys",
+      "ViewStatus": {
+        "Advanced": "Avanceret visning aktiveret"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Annuller",
@@ -717,6 +720,16 @@
       "timeoutTextFieldHint": "Timeout (s)",
       "enable": "Aktiver timeout",
       "timeout": "Aktiver timeout"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4-adresser",
+      "IP6addresses": "IPv6-adresser",
+      "connectWifi": "Opret forbindelse til Wi-Fi",
+      "AddProfile": "Tilføj profil",
+      "ProfilesIn": "Profiler i",
+      "ProfileActive": "Aktiv",
+      "ProfileInactive": "Inaktiv",
+      "Interfaces": "Tilgængelige grænseflader"
     }
   },
   "PowerDeviceChangeDialog": {

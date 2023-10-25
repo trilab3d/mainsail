@@ -62,7 +62,10 @@
       "Uploading": "Завантаження",
       "UploadOfFileSuccessful": "Завантаження {file} успішно!",
       "UploadPrint": "Завантажити та Друканутити",
-      "LightBtn": "світло"
+      "LightBtn": "світло",
+      "ViewStatus": {
+        "Advanced": "Розширений перегляд увімкнено"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Скасувати",
@@ -659,6 +662,16 @@
       "timeoutTextFieldHint": "Час очікування (с)",
       "enable": "Увімкнути",
       "timeout": "Увімкнути тайм-аут"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "Адреси IPv4",
+      "IP6addresses": "Адреси IPv6",
+      "connectWifi": "Підключіться до Wi-Fi",
+      "AddProfile": "Додати профіль",
+      "ProfilesIn": "Профілі в",
+      "ProfileActive": "Активний",
+      "ProfileInactive": "Неактивний",
+      "Interfaces": "Доступні інтерфейси"
     }
   },
   "PowerDeviceChangeDialog": {

@@ -62,7 +62,10 @@
       "Uploading": "Yükleniyor",
       "UploadOfFileSuccessful": "{file} yüklemesi başarılı!",
       "UploadPrint": "Yükle ve Yazdır",
-      "LightBtn": "Işık"
+      "LightBtn": "Işık",
+      "ViewStatus": {
+        "Advanced": "Gelişmiş Görünüm Etkin"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "İptal Et",
@@ -685,6 +688,16 @@
       "timeoutTextFieldHint": "Zaman aşımı (s)",
       "enable": "Olanak vermek",
       "timeout": "Zaman aşımını etkinleştir"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4 Adresleri",
+      "IP6addresses": "IPv6 Adresleri",
+      "connectWifi": "Wi-Fi'ye bağlanın",
+      "AddProfile": "Profil ekle",
+      "ProfilesIn": "Profiller",
+      "ProfileActive": "Aktif",
+      "ProfileInactive": "Etkin değil",
+      "Interfaces": "Mevcut arayüzler"
     }
   },
   "PowerDeviceChangeDialog": {

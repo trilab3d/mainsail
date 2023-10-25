@@ -63,7 +63,10 @@
       "Uploading": "Nahrávání",
       "UploadOfFileSuccessful": "Soubor {file} byl úspěšně nahrán!",
       "UploadPrint": "Nahrát a tisknout",
-      "LightBtn": "Světlo"
+      "LightBtn": "Světlo",
+      "ViewStatus": {
+        "Advanced": "Pokročilé zobrazení aktivní"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Zrušit",
@@ -719,6 +722,16 @@
       "accessPoint": "Přístupový bod",
       "ssid": "SSID",
       "confirmPassword": "Confirm password"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4 adresy",
+      "IP6addresses": "IPv6 adresy",
+      "connectWifi": "Připojit k Wi-Fi",
+      "AddProfile": "Přidat profil",
+      "ProfilesIn": "Profily v",
+      "ProfileActive": "Aktivní",
+      "ProfileInactive": "Neaktivní",
+      "Interfaces": "Dostupná rozhraní"
     }
   },
   "PowerDeviceChangeDialog": {

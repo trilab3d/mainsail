@@ -69,7 +69,10 @@
       "UploadOfFileSuccessful": "Upload of {file} successful!",
       "UploadPrint": "Upload & Print",
       "HomeBtn": "Home all",
-      "LightBtn": "Light"
+      "LightBtn": "Light",
+      "ViewStatus": {
+        "Advanced": "Advanced View Enabled"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Cancel",
@@ -748,6 +751,16 @@
       "password": "Password",
       "accessPoint": "Access point",
       "confirmPassword": "Confirm password"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4 Addresses",
+      "IP6addresses": "IPv6 Addresses",
+      "connectWifi": "Connect to Wi-Fi",
+      "AddProfile": "Add profile",
+      "ProfilesIn": "Profiles in",
+      "ProfileActive": "Active",
+      "ProfileInactive": "Inactive",
+      "Interfaces": "Available interfaces"
     }
   },
   "PowerDeviceChangeDialog": {

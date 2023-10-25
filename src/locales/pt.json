@@ -63,7 +63,10 @@
       "Uploading": "Upload",
       "UploadOfFileSuccessful": "Carregamento de {file} com sucesso!",
       "UploadPrint": "Carregar e imprimir",
-      "LightBtn": "Luz"
+      "LightBtn": "Luz",
+      "ViewStatus": {
+        "Advanced": "Visualização avançada ativada"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Cancelar",
@@ -725,6 +728,16 @@
       "timeoutTextFieldHint": "Tempo limite (s)",
       "enable": "Habilitar",
       "timeout": "Ativar tempo limite"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "Endereços IPv4",
+      "IP6addresses": "Endereços IPv6",
+      "connectWifi": "Conecte-se ao Wi-Fi",
+      "AddProfile": "Adicionar perfil",
+      "ProfilesIn": "Perfis em",
+      "ProfileActive": "Ativo",
+      "ProfileInactive": "Inativo",
+      "Interfaces": "Interfaces disponíveis"
     }
   },
   "PowerDeviceChangeDialog": {

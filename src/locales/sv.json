@@ -61,7 +61,10 @@
       "Uploading": "Laddar upp",
       "UploadOfFileSuccessful": "Uppladdningen av {file} lyckades!",
       "UploadPrint": "Ladda upp och skriv ut",
-      "LightBtn": "Ljus"
+      "LightBtn": "Ljus",
+      "ViewStatus": {
+        "Advanced": "Avancerad vy aktiverad"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Avbryt",
@@ -554,6 +557,16 @@
       "timeoutTextFieldHint": "Timeout (s)",
       "enable": "Gör det möjligt",
       "timeout": "Aktivera timeout"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4-adresser",
+      "IP6addresses": "IPv6-adresser",
+      "connectWifi": "Anslut till Wi-Fi",
+      "AddProfile": "Lägg till profil",
+      "ProfilesIn": "Profiler i",
+      "ProfileActive": "Aktiva",
+      "ProfileInactive": "Inaktiv",
+      "Interfaces": "Tillgängliga gränssnitt"
     }
   },
   "PowerDeviceChangeDialog": {

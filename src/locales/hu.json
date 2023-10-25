@@ -61,7 +61,10 @@
       "Uploading": "Feltöltés",
       "UploadOfFileSuccessful": " {file} feltöltése sikeres!",
       "UploadPrint": "Feltöltés és nyomtatás",
-      "LightBtn": "Fény"
+      "LightBtn": "Fény",
+      "ViewStatus": {
+        "Advanced": "Speciális nézet engedélyezve"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Mégsem",
@@ -647,6 +650,16 @@
       "timeoutTextFieldHint": "Időtúllépés (ek)",
       "enable": "Engedélyezze",
       "timeout": "Időtúllépés engedélyezése"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4-címek",
+      "IP6addresses": "IPv6-címek",
+      "connectWifi": "Csatlakozzon Wi-Fi-hez",
+      "AddProfile": "Profil hozzáadása",
+      "ProfilesIn": "Profilok be",
+      "ProfileActive": "Aktív",
+      "ProfileInactive": "Inaktív",
+      "Interfaces": "Elérhető interfészek"
     }
   },
   "PowerDeviceChangeDialog": {

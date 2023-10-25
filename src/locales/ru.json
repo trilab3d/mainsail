@@ -63,7 +63,10 @@
       "Uploading": "Загрузка",
       "UploadOfFileSuccessful": "Загрузка {file} выполнена!",
       "UploadPrint": "Загрузить и напечатать",
-      "LightBtn": "Свет"
+      "LightBtn": "Свет",
+      "ViewStatus": {
+        "Advanced": "Расширенный просмотр включен"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "Отмена",
@@ -725,6 +728,16 @@
       "timeoutTextFieldHint": "Время ожидания (с)",
       "enable": "Давать возможность",
       "timeout": "Включить тайм-аут"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4-адреса",
+      "IP6addresses": "IPv6-адреса",
+      "connectWifi": "Подключитесь к Wi-Fi",
+      "AddProfile": "Добавить профиль",
+      "ProfilesIn": "Профили в",
+      "ProfileActive": "Активный",
+      "ProfileInactive": "Неактивный",
+      "Interfaces": "Доступные интерфейсы"
     }
   },
   "PowerDeviceChangeDialog": {

@@ -17,7 +17,8 @@
                 v-if="$store.state.trilab.advancedView || $store.state.trilab.hiddenView || $store.state.trilab.serviceView"
                 class="mx-2" vertical></v-divider>
             <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
-                <b>Advanced View Enabled</b>
+                <v-icon>{{ mdiPaletteAdvanced }}</v-icon>
+                <b class="ml-2 hidden-md-and-down">{{ $t('App.TopBar.ViewStatus.Advanced') }}</b>
             </v-chip>
             <v-chip v-if="$store.state.trilab.hiddenView" color="#31FF3C">
                 <b>Hidden View Enabled</b>
@@ -92,7 +93,8 @@
                 </v-card-actions>
             </panel>
         </v-dialog>
-        <trilab-update-dialog-live :showp="showLiveUpdateDialog" @closeLiveUpdateDialog="closeLiveUpdateDialog()"></trilab-update-dialog-live>
+        <trilab-update-dialog-live :showp="showLiveUpdateDialog"
+            @closeLiveUpdateDialog="closeLiveUpdateDialog()"></trilab-update-dialog-live>
     </div>
 </template>
 
@@ -112,7 +114,7 @@ import PrinterSelector from '@/components/ui/PrinterSelector.vue'
 import MainsailLogo from '@/components/ui/MainsailLogo.vue'
 import TheNotificationMenu from '@/components/notifications/TheNotificationMenu.vue'
 import { topbarHeight } from '@/store/variables'
-import { mdiAlertOctagonOutline, mdiContentSave, mdiFileUpload, mdiClose, mdiCloseThick, mdiHome, mdiLightbulbOff, mdiLightbulbOn } from '@mdi/js'
+import { mdiAlertOctagonOutline, mdiContentSave, mdiFileUpload, mdiClose, mdiCloseThick, mdiHome, mdiLightbulbOff, mdiLightbulbOn, mdiPaletteAdvanced } from '@mdi/js'
 import ControlMixin from './mixins/control'
 import { Watch } from 'vue-property-decorator'
 
@@ -149,6 +151,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     mdiHome = mdiHome
     mdiLightbulbOff = mdiLightbulbOff
     mdiLightbulbOn = mdiLightbulbOn
+    mdiPaletteAdvanced = mdiPaletteAdvanced
 
 
     lightFirstRun = false
@@ -176,10 +179,10 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     }
 
 
-    get showLiveUpdateDialog(){
+    get showLiveUpdateDialog() {
         return this.$store.state.trilab.showLiveUpdateDialog;
     }
-    set showLiveUpdateDialog(value){
+    set showLiveUpdateDialog(value) {
         this.$store.commit('trilab/setData', { showLiveUpdateDialog: value })
     }
 
@@ -256,15 +259,15 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     }
 
 
-    showLiveUpdateDialogAction(){
+    showLiveUpdateDialogAction() {
         this.showLiveUpdateDialog = true;
         this.$store.dispatch('trilab/setupLiveUpdateTimer', 2000);
     }
-    closeLiveUpdateDialog(){
+    closeLiveUpdateDialog() {
         this.showLiveUpdateDialog = false;
         this.$store.dispatch('trilab/setupLiveUpdateTimer', 30000);
     }
-    
+
     btnEmergencyStop() {
         const confirmOnEmergencyStop = this.$store.state.gui.uiSettings.confirmOnEmergencyStop
         if (confirmOnEmergencyStop) {

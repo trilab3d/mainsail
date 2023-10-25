@@ -63,7 +63,10 @@
       "Uploading": "アップロード中",
       "UploadOfFileSuccessful": "{file}のアップロードが完了しました!",
       "UploadPrint": "アップロード & 印刷",
-      "LightBtn": "ライト"
+      "LightBtn": "ライト",
+      "ViewStatus": {
+        "Advanced": "詳細ビューが有効になっています"
+      }
     },
     "TopCornerMenu": {
       "Cancel": "取り消し",
@@ -718,6 +721,16 @@
       "timeoutTextFieldHint": "タイムアウト (秒)",
       "enable": "有効にする",
       "timeout": "タイムアウトを有効にする"
+    },
+    "TrilabSettingsInterfaces": {
+      "IP4addresses": "IPv4アドレス",
+      "IP6addresses": "IPv6アドレス",
+      "connectWifi": "Wi-Fiに接続する",
+      "AddProfile": "プロフィールを追加",
+      "ProfilesIn": "のプロファイル",
+      "ProfileActive": "アクティブ",
+      "ProfileInactive": "非活性",
+      "Interfaces": "利用可能なインターフェース"
     }
   },
   "PowerDeviceChangeDialog": {
