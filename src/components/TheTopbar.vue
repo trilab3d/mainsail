@@ -17,8 +17,8 @@
                 v-if="$store.state.trilab.advancedView || $store.state.trilab.hiddenView || $store.state.trilab.serviceView"
                 class="mx-2" vertical></v-divider>
             <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
-                <v-icon>{{ mdiPaletteAdvanced }}</v-icon>
-                <b class="ml-2 hidden-md-and-down">{{ $t('App.TopBar.ViewStatus.Advanced') }}</b>
+                <v-icon class="d-md-none">{{ mdiPaletteAdvanced }}</v-icon>
+                <b class="hidden-md-and-down">{{ $t('App.TopBar.ViewStatus.Advanced') }}</b>
             </v-chip>
             <v-chip v-if="$store.state.trilab.hiddenView" color="#31FF3C">
                 <b>Hidden View Enabled</b>

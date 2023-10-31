@@ -15,7 +15,7 @@
                             details</v-btn></p>
                     <div v-if="uploadProgress < 100">
                         <v-progress-linear :indeterminate="uploadProgress === null" :value="uploadProgress"
-                            :color="uploadFileProgressbarColor" :height="10" striped absolute></v-progress-linear>
+                            :color="uploadFileProgressbarColor" :height="10" striped></v-progress-linear>
                     </div>
                 </div>
 
@@ -23,11 +23,11 @@
                     <p>STATUS: <span>{{ customStatus }}</span></p>
                     <v-progress-linear :indeterminate="updateProgressStatus === 'IDLE'"
                         :color="updateProgressStatus === 'IDLE' ? 'primary' : 'success'" :value="updateProgressValue"
-                        :buffer-value="updateProgressValue" :height="5" striped absolute></v-progress-linear>
+                        :buffer-value="updateProgressValue" :height="5" striped></v-progress-linear>
                     <v-list>
                         <v-btn color="danger" v-if="showRestartBtn"></v-btn>
                         <v-list-item v-for="log in logs" :key="log.id" class="ulog">
-                            <span color="danger" v-if="log.text.indexOf('ERROR') >= -1">DANGER</span>
+                            <span v-if="log.text.indexOf('ERROR') != -1" color="danger">DANGER</span>
                             <p>
                                 {{ log.text }}
                             </p>

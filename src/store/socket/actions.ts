@@ -52,7 +52,8 @@ export const actions: ActionTree<SocketState, RootState> = {
             case 'notify_gcode_response':
                 dispatch('server/addEvent', Object.assign({ result: payload.params[0] }, { send: false }), {
                     root: true,
-                })
+                });
+                dispatch('trilab/customSocketResponseHandler', payload.params[0], { root: true })
                 break
 
             case 'notify_klippy_ready':

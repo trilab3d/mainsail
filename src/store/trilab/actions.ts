@@ -39,6 +39,17 @@ export const actions: ActionTree<TrilabState, any> = {
             })
         context.commit('setConnected', true)
     },
+    customSocketResponseHandler(context, payload) {
+        if (payload == '// FS_CHANGE') {
+            Vue.$socket.emit(
+                'server.files.get_directory',
+                { path: 'gcodes' },
+                { action: 'files/getDirectory' }
+            )
+        }
+        console.log('customSocketResponseHandler')
+        console.log(payload)
+    },
     onConnected(context) {
         context.dispatch('loadSettings')
         context.dispatch('getWifiStatus')

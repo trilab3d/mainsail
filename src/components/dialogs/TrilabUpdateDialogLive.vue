@@ -17,8 +17,8 @@
                         $t('TrilabLiveUpdate.Buttons.InstallFromUsb') }}</v-btn>
                 </div>
 
-                <div class="mx-2" v-if="'progress' in LiveUpdateStatusObject && LiveUpdateStatusObject.progress != -1">
-                    <v-progress-linear class="px-2" :value="LiveUpdateStatusObject.progress * 100" :color="uploadFileProgressbarColor"
+                <div v-if="'progress' in LiveUpdateStatusObject && LiveUpdateStatusObject.progress != -1">
+                    <v-progress-linear :value="LiveUpdateStatusObject.progress * 100" :color="uploadFileProgressbarColor"
                         :height="10" striped></v-progress-linear>
                 </div>
                 <v-container v-if="liveUpdateStatus == 'INSTALLED' || liveUpdateStatus == 'USB_INSTALLED'">
