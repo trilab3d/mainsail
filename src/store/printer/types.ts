@@ -159,7 +159,7 @@ export interface PrinterStateFilamentSensors {
 export interface PrinterStateDoorSensors {
     name: string
     enabled: boolean
-    door_closed: boolean
+    door_closed: Number
 }
 
 

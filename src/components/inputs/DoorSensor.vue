@@ -45,7 +45,7 @@ export default class DoorSensor extends Mixins(BaseMixin) {
 
     @Prop({ type: String, required: true }) declare readonly name: string
     @Prop({ type: Boolean, required: true }) declare readonly enabled: boolean
-    @Prop({ type: Boolean, required: true }) declare readonly door_closed: boolean
+    @Prop({ type: Number, required: true }) declare readonly door_closed: Number
 
     get statusColor() {
         if (!this.enabled) return 'gray'

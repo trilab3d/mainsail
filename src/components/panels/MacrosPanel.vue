@@ -2,9 +2,17 @@
     <panel v-if="klipperReadyForGui && macros.length > 0" :icon="mdiCodeTags" :title="$t('Panels.MacrosPanel.Headline')"
         :collapsible="true" card-class="macros-panel">
         <v-card-text class="py-4">
+            <v-row>
+                <v-col cols="12" class="py-2">
+                    <v-btn style="width:100%" small color="primary">
+                    {{ "LOAD FILAMENT" }}
+                    </v-btn>
+                </v-col>
+            </v-row>
+
             <v-row v-for="(macro, index) in macros" :key="'macro_' + index">
                 <v-col cols="12" class="py-2">
-                <macro-button :macro="macro" color="primary" class="" style="" />
+                    <macro-button :macro="macro" color="primary" class="" style="" />
                 </v-col>
             </v-row>
         </v-card-text>

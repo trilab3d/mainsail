@@ -202,6 +202,6 @@ export default class MacroButton extends Mixins(BaseMixin) {
 .vItemGroup {
     display: flex;
     flex-wrap: wrap;
-    margin: 0 -4px;
+    margin: 0 0;
 }
 </style>
