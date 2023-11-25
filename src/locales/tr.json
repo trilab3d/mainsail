@@ -557,8 +557,8 @@
         "Empty": "Boş"
       },
       "DoorSensor": {
-        "Closed": "Kapalı",
-        "Open": "Kapılar açık"
+        "Closed": "kapalı",
+        "Open": "açık"
       }
     },
     "PowerControlPanel": {

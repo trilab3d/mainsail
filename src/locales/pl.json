@@ -569,7 +569,7 @@
       },
       "DoorSensor": {
         "Closed": "Zamknięte",
-        "Open": "Drzwi otwarte"
+        "Open": "otwarty"
       }
     },
     "PowerControlPanel": {

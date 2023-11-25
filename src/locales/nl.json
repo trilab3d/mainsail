@@ -577,8 +577,8 @@
         "Empty": "Leeg"
       },
       "DoorSensor": {
-        "Closed": "Gesloten",
-        "Open": "Deuren open"
+        "Closed": "gesloten",
+        "Open": "open"
       }
     },
     "PowerControlPanel": {

@@ -580,7 +580,7 @@
       },
       "DoorSensor": {
         "Closed": "닫은",
-        "Open": "문 열림"
+        "Open": "열려 있는"
       }
     },
     "PowerControlPanel": {

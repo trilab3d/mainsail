@@ -4,8 +4,8 @@
         <v-card-text class="py-4">
             <v-row>
                 <v-col cols="12" class="py-2">
-                    <v-btn style="width:100%" small color="primary">
-                    {{ "LOAD FILAMENT" }}
+                    <v-btn style="width:100%" small color="purple" @click="showLoadFilamentWizard = true">
+                        {{ "LOAD FILAMENT" }}
                     </v-btn>
                 </v-col>
             </v-row>
@@ -16,6 +16,7 @@
                 </v-col>
             </v-row>
         </v-card-text>
+        <trilab-filament-load-wizard :showp="showLoadFilamentWizard" @close="showLoadFilamentWizard = false"></trilab-filament-load-wizard>
     </panel>
 </template>
 
@@ -24,13 +25,18 @@ import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '../mixins/base'
 import Panel from '@/components/ui/Panel.vue'
 import MacroButton from '@/components/inputs/MacroButton.vue'
+import TrilabFilamentLoadWizard from '@/components/dialogs/TrilabFilamentLoadWizard.vue'
 import { mdiCodeTags } from '@mdi/js'
 import { PrinterStateMacro } from '@/store/printer/types'
 @Component({
-    components: { MacroButton, Panel },
+    components: { MacroButton, Panel, TrilabFilamentLoadWizard },
 })
 export default class MacrosPanel extends Mixins(BaseMixin) {
     mdiCodeTags = mdiCodeTags
+
+
+    public showLoadFilamentWizard : boolean = false;
+    public showUnloadFilamentWizard : boolean = false;
 
     get hiddenMacros() {
         return (this.$store.state.gui?.macros?.hiddenMacros ?? []).map((name: string) => name.toLowerCase())
@@ -41,5 +47,6 @@ export default class MacrosPanel extends Mixins(BaseMixin) {
 
         return macros.filter((macro: PrinterStateMacro) => !this.hiddenMacros.includes(macro.name.toLowerCase()))
     }
+
 }
 </script>

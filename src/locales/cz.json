@@ -578,8 +578,8 @@
         "Empty": "prázdné"
       },
       "DoorSensor": {
-        "Closed": "Zavřené",
-        "Open": "Dveře otevřeny"
+        "Closed": "zavřeno",
+        "Open": "otevřeno"
       }
     },
     "PowerControlPanel": {

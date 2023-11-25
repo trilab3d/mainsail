@@ -532,7 +532,7 @@
       },
       "DoorSensor": {
         "Closed": "ЗАЧИНЕНО",
-        "Open": "Двері відчинені"
+        "Open": "ВІДЧИНЕНО"
       }
     },
     "PowerControlPanel": {

@@ -561,8 +561,8 @@
         "White": "blanc"
       },
       "DoorSensor": {
-        "Closed": "Fermé",
-        "Open": "Portes ouvertes"
+        "Closed": "fermé",
+        "Open": "ouvrir"
       }
     },
     "PowerControlPanel": {

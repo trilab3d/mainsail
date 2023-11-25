@@ -521,8 +521,8 @@
         "Empty": "Üres"
       },
       "DoorSensor": {
-        "Closed": "Zárva",
-        "Open": "Ajtók nyílnak"
+        "Closed": "zárva",
+        "Open": "nyisd ki"
       }
     },
     "PowerControlPanel": {

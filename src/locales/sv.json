@@ -473,8 +473,8 @@
         "Empty": "Tom"
       },
       "DoorSensor": {
-        "Closed": "Stängd",
-        "Open": "Öppna dörrar"
+        "Closed": "stängd",
+        "Open": "öppen"
       }
     },
     "PowerControlPanel": {

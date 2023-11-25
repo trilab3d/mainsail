@@ -520,8 +520,8 @@
         "Empty": "Vacío"
       },
       "DoorSensor": {
-        "Closed": "Cerrado",
-        "Open": "Puertas abren"
+        "Closed": "cerrado",
+        "Open": "abierto"
       }
     },
     "PowerControlPanel": {

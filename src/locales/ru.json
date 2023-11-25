@@ -585,8 +585,8 @@
         "Empty": "Пусто"
       },
       "DoorSensor": {
-        "Closed": "Закрыто",
-        "Open": "Двери открыты"
+        "Closed": "закрыто",
+        "Open": "открыть"
       }
     },
     "PowerControlPanel": {

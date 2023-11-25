@@ -577,8 +577,8 @@
         "Empty": "Tom"
       },
       "DoorSensor": {
-        "Closed": "Lukket",
-        "Open": "Dørene åbnes"
+        "Closed": "lukket",
+        "Open": "åben"
       }
     },
     "PowerControlPanel": {
