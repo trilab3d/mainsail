@@ -9,10 +9,9 @@
 
             <v-card-text>
                 <div v-if="fileUploading">
-                    <p v-if="fileUploading">{{ uploadStatus }}<span v-if="uploadError == null">Progress: {{ uploadProgress
+                    <p v-if="fileUploading">{{ uploadStatus }}<span v-if="uploadError == null">{{ $t("Trilab.TrilabUpdateDialog.Progres") }} {{ uploadProgress
                     }}
-                            %</span><v-btn v-if="uploadError != null" @click="showErrorDetails()">Show error technical
-                            details</v-btn></p>
+                            %</span><v-btn v-if="uploadError != null" @click="showErrorDetails()">{{ $t("Trilab.TrilabUpdateDialog.ShowErrorTechinicalDetails") }}</v-btn></p>
                     <div v-if="uploadProgress < 100">
                         <v-progress-linear :indeterminate="uploadProgress === null" :value="uploadProgress"
                             :color="uploadFileProgressbarColor" :height="10" striped></v-progress-linear>
@@ -20,14 +19,14 @@
                 </div>
 
                 <div v-if="true">
-                    <p>STATUS: <span>{{ customStatus }}</span></p>
+                    <p>{{ $t("Trilab.TrilabUpdateDialog.STATUS") }} <span>{{ customStatus }}</span></p>
                     <v-progress-linear :indeterminate="updateProgressStatus === 'IDLE'"
                         :color="updateProgressStatus === 'IDLE' ? 'primary' : 'success'" :value="updateProgressValue"
                         :buffer-value="updateProgressValue" :height="5" striped></v-progress-linear>
                     <v-list>
                         <v-btn color="danger" v-if="showRestartBtn"></v-btn>
                         <v-list-item v-for="log in logs" :key="log.id" class="ulog">
-                            <span v-if="log.text.indexOf('ERROR') != -1" color="danger">DANGER</span>
+                            <span v-if="log.text.indexOf('ERROR') != -1" color="danger">{{ $t("Trilab.TrilabUpdateDialog.DANGER") }}</span>
                             <p>
                                 {{ log.text }}
                             </p>

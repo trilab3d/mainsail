@@ -21,10 +21,10 @@
                 <b class="hidden-md-and-down">{{ $t('App.TopBar.ViewStatus.Advanced') }}</b>
             </v-chip>
             <v-chip v-if="$store.state.trilab.hiddenView" color="#31FF3C">
-                <b>Hidden View Enabled</b>
+                <b>{{ $t("Trilab.TheTopbar.HiddenViewEnbled") }}</b>
             </v-chip>
             <v-chip v-if="$store.state.trilab.serviceView" color="#FF4820">
-                <b>Service View Enabled</b>
+                <b>{{ $t("Trilab.TheTopbar.ServiceViewEnabled") }}</b>
             </v-chip>
             <v-divider v-if="liveUpdateStatus != 'UP_TO_DATE'" class="mx-2" vertical></v-divider>
             <v-chip v-if="liveUpdateStatus != 'UP_TO_DATE'" color="#FFA500" @click="showLiveUpdateDialogAction()">

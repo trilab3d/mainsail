@@ -5,7 +5,7 @@
       <v-card-text>
         <v-text-field v-model="username" v-if="false" label="Username" outlined></v-text-field>
         <v-text-field ref="password" v-model="password" label="Password" outlined type="password"></v-text-field>
-        <v-btn text @click="$emit('close')">Cancel</v-btn>
+        <v-btn text @click="$emit('close')">{{ $t("Trilab.TrilabServiceDialog.Cancel") }}</v-btn>
       </v-card-text>
     </v-card>
   </v-dialog>

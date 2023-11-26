@@ -963,5 +963,64 @@
     "restartWarning": "Din skrivare kommer att starta om och du kommer att förlora anslutningen till den här skrivaren under en kort stund under detta steg",
     "printerIsPrinting": "Du kan inte utföra det här steget just nu eftersom din skrivare jobbar. \nVänta ett tag, det här fönstret uppdateras automatiskt när detta steg är klart",
     "installAndRebootBtn": "INSTALLERA"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Filament laddas...",
+      "InsertFilamentIntoExtruder": "Sätt in filament i extrudern och tryck på fortsätt",
+      "SelectWhichFilamentYouWantToLoad": "Välj vilken filament du vill ladda",
+      "PleaseWaitForTheTemperatureToReach": "Vänta tills temperaturen når",
+      "IsColorClean": "Är färgen ren?",
+      "CancelHeating": "Avbryt uppvärmningen",
+      "Continue": "Fortsätta",
+      "OpenFilamentMenu": "Öppna filamentmenyn",
+      "CancelWizard": "Avbryt guiden",
+      "PurgeMore": "Rensa mer",
+      "CooldownAndClose": "Kyla ner",
+      "Close": "Stänga"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Annullera",
+      "Cpnfirm": "Bekräfta",
+      "AreYouSureYouWantToSelectFilament": "Är du säker på att du vill välja filament",
+      "OK": "OK"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Serviceinloggning",
+      "Cancel": "Annullera"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Framsteg:",
+      "ShowErrorTechinicalDetails": "Visa tekniska feldetaljer",
+      "STATUS": "STATUS:",
+      "DANGER": "FARA"
+    },
+    "SettingsTrilabTab": {
+      "System": "Systemet",
+      "SystemVersion": "Systemversion:",
+      "WenInterfaceVersion": "Webbgränssnittsversion:",
+      "AutomaticCheckForUpdates": "Automatisk sökning efter uppdateringar:",
+      "UploadUpdateFile": "Ladda upp uppdateringsfil",
+      "Upload": "Ladda upp",
+      "CheckForLiveUpdate": "Sök efter liveuppdatering",
+      "NoUpdateAvailable": "Ingen uppdatering tillgänglig"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Dold vy aktiverad",
+      "ServiceViewEnabled": "Service View aktiverad"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Storsegel"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Avancerade funktioner:"
+    },
+    "SlicerPanel": {
+      "Download": "Ladda ner"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 sidan hittades inte"
+    }
   }
 }

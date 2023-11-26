@@ -1069,5 +1069,64 @@
     "restartWarning": "Su impresora se reiniciará y perderá la conexión a esta impresora por un momento durante este paso.",
     "printerIsPrinting": "No puede realizar este paso en este momento porque su impresora está funcionando. \nEspere un momento, esta ventana se actualizará automáticamente cuando este paso esté listo",
     "installAndRebootBtn": "INSTALAR"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "El filamento se está cargando...",
+      "InsertFilamentIntoExtruder": "Inserta el filamento en el extrusor y presiona continuar.",
+      "SelectWhichFilamentYouWantToLoad": "Selecciona qué filamento quieres cargar",
+      "PleaseWaitForTheTemperatureToReach": "Espere a que alcance la temperatura.",
+      "IsColorClean": "¿El color está limpio?",
+      "CancelHeating": "Cancelar calefacción",
+      "Continue": "Continuar",
+      "OpenFilamentMenu": "Abrir menú de filamentos",
+      "CancelWizard": "Cancelar asistente",
+      "PurgeMore": "Purgar más",
+      "CooldownAndClose": "Enfriarse",
+      "Close": "Cerca"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Cancelar",
+      "Cpnfirm": "Confirmar",
+      "AreYouSureYouWantToSelectFilament": "¿Estás seguro de que quieres seleccionar el filamento?",
+      "OK": "DE ACUERDO"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Inicio de sesión de servicio",
+      "Cancel": "Cancelar"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Progreso:",
+      "ShowErrorTechinicalDetails": "Mostrar detalles técnicos del error",
+      "STATUS": "ESTADO:",
+      "DANGER": "PELIGRO"
+    },
+    "SettingsTrilabTab": {
+      "System": "Sistema",
+      "SystemVersion": "Versión del sistema:",
+      "WenInterfaceVersion": "Versión de la interfaz web:",
+      "AutomaticCheckForUpdates": "Comprobación automática de actualizaciones:",
+      "UploadUpdateFile": "Cargar archivo de actualización",
+      "Upload": "Subir",
+      "CheckForLiveUpdate": "Busque actualizaciones en vivo",
+      "NoUpdateAvailable": "Actualización no disponible"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Vista oculta habilitada",
+      "ServiceViewEnabled": "Vista de servicio habilitada"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Vela mayor"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Características avanzadas:"
+    },
+    "SlicerPanel": {
+      "Download": "Descargar"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 Pagina no encontrada"
+    }
   }
 }

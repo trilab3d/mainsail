@@ -49,7 +49,7 @@
 					</v-col>
 				</v-row>
 				<v-btn class="panel-download-btn mt-3 mb-3" :href="getHrefLink" @click="downloadSP()" color="primary"
-					block>Download</v-btn>
+					block>{{ $t("Trilab.SlicerPanel.Download") }}</v-btn>
 				<p class="panel-long-description" v-html="$t(`Panels.trilabSlicers.${target}.longDescription`)"></p>
 			</div>
 

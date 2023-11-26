@@ -1256,5 +1256,64 @@
   },
   "TrilabUpdateDialog": {
     "title": "Update"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Filament is loading...",
+      "InsertFilamentIntoExtruder": "Insert filament into the extruder and press continue",
+      "SelectWhichFilamentYouWantToLoad": "Select which filament you want to load",
+      "PleaseWaitForTheTemperatureToReach": "Please wait for the temperature to reach",
+      "IsColorClean": "Is color clean?",
+      "CancelHeating": "Cancel heating",
+      "Continue": "Continue",
+      "OpenFilamentMenu": "Open filament menu",
+      "CancelWizard": "Cancel wizard",
+      "PurgeMore": "Purge More",
+      "CooldownAndClose": "Cooldown & Close",
+      "Close": "Close"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Cancel",
+      "Cpnfirm": "Confirm",
+      "AreYouSureYouWantToSelectFilament": "Are you sure you want to select filament",
+      "OK": "OK"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Service Login",
+      "Cancel": "Cancel"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Progress:",
+      "ShowErrorTechinicalDetails": "Show error technical details",
+      "STATUS": "STATUS:",
+      "DANGER": "DANGER"
+    },
+    "SettingsTrilabTab": {
+      "System": "System",
+      "SystemVersion": "System version:",
+      "WenInterfaceVersion": "Web interface version:",
+      "AutomaticCheckForUpdates": "Automatic check for updates:",
+      "UploadUpdateFile": "Upload update file",
+      "Upload": "Upload",
+      "CheckForLiveUpdate": "Check for live update",
+      "NoUpdateAvailable": "No update available"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Hidden View Enabled",
+      "ServiceViewEnabled": "Service View Enabled"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Mainsail"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Advanced features:"
+    },
+    "SlicerPanel": {
+      "Download": "Download"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 page not found"
+    }
   }
 }

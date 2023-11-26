@@ -1193,5 +1193,64 @@
     "restartWarning": "プリンターが再起動され、この手順中にしばらくの間、このプリンターへの接続が失われます。",
     "printerIsPrinting": "プリンターが何らかの作業を行っているため、現在この手順を実行することはできません。\nしばらくお待ちください。この手順の準備が完了すると、このウィンドウは自動的に更新されます",
     "installAndRebootBtn": "インストール"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "フィラメントをロードしています...",
+      "InsertFilamentIntoExtruder": "フィラメントをエクストルーダーに挿入し、続行を押します",
+      "SelectWhichFilamentYouWantToLoad": "ロードするフィラメントを選択してください",
+      "PleaseWaitForTheTemperatureToReach": "温度が上がるまでお待ちください",
+      "IsColorClean": "色はきれいですか？",
+      "CancelHeating": "加熱を中止する",
+      "Continue": "続く",
+      "OpenFilamentMenu": "フィラメントメニューを開く",
+      "CancelWizard": "ウィザードのキャンセル",
+      "PurgeMore": "さらにパージ",
+      "CooldownAndClose": "クールダウン",
+      "Close": "近い"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "キャンセル",
+      "Cpnfirm": "確認する",
+      "AreYouSureYouWantToSelectFilament": "フィラメントを選択してもよろしいですか",
+      "OK": "わかりました"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "サービスログイン",
+      "Cancel": "キャンセル"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "進捗：",
+      "ShowErrorTechinicalDetails": "エラーの技術的な詳細を表示",
+      "STATUS": "状態：",
+      "DANGER": "危険"
+    },
+    "SettingsTrilabTab": {
+      "System": "システム",
+      "SystemVersion": "システムバージョン:",
+      "WenInterfaceVersion": "Web インターフェースのバージョン:",
+      "AutomaticCheckForUpdates": "アップデートの自動チェック:",
+      "UploadUpdateFile": "アップデートファイルをアップロードする",
+      "Upload": "アップロード",
+      "CheckForLiveUpdate": "ライブアップデートを確認する",
+      "NoUpdateAvailable": "利用可能なアップデートはありません"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "隠しビューを有効にする",
+      "ServiceViewEnabled": "サービスビューが有効になっています"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "メインセール"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "高度な機能："
+    },
+    "SlicerPanel": {
+      "Download": "ダウンロード"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 ページが見つかりません"
+    }
   }
 }

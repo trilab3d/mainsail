@@ -1192,5 +1192,64 @@
     "restartWarning": "Uw printer wordt opnieuw opgestart en tijdens deze stap wordt de verbinding met deze printer korte tijd verbroken",
     "printerIsPrinting": "U kunt deze stap nu niet uitvoeren, omdat uw printer wat werk doet. \nWacht even, dit venster wordt automatisch vernieuwd wanneer deze stap gereed is",
     "installAndRebootBtn": "INSTALLEREN"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Filament wordt geladen...",
+      "InsertFilamentIntoExtruder": "Plaats het filament in de extruder en druk op Doorgaan",
+      "SelectWhichFilamentYouWantToLoad": "Selecteer welk filament je wilt laden",
+      "PleaseWaitForTheTemperatureToReach": "Wacht tot de temperatuur is bereikt",
+      "IsColorClean": "Is kleur schoon?",
+      "CancelHeating": "Verwarming annuleren",
+      "Continue": "Doorgaan",
+      "OpenFilamentMenu": "Open het filamentmenu",
+      "CancelWizard": "Wizard annuleren",
+      "PurgeMore": "Meer opruimen",
+      "CooldownAndClose": "Afkoelen",
+      "Close": "Dichtbij"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Annuleren",
+      "Cpnfirm": "Bevestigen",
+      "AreYouSureYouWantToSelectFilament": "Weet u zeker dat u filament wilt selecteren?",
+      "OK": "OK"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Dienstaanmelding",
+      "Cancel": "Annuleren"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Voortgang:",
+      "ShowErrorTechinicalDetails": "Toon fout technische details",
+      "STATUS": "TOESTAND:",
+      "DANGER": "GEVAAR"
+    },
+    "SettingsTrilabTab": {
+      "System": "Systeem",
+      "SystemVersion": "Systeemversie:",
+      "WenInterfaceVersion": "Versie webinterface:",
+      "AutomaticCheckForUpdates": "Automatische controle op updates:",
+      "UploadUpdateFile": "Updatebestand uploaden",
+      "Upload": "Uploaden",
+      "CheckForLiveUpdate": "Controleer op live-update",
+      "NoUpdateAvailable": "Geen update beschikbaar"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Verborgen weergave ingeschakeld",
+      "ServiceViewEnabled": "Serviceweergave ingeschakeld"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Grootzeil"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Geavanceerde functies:"
+    },
+    "SlicerPanel": {
+      "Download": "Downloaden"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 pagina niet gevonden"
+    }
   }
 }

@@ -1217,5 +1217,64 @@
     "restartWarning": "На этом этапе ваш принтер перезагрузится, и вы ненадолго потеряете соединение с этим принтером.",
     "printerIsPrinting": "Вы не можете выполнить этот шаг прямо сейчас, поскольку ваш принтер выполняет какую-то работу. \nПожалуйста, подождите некоторое время, это окно автоматически обновится, когда этот шаг будет готов.",
     "installAndRebootBtn": "УСТАНОВИТЬ"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Нить загружается...",
+      "InsertFilamentIntoExtruder": "Вставьте нить в экструдер и нажмите «Продолжить».",
+      "SelectWhichFilamentYouWantToLoad": "Выберите, какую нить вы хотите загрузить.",
+      "PleaseWaitForTheTemperatureToReach": "Пожалуйста, подождите, пока температура достигнет",
+      "IsColorClean": "Цвет чистый?",
+      "CancelHeating": "Отменить нагрев",
+      "Continue": "Продолжать",
+      "OpenFilamentMenu": "Открыть меню нитей",
+      "CancelWizard": "Отменить мастер",
+      "PurgeMore": "Очистить больше",
+      "CooldownAndClose": "Остывать",
+      "Close": "Закрывать"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Отмена",
+      "Cpnfirm": "Подтверждать",
+      "AreYouSureYouWantToSelectFilament": "Вы уверены, что хотите выбрать нить",
+      "OK": "ХОРОШО"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Вход в сервис",
+      "Cancel": "Отмена"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Прогресс:",
+      "ShowErrorTechinicalDetails": "Показать техническую информацию об ошибке",
+      "STATUS": "ПОЛОЖЕНИЕ ДЕЛ:",
+      "DANGER": "ОПАСНОСТЬ"
+    },
+    "SettingsTrilabTab": {
+      "System": "Система",
+      "SystemVersion": "Версия системы:",
+      "WenInterfaceVersion": "Версия веб-интерфейса:",
+      "AutomaticCheckForUpdates": "Автоматическая проверка обновлений:",
+      "UploadUpdateFile": "Загрузите файл обновления",
+      "Upload": "Загрузить",
+      "CheckForLiveUpdate": "Проверьте актуальное обновление",
+      "NoUpdateAvailable": "Нет доступных обновлений"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Скрытый просмотр включен",
+      "ServiceViewEnabled": "Просмотр услуг включен"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Грот"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Расширенные возможности:"
+    },
+    "SlicerPanel": {
+      "Download": "Скачать"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 Страница не найдена"
+    }
   }
 }

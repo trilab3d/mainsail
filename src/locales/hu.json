@@ -1071,5 +1071,64 @@
     "restartWarning": "A nyomtató újraindul, és a lépés során rövid időre megszakad a kapcsolat ezzel a nyomtatóval",
     "printerIsPrinting": "Ezt a lépést jelenleg nem tudja végrehajtani, mert a nyomtatója éppen dolgozik. \nKérjük, várjon egy kicsit, ez az ablak automatikusan frissül, ha ez a lépés készen áll",
     "installAndRebootBtn": "TELEPÍTÉS"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Az izzószál betöltődik...",
+      "InsertFilamentIntoExtruder": "Helyezze be a filamentet az extruderbe, és nyomja meg a Folytatás gombot",
+      "SelectWhichFilamentYouWantToLoad": "Válassza ki, hogy melyik izzószálat szeretné betölteni",
+      "PleaseWaitForTheTemperatureToReach": "Kérjük, várja meg, amíg a hőmérséklet eléri",
+      "IsColorClean": "A szín tiszta?",
+      "CancelHeating": "Fűtés megszakítása",
+      "Continue": "Folytatni",
+      "OpenFilamentMenu": "Nyissa meg az izzószál menüt",
+      "CancelWizard": "Mégse varázsló",
+      "PurgeMore": "Purge More",
+      "CooldownAndClose": "Nyugodj le",
+      "Close": "Bezárás"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Megszünteti",
+      "Cpnfirm": "megerősít",
+      "AreYouSureYouWantToSelectFilament": "Biztosan ki szeretné választani az izzószálat?",
+      "OK": "rendben"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Szolgáltatás bejelentkezés",
+      "Cancel": "Megszünteti"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Előrehalad:",
+      "ShowErrorTechinicalDetails": "A hiba műszaki részleteinek megjelenítése",
+      "STATUS": "ÁLLAPOT:",
+      "DANGER": "VESZÉLY"
+    },
+    "SettingsTrilabTab": {
+      "System": "Rendszer",
+      "SystemVersion": "Rendszer verzió:",
+      "WenInterfaceVersion": "Webes felület verziója:",
+      "AutomaticCheckForUpdates": "Automatikus frissítések keresése:",
+      "UploadUpdateFile": "Frissítő fájl feltöltése",
+      "Upload": "Feltöltés",
+      "CheckForLiveUpdate": "Ellenőrizze az élő frissítést",
+      "NoUpdateAvailable": "Nem érhető el frissítés"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Rejtett nézet engedélyezve",
+      "ServiceViewEnabled": "Szolgáltatásnézet engedélyezve"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Nagyvitorla"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Speciális funkciók:"
+    },
+    "SlicerPanel": {
+      "Download": "Letöltés"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 Oldal nem található"
+    }
   }
 }

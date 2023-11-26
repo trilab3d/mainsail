@@ -1209,5 +1209,64 @@
     "restartWarning": "Vaše tiskárna se restartuje a na krátko ztratíte připojení k této tiskárně při provádění tohoto kroku.",
     "printerIsPrinting": "Teď tuto akci nemůžete provést, protože vaše tiskárna provádí nějakou práci. Prosím počkejte chvilku, toto okno se automaticky aktualizuje až bude akce připravena",
     "installAndRebootBtn": "Instalovat & restartovat"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Filament is loading...",
+      "InsertFilamentIntoExtruder": "Insert filament into the extruder and press continue",
+      "SelectWhichFilamentYouWantToLoad": "Select which filament you want to load",
+      "PleaseWaitForTheTemperatureToReach": "Please wait for the temperature to reach",
+      "IsColorClean": "Is color clean?",
+      "CancelHeating": "Zruěit zahřívání",
+      "Continue": "Pokračovat",
+      "OpenFilamentMenu": "Otevřít menu s filamenty ",
+      "CancelWizard": "Zavřít průvodce",
+      "PurgeMore": "Vytlačit více",
+      "CooldownAndClose": "Ochladit a zavřít",
+      "Close": "Zavřít"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Zrušit",
+      "Cpnfirm": "Potvrdit",
+      "AreYouSureYouWantToSelectFilament": "Jste si jisti, že chcete vybrat filament",
+      "OK": "OK"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "",
+      "Cancel": "Zrušit"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Průběh:",
+      "ShowErrorTechinicalDetails": "Zobrazit technické podrobnosti o chybách",
+      "STATUS": "STAV:",
+      "DANGER": "NEBEZPEČÍ"
+    },
+    "SettingsTrilabTab": {
+      "System": "Systém",
+      "SystemVersion": "Verze systému",
+      "WenInterfaceVersion": "Verze webového rozhraní:",
+      "AutomaticCheckForUpdates": "Automatická kontrola aktualizací:",
+      "UploadUpdateFile": "Nahrát soubor s aktualizací",
+      "Upload": "Nahrát",
+      "CheckForLiveUpdate": "Zkontrolujte živou aktualizaci",
+      "NoUpdateAvailable": "Žádná aktualizace není k dispozici"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Povolit skryté zobrazení",
+      "ServiceViewEnabled": "Povolit zobrazení služeb"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Mainsail"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Pokročilé funkce:"
+    },
+    "SlicerPanel": {
+      "Download": "Stáhnout"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 stránka neexistuje"
+    }
   }
 }

@@ -1093,5 +1093,64 @@
     "restartWarning": "Ваш принтер перезапуститься, і під час цього кроку ви на короткий час втратите з’єднання з цим принтером",
     "printerIsPrinting": "Ви не можете виконати цей крок зараз, оскільки ваш принтер виконує певну роботу. \nЗачекайте трохи, це вікно автоматично оновиться, коли цей крок буде готовий",
     "installAndRebootBtn": "ВСТАНОВИТИ"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Філамент завантажується...",
+      "InsertFilamentIntoExtruder": "Вставте нитку в екструдер і натисніть «Продовжити».",
+      "SelectWhichFilamentYouWantToLoad": "Виберіть, яку нитку ви бажаєте завантажити",
+      "PleaseWaitForTheTemperatureToReach": "Зачекайте, доки температура досягне",
+      "IsColorClean": "Колір чистий?",
+      "CancelHeating": "Скасувати нагрівання",
+      "Continue": "Продовжити",
+      "OpenFilamentMenu": "Відкрити меню нитки",
+      "CancelWizard": "Майстер скасування",
+      "PurgeMore": "Очищення більше",
+      "CooldownAndClose": "Заспокойся",
+      "Close": "Закрити"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Скасувати",
+      "Cpnfirm": "Підтвердити",
+      "AreYouSureYouWantToSelectFilament": "Ви впевнені, що хочете вибрати нитку?",
+      "OK": "в порядку"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Сервіс Логін",
+      "Cancel": "Скасувати"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Прогрес:",
+      "ShowErrorTechinicalDetails": "Показати технічні деталі помилки",
+      "STATUS": "СТАТУС:",
+      "DANGER": "НЕБЕЗПЕКА"
+    },
+    "SettingsTrilabTab": {
+      "System": "система",
+      "SystemVersion": "Версія системи:",
+      "WenInterfaceVersion": "Версія веб-інтерфейсу:",
+      "AutomaticCheckForUpdates": "Автоматична перевірка оновлень:",
+      "UploadUpdateFile": "Завантажте файл оновлення",
+      "Upload": "Завантажити",
+      "CheckForLiveUpdate": "Перевірити оновлення в реальному часі",
+      "NoUpdateAvailable": "Немає оновлень"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Прихований перегляд увімкнено",
+      "ServiceViewEnabled": "Перегляд служби ввімкнено"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Грот"
+    },
+    "AdvancedFeatures": "Розширені функції:",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Розширені функції:"
+    },
+    "SlicerPanel": {
+      "Download": "Завантажити"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 сторінка не знайдена"
+    }
   }
 }

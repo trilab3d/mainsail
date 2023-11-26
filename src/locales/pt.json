@@ -1217,5 +1217,64 @@
     "restartWarning": "Sua impressora será reiniciada e você perderá a conexão com ela por um breve período durante esta etapa",
     "printerIsPrinting": "Você não pode executar esta etapa agora porque sua impressora está realizando algum trabalho. \nAguarde um pouco, esta janela será atualizada automaticamente quando esta etapa estiver pronta",
     "installAndRebootBtn": "INSTALAR"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "O filamento está carregando...",
+      "InsertFilamentIntoExtruder": "Insira o filamento na extrusora e pressione continuar",
+      "SelectWhichFilamentYouWantToLoad": "Selecione qual filamento você deseja carregar",
+      "PleaseWaitForTheTemperatureToReach": "Aguarde até que a temperatura atinja",
+      "IsColorClean": "A cor está limpa?",
+      "CancelHeating": "Cancelar aquecimento",
+      "Continue": "Continuar",
+      "OpenFilamentMenu": "Abrir menu de filamento",
+      "CancelWizard": "Cancelar assistente",
+      "PurgeMore": "Purgar mais",
+      "CooldownAndClose": "Esfriar",
+      "Close": "Fechar"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Cancelar",
+      "Cpnfirm": "confirme",
+      "AreYouSureYouWantToSelectFilament": "Tem certeza de que deseja selecionar o filamento",
+      "OK": "OK"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Login de serviço",
+      "Cancel": "Cancelar"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Progresso:",
+      "ShowErrorTechinicalDetails": "Mostrar detalhes técnicos do erro",
+      "STATUS": "STATUS:",
+      "DANGER": "PERIGO"
+    },
+    "SettingsTrilabTab": {
+      "System": "Sistema",
+      "SystemVersion": "Versão do sistema:",
+      "WenInterfaceVersion": "Versão da interface web:",
+      "AutomaticCheckForUpdates": "Verificação automática de atualizações:",
+      "UploadUpdateFile": "Carregar arquivo de atualização",
+      "Upload": "Carregar",
+      "CheckForLiveUpdate": "Verifique se há atualização ao vivo",
+      "NoUpdateAvailable": "Nenhuma atualização disponível"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Visualização oculta ativada",
+      "ServiceViewEnabled": "Visualização de serviço ativada"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Vela grande"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Características avançadas:"
+    },
+    "SlicerPanel": {
+      "Download": "Download"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 Página Não Encontrada"
+    }
   }
 }

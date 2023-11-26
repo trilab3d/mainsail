@@ -1196,5 +1196,64 @@
     "restartWarning": "프린터가 다시 시작되고 이 단계가 진행되는 동안 잠시 동안 이 프린터와의 연결이 끊어집니다.",
     "printerIsPrinting": "프린터가 일부 작업을 수행 중이므로 지금은 이 단계를 수행할 수 없습니다. \n잠시 기다려 주십시오. 이 단계가 준비되면 이 창이 자동으로 새로 고쳐집니다.",
     "installAndRebootBtn": "설치하다"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "필라멘트 로드 중...",
+      "InsertFilamentIntoExtruder": "압출기에 필라멘트를 넣고 계속을 누릅니다.",
+      "SelectWhichFilamentYouWantToLoad": "로드할 필라멘트를 선택하세요.",
+      "PleaseWaitForTheTemperatureToReach": "온도가 도달할 때까지 기다려 주세요.",
+      "IsColorClean": "색상이 깨끗한가요?",
+      "CancelHeating": "난방 취소",
+      "Continue": "계속하다",
+      "OpenFilamentMenu": "필라멘트 메뉴 열기",
+      "CancelWizard": "마법사 취소",
+      "PurgeMore": "더 많이 퍼지",
+      "CooldownAndClose": "쿨타임",
+      "Close": "닫다"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "취소",
+      "Cpnfirm": "확인하다",
+      "AreYouSureYouWantToSelectFilament": "필라멘트를 선택하시겠습니까?",
+      "OK": "좋아요"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "서비스 로그인",
+      "Cancel": "취소"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "진전:",
+      "ShowErrorTechinicalDetails": "오류 기술 세부정보 표시",
+      "STATUS": "상태:",
+      "DANGER": "위험"
+    },
+    "SettingsTrilabTab": {
+      "System": "체계",
+      "SystemVersion": "시스템 버전:",
+      "WenInterfaceVersion": "웹 인터페이스 버전:",
+      "AutomaticCheckForUpdates": "업데이트 자동 확인:",
+      "UploadUpdateFile": "업데이트 파일 업로드",
+      "Upload": "업로드",
+      "CheckForLiveUpdate": "실시간 업데이트 확인",
+      "NoUpdateAvailable": "사용 가능한 업데이트가 없습니다."
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "숨겨진 뷰 활성화",
+      "ServiceViewEnabled": "서비스 보기 활성화됨"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "메인세일"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "고급 기능:"
+    },
+    "SlicerPanel": {
+      "Download": "다운로드"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 페이지를 찾을 수 없습니다"
+    }
   }
 }

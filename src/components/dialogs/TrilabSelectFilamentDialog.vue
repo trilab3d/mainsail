@@ -12,22 +12,22 @@
                 </v-row>
 
                 <v-divider class="mt-4 mb-4"></v-divider>
-                <v-btn @click="$emit('close')">Cancel</v-btn>
+                <v-btn @click="$emit('close')">{{ $t("Trilab.TrilabSelectFilamentDialog.Cancel") }}</v-btn>
             </v-card-text>
         </v-card>
         <!--- just a confirm dialog really select filament xxx? --->
 
         <v-dialog v-model="selectDialogConfirmation" max-width="400px">
             <v-card>
-                <v-card-title class="headline">Confirm</v-card-title>
+                <v-card-title class="headline">{{ $t("Trilab.TrilabSelectFilamentDialog.Cpnfirm") }}</v-card-title>
                 <v-card-text>
-                    <p>Are you sure you want to select filament {{ selectedFilament.title }}?</p>
+                    <p>{{ $t("Trilab.TrilabSelectFilamentDialog.AreYouSureYouWantToSelectFilament") }} {{ selectedFilament.title }}?</p>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="green darken-1" text @click="selectDialogConfirmation = false">Cancel</v-btn>
+                    <v-btn color="green darken-1" text @click="selectDialogConfirmation = false">{{ $t("Trilab.TrilabSelectFilamentDialog.Cancel") }}</v-btn>
                     <v-btn color="green darken-1" text
-                        @click="selectDialogConfirmation = false; selectFilament(selectedFilament)">OK</v-btn>
+                        @click="selectDialogConfirmation = false; selectFilament(selectedFilament)">{{ $t("Trilab.TrilabSelectFilamentDialog.OK") }}</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>

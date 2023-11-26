@@ -1,35 +1,37 @@
 <template>
     <v-dialog v-model="isDialogVisible" max-width="800px" persistent>
         <v-card>
-            <v-card-title class="headline">Filament loading wizard</v-card-title>
+            <v-card-title class="headline">  </v-card-title>
             <v-card-text>
-                <p>Step {{ step + 1 }}</p>
+                <p>Step{{ $t("Trilab.TrilabFilamentLoadWizard.InsertFilamentIntoExtruder") }} {{ step + 1 }}</p>
                 <div v-if="step == 0">
-                    <p>Select which filament you want to load</p>
-                    <v-btn block @click="showSelectFilamentDialog = true" class="green darken-1">Open filament menu</v-btn>
+                    <p>{{ $t("Trilab.TrilabFilamentLoadWizard.SelectWhichFilamentYouWantToLoad") }}</p>
+                    <v-btn block @click="showSelectFilamentDialog = true" class="green darken-1">{{ $t("Trilab.TrilabFilamentLoadWizard.OpenFilamentMenu") }}
+</v-btn>
                 </div>
                 <div v-if="step == 1">
-                    <p>Please wait for the temperature to reach {{ selectedFilament.extruder }} °C</p>
+                    <p>{{ $t("Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }} {{ selectedFilament.extruder }} °C</p>
 
                     <v-progress-linear :value="temperatureProgress" color="green darken-1" height="10"></v-progress-linear>
                     
                     <v-divider class="mt-4 mb-4"></v-divider>
 
-                    <v-btn block @click="cancelHeating" class="green darken-1">Cancel heating</v-btn>
-                </div>
+                    <v-btn block @click="cancelHeating" class="green darken-1">{{ $t("Trilab.TrilabFilamentLoadWizard.CancelHeating") }}
+</div>
 
                 <div v-if="step == 2">
-                    <p>Insert filament into the extruder and press continue</p>
-                    <v-btn block @click="loadFilament" class="green darken-1">Continue</v-btn>
+                    <p>{{ $t("Trilab.TrilabFilamentLoadWizard.InsertFilamentIntoExtruder") }}</p>
+                    <v-btn block @click="loadFilament" class="green darken-1">{{ $t("Trilab.TrilabFilamentLoadWizard.Continue") }}
+
                 </div>
 
                 <div v-if="step == 3">
-                    <p v-if="idleTimeout != 'Ready'">Filament is loading...</p>
+                    <p v-if="idleTimeout != 'Ready'">{{ $t('Trilab.TrilabFilamentLoadWizard.FilamentIsLoading') }}</p>
                     <div v-if="idleTimeout == 'Ready'">
-                        <p>Is color clean?</p>
-                        <v-btn block @click="purgeMore" class="green darken-1">Purge More</v-btn>
-                        <v-btn block @click="closeCooldown" class="green darken-1">Cooldown & Close</v-btn>
-                        <v-btn block @click="close" class="green darken-1">Close</v-btn>
+                        <p>Is color clean?{{ $t("Trilab.TrilabFilamentLoadWizard.IsColorClean") }} </p>
+                        <v-btn block @click="purgeMore" class="green darken-1">{{ $t("Trilab.TrilabFilamentLoadWizard.PurgeMore") }}</v-btn>
+                        <v-btn block @click="closeCooldown" class="green darken-1">{{ $t("Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
+                        <v-btn block @click="close" class="green darken-1">{{ $t("Trilab.TrilabFilamentLoadWizard.Close") }}</v-btn>
                     </div>
                 </div>
 
@@ -39,7 +41,7 @@
 
                 <div v-if="step == 0">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn @click="$emit('close')">Cancel wizard</v-btn>
+                    <v-btn @click="$emit('close')">{{ $t("Trilab.TrilabFilamentLoadWizard.CancelWizard") }}</v-btn>
                 </div>
             </v-card-text>
         </v-card>

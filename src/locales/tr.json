@@ -1148,5 +1148,64 @@
     "restartWarning": "Bu adım sırasında yazıcınız yeniden başlatılacak ve bu yazıcıyla bağlantınız kısa bir süreliğine kesilecektir.",
     "printerIsPrinting": "Yazıcınız bazı işler yaptığından bu adımı şu anda gerçekleştiremezsiniz. \nLütfen bir süre bekleyin, bu adım hazır olduğunda bu pencere otomatik olarak yenilenecektir.",
     "installAndRebootBtn": "DÜZENLEMEK"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Filament yükleniyor...",
+      "InsertFilamentIntoExtruder": "Filamenti ekstrudere yerleştirin ve devam tuşuna basın",
+      "SelectWhichFilamentYouWantToLoad": "Hangi filamanı yüklemek istediğinizi seçin",
+      "PleaseWaitForTheTemperatureToReach": "Lütfen sıcaklığın ulaşmasını bekleyin",
+      "IsColorClean": "Renk temiz mi?",
+      "CancelHeating": "Isıtmayı iptal et",
+      "Continue": "Devam etmek",
+      "OpenFilamentMenu": "Filament menüsünü aç",
+      "CancelWizard": "Sihirbazı iptal et",
+      "PurgeMore": "Daha Fazlasını Temizle",
+      "CooldownAndClose": "Sakin ol",
+      "Close": "Kapalı"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "İptal etmek",
+      "Cpnfirm": "Onaylamak",
+      "AreYouSureYouWantToSelectFilament": "Filament seçmek istediğinizden emin misiniz?",
+      "OK": "TAMAM"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Hizmet Girişi",
+      "Cancel": "İptal etmek"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "İlerlemek:",
+      "ShowErrorTechinicalDetails": "Hatanın teknik ayrıntılarını göster",
+      "STATUS": "DURUM:",
+      "DANGER": "TEHLİKE"
+    },
+    "SettingsTrilabTab": {
+      "System": "Sistem",
+      "SystemVersion": "Sistem sürümü:",
+      "WenInterfaceVersion": "Web arayüzü sürümü:",
+      "AutomaticCheckForUpdates": "Güncellemelerin otomatik kontrolü:",
+      "UploadUpdateFile": "Güncelleme dosyasını yükle",
+      "Upload": "Yüklemek",
+      "CheckForLiveUpdate": "Canlı güncellemeyi kontrol edin",
+      "NoUpdateAvailable": "Güncelleme mevcut değil"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Gizli Görünüm Etkin",
+      "ServiceViewEnabled": "Hizmet Görünümü Etkin"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Ana yelken"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Gelişmiş özellikler:"
+    },
+    "SlicerPanel": {
+      "Download": "İndirmek"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 Sayfa Bulunamadı"
+    }
   }
 }

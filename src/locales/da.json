@@ -1192,5 +1192,64 @@
     "restartWarning": "Din printer genstarter, og du vil miste forbindelsen til denne printer i et kort stykke tid under dette trin",
     "printerIsPrinting": "Du kan ikke udføre dette trin lige nu, fordi din printer udfører noget arbejde. \nVent et stykke tid, dette vindue opdateres automatisk, når dette trin er klar",
     "installAndRebootBtn": "INSTALLERE"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Filament indlæses...",
+      "InsertFilamentIntoExtruder": "Indsæt filament i ekstruderen og tryk fortsæt",
+      "SelectWhichFilamentYouWantToLoad": "Vælg hvilken filament du vil indlæse",
+      "PleaseWaitForTheTemperatureToReach": "Vent venligst på, at temperaturen når op",
+      "IsColorClean": "Er farven ren?",
+      "CancelHeating": "Annuller opvarmning",
+      "Continue": "Blive ved",
+      "OpenFilamentMenu": "Åbn filamentmenuen",
+      "CancelWizard": "Annuller guiden",
+      "PurgeMore": "Rens mere",
+      "CooldownAndClose": "Køl ned",
+      "Close": "Tæt"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Afbestille",
+      "Cpnfirm": "Bekræfte",
+      "AreYouSureYouWantToSelectFilament": "Er du sikker på, at du vil vælge filament",
+      "OK": "Okay"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Service login",
+      "Cancel": "Afbestille"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Fremskridt:",
+      "ShowErrorTechinicalDetails": "Vis fejl tekniske detaljer",
+      "STATUS": "STATUS:",
+      "DANGER": "FARE"
+    },
+    "SettingsTrilabTab": {
+      "System": "System",
+      "SystemVersion": "Systemversion:",
+      "WenInterfaceVersion": "Webinterface version:",
+      "AutomaticCheckForUpdates": "Automatisk tjek for opdateringer:",
+      "UploadUpdateFile": "Upload opdateringsfil",
+      "Upload": "Upload",
+      "CheckForLiveUpdate": "Tjek for liveopdatering",
+      "NoUpdateAvailable": "Ingen tilgængelig opdatering"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Skjult visning aktiveret",
+      "ServiceViewEnabled": "Tjenestevisning aktiveret"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Storsejl"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Avancerede egenskaber:"
+    },
+    "SlicerPanel": {
+      "Download": "Hent"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "404 side ikke fundet"
+    }
   }
 }

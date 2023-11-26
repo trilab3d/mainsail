@@ -1217,5 +1217,64 @@
     "restartWarning": "Drukarka uruchomi się ponownie i podczas tego kroku na chwilę utracisz połączenie z tą drukarką",
     "printerIsPrinting": "Nie możesz teraz wykonać tego kroku, ponieważ drukarka wykonuje jakąś pracę. \nPoczekaj chwilę, to okno zostanie automatycznie odświeżone, gdy ten krok będzie gotowy",
     "installAndRebootBtn": "ZAINSTALOWAĆ"
+  },
+  "Trilab": {
+    "TrilabFilamentLoadWizard": {
+      "FilamentIsLoading": "Trwa ładowanie żarnika...",
+      "InsertFilamentIntoExtruder": "Włóż żarnik do ekstrudera i naciśnij przycisk Kontynuuj",
+      "SelectWhichFilamentYouWantToLoad": "Wybierz, który żarnik chcesz załadować",
+      "PleaseWaitForTheTemperatureToReach": "Proszę poczekać, aż temperatura osiągnie",
+      "IsColorClean": "Czy kolor jest czysty?",
+      "CancelHeating": "Anuluj ogrzewanie",
+      "Continue": "Kontynuować",
+      "OpenFilamentMenu": "Otwórz menu żarnika",
+      "CancelWizard": "Anuluj kreatora",
+      "PurgeMore": "Oczyść więcej",
+      "CooldownAndClose": "Ochłonąć",
+      "Close": "Zamknąć"
+    },
+    "TrilabSelectFilamentDialog": {
+      "Cancel": "Anulować",
+      "Cpnfirm": "Potwierdzać",
+      "AreYouSureYouWantToSelectFilament": "Czy na pewno chcesz wybrać żarnik?",
+      "OK": "OK"
+    },
+    "TrilabServiceDialog": {
+      "ServiceLogin": "Logowanie do serwisu",
+      "Cancel": "Anulować"
+    },
+    "TrilabUpdateDialog": {
+      "Progres": "Postęp:",
+      "ShowErrorTechinicalDetails": "Pokaż szczegóły techniczne błędu",
+      "STATUS": "STATUS:",
+      "DANGER": "NIEBEZPIECZEŃSTWO"
+    },
+    "SettingsTrilabTab": {
+      "System": "System",
+      "SystemVersion": "Wersja systemu:",
+      "WenInterfaceVersion": "Wersja interfejsu internetowego:",
+      "AutomaticCheckForUpdates": "Automatyczne sprawdzanie dostępności aktualizacji:",
+      "UploadUpdateFile": "Prześlij plik aktualizacji",
+      "Upload": "Wgrywać",
+      "CheckForLiveUpdate": "Sprawdź aktualizację na żywo",
+      "NoUpdateAvailable": "Brak dostępnej aktualizacji"
+    },
+    "TheTopbar": {
+      "HiddenViewEnbled": "Ukryty widok włączony",
+      "ServiceViewEnabled": "Widok usługi włączony"
+    },
+    "ConnectionStatus": {
+      "Mainsail": "Grota"
+    },
+    "AdvancedFeatures": "",
+    "SettingsTrilabPrinterTab": {
+      "AdvancedFeatures": "Zaawansowane funkcje:"
+    },
+    "SlicerPanel": {
+      "Download": "Pobierać"
+    },
+    "PageNotFound": {
+      "404PageNotFound": "Nie znaleziono strony 404"
+    }
   }
 }

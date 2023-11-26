@@ -5,7 +5,7 @@
                 <v-card elevation="25">
                     <v-card-text>
                         <v-row justify="center" align="center">
-                            <v-col>Advanced features: </v-col>
+                            <v-col>{{ $t("Trilab.SettingsTrilabPrinterTab.AdvancedFeatures") }} </v-col>
                             <v-col>
                                 <v-switch v-model="AdvancedFeatures"></v-switch>
 
