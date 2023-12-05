@@ -1180,7 +1180,8 @@
   },
   "title": "日本語",
   "TrilabUpdateDialog": {
-    "title": "アクチュアリザス"
+    "title": "アクチュアリザス",
+    "RestartPrinter": "プリンターを再起動します"
   },
   "General": {
     "Save": "保存"
@@ -1207,7 +1208,10 @@
       "CancelWizard": "ウィザードのキャンセル",
       "PurgeMore": "さらにパージ",
       "CooldownAndClose": "クールダウン",
-      "Close": "近い"
+      "Close": "近い",
+      "Step": "ステップ",
+      "FilamentIsUnloading": "フィラメントがアンロード中です",
+      "FilamentLoadWizard": "フィラメントロードウィザード"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "キャンセル",
@@ -1251,6 +1255,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 ページが見つかりません"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "どの素材がプリンターにロードされていますか?",
+      "FilamentUnloadWizard": "フィラメントアンロードウィザード"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "フィラメントがアンロード中です",
+      "colorUnloaded": "フィラメントが正常にアンロードされました"
     }
   }
 }

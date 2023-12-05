@@ -1186,7 +1186,8 @@
   },
   "title": "Čeština",
   "TrilabUpdateDialog": {
-    "title": "Aktualizace"
+    "title": "Aktualizace",
+    "RestartPrinter": "Restartovat tiskárnu"
   },
   "General": {
     "Save": "Uložit"
@@ -1217,13 +1218,16 @@
       "SelectWhichFilamentYouWantToLoad": "Select which filament you want to load",
       "PleaseWaitForTheTemperatureToReach": "Please wait for the temperature to reach",
       "IsColorClean": "Is color clean?",
-      "CancelHeating": "Zruěit zahřívání",
+      "CancelHeating": "Zrušit zahřívání",
       "Continue": "Pokračovat",
       "OpenFilamentMenu": "Otevřít menu s filamenty ",
       "CancelWizard": "Zavřít průvodce",
       "PurgeMore": "Vytlačit více",
       "CooldownAndClose": "Ochladit a zavřít",
-      "Close": "Zavřít"
+      "Close": "Zavřít",
+      "Step": "Krok",
+      "FilamentIsUnloading": "Filament se vykládá",
+      "FilamentLoadWizard": "Průvodce načtením filamentu"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Zrušit",
@@ -1267,6 +1271,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 stránka neexistuje"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Jaký materiál filamentu je v tiskárně?",
+      "FilamentUnloadWizard": "Průvodce vyjmutím filamentu"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Filament se vykládá",
+      "colorUnloaded": "Filament byl úspěšně vyjmut"
     }
   }
 }

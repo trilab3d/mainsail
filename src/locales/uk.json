@@ -1080,7 +1080,8 @@
   },
   "title": "Українська",
   "TrilabUpdateDialog": {
-    "title": "Aktualizace"
+    "title": "Aktualizace",
+    "RestartPrinter": "Перезапустіть принтер"
   },
   "General": {
     "Save": "зберегти"
@@ -1107,7 +1108,10 @@
       "CancelWizard": "Майстер скасування",
       "PurgeMore": "Очищення більше",
       "CooldownAndClose": "Заспокойся",
-      "Close": "Закрити"
+      "Close": "Закрити",
+      "Step": "Крок",
+      "FilamentIsUnloading": "Нитка розвантажується",
+      "FilamentLoadWizard": "Майстер завантаження ниток"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Скасувати",
@@ -1151,6 +1155,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 сторінка не знайдена"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Який матеріал завантажується в принтер?",
+      "FilamentUnloadWizard": "Майстер вивантаження ниток"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Нитка розвантажується",
+      "colorUnloaded": "Нитку успішно вивантажено"
     }
   }
 }

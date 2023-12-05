@@ -1058,7 +1058,8 @@
   },
   "title": "Magyar",
   "TrilabUpdateDialog": {
-    "title": "Frissítés"
+    "title": "Frissítés",
+    "RestartPrinter": "Indítsa újra a nyomtatót"
   },
   "General": {
     "Save": "Megment"
@@ -1085,7 +1086,10 @@
       "CancelWizard": "Mégse varázsló",
       "PurgeMore": "Purge More",
       "CooldownAndClose": "Nyugodj le",
-      "Close": "Bezárás"
+      "Close": "Bezárás",
+      "Step": "Lépés",
+      "FilamentIsUnloading": "Az izzószál kiürül",
+      "FilamentLoadWizard": "Izzószál betöltése varázsló"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Megszünteti",
@@ -1129,6 +1133,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 Oldal nem található"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Milyen anyag van betöltve a nyomtatóba?",
+      "FilamentUnloadWizard": "Filament Unload Wizard"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Az izzószál kiürül",
+      "colorUnloaded": "Az izzószál sikeresen eltávolítva"
     }
   }
 }

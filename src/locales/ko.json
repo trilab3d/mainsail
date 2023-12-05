@@ -1183,7 +1183,8 @@
   },
   "title": "한국어",
   "TrilabUpdateDialog": {
-    "title": "활성화"
+    "title": "활성화",
+    "RestartPrinter": "프린터 다시 시작"
   },
   "General": {
     "Save": "구하다"
@@ -1210,7 +1211,10 @@
       "CancelWizard": "마법사 취소",
       "PurgeMore": "더 많이 퍼지",
       "CooldownAndClose": "쿨타임",
-      "Close": "닫다"
+      "Close": "닫다",
+      "Step": "단계",
+      "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
+      "FilamentLoadWizard": "필라멘트 로드 마법사"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "취소",
@@ -1254,6 +1258,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 페이지를 찾을 수 없습니다"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "프린터에 어떤 재료가 로드되어 있습니까?",
+      "FilamentUnloadWizard": "필라멘트 언로드 마법사"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
+      "colorUnloaded": "필라멘트가 성공적으로 언로드되었습니다."
     }
   }
 }

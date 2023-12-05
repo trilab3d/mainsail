@@ -1,11 +1,11 @@
 <template>
     <v-dialog v-model="isDialogVisible" max-width="800px" persistent>
         <v-card>
-            <v-card-title class="headline">{{ $t('Trilab.TrilabFilamentLoadWizard.FilamentLoadWizard') }}</v-card-title>
+            <v-card-title class="headline">{{ $t('Trilab.TrilabFilamentUnLoadWizard.FilamentUnloadWizard') }}</v-card-title>
             <v-card-text>
                 <p>{{ $t('Trilab.TrilabFilamentLoadWizard.Step') }} {{ step + 1 }}</p>
                 <div v-if="step == 0">
-                    <p>{{ $t("Trilab.TrilabFilamentLoadWizard.SelectWhichFilamentYouWantToLoad") }}</p>
+                    <p>{{ $t("Trilab.TrilabFilamentUnLoadWizard.WhichFilamentIsInPrinter") }}</p>
                     <trilab-select-filament-dialog :showp="showSelectFilamentDialog"
                         @selectFilament="selectFilamentAction"></trilab-select-filament-dialog>
 
@@ -24,19 +24,12 @@
                         <v-btn block @click="cancelHeating" class="orange darken-1">{{
                             $t("Trilab.TrilabFilamentLoadWizard.CancelHeating") }} </v-btn>
                     </div>
-                    <div v-if="temperatureProgress >= 99.8">
-                        <p>{{ $t("Trilab.TrilabFilamentLoadWizard.InsertFilamentIntoExtruder") }}</p>
-                        <v-btn block @click="loadFilament" class="orange darken-1">{{
-                            $t("Trilab.TrilabFilamentLoadWizard.Continue") }}</v-btn>
-                    </div>
                 </div>
 
                 <div v-if="step == 2">
-                    <p v-if="idleTimeout != 'Ready'">{{ $t('Trilab.TrilabFilamentLoadWizard.FilamentIsLoading') }}</p>
+                    <p v-if="idleTimeout != 'Ready'">{{ $t('Trilab.TrilabFilamentUnloadWizard.FilamentIsUnloading') }}</p>
                     <div v-if="idleTimeout == 'Ready'">
-                        <p>{{ $t("Trilab.TrilabFilamentLoadWizard.IsColorClean") }} </p>
-                        <v-btn block @click="purgeMore" class="orange darken-1 mt-2">{{
-                            $t("Trilab.TrilabFilamentLoadWizard.PurgeMore") }}</v-btn>
+                        <p>{{ $t("Trilab.TrilabFilamentUnloadWizard.colorUnloaded") }} </p>
                         <v-btn block @click="closeCooldown" class="orange darken-1 mt-2">{{
                             $t("Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
                         <v-btn block @click="close" class="orange darken-1 mt-2">{{
@@ -67,7 +60,7 @@ import TrilabMixin from '@/components/mixins/trilab';
 import { PrinterStateAdditionalSensor, PrinterStateTemperatureObject } from '@/store/printer/types'
 
 @Component
-export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
+export default class TrilabFilamentUnLoadWizard extends Mixins(TrilabMixin) {
     @Prop({ required: false, default: false })
     declare showp: boolean
 
@@ -100,62 +93,33 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
         return this.$store.state.printer.idle_timeout?.state ?? "unknown"
     }
 
-    async loadFilament() {
+    async unloadFilament() {
         /* 
                 self._screen._ws.klippy.gcode_script(f"SAVE_GCODE_STATE NAME=LOAD_FILAMENT")
-        self._screen._ws.klippy.gcode_script(f"M83")
-        self._screen._ws.klippy.gcode_script(f"G0 E35 F600")
-        self._screen._ws.klippy.gcode_script(f"G0 E50 F300")
-        self._screen._ws.klippy.gcode_script(f"G1 E-18.0 F1500")
+                    self._screen._ws.klippy.gcode_script(f"M83")
+                    self._screen._ws.klippy.gcode_script(f"G0 E3.0 F300")
+                    self._screen._ws.klippy.gcode_script(f"G1 E-18.0 F1800")
+                    self._screen._ws.klippy.gcode_script(f"G4 P4000")
+                    self._screen._ws.klippy.gcode_script(f"G1 E-30.0 F900")
         self._screen._ws.klippy.gcode_script(f"RESTORE_GCODE_STATE NAME=LOAD_FILAMENT")
 
         */
         await this.$store.dispatch('printer/sendGcode', `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`);
         await this.$store.dispatch('printer/sendGcode', `M83`);
-        await this.$store.dispatch('printer/sendGcode', `G0 E35 F600`);
-        await this.$store.dispatch('printer/sendGcode', `G0 E50 F300`);
-        await this.$store.dispatch('printer/sendGcode', `G1 E-18.0 F1500`);
+        await this.$store.dispatch('printer/sendGcode', `G0 E3.0 F300`);
+        await this.$store.dispatch('printer/sendGcode', `G1 E-18.0 F1800`);
+        await this.$store.dispatch('printer/sendGcode', `G4 P4000`);
+        await this.$store.dispatch('printer/sendGcode', `G1 E-30.0 F900`);
         await this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
         /// add events
         await this.$store.dispatch('server/addEvent', { message: `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `M83`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G0 E35 F600`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G0 E50 F300`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G1 E-18.0 F1500`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: `G0 E3.0 F300`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: `G1 E-18.0 F1800`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: `G4 P4000`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: `G1 E-30.0 F900`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
 
-
-        /// set the idleTimeout to 'Loading' temporarily
-        this.idleTimeoutOverride = 'Loading';
-        /// after 2 seconds set it to ''
-        setTimeout(() => {
-            this.idleTimeoutOverride = '';
-        }, 2000);
-        this.step = 2;
-    }
-
-    async purgeMore() {
-        /*        self._screen._ws.klippy.gcode_script(f"SAVE_GCODE_STATE NAME=LOAD_FILAMENT")
-        self._screen._ws.klippy.gcode_script(f"M83")
-        self._screen._ws.klippy.gcode_script(f"G0 E18 F1500")
-        self._screen._ws.klippy.gcode_script(f"G0 E50 F300")
-        self._screen._ws.klippy.gcode_script(f"G1 E-18.0 F1500")
-        self._screen._ws.klippy.gcode_script(f"RESTORE_GCODE_STATE NAME=LOAD_FILAMENT")
-        */
-        await this.$store.dispatch('printer/sendGcode', `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`);
-        await this.$store.dispatch('printer/sendGcode', `M83`);
-        await this.$store.dispatch('printer/sendGcode', `G0 E18 F1500`);
-        await this.$store.dispatch('printer/sendGcode', `G0 E50 F300`);
-        await this.$store.dispatch('printer/sendGcode', `G1 E-18.0 F1500`);
-        await this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
-
-        /// add events
-        await this.$store.dispatch('server/addEvent', { message: `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `M83`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G0 E18 F1500`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G0 E50 F300`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G1 E-18.0 F1500`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
 
     }
 
@@ -179,7 +143,7 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
 
         for (let i = 0; i < this.temperatureObjects.length; i++) {
             const sensor = this.temperatureObjects[i];
-            if (sensor.type.startsWith('extruder') || sensor.type.startsWith('heater_bed') || sensor.type.startsWith('heater_chamber') || sensor.type.startsWith('heater_generic') || sensor.type.startsWith('temperature_fan')) {
+            if (sensor.type.startsWith('extruder')) {
                 this.setTemp(sensor, 0);
             }
 
@@ -258,9 +222,8 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
 
         console.log(this.temperatureObjects);
 
+        /// heat only extruder
         this.$store.dispatch('printer/sendGcode', `M104 S${filamentObj.extruder}`);
-        this.$store.dispatch('printer/sendGcode', `M140 S${filamentObj.bed}`);
-        this.$store.dispatch('printer/sendGcode', `M141 S${filamentObj.chamber}`);
 
         this.step = 1;
 
@@ -340,6 +303,20 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
         this.showSelectFilamentDialog = false;
     }
 
+    /// watch the temperatureProgress and if step is also 1, automatically call unloading just one time
+    @Watch('temperatureProgress')
+    async onTemperatureProgressChanged() {
+        if (this.step == 1 && this.temperatureProgress > 99.8) {
+            /// set the idleTimeout to 'Loading' temporarily
+            this.idleTimeoutOverride = 'Unloading';
+            /// after 2 seconds set it to ''
+            setTimeout(() => {
+                this.idleTimeoutOverride = '';
+            }, 2000);
+            this.step = 2;
+            await this.unloadFilament();
+        }
+    }
 
 
 }

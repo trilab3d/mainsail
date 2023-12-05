@@ -1214,7 +1214,8 @@
   },
   "title": "Deutsch",
   "TrilabUpdateDialog": {
-    "title": "Aktualisierung"
+    "title": "Aktualisierung",
+    "RestartPrinter": "Starten Sie den Drucker neu"
   },
   "General": {
     "Save": "Speichern"
@@ -1241,7 +1242,10 @@
       "CancelWizard": "Abbruchassistent",
       "PurgeMore": "Mehr bereinigen",
       "CooldownAndClose": "Abkühlen",
-      "Close": "Schließen"
+      "Close": "Schließen",
+      "Step": "Schritt",
+      "FilamentIsUnloading": "Filament wird entladen",
+      "FilamentLoadWizard": "Filament-Ladeassistent"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Stornieren",
@@ -1285,6 +1289,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 Seite nicht gefunden"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Welches Material ist im Drucker geladen?",
+      "FilamentUnloadWizard": "Assistent zum Entladen von Filamenten"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Filament wird entladen",
+      "colorUnloaded": "Filament wurde erfolgreich entladen"
     }
   }
 }

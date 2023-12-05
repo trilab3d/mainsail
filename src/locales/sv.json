@@ -950,7 +950,8 @@
   },
   "title": "Svenska",
   "TrilabUpdateDialog": {
-    "title": "Aktualisera"
+    "title": "Aktualisera",
+    "RestartPrinter": "Starta om skrivaren"
   },
   "General": {
     "Save": "Spara"
@@ -977,7 +978,10 @@
       "CancelWizard": "Avbryt guiden",
       "PurgeMore": "Rensa mer",
       "CooldownAndClose": "Kyla ner",
-      "Close": "Stänga"
+      "Close": "Stänga",
+      "Step": "Steg",
+      "FilamentIsUnloading": "Filament håller på att lossas",
+      "FilamentLoadWizard": "Filament Load Wizard"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Annullera",
@@ -1021,6 +1025,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 sidan hittades inte"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Vilket material laddas i skrivaren?",
+      "FilamentUnloadWizard": "Filament Unload Wizard"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Filament håller på att lossas",
+      "colorUnloaded": "Filamentet har lossats"
     }
   }
 }

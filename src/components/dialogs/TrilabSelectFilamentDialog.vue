@@ -1,18 +1,16 @@
 <template>
-    <v-dialog v-model="isDialogVisible" max-width="600px">
-        <v-card>
-            <v-card-title class="headline">{{ titleString }}</v-card-title>
+    <div>
+        <v-card elevation="0">
             <v-card-text>
                 <!--- foreach in filaments --->
 
                 <v-row>
                     <v-col v-for="(elem, index) in allowedFilaments" :key="index" cols="6">
-                        <v-btn block color="orange" class="btnGrid" @click="selectedFilament = elem; selectDialogConfirmation = true">{{ elem.title }}</v-btn>
+                        <v-btn block color="orange" class="btnGrid"
+                            @click="selectedFilament = elem; selectDialogConfirmation = true">{{ elem.title }}</v-btn>
                     </v-col>
                 </v-row>
 
-                <v-divider class="mt-4 mb-4"></v-divider>
-                <v-btn @click="$emit('close')">{{ $t("Trilab.TrilabSelectFilamentDialog.Cancel") }}</v-btn>
             </v-card-text>
         </v-card>
         <!--- just a confirm dialog really select filament xxx? --->
@@ -21,20 +19,20 @@
             <v-card>
                 <v-card-title class="headline">{{ $t("Trilab.TrilabSelectFilamentDialog.Cpnfirm") }}</v-card-title>
                 <v-card-text>
-                    <p>{{ $t("Trilab.TrilabSelectFilamentDialog.AreYouSureYouWantToSelectFilament") }} {{ selectedFilament.title }}?</p>
+                    <p>{{ $t("Trilab.TrilabSelectFilamentDialog.AreYouSureYouWantToSelectFilament") }} {{
+                        selectedFilament.title }}?</p>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="green darken-1" text @click="selectDialogConfirmation = false">{{ $t("Trilab.TrilabSelectFilamentDialog.Cancel") }}</v-btn>
+                    <v-btn color="green darken-1" text @click="selectDialogConfirmation = false">{{
+                        $t("Trilab.TrilabSelectFilamentDialog.Cancel") }}</v-btn>
                     <v-btn color="green darken-1" text
-                        @click="selectDialogConfirmation = false; selectFilament(selectedFilament)">{{ $t("Trilab.TrilabSelectFilamentDialog.OK") }}</v-btn>
+                        @click="selectDialogConfirmation = false; selectFilament(selectedFilament)">{{
+                            $t("Trilab.TrilabSelectFilamentDialog.OK") }}</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
-
-
-
-    </v-dialog>
+    </div>
 </template>
     
 <script lang="ts">

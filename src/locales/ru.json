@@ -1204,7 +1204,8 @@
   },
   "title": "Русский",
   "TrilabUpdateDialog": {
-    "title": "Актуализация"
+    "title": "Актуализация",
+    "RestartPrinter": "Перезагрузить принтер"
   },
   "General": {
     "Save": "Сохранять"
@@ -1231,7 +1232,10 @@
       "CancelWizard": "Отменить мастер",
       "PurgeMore": "Очистить больше",
       "CooldownAndClose": "Остывать",
-      "Close": "Закрывать"
+      "Close": "Закрывать",
+      "Step": "Шаг",
+      "FilamentIsUnloading": "Нить выгружается",
+      "FilamentLoadWizard": "Мастер загрузки нити"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Отмена",
@@ -1275,6 +1279,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 Страница не найдена"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Какой материал загружен в принтер?",
+      "FilamentUnloadWizard": "Мастер выгрузки нити"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Нить выгружается",
+      "colorUnloaded": "Нить успешно выгружена"
     }
   }
 }

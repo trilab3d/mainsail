@@ -1204,7 +1204,8 @@
     "Headline": "Regulacja nachylenia śrubami"
   },
   "TrilabUpdateDialog": {
-    "title": "Zaktualizuj"
+    "title": "Zaktualizuj",
+    "RestartPrinter": "Uruchom ponownie drukarkę"
   },
   "General": {
     "Save": "Ratować"
@@ -1231,7 +1232,10 @@
       "CancelWizard": "Anuluj kreatora",
       "PurgeMore": "Oczyść więcej",
       "CooldownAndClose": "Ochłonąć",
-      "Close": "Zamknąć"
+      "Close": "Zamknąć",
+      "Step": "Krok",
+      "FilamentIsUnloading": "Trwa rozładunek włókna",
+      "FilamentLoadWizard": "Kreator ładowania włókien"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Anulować",
@@ -1275,6 +1279,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "Nie znaleziono strony 404"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Jaki materiał jest załadowany do drukarki?",
+      "FilamentUnloadWizard": "Kreator rozładunku włókna"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Trwa rozładunek włókna",
+      "colorUnloaded": "Filament został pomyślnie rozładowany"
     }
   }
 }

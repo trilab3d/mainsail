@@ -2,21 +2,18 @@
     <panel v-if="klipperReadyForGui && macros.length > 0" :icon="mdiCodeTags" :title="$t('Panels.MacrosPanel.Headline')"
         :collapsible="true" card-class="macros-panel">
         <v-card-text class="py-4">
-            <v-row>
-                <v-col cols="12" class="py-2">
-                    <v-btn style="width:100%" small color="purple" @click="showLoadFilamentWizard = true">
-                        {{ "LOAD FILAMENT" }}
-                    </v-btn>
-                </v-col>
-            </v-row>
-
             <v-row v-for="(macro, index) in macros" :key="'macro_' + index">
                 <v-col cols="12" class="py-2">
-                    <macro-button :macro="macro" color="primary" class="" style="" />
+                    <macro-button @clickLoadFilament="showLoadFilamentWizard = true"
+                        @clickUnloadFilament="showUnloadFilamentWizard = true" :macro="macro" color="primary" class=""
+                        style="" />
                 </v-col>
             </v-row>
         </v-card-text>
-        <trilab-filament-load-wizard :showp="showLoadFilamentWizard" @close="showLoadFilamentWizard = false"></trilab-filament-load-wizard>
+        <trilab-filament-load-wizard :showp="showLoadFilamentWizard"
+            @close="showLoadFilamentWizard = false"></trilab-filament-load-wizard>
+        <trilab-filament-un-load-wizard :showp="showUnloadFilamentWizard"
+            @close="showUnloadFilamentWizard = false"></trilab-filament-un-load-wizard>
     </panel>
 </template>
 
@@ -35,8 +32,8 @@ export default class MacrosPanel extends Mixins(BaseMixin) {
     mdiCodeTags = mdiCodeTags
 
 
-    public showLoadFilamentWizard : boolean = false;
-    public showUnloadFilamentWizard : boolean = false;
+    public showLoadFilamentWizard: boolean = false;
+    public showUnloadFilamentWizard: boolean = false;
 
     get hiddenMacros() {
         return (this.$store.state.gui?.macros?.hiddenMacros ?? []).map((name: string) => name.toLowerCase())

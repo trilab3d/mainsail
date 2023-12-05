@@ -1255,7 +1255,8 @@
     "installAndRebootBtn": "INSTALL & REBOOT"
   },
   "TrilabUpdateDialog": {
-    "title": "Update"
+    "title": "Update",
+    "RestartPrinter": "Restart printer"
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1270,7 +1271,10 @@
       "CancelWizard": "Cancel wizard",
       "PurgeMore": "Purge More",
       "CooldownAndClose": "Cooldown & Close",
-      "Close": "Close"
+      "Close": "Close",
+      "Step": "Step",
+      "FilamentIsUnloading": "Filament is unloading",
+      "FilamentLoadWizard": "Filament Load Wizard"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Cancel",
@@ -1314,6 +1318,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 page not found"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Which material is loaded in printer?",
+      "FilamentUnloadWizard": "Filament Unload Wizard"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Filament is unloading",
+      "colorUnloaded": "Filament unloaded successfuly"
     }
   }
 }

@@ -160,6 +160,17 @@ export default class MacroButton extends Mixins(BaseMixin) {
     }
 
     doSendMacro(gcode: string) {
+        if(this.macro.name == 'LOAD_FILAMENT'){
+            /// TRILAB emit event to show load filament wizard instead of macro
+            this.$emit('clickLoadFilament');
+            return true;
+        }
+        else if(this.macro.name == 'UNLOAD_FILAMENT'){
+            /// TRILAB emit event to show unload filament wizard instead of macro 
+            this.$emit('clickUnloadFilament');
+            return true;
+        }
+        
         this.$store.dispatch('server/addEvent', {
             message: gcode,
             type: 'command',
@@ -183,6 +194,8 @@ export default class MacroButton extends Mixins(BaseMixin) {
     }
 
     mounted() {
+        /// console log this name
+        //console.log("MACRONAME: " + this.macro.name)
         this.refreshParams()
     }
 }

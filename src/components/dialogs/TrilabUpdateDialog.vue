@@ -23,8 +23,8 @@
                     <v-progress-linear :indeterminate="updateProgressStatus === 'IDLE'"
                         :color="updateProgressStatus === 'IDLE' ? 'primary' : 'success'" :value="updateProgressValue"
                         :buffer-value="updateProgressValue" :height="5" striped></v-progress-linear>
-                    <v-list>
-                        <v-btn color="danger" v-if="showRestartBtn"></v-btn>
+                        <v-btn color="danger" v-if="showRestartBtn">{{ $t('TrilabUpdateDialog.RestartPrinter') }}</v-btn>
+                    <v-list v-if="AdvancedFeatures">
                         <v-list-item v-for="log in logs" :key="log.id" class="ulog">
                             <span v-if="log.text.indexOf('ERROR') != -1" color="danger">{{ $t("Trilab.TrilabUpdateDialog.DANGER") }}</span>
                             <p>
@@ -53,12 +53,13 @@ import store from '@/store'
 
 
 import BaseMixin from '../mixins/base'
+import TrilabMixin from '../mixins/trilab'
 import { Mixins } from 'vue-property-decorator'
 import Component from 'vue-class-component'
 import { PropSync, Prop, Vue, Watch } from 'vue-property-decorator'
 
 @Component({})
-export default class TrilabUpdateDialog extends Mixins(BaseMixin) {
+export default class TrilabUpdateDialog extends Mixins(BaseMixin, TrilabMixin) {
 
     @Prop({ default: null, type: [File, null] as unknown as () => File | null }) readonly file!: File | null;
 

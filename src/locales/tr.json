@@ -1135,7 +1135,8 @@
   },
   "title": "Türkçe",
   "TrilabUpdateDialog": {
-    "title": "Gerçekleştirme"
+    "title": "Gerçekleştirme",
+    "RestartPrinter": "Yazıcıyı yeniden başlat"
   },
   "General": {
     "Save": "Kaydetmek"
@@ -1162,7 +1163,10 @@
       "CancelWizard": "Sihirbazı iptal et",
       "PurgeMore": "Daha Fazlasını Temizle",
       "CooldownAndClose": "Sakin ol",
-      "Close": "Kapalı"
+      "Close": "Kapalı",
+      "Step": "Adım",
+      "FilamentIsUnloading": "Filament boşaltılıyor",
+      "FilamentLoadWizard": "Filament Yükleme Sihirbazı"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "İptal etmek",
@@ -1206,6 +1210,14 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 Sayfa Bulunamadı"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Yazıcıya hangi malzeme yüklendi?",
+      "FilamentUnloadWizard": "Filament Boşaltma Sihirbazı"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Filament boşaltılıyor",
+      "colorUnloaded": "Filament başarıyla boşaltıldı"
     }
   }
 }

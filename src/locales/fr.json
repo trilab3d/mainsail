@@ -9,6 +9,23 @@
     },
     "PageNotFound": {
       "404PageNotFound": "404 Page non trouvée"
+    },
+    "TrilabFilamentLoadWizard": {
+      "Step": "Étape",
+      "FilamentIsUnloading": "Le filament est en train de se décharger",
+      "IsColorClean": "La couleur est-elle propre ?",
+      "FilamentLoadWizard": "Assistant de chargement de filament"
+    },
+    "TrilabFilamentUnLoadWizard": {
+      "WhichFilamentIsInPrinter": "Quel matériau est chargé dans l’imprimante ?",
+      "FilamentUnloadWizard": "Assistant de déchargement de filament"
+    },
+    "TrilabFilamentUnloadWizard": {
+      "FilamentIsUnloading": "Le filament est en train de se décharger",
+      "colorUnloaded": "Filament déchargé avec succès"
     }
+  },
+  "TrilabUpdateDialog": {
+    "RestartPrinter": "Redémarrer l'imprimante"
   }
 }
