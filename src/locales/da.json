@@ -1180,7 +1180,8 @@
   "title": "Dansk",
   "TrilabUpdateDialog": {
     "title": "Aktualisering",
-    "RestartPrinter": "Genstart printeren"
+    "RestartPrinter": "Genstart printeren",
+    "titleUSB": "Opdatering fra USB"
   },
   "General": {
     "Save": "Gemme"
@@ -1210,7 +1211,8 @@
       "Close": "Tæt",
       "Step": "Trin",
       "FilamentIsUnloading": "Filament aflæsser",
-      "FilamentLoadWizard": "Filament Load Wizard"
+      "FilamentLoadWizard": "Filament Load Wizard",
+      "CancelLoading": "Annuller indlæsning"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Afbestille",

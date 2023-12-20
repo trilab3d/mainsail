@@ -497,6 +497,15 @@
     "Headline": "Manuální měření"
   },
   "Panels": {
+    "trilabSlicers": {
+      "prusa": {
+        "title": "PrusaSlicer",
+        "longTitle": "PrusaSlicer 2.7.1",
+        "shortDescription": "PrusaSlicer je open-source, funkčně bohatý a často aktualizovaný nástroj, který obsahuje vše, co potřebujete k exportu dokonalých tiskových souborů.",
+        "longDescription": "Pomocí výše uvedeného tlačítka si stáhněte kompletní balíček PrusaSlicer včetně profilů sliceru. Po stažení rozbalte archiv do cílového umístění. Na platformě Windows spusťte program \"prusa-slicer.exe\", na platformě MacOS \"PrusaSlicer.app\". Po spuštění programu se zobrazí průvodce konfigurací. Pokračujte na kartu Prusa Pro. Zde vyberte ze seznamu variant tiskárny Prusa Pro HT90. Poté stiskněte tlačítko Finish (Dokončit) v pravém dolním rohu okna. Tím je kráječ připraven k použití !",
+        "imgsrc": "/img/PrusaSlicer.png"
+      }
+    },
     "ExtruderControlPanel": {
       "Allowed": "Povoleno",
       "EstimatedExtrusion": "Odhadovaná extruze:",
@@ -732,6 +741,9 @@
       "ProfileActive": "Aktivní",
       "ProfileInactive": "Neaktivní",
       "Interfaces": "Dostupná rozhraní"
+    },
+    "TrilabSlicerPanel": {
+      "notAvailableText": "Profil sliceru není dostupný pro Váš systém, nebo jsme ho nerozpoznali, prosíme kontaktujte podporu"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1187,7 +1199,8 @@
   "title": "Čeština",
   "TrilabUpdateDialog": {
     "title": "Aktualizace",
-    "RestartPrinter": "Restartovat tiskárnu"
+    "RestartPrinter": "Restartovat tiskárnu",
+    "titleUSB": "Aktualizace z USB"
   },
   "General": {
     "Save": "Uložit"
@@ -1216,7 +1229,7 @@
       "FilamentIsLoading": "Filament is loading...",
       "InsertFilamentIntoExtruder": "Insert filament into the extruder and press continue",
       "SelectWhichFilamentYouWantToLoad": "Select which filament you want to load",
-      "PleaseWaitForTheTemperatureToReach": "Please wait for the temperature to reach",
+      "PleaseWaitForTheTemperatureToReach": "Prosíme počkejte, než teplota extruderu dosáhne",
       "IsColorClean": "Is color clean?",
       "CancelHeating": "Zrušit zahřívání",
       "Continue": "Pokračovat",
@@ -1227,7 +1240,8 @@
       "Close": "Zavřít",
       "Step": "Krok",
       "FilamentIsUnloading": "Filament se vykládá",
-      "FilamentLoadWizard": "Průvodce načtením filamentu"
+      "FilamentLoadWizard": "Průvodce načtením filamentu",
+      "CancelLoading": "Zrušit podávání"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Zrušit",

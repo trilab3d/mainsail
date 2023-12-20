@@ -1205,7 +1205,8 @@
   },
   "TrilabUpdateDialog": {
     "title": "Zaktualizuj",
-    "RestartPrinter": "Uruchom ponownie drukarkę"
+    "RestartPrinter": "Uruchom ponownie drukarkę",
+    "titleUSB": "Aktualizacja z USB"
   },
   "General": {
     "Save": "Ratować"
@@ -1235,7 +1236,8 @@
       "Close": "Zamknąć",
       "Step": "Krok",
       "FilamentIsUnloading": "Trwa rozładunek włókna",
-      "FilamentLoadWizard": "Kreator ładowania włókien"
+      "FilamentLoadWizard": "Kreator ładowania włókien",
+      "CancelLoading": "Anuluj ładowanie"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Anulować",

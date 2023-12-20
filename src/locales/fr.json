@@ -14,7 +14,8 @@
       "Step": "Étape",
       "FilamentIsUnloading": "Le filament est en train de se décharger",
       "IsColorClean": "La couleur est-elle propre ?",
-      "FilamentLoadWizard": "Assistant de chargement de filament"
+      "FilamentLoadWizard": "Assistant de chargement de filament",
+      "CancelLoading": "Annuler le chargement"
     },
     "TrilabFilamentUnLoadWizard": {
       "WhichFilamentIsInPrinter": "Quel matériau est chargé dans l’imprimante ?",
@@ -26,6 +27,7 @@
     }
   },
   "TrilabUpdateDialog": {
-    "RestartPrinter": "Redémarrer l'imprimante"
+    "RestartPrinter": "Redémarrer l'imprimante",
+    "titleUSB": "Mise à jour depuis USB"
   }
 }

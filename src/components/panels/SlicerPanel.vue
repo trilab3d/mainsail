@@ -35,13 +35,13 @@
 <template>
 	<v-card outlined>
 		<v-card-title class="pb-0">
-			<span class="slicerTitle" v-html="$t(`Panels.trilabSlicers.${target}.title`)"></span>
+			<span class="slicerTitle" v-html="$t(`Panels.trilabSlicers.${target}.longTitle`)"></span>
 			<v-spacer class="hiddenS"></v-spacer>
 		</v-card-title>
 
 		<v-card-text>
 			<div class="panel">
-				<h3 class="panel-subheading">{{ $t(`Panels.trilabSlicers.${target}.longTitle`) }}</h3>
+				<!--- <h3 class="panel-subheading">{{ $t(`Panels.trilabSlicers.${target}.longTitle`) }}</h3> --->
 				<img class="panel-image v-card__title" :src="$t(`Panels.trilabSlicers.${target}.imgsrc`)" alt="">
 				<v-row>
 					<v-col cols="12" md="8">
@@ -90,18 +90,17 @@ export default {
 			var platform = this.getOS();
 			var href = "";
 			if (platform == "mac64" || platform == "macos" || platform == "ios") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.1/PrusaSlicer-2.6.1+MacOS-universal-202309060812.dmg";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.1/PrusaSlicer-2.7.1+MacOS-universal-202312121432.dmg";
 			} else if (platform == "win64") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.1/PrusaSlicer-2.6.1+win64-202309060711_signed.zip";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.1/PrusaSlicer-2.7.1+win64-202312121425_signed.zip";
 			} else if (platform == "archlinux") {
 				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.0/PrusaSlicer-2.6.0+linux-aarch64-GTK3-202307170801.AppImage";
 			} else if (platform == "armv7l") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.1/PrusaSlicer-2.6.1+linux-armv7l-GTK2-202309060711.AppImage";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.1/PrusaSlicer-2.7.1+linux-armv7l-GTK2-202312121430.AppImage";
 			} else if (platform == "linux") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.6.1/PrusaSlicer-2.6.1+linux-x64-GTK3-202309060711.AppImage";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.1/PrusaSlicer-2.7.1+linux-x64-GTK3-202312121425.AppImage";
 			} else {
-				this.$toast.warning(this.$t('Panels.TrilabSlicerPanel.notAvailableText').toString());
-				return "#";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases";
 			}
 			return href;
 		}

@@ -1081,7 +1081,8 @@
   "title": "Українська",
   "TrilabUpdateDialog": {
     "title": "Aktualizace",
-    "RestartPrinter": "Перезапустіть принтер"
+    "RestartPrinter": "Перезапустіть принтер",
+    "titleUSB": "Оновлення з USB"
   },
   "General": {
     "Save": "зберегти"
@@ -1111,7 +1112,8 @@
       "Close": "Закрити",
       "Step": "Крок",
       "FilamentIsUnloading": "Нитка розвантажується",
-      "FilamentLoadWizard": "Майстер завантаження ниток"
+      "FilamentLoadWizard": "Майстер завантаження ниток",
+      "CancelLoading": "Скасувати завантаження"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Скасувати",

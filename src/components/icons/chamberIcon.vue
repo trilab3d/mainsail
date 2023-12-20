@@ -79,12 +79,12 @@
    inkscape:path-effect="#path-effect3394"
    inkscape:original-d="M 7.54,5.14 C 7.54,4.57 7.08,4.11 6.51,4.11 5.94,4.11 5.48,4.57 5.48,5.14 v 8.91 c 0,0.57 0.46,1.03 1.03,1.03 0.57,0 1.03,-0.46 1.03,-1.03 z"
    class="UnoptimicedTransforms" /><path
-   fill="#ffffff"
+   fill="currentColor"
    d="M 27.41,1.37 C 27.41,0.72 26.89,0 26.04,0 H 1.37 C 0.52,0 0,0.71 0,1.37 v 16.45 c 0,0.85 0.71,1.37 1.37,1.37 h 24.67 c 0.66,0 1.37,-0.52 1.37,-1.37 V 1.37 Z M 2.06,2.06 h 23.3 V 17.13 H 2.06 Z"
    id="path4"
    style="fill-rule:nonzero" />
 <path
-   style="fill:none;stroke:#fa6831;stroke-width:1.84224;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+   style="fill:none;stroke:currentColor;stroke-width:1.84224;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
    d="M 4.8047179,4.5984546 7.714185,7.1428487 4.8269504,9.8221287 7.698324,12.361914 4.8368465,14.782132 M 22.605282,4.5984546 l -2.909467,2.5443941 2.887235,2.67928 -2.871374,2.5397853 2.861477,2.420218"
    id="path3552"
    inkscape:path-effect="#path-effect3554"

@@ -1184,7 +1184,8 @@
   "title": "한국어",
   "TrilabUpdateDialog": {
     "title": "활성화",
-    "RestartPrinter": "프린터 다시 시작"
+    "RestartPrinter": "프린터 다시 시작",
+    "titleUSB": "USB에서 업데이트"
   },
   "General": {
     "Save": "구하다"
@@ -1214,7 +1215,8 @@
       "Close": "닫다",
       "Step": "단계",
       "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
-      "FilamentLoadWizard": "필라멘트 로드 마법사"
+      "FilamentLoadWizard": "필라멘트 로드 마법사",
+      "CancelLoading": "로드 취소"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "취소",

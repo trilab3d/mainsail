@@ -509,6 +509,15 @@
     "Headline": "Manuelle Messung"
   },
   "Panels": {
+    "trilabSlicers": {
+      "prusa": {
+        "title": "PrusaSlicer",
+        "longTitle": "PrusaSlicer 2.7.1",
+        "shortDescription": "PrusaSlicer ist ein quelloffenes, funktionsreiches und häufig aktualisiertes Werkzeug, das alles enthält, was Sie zum Exportieren der perfekten Druckdateien benötigen",
+        "longDescription": "Verwenden Sie die Schaltfläche oben, um das komplette PrusaSlicer-Paket herunterzuladen, einschließlich der Slicer-Profile. Entpacken Sie das Archiv nach dem Herunterladen in den Zielordner. Auf der Windows-Plattform führen Sie das Programm \"prusa-slicer.exe\" aus, auf der MacOS-Plattform führen Sie \"PrusaSlicer.app\" aus. Nach dem Start des Programms wird der Konfigurationsassistent angezeigt. Gehen Sie zur Registerkarte Prusa Pro. Wählen Sie hier Prusa Pro HT90 aus der Liste der Druckervarianten aus. Klicken Sie anschließend auf die Schaltfläche Fertig stellen in der unteren rechten Ecke des Fensters. Damit ist der Slicer einsatzbereit!",
+        "imgsrc": "/img/PrusaSlicer.png"
+      }
+    },
     "ExtruderControlPanel": {
       "Allowed": "Erlaubt",
       "EstimatedExtrusion": "Extrusion:",
@@ -1215,7 +1224,8 @@
   "title": "Deutsch",
   "TrilabUpdateDialog": {
     "title": "Aktualisierung",
-    "RestartPrinter": "Starten Sie den Drucker neu"
+    "RestartPrinter": "Starten Sie den Drucker neu",
+    "titleUSB": "Update von USB"
   },
   "General": {
     "Save": "Speichern"
@@ -1245,7 +1255,8 @@
       "Close": "Schließen",
       "Step": "Schritt",
       "FilamentIsUnloading": "Filament wird entladen",
-      "FilamentLoadWizard": "Filament-Ladeassistent"
+      "FilamentLoadWizard": "Filament-Ladeassistent",
+      "CancelLoading": "Laden abbrechen"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Stornieren",

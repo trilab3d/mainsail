@@ -923,7 +923,8 @@
   "title": "Italiano",
   "TrilabUpdateDialog": {
     "title": "Attualizzazione",
-    "RestartPrinter": "Riavviare la stampante"
+    "RestartPrinter": "Riavviare la stampante",
+    "titleUSB": "Aggiornamento da USB"
   },
   "General": {
     "Save": "Salva"
@@ -953,7 +954,8 @@
       "Close": "Vicino",
       "Step": "Fare un passo",
       "FilamentIsUnloading": "Il filamento si sta scaricando",
-      "FilamentLoadWizard": "Procedura guidata per il caricamento del filamento"
+      "FilamentLoadWizard": "Procedura guidata per il caricamento del filamento",
+      "CancelLoading": "Annulla il caricamento"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Annulla",

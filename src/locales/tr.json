@@ -1136,7 +1136,8 @@
   "title": "Türkçe",
   "TrilabUpdateDialog": {
     "title": "Gerçekleştirme",
-    "RestartPrinter": "Yazıcıyı yeniden başlat"
+    "RestartPrinter": "Yazıcıyı yeniden başlat",
+    "titleUSB": "USB'den güncelleme"
   },
   "General": {
     "Save": "Kaydetmek"
@@ -1166,7 +1167,8 @@
       "Close": "Kapalı",
       "Step": "Adım",
       "FilamentIsUnloading": "Filament boşaltılıyor",
-      "FilamentLoadWizard": "Filament Yükleme Sihirbazı"
+      "FilamentLoadWizard": "Filament Yükleme Sihirbazı",
+      "CancelLoading": "Yüklemeyi iptal et"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "İptal etmek",

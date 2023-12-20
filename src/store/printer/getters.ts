@@ -252,7 +252,7 @@ export const getters: GetterTree<PrinterState, RootState> = {
                         if (value.temperature > 50 || (value.target && value.temperature > value.target - 5))
                             icon = mdiRadiator
                     } else if (nameSplit[0].startsWith('heater_generic')) { icon = mdiFire }
-                    else if (nameSplit[0].startsWith('heater_chamber')) { icon = '$chamberIcon'; color = 'orange'; }
+                    else if (nameSplit[0].startsWith('heater_chamber')) { icon = '$chamberIcon'; color = 'rgba(219, 118, 3)'; }
                     if (!name.startsWith('_')) {
                         heaters.push({
                             name: name,

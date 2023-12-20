@@ -1181,7 +1181,8 @@
   "title": "日本語",
   "TrilabUpdateDialog": {
     "title": "アクチュアリザス",
-    "RestartPrinter": "プリンターを再起動します"
+    "RestartPrinter": "プリンターを再起動します",
+    "titleUSB": "USBからアップデートする"
   },
   "General": {
     "Save": "保存"
@@ -1211,7 +1212,8 @@
       "Close": "近い",
       "Step": "ステップ",
       "FilamentIsUnloading": "フィラメントがアンロード中です",
-      "FilamentLoadWizard": "フィラメントロードウィザード"
+      "FilamentLoadWizard": "フィラメントロードウィザード",
+      "CancelLoading": "ロードをキャンセルする"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "キャンセル",

@@ -2,19 +2,27 @@
     <v-dialog v-model="isDialogVisible" width="720">
         <v-card>
             <v-card-title>
-                <span class="headline">
+                <span v-if="liveUpdateStatus.indexOf('USB') != -1" class="headline">
+                    {{ $t('TrilabUpdateDialog.titleUSB') }}
+                </span>
+                <span v-if="liveUpdateStatus.indexOf('USB') == -1" class="headline">
                     {{ $t('TrilabUpdateDialog.title') }}
                 </span>
             </v-card-title>
 
             <v-card-text>
-                <h3 class="mb-3">{{ $t('TrilabLiveUpdate.statuses.' + liveUpdateStatus) }}</h3>
                 <div v-if="liveUpdateStatus == 'UPDATE_AVAILABLE' || liveUpdateStatus == 'USB_UPDATE_AVAILABLE'"
                     class="justify-center">
-                    <v-btn color="primary" block :disabled="downloadUpdateDisabled" @click="downloadUpdate()" v-if="liveUpdateStatus == 'UPDATE_AVAILABLE'">{{
-                        $t('TrilabLiveUpdate.Buttons.DownloadUpdate') }}</v-btn>
-                    <v-btn color="primary" block :disabled="installUpdateDisabled" @click="installUpdate()" v-if="liveUpdateStatus == 'USB_UPDATE_AVAILABLE'">{{
-                        $t('TrilabLiveUpdate.Buttons.InstallFromUsb') }}</v-btn>
+                    <v-btn color="primary" block :disabled="downloadUpdateDisabled" @click="downloadUpdate()"
+                        v-if="liveUpdateStatus == 'UPDATE_AVAILABLE'">{{
+                            $t('TrilabLiveUpdate.Buttons.DownloadUpdate') }}</v-btn>
+                    <div v-if="liveUpdateStatus == 'USB_UPDATE_AVAILABLE'">
+                        <p>Current version: {{ LiveUpdateStatusObject.current_version }}</p>
+                        <p>Available version: {{ LiveUpdateStatusObject.update_version }}</p>
+                        <v-btn color="primary" block :disabled="installUpdateDisabled" @click="installUpdate()"
+                            v-if="liveUpdateStatus == 'USB_UPDATE_AVAILABLE'">{{
+                                $t('TrilabLiveUpdate.Buttons.InstallFromUsb') }}</v-btn>
+                    </div>
                 </div>
 
                 <div v-if="'progress' in LiveUpdateStatusObject && LiveUpdateStatusObject.progress != -1">
@@ -24,7 +32,8 @@
                 <v-container v-if="liveUpdateStatus == 'INSTALLED' || liveUpdateStatus == 'USB_INSTALLED'">
                     <p>{{ $t('TrilabLiveUpdate.restartWarning') }}</p>
                     <p v-if="printerIsPrinting">{{ $t('TrilabLiveUpdate.printerIsPrinting') }}</p>
-                    <v-btn block color="red" :disabled="printerIsPrinting" @click="performUpdate()">{{ $t('TrilabLiveUpdate.installAndRebootBtn') }}</v-btn>
+                    <v-btn block color="red" :disabled="printerIsPrinting" @click="performUpdate()">{{
+                        $t('TrilabLiveUpdate.installAndRebootBtn') }}</v-btn>
 
                 </v-container>
             </v-card-text>
@@ -69,32 +78,32 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin, TrilabMixin) {
         }
         return "primary";
     }
-    get isDialogVisible(){
+    get isDialogVisible() {
         return this.showp;
     }
-    set isDialogVisible(value){
-        if(!value){
-        this.$emit('closeLiveUpdateDialog', value);
+    set isDialogVisible(value) {
+        if (!value) {
+            this.$emit('closeLiveUpdateDialog', value);
         }
     }
     closeIt() {
         this.$emit('closeLiveUpdateDialog', false)
     }
-    async downloadUpdate(){
+    async downloadUpdate() {
         this.downloadUpdateDisabled = true;
         const respo = await axios.post(store.getters['trilab/trilabPrefix'] + "/download_update");
         await this.$store.dispatch('trilab/getLiveUpdateStatus');
         this.downloadUpdateDisabled = false;
         return true;
     }
-    async installUpdate(){
+    async installUpdate() {
         this.installUpdateDisabled = true;
         const respo = await axios.post(store.getters['trilab/trilabPrefix'] + "/install_usb_update");
         await this.$store.dispatch('trilab/getLiveUpdateStatus');
         this.installUpdateDisabled = false;
         return respo;
     }
-    async performUpdate(){
+    async performUpdate() {
         this.performUpdateDisabled = true;
         const respo = await axios.post(store.getters['trilab/trilabPrefix'] + "/perform_update");
         await this.$store.dispatch('trilab/getLiveUpdateStatus');

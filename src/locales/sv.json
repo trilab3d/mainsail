@@ -951,7 +951,8 @@
   "title": "Svenska",
   "TrilabUpdateDialog": {
     "title": "Aktualisera",
-    "RestartPrinter": "Starta om skrivaren"
+    "RestartPrinter": "Starta om skrivaren",
+    "titleUSB": "Uppdatera från USB"
   },
   "General": {
     "Save": "Spara"
@@ -981,7 +982,8 @@
       "Close": "Stänga",
       "Step": "Steg",
       "FilamentIsUnloading": "Filament håller på att lossas",
-      "FilamentLoadWizard": "Filament Load Wizard"
+      "FilamentLoadWizard": "Filament Load Wizard",
+      "CancelLoading": "Avbryt laddningen"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Annullera",

@@ -1205,7 +1205,8 @@
   "title": "Русский",
   "TrilabUpdateDialog": {
     "title": "Актуализация",
-    "RestartPrinter": "Перезагрузить принтер"
+    "RestartPrinter": "Перезагрузить принтер",
+    "titleUSB": "Обновление с USB"
   },
   "General": {
     "Save": "Сохранять"
@@ -1235,7 +1236,8 @@
       "Close": "Закрывать",
       "Step": "Шаг",
       "FilamentIsUnloading": "Нить выгружается",
-      "FilamentLoadWizard": "Мастер загрузки нити"
+      "FilamentLoadWizard": "Мастер загрузки нити",
+      "CancelLoading": "Отменить загрузку"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Отмена",

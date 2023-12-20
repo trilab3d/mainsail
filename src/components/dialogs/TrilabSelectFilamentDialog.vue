@@ -6,8 +6,11 @@
 
                 <v-row>
                     <v-col v-for="(elem, index) in allowedFilaments" :key="index" cols="6">
+                        <!--- version with confirm dialog 
                         <v-btn block color="orange" class="btnGrid"
-                            @click="selectedFilament = elem; selectDialogConfirmation = true">{{ elem.title }}</v-btn>
+                            @click="selectedFilament = elem; selectDialogConfirmation = true">{{ elem.title }}</v-btn>--->
+                        <v-btn block color="orange" class="btnGrid"
+                            @click="selectFilament(elem)">{{ elem.title }}</v-btn>
                     </v-col>
                 </v-row>
 

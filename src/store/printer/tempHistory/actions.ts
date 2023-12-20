@@ -2,6 +2,7 @@ import {
     colorArray,
     colorChamber,
     colorHeaterBed,
+    colorHeaterChamber,
     datasetInterval,
     datasetTypes,
     datasetTypesInPercents,
@@ -129,6 +130,10 @@ export const actions: ActionTree<PrinterTempHistoryState, RootState> = {
 
                         case 'chamber':
                             color = colorChamber
+                            break
+
+                        case 'heater_chamber':
+                            color = colorHeaterChamber
                             break
 
                         default:

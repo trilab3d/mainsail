@@ -1180,7 +1180,8 @@
   "title": "Nederlands",
   "TrilabUpdateDialog": {
     "title": "Actief",
-    "RestartPrinter": "Start de printer opnieuw"
+    "RestartPrinter": "Start de printer opnieuw",
+    "titleUSB": "Updaten vanaf USB"
   },
   "General": {
     "Save": "Redden"
@@ -1210,7 +1211,8 @@
       "Close": "Dichtbij",
       "Step": "Stap",
       "FilamentIsUnloading": "Het filament wordt verwijderd",
-      "FilamentLoadWizard": "Wizard voor het laden van filamenten"
+      "FilamentLoadWizard": "Wizard voor het laden van filamenten",
+      "CancelLoading": "Annuleer het laden"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Annuleren",

@@ -3,7 +3,6 @@
         <v-card>
             <v-card-title class="headline">{{ $t('Trilab.TrilabFilamentLoadWizard.FilamentLoadWizard') }}</v-card-title>
             <v-card-text>
-                <p>{{ $t('Trilab.TrilabFilamentLoadWizard.Step') }} {{ step + 1 }}</p>
                 <div v-if="step == 0">
                     <p>{{ $t("Trilab.TrilabFilamentLoadWizard.SelectWhichFilamentYouWantToLoad") }}</p>
                     <trilab-select-filament-dialog :showp="showSelectFilamentDialog"
@@ -21,7 +20,7 @@
 
                         <v-divider class="mt-4 mb-4"></v-divider>
 
-                        <v-btn block @click="cancelHeating" class="orange darken-1">{{
+                        <v-btn block @click="cancelHeating" class="red darken-1">{{
                             $t("Trilab.TrilabFilamentLoadWizard.CancelHeating") }} </v-btn>
                     </div>
                     <div v-if="temperatureProgress >= 99.8">
@@ -32,7 +31,14 @@
                 </div>
 
                 <div v-if="step == 2">
-                    <p v-if="idleTimeout != 'Ready'">{{ $t('Trilab.TrilabFilamentLoadWizard.FilamentIsLoading') }}</p>
+                    <div v-if="idleTimeout != 'Ready'">
+                        <p>{{ $t('Trilab.TrilabFilamentLoadWizard.FilamentIsLoading') }}</p>
+                        <v-progress-linear :value="currentProgressPercentage" color="orange darken-1"
+                            height="10"></v-progress-linear>
+                        <v-divider class="mt-4 mb-4"></v-divider>
+                        <v-btn block @click="cancelLoading()" class="red darken-1">{{
+                            $t("Trilab.TrilabFilamentLoadWizard.CancelLoading") }} </v-btn>
+                    </div>
                     <div v-if="idleTimeout == 'Ready'">
                         <p>{{ $t("Trilab.TrilabFilamentLoadWizard.IsColorClean") }} </p>
                         <v-btn block @click="purgeMore" class="orange darken-1 mt-2">{{
@@ -45,13 +51,10 @@
                     </div>
                 </div>
 
-                <div v-if="step == 3">
-
-                </div>
-
                 <div v-if="step == 0">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn color="primary" @click="$emit('close')">{{ $t("Trilab.TrilabFilamentLoadWizard.CancelWizard") }}</v-btn>
+                    <v-btn block color="red darken-1" @click="$emit('close')">{{
+                        $t("Trilab.TrilabFilamentLoadWizard.CancelWizard") }}</v-btn>
                 </div>
             </v-card-text>
         </v-card>
@@ -80,6 +83,178 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
 
     public idleTimeoutOverride = '';
 
+    public loadingSequenceStart = new Date();
+
+    public commandStart = new Date();
+
+    public loadingStarted = 0;
+
+    public loadingFinished = 0;
+
+    public currentCommandIndex = 0;
+
+    public loadingTimeout: any = null;
+
+    public currentProgressPercentage = 0;
+
+    public updateProgressInterval: any = null;
+
+    public actionTimeout: any = null;
+
+    //// SEQUENCES
+    public commandSequence = [
+        {
+            command: "SAVE_GCODE_STATE NAME=LOAD_FILAMENT", duration: 0, repeat: 1, originalRepeat: 1
+        },
+        {
+            command: "M83", duration: 0, repeat: 1, originalRepeat: 1
+        },
+        {
+            command: "G0 E5 F600", duration: 1000, originalRepeat: 6, repeat: 6
+        },
+        {
+            command: "G0 E5 F300", duration: 1000, originalRepeat: 10, repeat: 10
+        },
+        {
+            command: "G0 E-18 F2160", duration: 1000, originalRepeat: 1, repeat: 1
+        },
+        {
+            command: "RESTORE_GCODE_STATE NAME=LOAD_FILAMENT", duration: 0, repeat: 1, originalRepeat: 1
+        },
+
+    ]
+
+
+    get totalDuration() {
+        /// will return the total duration in ms
+        let total = 0;
+        for (let i = 0; i < this.commandSequence.length; i++) {
+            const element = this.commandSequence[i];
+            total += element.duration * (element.originalRepeat ?? 1);
+        }
+        return total;
+    }
+
+    remainingDuration() {
+        /// will return the remaining duration in ms
+        let total = 0;
+        for (let i = this.currentCommandIndex; i < this.commandSequence.length; i++) {
+            const element = this.commandSequence[i];
+            total += element.duration * (element.repeat ?? 1);
+        }
+        return total;
+    }
+    nextRemainingDuration() {
+        /// will return the remaining duration in ms
+        let total = 0;
+        if (this.currentCommandIndex + 1 >= this.commandSequence.length) {
+            return 0;
+        }
+        var originalI = this.currentCommandIndex;
+        for (let i = this.currentCommandIndex; i < this.commandSequence.length; i++) {
+            const element = this.commandSequence[i];
+            let elemRepeat = element.repeat ?? 1;
+            if (i == originalI) {
+                elemRepeat -= 1;
+            }
+            total += element.duration * (elemRepeat);
+        }
+        return total;
+    }
+    resetSequences() {
+        try {
+            clearInterval(this.updateProgressInterval);
+        } catch (e) {
+            //console.log(e);
+        }
+        /// set the repeat to original
+        for (let i = 0; i < this.commandSequence.length; i++) {
+            const element = this.commandSequence[i];
+            if ('repeat' in element) {
+                element.repeat = element.originalRepeat;
+            }
+        }
+        this.currentCommandIndex = 0;
+    }
+    get totalCommands() {
+        let total = 0;
+        for (let i = 0; i < this.commandSequence.length; i++) {
+            total += this.commandSequence[i].repeat ?? 1;
+        }
+        return total;
+    }
+    get remainingCommands() {
+        let total = 0;
+        for (let i = 0; i < this.commandSequence.length; i++) {
+            if (this.currentCommandIndex >= i) {
+                total += this.commandSequence[i].repeat ?? 1;
+            }
+        }
+        return total;
+    }
+    nextKrok() {
+        this.commandSequence[this.currentCommandIndex].repeat -= 1;
+        if (this.commandSequence[this.currentCommandIndex].repeat > 0) {
+            this.commandStart = new Date();
+            return true;
+        }
+        this.commandStart = new Date();
+        this.currentCommandIndex += 1;
+        if (this.currentCommandIndex >= this.commandSequence.length) {
+            this.currentCommandIndex = this.commandSequence.length - 1;
+            return false;
+        }
+        return true;
+    }
+    updateCurrentPercentage() {
+        const currentTime: any = new Date();
+        let elapsedCommandTime = currentTime.getTime() - this.commandStart.getTime();
+        if (elapsedCommandTime > this.commandSequence[this.currentCommandIndex].duration) {
+            elapsedCommandTime = this.commandSequence[this.currentCommandIndex].duration;
+        }
+        console.log('elapsed: ' + elapsedCommandTime);
+        /// make let startpercentage based on totalDuration and remainingDuration
+        const startPercentage = 100 - (this.remainingDuration() / this.totalDuration * 100);
+        const nextStartPercentage = 100 - (this.nextRemainingDuration() / this.totalDuration * 100);
+        /// nowe we have where it started, we need to add the percentage of the current command based on currentTime and command duration and commandStart
+        const currentCommand = this.commandSequence[this.currentCommandIndex];
+        const ccduration = currentCommand.duration;
+        let currentCommandPercentage = 100;
+        if (ccduration > 0) {
+            currentCommandPercentage = elapsedCommandTime / ccduration * 100;
+        }
+        if (currentCommandPercentage > 100) {
+            currentCommandPercentage = 100;
+        }
+
+        /// calculate the percentage based on currentCommandPercentage between startPercentage and nextStartPercentage
+        let calculated = (nextStartPercentage - startPercentage) * (currentCommandPercentage / 100);
+        if (calculated > 100) {
+            calculated = 100;
+        }
+        if (calculated < 0) {
+            calculated = 0;
+        }
+
+        console.log("calculated: " + calculated);
+        console.log("startPercentage: " + startPercentage);
+        console.log("nextStartPercentage" + nextStartPercentage);
+        console.log("currentCommandPercentage" + currentCommandPercentage);
+
+        let percentage = startPercentage + calculated;
+
+
+        console.log("current percentage");
+        console.log(percentage);
+
+        percentage = Math.max(0, Math.min(percentage, 100));
+
+        this.currentProgressPercentage = percentage;
+    }
+
+
+
+    //// END SEQUENCES ///
 
 
     get isDialogVisible() {
@@ -100,30 +275,33 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
         return this.$store.state.printer.idle_timeout?.state ?? "unknown"
     }
 
+    cancelLoading() {
+        try {
+            clearInterval(this.updateProgressInterval);
+        } catch (e) {
+            console.log(e);
+        }
+        try {
+            clearTimeout(this.actionTimeout);
+        } catch (e) {
+            console.log(e);
+        }
+        this.resetSequences();
+        this.cancelHeating();
+        this.step = 0;
+        this.currentProgressPercentage = 0;
+
+        /// send restore gcode state
+        this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
+    }
+
     async loadFilament() {
-        /* 
-                self._screen._ws.klippy.gcode_script(f"SAVE_GCODE_STATE NAME=LOAD_FILAMENT")
-        self._screen._ws.klippy.gcode_script(f"M83")
-        self._screen._ws.klippy.gcode_script(f"G0 E35 F600")
-        self._screen._ws.klippy.gcode_script(f"G0 E50 F300")
-        self._screen._ws.klippy.gcode_script(f"G1 E-18.0 F1500")
-        self._screen._ws.klippy.gcode_script(f"RESTORE_GCODE_STATE NAME=LOAD_FILAMENT")
-
-        */
-        await this.$store.dispatch('printer/sendGcode', `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`);
-        await this.$store.dispatch('printer/sendGcode', `M83`);
-        await this.$store.dispatch('printer/sendGcode', `G0 E35 F600`);
-        await this.$store.dispatch('printer/sendGcode', `G0 E50 F300`);
-        await this.$store.dispatch('printer/sendGcode', `G1 E-18.0 F1500`);
-        await this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
-        /// add events
-        await this.$store.dispatch('server/addEvent', { message: `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `M83`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G0 E35 F600`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G0 E50 F300`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G1 E-18.0 F1500`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
-
+        this.loadingSequenceStart = new Date();
+        /// immediately call the first command
+        this.loadFilamentPart();
+        this.updateProgressInterval = setInterval(() => {
+            this.updateCurrentPercentage();
+        }, 100);
 
         /// set the idleTimeout to 'Loading' temporarily
         this.idleTimeoutOverride = 'Loading';
@@ -133,6 +311,36 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
         }, 2000);
         this.step = 2;
     }
+
+
+    async loadFilamentPart() {
+        let commandToUse = this.commandSequence[this.currentCommandIndex];
+        console.log("sending command");
+        console.log(commandToUse.command);
+        //console.log(this.commandStart);
+        //console.log(this.currentCommandIndex);
+        /// send the command
+        console.log("awaitResult under: ");
+        console.log(await this.$store.dispatch('printer/sendGcode', commandToUse.command));
+        /// sent, next add events
+        await this.$store.dispatch('server/addEvent', { message: commandToUse.command, type: 'command' })
+
+        /// nextKrok
+        let canNext = this.nextKrok();
+        //console.log("CANNEXT: ");
+        //console.log(canNext);
+        var currentDuration = commandToUse.duration;
+        if (canNext == true) {
+            this.actionTimeout = setTimeout(() => {
+                this.loadFilamentPart();
+            }, currentDuration);
+        } else {
+            this.step = 2;
+            this.resetSequences();
+        }
+    }
+
+
 
     async purgeMore() {
         /*        self._screen._ws.klippy.gcode_script(f"SAVE_GCODE_STATE NAME=LOAD_FILAMENT")

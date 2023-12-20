@@ -1205,7 +1205,8 @@
   "title": "Português",
   "TrilabUpdateDialog": {
     "title": "Atualização",
-    "RestartPrinter": "Reinicie a impressora"
+    "RestartPrinter": "Reinicie a impressora",
+    "titleUSB": "Atualizar de USB"
   },
   "General": {
     "Save": "Salvar"
@@ -1235,7 +1236,8 @@
       "Close": "Fechar",
       "Step": "Etapa",
       "FilamentIsUnloading": "O filamento está descarregando",
-      "FilamentLoadWizard": "Assistente de carregamento de filamento"
+      "FilamentLoadWizard": "Assistente de carregamento de filamento",
+      "CancelLoading": "Cancelar carregamento"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Cancelar",

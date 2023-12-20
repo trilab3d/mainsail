@@ -8,6 +8,7 @@ export const colorArray = ['#F44336', '#8e379d', '#03DAC5', '#3F51B5', '#ffde03'
 
 export const colorHeaterBed = '#2196F3'
 export const colorChamber = '#4CAF50'
+export const colorHeaterChamber = '#db7603'
 export const opacityHeaterActive = '99'
 export const opacityHeaterInactive = '44'
 export const themeDir = '.theme'

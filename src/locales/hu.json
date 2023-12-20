@@ -1059,7 +1059,8 @@
   "title": "Magyar",
   "TrilabUpdateDialog": {
     "title": "Frissítés",
-    "RestartPrinter": "Indítsa újra a nyomtatót"
+    "RestartPrinter": "Indítsa újra a nyomtatót",
+    "titleUSB": "Frissítés USB-ről"
   },
   "General": {
     "Save": "Megment"
@@ -1089,7 +1090,8 @@
       "Close": "Bezárás",
       "Step": "Lépés",
       "FilamentIsUnloading": "Az izzószál kiürül",
-      "FilamentLoadWizard": "Izzószál betöltése varázsló"
+      "FilamentLoadWizard": "Izzószál betöltése varázsló",
+      "CancelLoading": "Betöltés megszakítása"
     },
     "TrilabSelectFilamentDialog": {
       "Cancel": "Megszünteti",
