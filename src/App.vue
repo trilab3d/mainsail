@@ -35,6 +35,7 @@
                 </v-container>
             </v-main>
             <the-service-worker />
+            <trilab-update-dialog :file="updateFile"></trilab-update-dialog>
             <the-update-dialog />
             <the-editor />
             <the-timelapse-rendering-snackbar />
@@ -112,6 +113,11 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
     onCloseServiceLogin() {
         this.isLoginPopupOpen = false;
     }
+
+    get updateFile(){
+        return this.$store.getters['trilab/getUpdateFile'];
+    }
+
     get title(): any {
         return this.$store.getters['getTitle']
     }

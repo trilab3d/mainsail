@@ -1235,9 +1235,16 @@
       "InstallFromUsb": "Update von USB",
       "DownloadUpdate": "Aktualisierung herunterladen"
     },
-    "restartWarning": "Ihr Drucker wird neu gestartet und während dieses Schritts wird für kurze Zeit die Verbindung zu diesem Drucker unterbrochen",
+    "restartWarning": "Das Update ist zur Installation bereit. \nKlicken Sie auf die Schaltfläche, um das Update zu installieren. \nDer Drucker wird neu gestartet, sobald die Aktualisierung abgeschlossen ist.",
     "printerIsPrinting": "Sie können diesen Schritt derzeit nicht ausführen, da Ihr Drucker gerade arbeitet. \nBitte warten Sie eine Weile. Dieses Fenster wird automatisch aktualisiert, wenn dieser Schritt abgeschlossen ist",
-    "installAndRebootBtn": "INSTALLIEREN"
+    "installAndRebootBtn": "INSTALLIEREN",
+    "Titles": {
+      "Installed": "Update bereit",
+      "UsbInstalled": "USB-Update bereit",
+      "UpdateInProgress": "Aktualisierung läuft",
+      "UpdateAvailable": "Update verfügbar",
+      "UsbUpdateAvailable": "USB-Update verfügbar"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1272,7 +1279,9 @@
       "Progres": "Fortschritt:",
       "ShowErrorTechinicalDetails": "Technische Fehlerdetails anzeigen",
       "STATUS": "STATUS:",
-      "DANGER": "GEFAHR"
+      "DANGER": "FEHLER",
+      "INFO": "DIE INFO",
+      "WARNING": "WARNEN"
     },
     "SettingsTrilabTab": {
       "System": "System",
@@ -1282,7 +1291,8 @@
       "UploadUpdateFile": "Update-Datei hochladen",
       "Upload": "Hochladen",
       "CheckForLiveUpdate": "Suchen Sie nach Live-Updates",
-      "NoUpdateAvailable": "Kein Update verfügbar"
+      "NoUpdateAvailable": "Kein Update verfügbar",
+      "UpdateChannelTitle": "Kanal aktualisieren"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Verborgene Ansicht aktiviert",
@@ -1309,5 +1319,8 @@
       "FilamentIsUnloading": "Filament wird entladen",
       "colorUnloaded": "Filament wurde erfolgreich entladen"
     }
+  },
+  "Generic": {
+    "Ok": "OK"
   }
 }

@@ -1070,9 +1070,16 @@
       "InstallFromUsb": "Frissítés USB-ről",
       "DownloadUpdate": "Frissítés letöltése"
     },
-    "restartWarning": "A nyomtató újraindul, és a lépés során rövid időre megszakad a kapcsolat ezzel a nyomtatóval",
+    "restartWarning": "A frissítés készen áll a telepítésre. \nNyomja meg a gombot a frissítés telepítéséhez. \nA nyomtató újraindul, amint a frissítés befejeződött.",
     "printerIsPrinting": "Ezt a lépést jelenleg nem tudja végrehajtani, mert a nyomtatója éppen dolgozik. \nKérjük, várjon egy kicsit, ez az ablak automatikusan frissül, ha ez a lépés készen áll",
-    "installAndRebootBtn": "TELEPÍTÉS"
+    "installAndRebootBtn": "TELEPÍTÉS",
+    "Titles": {
+      "Installed": "Frissítés kész",
+      "UsbInstalled": "USB frissítés készen áll",
+      "UpdateInProgress": "Frissítés folyamatban",
+      "UpdateAvailable": "Frissítés elérhető",
+      "UsbUpdateAvailable": "USB frissítés elérhető"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1107,7 +1114,9 @@
       "Progres": "Előrehalad:",
       "ShowErrorTechinicalDetails": "A hiba műszaki részleteinek megjelenítése",
       "STATUS": "ÁLLAPOT:",
-      "DANGER": "VESZÉLY"
+      "DANGER": "HIBA",
+      "INFO": "INFO",
+      "WARNING": "FIGYELMEZTET"
     },
     "SettingsTrilabTab": {
       "System": "Rendszer",
@@ -1117,7 +1126,8 @@
       "UploadUpdateFile": "Frissítő fájl feltöltése",
       "Upload": "Feltöltés",
       "CheckForLiveUpdate": "Ellenőrizze az élő frissítést",
-      "NoUpdateAvailable": "Nem érhető el frissítés"
+      "NoUpdateAvailable": "Nem érhető el frissítés",
+      "UpdateChannelTitle": "Frissítse a csatornát"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Rejtett nézet engedélyezve",
@@ -1144,5 +1154,8 @@
       "FilamentIsUnloading": "Az izzószál kiürül",
       "colorUnloaded": "Az izzószál sikeresen eltávolítva"
     }
+  },
+  "Generic": {
+    "Ok": "Rendben"
   }
 }

@@ -1068,9 +1068,16 @@
       "InstallFromUsb": "Actualizar desde USB",
       "DownloadUpdate": "Descarga de la actualización"
     },
-    "restartWarning": "Su impresora se reiniciará y perderá la conexión a esta impresora por un momento durante este paso.",
+    "restartWarning": "La actualización está lista para su instalación. \nPresione el botón para instalar la actualización. \nLa impresora se reiniciará una vez que se complete la actualización.",
     "printerIsPrinting": "No puede realizar este paso en este momento porque su impresora está funcionando. \nEspere un momento, esta ventana se actualizará automáticamente cuando este paso esté listo",
-    "installAndRebootBtn": "INSTALAR"
+    "installAndRebootBtn": "INSTALAR",
+    "Titles": {
+      "Installed": "Actualización lista",
+      "UsbInstalled": "Actualización USB lista",
+      "UpdateInProgress": "Actualización en progreso",
+      "UpdateAvailable": "Actualización disponible",
+      "UsbUpdateAvailable": "Actualización USB disponible"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1105,7 +1112,9 @@
       "Progres": "Progreso:",
       "ShowErrorTechinicalDetails": "Mostrar detalles técnicos del error",
       "STATUS": "ESTADO:",
-      "DANGER": "PELIGRO"
+      "DANGER": "ERROR",
+      "INFO": "INFORMACIÓN",
+      "WARNING": "ADVERTIR"
     },
     "SettingsTrilabTab": {
       "System": "Sistema",
@@ -1115,7 +1124,8 @@
       "UploadUpdateFile": "Cargar archivo de actualización",
       "Upload": "Subir",
       "CheckForLiveUpdate": "Busque actualizaciones en vivo",
-      "NoUpdateAvailable": "Actualización no disponible"
+      "NoUpdateAvailable": "Actualización no disponible",
+      "UpdateChannelTitle": "Canal de actualización"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Vista oculta habilitada",
@@ -1142,5 +1152,8 @@
       "FilamentIsUnloading": "El filamento se está descargando.",
       "colorUnloaded": "Filamento descargado exitosamente"
     }
+  },
+  "Generic": {
+    "Ok": "De acuerdo"
   }
 }

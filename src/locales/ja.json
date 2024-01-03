@@ -1192,9 +1192,16 @@
       "InstallFromUsb": "USBからアップデートする",
       "DownloadUpdate": "アップデートをダウンロード"
     },
-    "restartWarning": "プリンターが再起動され、この手順中にしばらくの間、このプリンターへの接続が失われます。",
+    "restartWarning": "アップデートをインストールする準備ができました。\nボタンを押してアップデートをインストールします。\nアップデートが完了するとプリンターが再起動します。",
     "printerIsPrinting": "プリンターが何らかの作業を行っているため、現在この手順を実行することはできません。\nしばらくお待ちください。この手順の準備が完了すると、このウィンドウは自動的に更新されます",
-    "installAndRebootBtn": "インストール"
+    "installAndRebootBtn": "インストール",
+    "Titles": {
+      "Installed": "アップデートの準備ができました",
+      "UsbInstalled": "USBアップデート準備完了",
+      "UpdateInProgress": "アップデート中です",
+      "UpdateAvailable": "利用可能なアップデート",
+      "UsbUpdateAvailable": "USBアップデートが利用可能"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1229,7 +1236,9 @@
       "Progres": "進捗：",
       "ShowErrorTechinicalDetails": "エラーの技術的な詳細を表示",
       "STATUS": "状態：",
-      "DANGER": "危険"
+      "DANGER": "エラー",
+      "INFO": "情報",
+      "WARNING": "警告"
     },
     "SettingsTrilabTab": {
       "System": "システム",
@@ -1239,7 +1248,8 @@
       "UploadUpdateFile": "アップデートファイルをアップロードする",
       "Upload": "アップロード",
       "CheckForLiveUpdate": "ライブアップデートを確認する",
-      "NoUpdateAvailable": "利用可能なアップデートはありません"
+      "NoUpdateAvailable": "利用可能なアップデートはありません",
+      "UpdateChannelTitle": "チャンネルを更新する"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "隠しビューを有効にする",
@@ -1266,5 +1276,8 @@
       "FilamentIsUnloading": "フィラメントがアンロード中です",
       "colorUnloaded": "フィラメントが正常にアンロードされました"
     }
+  },
+  "Generic": {
+    "Ok": "わかりました"
   }
 }

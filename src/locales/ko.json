@@ -1195,9 +1195,16 @@
       "InstallFromUsb": "USB에서 업데이트",
       "DownloadUpdate": "업데이트 다운로드"
     },
-    "restartWarning": "프린터가 다시 시작되고 이 단계가 진행되는 동안 잠시 동안 이 프린터와의 연결이 끊어집니다.",
+    "restartWarning": "업데이트를 설치할 준비가 되었습니다. \n버튼을 눌러 업데이트를 설치하세요. \n업데이트가 완료되면 프린터가 다시 시작됩니다.",
     "printerIsPrinting": "프린터가 일부 작업을 수행 중이므로 지금은 이 단계를 수행할 수 없습니다. \n잠시 기다려 주십시오. 이 단계가 준비되면 이 창이 자동으로 새로 고쳐집니다.",
-    "installAndRebootBtn": "설치하다"
+    "installAndRebootBtn": "설치하다",
+    "Titles": {
+      "Installed": "업데이트 준비됨",
+      "UsbInstalled": "USB 업데이트 준비됨",
+      "UpdateInProgress": "업데이트 진행 중",
+      "UpdateAvailable": "업데이트 가능",
+      "UsbUpdateAvailable": "USB 업데이트 가능"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1232,7 +1239,9 @@
       "Progres": "진전:",
       "ShowErrorTechinicalDetails": "오류 기술 세부정보 표시",
       "STATUS": "상태:",
-      "DANGER": "위험"
+      "DANGER": "오류",
+      "INFO": "정보",
+      "WARNING": "경고하다"
     },
     "SettingsTrilabTab": {
       "System": "체계",
@@ -1242,7 +1251,8 @@
       "UploadUpdateFile": "업데이트 파일 업로드",
       "Upload": "업로드",
       "CheckForLiveUpdate": "실시간 업데이트 확인",
-      "NoUpdateAvailable": "사용 가능한 업데이트가 없습니다."
+      "NoUpdateAvailable": "사용 가능한 업데이트가 없습니다.",
+      "UpdateChannelTitle": "채널 업데이트"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "숨겨진 뷰 활성화",
@@ -1269,5 +1279,8 @@
       "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
       "colorUnloaded": "필라멘트가 성공적으로 언로드되었습니다."
     }
+  },
+  "Generic": {
+    "Ok": "좋아요"
   }
 }

@@ -1250,9 +1250,16 @@
       "InstallFromUsb": "Update from USB",
       "DownloadUpdate": "Download update"
     },
-    "restartWarning": "Your printer will restart and you will lose connection to this printer for a short while during this step",
+    "restartWarning": "The update is ready for installation. Press the button to install the update. The printer will restart once the update is completed.",
     "printerIsPrinting": "You cannot perform this step right now, because your printer is doing some work. Please wait a while, this window will automatically refresh when this step is ready",
-    "installAndRebootBtn": "INSTALL & REBOOT"
+    "installAndRebootBtn": "INSTALL & REBOOT",
+    "Titles": {
+      "Installed": "Update ready",
+      "UsbInstalled": "USB update ready",
+      "UpdateInProgress": "Update in progress",
+      "UpdateAvailable": "Update available",
+      "UsbUpdateAvailable": "USB update available"
+    }
   },
   "TrilabUpdateDialog": {
     "title": "Update",
@@ -1292,7 +1299,9 @@
       "Progres": "Progress:",
       "ShowErrorTechinicalDetails": "Show error technical details",
       "STATUS": "STATUS:",
-      "DANGER": "DANGER"
+      "DANGER": "DANGER",
+      "INFO": "INFO",
+      "WARNING": "WARN"
     },
     "SettingsTrilabTab": {
       "System": "System",
@@ -1302,7 +1311,8 @@
       "UploadUpdateFile": "Upload update file",
       "Upload": "Upload",
       "CheckForLiveUpdate": "Check for live update",
-      "NoUpdateAvailable": "No update available"
+      "NoUpdateAvailable": "No update available",
+      "UpdateChannelTitle": "Update channel"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Hidden View Enabled",
@@ -1329,5 +1339,8 @@
       "FilamentIsUnloading": "Filament is unloading",
       "colorUnloaded": "Filament unloaded successfuly"
     }
+  },
+  "Generic": {
+    "Ok": "Ok"
   }
 }

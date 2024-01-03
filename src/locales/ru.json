@@ -1216,9 +1216,16 @@
       "InstallFromUsb": "Обновление с USB",
       "DownloadUpdate": "Скачать обновление"
     },
-    "restartWarning": "На этом этапе ваш принтер перезагрузится, и вы ненадолго потеряете соединение с этим принтером.",
+    "restartWarning": "Обновление готово к установке. \nНажмите кнопку, чтобы установить обновление. \nПринтер перезагрузится после завершения обновления.",
     "printerIsPrinting": "Вы не можете выполнить этот шаг прямо сейчас, поскольку ваш принтер выполняет какую-то работу. \nПожалуйста, подождите некоторое время, это окно автоматически обновится, когда этот шаг будет готов.",
-    "installAndRebootBtn": "УСТАНОВИТЬ"
+    "installAndRebootBtn": "УСТАНОВИТЬ",
+    "Titles": {
+      "Installed": "Обновление готово",
+      "UsbInstalled": "USB-обновление готово",
+      "UpdateInProgress": "Производится обновление",
+      "UpdateAvailable": "Доступно обновление",
+      "UsbUpdateAvailable": "Доступно обновление через USB"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1253,7 +1260,9 @@
       "Progres": "Прогресс:",
       "ShowErrorTechinicalDetails": "Показать техническую информацию об ошибке",
       "STATUS": "ПОЛОЖЕНИЕ ДЕЛ:",
-      "DANGER": "ОПАСНОСТЬ"
+      "DANGER": "ОШИБКА",
+      "INFO": "ИНФОРМАЦИЯ",
+      "WARNING": "ПРЕДУПРЕЖДАТЬ"
     },
     "SettingsTrilabTab": {
       "System": "Система",
@@ -1263,7 +1272,8 @@
       "UploadUpdateFile": "Загрузите файл обновления",
       "Upload": "Загрузить",
       "CheckForLiveUpdate": "Проверьте актуальное обновление",
-      "NoUpdateAvailable": "Нет доступных обновлений"
+      "NoUpdateAvailable": "Нет доступных обновлений",
+      "UpdateChannelTitle": "Обновить канал"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Скрытый просмотр включен",
@@ -1290,5 +1300,8 @@
       "FilamentIsUnloading": "Нить выгружается",
       "colorUnloaded": "Нить успешно выгружена"
     }
+  },
+  "Generic": {
+    "Ok": "Хорошо"
   }
 }

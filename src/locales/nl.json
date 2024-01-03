@@ -1191,9 +1191,16 @@
       "InstallFromUsb": "Updaten vanaf USB",
       "DownloadUpdate": "Download update"
     },
-    "restartWarning": "Uw printer wordt opnieuw opgestart en tijdens deze stap wordt de verbinding met deze printer korte tijd verbroken",
+    "restartWarning": "De update is klaar voor installatie. \nDruk op de knop om de update te installeren. \nDe printer wordt opnieuw opgestart zodra de update is voltooid.",
     "printerIsPrinting": "U kunt deze stap nu niet uitvoeren, omdat uw printer wat werk doet. \nWacht even, dit venster wordt automatisch vernieuwd wanneer deze stap gereed is",
-    "installAndRebootBtn": "INSTALLEREN"
+    "installAndRebootBtn": "INSTALLEREN",
+    "Titles": {
+      "Installed": "Update gereed",
+      "UsbInstalled": "USB-update gereed",
+      "UpdateInProgress": "Update wordt uitgevoerd",
+      "UpdateAvailable": "Update beschikbaar",
+      "UsbUpdateAvailable": "USB-update beschikbaar"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1228,7 +1235,9 @@
       "Progres": "Voortgang:",
       "ShowErrorTechinicalDetails": "Toon fout technische details",
       "STATUS": "TOESTAND:",
-      "DANGER": "GEVAAR"
+      "DANGER": "FOUT",
+      "INFO": "INFO",
+      "WARNING": "WAARSCHUWEN"
     },
     "SettingsTrilabTab": {
       "System": "Systeem",
@@ -1238,7 +1247,8 @@
       "UploadUpdateFile": "Updatebestand uploaden",
       "Upload": "Uploaden",
       "CheckForLiveUpdate": "Controleer op live-update",
-      "NoUpdateAvailable": "Geen update beschikbaar"
+      "NoUpdateAvailable": "Geen update beschikbaar",
+      "UpdateChannelTitle": "Kanaal bijwerken"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Verborgen weergave ingeschakeld",
@@ -1265,5 +1275,8 @@
       "FilamentIsUnloading": "Het filament wordt verwijderd",
       "colorUnloaded": "Het filament is succesvol verwijderd"
     }
+  },
+  "Generic": {
+    "Ok": "OK"
   }
 }

@@ -24,10 +24,31 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Le filament est en train de se décharger",
       "colorUnloaded": "Filament déchargé avec succès"
+    },
+    "SettingsTrilabTab": {
+      "UpdateChannelTitle": "Mettre à jour la chaîne"
+    },
+    "TrilabUpdateDialog": {
+      "INFO": "INFO",
+      "WARNING": "AVERTIR",
+      "DANGER": "ERREUR"
     }
   },
   "TrilabUpdateDialog": {
     "RestartPrinter": "Redémarrer l'imprimante",
     "titleUSB": "Mise à jour depuis USB"
+  },
+  "Generic": {
+    "Ok": "D'accord"
+  },
+  "TrilabLiveUpdate": {
+    "Titles": {
+      "Installed": "Mise à jour prête",
+      "UsbInstalled": "Mise à jour USB prête",
+      "UpdateInProgress": "Mise à jour en cours",
+      "UpdateAvailable": "Mise à jour disponible",
+      "UsbUpdateAvailable": "Mise à jour USB disponible"
+    },
+    "restartWarning": "La mise à jour est prête à être installée. \nAppuyez sur le bouton pour installer la mise à jour. \nL'imprimante redémarrera une fois la mise à jour terminée."
   }
 }

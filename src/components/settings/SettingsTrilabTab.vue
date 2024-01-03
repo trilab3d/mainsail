@@ -1,6 +1,5 @@
 <template>
     <v-container fluid py-0 px-0>
-        <trilab-update-dialog :file="file"></trilab-update-dialog>
         <v-row class="pa-3" :dense="$vuetify.breakpoint.mobile">
             <v-col cols="12" md="12" sm="12">
                 <v-card elevation="25">
@@ -11,8 +10,14 @@
                             <v-col>{{ hostStats.os }}</v-col>
                         </v-row>
                         <v-row>
+                            <v-col>{{ $t("Trilab.SettingsTrilabTab.UpdateChannelTitle") }} </v-col>
+                            <v-col>
+                                {{ $store.state.trilab.settings.release_channel }}
+                            </v-col>
+                        </v-row>
+                        <v-row v-if="TrilabServiceView">
                             <v-col>{{ $t("Trilab.SettingsTrilabTab.WenInterfaceVersion") }} </v-col>
-                            <v-col>1.0.1</v-col>
+                            <v-col>1.0.1 (Build 020124183100)</v-col>
                         </v-row>
                         <v-row justify="center" align="center">
                             <v-col>{{ $t("Trilab.SettingsTrilabTab.AutomaticCheckForUpdates") }} </v-col>
@@ -81,7 +86,11 @@ export default class SettingsTrilabTab extends Mixins(BaseMixin, TrilabMixin) {
         if (files && files.length > 0) {
             const file = files[0];
             console.log(file);
-            this.file = file;
+            /// call mutation from trilab/setUpdateFile
+            this.$store.commit('trilab/setUpdateFile', file);
+        } else {
+            /// remove file from trilab/setUpdateFile
+            this.$store.commit('trilab/setUpdateFile', null);
         }
     }
     public checkingForUpdate = false;
@@ -98,8 +107,6 @@ export default class SettingsTrilabTab extends Mixins(BaseMixin, TrilabMixin) {
         this.checkingForUpdate = false;
     }
 
-
-    file: File | null = null;
 
 
 

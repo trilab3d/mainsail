@@ -1216,9 +1216,16 @@
       "InstallFromUsb": "Atualizar de USB",
       "DownloadUpdate": "Baixar atualização"
     },
-    "restartWarning": "Sua impressora será reiniciada e você perderá a conexão com ela por um breve período durante esta etapa",
+    "restartWarning": "A atualização está pronta para instalação. \nPressione o botão para instalar a atualização. \nA impressora será reiniciada assim que a atualização for concluída.",
     "printerIsPrinting": "Você não pode executar esta etapa agora porque sua impressora está realizando algum trabalho. \nAguarde um pouco, esta janela será atualizada automaticamente quando esta etapa estiver pronta",
-    "installAndRebootBtn": "INSTALAR"
+    "installAndRebootBtn": "INSTALAR",
+    "Titles": {
+      "Installed": "Atualização pronta",
+      "UsbInstalled": "Atualização USB pronta",
+      "UpdateInProgress": "Atualização em andamento",
+      "UpdateAvailable": "Atualização disponível",
+      "UsbUpdateAvailable": "Atualização USB disponível"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1253,7 +1260,9 @@
       "Progres": "Progresso:",
       "ShowErrorTechinicalDetails": "Mostrar detalhes técnicos do erro",
       "STATUS": "STATUS:",
-      "DANGER": "PERIGO"
+      "DANGER": "ERRO",
+      "INFO": "INFORMAÇÕES",
+      "WARNING": "AVISAR"
     },
     "SettingsTrilabTab": {
       "System": "Sistema",
@@ -1263,7 +1272,8 @@
       "UploadUpdateFile": "Carregar arquivo de atualização",
       "Upload": "Carregar",
       "CheckForLiveUpdate": "Verifique se há atualização ao vivo",
-      "NoUpdateAvailable": "Nenhuma atualização disponível"
+      "NoUpdateAvailable": "Nenhuma atualização disponível",
+      "UpdateChannelTitle": "Atualizar canal"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Visualização oculta ativada",
@@ -1290,5 +1300,8 @@
       "FilamentIsUnloading": "O filamento está descarregando",
       "colorUnloaded": "Filamento descarregado com sucesso"
     }
+  },
+  "Generic": {
+    "Ok": "OK"
   }
 }

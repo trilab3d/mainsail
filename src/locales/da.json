@@ -1191,9 +1191,16 @@
       "InstallFromUsb": "Opdatering fra USB",
       "DownloadUpdate": "Download opdatering"
     },
-    "restartWarning": "Din printer genstarter, og du vil miste forbindelsen til denne printer i et kort stykke tid under dette trin",
+    "restartWarning": "Opdateringen er klar til installation. \nTryk på knappen for at installere opdateringen. \nPrinteren genstarter, når opdateringen er fuldført.",
     "printerIsPrinting": "Du kan ikke udføre dette trin lige nu, fordi din printer udfører noget arbejde. \nVent et stykke tid, dette vindue opdateres automatisk, når dette trin er klar",
-    "installAndRebootBtn": "INSTALLERE"
+    "installAndRebootBtn": "INSTALLERE",
+    "Titles": {
+      "Installed": "Opdatering klar",
+      "UsbInstalled": "USB-opdatering klar",
+      "UpdateInProgress": "Opdatering i gang",
+      "UpdateAvailable": "Opdatering tilgængelig",
+      "UsbUpdateAvailable": "USB-opdatering tilgængelig"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1228,7 +1235,9 @@
       "Progres": "Fremskridt:",
       "ShowErrorTechinicalDetails": "Vis fejl tekniske detaljer",
       "STATUS": "STATUS:",
-      "DANGER": "FARE"
+      "DANGER": "FEJL",
+      "INFO": "INFO",
+      "WARNING": "ADVARE"
     },
     "SettingsTrilabTab": {
       "System": "System",
@@ -1238,7 +1247,8 @@
       "UploadUpdateFile": "Upload opdateringsfil",
       "Upload": "Upload",
       "CheckForLiveUpdate": "Tjek for liveopdatering",
-      "NoUpdateAvailable": "Ingen tilgængelig opdatering"
+      "NoUpdateAvailable": "Ingen tilgængelig opdatering",
+      "UpdateChannelTitle": "Opdater kanal"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Skjult visning aktiveret",
@@ -1265,5 +1275,8 @@
       "FilamentIsUnloading": "Filament aflæsser",
       "colorUnloaded": "Filamentet blev fjernet"
     }
+  },
+  "Generic": {
+    "Ok": "Okay"
   }
 }

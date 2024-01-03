@@ -962,9 +962,16 @@
       "InstallFromUsb": "Uppdatera från USB",
       "DownloadUpdate": "Ladda ner uppdatering"
     },
-    "restartWarning": "Din skrivare kommer att starta om och du kommer att förlora anslutningen till den här skrivaren under en kort stund under detta steg",
+    "restartWarning": "Uppdateringen är klar för installation. \nTryck på knappen för att installera uppdateringen. \nSkrivaren startar om när uppdateringen är klar.",
     "printerIsPrinting": "Du kan inte utföra det här steget just nu eftersom din skrivare jobbar. \nVänta ett tag, det här fönstret uppdateras automatiskt när detta steg är klart",
-    "installAndRebootBtn": "INSTALLERA"
+    "installAndRebootBtn": "INSTALLERA",
+    "Titles": {
+      "Installed": "Uppdatering klar",
+      "UsbInstalled": "USB-uppdatering klar",
+      "UpdateInProgress": "Uppdatering pågår",
+      "UpdateAvailable": "Uppdatering tillgänglig",
+      "UsbUpdateAvailable": "USB-uppdatering tillgänglig"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -999,7 +1006,9 @@
       "Progres": "Framsteg:",
       "ShowErrorTechinicalDetails": "Visa tekniska feldetaljer",
       "STATUS": "STATUS:",
-      "DANGER": "FARA"
+      "DANGER": "FEL",
+      "INFO": "INFO",
+      "WARNING": "VARNA"
     },
     "SettingsTrilabTab": {
       "System": "Systemet",
@@ -1009,7 +1018,8 @@
       "UploadUpdateFile": "Ladda upp uppdateringsfil",
       "Upload": "Ladda upp",
       "CheckForLiveUpdate": "Sök efter liveuppdatering",
-      "NoUpdateAvailable": "Ingen uppdatering tillgänglig"
+      "NoUpdateAvailable": "Ingen uppdatering tillgänglig",
+      "UpdateChannelTitle": "Uppdatera kanal"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Dold vy aktiverad",
@@ -1036,5 +1046,8 @@
       "FilamentIsUnloading": "Filament håller på att lossas",
       "colorUnloaded": "Filamentet har lossats"
     }
+  },
+  "Generic": {
+    "Ok": "Ok"
   }
 }

@@ -11,4 +11,7 @@ export const getters: GetterTree<TrilabState, any> = {
     trilabPrefix: (state, getters, rootState) => {
         return "http://" + rootState.socket.hostname + '/tpc'
     },
+    getUpdateFile: (state) => {
+        return state.updateFile
+    }
 }

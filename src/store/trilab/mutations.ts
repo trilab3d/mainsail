@@ -14,6 +14,9 @@ export const mutations: MutationTree<TrilabState> = {
     setAdminAuthenticated(state, val) {
         state.adminAuthenticated = val
     },
+    setUpdateFile(state, val){
+        state.updateFile = val
+    },
     setHost(state, host) {
         state.host = host
     },

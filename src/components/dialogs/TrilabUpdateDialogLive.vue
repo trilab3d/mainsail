@@ -2,32 +2,35 @@
     <v-dialog v-model="isDialogVisible" width="720">
         <v-card>
             <v-card-title>
-                <span v-if="liveUpdateStatus.indexOf('USB') != -1" class="headline">
-                    {{ $t('TrilabUpdateDialog.titleUSB') }}
-                </span>
-                <span v-if="liveUpdateStatus.indexOf('USB') == -1" class="headline">
-                    {{ $t('TrilabUpdateDialog.title') }}
+                <span class="headline">
+                    {{ titleText }}
                 </span>
             </v-card-title>
 
             <v-card-text>
                 <div v-if="liveUpdateStatus == 'UPDATE_AVAILABLE' || liveUpdateStatus == 'USB_UPDATE_AVAILABLE'"
                     class="justify-center">
-                    <v-btn color="primary" block :disabled="downloadUpdateDisabled" @click="downloadUpdate()"
-                        v-if="liveUpdateStatus == 'UPDATE_AVAILABLE'">{{
+                    <p>Current version: {{ LiveUpdateStatusObject.current_version }}</p>
+                    <p>Update version: {{ LiveUpdateStatusObject.update_version }}</p>
+                    <p v-if="LiveUpdateStatusObject.release_notes != ''" style="white-space: pre-wrap;">Release notes: <br>
+                        {{ LiveUpdateStatusObject.release_notes }}</p>
+                    <v-btn v-if="liveUpdateStatus == 'UPDATE_AVAILABLE'" color="primary" block
+                        :disabled="downloadUpdateDisabled" @click="downloadUpdate()">{{
                             $t('TrilabLiveUpdate.Buttons.DownloadUpdate') }}</v-btn>
                     <div v-if="liveUpdateStatus == 'USB_UPDATE_AVAILABLE'">
-                        <p>Current version: {{ LiveUpdateStatusObject.current_version }}</p>
-                        <p>Available version: {{ LiveUpdateStatusObject.update_version }}</p>
-                        <v-btn color="primary" block :disabled="installUpdateDisabled" @click="installUpdate()"
-                            v-if="liveUpdateStatus == 'USB_UPDATE_AVAILABLE'">{{
+                        <v-btn v-if="liveUpdateStatus == 'USB_UPDATE_AVAILABLE'" color="primary" block
+                            :disabled="installUpdateDisabled" @click="installUpdate()">{{
                                 $t('TrilabLiveUpdate.Buttons.InstallFromUsb') }}</v-btn>
                     </div>
                 </div>
 
                 <div v-if="'progress' in LiveUpdateStatusObject && LiveUpdateStatusObject.progress != -1">
-                    <v-progress-linear :value="LiveUpdateStatusObject.progress * 100" :color="uploadFileProgressbarColor"
-                        :height="10" striped></v-progress-linear>
+                    <v-progress-linear :value="LiveUpdateStatusObject.progress" :color="uploadFileProgressbarColor"
+                        :height="20" striped> <template v-slot:default="{ value }">
+                            <div class="progress-label">{{ value ? `${Math.round(value)}%` : '0%' }}</div>
+                        </template>
+                    </v-progress-linear>
+                    <p class="mt-4">Status: {{ LiveUpdateStatusObject.update_status }}</p>
                 </div>
                 <v-container v-if="liveUpdateStatus == 'INSTALLED' || liveUpdateStatus == 'USB_INSTALLED'">
                     <p>{{ $t('TrilabLiveUpdate.restartWarning') }}</p>
@@ -66,6 +69,29 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin, TrilabMixin) {
     public dismissVisible: boolean = true;
 
 
+    get titleText() {
+        /// if installed or usb installed, return specified strings
+        if (this.liveUpdateStatus == "INSTALLED") {
+            return this.$t('TrilabLiveUpdate.Titles.Installed');
+        }
+        if (this.liveUpdateStatus == "USB_INSTALLED") {
+            return this.$t('TrilabLiveUpdate.Titles.UsbInstalled');
+        }
+        /// if there is progress, return update in progress
+        if (this.LiveUpdateStatusObject.progress != -1) {
+            return this.$t('TrilabLiveUpdate.Titles.UpdateInProgress');
+        }
+        /// if there is update available, return update available
+        if (this.liveUpdateStatus == "UPDATE_AVAILABLE") {
+            return this.$t('TrilabLiveUpdate.Titles.UpdateAvailable');
+        }
+        if (this.liveUpdateStatus == "USB_UPDATE_AVAILABLE") {
+            return this.$t('TrilabLiveUpdate.Titles.UsbUpdateAvailable');
+        }
+
+        return "Update";
+
+    }
 
     public downloadUpdateDisabled = false;
     public installUpdateDisabled = false;
@@ -121,5 +147,4 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin, TrilabMixin) {
 .ulog p {
     margin-left: 16px;
     margin-bottom: 0px;
-}
-</style>
+}</style>

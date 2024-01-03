@@ -26,11 +26,17 @@
 							<v-list-item-title v-html="i.GENERAL.DEVICE"></v-list-item-title>
 							<v-list-item-subtitle>
 								<small v-if="i.GENERAL.TYPE == 'wifi'">SSID: {{ i.GENERAL.CONNECTION }}<br></small>
-								<small v-if="'ADDRESS' in i.IP4">{{ $t('Panels.TrilabSettingsInterfaces.IP4addresses') }}: {{
-									i.IP4.ADDRESS.join(',') }}<br></small>
-								<small v-if="'ADDRESS' in i.IP6">{{ $t('Panels.TrilabSettingsInterfaces.IP6addresses') }}: {{
-									i.IP6.ADDRESS.join(',') }}<br></small>
-								<small>MAC: {{ i.GENERAL.HWADDR }}</small>
+								<div v-if="'IP4' in i">
+									<small v-if="'ADDRESS' in i.IP4">{{ $t('Panels.TrilabSettingsInterfaces.IP4addresses')
+									}}: {{
+	i.IP4.ADDRESS.join(',') }}<br></small>
+								</div>
+								<div v-if="'IP6' in i">
+									<small v-if="'ADDRESS' in i.IP6">{{ $t('Panels.TrilabSettingsInterfaces.IP6addresses')
+									}}: {{
+	i.IP6.ADDRESS.join(',') }}<br></small>
+									<small>MAC: {{ i.GENERAL.HWADDR }}</small>
+								</div>
 							</v-list-item-subtitle>
 						</v-list-item-content>
 
@@ -89,7 +95,8 @@
 						<v-list-item-content>
 							<v-list-item-title v-html="i.NAME"></v-list-item-title>
 							<v-list-item-subtitle>
-								<small style="color:lime" v-if="i.ACTIVE == 'yes'">{{ $t('Panels.TrilabSettingsInterfaces.ProfileActive')
+								<small style="color:lime" v-if="i.ACTIVE == 'yes'">{{
+									$t('Panels.TrilabSettingsInterfaces.ProfileActive')
 								}}<br></small>
 								<small v-if="i.ACTIVE == 'no'">{{ $t('Panels.TrilabSettingsInterfaces.ProfileInactive')
 								}}<br></small>

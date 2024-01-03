@@ -13,6 +13,7 @@ import { getters } from '@/store/trilab/getters'
 export const getDefaultState = (): TrilabState => {
     return {
         ///trilab
+        updateFile: null,
         showLiveUpdateDialog: false,
         updateStateStatus: {
             update_status: 'UP_TO_DATE',

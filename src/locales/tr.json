@@ -1147,9 +1147,16 @@
       "InstallFromUsb": "USB'den güncelleme",
       "DownloadUpdate": "Güncellemeyi indir"
     },
-    "restartWarning": "Bu adım sırasında yazıcınız yeniden başlatılacak ve bu yazıcıyla bağlantınız kısa bir süreliğine kesilecektir.",
+    "restartWarning": "Güncelleme kuruluma hazır. \nGüncellemeyi yüklemek için düğmeye basın. \nGüncelleme tamamlandığında yazıcı yeniden başlatılacaktır.",
     "printerIsPrinting": "Yazıcınız bazı işler yaptığından bu adımı şu anda gerçekleştiremezsiniz. \nLütfen bir süre bekleyin, bu adım hazır olduğunda bu pencere otomatik olarak yenilenecektir.",
-    "installAndRebootBtn": "DÜZENLEMEK"
+    "installAndRebootBtn": "DÜZENLEMEK",
+    "Titles": {
+      "Installed": "Güncelleme hazır",
+      "UsbInstalled": "USB güncellemesi hazır",
+      "UpdateInProgress": "Güncelleme devam ediyor",
+      "UpdateAvailable": "Güncelleme uygun",
+      "UsbUpdateAvailable": "USB güncellemesi mevcut"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1184,7 +1191,9 @@
       "Progres": "İlerlemek:",
       "ShowErrorTechinicalDetails": "Hatanın teknik ayrıntılarını göster",
       "STATUS": "DURUM:",
-      "DANGER": "TEHLİKE"
+      "DANGER": "HATA",
+      "INFO": "BİLGİ",
+      "WARNING": "UYARMAK"
     },
     "SettingsTrilabTab": {
       "System": "Sistem",
@@ -1194,7 +1203,8 @@
       "UploadUpdateFile": "Güncelleme dosyasını yükle",
       "Upload": "Yüklemek",
       "CheckForLiveUpdate": "Canlı güncellemeyi kontrol edin",
-      "NoUpdateAvailable": "Güncelleme mevcut değil"
+      "NoUpdateAvailable": "Güncelleme mevcut değil",
+      "UpdateChannelTitle": "Kanalı güncelle"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Gizli Görünüm Etkin",
@@ -1221,5 +1231,8 @@
       "FilamentIsUnloading": "Filament boşaltılıyor",
       "colorUnloaded": "Filament başarıyla boşaltıldı"
     }
+  },
+  "Generic": {
+    "Ok": "Tamam"
   }
 }

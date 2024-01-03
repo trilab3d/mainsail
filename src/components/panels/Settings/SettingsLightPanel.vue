@@ -20,9 +20,13 @@
 			<v-row :dense="$vuetify.breakpoint.mobile">
 				<v-col cols="12">
 					<div class="text-caption">{{ $t('Panels.settingsTrilabLight.brightness') }} %</div>
-					<v-slider
-					 v-model="brightness" prepend-icon="mdi-lightbulb"
-						@change="setBrightnessImmediate()"></v-slider>
+					<v-slider 
+					 v-model="brightness"
+						@change="setBrightnessImmediate()">
+						<template #prepend>
+							<v-icon>{{ mdiLightbulb }}</v-icon>
+						</template>
+						</v-slider>
 				</v-col>
 			</v-row>
 		</v-card-text>
@@ -30,12 +34,19 @@
 </template>
 
 <script lang="ts">
-import { Mixins } from 'vue-property-decorator';
+'use strict'
+
+import { Component, Mixins } from 'vue-property-decorator';
 import TrilabMixin from '@/components/mixins/trilab';
 import axios from 'axios';
+import { mdiLightbulb} from '@mdi/js';
 
+
+
+@Component
 export default class SettingsLightPanel extends Mixins(TrilabMixin) {
 
+	mdiLightbulb = mdiLightbulb;
 
 	//get connected() { return this.$store.state.trilab.connected; }
 	get brightness() { return this.$store.state.trilab.settings.light_data.brightness; }

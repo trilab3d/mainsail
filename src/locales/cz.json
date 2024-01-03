@@ -1220,9 +1220,16 @@
       "InstallFromUsb": "Aktualizovat z USB",
       "DownloadUpdate": "Stáhnout aktualizaci"
     },
-    "restartWarning": "Vaše tiskárna se restartuje a na krátko ztratíte připojení k této tiskárně při provádění tohoto kroku.",
+    "restartWarning": "Aktualizace je připravena k instalaci. Stiskněte tlačítko k nainstalování aktualizace. Tiskárna se restartuje jakmile bude proces dokončen",
     "printerIsPrinting": "Teď tuto akci nemůžete provést, protože vaše tiskárna provádí nějakou práci. Prosím počkejte chvilku, toto okno se automaticky aktualizuje až bude akce připravena",
-    "installAndRebootBtn": "Instalovat & restartovat"
+    "installAndRebootBtn": "Instalovat & restartovat",
+    "Titles": {
+      "Installed": "Aktualizace připravena",
+      "UsbInstalled": "USB aktualizace připravena",
+      "UpdateInProgress": "Aktualizace probíhá",
+      "UpdateAvailable": "Dostupná aktualizace",
+      "UsbUpdateAvailable": "USB aktualizace k dispozici"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -1257,7 +1264,8 @@
       "Progres": "Průběh:",
       "ShowErrorTechinicalDetails": "Zobrazit technické podrobnosti o chybách",
       "STATUS": "STAV:",
-      "DANGER": "NEBEZPEČÍ"
+      "DANGER": "NEBEZPEČÍ",
+      "INFO": "INFO"
     },
     "SettingsTrilabTab": {
       "System": "Systém",
@@ -1267,7 +1275,8 @@
       "UploadUpdateFile": "Nahrát soubor s aktualizací",
       "Upload": "Nahrát",
       "CheckForLiveUpdate": "Zkontrolujte živou aktualizaci",
-      "NoUpdateAvailable": "Žádná aktualizace není k dispozici"
+      "NoUpdateAvailable": "Žádná aktualizace není k dispozici",
+      "UpdateChannelTitle": "Aktualizační kanál"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Povolit skryté zobrazení",
@@ -1294,5 +1303,8 @@
       "FilamentIsUnloading": "Filament se vykládá",
       "colorUnloaded": "Filament byl úspěšně vyjmut"
     }
+  },
+  "Generic": {
+    "Ok": "Ok"
   }
 }

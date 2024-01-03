@@ -934,9 +934,16 @@
       "InstallFromUsb": "Aggiornamento da USB",
       "DownloadUpdate": "Scarica l'aggiornamento"
     },
-    "restartWarning": "La stampante si riavvierà e perderai la connessione alla stampante per un breve periodo durante questo passaggio",
+    "restartWarning": "L'aggiornamento è pronto per l'installazione. \nPremere il pulsante per installare l'aggiornamento. \nLa stampante si riavvierà una volta completato l'aggiornamento.",
     "printerIsPrinting": "Non è possibile eseguire questo passaggio in questo momento perché la stampante sta eseguendo alcuni lavori. \nAttendi qualche istante, questa finestra si aggiornerà automaticamente quando questo passaggio sarà pronto",
-    "installAndRebootBtn": "INSTALLARE"
+    "installAndRebootBtn": "INSTALLARE",
+    "Titles": {
+      "Installed": "Aggiornamento pronto",
+      "UsbInstalled": "Aggiornamento USB pronto",
+      "UpdateInProgress": "Aggiornamento in corso",
+      "UpdateAvailable": "Aggiornamento disponibile",
+      "UsbUpdateAvailable": "Aggiornamento USB disponibile"
+    }
   },
   "Trilab": {
     "TrilabFilamentLoadWizard": {
@@ -971,7 +978,9 @@
       "Progres": "Progresso:",
       "ShowErrorTechinicalDetails": "Mostra i dettagli tecnici dell'errore",
       "STATUS": "STATO:",
-      "DANGER": "PERICOLO"
+      "DANGER": "ERRORE",
+      "INFO": "INFORMAZIONI",
+      "WARNING": "AVVISARE"
     },
     "SettingsTrilabTab": {
       "System": "Sistema",
@@ -981,7 +990,8 @@
       "UploadUpdateFile": "Carica il file di aggiornamento",
       "Upload": "Caricamento",
       "CheckForLiveUpdate": "Controlla l'aggiornamento in tempo reale",
-      "NoUpdateAvailable": "Nessun aggiornamento disponibile"
+      "NoUpdateAvailable": "Nessun aggiornamento disponibile",
+      "UpdateChannelTitle": "Aggiorna canale"
     },
     "TheTopbar": {
       "HiddenViewEnbled": "Visualizzazione nascosta abilitata",
@@ -1008,5 +1018,8 @@
       "FilamentIsUnloading": "Il filamento si sta scaricando",
       "colorUnloaded": "Filamento scaricato con successo"
     }
+  },
+  "Generic": {
+    "Ok": "OK"
   }
 }

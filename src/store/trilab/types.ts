@@ -1,5 +1,6 @@
  
   export interface TrilabState {
+    updateFile: any;
     showLiveUpdateDialog: boolean;
     updateStateStatus : any;
     askUpdateInterval: any;
