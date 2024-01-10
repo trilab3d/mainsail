@@ -13,6 +13,9 @@ import { getters } from '@/store/trilab/getters'
 export const getDefaultState = (): TrilabState => {
     return {
         ///trilab
+        lastEmitCommand: null,
+        showStartDoorOpenDialog: false,
+        showDoorOpenDialog: false,
         updateFile: null,
         showLiveUpdateDialog: false,
         updateStateStatus: {

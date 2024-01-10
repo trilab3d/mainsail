@@ -107,7 +107,7 @@ export default class TrilabFilamentUnLoadWizard extends Mixins(TrilabMixin) {
         await this.$store.dispatch('printer/sendGcode', `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`);
         await this.$store.dispatch('printer/sendGcode', `M83`);
         await this.$store.dispatch('printer/sendGcode', `G0 E3.0 F300`);
-        await this.$store.dispatch('printer/sendGcode', `G1 E-18.0 F1800`);
+        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_RETRACT`);
         await this.$store.dispatch('printer/sendGcode', `G4 P4000`);
         await this.$store.dispatch('printer/sendGcode', `G1 E-30.0 F900`);
         await this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
@@ -115,7 +115,7 @@ export default class TrilabFilamentUnLoadWizard extends Mixins(TrilabMixin) {
         await this.$store.dispatch('server/addEvent', { message: `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `M83`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `G0 E3.0 F300`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G1 E-18.0 F1800`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: `_FILAMENT_RETRACT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `G4 P4000`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `G1 E-30.0 F900`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })

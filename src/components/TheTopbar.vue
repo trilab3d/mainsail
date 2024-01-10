@@ -95,10 +95,15 @@
         </v-dialog>
         <trilab-update-dialog-live :showp="showLiveUpdateDialog"
             @closeLiveUpdateDialog="closeLiveUpdateDialog()"></trilab-update-dialog-live>
+        <trilab-start-door-open-dialog></trilab-start-door-open-dialog>
+        <trilab-print-door-open-dialog></trilab-print-door-open-dialog>
+
     </div>
 </template>
 
 <script lang="ts">
+import TrilabStartDoorOpenDialog from '@/components/dialogs/TrilabStartDoorOpenDialog.vue'
+import TrilabPrintDoorOpenDialog from '@/components/dialogs/TrilabPrintDoorOpenDialog.vue'
 import { Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
 import TrilabMixin from './mixins/trilab'
@@ -140,6 +145,8 @@ type uploadSnackbar = {
         MainsailLogo,
         TrilabUpdateDialogLive,
         TheNotificationMenu,
+        TrilabStartDoorOpenDialog,
+        TrilabPrintDoorOpenDialog,
     },
 })
 export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMixin) {

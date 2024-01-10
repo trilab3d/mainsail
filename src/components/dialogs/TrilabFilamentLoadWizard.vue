@@ -116,7 +116,7 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
             command: "G0 E5 F300", duration: 1000, originalRepeat: 10, repeat: 10
         },
         {
-            command: "G0 E-18 F2160", duration: 1000, originalRepeat: 1, repeat: 1
+            command: "_FILAMENT_RETRACT", duration: 1000, originalRepeat: 1, repeat: 1
         },
         {
             command: "RESTORE_GCODE_STATE NAME=LOAD_FILAMENT", duration: 0, repeat: 1, originalRepeat: 1
@@ -352,17 +352,17 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
         */
         await this.$store.dispatch('printer/sendGcode', `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`);
         await this.$store.dispatch('printer/sendGcode', `M83`);
-        await this.$store.dispatch('printer/sendGcode', `G0 E18 F1500`);
+        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_UNRETRACT`);
         await this.$store.dispatch('printer/sendGcode', `G0 E50 F300`);
-        await this.$store.dispatch('printer/sendGcode', `G1 E-18.0 F1500`);
+        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_RETRACT`);
         await this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
 
         /// add events
         await this.$store.dispatch('server/addEvent', { message: `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `M83`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G0 E18 F1500`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: `_FILAMENT_UNRETRACT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `G0 E50 F300`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `G1 E-18.0 F1500`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: `_FILAMENT_RETRACT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
 
     }

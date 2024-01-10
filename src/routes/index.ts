@@ -8,6 +8,7 @@ import Timelapse from '../pages/Timelapse.vue'
 import Machine from '../pages/Machine.vue'
 import TrilabSlicers from '../pages/TrilabSlicers.vue'
 import TrilabCalibrations from '../pages/TrilabCalibrations.vue'
+import TrilabDiagnostics from '../pages/TrilabDiagnostics.vue'
 import { AsyncComponent, Component } from 'vue'
 
 const iconString = `<svg class="v-icon__svg" width="100%" height="100%" x="0" y="0" viewBox='0 0 320 320' xmlns="http://www.w3.org/2000/svg" version="1.1"
@@ -37,6 +38,7 @@ import {
     mdiTimelapse,
     mdiWrench,
     mdiPencilRuler,
+    mdiMedicalBag,
 } from '@mdi/js'
 import store from '@/store'
 
@@ -159,6 +161,16 @@ const routes: AppRoute[] = [
         identificator: 'trilabcalibration',
         showInNavi: true,
         position: 90,
+    },
+    {
+        title: 'Diagnostics',
+        path: '/trilabdiagnostics',
+        icon: mdiMedicalBag,
+        component: TrilabDiagnostics,
+        alwaysShow: true,
+        identificator: 'trilabdiagnostics',
+        showInNavi: true,
+        position: 100,
     },
     {
         title: null,

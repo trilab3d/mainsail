@@ -1,6 +1,9 @@
  
   export interface TrilabState {
+    lastEmitCommand: any;
     updateFile: any;
+    showStartDoorOpenDialog: boolean;
+    showDoorOpenDialog: boolean;
     showLiveUpdateDialog: boolean;
     updateStateStatus : any;
     askUpdateInterval: any;

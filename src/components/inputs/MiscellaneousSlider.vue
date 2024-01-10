@@ -14,7 +14,7 @@
                         class="mr-2" :retain-focus-on-click="true" v-html="flapIcon">
                     </div>
                     <v-icon v-else-if="type !== 'output_pin'" small :class="fanClasses">{{ mdiFan }}</v-icon>
-                    <span>{{ convertName(name) }}</span>
+                    <span>{{ convertNameTrilab(convertName(name)) }}</span>
                     <v-spacer></v-spacer>
                     <small v-if="rpm !== null" :class="rpmClasses">{{ Math.round(rpm ?? 0) }} RPM</small>
                     <span v-if="!controllable" class="font-weight-bold">
@@ -151,6 +151,14 @@ fill="#ffffff" stroke="none">
         return Math.round((this.target / this.max) * 100) / 100
     }
 
+
+    convertNameTrilab(input:string){
+        if(input == "Intake Flap"){
+            return "Chamber intake flap";
+        }
+        return input;
+    }
+
     @Watch('lockSliders', { immediate: true })
     lockSlidersChanged(): void {
         this.isLocked = this.lockSliders && this.isTouchDevice
@@ -258,6 +266,7 @@ fill="#ffffff" stroke="none">
         if (this.min >= 0) this.invalidChars.push('-')
         if (this.invalidChars.includes(event.key)) event.preventDefault()
     }
+
 
     get errors() {
         const errors = []

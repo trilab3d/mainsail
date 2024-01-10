@@ -112,6 +112,26 @@ export class WebSocketClient {
     emit(method: string, params: Params, options: emitOptions = {}): void {
         if (this.instance?.readyState !== WebSocket.OPEN) return
 
+        /// intercept printer.print.start command
+        if (method == 'printer.print.start') {
+            /// check if door sensor is open (if it is present)
+            const sensors = this.store?.getters['printer/getDoorSensors'] ?? []
+            for (const sensor of sensors) {
+                if (sensor.enabled) {
+                    if (!sensor.door_closed) {
+                        console.log('door is open, don\'t send command');
+                        /// door is open, don't send command
+                        /// change trilab store showStartDoorOpenDialog to true using setData function
+                        this.store?.commit('trilab/setData', {
+                            showStartDoorOpenDialog: true,
+                            lastEmitCommand: { method: method, params: params, options: options },
+                        })
+                        return
+                    }
+                }
+            }
+        }
+
         const id = Math.floor(Math.random() * 10000) + 1
         this.waits.push({
             id: id,

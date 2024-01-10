@@ -165,6 +165,7 @@ export default class NavigationMixin extends Mixins(BaseMixin, TrilabMixin) {
         else if (route.identificator == 'heightmap' && this.AdvancedFeatures == false) return false
         else if (route.identificator == 'gviewer' && this.AdvancedFeatures == false) return false
         else if (route.identificator == 'trilabcalibration' && this.TrilabServiceView == false) return false
+        else if (route.identificator == 'trilabdiagnostics' && this.TrilabServiceView == false) return false
         else if (route.moonrakerComponent && !this.moonrakerComponents.includes(route.moonrakerComponent)) return false
         else if (route.registeredDirectory && !this.registeredDirectories.includes(route.registeredDirectory))
             return false
