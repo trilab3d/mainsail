@@ -11,7 +11,7 @@
                 <p>Doors are open and the print is paused. Either disable the sensor or close the door and continue the
                     print</p>
                 <v-btn block color="green" :disabled="!allDoorsClosed" @click="continuePrint()">
-                    <v-icon left>{{ mdiReload }}</v-icon>Continue</v-btn>
+                    <v-icon left>{{ mdiPlay }}</v-icon>Continue</v-btn>
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
@@ -26,7 +26,7 @@ import axios from 'axios'
 
 import store from '@/store'
 
-import { mdiReload } from '@mdi/js';
+import { mdiPlay } from '@mdi/js';
 
 
 import BaseMixin from '../mixins/base'
@@ -40,7 +40,7 @@ import { trilab } from '@/store/trilab'
 export default class TrilabPrintDoorOpenDialog extends Mixins(BaseMixin, TrilabMixin) {
     public dismissVisible: boolean = true;
     public localVisible: boolean = true;
-    public mdiReload = mdiReload;
+    public mdiPlay = mdiPlay;
 
 
 
