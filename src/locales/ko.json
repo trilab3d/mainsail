@@ -1211,7 +1211,7 @@
       "FilamentIsLoading": "필라멘트 로드 중...",
       "InsertFilamentIntoExtruder": "압출기에 필라멘트를 넣고 계속을 누릅니다.",
       "SelectWhichFilamentYouWantToLoad": "로드할 필라멘트를 선택하세요.",
-      "PleaseWaitForTheTemperatureToReach": "온도가 도달할 때까지 기다려 주세요.",
+      "PleaseWaitForTheTemperatureToReach": "온도가 지정된 값에 도달할 때까지 기다려 주십시오.",
       "IsColorClean": "색상이 깨끗한가요?",
       "CancelHeating": "난방 취소",
       "Continue": "계속하다",

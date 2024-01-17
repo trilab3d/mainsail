@@ -1271,7 +1271,7 @@
       "FilamentIsLoading": "Filament is loading...",
       "InsertFilamentIntoExtruder": "Insert filament into the extruder and press continue",
       "SelectWhichFilamentYouWantToLoad": "Select which filament you want to load",
-      "PleaseWaitForTheTemperatureToReach": "Please wait for the temperature to reach",
+      "PleaseWaitForTheTemperatureToReach": "Please wait until temperature reaches specified value",
       "IsColorClean": "Is color clean?",
       "CancelHeating": "Cancel heating",
       "Continue": "Continue",

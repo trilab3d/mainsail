@@ -3,12 +3,12 @@
         <v-card>
             <v-card-title>
                 <span class="headline">
-                    Doors are open
+                    Doors opened
                 </span>
             </v-card-title>
 
             <v-card-text>
-                <p>Doors are open and the print is paused. Either disable the sensor or close the door and continue the
+                <p>Doors opened, therefore printing was paused. Either disable the sensor or close the door and continue the
                     print</p>
                 <v-btn block color="green" :disabled="!allDoorsClosed" @click="continuePrint()">
                     <v-icon left>{{ mdiPlay }}</v-icon>Continue</v-btn>
@@ -41,6 +41,7 @@ export default class TrilabPrintDoorOpenDialog extends Mixins(BaseMixin, TrilabM
     public dismissVisible: boolean = true;
     public localVisible: boolean = true;
     public mdiPlay = mdiPlay;
+    public localDoorsClosedVisible: boolean = false;
 
 
 
@@ -68,7 +69,7 @@ export default class TrilabPrintDoorOpenDialog extends Mixins(BaseMixin, TrilabM
         return "primary";
     }
     get isDialogVisible() {
-        return this.$store.state.printer?.print_stats?.state === "paused" && !this.allDoorsClosed && this.localVisible;
+        return this.$store.state.printer?.print_stats?.state === "paused" && this.localDoorsClosedVisible && this.localVisible;
     }
     get doorSensors() {
         return this.$store?.getters['printer/getDoorSensors'] ?? []
@@ -96,6 +97,14 @@ export default class TrilabPrintDoorOpenDialog extends Mixins(BaseMixin, TrilabM
     onPrinterBusyChanged() {
         if (this.printerBusy) {
             this.localVisible = true;
+            this.localDoorsClosedVisible = false;
+        }
+    }
+
+    @Watch('allDoorsClosed')
+    onAllDoorsClosedChanged() {
+        if (!this.allDoorsClosed) {
+            this.localDoorsClosedVisible = true;
         }
     }
 

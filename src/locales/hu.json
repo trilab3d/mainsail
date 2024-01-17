@@ -1086,7 +1086,7 @@
       "FilamentIsLoading": "Az izzószál betöltődik...",
       "InsertFilamentIntoExtruder": "Helyezze be a filamentet az extruderbe, és nyomja meg a Folytatás gombot",
       "SelectWhichFilamentYouWantToLoad": "Válassza ki, hogy melyik izzószálat szeretné betölteni",
-      "PleaseWaitForTheTemperatureToReach": "Kérjük, várja meg, amíg a hőmérséklet eléri",
+      "PleaseWaitForTheTemperatureToReach": "Várjon, amíg a hőmérséklet eléri a megadott értéket",
       "IsColorClean": "A szín tiszta?",
       "CancelHeating": "Fűtés megszakítása",
       "Continue": "Folytatni",

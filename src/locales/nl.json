@@ -1207,7 +1207,7 @@
       "FilamentIsLoading": "Filament wordt geladen...",
       "InsertFilamentIntoExtruder": "Plaats het filament in de extruder en druk op Doorgaan",
       "SelectWhichFilamentYouWantToLoad": "Selecteer welk filament je wilt laden",
-      "PleaseWaitForTheTemperatureToReach": "Wacht tot de temperatuur is bereikt",
+      "PleaseWaitForTheTemperatureToReach": "Wacht tot de temperatuur de opgegeven waarde bereikt",
       "IsColorClean": "Is kleur schoon?",
       "CancelHeating": "Verwarming annuleren",
       "Continue": "Doorgaan",

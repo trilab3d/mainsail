@@ -1232,7 +1232,7 @@
       "FilamentIsLoading": "Trwa ładowanie żarnika...",
       "InsertFilamentIntoExtruder": "Włóż żarnik do ekstrudera i naciśnij przycisk Kontynuuj",
       "SelectWhichFilamentYouWantToLoad": "Wybierz, który żarnik chcesz załadować",
-      "PleaseWaitForTheTemperatureToReach": "Proszę poczekać, aż temperatura osiągnie",
+      "PleaseWaitForTheTemperatureToReach": "Proszę poczekać aż temperatura osiągnie zadaną wartość",
       "IsColorClean": "Czy kolor jest czysty?",
       "CancelHeating": "Anuluj ogrzewanie",
       "Continue": "Kontynuować",

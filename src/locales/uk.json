@@ -1108,7 +1108,7 @@
       "FilamentIsLoading": "Філамент завантажується...",
       "InsertFilamentIntoExtruder": "Вставте нитку в екструдер і натисніть «Продовжити».",
       "SelectWhichFilamentYouWantToLoad": "Виберіть, яку нитку ви бажаєте завантажити",
-      "PleaseWaitForTheTemperatureToReach": "Зачекайте, доки температура досягне",
+      "PleaseWaitForTheTemperatureToReach": "Зачекайте, доки температура досягне вказаного значення",
       "IsColorClean": "Колір чистий?",
       "CancelHeating": "Скасувати нагрівання",
       "Continue": "Продовжити",

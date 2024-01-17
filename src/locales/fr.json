@@ -15,7 +15,8 @@
       "FilamentIsUnloading": "Le filament est en train de se décharger",
       "IsColorClean": "La couleur est-elle propre ?",
       "FilamentLoadWizard": "Assistant de chargement de filament",
-      "CancelLoading": "Annuler le chargement"
+      "CancelLoading": "Annuler le chargement",
+      "PleaseWaitForTheTemperatureToReach": "Veuillez attendre que la température atteigne la valeur spécifiée"
     },
     "TrilabFilamentUnLoadWizard": {
       "WhichFilamentIsInPrinter": "Quel matériau est chargé dans l’imprimante ?",

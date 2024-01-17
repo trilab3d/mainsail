@@ -1163,7 +1163,7 @@
       "FilamentIsLoading": "Filament yükleniyor...",
       "InsertFilamentIntoExtruder": "Filamenti ekstrudere yerleştirin ve devam tuşuna basın",
       "SelectWhichFilamentYouWantToLoad": "Hangi filamanı yüklemek istediğinizi seçin",
-      "PleaseWaitForTheTemperatureToReach": "Lütfen sıcaklığın ulaşmasını bekleyin",
+      "PleaseWaitForTheTemperatureToReach": "Lütfen sıcaklık belirtilen değere ulaşana kadar bekleyin",
       "IsColorClean": "Renk temiz mi?",
       "CancelHeating": "Isıtmayı iptal et",
       "Continue": "Devam etmek",

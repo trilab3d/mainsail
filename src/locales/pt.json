@@ -1232,7 +1232,7 @@
       "FilamentIsLoading": "O filamento está carregando...",
       "InsertFilamentIntoExtruder": "Insira o filamento na extrusora e pressione continuar",
       "SelectWhichFilamentYouWantToLoad": "Selecione qual filamento você deseja carregar",
-      "PleaseWaitForTheTemperatureToReach": "Aguarde até que a temperatura atinja",
+      "PleaseWaitForTheTemperatureToReach": "Aguarde até que a temperatura atinja o valor especificado",
       "IsColorClean": "A cor está limpa?",
       "CancelHeating": "Cancelar aquecimento",
       "Continue": "Continuar",

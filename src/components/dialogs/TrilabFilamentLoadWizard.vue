@@ -12,8 +12,9 @@
                 </div>
                 <div v-if="step == 1">
                     <div v-if="temperatureProgress < 99.8">
-                        <p>{{ $t("Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }} {{
-                            selectedFilament.extruder }} °C</p>
+                        <p>{{ $t("Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }}<br /></p>
+                        <p style="text-align:center">    {{ extruderObjects[0].temperature }} °C / {{ selectedFilament.extruder }} °C
+                        </p>
 
                         <v-progress-linear :value="temperatureProgress" color="orange darken-1"
                             height="10"></v-progress-linear>
@@ -27,6 +28,12 @@
                         <p>{{ $t("Trilab.TrilabFilamentLoadWizard.InsertFilamentIntoExtruder") }}</p>
                         <v-btn block @click="loadFilament" class="orange darken-1">{{
                             $t("Trilab.TrilabFilamentLoadWizard.Continue") }}</v-btn>
+                        <v-btn block @click="closeCooldown" class="orange darken-1 mt-2">{{
+                            $t("Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
+                        <v-btn block @click="close" class="orange darken-1 mt-2">{{
+                            $t("Trilab.TrilabFilamentLoadWizard.Close")
+                        }}</v-btn>
+
                     </div>
                 </div>
 

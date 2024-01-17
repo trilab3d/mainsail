@@ -13,8 +13,8 @@
                 </div>
                 <div v-if="step == 1">
                     <div v-if="temperatureProgress < 99.8">
-                        <p>{{ $t("Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }} {{
-                            selectedFilament.extruder }} °C</p>
+                        <p>{{ $t("Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }} </p>
+                        <p style="text-align:center">{{ extruderObjects[0].temperature }} °C / {{ selectedFilament.extruder }} °C</p>
 
                         <v-progress-linear :value="temperatureProgress" color="orange darken-1"
                             height="10"></v-progress-linear>

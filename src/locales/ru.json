@@ -1232,7 +1232,7 @@
       "FilamentIsLoading": "Нить загружается...",
       "InsertFilamentIntoExtruder": "Вставьте нить в экструдер и нажмите «Продолжить».",
       "SelectWhichFilamentYouWantToLoad": "Выберите, какую нить вы хотите загрузить.",
-      "PleaseWaitForTheTemperatureToReach": "Пожалуйста, подождите, пока температура достигнет",
+      "PleaseWaitForTheTemperatureToReach": "Пожалуйста, подождите, пока температура не достигнет указанного значения.",
       "IsColorClean": "Цвет чистый?",
       "CancelHeating": "Отменить нагрев",
       "Continue": "Продолжать",

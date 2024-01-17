@@ -978,7 +978,7 @@
       "FilamentIsLoading": "Filament laddas...",
       "InsertFilamentIntoExtruder": "Sätt in filament i extrudern och tryck på fortsätt",
       "SelectWhichFilamentYouWantToLoad": "Välj vilken filament du vill ladda",
-      "PleaseWaitForTheTemperatureToReach": "Vänta tills temperaturen når",
+      "PleaseWaitForTheTemperatureToReach": "Vänta tills temperaturen når det angivna värdet",
       "IsColorClean": "Är färgen ren?",
       "CancelHeating": "Avbryt uppvärmningen",
       "Continue": "Fortsätta",

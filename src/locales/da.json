@@ -1207,7 +1207,7 @@
       "FilamentIsLoading": "Filament indlæses...",
       "InsertFilamentIntoExtruder": "Indsæt filament i ekstruderen og tryk fortsæt",
       "SelectWhichFilamentYouWantToLoad": "Vælg hvilken filament du vil indlæse",
-      "PleaseWaitForTheTemperatureToReach": "Vent venligst på, at temperaturen når op",
+      "PleaseWaitForTheTemperatureToReach": "Vent venligst, indtil temperaturen når den angivne værdi",
       "IsColorClean": "Er farven ren?",
       "CancelHeating": "Annuller opvarmning",
       "Continue": "Blive ved",

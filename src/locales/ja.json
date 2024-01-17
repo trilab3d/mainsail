@@ -1208,7 +1208,7 @@
       "FilamentIsLoading": "フィラメントをロードしています...",
       "InsertFilamentIntoExtruder": "フィラメントをエクストルーダーに挿入し、続行を押します",
       "SelectWhichFilamentYouWantToLoad": "ロードするフィラメントを選択してください",
-      "PleaseWaitForTheTemperatureToReach": "温度が上がるまでお待ちください",
+      "PleaseWaitForTheTemperatureToReach": "温度が指定の値に達するまでお待ちください",
       "IsColorClean": "色はきれいですか？",
       "CancelHeating": "加熱を中止する",
       "Continue": "続く",
