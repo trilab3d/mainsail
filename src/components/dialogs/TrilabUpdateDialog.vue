@@ -12,8 +12,9 @@
                     <h3 style="color:#ff5252">ERROR</h3>
                     <hr color="#ff5252" class="mb-2 mt-2">
                     <p>There was an error while uploading the update file. Please try again</p>
-                    <v-btn v-if="!AdvancedFeatures || !showTechnicalDetails" class="mt-2 mb-2 block" color="red" @click="showErrorDetails()">{{
-                        $t("Trilab.TrilabUpdateDialog.ShowErrorTechinicalDetails") }}</v-btn>
+                    <v-btn v-if="!AdvancedFeatures || !showTechnicalDetails" class="mt-2 mb-2 block" color="red"
+                        @click="showErrorDetails()">{{
+                            $t("Trilab.TrilabUpdateDialog.ShowErrorTechinicalDetails") }}</v-btn>
                 </div>
                 <div v-if="uploadError == null">
                     <div v-if="alreadyUpdating == false">
@@ -48,10 +49,11 @@
                     <v-list-item v-for="log in logs" :key="log.id" class="ulog">
                         <span v-if="log.text.indexOf('ERROR') != -1" style="color:#f44336">{{
                             $t("Trilab.TrilabUpdateDialog.DANGER") }}</span>
-                        <span v-else-if="log.text.indexOf('WARNING') != -1" style="color:#ff9800">{{ $t("Trilab.TrilabUpdateDialog.WARNING") }}</span>
+                        <span v-else-if="log.text.indexOf('WARNING') != -1" style="color:#ff9800">{{
+                            $t("Trilab.TrilabUpdateDialog.WARNING") }}</span>
                         <span v-else style="color:#2196f3">{{ $t("Trilab.TrilabUpdateDialog.INFO") }}</span>
                         <p>
-                           {{ log.date }} {{ log.text }}
+                            {{ log.date }} {{ log.text }}
                         </p>
                     </v-list-item>
                 </v-list>
@@ -214,6 +216,7 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin, TrilabMixin) {
     }
 
     createSocket() {
+        console.log("Creating socket to SWU");
         var refe = this;
         let s = "https:" === window.location.protocol ? "wss:" : "ws:";
         ///uncomment below for production
@@ -231,24 +234,6 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin, TrilabMixin) {
         (this.socket.onopen = function () {
             //refe.updateStatus("IDLE");
         }),
-            (this.socket.onclose = function () {
-                console.log("SWU SOCKET CLOSED");
-                if (refe.updateDone) {
-                    refe.showRestartBtn = true;
-                } else {
-                    setTimeout(function () {
-                        refe.createSocket();
-                    }, 2000)
-                }
-            }),
-            (this.socket.onerror = function (e) {
-                console.log("SWU SOCKET ERROR: ");
-                console.log(e);
-                /// try to create the socket again
-                setTimeout(function () {
-                    refe.createSocket();
-                }, 2000)
-            }),
             (this.socket.onmessage = function (data) {
                 var e = JSON.parse(data.data);
                 switch (e.type) {
@@ -299,11 +284,32 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin, TrilabMixin) {
 
                 }
             });
+
+        this.socket.onclose = function () {
+            console.log("SWU SOCKET CLOSED");
+            if (refe.updateDone) {
+                refe.showRestartBtn = true;
+            } else {
+                if ((window as any).trilabSocketTimeout != null) {
+                    clearTimeout((window as any).trilabSocketTimeout);
+                }
+                ((window as any).trilabSocketTimeout) = setTimeout(function () {
+                    refe.createSocket();
+                }, 2000)
+            }
+        }
         this.socket.onerror = function (e) {
             console.log("SWU SOCKET ERROR: ");
             console.log(e);
             /// try to create the socket again
-        };
+            if ((window as any).trilabSocketTimeout != null) {
+                clearTimeout((window as any).trilabSocketTimeout);
+            }
+            ((window as any).trilabSocketTimeout) = setTimeout(function () {
+                refe.createSocket();
+            }, 2000)
+        }
+
 
     }
 

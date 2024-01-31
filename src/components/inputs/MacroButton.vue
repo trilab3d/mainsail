@@ -1,14 +1,15 @@
-<template>
-    <v-item-group class="vItemGroup">
+<template v-if="TrilabIsVisibleRule">
+    <v-item-group class="vItemGroup" v-if="TrilabIsVisibleRule">
         <v-btn style="width:100%" small :color="color" :class="paramArray.length ? 'macroWithParameters' : ''"
-            :loading="loadings.includes('macro_' + macro.name)" :disabled="disabled" @click="doSendMacro(macro.name)">
+            :loading="loadings.includes('macro_' + macro.name)" :disabled="TrilabIsDisabledLocal"
+            @click="doSendMacro(macro.name)">
             {{ alias ? alias : macro.name.replace(/_/g, ' ') }}
         </v-btn>
         <template v-if="paramArray.length">
             <v-menu v-if="!isMobile" offset-y :close-on-content-click="false">
                 <template #activator="{ on, attrs }">
-                    <v-btn style="position:absolute; right:0;" :disabled="disabled" :color="color" v-bind="attrs" class="minwidth-0 px-1 btnMacroMenu" small
-                        v-on="on">
+                    <v-btn style="position:absolute; right:0;" :disabled="TrilabIsDisabledLocal" :color="color"
+                        v-bind="attrs" class="minwidth-0 px-1 btnMacroMenu" small v-on="on">
                         <v-icon>{{ mdiMenuDown }}</v-icon>
                     </v-btn>
                 </template>
@@ -32,8 +33,8 @@
                 </v-card>
             </v-menu>
             <template v-else>
-                <v-btn :disabled="disabled" :color="color" style="position:absolute; right:0;" class="minwidth-0 px-1 btnMacroMenu" small
-                    @click="paramsDialog = true">
+                <v-btn :disabled="TrilabIsDisabledLocal" :color="color" style="position:absolute; right:0;"
+                    class="minwidth-0 px-1 btnMacroMenu" small @click="paramsDialog = true">
                     <v-icon>{{ mdiMenuDown }}</v-icon>
                 </v-btn>
                 <v-dialog v-model="paramsDialog">
@@ -69,6 +70,7 @@
 import Component from 'vue-class-component'
 import { Mixins, Prop, Watch } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
+import TrilabMixin from '@/components/mixins/trilab'
 import { GuiMacrosStateMacrogroupMacro } from '@/store/gui/macros/types'
 import { mdiCloseThick, mdiMenuDown, mdiRefresh } from '@mdi/js'
 import Panel from '@/components/ui/Panel.vue'
@@ -86,7 +88,7 @@ interface params {
 @Component({
     components: { Panel },
 })
-export default class MacroButton extends Mixins(BaseMixin) {
+export default class MacroButton extends Mixins(BaseMixin, TrilabMixin) {
     /**
      * Icons
      */
@@ -110,6 +112,28 @@ export default class MacroButton extends Mixins(BaseMixin) {
     @Prop({ default: false })
     declare readonly disabled: boolean
 
+
+    get TrilabIsVisibleRule(): boolean{
+        if (this.macro.name == "FILAMENT_CHANGE") {
+            return false;
+        }
+        return true;
+    }
+
+    get TrilabIsDisabledLocal(): boolean {
+        if (this.disabled) {
+            return true;
+        }
+        if (this.macro.name == 'LOAD_FILAMENT' || this.macro.name == 'UNLOAD_FILAMENT' || this.macro.name == 'FILAMENT_CHANGE') {
+            /// check if printer is paused
+            if (this.TrilabPrinterPaused || this.TrilabPrinterIdle) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
     get klipperMacro() {
         return this.$store.getters['printer/getMacro'](this.macro.name)
     }
@@ -160,17 +184,17 @@ export default class MacroButton extends Mixins(BaseMixin) {
     }
 
     doSendMacro(gcode: string) {
-        if(this.macro.name == 'LOAD_FILAMENT'){
-            /// TRILAB emit event to show load filament wizard instead of macro
+        if (this.macro.name == 'LOAD_FILAMENT') {
+            /// TRILAB emit event to show load filament wizard instead of macro sending macro directly
             this.$emit('clickLoadFilament');
             return true;
         }
-        else if(this.macro.name == 'UNLOAD_FILAMENT'){
-            /// TRILAB emit event to show unload filament wizard instead of macro 
+        else if (this.macro.name == 'UNLOAD_FILAMENT') {
+            /// TRILAB emit event to show unload filament wizard instead of sending macro directly 
             this.$emit('clickUnloadFilament');
             return true;
         }
-        
+
         this.$store.dispatch('server/addEvent', {
             message: gcode,
             type: 'command',

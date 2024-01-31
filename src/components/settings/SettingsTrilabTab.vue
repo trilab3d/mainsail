@@ -17,7 +17,7 @@
                         </v-row>
                         <v-row v-if="TrilabServiceView">
                             <v-col>{{ $t("Trilab.SettingsTrilabTab.WenInterfaceVersion") }} </v-col>
-                            <v-col>1.0.1 (Build 020124183100)</v-col>
+                            <v-col>1.0.1 (Build date: 30.01.2024)</v-col>
                         </v-row>
                         <v-row justify="center" align="center">
                             <v-col>{{ $t("Trilab.SettingsTrilabTab.AutomaticCheckForUpdates") }} </v-col>

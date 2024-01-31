@@ -41,7 +41,8 @@ export default class MacrosPanel extends Mixins(BaseMixin) {
 
     get macros() {
         const macros = this.$store.getters['printer/getMacros']
-
+        console.log("MACROS:");
+        console.log(macros);
         return macros.filter((macro: PrinterStateMacro) => !this.hiddenMacros.includes(macro.name.toLowerCase()))
     }
 

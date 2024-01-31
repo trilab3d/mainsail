@@ -236,7 +236,8 @@ export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
             {
                 icon: mdiPrinter3d,
                 name: "trilab-printer",
-                title: this.$t('Settings.TrilabTab.TrilabPrinter')
+                title: this.$t('Settings.TrilabTab.TrilabPrinter'),
+                condition: this.TrilabServiceView == true
             },
 
         ]

@@ -47,6 +47,8 @@ export const actions: ActionTree<TrilabState, any> = {
                 { action: 'files/getDirectory' }
             )
         }
+        /// in trilab store mutations, there is a mutation called addSocketResponse which adds the payload to the socketResponses array
+        context.commit('addSocketResponse', payload)
         console.log('customSocketResponseHandler')
         console.log(payload)
     },
@@ -133,7 +135,7 @@ export const actions: ActionTree<TrilabState, any> = {
         const response: any = await axios.get(context.getters.trilabPrefix + '/check_update').catch((error) => {
             console.error(error)
         })
-        const rd = response.data
+        const rd = response.data ?? {}
         context.commit('setData', { updateStateStatus: rd })
         /// check if progress is in the response
         if (rd.progress == undefined) {

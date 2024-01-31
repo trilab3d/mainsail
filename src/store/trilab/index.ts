@@ -13,6 +13,7 @@ import { getters } from '@/store/trilab/getters'
 export const getDefaultState = (): TrilabState => {
     return {
         ///trilab
+        socketResponses: [], /// for customSocketResponseHandler
         lastEmitCommand: null,
         showStartDoorOpenDialog: false,
         showDoorOpenDialog: false,

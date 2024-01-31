@@ -1,5 +1,6 @@
  
   export interface TrilabState {
+    socketResponses: Array<String>;
     lastEmitCommand: any;
     updateFile: any;
     showStartDoorOpenDialog: boolean;

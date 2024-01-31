@@ -5,6 +5,13 @@ import { TrilabState } from './types'
 import { setDataDeep } from '../../plugins/helpers'
 
 export const mutations: MutationTree<TrilabState> = {
+    addSocketResponse(state, payload){
+        /// only allow 10 entries
+        if(state.socketResponses.length > 10){
+            state.socketResponses.shift()
+        }
+        state.socketResponses.push(payload)
+    },
     setData(state, payload) {
         setDataDeep(state, payload)
     },

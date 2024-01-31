@@ -47,8 +47,8 @@ export default class TheErrorMessagesSnackbar extends Mixins(BaseMixin) {
     eventsChanged() {
 
         const events = this.events();
-        console.log("EVENTS:");
-        console.log(this.events());
+        //console.log("EVENTS:");
+        //console.log(this.events());
         const lastDisplayDate = this.lastDisplayDate;
         const lastDisplayDateIndex = events.findIndex((event: any) => event.date.getTime() > lastDisplayDate);
         if (lastDisplayDateIndex === -1) return;
