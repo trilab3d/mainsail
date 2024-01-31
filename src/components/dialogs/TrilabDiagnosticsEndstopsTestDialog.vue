@@ -1,7 +1,7 @@
 <template>
     <v-dialog v-model="isDialogVisible" max-width="800px" persistent>
         <v-card>
-            <v-card-title class="headline">{{ $t('Trilab.TrilabFilamentUnLoadWizard.FilamentUnloadWizard') }}</v-card-title>
+            <v-card-title class="headline">Endstops check wizard</v-card-title>
             <v-card-text>
                 <p>Step {{ step + 1 }}</p>
                 <div v-if="step == 0">
@@ -47,7 +47,7 @@ import TrilabMixin from '@/components/mixins/trilab';
 import { PrinterStateAdditionalSensor, PrinterStateTemperatureObject } from '@/store/printer/types'
 
 @Component
-export default class TrilabFilamentUnLoadWizard extends Mixins(TrilabMixin) {
+export default class TrilabDiagnosticsEndstopsTestDialog extends Mixins(TrilabMixin) {
     @Prop({ required: false, default: false })
     declare showp: boolean
 
