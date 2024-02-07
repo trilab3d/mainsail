@@ -65,34 +65,62 @@
                                 <v-icon color="success" v-if="testResults.printflap == 1">{{ mdiCheckCircle }}</v-icon>
                                 <v-icon color="red" v-if="testResults.printflap == 0">{{ mdiCross }}</v-icon>
                             </v-col>
-                            <v-dialog v-model="printflapTestDialogOpen" max-width="290"
-                                @close="printflapTestDialogOpen = false">
+                        </v-row>
+                        <v-row align="center">
+                            <v-col cols="6">Kontrola USB portů</v-col>
+                            <v-col cols="1">
+                                <v-btn color="primary" class="mr-2" @click="usbTestDialogOpen = true">Test</v-btn>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-icon color="success" v-if="testResults.usb == 1">{{ mdiCheckCircle }}</v-icon>
+                                <v-icon color="red" v-if="testResults.usb == 0">{{ mdiCross }}</v-icon>
+                            </v-col>
+                            <v-dialog v-model="usbTestDialogOpen" max-width="290" @close="usbTestDialogOpen = false">
                                 <v-card>
                                     <v-card-title class="text-h5">
-                                        Pohnula se klapka?
+                                        Test of USB ports
                                     </v-card-title>
-                                    <v-card-text>Klapka je vyobrazena na obrázku níže</v-card-text>
+                                    <v-card-text>
+                                        <p>Plug the USB in each available port and wait for the detected USB number to
+                                            change. Was every USB port recognized?</p>
+                                        <p style="text-align:center">Currently detected devices: {{ usbNumber }}</p>
+                                    </v-card-text>
                                     <v-card-actions>
                                         <v-spacer></v-spacer>
                                         <v-btn color="green darken-1" text
-                                            @click="printflapTestDialogOpen = false; testResults.printflap = 1">
+                                            @click="usbTestDialogOpen = false; testResults.usb = 1">
                                             Ano
                                         </v-btn>
                                         <v-btn color="red darken-1" text
-                                            @click="printflapTestDialogOpen = false; testResults.printflap = 0">
+                                            @click="usbTestDialogOpen = false; testResults.usb = 0">
                                             Ne
                                         </v-btn>
                                     </v-card-actions>
                                 </v-card>
                             </v-dialog>
 
+
                         </v-row>
+
+
+                        <!--- ENDSTOPS CHECK  ---->
                         <v-row align="center">
-                            <v-col cols="6">Kontrola USB portů</v-col>
-                            <v-col cols="6">
-                                {{ usbNumber }} detekovaných zapojení USB
+                            <v-col cols="6">Endstops Check</v-col>
+                            <v-col cols="1">
+                                <v-btn color="primary" class="mr-2" @click="endstopACheckDialogOpen = true">Test</v-btn>
                             </v-col>
+                            <v-col cols="5">
+                                <v-icon v-if="testResults.endstopsOpenState == 1" color="success">{{ mdiCheckCircle
+                                }}</v-icon>
+                                <v-icon v-if="testResults.endstopsOpenState == 0">{{ mdiCross }}</v-icon>
+                            </v-col>
+
+                            <trilab-diagnostics-endstops-test-dialog :showp="endstopACheckDialogOpen"
+                                @close="endstopACheckDialogOpen = false"
+                                @catchResult="catchResult"></trilab-diagnostics-endstops-test-dialog>
                         </v-row>
+                        <!--- END ENSTOP A CHECK  ---->
+
 
                         <!---<miscellaneous-panel></miscellaneous-panel>--->
                         <miscellaneous-panel></miscellaneous-panel>
@@ -103,11 +131,15 @@
     </v-container>
 </template>
 <script lang="ts">
+import { Watch } from 'vue-property-decorator';
 import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
+import TrilabDiagnosticsEndstopsTestDialog from '@/components/dialogs/TrilabDiagnosticsEndstopsTestDialog.vue'
 import { mdiCog, mdiPackageVariantClosed, mdiAlphaBBox, mdiCheckCircle, mdiCross } from '@mdi/js'
 @Component({
     components: {
+        TrilabDiagnosticsEndstopsTestDialog,
+
         //TrilabDeltaCalibrationWizard,
 
     },
@@ -121,18 +153,43 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
     public printflapTestDialogOpen = false;
     public chamberflapTestDialogOpen = false;
 
-    public testResults = {
+    public endStopsData = "";
+    public endstopACheckDialogOpen = false;
+    public endstopBCheckDialogOpen = false;
+    public endstopCCheckDialogOpen = false;
+
+    public usbTestDialogOpen = false;
+
+    public endstopsOpenCheckDialog = false;
+
+    public testResults: any = {
         "fan": -1,
         "heatbreakfan": -1,
         "chamberflap": -1,
         "printflap": -1,
         "usb": -1,
+        "endstopsOpenState": -1,
+        "endstopAOpenState": -1,
+        "endstopBOpenState": -1,
+        "endstopCOpenState": -1,
+    }
+
+
+    openEndStopsOpenDialog() {
+
     }
 
 
     sendGcode(gcode: string) {
         this.$store.dispatch('server/addEvent', { message: gcode, type: 'command' })
         this.$socket.emit('printer.gcode.script', { script: gcode })
+    }
+    sendGcodeHidden(gcode: string) {
+        this.$socket.emit('printer.gcode.script', { script: gcode })
+    }
+
+    catchResult(key: string, value: number) {
+        this.testResults[key] = value;
     }
 
     testChamberFlapIntake(status: number) {
@@ -197,7 +254,6 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         const gcode = `HEATER_FAN_SET_SPEED FAN=heatbreak_fan SPEED=0.5`
         this.sendGcode(gcode)
     }
-
 
 
     public activeTab = "delta";
