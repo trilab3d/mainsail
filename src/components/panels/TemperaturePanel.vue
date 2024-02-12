@@ -114,7 +114,7 @@
                                     </td>
                                     <td class="name">
                                         <span style="cursor: pointer" @click="openHeater(object)">
-                                            {{ convertName(object.name) }} <small v-if="object.name.indexOf('extruder') != -1">({{ $store.state.printer["config_constant printhead_pretty"]?.value ?? $store.state.printer["config_constant printhead"].value ?? '' }})</small>
+                                            {{ convertName(object.name) }} <small v-if="object.name.indexOf('extruder') != -1">({{ $store.state.printer["config_constant printhead_pretty"]?.value ?? $store.state.printer["config_constant printhead"]?.value ?? $t("Generic.Unknown") }})</small>
                                         </span>
                                     </td>
                                     <td v-if="!el.is.mobile" class="state">

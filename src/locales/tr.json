@@ -1233,6 +1233,7 @@
     }
   },
   "Generic": {
-    "Ok": "Tamam"
+    "Ok": "Tamam",
+    "Unknown": "Bilinmeyen"
   }
 }

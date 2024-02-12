@@ -1048,6 +1048,7 @@
     }
   },
   "Generic": {
-    "Ok": "Ok"
+    "Ok": "Ok",
+    "Unknown": "Okänd"
   }
 }

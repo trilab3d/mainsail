@@ -40,7 +40,8 @@
     "titleUSB": "Mise à jour depuis USB"
   },
   "Generic": {
-    "Ok": "D'accord"
+    "Ok": "D'accord",
+    "Unknown": "Inconnu"
   },
   "TrilabLiveUpdate": {
     "Titles": {

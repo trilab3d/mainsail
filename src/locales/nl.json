@@ -1277,6 +1277,7 @@
     }
   },
   "Generic": {
-    "Ok": "OK"
+    "Ok": "OK",
+    "Unknown": "Onbekend"
   }
 }

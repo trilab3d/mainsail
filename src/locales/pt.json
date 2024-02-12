@@ -1302,6 +1302,7 @@
     }
   },
   "Generic": {
-    "Ok": "OK"
+    "Ok": "OK",
+    "Unknown": "Desconhecido"
   }
 }

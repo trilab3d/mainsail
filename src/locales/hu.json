@@ -1156,6 +1156,7 @@
     }
   },
   "Generic": {
-    "Ok": "Rendben"
+    "Ok": "Rendben",
+    "Unknown": "Ismeretlen"
   }
 }

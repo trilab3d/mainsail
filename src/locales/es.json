@@ -1154,6 +1154,7 @@
     }
   },
   "Generic": {
-    "Ok": "De acuerdo"
+    "Ok": "De acuerdo",
+    "Unknown": "Desconocido"
   }
 }
