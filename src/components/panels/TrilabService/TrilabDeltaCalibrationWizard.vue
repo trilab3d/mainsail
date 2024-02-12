@@ -2,7 +2,7 @@
 <template>
 	<v-card>
 		<v-card-title>
-			<h2>Kalibrace delty</h2>
+			<h2>Delta calibration</h2>
 		</v-card-title>
 		<v-card-text>
 			<v-row class="justify-center">
@@ -10,16 +10,13 @@
 					<v-container v-if="step == 0">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Krok {{ step + 1 }}. BASIC kalibrace</h3>
+								<h3>Step{{ step + 1 }}. BASIC calibration</h3>
 							</v-card-title>
 							<v-card-text>
-								<p>Nejdřív ze všeho je <strong>nutné</strong> spustit základní kalibraci. Spustíte ji
-									tlačítkem dole a poté
-									počkejte na restart tiskárny</p>
+								<p>First of all, it is <strong>necessary</strong> to start the basic calibration. Start it by pressing the button below and then wait for the printer to restart.</p>
 								<v-btn :disabled="printerBusy" color="primary"
 									:loading="loadings.includes('delta_calibrate')" block
-									@click="sendBasicCalibrationCommand()">SPUSTIT
-									KALIBRACI</v-btn>
+									@click="sendBasicCalibrationCommand()">START CALIBRATION</v-btn>
 							</v-card-text>
 						</v-card>
 					</v-container>
@@ -27,46 +24,45 @@
 					<v-container v-if="step == 1">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
-								Základní delta kalibrace obecně dobře vypočítá delta parametry tak, aby byla tryska ve
-								správné
-								vzdálenosti
-								od podložky. Nepokouší se však kalibrovat přesnost rozměrů X a Y. Pro ověření rozměrové
-								přesnosti je
-								dobré
-								provést rozšířenou delta kalibraci.
+								Basic delta calibration generally calculates delta parameters well to ensure the nozzle is at the
+								correct
+								distance from the bed. However, it does not attempt to calibrate the accuracy of X and Y dimensions. For verifying dimensional 
+								accuracy, it is
+								good 
+								to perform an extended delta calibration.
 								<br>
-								Tento kalibrační postup vyžaduje vytisknout zkušební objekt a změřit části tohoto zkušebního
-								objektu
-								pomocí
-								digitálních třmenů.
+								This calibration procedure requires printing a test object and measuring parts of this test  
+								object
+								using 
+								digital calipers.
 								<br>
-								<strong>Ujistěte se</strong>, že od posledního provedení
-								základní
-								delta kalibrace nedošlo k žádné významné změně konfigurace tiskárny ani hardwaru (pokud si
-								nejste
-								jisti,
-								proveďte základní delta kalibraci znovu, těsně před tiskem
-								testovacího
-								objektu
-								níže).
+								<strong>Make sure </strong>that since the last
+								basic 
+								delta calibration, there have been no significant changes in the printer configuration or hardware (if 
+								are not
+								sure,
+								perform the basic delta calibration again, just before printing 
+								the test
+								object
+								below).
 								<br>
 								<v-btn :disabled="printerBusy || loadings.includes('DeltaCalibrationWizardPrint')" block
-									@click="sendPrintTestObject()">Vytisknout testovací objekt</v-btn>
-								<p class="mt-6 mb-2">Vytiskněte testovací objekt a počkejte, až zcela vychladne.</p>
-								<small>Dále zadávané hodnoty musí být spuštěny
-									se stejným nastavením tiskárny, které bylo použito při tisku kalibračního objektu (mezi
-									tiskem a
-									měřením nespouštějte příkaz DELTA_CALIBRATE ani neprovádějte nic, co by jinak změnilo
-									konfiguraci
-									tiskárny).
+									@click="sendPrintTestObject()">Print the test object</v-btn>
+								<p class="mt-6 mb-2">Print the test object and wait until it completely cools down.</p>
+								<small>Ensure that the subsequent values are inputted 
+									Ensure that the subsequent values are inputted 
+									with the same printer settings used during the calibration object print (do not 
+									configuration between 
+									printing and measuring).
 
-									Pokud je to možné, provádějte dále popsaná měření, když je objekt stále připevněn k
-									tiskové podložce,
-									ale nedělejte si starosti, pokud se díl od podložky oddělí - jen se snažte při měření
-									objekt neohýbat.</small>
+									If feasible, carry out the described measurements while the object is still attached to
+									the print bed. 
+									However, do not worry if the part detaches from the bed - just strive to avoid 
+									bending the object during measurement.
+									</small>
 
 							</v-card-text>
 						</v-card>
@@ -77,18 +73,18 @@
 					<v-container v-if="step == 2">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
+								<h3>Start {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 
-								<p>Pokud byl objekt zmenšen na menší nebo větší velikost, uveďte faktor měřítka, který byl
-									použit při slicování objektu. Pokud velikost změněna nebyla, ponechte výchozí hodnotu.
-									<small>(Hodnota měřítka 2.0 by znamenala dvojnásobek původní velikosti objektu, hodnota
-										0.5 by znamenala polovinu původní velikosti.)</small>
+								<p>If the object has been resized to a smaller or larger size, please provide the scale factor 
+									used during object slicing. If no resizing was done, leave the default value. 
+									<small>(A scale value of 2.0 would mean double the original size of the object, while a value of
+									0.5 would mean half the original size.)	</small>
 								</p>
 
-								<p>Nyní zadejte hodnotu (s desetinnými čísly - Použijte tečku místo desetinné
-									čárky):</p>
+								<p>Now enter the value (using decimals - Use a dot instead of 
+								    a comma):</p>
 
 								<v-row>
 									<v-text-field label="Měřítko velikosti" @input="isNumber($event)" v-model="scaleFactor"
@@ -106,30 +102,31 @@
 					<v-container v-if="step == 3">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
+								<h3>Step{{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
-								<p>
-									Začněte měřením vzdálenosti mezi středovým sloupem a sloupem vedle štítku "A" (který by
-									měl rovněž
-									směřovat k věži "A")</p>
+								<p>Then proceed counterclockwise and measure the distances between the center 
+									column and the other columns (distance from the center to the column opposite the C label, 
+									distance 
+									from the center to the column labeled B, etc.).
+									</p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta-a-distance.jpg" alt="delta-a-distance"
 										style="width:100%; max-width:500px">
-									<p><small>Měření - krok 1</small></p>
+									<p><small>Measurement - step 1</small></p>
 								</div>
 
-								<p>Poté postupujte proti směru hodinových ručiček a změřte vzdálenosti mezi středovým
-									sloupem a ostatními sloupy <small>(vzdálenost od středu ke sloupu naproti štítku C,
-										vzdálenost
-										od středu ke sloupu se štítkem B atd.).</small></p>
+								<p>Then proceed counterclockwise and measure the distances between the center 
+									column and the other columns </p></small>(distance from the center to the column opposite the C label, 
+									distance 
+									from the center to the column labeled B, etc.):</small></p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta_cal_e_step1.jpg" alt="step_1" style="width:100%; max-width:500px">
-									<p><small>Měření - krok 2</small></p>
+									<p><small>Measurement - step 2</small></p>
 								</div>
 
-								<p>Nyní zadejte naměřené hodnoty (s desetinnými čísly - Použijte tečku místo desetinné
-									čárky):</p>
+								<p>Now enter the measured values (using decimals - Use a dot instead of
+									a comma):</p>
 
 								<v-row>
 
@@ -148,24 +145,24 @@
 					<v-container v-if="step == 4">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 
-								<p>Změřte vzdálenost mezi sloupkem A a sloupkem naproti štítku C.</p>
+								<p>Please measure the distance between column A and the column opposite the C label</p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta-outer-distance.jpg" alt="step_1"
 										style="width:100%; max-width:500px">
-									<p><small>Měření - krok 2</small></p>
+									<p><small>Measurement- - step 2</small></p>
 								</div>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta_cal_e_step2.jpg" alt="step_1" style="width:100%; max-width:500px">
-									<p><small>Měření - krok 2</small></p>
+									<p><small>Measurement- step 2</small></p>
 								</div>
 
 
-								<p>Nyní zadejte naměřené hodnoty (s desetinnými čísly - Použijte tečku místo desetinné
-									čárky):</p>
+								<p>Now enter the measured values (using decimals - Use a dot instead of
+									a comma):</p>
 
 								<v-row>
 
@@ -185,26 +182,26 @@
 					<v-container v-if="step == 5">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 
-								<p>V tomto okamžiku je možné předmět z lůžka odstranit. Konečné měření se týká samotných
-									sloupů. Změřte velikost středového sloupku podél ramene A, poté ramene B a nakonec
-									ramene C</p>
+								<p>At this point, you can remove the object from the bed. The final measurements concern 
+									the columns themselves. Measure the size of the central column along arm A, then arm B, and finally 
+									arm C</p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta-a-pillar.jpg" alt="step_3" style="width:100%; max-width:500px">
-									<p><small>Měření - krok 3</small></p>
+									<p><small>Measurement - step 3</small></p>
 								</div>
 
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta_cal_e_step3.jpg" alt="step_3" style="width:100%; max-width:500px">
-									<p><small>Měření - krok 3</small></p>
+									<p><small>Measurement - step 3</small></p>
 								</div>
 
 
-								<p>Nyní zadejte naměřené hodnoty (s desetinnými čísly - Použijte tečku místo desetinné
-									čárky):</p>
+								<p>Now enter the measured values (using decimals - Use a dot instead of
+									a comma):</p>
 
 								<v-row>
 
@@ -224,29 +221,29 @@
 					<v-container v-if="step == 6">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Krok {{ step + 1 }}. ADVANCED kalibrace</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 
-								<p>Konečné rozměry se týkají vnějších pilířů. Začněte měřením vzdálenosti sloupu A podél
-									linie od sloupu A ke sloupu naproti sloupu C.</p>
+								<p>The final dimensions relate to the outer pillars. Begin by measuring the distance of pillar  and along
+									the line from pillar A to the pillar opposite to pillar C.</p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta-outer-distance.jpg" alt="step_3"
 										style="width:100%; max-width:500px">
-									<p><small>Měření - krok 4</small></p>
+									<p><small>Measurement - step 4</small></p>
 								</div>
 
-								<p>Poté postupujte proti směru hodinových ručiček a změřte zbývající vnější pilíře (pilíř
-									napříč od C podél linie k B, pilíř B podél linie k pilíři napříč od A atd.).</p>
+								<p>Then proceed counterclockwise and measure the remaining outer pillars (the pillar 
+									diagonally from C along the line to B, pillar B along the line to the pillar diagonally from A, etc.).</p>
 
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta_cal_e_step4.jpg" alt="step_3" style="width:100%; max-width:500px">
-									<p><small>Měření - krok 4</small></p>
+									<p><small>Measurement - step 4</small></p>
 								</div>
 
 
-								<p>Nyní zadejte naměřené hodnoty (s desetinnými čísly - Použijte tečku místo desetinné
-									čárky):</p>
+								<p>Now enter the measured values (using decimals - Use a dot instead of
+									a comma):</p>
 
 								<v-row>
 
@@ -268,24 +265,22 @@
 					<v-container v-if="step == 7">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Krok {{ step + 1 }}. UPOZORNĚNÍ</h3>
+								<h3>Step {{ step + 1 }}. WARNING</h3>
 							</v-card-title>
 							<v-card-text>
 
-								<p>Dokončení tohoto příkazu může trvat několik minut. Po dokončení vypočítá aktualizované
-									parametry delta (poloměr delta, úhly věže, polohy koncových zarážek a délky ramen). Poté
-									uloží jak aktualizované parametry delta, tak informace z měření
-									vzdálenosti. Budoucí kalibrace budou rovněž využívat tyto informace o
-									vzdálenosti. Po stisknutí tlačítka níže se
-									nepokoušejte znovu zadávat nezpracovaná
-									měření vzdálenosti, protože tento příkaz mění konfiguraci tiskárny a nezpracovaná měření
-									již neplatí.
+								<p>Completion of this command may take several minutes. Upon completion, it will calculate updated delta
+									parameters (delta radius, tower angles, endstop positions, and arm lengths). It will then save both 
+									the updated delta parameters and the distance measurement information. Future calibrations will also utilize
+									this distance information. After pressing the button below, 
+									refrain from attempting to re-enter unprocessed
+									distance measurements because this command alters the printer configuration, and unprocessed measurements 
+									will no longer be valid.
 								</p>
-								<p style="text-align:center; font-weight:bold">Po stisknutí tohoto tlačítka se tento wizard
-									a uložené hodnoty resetují a případné korekce je potřeba udělat odznova</p>
+								<p style="text-align:center; font-weight:bold">Upon pressing this button, this wizard and the saved values will reset, 
+									and any corrections will need to be made again from scratch.</p>
 								<v-btn :disabled="printerBusy || sendCalibrateCommandEnabled == false" :loading="advancedCalibrationInProgress" color="red"
-									class="mt-4" block @click="sendCalibrateCommand()">Spustit
-									Kalibraci</v-btn>
+									class="mt-4" block @click="sendCalibrateCommand()">Start calibration</v-btn>
 
 							</v-card-text>
 						</v-card>
@@ -297,18 +292,18 @@
 								<v-icon left>
 									{{ mdiChevronLeft }}
 								</v-icon>
-								Předchozí
+								Previous
 							</v-btn>
 						</v-col>
 						<v-col cols="6">
-							<v-btn :disabled="isNextDisabled" block @click="nextClick()">Další
+							<v-btn :disabled="isNextDisabled" block @click="nextClick()">Next
 								<v-icon right>
 									{{ mdiChevronRight }}
 								</v-icon>
 							</v-btn>
 						</v-col>
 						<v-col v-if="skipVisible" cols="12">
-							<v-btn block @click="skipStep()">Přeskočit
+							<v-btn block @click="skipStep()">Skip
 								<v-icon right>
 									{{ mdiSkipNext }}
 								</v-icon>
@@ -319,7 +314,7 @@
 								<v-icon left>
 									{{ mdiRestart }}
 								</v-icon>
-								Začít znovu
+								Start again
 							</v-btn>
 						</v-col>
 					</v-row>

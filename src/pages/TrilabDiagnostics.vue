@@ -13,7 +13,7 @@
 
                     <div v-if="activeTab == 'basic'">
                         <v-row v-if="heatbreakfanPresent" align="center">
-                            <v-col class="justify-center" cols="6">Větrák - kontrola otáček</v-col>
+                            <v-col class="justify-center" cols="6">Fan - speed control</v-col>
                             <v-col cols="1">
                                 <v-btn color="primary" class="mr-2" @click="testFan(1)">Test</v-btn>
                             </v-col>
@@ -23,7 +23,7 @@
                             </v-col>
                         </v-row>
                         <v-row v-if="chamberIntakeFlapPresent" align="center">
-                            <v-col cols="6">Chamber Intake klapka - kontrola pohybu</v-col>
+                            <v-col cols="6">Chamber Intake flap - motion control</v-col>
                             <v-col cols="1">
                                 <v-btn color="primary" class="mr-2"
                                     @click="testChamberFlapIntake(1); chamberflapTestDialogOpen = true">Test</v-btn>
@@ -36,19 +36,18 @@
                                 @close="chamberflapTestDialogOpen = false">
                                 <v-card>
                                     <v-card-title class="text-h5">
-                                        Pohnula se chamber klapka?
+                                        Did the chamber flap move?
                                     </v-card-title>
-                                    <v-card-text>Klapka je vyobrazena na obrázku níže. Její pohnutí můžete poznat i pomocí
-                                        zvuku</v-card-text>
+                                    <v-card-text>The flap is depicted in the image bolow. Its movement can also be recognized by sound.</v-card-text>
                                     <v-card-actions>
                                         <v-spacer></v-spacer>
                                         <v-btn color="green darken-1" text
                                             @click="chamberflapTestDialogOpen = false; testResults.chamberflap = 1">
-                                            Ano
+                                            Yes
                                         </v-btn>
                                         <v-btn color="red darken-1" text
                                             @click="chamberflapTestDialogOpen = false; testResults.chamberflap = 0">
-                                            Ne
+                                            No
                                         </v-btn>
                                     </v-card-actions>
                                 </v-card>
@@ -56,7 +55,7 @@
 
                         </v-row>
                         <v-row v-if="printFlapPresent" align="center">
-                            <v-col cols="6">Print klapka - kontrola pohybu</v-col>
+                            <v-col cols="6">Print flap - motion control</v-col>
                             <v-col cols="1">
                                 <v-btn color="primary" class="mr-2"
                                     @click="testPrintFlap(1); printflapTestDialogOpen = true">Test</v-btn>
@@ -67,7 +66,7 @@
                             </v-col>
                         </v-row>
                         <v-row align="center">
-                            <v-col cols="6">Kontrola USB portů</v-col>
+                            <v-col cols="6">USB port check</v-col>
                             <v-col cols="1">
                                 <v-btn color="primary" class="mr-2" @click="usbTestDialogOpen = true">Test</v-btn>
                             </v-col>
@@ -89,11 +88,11 @@
                                         <v-spacer></v-spacer>
                                         <v-btn color="green darken-1" text
                                             @click="usbTestDialogOpen = false; testResults.usb = 1">
-                                            Ano
+                                            Yes
                                         </v-btn>
                                         <v-btn color="red darken-1" text
                                             @click="usbTestDialogOpen = false; testResults.usb = 0">
-                                            Ne
+                                            No
                                         </v-btn>
                                     </v-card-actions>
                                 </v-card>
