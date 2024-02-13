@@ -53,7 +53,7 @@ export default class TrilabMixin extends Vue {
         const printer_state =
             this.$store.state.printer.print_stats?.state ?? this.$store.state.printer.idle_timeout?.state ?? ''
         console.log("printer_state: " + printer_state + " idle_timeout_state: " + idle_timeout_state);
-        if ((idle_timeout_state == 'Idle' || idle_timeout_state == 'Ready') && (printer_state == "standby" || printer_state == "ready" || printer_state == 'cancelled')) {
+        if ((idle_timeout_state == 'Idle' || idle_timeout_state == 'Ready') && (printer_state == "standby" || printer_state == "ready" || printer_state == 'cancelled' || printer_state == 'complete')) {
             return true
         }
         return false

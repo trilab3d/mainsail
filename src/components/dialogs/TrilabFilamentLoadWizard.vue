@@ -13,7 +13,8 @@
                 <div v-if="step == 1">
                     <div v-if="temperatureProgress < 99.8">
                         <p>{{ $t("Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }}<br /></p>
-                        <p style="text-align:center">    {{ extruderObjects[0].temperature }} °C / {{ selectedFilament.extruder }} °C
+                        <p style="text-align:center"> {{ extruderObjects[0].temperature }} °C / {{ selectedFilament.extruder
+                        }} °C
                         </p>
 
                         <v-progress-linear :value="temperatureProgress" color="orange darken-1"
@@ -81,6 +82,7 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
     @Prop({ required: false, default: false })
     declare showp: boolean
 
+    public purgeCount = 0;
 
     public showSelectFilamentDialog: boolean = false;
 
@@ -114,6 +116,10 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
             command: "SAVE_GCODE_STATE NAME=LOAD_FILAMENT", duration: 0, repeat: 1, originalRepeat: 1
         },
         {
+            //self._screen._ws.klippy.gcode_script(f"SAVE_VARIABLE VARIABLE=loaded_filament VALUE='\"{self.currently_loading}\"'")
+            command: "SAVE_VARIABLE VARIABLE=loaded_filament VALUE='\"REPLACE_FILAMENT_NAME\"'", duration: 0, repeat: 1, originalRepeat: 1, onlyFirstRun: true
+        },
+        {
             command: "M83", duration: 0, repeat: 1, originalRepeat: 1
         },
         {
@@ -123,7 +129,10 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
             command: "G0 E5 F300", duration: 1000, originalRepeat: 10, repeat: 10
         },
         {
-            command: "_FILAMENT_RETRACT", duration: 1000, originalRepeat: 1, repeat: 1
+            command: "SAVE_VARIABLE VARIABLE=filamentretracted VALUE=0", duration: 0, repeat: 1, originalRepeat: 1
+        },
+        {
+            command: "_FILAMENT_RETRACT", duration: 0, originalRepeat: 1, repeat: 1
         },
         {
             command: "RESTORE_GCODE_STATE NAME=LOAD_FILAMENT", duration: 0, repeat: 1, originalRepeat: 1
@@ -243,16 +252,16 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
             calculated = 0;
         }
 
-        console.log("calculated: " + calculated);
-        console.log("startPercentage: " + startPercentage);
-        console.log("nextStartPercentage" + nextStartPercentage);
-        console.log("currentCommandPercentage" + currentCommandPercentage);
+       // console.log("calculated: " + calculated);
+       // console.log("startPercentage: " + startPercentage);
+       // console.log("nextStartPercentage" + nextStartPercentage);
+       // console.log("currentCommandPercentage" + currentCommandPercentage);
 
         let percentage = startPercentage + calculated;
 
 
-        console.log("current percentage");
-        console.log(percentage);
+       // console.log("current percentage");
+       // console.log(percentage);
 
         percentage = Math.max(0, Math.min(percentage, 100));
 
@@ -322,15 +331,24 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
 
     async loadFilamentPart() {
         let commandToUse = this.commandSequence[this.currentCommandIndex];
-        console.log("sending command");
-        console.log(commandToUse.command);
+        /// if the command is onlyFirstRun and purgeCount is more than 0, skip the command
+        let commandToUseCopy = JSON.parse(JSON.stringify(commandToUse));
+        if (commandToUse.onlyFirstRun == true && this.purgeCount > 0) {
+            //console.log("skipping command, because onlyFirstRun and purgeCount > 0");
+        }
+        if(commandToUseCopy.command.indexOf("REPLACE_FILAMENT_NAME") != -1){
+            //console.log("replacing filament name");
+            commandToUseCopy.command = commandToUseCopy.command.replace("REPLACE_FILAMENT_NAME", this.selectedFilament.title);
+        } /// intercepting so we can replace the filament name
+        //console.log("sending command");
+        //console.log(commandToUseCopy.command);
         //console.log(this.commandStart);
         //console.log(this.currentCommandIndex);
         /// send the command
-        console.log("awaitResult under: ");
-        console.log(await this.$store.dispatch('printer/sendGcode', commandToUse.command));
+        //console.log("awaitResult under: ");
+        console.log(await this.$store.dispatch('printer/sendGcode', commandToUseCopy.command));
         /// sent, next add events
-        await this.$store.dispatch('server/addEvent', { message: commandToUse.command, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: commandToUseCopy.command, type: 'command' })
 
         /// nextKrok
         let canNext = this.nextKrok();
@@ -343,6 +361,7 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
             }, currentDuration);
         } else {
             this.step = 2;
+            this.purgeCount++;
             this.resetSequences();
         }
     }
@@ -358,16 +377,16 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
         self._screen._ws.klippy.gcode_script(f"RESTORE_GCODE_STATE NAME=LOAD_FILAMENT")
         */
         await this.$store.dispatch('printer/sendGcode', `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`);
+        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_DERETRACT`);
         await this.$store.dispatch('printer/sendGcode', `M83`);
-        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_UNRETRACT`);
         await this.$store.dispatch('printer/sendGcode', `G0 E50 F300`);
         await this.$store.dispatch('printer/sendGcode', `_FILAMENT_RETRACT`);
         await this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
 
         /// add events
         await this.$store.dispatch('server/addEvent', { message: `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', { message: `_FILAMENT_DERETRACT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `M83`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `_FILAMENT_UNRETRACT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `G0 E50 F300`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `_FILAMENT_RETRACT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
@@ -435,6 +454,7 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
 
     close() {
         this.step = 0;
+        this.purgeCount = 0;
         this.$emit('close');
     }
     selectFilament(filamentObj: any) {
