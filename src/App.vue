@@ -114,7 +114,7 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
         this.isLoginPopupOpen = false;
     }
 
-    get updateFile(){
+    get updateFile() {
         return this.$store.getters['trilab/getUpdateFile'];
     }
 
@@ -327,8 +327,17 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
     handleKeyDown(event: any) {
         var type = '';
         let exclusionTags = ['input', 'textarea', 'select'];
-        if (exclusionTags.indexOf(event.target.tagName.toLowerCase()) === -1) {
+        let otherRulesPassed = true;
+        /// check if it has attribute role "textbox" or contenteditable=true
+        if (event.target.getAttribute('role') == "textbox" || event.target.getAttribute('contenteditable') == "true") {
+            otherRulesPassed = false;
+        }
+
+        if (exclusionTags.indexOf(event.target.tagName.toLowerCase()) === -1 && otherRulesPassed) {
             //console.log(event.target.tagName);
+
+            //console.log("typ pole: ");
+            //console.log(event.target);
             if (type != 'text') {
                 /// if it is escape
                 if (event.keyCode == 27) {
@@ -337,7 +346,6 @@ export default class App extends Mixins(BaseMixin, TrilabMixin) {
                         return;
                     }
                 }
-
                 if (event.keyCode == 82 && event.shiftKey) { /// shift+r
                     if (this.TrilabServiceView == false && this.TrilabHiddenView == false) {
                         this.reqAccess = "hidden";
