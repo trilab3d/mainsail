@@ -707,7 +707,10 @@
       "PrinterName": "Skrivarens namn",
       "Reset": "Nollställ",
       "Restore": "Återställ",
-      "RestoreDialog": "Välj alla sektioner som du vill återställa:"
+      "RestoreDialog": "Välj alla sektioner som du vill återställa:",
+      "PrinterNameRequired": "Skrivarens namn krävs",
+      "PrinterNameMaxLength": "Högsta tillåtna namnlängd är 63 tecken",
+      "PrinterNameInvalid": "Skrivarens namn är ogiltigt. \nEndast grundläggande tecken, siffror och bindestreck är tillåtna."
     },
     "InterfaceSettings": "Gränssnittsinställningar",
     "MacrosTab": {

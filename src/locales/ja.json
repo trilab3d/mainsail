@@ -894,7 +894,10 @@
       "Reset": "初期化",
       "Restore": "復元",
       "RestoreDialog": "バックアップから復元したい項目をすべて選んでください:",
-      "TimeFormat": "時間フォーマット"
+      "TimeFormat": "時間フォーマット",
+      "PrinterNameRequired": "プリンター名は必須です",
+      "PrinterNameMaxLength": "許可される名前の最大長は 63 文字です",
+      "PrinterNameInvalid": "プリンター名が無効です。\n基本的な文字、数字、ハイフンのみが使用できます。"
     },
     "InterfaceSettings": "インターフェース設定",
     "MacrosTab": {

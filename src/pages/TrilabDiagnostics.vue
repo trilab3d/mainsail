@@ -120,6 +120,78 @@
                         </v-row>
                         <!--- END ENSTOP A CHECK  ---->
 
+                        <!--- ANALOG PROBE DEBUG  ---->
+                        <v-row align="center">
+                            <v-col cols="6">Bed probes check</v-col>
+                            <v-col cols="1">
+                                <v-btn color="primary" class="mr-2" @click="BedProbesCheckingDialog = true">Test</v-btn>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-icon v-if="testResults.bedProbes == 1" color="success">{{ mdiCheckCircle
+                                }}</v-icon>
+                                <v-icon v-if="testResults.bedProbes == 0">{{ mdiCross }}</v-icon>
+                            </v-col>
+
+                            <trilab-diagnostics-probes-dialog :showp="BedProbesCheckingDialog"
+                                @close="BedProbesCheckingDialog = false"
+                                @catchResult="catchResult"></trilab-diagnostics-probes-dialog>
+                        </v-row>
+                        <!--- END ANALOG PROBE DEBUG  ---->
+
+                        <!--- EXTRUDER TEMPERATURE RISE CHECK  ---->
+                        <v-row align="center">
+                            <v-col cols="6">Extruder temp rise check</v-col>
+                            <v-col cols="1">
+                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogExtruder = true">Test</v-btn>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-icon v-if="testResults.extruderCheck == 1" color="success">{{ mdiCheckCircle
+                                }}</v-icon>
+                                <v-icon v-if="testResults.extruderCheck == 0">{{ mdiCross }}</v-icon>
+                            </v-col>
+
+                            <trilab-diagnostics-temperature-rise-check :showp="temperatureRiseDialogExtruder"
+                                @close="temperatureRiseDialogExtruder = false" heaterType="Extruder"
+                                @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
+                        </v-row>
+                        <!--- END EXTRUDER TEMPERATURE RISE CHECK  ---->
+
+                        <!--- BED TEMPERATURE RISE CHECK  ---->
+                        <v-row align="center">
+                            <v-col cols="6">Bed temp rise check</v-col>
+                            <v-col cols="1">
+                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogBed = true">Test</v-btn>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-icon v-if="testResults.bedCheck == 1" color="success">{{ mdiCheckCircle
+                                }}</v-icon>
+                                <v-icon v-if="testResults.bedCheck == 0">{{ mdiCross }}</v-icon>
+                            </v-col>
+
+                            <trilab-diagnostics-temperature-rise-check heaterType="Bed" :showp="temperatureRiseDialogBed"
+                                @close="temperatureRiseDialogBed = false"
+                                @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
+                        </v-row>
+                        <!--- END BED TEMPERATURE RISE CHECK  ---->
+                        <!--- EXTRUDER TEMPERATURE RISE CHECK  ---->
+                        <v-row align="center">
+                            <v-col cols="6">Chamber temp rise check</v-col>
+                            <v-col cols="1">
+                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogChamber = true">Test</v-btn>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-icon v-if="testResults.panelCheck == 1" color="success">{{ mdiCheckCircle
+                                }}</v-icon>
+                                <v-icon v-if="testResults.panelCheck == 0">{{ mdiCross }}</v-icon>
+                            </v-col>
+
+                            <trilab-diagnostics-temperature-rise-check :showp="temperatureRiseDialogChamber"
+                                @close="temperatureRiseDialogChamber = false" heaterType="Panels"
+                                @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
+                        </v-row>
+                        <!--- END EXTRUDER TEMPERATURE RISE CHECK  ---->
+
+
 
                         <!---<miscellaneous-panel></miscellaneous-panel>--->
                         <miscellaneous-panel></miscellaneous-panel>
@@ -133,11 +205,13 @@
 import { Watch } from 'vue-property-decorator';
 import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
+import TrilabDiagnosticsProbesDialog from '@/components/dialogs/TrilabDiagnosticsProbesDialog.vue';
 import TrilabDiagnosticsEndstopsTestDialog from '@/components/dialogs/TrilabDiagnosticsEndstopsTestDialog.vue'
 import { mdiCog, mdiPackageVariantClosed, mdiAlphaBBox, mdiCheckCircle, mdiCross } from '@mdi/js'
 @Component({
     components: {
         TrilabDiagnosticsEndstopsTestDialog,
+        TrilabDiagnosticsProbesDialog,
 
         //TrilabDeltaCalibrationWizard,
 
@@ -157,7 +231,13 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
     public endstopBCheckDialogOpen = false;
     public endstopCCheckDialogOpen = false;
 
+
+    public BedProbesCheckingDialog = false;
     public usbTestDialogOpen = false;
+
+    public temperatureRiseDialogExtruder = false;
+    public temperatureRiseDialogBed = false;
+    public temperatureRiseDialogChamber = false;
 
     public endstopsOpenCheckDialog = false;
 
@@ -167,10 +247,14 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         "chamberflap": -1,
         "printflap": -1,
         "usb": -1,
+        "bedProbes": -1,
         "endstopsOpenState": -1,
         "endstopAOpenState": -1,
         "endstopBOpenState": -1,
         "endstopCOpenState": -1,
+        "extruderCheck": -1,
+        "bedCheck": -1,
+        "panelCheck": -1,
     }
 
 

@@ -928,7 +928,10 @@
       "Reset": "reset",
       "Restore": "Restore",
       "RestoreDialog": "Please select all the sections you want to restore:",
-      "TimeFormat": "Time Format"
+      "TimeFormat": "Time Format",
+      "PrinterNameRequired": "Printer name is required",
+      "PrinterNameMaxLength": "Maximum allowed name length is 63 characters",
+      "PrinterNameInvalid": "Printer name is invalid. Only basic characters, numbers and hyphens are allowed."
     },
     "InterfaceSettings": "Settings",
     "MacrosTab": {

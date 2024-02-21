@@ -901,7 +901,10 @@
       "Reset": "재설정",
       "Restore": "복원하기",
       "RestoreDialog": "복원하고자 하는 모든 섹션을 선택해 주세요:",
-      "TimeFormat": "시간 유형"
+      "TimeFormat": "시간 유형",
+      "PrinterNameRequired": "프린터 이름이 필요합니다",
+      "PrinterNameMaxLength": "허용되는 최대 이름 길이는 63자입니다.",
+      "PrinterNameInvalid": "프린터 이름이 잘못되었습니다. \n기본 문자, 숫자, 하이픈만 허용됩니다."
     },
     "InterfaceSettings": "인터페이스 설정",
     "MacrosTab": {

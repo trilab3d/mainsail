@@ -899,7 +899,10 @@
       "Reset": "reset",
       "Restore": "Herstellen",
       "RestoreDialog": "Kies alle secties die je wil herstellen:",
-      "TimeFormat": "Tijdformaat"
+      "TimeFormat": "Tijdformaat",
+      "PrinterNameRequired": "Printernaam is vereist",
+      "PrinterNameMaxLength": "De maximaal toegestane naamlengte is 63 tekens",
+      "PrinterNameInvalid": "Printernaam is ongeldig. \nAlleen basistekens, cijfers en koppeltekens zijn toegestaan."
     },
     "InterfaceSettings": "Interface Instellingen",
     "MacrosTab": {

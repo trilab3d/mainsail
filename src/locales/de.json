@@ -921,7 +921,10 @@
       "Reset": "zurücksetzen",
       "Restore": "Wiederherstellung",
       "RestoreDialog": "Bitte wähle alle Abschnitte aus, die du wiederherstellen möchtest:",
-      "TimeFormat": "Zeitformat"
+      "TimeFormat": "Zeitformat",
+      "PrinterNameRequired": "Der Druckername ist erforderlich",
+      "PrinterNameMaxLength": "Die maximal zulässige Namenslänge beträgt 63 Zeichen",
+      "PrinterNameInvalid": "Der Druckername ist ungültig. \nEs sind nur einfache Zeichen, Zahlen und Bindestriche zulässig."
     },
     "InterfaceSettings": "Interface Einstellungen",
     "MacrosTab": {

@@ -910,7 +910,10 @@
       "Reset": "reset",
       "Restore": "Restaura",
       "RestoreDialog": "Selecione todas as sessões que você quer restaurar:",
-      "TimeFormat": "Formato de Hora"
+      "TimeFormat": "Formato de Hora",
+      "PrinterNameRequired": "O nome da impressora é obrigatório",
+      "PrinterNameMaxLength": "O comprimento máximo permitido do nome é de 63 caracteres",
+      "PrinterNameInvalid": "O nome da impressora é inválido. \nSomente caracteres básicos, números e hifens são permitidos."
     },
     "InterfaceSettings": "Configs. Interface",
     "MacrosTab": {

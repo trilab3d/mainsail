@@ -683,7 +683,10 @@
       "PrinterName": "Nome della stampante",
       "Reset": "reimposta",
       "Restore": "Ripristina",
-      "RestoreDialog": "Seleziona tutte le sezioni che vuoi ripristinare:"
+      "RestoreDialog": "Seleziona tutte le sezioni che vuoi ripristinare:",
+      "PrinterNameRequired": "Il nome della stampante è obbligatorio",
+      "PrinterNameMaxLength": "La lunghezza massima consentita del nome è di 63 caratteri",
+      "PrinterNameInvalid": "Il nome della stampante non è valido. \nSono consentiti solo caratteri di base, numeri e trattini."
     },
     "InterfaceSettings": "Impostazioni dell'Interfaccia",
     "MacrosTab": {

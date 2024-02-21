@@ -813,7 +813,10 @@
       "PrinterName": "Nyomtató neve",
       "Reset": "Visszaállítás",
       "Restore": "Helyreállítás",
-      "RestoreDialog": "Kérlek jelöld ki az összes helyreállításra kijelölt szekciót:"
+      "RestoreDialog": "Kérlek jelöld ki az összes helyreállításra kijelölt szekciót:",
+      "PrinterNameRequired": "A nyomtató neve kötelező",
+      "PrinterNameMaxLength": "A név megengedett maximális hossza 63 karakter",
+      "PrinterNameInvalid": "A nyomtató neve érvénytelen. \nCsak alapkarakterek, számok és kötőjelek megengedettek."
     },
     "InterfaceSettings": "Interfész beállításai",
     "MacrosTab": {

@@ -149,6 +149,10 @@ export default class TrilabDiagnosticsEndstopsTestDialog extends Mixins(TrilabMi
     /// watch trilab store state for socketResponses changes, and if indexof a: b: and c: is not -1, then set the testResults.endstopA to 1
     @Watch('socketResponses')
     onSocketResponsesChanged() {
+        /// check only if this particular dialog is open
+        if (!this.isDialogVisible) {
+            return;
+        }
         const socketResponses = this.$store.state.trilab.socketResponses;
         const lastResponse = socketResponses[socketResponses.length - 1];
         const indexOfA = lastResponse.indexOf("a:");

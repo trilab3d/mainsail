@@ -907,7 +907,10 @@
       "Reset": "Resetovat",
       "Restore": "Obnovit",
       "RestoreDialog": "Prosím zvolte všechny sekce, které chcete obnovit:",
-      "TimeFormat": "Formát času"
+      "TimeFormat": "Formát času",
+      "PrinterNameRequired": "Pole název tiskárny je povinné",
+      "PrinterNameMaxLength": "Maximální povolená délka je 63 znaků",
+      "PrinterNameInvalid": "Název tiskárny není validní. Povoleny jsou jen základní znaky, čísla a pomlčky"
     },
     "InterfaceSettings": "Nastavení",
     "MacrosTab": {

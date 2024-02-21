@@ -893,7 +893,10 @@
       "Reset": "Nulstil",
       "Restore": "Gendan",
       "RestoreDialog": "Vælg de sektioner du ønsker at gendanne fra backup:",
-      "TimeFormat": "Tidsformat"
+      "TimeFormat": "Tidsformat",
+      "PrinterNameRequired": "Printernavn er påkrævet",
+      "PrinterNameMaxLength": "Den maksimalt tilladte navnelængde er 63 tegn",
+      "PrinterNameInvalid": "Printernavnet er ugyldigt. \nKun grundlæggende tegn, tal og bindestreger er tilladt."
     },
     "InterfaceSettings": "Interfaceindstillinger",
     "MacrosTab": {

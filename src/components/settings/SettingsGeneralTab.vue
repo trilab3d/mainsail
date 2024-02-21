@@ -3,84 +3,44 @@
         <v-card flat>
             <v-card-text>
                 <settings-row :title="$t('Settings.GeneralTab.PrinterName').toString()">
-                    <v-text-field v-model="printerName" hide-details outlined dense></v-text-field>
+                    <v-text-field v-model="printerName" outlined dense :hide-details="printerNameHiddenDetails" @change="changeTrilabHostname()"
+                        :rules="[rules.valid, rules.max, rules.required]" ref="printerNameField"></v-text-field>
                 </settings-row>
                 <v-divider class="my-2"></v-divider>
                 <settings-row :title="$t('Settings.GeneralTab.Language').toString()">
-                    <v-select
-                        v-model="currentLanguage"
-                        :items="availableLanguages"
-                        hide-details
-                        outlined
-                        dense
+                    <v-select v-model="currentLanguage" :items="availableLanguages" hide-details outlined dense
                         attach></v-select>
                 </settings-row>
                 <v-divider class="my-2"></v-divider>
                 <settings-row :title="$t('Settings.GeneralTab.DateFormat').toString()">
-                    <v-select
-                        v-model="dateFormat"
-                        :items="dateFormatItems"
-                        hide-details
-                        outlined
-                        dense
-                        attach></v-select>
+                    <v-select v-model="dateFormat" :items="dateFormatItems" hide-details outlined dense attach></v-select>
                 </settings-row>
                 <v-divider class="my-2"></v-divider>
                 <settings-row :title="$t('Settings.GeneralTab.TimeFormat').toString()">
-                    <v-select
-                        v-model="timeFormat"
-                        :items="timeFormatItems"
-                        hide-details
-                        outlined
-                        dense
-                        attach></v-select>
+                    <v-select v-model="timeFormat" :items="timeFormatItems" hide-details outlined dense attach></v-select>
                 </settings-row>
                 <v-divider class="my-2"></v-divider>
-                <settings-row
-                    :title="$t('Settings.GeneralTab.CalcPrintProgress').toString()"
+                <settings-row :title="$t('Settings.GeneralTab.CalcPrintProgress').toString()"
                     :sub-title="$t('Settings.GeneralTab.CalcPrintProgressDescription').toString()">
-                    <v-select
-                        v-model="calcPrintProgress"
-                        :items="calcPrintProgressItems"
-                        hide-details
-                        dense
-                        outlined
+                    <v-select v-model="calcPrintProgress" :items="calcPrintProgressItems" hide-details dense outlined
                         attach></v-select>
                 </settings-row>
                 <v-divider class="my-2"></v-divider>
-                <settings-row
-                    :title="$t('Settings.GeneralTab.CalcEstimateTime').toString()"
+                <settings-row :title="$t('Settings.GeneralTab.CalcEstimateTime').toString()"
                     :sub-title="$t('Settings.GeneralTab.CalcEstimateTimeDescription').toString()">
-                    <v-select
-                        v-model="calcEstimateTime"
-                        :items="calcEstimateItems"
-                        multiple
-                        hide-details
-                        dense
-                        outlined
+                    <v-select v-model="calcEstimateTime" :items="calcEstimateItems" multiple hide-details dense outlined
                         attach></v-select>
                 </settings-row>
                 <v-divider class="my-2"></v-divider>
-                <settings-row
-                    :title="$t('Settings.GeneralTab.CalcEtaTime').toString()"
+                <settings-row :title="$t('Settings.GeneralTab.CalcEtaTime').toString()"
                     :sub-title="$t('Settings.GeneralTab.CalcEtaTimeDescription').toString()">
-                    <v-select
-                        v-model="calcEtaTime"
-                        :items="calcEtaTimeItems"
-                        multiple
-                        hide-details
-                        dense
-                        outlined
+                    <v-select v-model="calcEtaTime" :items="calcEtaTimeItems" multiple hide-details dense outlined
                         attach></v-select>
                 </settings-row>
                 <v-divider v-if="$store.state.trilab.serviceView == true" class="my-2"></v-divider>
-                <settings-row v-if="$store.state.trilab.serviceView == true" :title="$t('Settings.GeneralTab.MoonrakerDb').toString()" :dynamic-slot-width="true">
-                    <input
-                        ref="uploadBackupFile"
-                        type="file"
-                        :accept="['.json']"
-                        class="d-none"
-                        @change="uploadRestore" />
+                <settings-row v-if="$store.state.trilab.serviceView == true"
+                    :title="$t('Settings.GeneralTab.MoonrakerDb').toString()" :dynamic-slot-width="true">
+                    <input ref="uploadBackupFile" type="file" :accept="['.json']" class="d-none" @change="uploadRestore" />
                     <v-btn :loading="loadings.includes('backupDbButton')" small @click="backupDb">
                         {{ $t('Settings.GeneralTab.Backup') }}
                     </v-btn>
@@ -89,7 +49,8 @@
                     </v-btn>
                 </settings-row>
                 <v-divider v-if="$store.state.trilab.serviceView == true" class="my-2"></v-divider>
-                <settings-row v-if="$store.state.trilab.serviceView == true" :title="$t('Settings.GeneralTab.FactoryReset').toString()" :dynamic-slot-width="true">
+                <settings-row v-if="$store.state.trilab.serviceView == true"
+                    :title="$t('Settings.GeneralTab.FactoryReset').toString()" :dynamic-slot-width="true">
                     <v-btn color="error" small @click="resetMainsail">
                         {{ $t('Settings.GeneralTab.FactoryReset') }}
                     </v-btn>
@@ -97,11 +58,8 @@
             </v-card-text>
         </v-card>
         <v-dialog v-model="dialogBackupMainsail" persistent :width="360">
-            <panel
-                :title="$t('Settings.GeneralTab.Backup').toString()"
-                card-class="mainsail-backup-dialog"
-                :margin-bottom="false"
-                :icon="mdiHelpCircle">
+            <panel :title="$t('Settings.GeneralTab.Backup').toString()" card-class="mainsail-backup-dialog"
+                :margin-bottom="false" :icon="mdiHelpCircle">
                 <template #buttons>
                     <v-btn icon tile @click="dialogBackupMainsail = false">
                         <v-icon>{{ mdiCloseThick }}</v-icon>
@@ -116,24 +74,14 @@
                     <v-row>
                         <v-col class="pl-6">
                             <template v-for="db in mainsailKeys">
-                                <v-checkbox
-                                    :key="db.name"
-                                    :label="db.label"
-                                    hide-details
-                                    class="mt-0"
+                                <v-checkbox :key="db.name" :label="db.label" hide-details class="mt-0"
                                     @change="changeNamespace(db.name)"></v-checkbox>
                             </template>
-                            <v-checkbox
-                                v-if="availableNamespaces.includes('timelapse')"
-                                :label="$t('Settings.GeneralTab.DbTimelapseSettings')"
-                                hide-details
-                                class="mt-0"
+                            <v-checkbox v-if="availableNamespaces.includes('timelapse')"
+                                :label="$t('Settings.GeneralTab.DbTimelapseSettings')" hide-details class="mt-0"
                                 @change="changeNamespace('timelapse')"></v-checkbox>
-                            <v-checkbox
-                                v-if="availableNamespaces.includes('webcams')"
-                                :label="$t('Settings.GeneralTab.DbWebcams')"
-                                hide-details
-                                class="mt-0"
+                            <v-checkbox v-if="availableNamespaces.includes('webcams')"
+                                :label="$t('Settings.GeneralTab.DbWebcams')" hide-details class="mt-0"
                                 @change="changeNamespace('webcams')"></v-checkbox>
                         </v-col>
                     </v-row>
@@ -148,11 +96,8 @@
             </panel>
         </v-dialog>
         <v-dialog v-model="dialogResetMainsail" persistent :width="360">
-            <panel
-                :title="$t('Settings.GeneralTab.FactoryReset').toString()"
-                card-class="factory-reset-dialog"
-                :margin-bottom="false"
-                :icon="mdiHelpCircle">
+            <panel :title="$t('Settings.GeneralTab.FactoryReset').toString()" card-class="factory-reset-dialog"
+                :margin-bottom="false" :icon="mdiHelpCircle">
                 <template #buttons>
                     <v-btn icon tile @click="dialogResetMainsail = false">
                         <v-icon>{{ mdiCloseThick }}</v-icon>
@@ -167,45 +112,26 @@
                     <v-row>
                         <v-col class="pl-6">
                             <template v-for="db in mainsailKeys">
-                                <v-checkbox
-                                    :key="db.name"
-                                    :label="db.label"
-                                    hide-details
-                                    class="mt-0"
+                                <v-checkbox :key="db.name" :label="db.label" hide-details class="mt-0"
                                     @change="changeNamespace(db.name)"></v-checkbox>
                             </template>
-                            <v-checkbox
-                                v-if="availableNamespaces.includes('timelapse')"
-                                :label="$t('Settings.GeneralTab.DbTimelapseSettings')"
-                                hide-details
-                                class="mt-0"
+                            <v-checkbox v-if="availableNamespaces.includes('timelapse')"
+                                :label="$t('Settings.GeneralTab.DbTimelapseSettings')" hide-details class="mt-0"
                                 @change="changeNamespace('timelapse')"></v-checkbox>
-                            <v-checkbox
-                                v-if="availableNamespaces.includes('webcams')"
-                                :label="$t('Settings.GeneralTab.DbWebcams')"
-                                hide-details
-                                class="mt-0"
+                            <v-checkbox v-if="availableNamespaces.includes('webcams')"
+                                :label="$t('Settings.GeneralTab.DbWebcams')" hide-details class="mt-0"
                                 @change="changeNamespace('webcams')"></v-checkbox>
-                            <v-checkbox
-                                v-if="moonrakerComponents.includes('history')"
-                                :label="$t('Settings.GeneralTab.DbHistoryJobs')"
-                                hide-details
-                                class="mt-0"
+                            <v-checkbox v-if="moonrakerComponents.includes('history')"
+                                :label="$t('Settings.GeneralTab.DbHistoryJobs')" hide-details class="mt-0"
                                 @change="changeNamespace('history_jobs')"></v-checkbox>
-                            <v-checkbox
-                                v-if="moonrakerComponents.includes('history')"
-                                :label="$t('Settings.GeneralTab.DbHistoryTotals')"
-                                hide-details
-                                class="mt-0"
+                            <v-checkbox v-if="moonrakerComponents.includes('history')"
+                                :label="$t('Settings.GeneralTab.DbHistoryTotals')" hide-details class="mt-0"
                                 @change="changeNamespace('history_totals')"></v-checkbox>
                         </v-col>
                     </v-row>
                     <v-row>
                         <v-col class="text-center">
-                            <v-btn
-                                color="red"
-                                :loading="loadings.includes('resetMainsail')"
-                                @click="resetMainsailAction">
+                            <v-btn color="red" :loading="loadings.includes('resetMainsail')" @click="resetMainsailAction">
                                 {{ $t('Settings.GeneralTab.Reset') }}
                             </v-btn>
                         </v-col>
@@ -214,11 +140,8 @@
             </panel>
         </v-dialog>
         <v-dialog v-model="dialogRestoreMainsail" persistent :width="360">
-            <panel
-                :title="$t('Settings.GeneralTab.Restore').toString()"
-                card-class="factory-reset-dialog"
-                :margin-bottom="false"
-                :icon="mdiHelpCircle">
+            <panel :title="$t('Settings.GeneralTab.Restore').toString()" card-class="factory-reset-dialog"
+                :margin-bottom="false" :icon="mdiHelpCircle">
                 <template #buttons>
                     <v-btn icon tile @click="dialogRestoreMainsail = false">
                         <v-icon>{{ mdiCloseThick }}</v-icon>
@@ -233,11 +156,7 @@
                     <v-row>
                         <v-col class="pl-6">
                             <template v-for="db in restoreableNamespaces">
-                                <v-checkbox
-                                    :key="db.name"
-                                    :label="db.label"
-                                    hide-details
-                                    class="mt-0"
+                                <v-checkbox :key="db.name" :label="db.label" hide-details class="mt-0"
                                     @change="changeNamespace(db.name)"></v-checkbox>
                             </template>
                         </v-col>
@@ -257,7 +176,8 @@
 
 <script lang="ts">
 import Component from 'vue-class-component'
-import { Mixins } from 'vue-property-decorator'
+import { Mixins, Prop, Watch} from 'vue-property-decorator'
+import axios from 'axios'
 import BaseMixin from '@/components/mixins/base'
 import SettingsRow from '@/components/settings/SettingsRow.vue'
 import Panel from '@/components/ui/Panel.vue'
@@ -268,6 +188,28 @@ import { mdiCloseThick, mdiHelpCircle } from '@mdi/js'
     components: { Panel, SettingsRow },
 })
 export default class SettingsGeneralTab extends Mixins(BaseMixin) {
+    /// prop parentVisible
+    @Prop({ required: false, default: false })
+    declare parentvisible: boolean
+
+    @Watch('parentvisible')
+    onParentVisibleChanged(val: boolean) {
+        if (val) {
+            /// forceupdate
+            ///call input event on ref printerNameField
+            this.overridePrinterNameGet = true;
+            this.printerNameHiddenDetails = true;
+            (this.$refs['printerNameField'] as any).resetValidation(); // Reset validation state
+            /// on nexttick overridePrinterNameGet = false
+            this.$nextTick(() => {
+                this.overridePrinterNameGet = false;
+            });
+        }
+    }
+
+
+    public overridePrinterNameGet = false;
+
     mdiHelpCircle = mdiHelpCircle
     mdiCloseThick = mdiCloseThick
 
@@ -285,6 +227,7 @@ export default class SettingsGeneralTab extends Mixins(BaseMixin) {
 
     declare $refs: {
         uploadBackupFile: HTMLInputElement
+        printerNameField: Vue
     }
 
     get availableKeys() {
@@ -353,12 +296,73 @@ export default class SettingsGeneralTab extends Mixins(BaseMixin) {
     }
 
     get printerName() {
+        if(this.overridePrinterNameGet == true){
+            return "Value";
+        }
+        
         return this.$store.state.gui.general.printername
     }
 
     set printerName(newVal) {
-        this.$store.dispatch('gui/saveSetting', { name: 'general.printername', value: newVal })
+        /// check if it conform to the rules
+        if (this.rules.valid(newVal) === true && this.rules.max(newVal) === true && this.rules.required(newVal) === true) {
+            this.$store.dispatch('gui/saveSetting', { name: 'general.printername', value: newVal })
+            this.printerNameHiddenDetails = true;
+            this.printerNameOk = true;
+        } else {
+            this.printerNameOk = false;
+            this.printerNameHiddenDetails = false;
+        }
+
     }
+    public printerNameOk = true;
+    public printerNameHiddenDetails = true;
+
+    public rules = {
+        required: (value: string) => !!value || this.$t('Settings.GeneralTab.PrinterNameRequired').toString(),
+        max: (v: string) => (v && v.length <= 63) || this.$t('Settings.GeneralTab.PrinterNameMaxLength').toString(),
+        valid: (v: string) => (v && /^[a-zA-Z0-9-]+$/.test(v)) || this.$t('Settings.GeneralTab.PrinterNameInvalid').toString(),
+    }
+    changeTrilabHostname() {
+        /// checkneme si ze odpovida pravidlum
+        if(this.printerNameOk == false){
+            return;
+        }
+        axios.post(this.$store.getters['trilab/trilabPrefix'] + '/set_hostname', { "hostname": this.printerName }).then(response => {
+            /// test ipv6 with (([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])) 
+            /// and for ipv4 with ^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$
+
+            if (this.hostname.match(/^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/) || this.hostname.match(/^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/)) {
+                /// je to ip, neni potreba delat presmerovani, ale zase to rekonektneme
+                this.$toast.success("Hostname changed, trying to reconnect to the same address.");
+                this.$socket.connect()
+            } else {
+                /// je to nejaky string, je potreba delat presmerovani
+                let urloriginal = this.protocol + '://' + this.hostname + ':' + this.port + '/websocket';
+                //let url =  printer.socket.hostname;
+                this.$socket.setUrl(urloriginal)
+                this.$socket.connect()
+                this.$toast.success("Hostname changed, redirecting to new hostname.");
+            }
+        }).catch(error => {
+            this.$toast.error("Something happened, cannot change hostname on backend.");
+        });
+
+    }
+
+    get protocol() {
+        return this.$store.state.socket.protocol
+    }
+
+    get hostname() {
+        return this.$store.state.socket.hostname
+    }
+
+    get port() {
+        return this.$store.state.socket.port
+    }
+
+
 
     get currentLanguage() {
         return this.$store.state.gui.general.language

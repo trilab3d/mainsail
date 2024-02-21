@@ -52,5 +52,12 @@
       "UsbUpdateAvailable": "Mise à jour USB disponible"
     },
     "restartWarning": "La mise à jour est prête à être installée. \nAppuyez sur le bouton pour installer la mise à jour. \nL'imprimante redémarrera une fois la mise à jour terminée."
+  },
+  "Settings": {
+    "GeneralTab": {
+      "PrinterNameRequired": "Le nom de l'imprimante est requis",
+      "PrinterNameMaxLength": "La longueur maximale autorisée du nom est de 63 caractères.",
+      "PrinterNameInvalid": "Le nom de l'imprimante n'est pas valide. \nSeuls les caractères de base, les chiffres et les traits d'union sont autorisés."
+    }
   }
 }

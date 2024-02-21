@@ -3,20 +3,10 @@
         <v-btn icon tile @click="showSettings = true">
             <v-icon>{{ mdiCogs }}</v-icon>
         </v-btn>
-        <v-dialog
-            v-model="showSettings"
-            width="900"
-            persistent
-            :fullscreen="isMobile"
-            scrollable
+        <v-dialog v-model="showSettings" width="900" persistent :fullscreen="isMobile" scrollable
             @keydown.esc="showSettings = false">
-            <panel
-                :title="$t('Settings.InterfaceSettings')"
-                :icon="mdiCogs"
-                card-class="settings-menu-dialog"
-                :margin-bottom="false"
-                style="overflow: hidden"
-                :height="isMobile ? 0 : 548">
+            <panel :title="$t('Settings.InterfaceSettings')" :icon="mdiCogs" card-class="settings-menu-dialog"
+                :margin-bottom="false" style="overflow: hidden" :height="isMobile ? 0 : 548">
                 <template #buttons>
                     <v-btn icon tile @click="showSettings = false">
                         <v-icon>{{ mdiCloseThick }}</v-icon>
@@ -24,11 +14,7 @@
                 </template>
                 <template v-if="isMobile">
                     <v-tabs v-model="activeTab" :center-active="true" :show-arrows="true">
-                        <v-tab
-                            v-for="(tab, index) of tabTitles"
-                            :key="index"
-                            :href="'#' + tab.name"
-                            class="justify-start">
+                        <v-tab v-for="(tab, index) of tabTitles" :key="index" :href="'#' + tab.name" class="justify-start">
                             <v-icon left v-html="tab.icon"></v-icon>
                             {{ tab.title }}
                         </v-tab>
@@ -38,12 +24,8 @@
                     <v-col v-if="!isMobile" class="col-auto pr-0">
                         <overlay-scrollbars ref="settingsTabsScroll" class="settings-tabs-bar height500">
                             <v-tabs v-model="activeTab" :vertical="true">
-                                <v-tab
-                                    v-for="(tab, index) of tabTitles"
-                                    :key="index"
-                                    :href="'#' + tab.name"
-                                    class="justify-start"
-                                    style="width: 200px">
+                                <v-tab v-for="(tab, index) of tabTitles" :key="index" :href="'#' + tab.name"
+                                    class="justify-start" style="width: 200px">
                                     <v-icon left v-html="tab.icon"></v-icon>
                                     <span class="text-truncate">{{ tab.title }}</span>
                                 </v-tab>
@@ -51,11 +33,9 @@
                         </overlay-scrollbars>
                     </v-col>
                     <v-col :class="isMobile ? '' : 'pl-0'" :style="isMobile ? '' : 'min-width: 500px;'">
-                        <overlay-scrollbars
-                            ref="settingsScroll"
-                            :class="'settings-tabs ' + (isMobile ? '' : 'height500')"
+                        <overlay-scrollbars ref="settingsScroll" :class="'settings-tabs ' + (isMobile ? '' : 'height500')"
                             :options="{ overflowBehavior: { x: 'hidden' } }">
-                            <component :is="'settings-' + activeTab + '-tab'" @scrollToTop="scrollToTop" />
+                            <component :is="'settings-' + activeTab + '-tab'" @scrollToTop="scrollToTop" :parentvisible="settingsShowed" />
                         </overlay-scrollbars>
                     </v-col>
                 </v-row>
@@ -133,6 +113,21 @@ import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneou
 export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
     private showSettings = false
     private activeTab = 'general'
+
+
+    get settingsShowed(){
+        return this.showSettings
+    }
+
+    @Watch('showSettings')
+    onShowSettingsChange() {
+        if (this.showSettings) {
+            /// force redraw of general tab
+            //this.activeTab = 'TrilabNetwork'
+            //console.log("trying to redraw it");
+            //this.tabsKey = Math.random().toString(36).substring(7)
+        }
+    }
 
     /**
      * Icons
@@ -250,7 +245,7 @@ export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
             })
         }
 
-         tabs.sort((a, b) => {
+        tabs.sort((a, b) => {
             if (a.name === 'general') return -1
             if (b.name === 'general') return 1
 

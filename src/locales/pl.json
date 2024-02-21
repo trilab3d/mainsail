@@ -887,7 +887,10 @@
         "FileRelative": "Pozycja pliku (względna)",
         "Slicer": "Slicer (M73)"
       },
-      "DateFormat": "Format daty"
+      "DateFormat": "Format daty",
+      "PrinterNameRequired": "Nazwa drukarki jest wymagana",
+      "PrinterNameMaxLength": "Maksymalna dozwolona długość nazwy to 63 znaki",
+      "PrinterNameInvalid": "Nazwa drukarki jest nieprawidłowa. \nDozwolone są tylko podstawowe znaki, cyfry i łączniki."
     },
     "InterfaceSettings": "Ustawienia interfejsu",
     "MacrosTab": {

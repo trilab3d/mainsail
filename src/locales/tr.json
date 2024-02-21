@@ -861,7 +861,10 @@
       "Reset": "sıfırla",
       "Restore": "Eski haline getir",
       "RestoreDialog": "Lütfen geri yüklemek istediğiniz tüm bölümleri seçin:",
-      "TimeFormat": "Tarih formatı"
+      "TimeFormat": "Tarih formatı",
+      "PrinterNameRequired": "Yazıcı adı gerekli",
+      "PrinterNameMaxLength": "İzin verilen maksimum ad uzunluğu 63 karakterdir",
+      "PrinterNameInvalid": "Yazıcı adı geçersiz. \nYalnızca temel karakterlere, sayılara ve kısa çizgilere izin verilir."
     },
     "InterfaceSettings": "Arayüz Ayarları",
     "MacrosTab": {
