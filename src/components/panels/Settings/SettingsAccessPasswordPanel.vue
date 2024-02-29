@@ -20,7 +20,7 @@
 						v-model="confirmPassword" type="password" ref="confPw"
 						:label="$t('Panels.TrilabAccessPassword.confirmPassword')" hide-details></v-text-field>
 					<v-divider class="my-2"></v-divider>
-					<v-btn block primary @click="saveSettings()" :disabled="!passwordsOk">{{ $t('Trilab.SettingsAccessPasswordPanel.SaveBtn') }}</v-btn>
+					<v-btn block primary @click="showWarningDialog = true" :disabled="!passwordsOk">{{ $t('Trilab.SettingsAccessPasswordPanel.SaveBtn') }}</v-btn>
 				</v-col>
 			</v-row>
 			<v-dialog v-model="showWarningDialog" max-width="400">
