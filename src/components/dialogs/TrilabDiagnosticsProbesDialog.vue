@@ -6,7 +6,7 @@
                 <p>Step {{ step + 1 }}</p>
                 <div v-if="step == 0">
                     <p>Remove any possible weights from the bed and click "Check empty weight"</p>
-                    <v-btn block color="primary" @click="sendAnalogProbeCommand()">Check empty weight</v-btn>
+                    <v-btn block color="primary" @click="sendAnalogProbeCommand()">Bed is empty, continue</v-btn>
                 </div>
                 <div v-if="step == 1 && !waitingForChange">
                     Check bed probe A functionality. Place heavy hammer on the left bottom corner of the bed and press
@@ -14,7 +14,7 @@
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="probeARegistered">Registered</span><span color="red"
                             v-if="!probeARegistered">NOT
-                            Registered</span></p>
+                            Registered ({{ lastVal }})</span></p>
 
                     <v-btn v-if="probeARegistered" block color="primary" @click="step = 2">Next</v-btn>
 
@@ -26,7 +26,7 @@
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="probeBRegistered">Registered</span><span color="red"
                             v-if="!probeBRegistered">NOT
-                            Registered</span></p>
+                            Registered ({{ lastVal }})</span></p>
 
                     <v-btn v-if="probeBRegistered" block color="primary" @click="step = 3">Next</v-btn>
 
@@ -38,7 +38,7 @@
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="endStopCRegistered">Registered</span><span color="red"
                             v-if="!endStopCRegistered">NOT
-                            Registered</span></p>
+                            Registered ({{ lastVal }})</span></p>
 
                 </div>
 
@@ -201,10 +201,9 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
         const lastResponse = socketResponses[socketResponses.length - 1];
         const isNeededMessage = lastResponse.indexOf("Analog Probe debug. ADC Value=");
 
-        console.log("TDPD last response: " + lastResponse);
+        //console.log("TDPD last response: " + lastResponse);
 
         if (isNeededMessage != -1) {
-            console.log("To odpovida");
             /// to je ono
             /// get the value after = and before ,
             const equalsIndex = lastResponse.indexOf("=");

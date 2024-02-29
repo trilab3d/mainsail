@@ -629,7 +629,11 @@
       "enablePwdControl": "Jelszóvezérlés engedélyezése",
       "username": "Felhasználónév",
       "password": "Jelszó",
-      "confirmPassword": "Jelszó megerősítése"
+      "confirmPassword": "Jelszó megerősítése",
+      "Warning": "Figyelem",
+      "DialogMessage": "A bejelentkezési beállítások mentése után a webes felület újraindul, és a böngésző felszólítja a hitelesítő adatok megadására. \nMost tényleg spórolni akar?",
+      "DialogYesButton": "Igen",
+      "DialogNoButton": "Nem"
     },
     "TrilabRemote": {
       "auto_off": "Automatikus kikapcsolás",
@@ -1006,7 +1010,8 @@
       "Webcams": "Webkamerák"
     },
     "TrilabTab": {
-      "Trilab": "Verze"
+      "Trilab": "Verze",
+      "TrilabLogs": "Naplók"
     }
   },
   "Timelapse": {
@@ -1156,6 +1161,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Az izzószál kiürül",
       "colorUnloaded": "Az izzószál sikeresen eltávolítva"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Hitelesítési adatok mentése"
     }
   },
   "Generic": {

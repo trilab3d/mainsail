@@ -7,12 +7,13 @@
             <v-col cols="12" sm="12" md="12">
                 <settings-wifi-panel v-if="false"></settings-wifi-panel>
             </v-col>
-            <v-col cols="12" sm="12" md="6">
-                <settings-access-password-panel v-if="false"></settings-access-password-panel>
+            <v-col cols="12" sm="12" md="12">
+                <settings-access-password-panel v-if="true"></settings-access-password-panel>
             </v-col>
             <v-col cols="12" sm="12" md="6" v-if="false">
                 <settings-remote-panel></settings-remote-panel>
             </v-col>
+
 
         </v-row>
 
@@ -41,6 +42,9 @@ import store from '@/store'
     },
 })
 export default class SettingsNetworkTab extends Mixins(BaseMixin, TrilabMixin) {
+
+
+    public digest = "";
 
     async save() {
         try {

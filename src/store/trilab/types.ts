@@ -30,6 +30,7 @@
       manufacturer: string;
       date_of_manufacture: string;
       last_running_version: string;
+      locked: boolean; /// locked from public
       manufacturer_url: string;
       model_url: string;
       advanced_features: boolean;

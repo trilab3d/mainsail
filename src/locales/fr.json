@@ -33,6 +33,9 @@
       "INFO": "INFO",
       "WARNING": "AVERTIR",
       "DANGER": "ERREUR"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Enregistrer les informations d'identification"
     }
   },
   "TrilabUpdateDialog": {
@@ -58,6 +61,17 @@
       "PrinterNameRequired": "Le nom de l'imprimante est requis",
       "PrinterNameMaxLength": "La longueur maximale autorisée du nom est de 63 caractères.",
       "PrinterNameInvalid": "Le nom de l'imprimante n'est pas valide. \nSeuls les caractères de base, les chiffres et les traits d'union sont autorisés."
+    },
+    "TrilabTab": {
+      "TrilabLogs": "Journaux"
+    }
+  },
+  "Panels": {
+    "TrilabAccessPassword": {
+      "Warning": "Avertissement",
+      "DialogMessage": "Après avoir enregistré les paramètres de connexion, l'interface Web redémarrera et vous serez invité à saisir les informations d'identification par le navigateur. \nVoulez-vous vraiment économiser maintenant ?",
+      "DialogYesButton": "Oui",
+      "DialogNoButton": "Non"
     }
   }
 }

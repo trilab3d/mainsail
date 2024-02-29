@@ -667,7 +667,11 @@
       "enablePwdControl": "Şifre kontrolünü etkinleştir",
       "username": "Kullanıcı adı",
       "password": "Şifre",
-      "confirmPassword": "Şifreyi Onayla"
+      "confirmPassword": "Şifreyi Onayla",
+      "Warning": "Uyarı",
+      "DialogMessage": "Oturum açma ayarlarını kaydettikten sonra web arayüzü yeniden başlatılacak ve tarayıcı tarafından kimlik bilgilerini girmeniz istenecektir. \nŞimdi gerçekten tasarruf etmek istiyor musun?",
+      "DialogYesButton": "Evet",
+      "DialogNoButton": "HAYIR"
     },
     "TrilabRemote": {
       "auto_off": "Otomatik kapalı",
@@ -1082,7 +1086,8 @@
       "Webcams": "Web kameraları"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Trilab nastavení",
+      "TrilabLogs": "Kütükler"
     }
   },
   "Timelapse": {
@@ -1233,6 +1238,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Filament boşaltılıyor",
       "colorUnloaded": "Filament başarıyla boşaltıldı"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Kimlik bilgilerini kaydet"
     }
   },
   "Generic": {

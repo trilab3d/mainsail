@@ -194,7 +194,7 @@
 
 
                         <!---<miscellaneous-panel></miscellaneous-panel>--->
-                        <miscellaneous-panel></miscellaneous-panel>
+                        <miscellaneous-panel v-if="false"></miscellaneous-panel>
                     </div>
                 </v-col>
             </v-row>

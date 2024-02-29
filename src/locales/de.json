@@ -724,7 +724,11 @@
       "enablePwdControl": "Aktivieren Sie die Passwortkontrolle",
       "username": "Nutzername",
       "password": "Passwort",
-      "confirmPassword": "Bestätige das Passwort"
+      "confirmPassword": "Bestätige das Passwort",
+      "Warning": "Warnung",
+      "DialogMessage": "Nach dem Speichern der Anmeldeeinstellungen wird die Weboberfläche neu gestartet und Sie werden vom Browser aufgefordert, die Anmeldeinformationen einzugeben. \nWollen Sie jetzt wirklich sparen?",
+      "DialogYesButton": "Ja",
+      "DialogNoButton": "Nein"
     },
     "TrilabRemote": {
       "auto_off": "Automatische Abschaltung",
@@ -1163,7 +1167,8 @@
       "WebrtcMediaMTX": "WebRTC (MediaMTX / rtsp-simple-server)"
     },
     "TrilabTab": {
-      "Trilab": "Verze"
+      "Trilab": "Verze",
+      "TrilabLogs": "Protokolle"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1321,6 +1326,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Filament wird entladen",
       "colorUnloaded": "Filament wurde erfolgreich entladen"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Anmeldedaten speichern"
     }
   },
   "Generic": {

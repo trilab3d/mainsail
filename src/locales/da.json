@@ -699,7 +699,11 @@
       "enablePwdControl": "Aktiver adgangskodekontrol",
       "username": "Brugernavn",
       "password": "Adgangskode",
-      "confirmPassword": "Bekræft kodeord"
+      "confirmPassword": "Bekræft kodeord",
+      "Warning": "Advarsel",
+      "DialogMessage": "Efter at have gemt login-indstillingerne, genstarter webgrænsefladen, og du bliver bedt om at indtaste legitimationsoplysningerne af browseren. \nVil du virkelig spare nu?",
+      "DialogYesButton": "Ja",
+      "DialogNoButton": "Ingen"
     },
     "TrilabRemote": {
       "auto_off": "Auto slukket",
@@ -1120,7 +1124,8 @@
       "Webcams": "Webcams"
     },
     "TrilabTab": {
-      "Trilab": "Verze"
+      "Trilab": "Verze",
+      "TrilabLogs": "Logs"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1277,6 +1282,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Filament aflæsser",
       "colorUnloaded": "Filamentet blev fjernet"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Gem legitimationsoplysninger"
     }
   },
   "Generic": {

@@ -707,7 +707,11 @@
       "enablePwdControl": "Ativar controle de senha",
       "username": "Nome de usuário",
       "password": "Senha",
-      "confirmPassword": "Confirme sua senha"
+      "confirmPassword": "Confirme sua senha",
+      "Warning": "Aviso",
+      "DialogMessage": "Depois de salvar as configurações de login, a interface da web será reiniciada e você será solicitado a digitar as credenciais pelo navegador. \nVocê realmente quer economizar agora?",
+      "DialogYesButton": "Sim",
+      "DialogNoButton": "Não"
     },
     "TrilabRemote": {
       "auto_off": "Desligamento automático",
@@ -1151,7 +1155,8 @@
       "WebrtcJanus": "WebRTC (janus-gateway)"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Trilab nastavení",
+      "TrilabLogs": "Histórico"
     }
   },
   "Timelapse": {
@@ -1302,6 +1307,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "O filamento está descarregando",
       "colorUnloaded": "Filamento descarregado com sucesso"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Salvar credenciais"
     }
   },
   "Generic": {

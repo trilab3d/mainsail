@@ -13,7 +13,8 @@
 								<h3>Step{{ step + 1 }}. BASIC calibration</h3>
 							</v-card-title>
 							<v-card-text>
-								<p>First of all, it is <strong>necessary</strong> to start the basic calibration. Start it by pressing the button below and then wait for the printer to restart.</p>
+								<p>First of all, it is <strong>necessary</strong> to start the basic calibration. Start it
+									by pressing the button below and then wait for the printer to restart.</p>
 								<v-btn :disabled="printerBusy" color="primary"
 									:loading="loadings.includes('delta_calibrate')" block
 									@click="sendBasicCalibrationCommand()">START CALIBRATION</v-btn>
@@ -27,24 +28,27 @@
 								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
-								Basic delta calibration generally calculates delta parameters well to ensure the nozzle is at the
+								Basic delta calibration generally calculates delta parameters well to ensure the nozzle is
+								at the
 								correct
-								distance from the bed. However, it does not attempt to calibrate the accuracy of X and Y dimensions. For verifying dimensional 
+								distance from the bed. However, it does not attempt to calibrate the accuracy of X and Y
+								dimensions. For verifying dimensional
 								accuracy, it is
-								good 
+								good
 								to perform an extended delta calibration.
 								<br>
-								This calibration procedure requires printing a test object and measuring parts of this test  
+								This calibration procedure requires printing a test object and measuring parts of this test
 								object
-								using 
+								using
 								digital calipers.
 								<br>
 								<strong>Make sure </strong>that since the last
-								basic 
-								delta calibration, there have been no significant changes in the printer configuration or hardware (if 
+								basic
+								delta calibration, there have been no significant changes in the printer configuration or
+								hardware (if
 								are not
 								sure,
-								perform the basic delta calibration again, just before printing 
+								perform the basic delta calibration again, just before printing
 								the test
 								object
 								below).
@@ -52,17 +56,17 @@
 								<v-btn :disabled="printerBusy || loadings.includes('DeltaCalibrationWizardPrint')" block
 									@click="sendPrintTestObject()">Print the test object</v-btn>
 								<p class="mt-6 mb-2">Print the test object and wait until it completely cools down.</p>
-								<small>Ensure that the subsequent values are inputted 
-									Ensure that the subsequent values are inputted 
-									with the same printer settings used during the calibration object print (do not 
-									configuration between 
+								<small>Ensure that the subsequent values are inputted
+									Ensure that the subsequent values are inputted
+									with the same printer settings used during the calibration object print (do not
+									configuration between
 									printing and measuring).
 
 									If feasible, carry out the described measurements while the object is still attached to
-									the print bed. 
-									However, do not worry if the part detaches from the bed - just strive to avoid 
+									the print bed.
+									However, do not worry if the part detaches from the bed - just strive to avoid
 									bending the object during measurement.
-									</small>
+								</small>
 
 							</v-card-text>
 						</v-card>
@@ -77,14 +81,16 @@
 							</v-card-title>
 							<v-card-text>
 
-								<p>If the object has been resized to a smaller or larger size, please provide the scale factor 
-									used during object slicing. If no resizing was done, leave the default value. 
-									<small>(A scale value of 2.0 would mean double the original size of the object, while a value of
-									0.5 would mean half the original size.)	</small>
+								<p>If the object has been resized to a smaller or larger size, please provide the scale
+									factor
+									used during object slicing. If no resizing was done, leave the default value.
+									<small>(A scale value of 2.0 would mean double the original size of the object, while a
+										value of
+										0.5 would mean half the original size.) </small>
 								</p>
 
-								<p>Now enter the value (using decimals - Use a dot instead of 
-								    a comma):</p>
+								<p>Now enter the value (using decimals - Use a dot instead of
+									a comma):</p>
 
 								<v-row>
 									<v-text-field label="Měřítko velikosti" @input="isNumber($event)" v-model="scaleFactor"
@@ -105,21 +111,23 @@
 								<h3>Step{{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
-								<p>Then proceed counterclockwise and measure the distances between the center 
-									column and the other columns (distance from the center to the column opposite the C label, 
-									distance 
+								<p>Then proceed counterclockwise and measure the distances between the center
+									column and the other columns (distance from the center to the column opposite the C
+									label,
+									distance
 									from the center to the column labeled B, etc.).
-									</p>
+								</p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta-a-distance.jpg" alt="delta-a-distance"
 										style="width:100%; max-width:500px">
 									<p><small>Measurement - step 1</small></p>
 								</div>
 
-								<p>Then proceed counterclockwise and measure the distances between the center 
-									column and the other columns </p></small>(distance from the center to the column opposite the C label, 
-									distance 
-									from the center to the column labeled B, etc.):</small></p>
+								<p>Then proceed counterclockwise and measure the distances between the center
+									column and the other columns </p></small>(distance from the center to the column
+								opposite the C label,
+								distance
+								from the center to the column labeled B, etc.):</small></p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta_cal_e_step1.jpg" alt="step_1" style="width:100%; max-width:500px">
 									<p><small>Measurement - step 2</small></p>
@@ -186,8 +194,9 @@
 							</v-card-title>
 							<v-card-text>
 
-								<p>At this point, you can remove the object from the bed. The final measurements concern 
-									the columns themselves. Measure the size of the central column along arm A, then arm B, and finally 
+								<p>At this point, you can remove the object from the bed. The final measurements concern
+									the columns themselves. Measure the size of the central column along arm A, then arm B,
+									and finally
 									arm C</p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta-a-pillar.jpg" alt="step_3" style="width:100%; max-width:500px">
@@ -225,7 +234,8 @@
 							</v-card-title>
 							<v-card-text>
 
-								<p>The final dimensions relate to the outer pillars. Begin by measuring the distance of pillar  and along
+								<p>The final dimensions relate to the outer pillars. Begin by measuring the distance of
+									pillar and along
 									the line from pillar A to the pillar opposite to pillar C.</p>
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta-outer-distance.jpg" alt="step_3"
@@ -233,8 +243,9 @@
 									<p><small>Measurement - step 4</small></p>
 								</div>
 
-								<p>Then proceed counterclockwise and measure the remaining outer pillars (the pillar 
-									diagonally from C along the line to B, pillar B along the line to the pillar diagonally from A, etc.).</p>
+								<p>Then proceed counterclockwise and measure the remaining outer pillars (the pillar
+									diagonally from C along the line to B, pillar B along the line to the pillar diagonally
+									from A, etc.).</p>
 
 								<div style="text-align:center" class="my-3 mx-3">
 									<img src="/img/delta_cal_e_step4.jpg" alt="step_3" style="width:100%; max-width:500px">
@@ -269,18 +280,24 @@
 							</v-card-title>
 							<v-card-text>
 
-								<p>Completion of this command may take several minutes. Upon completion, it will calculate updated delta
-									parameters (delta radius, tower angles, endstop positions, and arm lengths). It will then save both 
-									the updated delta parameters and the distance measurement information. Future calibrations will also utilize
-									this distance information. After pressing the button below, 
+								<p>Completion of this command may take several minutes. Upon completion, it will calculate
+									updated delta
+									parameters (delta radius, tower angles, endstop positions, and arm lengths). It will
+									then save both
+									the updated delta parameters and the distance measurement information. Future
+									calibrations will also utilize
+									this distance information. After pressing the button below,
 									refrain from attempting to re-enter unprocessed
-									distance measurements because this command alters the printer configuration, and unprocessed measurements 
+									distance measurements because this command alters the printer configuration, and
+									unprocessed measurements
 									will no longer be valid.
 								</p>
-								<p style="text-align:center; font-weight:bold">Upon pressing this button, this wizard and the saved values will reset, 
+								<p style="text-align:center; font-weight:bold">Upon pressing this button, this wizard and
+									the saved values will reset,
 									and any corrections will need to be made again from scratch.</p>
-								<v-btn :disabled="printerBusy || sendCalibrateCommandEnabled == false" :loading="advancedCalibrationInProgress" color="red"
-									class="mt-4" block @click="sendCalibrateCommand()">Start calibration</v-btn>
+								<v-btn :disabled="printerBusy || sendCalibrateCommandEnabled == false"
+									:loading="advancedCalibrationInProgress" color="red" class="mt-4" block
+									@click="sendCalibrateCommand()">Start calibration</v-btn>
 
 							</v-card-text>
 						</v-card>
@@ -473,10 +490,10 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		this.init();
 		var thisref = this;
 		if ((window as any)['printerStateIntervalDebug'] != undefined) {
-            clearInterval((window as any)['printerStateIntervalDebug'])
-        }
+			clearInterval((window as any)['printerStateIntervalDebug'])
+		}
 
-		(window as any)["printerStateIntervalDebug"] = setInterval(function(){
+		(window as any)["printerStateIntervalDebug"] = setInterval(function () {
 			const idle_timeout_state = thisref.$store.state.printer.idle_timeout?.state
 			console.log("printerState: " + thisref.printer_state + " idle_timeout_state: " + idle_timeout_state)
 		}, 1000)
@@ -533,7 +550,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		if ("scaleFactor" in values.result.value) {
 			this.scaleFactor = parseFloat(values.result.value["scaleFactor"]);
 		}
-		if("advanced_calibration_finished_alert" in values.result.value){
+		if ("advanced_calibration_finished_alert" in values.result.value) {
 			alert("Kalibrace dokončena");
 			/// delete it from db
 			fetch(this.dbUrl("advanced_calibration_finished_alert"), {
@@ -982,7 +999,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 	@Watch('events')
 	onEventsChange() {
 		/// events
-		if(this.advancedCalibrationInProgress == false){return;}
+		if (this.advancedCalibrationInProgress == false) { return; }
 		const events = this.events;
 		/// check each event if it includes 'Working on calibration' and from there to up, check if any message includes SAVE_CONFIG, if yes, advancedCalibrationInProgress to false and snackbar advanced calibration completed
 
@@ -999,13 +1016,13 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 				}
 			}
 		}
-		
+
 	}
 
 
-    get events() {
-        return this.$store.getters['server/getConsoleEvents'](false, 50);
-    }
+	get events() {
+		return this.$store.getters['server/getConsoleEvents'](false, 50);
+	}
 
 
 

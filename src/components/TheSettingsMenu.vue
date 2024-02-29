@@ -65,6 +65,9 @@ import SettingsNavigationTab from '@/components/settings/SettingsNavigationTab.v
 import SettingsTrilabTab from '@/components/settings/SettingsTrilabTab.vue'
 import SettingsTrilabNetworkTab from '@/components/settings/SettingsTrilabNetworkTab.vue'
 import SettingsTrilabPrinterTab from '@/components/settings/SettingsTrilabPrinterTab.vue'
+import SettingsTrilabLogsTab from '@/components/settings/SettingsTrilabLogsTab.vue'
+
+
 
 import Panel from '@/components/ui/Panel.vue'
 import {
@@ -86,6 +89,7 @@ import {
     mdiAccessPointNetwork,
     mdiUpdate,
     mdiMenu,
+    mdiNoteText
 } from '@mdi/js'
 import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneousTab.vue'
 @Component({
@@ -107,7 +111,9 @@ import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneou
         SettingsNavigationTab,
         SettingsTrilabTab,
         SettingsTrilabNetworkTab,
-        SettingsTrilabPrinterTab
+        SettingsTrilabPrinterTab,
+        SettingsTrilabLogsTab
+
     },
 })
 export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
@@ -134,6 +140,7 @@ export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
      */
     mdiCloseThick = mdiCloseThick
     mdiCogs = mdiCogs
+    mdiNoteText = mdiNoteText
 
     declare $refs: {
         settingsScroll: any
@@ -234,6 +241,12 @@ export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
                 title: this.$t('Settings.TrilabTab.TrilabPrinter'),
                 condition: this.TrilabServiceView == true
             },
+            {
+                icon: mdiNoteText,
+                name: "trilab-logs",
+                title: this.$t('Settings.TrilabTab.TrilabLogs'),
+            },
+
 
         ]
 

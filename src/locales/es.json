@@ -630,7 +630,11 @@
       "enablePwdControl": "Habilitar control de contraseña",
       "username": "Nombre de usuario",
       "password": "Contraseña",
-      "confirmPassword": "Confirmar Contraseña"
+      "confirmPassword": "Confirmar Contraseña",
+      "Warning": "Advertencia",
+      "DialogMessage": "Después de guardar la configuración de inicio de sesión, la interfaz web se reiniciará y el navegador le pedirá que escriba las credenciales. \n¿Realmente quieres ahorrar ahora?",
+      "DialogYesButton": "Sí",
+      "DialogNoButton": "No"
     },
     "TrilabRemote": {
       "auto_off": "Apagado automático",
@@ -1004,7 +1008,8 @@
     },
     "TrilabTab": {
       "Trilab": "verze",
-      "TrilabPrinter": "Tiskárna"
+      "TrilabPrinter": "Tiskárna",
+      "TrilabLogs": "Registros"
     }
   },
   "Timelapse": {
@@ -1154,6 +1159,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "El filamento se está descargando.",
       "colorUnloaded": "Filamento descargado exitosamente"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Guardar credenciales"
     }
   },
   "Generic": {

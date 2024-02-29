@@ -707,7 +707,11 @@
       "enablePwdControl": "Включить контроль пароля",
       "username": "Имя пользователя",
       "password": "Пароль",
-      "confirmPassword": "Подтвердите пароль"
+      "confirmPassword": "Подтвердите пароль",
+      "Warning": "Предупреждение",
+      "DialogMessage": "После сохранения настроек входа веб-интерфейс перезапустится, и вам будет предложено ввести учетные данные в браузере. \nВы действительно хотите сэкономить сейчас?",
+      "DialogYesButton": "Да",
+      "DialogNoButton": "Нет"
     },
     "TrilabRemote": {
       "auto_off": "Автоматическое отключение",
@@ -1145,7 +1149,8 @@
       "WebrtcCameraStreamer": "WebRTC (camera-streamer)"
     },
     "TrilabTab": {
-      "Trilab": "Verze"
+      "Trilab": "Verze",
+      "TrilabLogs": "Журналы"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1302,6 +1307,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Нить выгружается",
       "colorUnloaded": "Нить успешно выгружена"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Сохранить учетные данные"
     }
   },
   "Generic": {

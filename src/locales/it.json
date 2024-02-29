@@ -523,7 +523,11 @@
       "enablePwdControl": "Abilita il controllo della password",
       "username": "Nome utente",
       "password": "Parola d'ordine",
-      "confirmPassword": "Conferma password"
+      "confirmPassword": "Conferma password",
+      "Warning": "Avvertimento",
+      "DialogMessage": "Dopo aver salvato le impostazioni di accesso, l'interfaccia web si riavvierà e ti verrà richiesto di digitare le credenziali dal browser. \nVuoi davvero risparmiare adesso?",
+      "DialogYesButton": "SÌ",
+      "DialogNoButton": "NO"
     },
     "TrilabRemote": {
       "auto_off": "Spegnimento automatico",
@@ -870,7 +874,8 @@
       "Webcams": "Webcam"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Trilab nastavení",
+      "TrilabLogs": "Registri"
     }
   },
   "Timelapse": {
@@ -1020,6 +1025,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Il filamento si sta scaricando",
       "colorUnloaded": "Filamento scaricato con successo"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Salva credenziali"
     }
   },
   "Generic": {

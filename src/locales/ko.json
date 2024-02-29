@@ -701,7 +701,11 @@
       "enablePwdControl": "암호 제어 활성화",
       "username": "사용자 이름",
       "password": "비밀번호",
-      "confirmPassword": "비밀번호 확인"
+      "confirmPassword": "비밀번호 확인",
+      "Warning": "경고",
+      "DialogMessage": "로그인 설정을 저장한 후 웹 인터페이스가 다시 시작되고 브라우저에 자격 증명을 입력하라는 메시지가 표시됩니다. \n지금 정말로 저장하시겠습니까?",
+      "DialogYesButton": "예",
+      "DialogNoButton": "아니요"
     },
     "TrilabRemote": {
       "auto_off": "자동 꺼짐",
@@ -1130,7 +1134,8 @@
       "WebrtcCameraStreamer": "WebRTC (camera-streamer)"
     },
     "TrilabTab": {
-      "Trilab": "트라이랩 나스타베니"
+      "Trilab": "트라이랩 나스타베니",
+      "TrilabLogs": "로그"
     }
   },
   "Timelapse": {
@@ -1281,6 +1286,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
       "colorUnloaded": "필라멘트가 성공적으로 언로드되었습니다."
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "자격 증명 저장"
     }
   },
   "Generic": {

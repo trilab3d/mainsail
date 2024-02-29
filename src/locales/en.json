@@ -733,7 +733,11 @@
       "enablePwdControl": "Enable password control",
       "username": "Username",
       "password": "Password",
-      "confirmPassword": "Confirm password"
+      "confirmPassword": "Confirm password",
+      "Warning": "Warning",
+      "DialogMessage": "After saving the login settings, web interface will restart and you will be prompted to type in the credentials by the browser. Do you really want to save now?",
+      "DialogYesButton": "Yes",
+      "DialogNoButton": "No"
     },
     "TrilabRemote": {
       "auto_off": "Auto off",
@@ -782,7 +786,8 @@
     "Timelapse": "Timelapse",
     "Webcam": "Webcam",
     "Slicers": "Slicer",
-    "Calibration": "Calibration"
+    "Calibration": "Calibration",
+    "Diagnostics": "Diagnostics"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Add Printer",
@@ -1173,7 +1178,8 @@
       "Trilab": "Versions",
       "TrilabNetwork": "Network",
       "TrilabSlicers": "Slicers",
-      "TrilabPrinter": "Printer"
+      "TrilabPrinter": "Printer",
+      "TrilabLogs": "Logs"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1341,6 +1347,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Filament is unloading",
       "colorUnloaded": "Filament unloaded successfuly"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Save credentials"
     }
   },
   "Generic": {

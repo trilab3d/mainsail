@@ -536,7 +536,11 @@
       "enablePwdControl": "Aktivera lösenordskontroll",
       "username": "Användarnamn",
       "password": "Lösenord",
-      "confirmPassword": "Bekräfta lösenord"
+      "confirmPassword": "Bekräfta lösenord",
+      "Warning": "Varning",
+      "DialogMessage": "När du har sparat inloggningsinställningarna startar webbgränssnittet om och du kommer att uppmanas att skriva in autentiseringsuppgifterna av webbläsaren. \nVill du verkligen spara nu?",
+      "DialogYesButton": "Ja",
+      "DialogNoButton": "Nej"
     },
     "TrilabRemote": {
       "auto_off": "Automatisk avstängning",
@@ -898,7 +902,8 @@
       "Webcams": "Webbkameror"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Trilab nastavení",
+      "TrilabLogs": "Loggar"
     }
   },
   "Timelapse": {
@@ -1048,6 +1053,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Filament håller på att lossas",
       "colorUnloaded": "Filamentet har lossats"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Spara inloggningsuppgifter"
     }
   },
   "Generic": {

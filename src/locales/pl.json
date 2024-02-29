@@ -690,7 +690,11 @@
       "enablePwdControl": "Włącz kontrolę hasła",
       "username": "Nazwa użytkownika",
       "password": "Hasło",
-      "confirmPassword": "Potwierdź hasło"
+      "confirmPassword": "Potwierdź hasło",
+      "Warning": "Ostrzeżenie",
+      "DialogMessage": "Po zapisaniu ustawień logowania interfejs sieciowy uruchomi się ponownie, a przeglądarka poprosi o podanie danych uwierzytelniających. \nCzy na pewno chcesz teraz zapisać?",
+      "DialogYesButton": "Tak",
+      "DialogNoButton": "NIE"
     },
     "TrilabRemote": {
       "auto_off": "Automatyczne wyłączanie",
@@ -1128,7 +1132,8 @@
     },
     "Store": "zachowaj",
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Trilab nastavení",
+      "TrilabLogs": "Dzienniki"
     }
   },
   "Timelapse": {
@@ -1302,6 +1307,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Trwa rozładunek włókna",
       "colorUnloaded": "Filament został pomyślnie rozładowany"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Zapisz dane uwierzytelniające"
     }
   },
   "Generic": {

@@ -699,7 +699,11 @@
       "enablePwdControl": "Wachtwoordbeheer inschakelen",
       "username": "Gebruikersnaam",
       "password": "Wachtwoord",
-      "confirmPassword": "Bevestig wachtwoord"
+      "confirmPassword": "Bevestig wachtwoord",
+      "Warning": "Waarschuwing",
+      "DialogMessage": "Nadat u de inloginstellingen hebt opgeslagen, wordt de webinterface opnieuw opgestart en wordt u door de browser gevraagd de inloggegevens in te voeren. \nWilt u nu echt besparen?",
+      "DialogYesButton": "Ja",
+      "DialogNoButton": "Nee"
     },
     "TrilabRemote": {
       "auto_off": "Automatische uitschakeling",
@@ -1125,7 +1129,8 @@
       "Webcams": "Webcams"
     },
     "TrilabTab": {
-      "Trilab": "Trilab nastavení"
+      "Trilab": "Trilab nastavení",
+      "TrilabLogs": "Logboeken"
     }
   },
   "Timelapse": {
@@ -1277,6 +1282,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Het filament wordt verwijderd",
       "colorUnloaded": "Het filament is succesvol verwijderd"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Bewaar inloggegevens"
     }
   },
   "Generic": {

@@ -641,7 +641,11 @@
       "enablePwdControl": "Увімкнути контроль пароля",
       "username": "Ім'я користувача",
       "password": "Пароль",
-      "confirmPassword": "Підтвердьте пароль"
+      "confirmPassword": "Підтвердьте пароль",
+      "Warning": "УВАГА",
+      "DialogMessage": "Після збереження налаштувань входу веб-інтерфейс перезапуститься, і браузер запропонує вам ввести облікові дані. \nВи дійсно хочете заощадити зараз?",
+      "DialogYesButton": "Так",
+      "DialogNoButton": "Немає"
     },
     "TrilabRemote": {
       "auto_off": "Автоматичне вимкнення",
@@ -1027,7 +1031,8 @@
       "Webcams": "Веб-камери"
     },
     "TrilabTab": {
-      "Trilab": "Трилаб навчання"
+      "Trilab": "Трилаб навчання",
+      "TrilabLogs": "Журнали"
     }
   },
   "Timelapse": {
@@ -1178,6 +1183,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "Нитка розвантажується",
       "colorUnloaded": "Нитку успішно вивантажено"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "Зберегти облікові дані"
     }
   },
   "Generic": {

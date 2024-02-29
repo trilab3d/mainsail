@@ -700,7 +700,11 @@
       "enablePwdControl": "パスワード制御を有効にする",
       "username": "ユーザー名",
       "password": "パスワード",
-      "confirmPassword": "パスワードを認証する"
+      "confirmPassword": "パスワードを認証する",
+      "Warning": "警告",
+      "DialogMessage": "ログイン設定を保存すると、Web インターフェイスが再起動し、ブラウザで資格情報を入力するように求められます。\n本当に今すぐ保存しますか?",
+      "DialogYesButton": "はい",
+      "DialogNoButton": "いいえ"
     },
     "TrilabRemote": {
       "auto_off": "オートオフ",
@@ -1121,7 +1125,8 @@
       "WebrtcCameraStreamer": "WebRTC (camera-streamer)"
     },
     "TrilabTab": {
-      "Trilab": "トリラブ・ナスタベニ"
+      "Trilab": "トリラブ・ナスタベニ",
+      "TrilabLogs": "ログ"
     }
   },
   "ScrewsTiltAdjust": {
@@ -1278,6 +1283,9 @@
     "TrilabFilamentUnloadWizard": {
       "FilamentIsUnloading": "フィラメントがアンロード中です",
       "colorUnloaded": "フィラメントが正常にアンロードされました"
+    },
+    "SettingsAccessPasswordPanel": {
+      "SaveBtn": "認証情報の保存"
     }
   },
   "Generic": {

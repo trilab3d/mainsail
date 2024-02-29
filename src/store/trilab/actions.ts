@@ -115,6 +115,12 @@ export const actions: ActionTree<TrilabState, any> = {
             }
         }
 
+        if(typeof specific === 'object' && specific !== null){
+            /// allow to post only custom keys and values
+            console.log('POSTING SAVESETTINGS SPECIFIC OBJECT');
+            console.log(specific);
+            return await axios.post(context.getters.trilabPrefix + '/settings', specific)
+        }
         if (specific != false) {
             const customObject: any = {}
             if (specific == 'printer') {

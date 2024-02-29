@@ -46,6 +46,7 @@ export const getDefaultState = (): TrilabState => {
             model_name: '',
             model_revision: '',
             last_running_version: '',
+            locked: false, /// locked for public access
             manufacturer: '',
             manufacturer_url: '',
             model_url: '',
