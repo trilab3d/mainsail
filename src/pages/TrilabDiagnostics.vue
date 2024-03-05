@@ -15,10 +15,12 @@
                         <v-row v-if="heatbreakfanPresent" align="center">
                             <v-col class="justify-center" cols="6">Fan - speed control</v-col>
                             <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="testFan(1)">Test</v-btn>
+                                <v-btn color="primary" class="mr-2" :loading="fanTestLoading" :disabled="fanTestLoading"
+                                    @click="testFan(1)">Test</v-btn>
                             </v-col>
                             <v-col cols="5">
-                                <v-icon color="success" v-if="testResults.heatbreakfan == 1">{{ mdiCheckCircle }}</v-icon>
+                                <v-icon color="success" v-if="testResults.heatbreakfan == 1">{{ mdiCheckCircle
+                                    }}</v-icon>
                                 <v-icon v-if="testResults.heatbreakfan == 0">{{ mdiCross }}</v-icon>
                             </v-col>
                         </v-row>
@@ -29,7 +31,8 @@
                                     @click="testChamberFlapIntake(1); chamberflapTestDialogOpen = true">Test</v-btn>
                             </v-col>
                             <v-col cols="3">
-                                <v-icon color="success" v-if="testResults.chamberflap == 1">{{ mdiCheckCircle }}</v-icon>
+                                <v-icon color="success" v-if="testResults.chamberflap == 1">{{ mdiCheckCircle
+                                    }}</v-icon>
                                 <v-icon color="red" v-if="testResults.chamberflap == 0">{{ mdiCross }}</v-icon>
                             </v-col>
                             <v-dialog v-model="chamberflapTestDialogOpen" max-width="290"
@@ -38,7 +41,8 @@
                                     <v-card-title class="text-h5">
                                         Did the chamber flap move?
                                     </v-card-title>
-                                    <v-card-text>The flap is depicted in the image bolow. Its movement can also be recognized by sound.</v-card-text>
+                                    <v-card-text>The flap is depicted in the image below. Its movement can also be
+                                        recognized by sound.</v-card-text>
                                     <v-card-actions>
                                         <v-spacer></v-spacer>
                                         <v-btn color="green darken-1" text
@@ -64,6 +68,29 @@
                                 <v-icon color="success" v-if="testResults.printflap == 1">{{ mdiCheckCircle }}</v-icon>
                                 <v-icon color="red" v-if="testResults.printflap == 0">{{ mdiCross }}</v-icon>
                             </v-col>
+                            <v-dialog v-model="printflapTestDialogOpen" max-width="290"
+                                @close="printflapTestDialogOpen = false">
+                                <v-card>
+                                    <v-card-title class="text-h5">
+                                        Did the print flap move?
+                                    </v-card-title>
+                                    <v-card-text>The flap is depicted in the image below. Its movement can also be
+                                        recognized by sound.</v-card-text>
+                                    <v-card-actions>
+                                        <v-spacer></v-spacer>
+                                        <v-btn color="green darken-1" text
+                                            @click="printflapTestDialogOpen = false; testResults.printflap = 1">
+                                            Yes
+                                        </v-btn>
+                                        <v-btn color="red darken-1" text
+                                            @click="printflapTestDialogOpen = false; testResults.printflap = 0">
+                                            No
+                                        </v-btn>
+                                    </v-card-actions>
+                                </v-card>
+                            </v-dialog>
+
+
                         </v-row>
                         <v-row align="center">
                             <v-col cols="6">USB port check</v-col>
@@ -110,7 +137,7 @@
                             </v-col>
                             <v-col cols="5">
                                 <v-icon v-if="testResults.endstopsOpenState == 1" color="success">{{ mdiCheckCircle
-                                }}</v-icon>
+                                    }}</v-icon>
                                 <v-icon v-if="testResults.endstopsOpenState == 0">{{ mdiCross }}</v-icon>
                             </v-col>
 
@@ -128,7 +155,7 @@
                             </v-col>
                             <v-col cols="5">
                                 <v-icon v-if="testResults.bedProbes == 1" color="success">{{ mdiCheckCircle
-                                }}</v-icon>
+                                    }}</v-icon>
                                 <v-icon v-if="testResults.bedProbes == 0">{{ mdiCross }}</v-icon>
                             </v-col>
 
@@ -142,11 +169,12 @@
                         <v-row align="center">
                             <v-col cols="6">Extruder temp rise check</v-col>
                             <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogExtruder = true">Test</v-btn>
+                                <v-btn color="primary" class="mr-2"
+                                    @click="temperatureRiseDialogExtruder = true">Test</v-btn>
                             </v-col>
                             <v-col cols="5">
                                 <v-icon v-if="testResults.extruderCheck == 1" color="success">{{ mdiCheckCircle
-                                }}</v-icon>
+                                    }}</v-icon>
                                 <v-icon v-if="testResults.extruderCheck == 0">{{ mdiCross }}</v-icon>
                             </v-col>
 
@@ -160,16 +188,17 @@
                         <v-row align="center">
                             <v-col cols="6">Bed temp rise check</v-col>
                             <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogBed = true">Test</v-btn>
+                                <v-btn color="primary" class="mr-2"
+                                    @click="temperatureRiseDialogBed = true">Test</v-btn>
                             </v-col>
                             <v-col cols="5">
                                 <v-icon v-if="testResults.bedCheck == 1" color="success">{{ mdiCheckCircle
-                                }}</v-icon>
+                                    }}</v-icon>
                                 <v-icon v-if="testResults.bedCheck == 0">{{ mdiCross }}</v-icon>
                             </v-col>
 
-                            <trilab-diagnostics-temperature-rise-check heaterType="Bed" :showp="temperatureRiseDialogBed"
-                                @close="temperatureRiseDialogBed = false"
+                            <trilab-diagnostics-temperature-rise-check heaterType="Bed"
+                                :showp="temperatureRiseDialogBed" @close="temperatureRiseDialogBed = false"
                                 @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
                         </v-row>
                         <!--- END BED TEMPERATURE RISE CHECK  ---->
@@ -177,11 +206,12 @@
                         <v-row align="center">
                             <v-col cols="6">Chamber temp rise check</v-col>
                             <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogChamber = true">Test</v-btn>
+                                <v-btn color="primary" class="mr-2"
+                                    @click="temperatureRiseDialogChamber = true">Test</v-btn>
                             </v-col>
                             <v-col cols="5">
                                 <v-icon v-if="testResults.panelCheck == 1" color="success">{{ mdiCheckCircle
-                                }}</v-icon>
+                                    }}</v-icon>
                                 <v-icon v-if="testResults.panelCheck == 0">{{ mdiCross }}</v-icon>
                             </v-col>
 
@@ -201,13 +231,14 @@
         </v-container>
     </v-container>
 </template>
+
 <script lang="ts">
 import { Watch } from 'vue-property-decorator';
 import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
 import TrilabDiagnosticsProbesDialog from '@/components/dialogs/TrilabDiagnosticsProbesDialog.vue';
 import TrilabDiagnosticsEndstopsTestDialog from '@/components/dialogs/TrilabDiagnosticsEndstopsTestDialog.vue'
-import { mdiCog, mdiPackageVariantClosed, mdiAlphaBBox, mdiCheckCircle, mdiCross } from '@mdi/js'
+import { mdiCog, mdiPackageVariantClosed, mdiAlphaBBox, mdiCheckCircle, mdiCloseOctagon } from '@mdi/js'
 @Component({
     components: {
         TrilabDiagnosticsEndstopsTestDialog,
@@ -221,7 +252,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
 
 
     mdiCheckCircle = mdiCheckCircle;
-    mdiCross = mdiCross;
+    mdiCross = mdiCloseOctagon;
 
     public printflapTestDialogOpen = false;
     public chamberflapTestDialogOpen = false;
@@ -231,6 +262,12 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
     public endstopBCheckDialogOpen = false;
     public endstopCCheckDialogOpen = false;
 
+
+    /// loadings
+    public fanTestLoading = false;
+
+
+    /// end loadings
 
     public BedProbesCheckingDialog = false;
     public usbTestDialogOpen = false;
@@ -276,22 +313,30 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
     }
 
     testChamberFlapIntake(status: number) {
-        console.log("testChamberFlapIntake");
+        //console.log("testChamberFlapIntake");
+        const power = this.chamberIntakeFlapPresent[0]?.power ?? 0;
+        //console.log("testChamberFlapIntake");
+        //console.log(this.chamberIntakeFlapPresent[0]);
         let speed = 1;
-        if (status == 0) { speed = 0; }
+        if (power >0.5) { speed = 0; }
+        if(power <= 0.5) { speed = 1; }
+        console.log("setting speed to " + speed);
+
         const gcode = `SET_FAN_SPEED FAN=intake_flap SPEED=${speed}`
         this.sendGcode(gcode)
     }
     testPrintFlap(status: number) {
         /// status depends on target power attribute
         const power = this.printFlapPresent[0]?.power ?? 0;
-        console.log("testPrintFlap");
+        //console.log("testPrintFlap");
+        //console.log(this.printFlapPresent[0]);
         let speed = 1;
 
         /// set the speed to farthest value from the current power value. For example if current power is 20, set 1, if current power is 60, set 0
-        if (power > 50) { speed = 0; } else { speed = 1; }
+        if (power >= 0.5) { speed = 0; } else { speed = 1; }
 
 
+        //console.log("setting speed to " + speed);
         if (status == 0) { speed = 0; }
         const gcode = `SET_FAN_SPEED FAN=print_flap SPEED=${speed}`
         this.sendGcode(gcode)
@@ -300,7 +345,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         /// here we have to heat the hotend to 50 degrees
         /// SET_HEATER_TEMPERATURE HEATER=extruder TARGET=
         /// status depends on target power attribute
-        console.log("testFan");
+        //console.log("testFan");
         let speed = 0.5;
         let temp = 30;
         if (status == 0) { speed = 0; temp = 0; }
@@ -309,6 +354,12 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         this.sendGcode(gcodeheater)
         const gcode = `HEATER_FAN_SET_SPEED FAN=heatbreak_fan SPEED=${speed}`
         this.sendGcode(gcode)
+
+        if (status == 1) {
+            this.fanTestLoading = true;
+        } else {
+            this.fanTestLoading = false;
+        }
 
         if (status == 1) {
             setTimeout(() => {
@@ -327,10 +378,10 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         /// we have to heat the hotend to 50 degrees
         let speed = 0.5;
         if (status == 0) { speed = 0; }
-        console.log("testHeatbreakFan");
+        //console.log("testHeatbreakFan");
         const fan = this.heatbreakfanPresent;
         if (fan.length == 0) {
-            console.log("heatbreak fan not present");
+            //console.log("heatbreak fan not present");
             return;
         }
         const setspeed = speed * fan[0].scale;

@@ -10,7 +10,7 @@
 					<v-container v-if="step == 0">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step{{ step + 1 }}. BASIC calibration</h3>
+								<h3>Step {{ step + 1 }}. BASIC calibration</h3>
 							</v-card-title>
 							<v-card-text>
 								<p>First of all, it is <strong>necessary</strong> to start the basic calibration. Start it
@@ -108,7 +108,7 @@
 					<v-container v-if="step == 3">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step{{ step + 1 }}. ADVANCED calibration</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 								<p>Then proceed counterclockwise and measure the distances between the center

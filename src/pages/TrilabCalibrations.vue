@@ -32,11 +32,11 @@ export default class PageTrilabCalibrations extends Mixins(BaseMixin) {
                 name: "delta",
                 icon: mdiDelta
             },
-            {
+            /*{
                 title: "Krychle",
                 name: "box",
                 icon: mdiPackageVariantClosed
-            },
+            },*/
         ];
 
 

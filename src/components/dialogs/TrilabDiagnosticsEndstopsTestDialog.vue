@@ -163,7 +163,7 @@ export default class TrilabDiagnosticsEndstopsTestDialog extends Mixins(TrilabMi
         const Bopen = lastResponse.indexOf("b:open");
         const Copen = lastResponse.indexOf("c:open");
 
-        if (this.step == 0 && Aopen == -1 || Bopen == -1 || Copen == -1) {
+        if (this.step == 0 && (Aopen == -1 || Bopen == -1 || Copen == -1)) {
             if (Aopen == -1) {
                 this.$toast.error("Endstop A is not free, please check the endstop and try again");
             }
