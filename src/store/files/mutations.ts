@@ -210,8 +210,11 @@ export const mutations: MutationTree<FileState> = {
         const dirname = payload.item.path.substr(payload.item.path.lastIndexOf('/') + 1)
         const path = payload.item.path.substr(0, payload.item.path.lastIndexOf('/'))
         const parent = findDirectory(state.filetree, (payload.item.root + '/' + path).split('/'))
-
         if (parent) {
+            /// first check if dir already exists and if yes, don't add it again and check if it is dir. Trilab addition
+            if (parent.find((element: FileStateFile) => element.filename === dirname && element.isDirectory)) {
+                return
+            }
             parent.push({
                 isDirectory: true,
                 filename: dirname,

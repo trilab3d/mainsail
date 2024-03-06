@@ -419,26 +419,45 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         /// filter this store files filetree - that is list with objects. It has childrens[], disk_usage, filename,isDirectory (bool), modified, permissions
         /// therefore count every filetree and their childrens and their childrens if the filename starts with usb and isDirectory == true
         const filetree = this.$store.state.files.filetree ?? [];
+        let duplicityCheck :Array<string> = [];
+        
+        
+
+
         let usbNumber = 0;
         for (let i = 0; i < filetree.length; i++) {
+
             const element = filetree[i];
+            if(element.filename != "gcodes"){
+                continue;
+            }
             if (element.filename.startsWith("usb") && element.isDirectory && element.modified == 0) {
-                usbNumber++;
+                //usbNumber++;
+                console.log("USB FOUND UNDER FIRST ITERATION:")
+                console.log(element);
             }
             if (element.childrens) {
                 for (let j = 0; j < element.childrens.length; j++) {
                     const element2 = element.childrens[j];
                     if (element2.filename.startsWith("usb") && element2.isDirectory && element2.modified == 0) {
+                        if(duplicityCheck.includes(element.filename + element2.filename)) {
+                            continue;
+                        }
                         usbNumber++;
+                        duplicityCheck.push(element.filename + element2.filename);
+                        console.log("USB FOUND UNDER SECOND ITERATION UNDER DIRECTORY: " + element.filename + " & object:")
+                        console.log(element2);
                     }
-                    if (element2.childrens) {
+                    /*if (element2.childrens) {
                         for (let k = 0; k < element2.childrens.length; k++) {
                             const element3 = element2.childrens[k];
                             if (element3.filename.startsWith("usb") && element3.isDirectory && element3.modified == 0) {
                                 usbNumber++;
+                                console.log("USB FOUND UNDER THIRD ITERATION:")
+                                console.log(element3);
                             }
                         }
-                    }
+                    }*/
                 }
             }
         }

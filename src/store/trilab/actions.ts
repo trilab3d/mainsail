@@ -41,11 +41,9 @@ export const actions: ActionTree<TrilabState, any> = {
     },
     customSocketResponseHandler(context, payload) {
         if (payload == '// FS_CHANGE') {
-            Vue.$socket.emit(
-                'server.files.get_directory',
-                { path: 'gcodes' },
-                { action: 'files/getDirectory' }
-            )
+            window.setTimeout(function () {
+                Vue.$socket.emit('server.files.get_directory', { path: 'gcodes' }, { action: 'files/getDirectory' })
+            }, 200)
         }
         /// in trilab store mutations, there is a mutation called addSocketResponse which adds the payload to the socketResponses array
         context.commit('addSocketResponse', payload)
@@ -115,10 +113,10 @@ export const actions: ActionTree<TrilabState, any> = {
             }
         }
 
-        if(typeof specific === 'object' && specific !== null){
+        if (typeof specific === 'object' && specific !== null) {
             /// allow to post only custom keys and values
-            console.log('POSTING SAVESETTINGS SPECIFIC OBJECT');
-            console.log(specific);
+            console.log('POSTING SAVESETTINGS SPECIFIC OBJECT')
+            console.log(specific)
             return await axios.post(context.getters.trilabPrefix + '/settings', specific)
         }
         if (specific != false) {
