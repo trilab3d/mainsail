@@ -292,12 +292,14 @@ import BaseMixin from '@/components/mixins/base'
 import TrilabDiagnosticsProbesDialog from '@/components/dialogs/TrilabDiagnosticsProbesDialog.vue';
 import TrilabDiagnosticsEndstopsTestDialog from '@/components/dialogs/TrilabDiagnosticsEndstopsTestDialog.vue'
 import TrilabDiagnosticsFilamentSensorDialog from '@/components/dialogs/TrilabDiagnosticsFilamentSensorDialog.vue'
+import TrilabDiagnosticsTemperatureRiseCheckDialog from '@/components/dialogs/TrilabDiagnosticsTemperatureRiseCheck.vue';
 import { mdiCog, mdiPackageVariantClosed, mdiAlphaBBox, mdiCheckCircle, mdiCloseOctagon } from '@mdi/js'
 @Component({
     components: {
         TrilabDiagnosticsEndstopsTestDialog,
         TrilabDiagnosticsProbesDialog,
         TrilabDiagnosticsFilamentSensorDialog,
+        TrilabDiagnosticsTemperatureRiseCheckDialog,
 
 
         //TrilabDeltaCalibrationWizard,
@@ -467,6 +469,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
     }
 
     resumeTestAll() {
+        this.testAllInProgress = true;
         if (this.currentStep == null || this.currentStep == "") {
             this.currentStep = 'heatbreakfan';
         }

@@ -37,7 +37,7 @@ import { PrinterStateAdditionalSensor, PrinterStateTemperatureObject } from '@/s
 import { maxEventHistory, thumbnailSmallMax } from '@/store/variables';
 
 @Component
-export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
+export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(TrilabMixin) {
     @Prop({ required: false, default: false })
     declare showp: boolean
 
