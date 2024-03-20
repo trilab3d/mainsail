@@ -139,6 +139,10 @@ export const actions: ActionTree<TrilabState, any> = {
         const response: any = await axios.get(context.getters.trilabPrefix + '/check_update').catch((error) => {
             console.error(error)
         })
+        if(response == undefined){
+            console.log("Couldnt get live update status data");
+            return;
+        }
         const rd = response.data ?? {}
         context.commit('setData', { updateStateStatus: rd })
         /// check if progress is in the response

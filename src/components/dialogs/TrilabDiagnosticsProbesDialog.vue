@@ -4,6 +4,8 @@
             <v-card-title class="headline">Bed probes check wizard</v-card-title>
             <v-card-text>
                 <p>Step {{ step + 1 }}</p>
+                <p>W/o weight: {{ valueWithoutWeight }}</p>
+                <p>First value with weight: {{ firstValueWithWeight }}</p>
                 <div v-if="step == 0">
                     <p>Remove any possible weights from the bed and click "Check empty weight"</p>
                     <v-btn block color="primary" @click="sendAnalogProbeCommand()">Bed is empty, continue</v-btn>
@@ -187,9 +189,9 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
     }
 
 
-    waitForChange() {
+    waitToNoWeight() {
         this.waitingForChange = true;
-        this.lastValBeforeChange = this.lastVal;
+        this.lastValBeforeChange = this.valueWithoutWeight;
     }
     get socketResponses() {
         return this.$store.state.trilab.socketResponses;
@@ -208,27 +210,30 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
             /// get the value after = and before ,
             const equalsIndex = lastResponse.indexOf("=");
             const commaIndex = lastResponse.indexOf(",");
-            const neededValue = lastResponse.substring(equalsIndex + 1, commaIndex);
-            this.lastVal = parseInt(neededValue);
+            const parsedValue = lastResponse.substring(equalsIndex + 1, commaIndex);
+            this.lastVal = parseInt(parsedValue);
 
-            if(Math.abs(parseInt(neededValue) - this.lastValBeforeChange) > 300 && this.lastValBeforeChange != null){
+            if(Math.abs(parseInt(parsedValue) - this.lastValBeforeChange) < 80 && this.lastValBeforeChange != null){
                 this.waitingForChange = false;
-                console.log("waiting for change reset because of difference of" + this.lastValBeforeChange + " : vs now : " + neededValue);
+                console.log("waiting for change reset because of difference of" + this.lastValBeforeChange + " : vs now : " + parsedValue);
             }
 
             if(this.waitingForChange){
                 console.log("waiting for change");
+                console.log("last val before change: " + this.lastValBeforeChange);
+                console.log("val now: " + parsedValue);
+                console.log("needs to be less than 80 difference");
                 return false;
             }
 
 
             if (this.step == 0) {
                 /// set the value to the valueWithoutWeight
-                this.valueWithoutWeight = parseInt(neededValue);
+                this.valueWithoutWeight = parseInt(parsedValue);
                 this.step = 1;
             } else if (this.step == 1) {
                 /// check if the value was changed significantly (more than 150)
-                if (Math.abs(this.valueWithoutWeight - parseInt(neededValue)) < 150) {
+                if (Math.abs(this.valueWithoutWeight - parseInt(parsedValue)) < 150) {
                     /// toast that the probe is not working, not registered any weight
                     if (this.checkRetries > this.maxCheckRetries) {
                         this.$toast.error("Probe is not working, registered no change");
@@ -236,33 +241,33 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
                     }
 
                 } else {
-                    this.firstValueWithWeight = parseInt(neededValue);
+                    this.firstValueWithWeight = parseInt(parsedValue);
                     if (this.firstValueWithWeight < 2390 && this.checkRetries > this.maxCheckRetries) {
-                        this.$toast.error("Probe is not working, sensor value under 2390. Try something heavier or sensor is not working");
+                        this.$toast.error("Probe A is not working, sensor value under 2390. Try something heavier or sensor is not working");
                         this.fail();
                     }
-                    this.waitForChange();
+                    this.waitToNoWeight();
                     this.step = 2;
                 }
             } else if (this.step == 2) {
                 /// check if the value was changed more than 70 from the first reading, if yes, then fail, if no, then step 3
-                if (Math.abs(this.firstValueWithWeight - parseInt(neededValue)) > 70) {
+                if (Math.abs(this.firstValueWithWeight - parseInt(parsedValue)) > 70) {
                     /// toast
                     if (this.checkRetries > this.maxCheckRetries) {
-                        this.$toast.error("Probe is not working, more than 70 difference in readings. Please check the sensor and try again." + "Current value: " + neededValue + " First value with weight: " + this.firstValueWithWeight);
+                        this.$toast.error("Probe B is not working, more than 70 difference from first weight reading. Be sure to use same weight object. Please check the sensor and try again." + "Current value: " + parsedValue + " First value with weight: " + this.firstValueWithWeight);
                         this.fail();
                     }
                 } else {
-                    this.waitForChange();
+                    this.waitToNoWeight();
                     this.step = 3;
                 }
 
             } else if (this.step == 3) {
                 /// check if the value was changed significantly (more than 100)
-                if (Math.abs(this.firstValueWithWeight - parseInt(neededValue)) > 70) {
+                if (Math.abs(this.firstValueWithWeight - parseInt(parsedValue)) > 70) {
                     /// toast
                     if (this.checkRetries > this.maxCheckRetries) {
-                        this.$toast.error("Probe C is not working, more than 70 difference in readings. Please check the sensor and try again." + "Current value: " + neededValue + " First value with weight: " + this.firstValueWithWeight);
+                        this.$toast.error("Probe C is not working, more than 70 difference in readings. Please check the sensor and try again." + "Current value: " + parsedValue + " First value with weight: " + this.firstValueWithWeight);
                         this.fail();
                     }
                 } else {

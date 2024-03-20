@@ -61,15 +61,15 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
             "returnKey": "extruderCheck"
         },
         "Bed": {
-            "tempTo": 70,
+            "tempTo": 150,
             "minValueToStartTest": 50,
-            "maxTimeAllowed": 120000,
+            "maxTimeAllowed": 600000,
             "returnKey": "bedCheck"
         },
         "Panels": {
-            "tempTo": 70,
+            "tempTo": 90,
             "minValueToStartTest": 50,
-            "maxTimeAllowed": 180000,
+            "maxTimeAllowed": 1600000,
             "returnKey": "panelCheck"
         }
     }
@@ -105,7 +105,9 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
         return null;
 
     }
-
+    get targetHeaterBedFromTemperatureObjects() {
+        return this.temperatureObjects.find((sensor: any) => sensor.name == "heater_bed");
+    }
 
     public initialization() {
 
@@ -141,6 +143,9 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
         }
         if (this.targetHeaterFromTemperatureObjects?.temperature < this.configObject.minValueToStartTest && !this.startedHeatingFromWizard) {
             this.setTemp(this.targetHeaterFromTemperatureObjects, this.configCheckSettings[this.heaterType].tempTo);
+            if(this.heaterType == "Panels"){
+                this.setTemp(this.targetHeaterBedFromTemperatureObjects, 140);
+            }
             this.startedHeatingFromWizard = true;
             this.heatingStartTime = new Date().getTime();
             this.step = 1;
@@ -156,7 +161,7 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
         if (newValue >= this.configCheckSettings[this.heaterType].tempTo) {
             clearTimeout(this.targetTempCheckTimeoutRef);
             this.success();
-            this.$toast.success("Temperature reached in time");
+            this.$toast.success("Temperature (" + this.heaterType + ") reached in time");
         }
         if (this.heatingStartTime + this.configCheckSettings[this.heaterType].maxTimeAllowed < new Date().getTime()) {
             console.log("time is up why? Time now:");
@@ -206,6 +211,9 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
         console.log("close resetting");
         if (this.startedHeatingFromWizard) {
             this.setTemp(this.targetHeaterFromTemperatureObjects, 0); ///auto cool down if heating  was started from this wizard
+            if(this.heaterType == "Panels"){
+                this.setTemp(this.targetHeaterBedFromTemperatureObjects, 0); /// also cool off the bed
+            }
         }
         this.startedHeatingFromWizard = false;
         this.step = 0;

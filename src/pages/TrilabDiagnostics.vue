@@ -12,6 +12,16 @@
                 <v-col cols="12" md="12" sm="12" class="pa-3 mt-3">
 
                     <div v-if="activeTab == 'basic'">
+                        <div class="pa-4">
+                            <v-btn color="primary" class="mr-2" :loading="testAllInProgress"
+                                :disabled="testAllInProgress" @click="testAll()">Run all tests</v-btn>
+
+                            <v-btn color="primary" class="mr-2"
+                                :disabled="testAllInProgress || (currentStep == null || currentStep == 'heatbreakfan')" @click="resumeTestAll()">Resume from last</v-btn>
+
+
+                        </div>
+
                         <v-row v-if="heatbreakfanPresent" align="center">
                             <v-col class="justify-center" cols="6">Fan - speed control</v-col>
                             <v-col cols="1">
@@ -129,6 +139,28 @@
                         </v-row>
 
 
+                        <v-row align="center">
+                            <v-col cols="6">Filament sensor check</v-col>
+                            <v-col cols="1">
+                                <v-btn color="primary" class="mr-2" @click="filamentDialogOpen = true;">Test</v-btn>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-icon color="success" v-if="testResults.filamentCheck == 1">{{ mdiCheckCircle
+                                    }}</v-icon>
+                                <v-icon color="red" v-if="testResults.filamentCheck == 0">{{ mdiCross }}</v-icon>
+                            </v-col>
+
+                            <trilab-diagnostics-filament-sensor-dialog :showp="filamentDialogOpen"
+                                @close="filamentDialogOpen = false"
+                                @catchResult="catchResult"></trilab-diagnostics-filament-sensor-dialog>
+
+
+                        </v-row>
+
+
+
+
+
                         <!--- ENDSTOPS CHECK  ---->
                         <v-row align="center">
                             <v-col cols="6">Endstops Check</v-col>
@@ -222,6 +254,27 @@
                         <!--- END EXTRUDER TEMPERATURE RISE CHECK  ---->
 
 
+                        <!--- EMERGENCY STOP RESET CHECK ---->
+
+
+
+
+
+                        <!--- END EMERGENCY STOP RESET CHECK --->
+                        <v-row align="center">
+                            <v-col cols="6">Emergency stop reset check</v-col>
+                            <v-col cols="1">
+                                <v-btn color="primary" class="mr-2" @click="setEmergencyStopCheckStart()">Test</v-btn>
+                            </v-col>
+                            <v-col cols="5">
+                                <v-icon color="success" v-if="testResults.emergencyStopCheck == 1">{{ mdiCheckCircle
+                                    }}</v-icon>
+                                <v-icon color="red" v-if="testResults.emergencyStopCheck == 0">{{ mdiCross }}</v-icon>
+                            </v-col>
+                        </v-row>
+
+
+
 
                         <!---<miscellaneous-panel></miscellaneous-panel>--->
                         <miscellaneous-panel v-if="false"></miscellaneous-panel>
@@ -238,11 +291,14 @@ import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
 import TrilabDiagnosticsProbesDialog from '@/components/dialogs/TrilabDiagnosticsProbesDialog.vue';
 import TrilabDiagnosticsEndstopsTestDialog from '@/components/dialogs/TrilabDiagnosticsEndstopsTestDialog.vue'
+import TrilabDiagnosticsFilamentSensorDialog from '@/components/dialogs/TrilabDiagnosticsFilamentSensorDialog.vue'
 import { mdiCog, mdiPackageVariantClosed, mdiAlphaBBox, mdiCheckCircle, mdiCloseOctagon } from '@mdi/js'
 @Component({
     components: {
         TrilabDiagnosticsEndstopsTestDialog,
         TrilabDiagnosticsProbesDialog,
+        TrilabDiagnosticsFilamentSensorDialog,
+
 
         //TrilabDeltaCalibrationWizard,
 
@@ -251,17 +307,22 @@ import { mdiCog, mdiPackageVariantClosed, mdiAlphaBBox, mdiCheckCircle, mdiClose
 export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
 
 
+
+
     mdiCheckCircle = mdiCheckCircle;
     mdiCross = mdiCloseOctagon;
 
     public printflapTestDialogOpen = false;
     public chamberflapTestDialogOpen = false;
 
+
     public endStopsData = "";
     public endstopACheckDialogOpen = false;
     public endstopBCheckDialogOpen = false;
     public endstopCCheckDialogOpen = false;
 
+
+    public filamentDialogOpen = false;
 
     /// loadings
     public fanTestLoading = false;
@@ -278,26 +339,234 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
 
     public endstopsOpenCheckDialog = false;
 
+    public testOrder = ["heatbreakfan", "chamberflap", "printflap", "usb", 'filamentCheck', "endstopsOpenState", "bedProbes", "extruderCheck", "bedCheck", "panelCheck", 'emergencyStopCheck']
+
     public testResults: any = {
-        "fan": -1,
         "heatbreakfan": -1,
         "chamberflap": -1,
         "printflap": -1,
         "usb": -1,
+        'filamentCheck': -1,
         "bedProbes": -1,
         "endstopsOpenState": -1,
-        "endstopAOpenState": -1,
-        "endstopBOpenState": -1,
-        "endstopCOpenState": -1,
         "extruderCheck": -1,
         "bedCheck": -1,
         "panelCheck": -1,
+        'emergencyStopCheck': -1,
     }
+
+    /// okAllTest///
+
+    @Watch('getTestResults', { deep: true, immediate: true })
+    onTestResultsChange(newValue: any, oldValue: any) {
+        console.log("testResults changed");
+        console.log("new Value: ");
+        console.log(newValue);
+        console.log("old Value: ");
+        console.log(oldValue);
+        console.log(this.getTestResults);
+        if (this.testAllInProgress) {
+            console.log("testAllInProgress is true");
+            /// if it is running, then check last step that has 1 and if 
+            console.log("currentStep is " + this.currentStep + " and it is " + this.testResults[this.currentStep]);
+            if (this.testResults[this.currentStep] == 1) {
+                /// test was done sucessfully, set next step to DB and handle it here
+                let nextStep = this.testOrder[this.testOrder.indexOf(this.currentStep) + 1];
+                console.log("test was done sucessfully, setting next step to: " + nextStep);
+                this.setCurrentStep(nextStep);
+
+                var currentIndexInOrder = this.testOrder.indexOf(this.currentStep);
+                if (currentIndexInOrder == this.testOrder.length - 1) {
+                    /// we are at the end of the test
+                    this.testAllInProgress = false;
+                    this.testResults.allCheck = 1;
+                    return;
+                }
+                this.resumeTestAll();
+
+
+
+
+
+
+            } else {
+                /// test was unsuccesfull, we have to stop the testing for now
+                this.testAllInProgress = false;
+            }
+        }
+    }
+
+    public currentStep: any = null;
+    public testAllInProgress = false;
+
+    get getTestResults() {
+        return Object.assign({}, this.testResults)
+    }
+
+    created() {
+        this.init();
+    }
+    async init() {
+        this.currentStep = await this.getCurrentStep();
+        /// check if current step exists in the testOrder array, if not set it to first
+        if (this.currentStep != null && this.testOrder.includes(this.currentStep)) {
+            console.log("current step is " + this.currentStep);
+        } else {
+            this.currentStep = this.testOrder[0];
+        }
+
+        /// get testResults from db
+        let testResults = await fetch(this.dbUrl("testResults"));
+        if (testResults.status != 200) {
+            console.log("testResults not found");
+        } else {
+            let testResultsJson = await testResults.json();
+            this.testResults = JSON.parse(testResultsJson.result.value);
+        }
+
+
+        /// try to get emergency stop check start time
+        let emergencyStopCheckStart = await fetch(this.dbUrl("emergencyStopCheckStart"));
+        if (emergencyStopCheckStart.status != 200) {
+            console.log("emergencyStopCheckStart not found");
+        } else {
+            let emergencyStopCheckStartJson = await emergencyStopCheckStart.json();
+            let emergencyStopCheckStartValue = emergencyStopCheckStartJson.result.value;
+            if (emergencyStopCheckStartValue != null) {
+                let currentTime = new Date().getTime();
+                let difference = currentTime - emergencyStopCheckStartValue;
+                if (difference < 30000) { /// 30 sekund max
+                    this.testResults.emergencyStopCheck = 1;
+                    /// delete the value from db
+                    fetch(this.dbUrl("emergencyStopCheckStart", ""), { method: 'DELETE' });
+                } else {
+                    this.testResults.emergencyStopCheck = 0;
+                }
+            }
+        }
+
+    }
+    get runOrResumeText() {
+        if (this.testAllInProgress || (this.currentStep != 'heatbreakfan' && this.currentStep != null)) {
+            console.log(this.currentStep);
+            return "Resume";
+        } else {
+            return "Run";
+        }
+    }
+
+    testAll() {
+        /// post to db, run from first
+        /// change the value of all tests to -1
+        for (const key in this.testResults) {
+            this.testResults[key] = -1;
+        }
+        this.testAllInProgress = true;
+        fetch(this.dbUrl("step", "heatbreakfan"), { method: 'POST' }); /// save it from the start now with the next step
+        this.resumeTestAll();
+    }
+
+    resumeTestAll() {
+        if (this.currentStep == null || this.currentStep == "") {
+            this.currentStep = 'heatbreakfan';
+        }
+        if (this.currentStep == 'heatbreakfan') {
+            this.testFan(1);
+        } else
+            if (this.currentStep == 'chamberflap') {
+                this.chamberflapTestDialogOpen = true;
+                this.testChamberFlapIntake(1);
+            } else
+                if (this.currentStep == 'printflap') {
+                    this.printflapTestDialogOpen = true;
+                    this.testPrintFlap(1);
+                } else
+                    if (this.currentStep == 'usb') {
+                        this.usbTestDialogOpen = true;
+                    } else
+                        if (this.currentStep == 'bedProbes') {
+                            this.BedProbesCheckingDialog = true;
+                        } else
+                            if (this.currentStep == 'endstopsOpenState') {
+                                this.endstopACheckDialogOpen = true;
+                            } else
+                                if (this.currentStep == 'extruderCheck') {
+                                    this.temperatureRiseDialogExtruder = true;
+                                } else
+                                    if (this.currentStep == 'bedCheck') {
+                                        this.temperatureRiseDialogBed = true;
+                                    } else
+                                        if (this.currentStep == 'panelCheck') {
+                                            this.temperatureRiseDialogChamber = true;
+                                        } else if (this.currentStep == 'filamentCheck') {
+                                            this.filamentDialogOpen = true;
+                                        }
+
+
+
+    }
+
+    get allSucessfull() {
+        /// all values except allCheck are 1
+        for (const key in this.testResults) {
+            if (this.testResults[key] != 1) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+
+    ///!okAllTest///
 
 
     openEndStopsOpenDialog() {
 
     }
+
+    dbUrl(key: string = "", value: string = "") {
+        var toReturn = this.$store.getters['socket/getUrl'] + '/server/database/item?namespace=trilabdiagnostics';
+        if (key != "") {
+            toReturn = toReturn + "&key=" + key;
+        }
+        if (value != "") {
+            toReturn = toReturn + "&value=" + value;
+        }
+
+        return toReturn;
+    }
+
+    public summaryTestLastStep = null;
+
+    async getCurrentStep() {
+        let step = await fetch(this.dbUrl("step"));
+        if (step.status != 200) {
+            return null;
+        } else {
+            let stepjson = await step.json();
+            console.log("toto je step: ");
+            console.log(step);
+            return stepjson.result.value;
+        }
+
+    }
+
+    async setEmergencyStopCheckStart() {
+        /// we must add current time to the database
+        await fetch(this.dbUrl("emergencyStopCheckStart", new Date().getTime().toString()), { method: 'POST' });
+        /// after the time is set, we have to do the emergency stop
+        this.$socket.emit('printer.emergency_stop', {}, { loading: 'topbarEmergencyStop' });
+    }
+
+
+    async setCurrentStep(step: string) {
+        this.currentStep = step;
+        //// save current testResults to db
+        fetch(this.dbUrl("testResults", JSON.stringify(this.testResults)), { method: 'POST' });
+        return await fetch(this.dbUrl("step", step), { method: 'POST' });
+    }
+
 
 
     sendGcode(gcode: string) {
@@ -309,6 +578,9 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
     }
 
     catchResult(key: string, value: number) {
+        if (value == 0) {
+            this.testAllInProgress = false;
+        }
         this.testResults[key] = value;
     }
 
@@ -318,8 +590,8 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         //console.log("testChamberFlapIntake");
         //console.log(this.chamberIntakeFlapPresent[0]);
         let speed = 1;
-        if (power >0.5) { speed = 0; }
-        if(power <= 0.5) { speed = 1; }
+        if (power > 0.5) { speed = 0; }
+        if (power <= 0.5) { speed = 1; }
         console.log("setting speed to " + speed);
 
         const gcode = `SET_FAN_SPEED FAN=intake_flap SPEED=${speed}`
@@ -374,20 +646,6 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
             }, 5000);
         }
     }
-    testHeatbreakFan(status: number) {
-        /// we have to heat the hotend to 50 degrees
-        let speed = 0.5;
-        if (status == 0) { speed = 0; }
-        //console.log("testHeatbreakFan");
-        const fan = this.heatbreakfanPresent;
-        if (fan.length == 0) {
-            //console.log("heatbreak fan not present");
-            return;
-        }
-        const setspeed = speed * fan[0].scale;
-        const gcode = `HEATER_FAN_SET_SPEED FAN=heatbreak_fan SPEED=0.5`
-        this.sendGcode(gcode)
-    }
 
 
     public activeTab = "delta";
@@ -419,16 +677,16 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         /// filter this store files filetree - that is list with objects. It has childrens[], disk_usage, filename,isDirectory (bool), modified, permissions
         /// therefore count every filetree and their childrens and their childrens if the filename starts with usb and isDirectory == true
         const filetree = this.$store.state.files.filetree ?? [];
-        let duplicityCheck :Array<string> = [];
-        
-        
+        let duplicityCheck: Array<string> = [];
+
+
 
 
         let usbNumber = 0;
         for (let i = 0; i < filetree.length; i++) {
 
             const element = filetree[i];
-            if(element.filename != "gcodes"){
+            if (element.filename != "gcodes") {
                 continue;
             }
             if (element.filename.startsWith("usb") && element.isDirectory && element.modified == 0) {
@@ -440,7 +698,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
                 for (let j = 0; j < element.childrens.length; j++) {
                     const element2 = element.childrens[j];
                     if (element2.filename.startsWith("usb") && element2.isDirectory && element2.modified == 0) {
-                        if(duplicityCheck.includes(element.filename + element2.filename)) {
+                        if (duplicityCheck.includes(element.filename + element2.filename)) {
                             continue;
                         }
                         usbNumber++;
