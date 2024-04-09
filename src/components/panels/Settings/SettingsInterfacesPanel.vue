@@ -12,7 +12,7 @@
 
 		<!---- INTERFACES (LIST OF ALL INTERFACES) ----->
 		<v-container v-if="activeView == 'interface_list'" class="">
-			<h3>{{ $t('Panels.TrilabSettingsInterfaces.Interfaces') }}</h3>
+			<h3>{{ $t('App.Trilab.Panels.TrilabSettingsInterfaces.Interfaces') }}</h3>
 			<v-list>
 				<template v-for="(i, index) in interfaces">
 					<v-subheader v-if="i.header" :key="'interfaceheader' + index" v-text="i.header"></v-subheader>
@@ -27,12 +27,12 @@
 							<v-list-item-subtitle>
 								<small v-if="i.GENERAL.TYPE == 'wifi'">SSID: {{ i.GENERAL.CONNECTION }}<br></small>
 								<div v-if="'IP4' in i">
-									<small v-if="'ADDRESS' in i.IP4">{{ $t('Panels.TrilabSettingsInterfaces.IP4addresses')
+									<small v-if="'ADDRESS' in i.IP4">{{ $t('App.Trilab.Panels.TrilabSettingsInterfaces.IP4addresses')
 									}}: {{
 	i.IP4.ADDRESS.join(',') }}<br></small>
 								</div>
 								<div v-if="'IP6' in i">
-									<small v-if="'ADDRESS' in i.IP6">{{ $t('Panels.TrilabSettingsInterfaces.IP6addresses')
+									<small v-if="'ADDRESS' in i.IP6">{{ $t('App.Trilab.Panels.TrilabSettingsInterfaces.IP6addresses')
 									}}: {{
 	i.IP6.ADDRESS.join(',') }}<br></small>
 									<small>MAC: {{ i.GENERAL.HWADDR }}</small>
@@ -71,18 +71,18 @@
 					<v-btn block @click="listWifi()" v-if="selectedInterface.GENERAL.TYPE == 'wifi'"> <v-icon class="mr-2">
 							{{
 								mdiWifiPlus }}</v-icon>
-						{{ $t('Panels.TrilabSettingsInterfaces.connectWifi') }}
+						{{ $t('App.Trilab.Panels.TrilabSettingsInterfaces.connectWifi') }}
 					</v-btn>
 				</v-col>
 				<v-col>
 					<v-btn block @click="addProfile()" :loading="addProfileLoading"> <v-icon class="mr-1"> {{ mdiPlus
 					}}</v-icon>
-						{{ $t('Panels.TrilabSettingsInterfaces.AddProfile') }}
+						{{ $t('App.Trilab.Panels.TrilabSettingsInterfaces.AddProfile') }}
 					</v-btn>
 				</v-col>
 			</v-row>
 
-			<h3>{{ $t('Panels.TrilabSettingsInterfaces.ProfilesIn') }} {{ selectedInterface.GENERAL.DEVICE }}</h3>
+			<h3>{{ $t('App.Trilab.Panels.TrilabSettingsInterfaces.ProfilesIn') }} {{ selectedInterface.GENERAL.DEVICE }}</h3>
 
 			<v-list>
 				<template v-for="(i, index) in selectedInterface.CONNECTIONS['AVAILABLE-CONNECTIONS']">
@@ -96,9 +96,9 @@
 							<v-list-item-title v-html="i.NAME"></v-list-item-title>
 							<v-list-item-subtitle>
 								<small style="color:lime" v-if="i.ACTIVE == 'yes'">{{
-									$t('Panels.TrilabSettingsInterfaces.ProfileActive')
+									$t('App.Trilab.Panels.TrilabSettingsInterfaces.ProfileActive')
 								}}<br></small>
-								<small v-if="i.ACTIVE == 'no'">{{ $t('Panels.TrilabSettingsInterfaces.ProfileInactive')
+								<small v-if="i.ACTIVE == 'no'">{{ $t('App.Trilab.Panels.TrilabSettingsInterfaces.ProfileInactive')
 								}}<br></small>
 							</v-list-item-subtitle>
 						</v-list-item-content>
@@ -301,7 +301,7 @@
 					<v-col cols="12" md="6">
 						<v-btn block @click="saveChangedData()" color="success">
 							<v-icon class="mr-1">mdi-content-save</v-icon>
-							{{ $t('General.Save') }}
+							{{ $t('App.Trilab.Generic.Save') }}
 						</v-btn>
 					</v-col>
 				</v-row>
@@ -422,6 +422,12 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 
 	};
 
+
+	@Watch("activeView")
+	onActiveViewChanged() {
+		/// emit activeview
+		this.$emit('viewChange', this.activeView);
+	}
 
 	getWifiSignalIcon(bars: string, security: string) {
 

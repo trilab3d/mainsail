@@ -19,7 +19,7 @@
 
                 <div v-if="isCloseBtnVisible">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn color="primary" @click="closeReset()">{{ $t("Trilab.TrilabFilamentLoadWizard.CancelWizard")
+                    <v-btn color="primary" @click="closeReset()">{{ $t("App.Trilab.Generic.CancelWizard")
                     }}</v-btn>
                 </div>
             </v-card-text>
@@ -33,7 +33,7 @@
 import BaseMixin from '@/components/mixins/base'
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
 import TrilabMixin from '@/components/mixins/trilab';
-import { PrinterStateAdditionalSensor, PrinterStateTemperatureObject } from '@/store/printer/types'
+import { PrinterStateAdditionalSensor, PrinterStateHeater } from '@/store/printer/types'
 import { maxEventHistory, thumbnailSmallMax } from '@/store/variables';
 
 @Component
@@ -95,22 +95,24 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
     }
 
     get targetHeaterFromTemperatureObjects() {
+        let objectToReturn = null;
         if (this.heaterType == "Extruder") {
-            return this.temperatureObjects.find((sensor: any) => sensor.name == "extruder");
+            objectToReturn = this.getTrilabTemperatureObject(this.heatersObjectNames.find((sensor: any) => sensor == "extruder"));
         } else if (this.heaterType == "Bed") {
-            return this.temperatureObjects.find((sensor: any) => sensor.name == "heater_bed");
+            objectToReturn = this.getTrilabTemperatureObject(this.heatersObjectNames.find((sensor: any) => sensor == "heater_bed"));
         } else if (this.heaterType == "Panels") {
-            return this.temperatureObjects.find((sensor: any) => sensor.name == "heater_chamber");
+            objectToReturn = this.getTrilabTemperatureObject(this.heatersObjectNames.find((sensor: any) => sensor == "heater_chamber"));
         }
-        return null;
+        return objectToReturn;
 
     }
     get targetHeaterBedFromTemperatureObjects() {
-        return this.temperatureObjects.find((sensor: any) => sensor.name == "heater_bed");
+        return this.getTrilabTemperatureObject(this.heatersObjectNames.find((sensor: any) => sensor == "heater_bed"));
     }
 
     public initialization() {
-
+        console.log("initializing TEMP RISE CHECK DIALOG");
+        console.log(this.targetHeaterFromTemperatureObjects);
         if (this.targetHeaterFromTemperatureObjects == null) {
             /// error toast and closeReset
             this.$toast.error("No temperature sensor found for " + this.heaterType);
@@ -239,20 +241,23 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         }
     }
 
-    get temperatureObjects() {
-        const sensors = this.$store.getters['printer/getTemperatureObjects'] ?? []
-        return sensors.filter((sensor: PrinterStateTemperatureObject) => !sensor.name.startsWith('_'))
+    get heatersObjectNames() {
+        const sensors = this.$store.getters['printer/getAvailableHeaters'] ?? []
+
+        console.log("AVAILABLE HEATERS: ");
+        console.log(sensors);
+        return sensors;
     }
 
 
     setTemp(temperatureObject: any, targetTemp: number) {
         if (typeof temperatureObject.value === 'object') temperatureObject.value = temperatureObject.value.value ?? 0
 
-        if (targetTemp > temperatureObject.max_temp) {
+        if (targetTemp > temperatureObject.settings.max_temp) {
             this.$toast.error(
                 this.$t('Panels.TemperaturePanel.TempTooHigh', { name: temperatureObject.name, max: temperatureObject.max_temp }) + ''
             )
-        } else if (targetTemp < temperatureObject.min_temp && targetTemp != 0) {
+        } else if (targetTemp < temperatureObject.settings.min_temp && targetTemp != 0) {
             this.$toast.error(
                 this.$t('Panels.TemperaturePanel.TempTooLow', { name: temperatureObject.name, min: temperatureObject.min_temp }) + ''
             )

@@ -3,34 +3,34 @@
         <v-row class="pa-3" :dense="$vuetify.breakpoint.mobile">
             <v-col cols="12" md="12" sm="12">
                 <v-card elevation="25">
-                    <v-card-title>{{ $t("Trilab.SettingsTrilabTab.System") }}</v-card-title>
+                    <v-card-title>{{ $t("App.Trilab.SettingsTrilabTab.System") }}</v-card-title>
                     <v-card-text>
                         <v-row>
-                            <v-col>{{ $t("Trilab.SettingsTrilabTab.SystemVersion") }} </v-col>
+                            <v-col>{{ $t("App.Trilab.SettingsTrilabTab.SystemVersion") }} </v-col>
                             <v-col>{{ hostStats.os }}</v-col>
                         </v-row>
                         <v-row>
-                            <v-col>{{ $t("Trilab.SettingsTrilabTab.UpdateChannelTitle") }} </v-col>
+                            <v-col>{{ $t("App.Trilab.SettingsTrilabTab.UpdateChannelTitle") }} </v-col>
                             <v-col>
                                 {{ $store.state.trilab.settings.release_channel }}
                             </v-col>
                         </v-row>
                         <v-row v-if="TrilabServiceView">
-                            <v-col>{{ $t("Trilab.SettingsTrilabTab.WenInterfaceVersion") }} </v-col>
+                            <v-col>{{ $t("App.Trilab.SettingsTrilabTab.WenInterfaceVersion") }} </v-col>
                             <v-col>1.0.1 (Build date: 30.01.2024)</v-col>
                         </v-row>
                         <v-row justify="center" align="center">
-                            <v-col>{{ $t("Trilab.SettingsTrilabTab.AutomaticCheckForUpdates") }} </v-col>
+                            <v-col>{{ $t("App.Trilab.SettingsTrilabTab.AutomaticCheckForUpdates") }} </v-col>
                             <v-col>
                                 <v-switch v-model="$store.state.trilab.settings.automatic_check_update"></v-switch>
                             </v-col>
                         </v-row>
                         <v-row justify="center" align="center">
-                            <v-col>{{ $t("Trilab.SettingsTrilabTab.UploadUpdateFile") }}</v-col>
+                            <v-col>{{ $t("App.Trilab.SettingsTrilabTab.UploadUpdateFile") }}</v-col>
                             <v-col>
                                 <v-btn color="primary" block dark :loading="isSelecting" @click="handleFileImport"
                                     class="mt-3">
-                                    {{ $t("Trilab.SettingsTrilabTab.Upload") }}
+                                    {{ $t("App.Trilab.SettingsTrilabTab.Upload") }}
                                 </v-btn>
                                 <input ref="fileInputUpdate" class="d-none" type="file" @change="onFileSelected">
                             </v-col>
@@ -39,7 +39,7 @@
                             <v-col>
                                 <v-btn color="primary" block dark :loading="checkingForUpdate" @click="checkForUpdate()"
                                     class="mt-3">
-                                    {{ $t("Trilab.SettingsTrilabTab.CheckForLiveUpdate") }}
+                                    {{ $t("App.Trilab.SettingsTrilabTab.CheckForLiveUpdate") }}
                                 </v-btn>
                             </v-col>
                         </v-row>
@@ -102,7 +102,7 @@ export default class SettingsTrilabTab extends Mixins(BaseMixin, TrilabMixin) {
         if (result.update_status != "UP_TO_DATE") {
             this.$store.commit('trilab/setData', { showLiveUpdateDialog: true })
         } else {
-            this.$toast.info(this.$t("Trilab.SettingsTrilabTab.NoUpdateAvailable").toString() );
+            this.$toast.info(this.$t("App.Trilab.SettingsTrilabTab.NoUpdateAvailable").toString() );
         }
         this.checkingForUpdate = false;
     }

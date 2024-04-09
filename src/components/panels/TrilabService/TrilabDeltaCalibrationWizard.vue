@@ -495,7 +495,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 		(window as any)["printerStateIntervalDebug"] = setInterval(function () {
 			const idle_timeout_state = thisref.$store.state.printer.idle_timeout?.state
-			console.log("printerState: " + thisref.printer_state + " idle_timeout_state: " + idle_timeout_state)
+			//console.log("printerState: " + thisref.printer_state + " idle_timeout_state: " + idle_timeout_state)
 		}, 1000)
 	}
 

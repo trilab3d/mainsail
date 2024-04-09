@@ -12,23 +12,23 @@
                 </template>
             </router-link>
             <v-toolbar-title class="text-no-wrap ml-0 pl-2 mr-2">{{ printerName }}</v-toolbar-title>
-            <printer-selector v-if="countPrinters"></printer-selector>
+            <printer-selector v-if="countPrinters" />
             <v-divider
                 v-if="$store.state.trilab.advancedView || $store.state.trilab.hiddenView || $store.state.trilab.serviceView"
                 class="mx-2" vertical></v-divider>
             <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
                 <v-icon class="d-md-none">{{ mdiPaletteAdvanced }}</v-icon>
-                <b class="hidden-md-and-down">{{ $t('App.TopBar.ViewStatus.Advanced') }}</b>
+                <b class="hidden-md-and-down">{{ $t('App.Trilab.TheTopBar.AdvancedViewEnabled') }}</b>
             </v-chip>
             <v-chip v-if="$store.state.trilab.hiddenView" color="#31FF3C">
-                <b>{{ $t("Trilab.TheTopbar.HiddenViewEnbled") }}</b>
+                <b>{{ $t("App.Trilab.TheTopbar.HiddenViewEnbled") }}</b>
             </v-chip>
             <v-chip v-if="$store.state.trilab.serviceView" color="#FF4820">
-                <b>{{ $t("Trilab.TheTopbar.ServiceViewEnabled") }}</b>
+                <b>{{ $t("App.Trilab.TheTopbar.ServiceViewEnabled") }}</b>
             </v-chip>
             <v-divider v-if="liveUpdateStatus != 'UP_TO_DATE'" class="mx-2" vertical></v-divider>
             <v-chip v-if="liveUpdateStatus != 'UP_TO_DATE'" color="#FFA500" @click="showLiveUpdateDialogAction()">
-                <b> {{ $t('TrilabLiveUpdate.statuses.' + liveUpdateStatus) }} </b>
+                <b> {{ $t('App.Trilab.TrilabLiveUpdate.statuses.' + liveUpdateStatus) }} </b>
             </v-chip>
 
             <v-spacer></v-spacer>
@@ -46,7 +46,7 @@
                 color="primary" :disabled="['printing'].includes(printer_state)"
                 class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button" @click="doHome">
                 <v-icon class="mr-md-2">{{ mdiHome }}</v-icon>
-                <span class="d-none d-md-inline">{{ $t('App.TopBar.HomeBtn') }}</span>
+                <span class="d-none d-md-inline">{{ $t('App.Trilab.TheTopBar.HomeBtn') }}</span>
             </v-btn>
             <v-btn v-if="boolShowUploadAndPrint" tile :icon="$vuetify.breakpoint.smAndDown"
                 :text="$vuetify.breakpoint.mdAndUp" color="primary"
@@ -61,11 +61,11 @@
                 <v-icon class="mr-md-2">{{ mdiAlertOctagonOutline }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.EmergencyStop') }}</span>
             </v-btn>
-            <the-notification-menu v-if="TrilabServiceView == true"></the-notification-menu>
-            <the-settings-menu></the-settings-menu>
-            <the-top-corner-menu></the-top-corner-menu>
+            <the-notification-menu v-if="TrilabServiceView == true" />
+            <the-settings-menu />
+            <the-top-corner-menu />
         </v-app-bar>
-        <v-snackbar v-model="uploadSnackbar.status" :timeout="-1" :value="true" fixed right bottom dark>
+        <v-snackbar v-model="uploadSnackbar.status" :timeout="-1" :value="true" fixed right bottom>
             <strong>{{ $t('App.TopBar.Uploading') }} {{ uploadSnackbar.filename }}</strong>
             <br />
             {{ Math.round(uploadSnackbar.percent) }} % @ {{ formatFilesize(Math.round(uploadSnackbar.speed)) }}/s
@@ -78,7 +78,7 @@
             </template>
         </v-snackbar>
         <v-dialog v-model="showEmergencyStopDialog" width="400" :fullscreen="isMobile">
-            <panel :title="$t('EmergencyStopDialog.EmergencyStop').toString()" toolbar-color="error"
+            <panel :title="$t('EmergencyStopDialog.EmergencyStop')" toolbar-color="error"
                 card-class="emergency-stop-dialog" :icon="mdiAlertOctagonOutline" :margin-bottom="false">
                 <template #buttons>
                     <v-btn icon tile @click="showEmergencyStopDialog = false">
@@ -87,7 +87,7 @@
                 </template>
                 <v-card-text>{{ $t('EmergencyStopDialog.AreYouSure') }}</v-card-text>
                 <v-card-actions>
-                    <v-spacer></v-spacer>
+                    <v-spacer />
                     <v-btn text @click="showEmergencyStopDialog = false">{{ $t('EmergencyStopDialog.No') }}</v-btn>
                     <v-btn color="primary" text @click="emergencyStop">{{ $t('EmergencyStopDialog.Yes') }}</v-btn>
                 </v-card-actions>
@@ -109,7 +109,7 @@ import BaseMixin from '@/components/mixins/base'
 import TrilabMixin from './mixins/trilab'
 import { validGcodeExtensions } from '@/store/variables'
 import Component from 'vue-class-component'
-import axios from 'axios'
+import axios, { AxiosProgressEvent } from 'axios'
 import { formatFilesize } from '@/plugins/helpers'
 import TheTopCornerMenu from '@/components/TheTopCornerMenu.vue'
 import TheSettingsMenu from '@/components/TheSettingsMenu.vue'
@@ -265,7 +265,26 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         )
     }
 
+    get defaultNavigationStateSetting() {
+        return this.$store.state.gui?.uiSettings?.defaultNavigationStateSetting ?? 'alwaysOpen'
+    }
 
+    mounted() {
+        //this.naviDrawer = this.$vuetify.breakpoint.lgAndUp
+        switch (this.defaultNavigationStateSetting) {
+            case 'alwaysClosed':
+                this.naviDrawer = false
+                break
+
+            case 'lastState':
+                this.naviDrawer = (localStorage.getItem('naviDrawer') ?? 'true') === 'true'
+                break
+
+            default:
+                this.naviDrawer = this.$vuetify.breakpoint.lgAndUp
+        }
+
+    }
     showLiveUpdateDialogAction() {
         this.showLiveUpdateDialog = true;
         this.$store.dispatch('trilab/setupLiveUpdateTimer', 2000);
@@ -279,9 +298,10 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         const confirmOnEmergencyStop = this.$store.state.gui.uiSettings.confirmOnEmergencyStop
         if (confirmOnEmergencyStop) {
             this.showEmergencyStopDialog = true
-        } else {
-            this.emergencyStop()
+            return
         }
+
+        this.emergencyStop()
     }
 
     emergencyStop() {
@@ -338,18 +358,10 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
                 .post(this.apiUrl + '/server/files/upload', formData, {
                     cancelToken: this.uploadSnackbar.cancelTokenSource.token,
                     headers: { 'Content-Type': 'multipart/form-data' },
-                    onUploadProgress: (progressEvent: ProgressEvent) => {
-                        this.uploadSnackbar.percent = (progressEvent.loaded * 100) / progressEvent.total
-                        if (this.uploadSnackbar.lastProgress.time) {
-                            const time = progressEvent.timeStamp - this.uploadSnackbar.lastProgress.time
-                            const data = progressEvent.loaded - this.uploadSnackbar.lastProgress.loaded
-
-                            if (time) this.uploadSnackbar.speed = data / (time / 1000)
-                        }
-
-                        this.uploadSnackbar.lastProgress.time = progressEvent.timeStamp
-                        this.uploadSnackbar.lastProgress.loaded = progressEvent.loaded
-                        this.uploadSnackbar.total = progressEvent.total
+                    onUploadProgress: (progressEvent: AxiosProgressEvent) => {
+                        this.uploadSnackbar.percent = (progressEvent.progress ?? 0) * 100
+                        this.uploadSnackbar.speed = progressEvent.rate ?? 0
+                        this.uploadSnackbar.total = progressEvent.total ?? 0
                     },
                 })
                 .then((result) => {
@@ -373,14 +385,13 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
 }
 </script>
 
-<style>
+<style scoped>
 /*noinspection CssUnusedSymbol*/
-.topbar .v-toolbar__content {
+::v-deep .topbar .v-toolbar__content {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
 }
-</style>
-<style scoped>
+
 .button-min-width-auto {
     min-width: auto !important;
 }

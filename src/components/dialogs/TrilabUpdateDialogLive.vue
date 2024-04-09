@@ -16,11 +16,11 @@
                         {{ LiveUpdateStatusObject.release_notes }}</p>
                     <v-btn v-if="liveUpdateStatus == 'UPDATE_AVAILABLE'" color="primary" block
                         :disabled="downloadUpdateDisabled" @click="downloadUpdate()">{{
-                            $t('TrilabLiveUpdate.Buttons.DownloadUpdate') }}</v-btn>
+                            $t('App.Trilab.TrilabLiveUpdate.Buttons.DownloadUpdate') }}</v-btn>
                     <div v-if="liveUpdateStatus == 'USB_UPDATE_AVAILABLE'">
                         <v-btn v-if="liveUpdateStatus == 'USB_UPDATE_AVAILABLE'" color="primary" block
                             :disabled="installUpdateDisabled" @click="installUpdate()">{{
-                                $t('TrilabLiveUpdate.Buttons.InstallFromUsb') }}</v-btn>
+                                $t('App.Trilab.TrilabLiveUpdate.Buttons.InstallFromUsb') }}</v-btn>
                     </div>
                 </div>
 
@@ -33,10 +33,10 @@
                     <p class="mt-4">Status: {{ LiveUpdateStatusObject.update_status }}</p>
                 </div>
                 <v-container v-if="liveUpdateStatus == 'INSTALLED' || liveUpdateStatus == 'USB_INSTALLED'">
-                    <p>{{ $t('TrilabLiveUpdate.restartWarning') }}</p>
-                    <p v-if="printerIsPrinting">{{ $t('TrilabLiveUpdate.printerIsPrinting') }}</p>
+                    <p>{{ $t('App.Trilab.TrilabLiveUpdate.restartWarning') }}</p>
+                    <p v-if="printerIsPrinting">{{ $t('App.Trilab.TrilabLiveUpdate.printerIsPrinting') }}</p>
                     <v-btn block color="red" :disabled="printerIsPrinting" @click="performUpdate()">{{
-                        $t('TrilabLiveUpdate.installAndRebootBtn') }}</v-btn>
+                        $t('App.Trilab.TrilabLiveUpdate.installAndRebootBtn') }}</v-btn>
 
                 </v-container>
             </v-card-text>
@@ -72,21 +72,21 @@ export default class TrilabUpdateDialog extends Mixins(BaseMixin, TrilabMixin) {
     get titleText() {
         /// if installed or usb installed, return specified strings
         if (this.liveUpdateStatus == "INSTALLED") {
-            return this.$t('TrilabLiveUpdate.Titles.Installed');
+            return this.$t('App.Trilab.TrilabLiveUpdate.Titles.Installed');
         }
         if (this.liveUpdateStatus == "USB_INSTALLED") {
-            return this.$t('TrilabLiveUpdate.Titles.UsbInstalled');
+            return this.$t('App.Trilab.TrilabLiveUpdate.Titles.UsbInstalled');
         }
         /// if there is progress, return update in progress
         if (this.LiveUpdateStatusObject.progress != -1) {
-            return this.$t('TrilabLiveUpdate.Titles.UpdateInProgress');
+            return this.$t('App.Trilab.TrilabLiveUpdate.Titles.UpdateInProgress');
         }
         /// if there is update available, return update available
         if (this.liveUpdateStatus == "UPDATE_AVAILABLE") {
-            return this.$t('TrilabLiveUpdate.Titles.UpdateAvailable');
+            return this.$t('App.Trilab.TrilabLiveUpdate.Titles.UpdateAvailable');
         }
         if (this.liveUpdateStatus == "USB_UPDATE_AVAILABLE") {
-            return this.$t('TrilabLiveUpdate.Titles.UsbUpdateAvailable');
+            return this.$t('App.Trilab.TrilabLiveUpdate.Titles.UsbUpdateAvailable');
         }
 
         return "Update";

@@ -74,6 +74,8 @@ import TrilabMixin from '@/components/mixins/trilab'
 import { GuiMacrosStateMacrogroupMacro } from '@/store/gui/macros/types'
 import { mdiCloseThick, mdiMenuDown, mdiRefresh } from '@mdi/js'
 import Panel from '@/components/ui/Panel.vue'
+import { TranslateResult } from 'vue-i18n'
+import { PrinterStateMacro } from '@/store/printer/types'
 
 interface param {
     type: 'int' | 'double' | 'string' | null
@@ -101,13 +103,13 @@ export default class MacroButton extends Mixins(BaseMixin, TrilabMixin) {
     private paramsDialog = false
 
     @Prop({ required: true })
-    declare readonly macro: GuiMacrosStateMacrogroupMacro
+    declare readonly macro: GuiMacrosStateMacrogroupMacro | PrinterStateMacro
 
     @Prop({ default: 'primary' })
     declare readonly color: string
 
     @Prop({ default: null })
-    declare readonly alias: string
+    declare readonly alias: string | TranslateResult
 
     @Prop({ default: false })
     declare readonly disabled: boolean
@@ -205,9 +207,13 @@ export default class MacroButton extends Mixins(BaseMixin, TrilabMixin) {
     sendWithParams() {
         let params: string[] = []
         this.paramArray.forEach((paramname: string) => {
-            if (this.params[paramname].value !== null && this.params[paramname].value !== '') {
+            let value = this.params[paramname].value?.toString().trim()
+
+            if (this.params[paramname].value !== null && value !== '') {
                 let tmp: string = paramname
-                tmp += this.isGcodeStyle ? this.params[paramname].value : `=${this.params[paramname].value}`
+                if (value?.includes(' ')) value = `"${value}"`
+
+                tmp += this.isGcodeStyle ? value : `=${value}`
 
                 params.push(tmp)
             }

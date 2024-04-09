@@ -26,7 +26,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
     <path style="opacity:1" fill="#e5e4e4"
         d="M 232.5,93.5 C 236.415,95.7433 239.749,98.7433 242.5,102.5C 272.54,142.283 278.707,185.95 261,233.5C 237.484,282.853 198.318,308.52 143.5,310.5C 117.043,309.736 92.7097,302.236 70.5,288C 64.9813,283.738 59.6479,279.238 54.5,274.5C 53.479,273.998 53.3123,273.332 54,272.5C 113.701,212.965 173.201,153.299 232.5,93.5 Z" />
 </g>
-</svg>`;
+</svg>`
 import {
     mdiMonitorDashboard,
     mdiWebcam,
@@ -44,6 +44,7 @@ import store from '@/store'
 
 const routes: AppRoute[] = [
     {
+        name: 'dashboard',
         title: 'Dashboard',
         path: '/',
         icon: mdiMonitorDashboard,
@@ -53,6 +54,7 @@ const routes: AppRoute[] = [
         position: 10,
     },
     {
+        name: 'farm',
         title: 'Printers',
         path: '/allPrinters',
         identificator: 'printers',
@@ -61,6 +63,7 @@ const routes: AppRoute[] = [
         showInNavi: false,
     },
     {
+        name: 'webcam',
         title: 'Webcam',
         path: '/cam',
         icon: mdiWebcam,
@@ -68,8 +71,10 @@ const routes: AppRoute[] = [
         alwaysShow: true,
         showInNavi: true,
         position: 20,
+        fullscreen: true,
     },
     {
+        name: 'console',
         title: 'Console',
         path: '/console',
         icon: mdiConsoleLine,
@@ -81,6 +86,7 @@ const routes: AppRoute[] = [
         position: 30,
     },
     {
+        name: 'heightmap',
         title: 'Heightmap',
         path: '/heightmap',
         icon: mdiGrid,
@@ -92,6 +98,7 @@ const routes: AppRoute[] = [
         position: 40,
     },
     {
+        name: 'gcodefiles',
         title: 'G-Code Files',
         path: '/files',
         icon: mdiFileDocumentMultipleOutline,
@@ -101,8 +108,10 @@ const routes: AppRoute[] = [
         identificator: 'gfiles',
         registeredDirectory: 'gcodes',
         position: 50,
+        fullscreen: true,
     },
     {
+        name: 'gcodeviewer',
         title: 'G-Code Viewer',
         path: '/viewer',
         icon: mdiVideo3d,
@@ -111,8 +120,10 @@ const routes: AppRoute[] = [
         identificator: 'gviewer',
         showInNavi: true,
         position: 60,
+        fullscreen: true,
     },
     {
+        name: 'history',
         title: 'History',
         path: '/history',
         icon: mdiHistory,
@@ -123,6 +134,7 @@ const routes: AppRoute[] = [
         position: 70,
     },
     {
+        name: 'timelapse',
         title: 'Timelapse',
         path: '/timelapse',
         icon: mdiTimelapse,
@@ -133,6 +145,7 @@ const routes: AppRoute[] = [
         position: 80,
     },
     {
+        name: 'machine',
         title: 'Machine',
         path: '/config',
         icon: mdiWrench,
@@ -143,6 +156,7 @@ const routes: AppRoute[] = [
         position: 90,
     },
     {
+        name: 'slicers',
         title: 'Slicers',
         path: '/slicers',
         iconString: iconString,
@@ -153,6 +167,7 @@ const routes: AppRoute[] = [
         position: 90,
     },
     {
+        name: 'calibration',
         title: 'Calibration',
         path: '/trilabcalibration',
         icon: mdiPencilRuler,
@@ -163,6 +178,7 @@ const routes: AppRoute[] = [
         position: 90,
     },
     {
+        name: 'diagnostics',
         title: 'Diagnostics',
         path: '/trilabdiagnostics',
         icon: mdiMedicalBag,
@@ -182,9 +198,10 @@ const routes: AppRoute[] = [
     },
 ]
 
-export default routes;
+export default routes
 
 export interface AppRoute {
+    name?: string
     title: string | null
     path: string
     redirect?: string
@@ -202,4 +219,5 @@ export interface AppRoute {
     klipperIsConnected?: boolean
     children?: AppRoute[]
     position?: number
+    fullscreen?: boolean
 }

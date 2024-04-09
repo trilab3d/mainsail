@@ -2,13 +2,13 @@
     <v-container fluid py-0 px-0>
         <v-row class="pa-3" :dense="$vuetify.breakpoint.mobile">
             <v-col cols="12" class="mx-0 px-0 py-0">
-                <settings-interfaces-panel></settings-interfaces-panel>
+                <settings-interfaces-panel @viewChange="onSIPViewChange"></settings-interfaces-panel>
             </v-col>
             <v-col cols="12" sm="12" md="12">
                 <settings-wifi-panel v-if="false"></settings-wifi-panel>
             </v-col>
             <v-col cols="12" sm="12" md="12">
-                <settings-access-password-panel v-if="true"></settings-access-password-panel>
+                <settings-access-password-panel v-if="AccessPasswordPanelVisible"></settings-access-password-panel>
             </v-col>
             <v-col cols="12" sm="12" md="6" v-if="false">
                 <settings-remote-panel></settings-remote-panel>
@@ -43,6 +43,15 @@ import store from '@/store'
 })
 export default class SettingsNetworkTab extends Mixins(BaseMixin, TrilabMixin) {
 
+    public AccessPasswordPanelVisible : boolean = true;
+
+    onSIPViewChange(view: string) {
+        if(view == "interface_list"){
+            this.AccessPasswordPanelVisible = true;
+        } else {
+            this.AccessPasswordPanelVisible = false;
+        }
+    }
 
     public digest = "";
 

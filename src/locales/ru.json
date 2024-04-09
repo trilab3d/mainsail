@@ -16,13 +16,19 @@
         "MoonrakerFailedComponentDescription": "Произошла ошибка при загрузке компонента Moonraker '{component}'. Посмотрите log-файл и исправьте ошибку.",
         "MoonrakerWarning": "Предупреждение Moonraker",
         "UnparsedConfigOption": "Нераспознанное значение в параметре '{option}: {value}' в [{section}]. Возможно, это результат сбоя загрузки модуля или параметр уже не поддерживается. В будущем, может вызывать ошибку при загрузке.",
-        "UnparsedConfigSection": "Нераспознанная секция [{section}]. Возможно, это результат сбоя загрузки модуля или параметр уже не поддерживается. В будущем, может вызывать ошибку при загрузке."
+        "UnparsedConfigSection": "Нераспознанная секция [{section}]. Возможно, это результат сбоя загрузки модуля или параметр уже не поддерживается. В будущем, может вызывать ошибку при загрузке.",
+        "MoonrakerFailedInitComponentDescription": "Обнаружена ошибка во время инициализации компонента MoonRaker «{компонент}». \nПожалуйста, проверьте файл журнала и устраните проблему.",
+        "MoonrakerInitComponent": "В этом. \nЛунный гонщик: {компонент}"
       },
       "Never": "никогда",
       "NextReboot": "следующая перезагрузка",
       "NoNotification": "Нет уведомлений",
       "Notifications": "Уведомления",
-      "Remind": "Напоминать:"
+      "Remind": "Напоминать:",
+      "BrowserWarnings": {
+        "Description": "{name} устарело и не поддерживается полностью. \nТекущая версия — {version}, но для Mainsail требуется версия {minVersion} или выше.",
+        "Headline": "Устаревший браузер"
+      }
     },
     "NumberInput": {
       "GreaterOrEqualError": "Должно быть больше или равно {min}!",
@@ -62,11 +68,7 @@
       "SAVE_CONFIG": "Сохранить конфигурацию",
       "Uploading": "Загрузка",
       "UploadOfFileSuccessful": "Загрузка {file} выполнена!",
-      "UploadPrint": "Загрузить и напечатать",
-      "LightBtn": "Свет",
-      "ViewStatus": {
-        "Advanced": "Расширенный просмотр включен"
-      }
+      "UploadPrint": "Загрузить и напечатать"
     },
     "TopCornerMenu": {
       "Cancel": "Отмена",
@@ -110,6 +112,206 @@
       "RecoveringDone": "Восстановление {software} выполнено!",
       "Updating": "Обновление {software}...",
       "UpdatingDone": "Обновление {software} выполнено!"
+    },
+    "Trilab": {
+      "TopBar": {
+        "LightBtn": "Свет"
+      },
+      "AdvancedFeatures": "",
+      "ConnectionStatus": {
+        "Mainsail": "Грот"
+      },
+      "Generic": {
+        "CancelWizard": "Отменить мастер",
+        "Download": "Скачать",
+        "Ok": "Хорошо",
+        "Save": "Сохранять",
+        "Unknown": "Неизвестный"
+      },
+      "PageNotFound": {
+        "404PageNotFound": "404 Страница не найдена"
+      },
+      "Panels": {
+        "TrilabAccessPassword": {
+          "DialogMessage": "После сохранения настроек входа веб-интерфейс перезапустится, и вам будет предложено ввести учетные данные в браузере. \nВы действительно хотите сэкономить сейчас?",
+          "DialogNoButton": "Нет",
+          "DialogYesButton": "Да",
+          "Warning": "Предупреждение",
+          "caption": "Настройки доступа",
+          "confirmPassword": "Подтвердите пароль",
+          "enablePwdControl": "Включить контроль пароля",
+          "password": "Пароль",
+          "username": "Имя пользователя"
+        },
+        "TrilabRemote": {
+          "auto_off": "Автоматическое отключение",
+          "caption": "Удаленный доступ",
+          "enable": "Давать возможность"
+        },
+        "TrilabSettingsInterfaces": {
+          "AddProfile": "Добавить профиль",
+          "IP4addresses": "IPv4-адреса",
+          "IP6addresses": "IPv6-адреса",
+          "Interfaces": "Доступные интерфейсы",
+          "ProfileActive": "Активный",
+          "ProfileInactive": "Неактивный",
+          "ProfilesIn": "Профили в",
+          "connectWifi": "Подключитесь к Wi-Fi"
+        },
+        "TrilabSlicerPanel": {
+          "notAvailableText": "Профиль слайсера недоступен для этого принтера, системной платформы или мы неправильно определили вашу систему. \nПожалуйста, свяжитесь со службой поддержки",
+          "notAvailableTitle": "Профиль среза недоступен."
+        },
+        "settingsTrilabLight": {
+          "brightness": "Яркость",
+          "caption": "Свет",
+          "enable": "Давать возможность",
+          "timeout": "Включить тайм-аут",
+          "timeoutTextFieldHint": "Тайм-аут (с)"
+        },
+        "settingsTrilabWifi": {
+          "accessPoint": "Точка доступа",
+          "caption": "Wi-Fi",
+          "client": "Клиент",
+          "confirmPassword": "Подтвердите пароль",
+          "country": "Страна",
+          "mode": "Режим",
+          "password": "Пароль",
+          "selectCountry": "Выберите страну",
+          "selectNetworkMode": "Выберите сетевой режим",
+          "ssid": "SSID"
+        },
+        "trilabSlicers": {
+          "prusa": {
+            "imgsrc": "/img/PrusaSlicer.png",
+            "longDescription": "Используйте кнопку выше, чтобы загрузить полный пакет PrusaSlicer, включая профили слайсеров. \nПосле загрузки разархивируйте архив в папку назначения. \nНа платформе Windows запустите программу «prusa-slicer.exe», на платформе MacOS запустите «PrusaSlicer.app». \nПосле запуска программы появится мастер настройки. \nПерейдите на вкладку Prusa Pro. \nВыберите Prusa Pro HT90 из списка вариантов принтера здесь. \nЗатем нажмите кнопку Готово в правом нижнем углу окна. \nТеперь слайсер готов к использованию!",
+            "longTitle": "ПрусаСлайсер 2.7.1",
+            "shortDescription": "PrusaSlicer — это многофункциональный, часто обновляемый инструмент с открытым исходным кодом, который содержит все необходимое для экспорта идеальных файлов для печати.",
+            "title": "ПрусаСлайсер"
+          }
+        }
+      },
+      "Settings": {
+        "TrilabTab": {
+          "Trilab": "Версии",
+          "TrilabLogs": "Журналы",
+          "TrilabNetwork": "Сеть",
+          "TrilabPrinter": "Принтер",
+          "TrilabSlicers": "Слайсеры"
+        }
+      },
+      "SettingsAccessPasswordPanel": {
+        "SaveBtn": "Сохранить учетные данные"
+      },
+      "SettingsTrilabPrinterTab": {
+        "AdvancedFeatures": "Расширенные возможности:"
+      },
+      "SettingsTrilabTab": {
+        "AutomaticCheckForUpdates": "Автоматическая проверка обновлений:",
+        "CheckForLiveUpdate": "Проверьте актуальное обновление",
+        "NoUpdateAvailable": "Нет доступных обновлений",
+        "System": "Система",
+        "SystemVersion": "Версия системы:",
+        "UpdateChannelTitle": "Обновить канал",
+        "Upload": "Загрузить",
+        "UploadUpdateFile": "Загрузите файл обновления",
+        "WenInterfaceVersion": "Версия веб-интерфейса:"
+      },
+      "SlicerPanel": {
+        "Download": "Скачать"
+      },
+      "TheTopBar": {
+        "AdvancedViewEnabled": "Расширенный просмотр включен",
+        "HiddenViewEnbled": "Скрытый просмотр включен",
+        "HomeBtn": "Дом",
+        "LightBtn": "Свет",
+        "ServiceViewEnabled": "Просмотр услуг включен"
+      },
+      "TheTopbar": {
+        "HiddenViewEnbled": "Скрытый просмотр включен",
+        "ServiceViewEnabled": "Просмотр услуг включен"
+      },
+      "TrilabFilamentLoadWizard": {
+        "CancelHeating": "Отменить нагрев",
+        "CancelLoading": "Отменить загрузку",
+        "CancelWizard": "Отменить мастер",
+        "Close": "Закрывать",
+        "Continue": "Продолжать",
+        "CooldownAndClose": "Остывать",
+        "FilamentIsLoading": "Нить загружается...",
+        "FilamentIsUnloading": "Нить выгружается",
+        "FilamentLoadWizard": "Мастер загрузки нити",
+        "InsertFilamentIntoExtruder": "Вставьте нить в экструдер и нажмите «Продолжить».",
+        "IsColorClean": "Цвет чистый?",
+        "OpenFilamentMenu": "Открыть меню нитей",
+        "PleaseWaitForTheTemperatureToReach": "Пожалуйста, подождите, пока температура не достигнет указанного значения.",
+        "PurgeMore": "Очистить больше",
+        "SelectWhichFilamentYouWantToLoad": "Выберите, какую нить вы хотите загрузить.",
+        "Step": "Шаг"
+      },
+      "TrilabFilamentUnLoadWizard": {
+        "FilamentUnloadWizard": "Мастер выгрузки нити",
+        "WhichFilamentIsInPrinter": "Какой материал загружен в принтер?"
+      },
+      "TrilabFilamentUnloadWizard": {
+        "FilamentIsUnloading": "Нить выгружается",
+        "colorUnloaded": "Нить успешно выгружена"
+      },
+      "TrilabLiveUpdate": {
+        "Buttons": {
+          "DownloadUpdate": "Скачать обновление",
+          "InstallFromUsb": "Обновление с USB"
+        },
+        "Titles": {
+          "Installed": "Обновление готово",
+          "UpdateAvailable": "Доступно обновление",
+          "UpdateInProgress": "Производится обновление",
+          "UsbInstalled": "USB-обновление готово",
+          "UsbUpdateAvailable": "Доступно обновление через USB"
+        },
+        "installAndRebootBtn": "УСТАНОВИТЬ",
+        "printerIsPrinting": "Вы не можете выполнить этот шаг прямо сейчас, поскольку ваш принтер выполняет какую-то работу. \nПожалуйста, подождите некоторое время, это окно автоматически обновится, когда этот шаг будет готов.",
+        "restartWarning": "Обновление готово к установке. \nНажмите кнопку, чтобы установить обновление. \nПринтер перезагрузится после завершения обновления.",
+        "statuses": {
+          "DOWNLOADING": "СКАЧИВАНИЕ ОБНОВЛЕНИЯ",
+          "ERROR": "ОШИБКА ОБНОВЛЕНИЯ",
+          "INSTALLED": "ОБНОВЛЕНИЕ ГОТОВО",
+          "UNPACKING": "РАСПАКОВКА ОБНОВЛЕНИЯ",
+          "UPDATE_AVAILABLE": "ДОСТУПНО НОВОЕ ОБНОВЛЕНИЕ",
+          "UP_TO_DATE": "НОВАЯ ВЕРСИЯ",
+          "USB_UNPACKING": "РАСПАКОВКА ОБНОВЛЕНИЯ",
+          "USB_UPDATE_AVAILABLE": "USB – НОВОЕ ОБНОВЛЕНИЕ"
+        }
+      },
+      "TrilabSelectFilamentDialog": {
+        "AreYouSureYouWantToSelectFilament": "Вы уверены, что хотите выбрать нить",
+        "Cancel": "Отмена",
+        "Cpnfirm": "Подтверждать",
+        "OK": "ХОРОШО"
+      },
+      "TrilabServiceDialog": {
+        "Cancel": "Отмена",
+        "ServiceLogin": "Вход в сервис"
+      },
+      "TrilabUpdateDialog": {
+        "DANGER": "ОПАСНОСТЬ",
+        "INFO": "ИНФОРМАЦИЯ",
+        "Progres": "Прогресс:",
+        "RestartPrinter": "Перезагрузить принтер",
+        "STATUS": "ПОЛОЖЕНИЕ ДЕЛ:",
+        "ShowErrorTechinicalDetails": "Показать техническую информацию об ошибке",
+        "WARNING": "ПРЕДУПРЕЖДАТЬ",
+        "title": "Обновлять",
+        "titleUSB": "Обновление с USB"
+      }
+    },
+    "TextfieldWithCopy": {
+      "Copied": "Скопировано"
+    },
+    "TheServiceWorker": {
+      "DescriptionNeedUpdate": "Локальный кэш устарел и нуждается в обновлении. \nПожалуйста, нажмите кнопку ниже, чтобы обновить кеш.",
+      "TitleNeedUpdate": "PWA требует обновления",
+      "Update": "обновлять"
     }
   },
   "BedScrews": {
@@ -145,7 +347,8 @@
       "DoYouWantToStartFilename": "Начать печать {filename}?",
       "Headline": "Начало задачи",
       "Print": "печать",
-      "Timelapse": "Таймлапс"
+      "Timelapse": "Таймлапс",
+      "DoYouWantToStartFilenameFilament": "Хотите начать {filename} со следующей нити?"
     }
   },
   "Editor": {
@@ -160,7 +363,8 @@
     "UnsavedChanges": "Несохранённые изменения",
     "UnsavedChangesMessage": "Сохранить изменения внесённые в {filename}?",
     "UnsavedChangesSubMessage": "Изменения будут утеряны, если не сохраните их. Вы можете отключить это уведомление, в настройках редактора.",
-    "Uploading": "Сохранение"
+    "Uploading": "Сохранение",
+    "DeviceDialog": "Устройства"
   },
   "EmergencyStopDialog": {
     "AreYouSure": "Подтвердите действие",
@@ -235,7 +439,8 @@
     "Total": "Всего",
     "UploadNewGcode": "Загрузить новый G-код",
     "Used": "Использовано",
-    "View3D": "Просмотр 3D"
+    "View3D": "Просмотр 3D",
+    "DeleteSingleFileQuestion": "Вы действительно хотите удалить файл «{name}»?"
   },
   "FullscreenUpload": {
     "CannotUploadFile": "Не получается загрузить файл!",
@@ -243,6 +448,7 @@
   },
   "GCodeViewer": {
     "ClearLoadedFile": "Очистить",
+    "CNCMode": "ЧПУ-режим",
     "ColorMode": "Цветовая схема",
     "Downloading": "Загрузка",
     "ForceLineRendering": "Принуд. рендеринг линий",
@@ -256,6 +462,7 @@
     "ReloadRequired": "Требуется перезагрузка",
     "Rendering": "Рендеринг",
     "RenderQuality": "Качество рендеринга",
+    "ShowGCode": "Показать G-код",
     "ShowObjectSelection": "Показать выбор детали",
     "ShowToolhead": "Показать сопло",
     "ShowTravelMoves": "Показать перемещения",
@@ -264,9 +471,7 @@
     "Tracking": "Слежение",
     "Transparency": "Прозрачность",
     "Ultra": "Ультра",
-    "VoxelMode": "Воксельный режим (ASMBL)",
-    "ShowGCode": "Показать G-код",
-    "CNCMode": "ЧПУ-режим"
+    "VoxelMode": "Воксельный режим (ASMBL)"
   },
   "Heightmap": {
     "Abort": "отказаться",
@@ -280,7 +485,8 @@
       "Min": "Минимум",
       "Name": "Название",
       "Range": "Отклонение",
-      "Size": "Размеры"
+      "Size": "Размеры",
+      "Variance": "Дисперсия"
     },
     "DeleteBedMeshProfile": "Удалить профиль сетки стола",
     "DoYouReallyWantToDelete": "Подтвердите удаление профиля \"{name}\"",
@@ -316,8 +522,8 @@
     "AllJobs": "Все",
     "AvgPrinttime": "Средняя длительность печати",
     "Cancel": "Отмена",
-    "CreateNote": "Добавить примечание",
     "Chart": "Диаграмма",
+    "CreateNote": "Добавить примечание",
     "Delete": "Удалить",
     "DeleteSelectedQuestion": "Удалить выбранные задачи ({count} шт.)?",
     "Details": "Подробности",
@@ -367,7 +573,8 @@
       "klippy_disconnect": "Klippy откл.",
       "klippy_shutdown": "Klippy выкл.",
       "Others": "Прочее",
-      "server_exit": "Выход сервера"
+      "server_exit": "Выход сервера",
+      "interrupted": "Прерванный"
     },
     "Table": "Таблица",
     "TitleExportHistory": "Экспорт истории",
@@ -377,12 +584,15 @@
     "TotalFilamentUsed": "Всего израсходованно филамента",
     "TotalJobs": "Всего задач",
     "TotalPrinttime": "Общая длительность печати",
-    "TotalTime": "Общая длит."
+    "TotalTime": "Общая длит.",
+    "AddToQueueSuccessful": "Файл {filename} добавлен в очередь.",
+    "DeleteSingleJobQuestion": "Вы действительно хотите удалить задание?",
+    "LoadCompleteHistory": "Загрузить полную историю"
   },
   "JobQueue": {
     "AllJobs": "Все задачи",
-    "ChangeCount": "Изменить количество",
     "Cancel": "Отмена",
+    "ChangeCount": "Изменить количество",
     "Count": "Количество",
     "Empty": "Пусто",
     "InvalidCountEmpty": "Ввод не должен быть пустым!",
@@ -391,7 +601,8 @@
     "Jobs": "Задачи",
     "Pause": "Пауза",
     "RemoveFromQueue": "Удалить из очереди",
-    "Start": "Запуск"
+    "Start": "Запуск",
+    "StartPrint": "Начать работу"
   },
   "Machine": {
     "ConfigFilesPanel": {
@@ -430,7 +641,8 @@
       "Total": "Всего",
       "UploadFile": "Загрузить",
       "Uploading": "Загрузка",
-      "Used": "Использовано"
+      "Used": "Использовано",
+      "DeleteSingleFileQuestion": "Вы действительно хотите удалить файл «{name}»?"
     },
     "EndstopPanel": {
       "Endstop": "Концевик",
@@ -445,8 +657,8 @@
       "Logfiles": "Файлы журналов (log-файлы)",
       "Rollover": "Сброс log-файлов",
       "RolloverDescription": "Выберите какие log-файлы должны быть сброшены:",
-      "RolloverToastSuccessful": "Log-файлы \"{name}\" успешно сброшены.",
-      "RolloverToastFailed": "Сброс log-файлов \"{name}\": {message}"
+      "RolloverToastFailed": "Сброс log-файлов \"{name}\": {message}",
+      "RolloverToastSuccessful": "Log-файлы \"{name}\" успешно сброшены."
     },
     "SystemPanel": {
       "Constants": "Постоянные",
@@ -494,7 +706,34 @@
       "UpdateAll": "Обновить все компоненты",
       "UpdateManager": "Менеджер обновлений",
       "Upgrade": "установить",
-      "UpToDate": "актуально"
+      "UpToDate": "актуально",
+      "Abort": "Прервать",
+      "AreYouSure": "Вы уверены?",
+      "Close": "Закрывать",
+      "CommitHistory": "История коммитов",
+      "ConfigChanges": "Изменения конфигурации",
+      "Corrupt": "коррумпированный",
+      "CountPackagesCanBeUpgraded": "Пакеты: {count} можно обновить.",
+      "GenericUpdateQuestion": "Проверьте историю коммитов (если она доступна) и страницу GitHub для этого проекта, чтобы узнать, необходимы ли какие-либо ручные корректировки для этого обновления.",
+      "GitHubPage": "Страница GitHub",
+      "HardRecovery": "Жесткое восстановление",
+      "IUnderstandTheRisks": "я понимаю риски",
+      "InitUpdateManager": "Менеджер обновлений еще не инициализирован. \nЭто нормально при первом запуске системы. \nНажмите кнопку обновления, чтобы инициализировать все компоненты.",
+      "KlipperUpdateQuestionConfig": "Это обновление также может содержать изменения в параметрах конфигурации, которые необходимо будет изменить в файле print.cfg. Подробности см. в журнале изменений.",
+      "KlipperUpdateQuestionFirmware": "Это обновит программное обеспечение хоста Klipper. \nПлаты управления, на которых установлена ​​прошивка Klipper, возможно, придется прошить перекомпилированной прошивкой, прежде чем машину можно будет снова ввести в эксплуатацию.",
+      "LinkToGithub": "Ссылка на Гитхаб",
+      "MoonrakerUpdateQuestion": "Это обновит API Moonraker. \nДля продолжения использования машины могут потребоваться изменения в файле Moonraker.conf.",
+      "MoreCommitsInfo": "Здесь можно отобразить максимум 30 коммитов. \nЧтобы просмотреть все коммиты, нажмите на следующую ссылку:",
+      "Notification": {
+        "Detached": "",
+        "Dirty": ""
+      },
+      "SoftRecovery": "Мягкое восстановление",
+      "StartUpdate": "Начать обновление",
+      "ThesePackagesCanBeUpgrade": "Эти системные пакеты можно обновить:",
+      "UpdateWarning": "Предупреждение об обновлении: {name}",
+      "UpgradeableSystemPackages": "Обновляемые системные пакеты",
+      "WebClientUpdateQuestion": "В некоторых случаях обновление веб-клиента может привести к изменениям, которые могут привести к несовместимости. \nДополнительную информацию смотрите в примечаниях к выпуску."
     }
   },
   "ManualProbe": {
@@ -528,7 +767,13 @@
       "Requested": "Запрошено",
       "Retract": "Втянуть",
       "TooLargeExtrusion": "Выдавливание слишком большое!",
-      "UnloadFilament": "Выгрузка филамента"
+      "UnloadFilament": "Выгрузка филамента",
+      "CleanNozzle": "Очистите сопло",
+      "ExtruderControl": "Управление экструдером",
+      "FirmwareRetraction": "Отзыв прошивки",
+      "PressureAdvance": "Увеличение давления",
+      "PurgeFilament": "Продувочная нить",
+      "Tools": "Инструменты"
     },
     "FarmPrinterPanel": {
       "ReconnectToPrinter": "Переподключение",
@@ -543,7 +788,8 @@
       "PrinterSwitchedOff": "Принтер выключен",
       "PrinterSwitchedOffDescription": "Принтер сейчас выключен и Klipper не может подключиться. Включите принтер, нажав кнопку ниже:",
       "Restart": "Перезапуск",
-      "ServiceReports": "Статус {service}"
+      "ServiceReports": "Статус {service}",
+      "KlipperCheck": ""
     },
     "MachineSettingsPanel": {
       "Headline": "Настройки кинематики",
@@ -551,7 +797,8 @@
         "Acceleration": "Ускорение",
         "MaxAccelToDecel": "Торможение",
         "SquareCornerVelocity": "Скорость на прямых углах",
-        "Velocity": "Скорость"
+        "Velocity": "Скорость",
+        "MinimumCruiseRatio": "Мин. \nКруизное соотношение"
       }
     },
     "MacrosPanel": {
@@ -563,7 +810,8 @@
       "HideTemperatures": "Скрыть температуры",
       "HideTimelapse": "Скрыть таймлапсы",
       "SendCode": "Команда...",
-      "SetupConsole": "Настройки консоли"
+      "SetupConsole": "Настройки консоли",
+      "Autoscroll": "Автопрокрутка"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Убедитесь, что включили mainsail.cfg в файл printer.cfg.",
@@ -583,10 +831,6 @@
         "Detected": "присутствует",
         "Disabled": "отсутствует",
         "Empty": "Пусто"
-      },
-      "DoorSensor": {
-        "Closed": "закрыто",
-        "Open": "открыть"
       }
     },
     "PowerControlPanel": {
@@ -615,7 +859,7 @@
       "Files": "Файлы",
       "Flow": "Поток",
       "Headline": "Статус",
-      "Jobqueue": "Очередь ({count})",
+      "Jobqueue": "Очередь",
       "JobqueueMoreFiles": "Нет больше задач | Еще одна задача | Еще {count} задач(и)",
       "Layer": "Слой",
       "Max": "макс.",
@@ -668,7 +912,9 @@
       "Target": "Заданная",
       "TemperaturesInChart": "Температура [°C]",
       "TempTooHigh": "Температура слишком высокая для {name}! (макс.: {max})",
-      "TempTooLow": "Температура слишком низкая для {name}! (мин.: {min})"
+      "TempTooLow": "Температура слишком низкая для {name}! (мин.: {min})",
+      "HideMcuHostSensors": "Скрыть датчики хоста/MCU",
+      "HideMonitors": "Скрыть мониторы"
     },
     "ToolheadControlPanel": {
       "Absolute": "абсолютная",
@@ -680,7 +926,11 @@
       "Relative": "относительная",
       "SettingsInterfaceControl": "Настройки > Интерфейс > Управление",
       "SpeedFactor": "Фактор скорости (скорость подачи)",
-      "ZTilt": "Z-наклон"
+      "ZTilt": "Z-наклон",
+      "ControlButtons": "Кнопки управления",
+      "CoordinateFields": "Поля координат",
+      "PositionOutput": "Вывод положения",
+      "ZOffset": "Z-смещение"
     },
     "WebcamPanel": {
       "All": "Все",
@@ -702,46 +952,31 @@
       "ToEndstop": "до концевика",
       "ToProbe": "до датчика"
     },
-    "TrilabAccessPassword": {
-      "caption": "Доступ к настройкам",
-      "enablePwdControl": "Включить контроль пароля",
-      "username": "Имя пользователя",
-      "password": "Пароль",
-      "confirmPassword": "Подтвердите пароль",
-      "Warning": "Предупреждение",
-      "DialogMessage": "После сохранения настроек входа веб-интерфейс перезапустится, и вам будет предложено ввести учетные данные в браузере. \nВы действительно хотите сэкономить сейчас?",
-      "DialogYesButton": "Да",
-      "DialogNoButton": "Нет"
-    },
-    "TrilabRemote": {
-      "auto_off": "Автоматическое отключение",
-      "enable": "Давать возможность",
-      "caption": "Удаленный доступ"
-    },
-    "settingsTrilabWifi": {
-      "country": "Страна",
-      "mode": "Режим",
-      "caption": "Wi-Fi",
-      "password": "Пароль",
-      "accessPoint": "Точка доступа",
-      "ssid": "SSID",
-      "confirmPassword": "Подтвердите пароль"
-    },
-    "settingsTrilabLight": {
-      "brightness": "Яркость",
-      "timeoutTextFieldHint": "Время ожидания (с)",
-      "enable": "Давать возможность",
-      "timeout": "Включить тайм-аут"
-    },
-    "TrilabSettingsInterfaces": {
-      "IP4addresses": "IPv4-адреса",
-      "IP6addresses": "IPv6-адреса",
-      "connectWifi": "Подключитесь к Wi-Fi",
-      "AddProfile": "Добавить профиль",
-      "ProfilesIn": "Профили в",
-      "ProfileActive": "Активный",
-      "ProfileInactive": "Неактивный",
-      "Interfaces": "Доступные интерфейсы"
+    "SpoolmanPanel": {
+      "Cancel": "Отмена",
+      "ChangeSpool": "Сменить катушку",
+      "DaysAgo": "{days} дней назад",
+      "EjectSpool": "Извлечь катушку",
+      "EjectSpoolQuestion": "Вы уверены, что вытащили катушку с нитью?",
+      "Filament": "Нить",
+      "FilamentTypeMismatch": "Материал активной катушки ({spoolType}) не соответствует материалу G-кода ({fileType}).",
+      "Headline": "Спулман",
+      "LastUsed": "Последний используемый",
+      "Location": "Расположение",
+      "Material": "Материал",
+      "Never": "Никогда",
+      "NoActiveSpool": "Отслеживание нити неактивно. \nДля начала выберите катушку.",
+      "NoResults": "По текущим критериям поиска катушка не найдена.",
+      "NoSpoolSelected": "Катушка не выбрана. \nПожалуйста, выберите катушку, иначе этот отпечаток не будет отслеживаться.",
+      "NoSpools": "Нет катушек в наличии",
+      "OpenSpoolManager": "открыть диспетчер спулинга",
+      "Refresh": "обновить",
+      "Search": "Поиск",
+      "SelectSpool": "Выберите катушку",
+      "Today": "Сегодня",
+      "TooLessFilament": "Возможно, на текущей катушке недостаточно нити для печати. \n({spoolWeight} г из {fileWeight} г)",
+      "Weight": "Масса",
+      "Yesterday": "Вчера"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -762,7 +997,16 @@
     "Printers": "Принтеры",
     "Timelapse": "Таймлапсы",
     "Webcam": "Видеокамеры",
-    "Calibration": "Калибровка"
+    "Calibration": "Калибровка",
+    "Diagnostics": "Диагностика",
+    "Slicers": "Слайсер"
+  },
+  "ScrewsTiltAdjust": {
+    "Accept": "Принять",
+    "Base": "База",
+    "ErrorText": "Что-то пошло не так в процессе зондирования.",
+    "Headline": "Регулировка винтов наклона",
+    "Retry": "повторить попытку"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Добавить принтер",
@@ -834,7 +1078,10 @@
       "Style": "Стиль отображения",
       "ValueGreaterThan": "Значение должно быть больше {value}",
       "ZOffsetIncrements": "Инкремент Z-смещения (в мм)",
-      "ZTiltAdjust": "Регулировка Z-наклона{isDefault}"
+      "ZTiltAdjust": "Регулировка Z-наклона{isDefault}",
+      "HideDuringPrint": "Скрыть элементы управления осями во время печати",
+      "ZOffsetSaveOption": "Опция сохранения Z-Offset",
+      "ZOffsetSaveOptionDescription": "Измените параметр сохранения смещения по оси Z."
     },
     "DashboardTab": {
       "Dashboard": "Управление",
@@ -851,13 +1098,11 @@
       "Editor": "Редактор",
       "KlipperRestartMethod": "Способ перезапуска Klipper",
       "KlipperRestartMethodDescription": "Выберите какой способ перезапуска Klipper будет использоваться, после нажатия 'СОХРАНИТЬ И ПЕРЕЗАПУСТИТЬ' при редактировании конфигурационных файлов Klipper.",
-      "MoonrakerRestartInstance": "Способ перезапуска Moonraker",
-      "MoonrakerRestartInstanceDescription": "Выберите какой способ перезапуска Moonraker будет использоваться, после нажатия 'СОХРАНИТЬ И ПЕРЕЗАПУСТИТЬ' при редактировании конфигурационных файлов Moonraker.",
-      "UseEscToClose": "Использование клавиши ESC",
-      "UseEscToCloseDescription": "Позволяет использовать клавишу ESC для закрытия редактора",
+      "Spaces": "{count} пробела",
       "TabSize": "Размер табуляции",
       "TabSizeDescription": "Настройка количества пробелов для табуляции клавишей TAB",
-      "Spaces": "{count} пробела"
+      "UseEscToClose": "Использование клавиши ESC",
+      "UseEscToCloseDescription": "Позволяет использовать клавишу ESC для закрытия редактора"
     },
     "GCodeViewerTab": {
       "BackgroundColor": "Цвет фона",
@@ -909,9 +1154,9 @@
       "Restore": "Восстановление",
       "RestoreDialog": "Выберите категории, которые хотите восстановить:",
       "TimeFormat": "Формат времени",
-      "PrinterNameRequired": "Укажите имя принтера.",
-      "PrinterNameMaxLength": "Максимально допустимая длина имени — 63 символа.",
-      "PrinterNameInvalid": "Имя принтера неверно. \nРазрешены только основные символы, цифры и дефисы."
+      "DBNavigation": "Навигация",
+      "Everything": "Все",
+      "MainsailSettingsMoonrakerDb": "Настройки грота в базе данных Moonraker"
     },
     "InterfaceSettings": "Настройки интерфейса",
     "MacrosTab": {
@@ -1069,7 +1314,12 @@
       "VariableFpsMax": "Макс. переменный к/сек",
       "VariableFpsMaxDescription": "",
       "VariableFpsMin": "Мин. переменный к/сек",
-      "VariableFpsMinDescription": ""
+      "VariableFpsMinDescription": "",
+      "RulesBetweenMinMax": "Значение должно быть между {min} и {max}!",
+      "RulesMin": "Значение должно быть минимум {min}!",
+      "RulesPositive": "Значение должно быть положительным!",
+      "RulesRequired": "Требуется значение!",
+      "RulesZeroAndPositive": "Значение должно быть 0 или больше!"
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Диалог регулировки винтов стола",
@@ -1109,7 +1359,22 @@
       "ScrewsTiltAdjustDialogDescription": "Показывать диалог помощника для SCREWS_TILT_CALCULATE.",
       "TempchartHeight": "Высота графика температуры",
       "TempchartHeightDescription": "Изменение высоты графика температуры на странице управления.",
-      "UiSettings": "Внешний вид"
+      "UiSettings": "Внешний вид",
+      "BigThumbnailBackground": "Цвет фона больших миниатюр",
+      "ConfirmOnCoolDown": "Требовать подтверждения при перезарядке",
+      "ConfirmOnCoolDownDescription": "Показать диалоговое окно подтверждения при охлаждении",
+      "DefaultNavigationState": "Состояние навигации по умолчанию",
+      "DefaultNavigationStateAlwaysClosed": "всегда закрыто",
+      "DefaultNavigationStateAlwaysOpen": "всегда открыт",
+      "DefaultNavigationStateDescription": "В каком штате должна быть навигация по умолчанию.",
+      "DefaultNavigationStateLastState": "последнее состояние",
+      "HideUpdateWarnings": "Скрыть предупреждения об обновлениях",
+      "HideUpdateWarningsDescription": "Эта опция скроет все предупреждения об обновлениях в диспетчере обновлений.",
+      "ShowWebcamInNavigation": "",
+      "Theme": "Тема",
+      "ThemeDark": "Темный",
+      "ThemeDescription": "Измените общий внешний вид приложения.",
+      "ThemeLight": "Свет"
     },
     "Update": "обновить",
     "WebcamsTab": {
@@ -1118,6 +1383,7 @@
       "EditCrowsnestConf": "Редактировать crowsnest.conf",
       "EditWebcam": "Редактировать видеокамеру",
       "FlipWebcam": "Отразить картинку видеокамеры:",
+      "Hlsstream": "HLS Stream",
       "Horizontally": "горизонтально",
       "IconBed": "Стол",
       "IconCam": "Камера",
@@ -1128,11 +1394,9 @@
       "IconNozzle": "Сопло",
       "IconPrinter": "Принтер",
       "Ipstream": "IP-камера",
-      "Hlsstream": "HLS Stream",
-      "WebrtcJanus": "WebRTC (janus-gateway)",
+      "JMuxerStream": "Сырой h264 поток (jmuxer)",
       "Mjpegstreamer": "MJPEG-поток",
       "MjpegstreamerAdaptive": "Адаптивный MJPEG-поток",
-      "JMuxerStream": "Сырой h264 поток (jmuxer)",
       "Name": "Название",
       "NameAlreadyExists": "Название уже существует",
       "Required": "требуется",
@@ -1146,18 +1410,25 @@
       "Uv4lMjpeg": "UV4L-MJPEG",
       "Vertically": "вертикально",
       "Webcams": "Видеокамеры",
-      "WebrtcCameraStreamer": "WebRTC (camera-streamer)"
+      "WebrtcCameraStreamer": "WebRTC (camera-streamer)",
+      "WebrtcJanus": "WebRTC (janus-gateway)",
+      "EnableAudio": "Включить звук",
+      "HideFps": "Скрыть счетчик FPS",
+      "WebrtcGo2rtc": "WebRTC (go2rtc)",
+      "WebrtcMediaMTX": "WebRTC (МедиаМТХ)"
     },
-    "TrilabTab": {
-      "Trilab": "Verze",
-      "TrilabLogs": "Журналы"
+    "HeightmapTab": {
+      "ColorSchemes": "Цветовые Схемы",
+      "Heightmap": "Карта высот",
+      "IsDefault": "(По умолчанию)",
+      "Schemes": {
+        "GrayScale": "Оттенки серого",
+        "Hot": "Горячий",
+        "Hsv": "HSV",
+        "Portland": "Портленд",
+        "Spring": "Весна"
+      }
     }
-  },
-  "ScrewsTiltAdjust": {
-    "Accept": "Принять",
-    "Base": "База",
-    "ErrorText": "Что-то пошло не так в процессе зондирования.",
-    "Headline": "Регулировка винтов наклона"
   },
   "Timelapse": {
     "AllFiles": "Все",
@@ -1208,112 +1479,29 @@
     "Type": "Тип",
     "Used": "Использовано",
     "Variable": "Переменная",
-    "Video": "Видео"
+    "Video": "Видео",
+    "DeleteSingleFileQuestion": "Вы действительно хотите удалить файл «{name}»?"
   },
   "title": "Русский",
-  "TrilabUpdateDialog": {
-    "title": "Актуализация",
-    "RestartPrinter": "Перезагрузить принтер",
-    "titleUSB": "Обновление с USB"
+  "CoolDownDialog": {
+    "AreYouSure": "Вы уверены?",
+    "CoolDown": "Остывать",
+    "No": "Нет",
+    "Yes": "Да"
   },
-  "General": {
-    "Save": "Сохранять"
+  "DevicesDialog": {
+    "CanBusInfo": "Могут быть обнаружены только неназначенные узлы. \nРекомендуется подключать к CAN-шине только одно неназначенное устройство, чтобы избежать проблем со связью. \nДля более подробной информации, пожалуйста, нажмите на ссылку:",
+    "ClickRefresh": "Нажмите кнопку «Обновить», чтобы выполнить поиск устройств.",
+    "DevicePath": "Путь к устройству",
+    "Formats": "Форматы",
+    "Headline": "Устройства",
+    "HideSystemEntries": "Скрыть системные записи",
+    "LibcameraId": "Идентификатор библиотеки",
+    "NoDeviceFound": "Устройство не найдено. \nПожалуйста, проверьте соединение и нажмите кнопку «Обновить».",
+    "PathByHardware": "Путь по оборудованию",
+    "PathById": "Путь по идентификатору",
+    "Refresh": "обновить",
+    "Resolutions": "Резолюции"
   },
-  "TrilabLiveUpdate": {
-    "Buttons": {
-      "InstallFromUsb": "Обновление с USB",
-      "DownloadUpdate": "Скачать обновление"
-    },
-    "restartWarning": "Обновление готово к установке. \nНажмите кнопку, чтобы установить обновление. \nПринтер перезагрузится после завершения обновления.",
-    "printerIsPrinting": "Вы не можете выполнить этот шаг прямо сейчас, поскольку ваш принтер выполняет какую-то работу. \nПожалуйста, подождите некоторое время, это окно автоматически обновится, когда этот шаг будет готов.",
-    "installAndRebootBtn": "УСТАНОВИТЬ",
-    "Titles": {
-      "Installed": "Обновление готово",
-      "UsbInstalled": "USB-обновление готово",
-      "UpdateInProgress": "Производится обновление",
-      "UpdateAvailable": "Доступно обновление",
-      "UsbUpdateAvailable": "Доступно обновление через USB"
-    }
-  },
-  "Trilab": {
-    "TrilabFilamentLoadWizard": {
-      "FilamentIsLoading": "Нить загружается...",
-      "InsertFilamentIntoExtruder": "Вставьте нить в экструдер и нажмите «Продолжить».",
-      "SelectWhichFilamentYouWantToLoad": "Выберите, какую нить вы хотите загрузить.",
-      "PleaseWaitForTheTemperatureToReach": "Пожалуйста, подождите, пока температура не достигнет указанного значения.",
-      "IsColorClean": "Цвет чистый?",
-      "CancelHeating": "Отменить нагрев",
-      "Continue": "Продолжать",
-      "OpenFilamentMenu": "Открыть меню нитей",
-      "CancelWizard": "Отменить мастер",
-      "PurgeMore": "Очистить больше",
-      "CooldownAndClose": "Остывать",
-      "Close": "Закрывать",
-      "Step": "Шаг",
-      "FilamentIsUnloading": "Нить выгружается",
-      "FilamentLoadWizard": "Мастер загрузки нити",
-      "CancelLoading": "Отменить загрузку"
-    },
-    "TrilabSelectFilamentDialog": {
-      "Cancel": "Отмена",
-      "Cpnfirm": "Подтверждать",
-      "AreYouSureYouWantToSelectFilament": "Вы уверены, что хотите выбрать нить",
-      "OK": "ХОРОШО"
-    },
-    "TrilabServiceDialog": {
-      "ServiceLogin": "Вход в сервис",
-      "Cancel": "Отмена"
-    },
-    "TrilabUpdateDialog": {
-      "Progres": "Прогресс:",
-      "ShowErrorTechinicalDetails": "Показать техническую информацию об ошибке",
-      "STATUS": "ПОЛОЖЕНИЕ ДЕЛ:",
-      "DANGER": "ОШИБКА",
-      "INFO": "ИНФОРМАЦИЯ",
-      "WARNING": "ПРЕДУПРЕЖДАТЬ"
-    },
-    "SettingsTrilabTab": {
-      "System": "Система",
-      "SystemVersion": "Версия системы:",
-      "WenInterfaceVersion": "Версия веб-интерфейса:",
-      "AutomaticCheckForUpdates": "Автоматическая проверка обновлений:",
-      "UploadUpdateFile": "Загрузите файл обновления",
-      "Upload": "Загрузить",
-      "CheckForLiveUpdate": "Проверьте актуальное обновление",
-      "NoUpdateAvailable": "Нет доступных обновлений",
-      "UpdateChannelTitle": "Обновить канал"
-    },
-    "TheTopbar": {
-      "HiddenViewEnbled": "Скрытый просмотр включен",
-      "ServiceViewEnabled": "Просмотр услуг включен"
-    },
-    "ConnectionStatus": {
-      "Mainsail": "Грот"
-    },
-    "AdvancedFeatures": "",
-    "SettingsTrilabPrinterTab": {
-      "AdvancedFeatures": "Расширенные возможности:"
-    },
-    "SlicerPanel": {
-      "Download": "Скачать"
-    },
-    "PageNotFound": {
-      "404PageNotFound": "404 Страница не найдена"
-    },
-    "TrilabFilamentUnLoadWizard": {
-      "WhichFilamentIsInPrinter": "Какой материал загружен в принтер?",
-      "FilamentUnloadWizard": "Мастер выгрузки нити"
-    },
-    "TrilabFilamentUnloadWizard": {
-      "FilamentIsUnloading": "Нить выгружается",
-      "colorUnloaded": "Нить успешно выгружена"
-    },
-    "SettingsAccessPasswordPanel": {
-      "SaveBtn": "Сохранить учетные данные"
-    }
-  },
-  "Generic": {
-    "Ok": "Хорошо",
-    "Unknown": "Неизвестный"
-  }
+  "_last_update": ""
 }

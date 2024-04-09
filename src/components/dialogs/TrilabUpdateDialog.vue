@@ -3,7 +3,7 @@
         <v-card>
             <v-card-title>
                 <span class="headline">
-                    {{ $t('TrilabUpdateDialog.title') }}
+                    {{ $t('App.Trilab.TrilabUpdateDialog.title') }}
                 </span>
             </v-card-title>
 
@@ -14,13 +14,13 @@
                     <p>There was an error while uploading the update file. Please try again</p>
                     <v-btn v-if="!AdvancedFeatures || !showTechnicalDetails" class="mt-2 mb-2 block" color="red"
                         @click="showErrorDetails()">{{
-                            $t("Trilab.TrilabUpdateDialog.ShowErrorTechinicalDetails") }}</v-btn>
+                            $t("App.Trilab.TrilabUpdateDialog.ShowErrorTechinicalDetails") }}</v-btn>
                 </div>
                 <div v-if="uploadError == null">
                     <div v-if="alreadyUpdating == false">
                         <p v-if="fileUploading">{{ uploadStatus }}</p>
                         <v-btn v-if="uploadError != null" class="mt-2 mb-2 block" color="red" @click="showErrorDetails()">{{
-                            $t("Trilab.TrilabUpdateDialog.ShowErrorTechinicalDetails") }}</v-btn>
+                            $t("App.Trilab.TrilabUpdateDialog.ShowErrorTechinicalDetails") }}</v-btn>
                         <div v-if="uploadProgress < 100">
                             <v-progress-linear :indeterminate="uploadProgress === null" :value="uploadProgress"
                                 :color="uploadFileProgressbarColor" :height="20" striped>
@@ -32,7 +32,7 @@
                     </div>
 
                     <div v-if="alreadyUpdating == true">
-                        <p>{{ $t("Trilab.TrilabUpdateDialog.STATUS") }} <span>{{ customStatus }}</span></p>
+                        <p>{{ $t("App.Trilab.TrilabUpdateDialog.STATUS") }} <span>{{ customStatus }}</span></p>
                         <v-progress-linear :indeterminate="updateProgressStatus === 'IDLE'" :value="updateProgressValue"
                             color="primary" :height="15" striped>
                             <template v-slot:default="{ value }">
@@ -42,16 +42,16 @@
                         <p style="color:#f44336; text-align:center;" class="mt-4">The printer is currently updating. Please
                             do not turn off the device. The printer will automatically restart after the update is
                             completed.</p>
-                        <v-btn color="danger" v-if="showRestartBtn">{{ $t('TrilabUpdateDialog.RestartPrinter') }}</v-btn>
+                        <v-btn color="danger" v-if="showRestartBtn">{{ $t('App.Trilab.TrilabUpdateDialog.RestartPrinter') }}</v-btn>
                     </div>
                 </div>
                 <v-list v-if="AdvancedFeatures || showTechnicalDetails">
                     <v-list-item v-for="log in logs" :key="log.id" class="ulog">
                         <span v-if="log.text.indexOf('ERROR') != -1" style="color:#f44336">{{
-                            $t("Trilab.TrilabUpdateDialog.DANGER") }}</span>
+                            $t("App.Trilab.TrilabUpdateDialog.DANGER") }}</span>
                         <span v-else-if="log.text.indexOf('WARNING') != -1" style="color:#ff9800">{{
-                            $t("Trilab.TrilabUpdateDialog.WARNING") }}</span>
-                        <span v-else style="color:#2196f3">{{ $t("Trilab.TrilabUpdateDialog.INFO") }}</span>
+                            $t("App.Trilab.TrilabUpdateDialog.WARNING") }}</span>
+                        <span v-else style="color:#2196f3">{{ $t("App.Trilab.TrilabUpdateDialog.INFO") }}</span>
                         <p>
                             {{ log.date }} {{ log.text }}
                         </p>
@@ -63,7 +63,7 @@
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn v-if="dismissVisible" color="blue darken-1" text @click="closeIt()">{{ $t('Generic.Ok') }}</v-btn>
+                <v-btn v-if="dismissVisible" color="blue darken-1" text @click="closeIt()">{{ $t('App.Trilab.Generic.Ok') }}</v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

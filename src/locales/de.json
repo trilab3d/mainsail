@@ -1,6 +1,10 @@
 {
   "App": {
     "Notifications": {
+      "BrowserWarnings": {
+        "Description": "Die verwendete {name} Version ({version}) ist veraltet und wird nicht vollständig unterstützt. Mainsail benötigt die Version {minVersion} oder höher.",
+        "Headline": "Veralteter Browser"
+      },
       "DependencyDescription": "Die momentane {name} Version unterstützt nicht alle Funktionen von Mainsail. Aktualisiere {name} mindestens auf Version {neededVersion}.",
       "DependencyName": "Abhängigkeit: {name}",
       "DismissAll": "Alles verwerfen",
@@ -13,7 +17,9 @@
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
-        "MoonrakerFailedComponentDescription": "Beim Laden der Moonraker-Komponenten wurde ein Fehler festgestellt. Bitte prüfe die Logdatei und behebe das Problem.",
+        "MoonrakerFailedComponentDescription": "Beim Laden der Moonraker-Komponente '{component}' wurde ein Fehler festgestellt. Bitte prüfe die Logdatei und behebe das Problem.",
+        "MoonrakerFailedInitComponentDescription": "Beim Initialisieren der Moonraker-Komponente '{component}' wurde ein Fehler festgestellt. Bitte prüfe die Logdatei und behebe das Problem.",
+        "MoonrakerInitComponent": "Init. Moonraker: {component}",
         "MoonrakerWarning": "Moonraker Warnung",
         "UnparsedConfigOption": "Nicht erkannte Config-Option '{option}: {value}' in Abschnitt [{section}] entdeckt. Dies kann eine Option sein, die nicht mehr verfügbar ist, oder das Ergebnis eines Moduls sein, das nicht geladen werden konnte. In Zukunft wird dies zu einem Startfehler führen.",
         "UnparsedConfigSection": "Nicht erkannter Config-Abschnitt [{section}] gefunden. Dies kann das Ergebnis einer Komponente sein, die nicht geladen werden konnte. In Zukunft wird dies zu einem Startfehler führen."
@@ -67,11 +73,7 @@
       "SAVE_CONFIG": "SAVE CONFIG",
       "Uploading": "Hochladen",
       "UploadOfFileSuccessful": "Hochladen von {file} erfolgreich!",
-      "UploadPrint": "Hochladen & Drucken",
-      "LightBtn": "Licht",
-      "ViewStatus": {
-        "Advanced": "Erweiterte Ansicht aktiviert"
-      }
+      "UploadPrint": "Hochladen & Drucken"
     },
     "TopCornerMenu": {
       "Cancel": "Abbrechen",
@@ -115,6 +117,201 @@
       "RecoveringDone": "Wiederherstellung {software} abgeschlossen!",
       "Updating": "Aktualisiere {software}...",
       "UpdatingDone": "Aktualisierung {software} abgeschlossen!"
+    },
+    "Trilab": {
+      "TopBar": {
+        "LightBtn": "Licht"
+      },
+      "AdvancedFeatures": "",
+      "ConnectionStatus": {
+        "Mainsail": "Großsegel"
+      },
+      "Generic": {
+        "CancelWizard": "Abbruchassistent",
+        "Download": "Herunterladen",
+        "Ok": "OK",
+        "Save": "Speichern",
+        "Unknown": "Unbekannt"
+      },
+      "PageNotFound": {
+        "404PageNotFound": "404 Seite nicht gefunden"
+      },
+      "Panels": {
+        "TrilabAccessPassword": {
+          "DialogMessage": "Nach dem Speichern der Anmeldeeinstellungen wird die Weboberfläche neu gestartet und Sie werden vom Browser aufgefordert, die Anmeldeinformationen einzugeben. \nWollen Sie jetzt wirklich sparen?",
+          "DialogNoButton": "NEIN",
+          "DialogYesButton": "Ja",
+          "Warning": "Warnung",
+          "caption": "Greifen Sie auf Einstellungen zu",
+          "confirmPassword": "Bestätige das Passwort",
+          "enablePwdControl": "Aktivieren Sie die Passwortkontrolle",
+          "password": "Passwort",
+          "username": "Nutzername"
+        },
+        "TrilabRemote": {
+          "auto_off": "Automatische Abschaltung",
+          "caption": "Fernzugriff",
+          "enable": "Aktivieren"
+        },
+        "TrilabSettingsInterfaces": {
+          "AddProfile": "Profil hinzufügen",
+          "IP4addresses": "IPv4-Adressen",
+          "IP6addresses": "IPv6-Adressen",
+          "Interfaces": "Verfügbare Schnittstellen",
+          "ProfileActive": "Aktiv",
+          "ProfileInactive": "Inaktiv",
+          "ProfilesIn": "Profile in",
+          "connectWifi": "Stellen Sie eine WLAN-Verbindung her"
+        },
+        "TrilabSlicerPanel": {
+          "notAvailableText": "Das Slicer-Profil ist für diesen Drucker oder diese Systemplattform nicht verfügbar oder wir haben Ihr System nicht richtig erkannt. \nBitte wenden Sie sich an den Support",
+          "notAvailableTitle": "Slicer-Profil nicht verfügbar"
+        },
+        "settingsTrilabLight": {
+          "brightness": "Helligkeit",
+          "caption": "Licht",
+          "enable": "Aktivieren",
+          "timeout": "Zeitüberschreitung aktivieren",
+          "timeoutTextFieldHint": "Timeout(s)"
+        },
+        "settingsTrilabWifi": {
+          "accessPoint": "Zugangspunkt",
+          "caption": "W-lan",
+          "client": "Klient",
+          "confirmPassword": "Bestätige das Passwort",
+          "country": "Land",
+          "mode": "Modus",
+          "password": "Passwort",
+          "selectCountry": "Land auswählen",
+          "selectNetworkMode": "Wählen Sie den Netzwerkmodus",
+          "ssid": "SSID"
+        },
+        "trilabSlicers": {
+          "prusa": {
+            "imgsrc": "/img/PrusaSlicer.png",
+            "longDescription": "Klicken Sie auf die Schaltfläche oben, um das komplette PrusaSlicer-Paket inklusive Slicer-Profilen herunterzuladen. \nEntpacken Sie das Archiv nach dem Herunterladen an den Zielort. \nFühren Sie auf der Windows-Plattform das Programm „prusa-slicer.exe“ aus, auf der MacOS-Plattform führen Sie „PrusaSlicer.app“ aus. \nNach dem Start des Programms erscheint der Konfigurationsassistent. \nFahren Sie mit der Registerkarte Prusa Pro fort. \nWählen Sie hier Prusa Pro HT90 aus der Liste der Druckervarianten aus. \nKlicken Sie dann auf die Schaltfläche „Fertig stellen“ in der unteren rechten Ecke des Fensters. \nDamit ist der Allesschneider sofort einsatzbereit!",
+            "longTitle": "PrusaSlicer 2.7.1",
+            "shortDescription": "PrusaSlicer ist ein quelloffenes, funktionsreiches und häufig aktualisiertes Tool, das alles enthält, was Sie zum Exportieren der perfekten Druckdateien benötigen",
+            "title": "PrusaSlicer"
+          }
+        }
+      },
+      "Settings": {
+        "TrilabTab": {
+          "Trilab": "Versionen",
+          "TrilabLogs": "Protokolle",
+          "TrilabNetwork": "Netzwerk",
+          "TrilabPrinter": "Drucker",
+          "TrilabSlicers": "Aufschnittmaschinen"
+        }
+      },
+      "SettingsAccessPasswordPanel": {
+        "SaveBtn": "Anmeldedaten speichern"
+      },
+      "SettingsTrilabPrinterTab": {
+        "AdvancedFeatures": "Erweiterte Funktionen:"
+      },
+      "SettingsTrilabTab": {
+        "AutomaticCheckForUpdates": "Automatische Suche nach Updates:",
+        "CheckForLiveUpdate": "Suchen Sie nach Live-Updates",
+        "NoUpdateAvailable": "Kein Update verfügbar",
+        "System": "System",
+        "SystemVersion": "Systemversion:",
+        "UpdateChannelTitle": "Kanal aktualisieren",
+        "Upload": "Hochladen",
+        "UploadUpdateFile": "Update-Datei hochladen",
+        "WenInterfaceVersion": "Webinterface-Version:"
+      },
+      "SlicerPanel": {
+        "Download": "Herunterladen"
+      },
+      "TheTopBar": {
+        "AdvancedViewEnabled": "Erweiterte Ansicht aktiviert",
+        "HiddenViewEnbled": "Verborgene Ansicht aktiviert",
+        "HomeBtn": "Heim",
+        "LightBtn": "Licht",
+        "ServiceViewEnabled": "Serviceansicht aktiviert"
+      },
+      "TheTopbar": {
+        "HiddenViewEnbled": "Verborgene Ansicht aktiviert",
+        "ServiceViewEnabled": "Serviceansicht aktiviert"
+      },
+      "TrilabFilamentLoadWizard": {
+        "CancelHeating": "Heizung abbrechen",
+        "CancelLoading": "Laden abbrechen",
+        "CancelWizard": "Abbruchassistent",
+        "Close": "Schließen",
+        "Continue": "Weitermachen",
+        "CooldownAndClose": "Abkühlen",
+        "FilamentIsLoading": "Filament wird geladen...",
+        "FilamentIsUnloading": "Filament wird entladen",
+        "FilamentLoadWizard": "Filament-Ladeassistent",
+        "InsertFilamentIntoExtruder": "Filament in den Extruder einlegen und Weiter drücken",
+        "IsColorClean": "Ist die Farbe sauber?",
+        "OpenFilamentMenu": "Öffnen Sie das Filament-Menü",
+        "PleaseWaitForTheTemperatureToReach": "Bitte warten Sie, bis die Temperatur den angegebenen Wert erreicht",
+        "PurgeMore": "Mehr bereinigen",
+        "SelectWhichFilamentYouWantToLoad": "Wählen Sie aus, welches Filament Sie laden möchten",
+        "Step": "Schritt"
+      },
+      "TrilabFilamentUnLoadWizard": {
+        "FilamentUnloadWizard": "Assistent zum Entladen von Filamenten",
+        "WhichFilamentIsInPrinter": "Welches Material ist im Drucker geladen?"
+      },
+      "TrilabFilamentUnloadWizard": {
+        "FilamentIsUnloading": "Filament wird entladen",
+        "colorUnloaded": "Filament wurde erfolgreich entladen"
+      },
+      "TrilabLiveUpdate": {
+        "Buttons": {
+          "DownloadUpdate": "Aktualisierung herunterladen",
+          "InstallFromUsb": "Update von USB"
+        },
+        "Titles": {
+          "Installed": "Update bereit",
+          "UpdateAvailable": "Update verfügbar",
+          "UpdateInProgress": "Aktualisierung läuft",
+          "UsbInstalled": "USB-Update bereit",
+          "UsbUpdateAvailable": "USB-Update verfügbar"
+        },
+        "installAndRebootBtn": "INSTALLIEREN",
+        "printerIsPrinting": "Sie können diesen Schritt derzeit nicht ausführen, da Ihr Drucker gerade arbeitet. \nBitte warten Sie eine Weile. Dieses Fenster wird automatisch aktualisiert, wenn dieser Schritt abgeschlossen ist",
+        "restartWarning": "Das Update ist zur Installation bereit. \nKlicken Sie auf die Schaltfläche, um das Update zu installieren. \nDer Drucker wird neu gestartet, sobald die Aktualisierung abgeschlossen ist.",
+        "statuses": {
+          "DOWNLOADING": "UPDATE WIRD HERUNTERGELADEN",
+          "ERROR": "AKTUALISIERUNGSFEHLER",
+          "INSTALLED": "UPDATE BEREIT",
+          "UNPACKING": "UPDATE AUSPACKEN",
+          "UPDATE_AVAILABLE": "NEUES UPDATE VERFÜGBAR",
+          "UP_TO_DATE": "NEUESTE VERSION",
+          "USB_UNPACKING": "UPDATE AUSPACKEN",
+          "USB_UPDATE_AVAILABLE": "USB – NEUES UPDATE"
+        }
+      },
+      "TrilabSelectFilamentDialog": {
+        "AreYouSureYouWantToSelectFilament": "Sind Sie sicher, dass Sie Filament auswählen möchten?",
+        "Cancel": "Stornieren",
+        "Cpnfirm": "Bestätigen",
+        "OK": "OK"
+      },
+      "TrilabServiceDialog": {
+        "Cancel": "Stornieren",
+        "ServiceLogin": "Service-Login"
+      },
+      "TrilabUpdateDialog": {
+        "DANGER": "GEFAHR",
+        "INFO": "DIE INFO",
+        "Progres": "Fortschritt:",
+        "RestartPrinter": "Starten Sie den Drucker neu",
+        "STATUS": "STATUS:",
+        "ShowErrorTechinicalDetails": "Technische Fehlerdetails anzeigen",
+        "WARNING": "WARNEN",
+        "title": "Aktualisieren",
+        "titleUSB": "Update von USB"
+      }
+    },
+    "TextfieldWithCopy": {
+      "Copied": "Kopiert"
     }
   },
   "BedScrews": {
@@ -148,6 +345,7 @@
     "StartPrint": {
       "Cancel": "abbrechen",
       "DoYouWantToStartFilename": "Willst du {filename} starten?",
+      "DoYouWantToStartFilenameFilament": "Willst du {filename} mit dem folgenden Filament starten?",
       "Headline": "Starte Job",
       "Print": "drucken",
       "Timelapse": "Zeitraffer"
@@ -165,7 +363,8 @@
     "UnsavedChanges": "Ungespeicherte Änderungen",
     "UnsavedChangesMessage": "Möchtest du die Änderungen an {filename} speichern?",
     "UnsavedChangesSubMessage": "Deine Änderungen werden verloren gehen wenn du sie nicht speicherst. Du kannst diese Meldung in den Editor-Einstellungen deaktivieren.",
-    "Uploading": "Hochladen"
+    "Uploading": "Hochladen",
+    "DeviceDialog": "Geräte"
   },
   "EmergencyStopDialog": {
     "AreYouSure": "Bist du sicher?",
@@ -188,13 +387,13 @@
     "DeleteDirectory": "Verzeichnis löschen",
     "DeleteDirectoryQuestion": "Willst du wirklich das Verzeichnis \"{name}\" mit seinem gesamten Inhalt löschen?",
     "DeleteSelectedQuestion": "Sollen wirklich {count} ausgewählte Dateien gelöscht werden?",
+    "DeleteSingleFileQuestion": "Soll die Datei \"{name}\" wirklich gelöscht werden?",
     "Download": "Herunterladen",
     "Duplicate": "duplizieren",
     "DuplicateFile": "Datei duplizieren",
     "EditFile": "Datei bearbeiten",
     "Empty": "Leer",
     "ExtruderTemp": "Extruder Temp.",
-    "Filament": "Filament",
     "FilamentName": "Filament Name",
     "FilamentType": "Filament Typ",
     "FilamentUsage": "Filamentverbrauch",
@@ -240,7 +439,8 @@
     "Total": "Gesamt",
     "UploadNewGcode": "G-Code hochladen",
     "Used": "Belegt",
-    "View3D": "3D Betrachtung"
+    "View3D": "3D Betrachtung",
+    "Filament": "Filament"
   },
   "FullscreenUpload": {
     "CannotUploadFile": "Datei konnte nicht hochgeladen werden!",
@@ -248,6 +448,7 @@
   },
   "GCodeViewer": {
     "ClearLoadedFile": "Löschen",
+    "CNCMode": "CNC Modus",
     "ColorMode": "Farbmodus",
     "Downloading": "Downloaden",
     "ForceLineRendering": "Erzwinge Liniendarstellung",
@@ -261,6 +462,7 @@
     "ReloadRequired": "Neu laden erforderlich",
     "Rendering": "Rendering",
     "RenderQuality": "Darstellungsqualität",
+    "ShowGCode": "Zeige G-Code",
     "ShowObjectSelection": "Zeige Objektauswahl",
     "ShowToolhead": "Zeige Werkzeugkopf",
     "ShowTravelMoves": "Zeige Bewegungen im Eilgang",
@@ -269,9 +471,7 @@
     "Tracking": "Tracking",
     "Transparency": "Transparenz",
     "Ultra": "Ultra",
-    "VoxelMode": "Voxel Modus (ASMBL)",
-    "ShowGCode": "Zeige G-Code",
-    "CNCMode": "CNC Modus"
+    "VoxelMode": "Voxel Modus (ASMBL)"
   },
   "Heightmap": {
     "Abort": "abbruch",
@@ -285,7 +485,8 @@
       "Min": "Min",
       "Name": "Name",
       "Range": "Spannweite",
-      "Size": "Größe"
+      "Size": "Größe",
+      "Variance": "Varianz"
     },
     "DeleteBedMeshProfile": "Lösche Bed Mesh",
     "DoYouReallyWantToDelete": "Möchtest du das Profil \"{name}\" wirklich löschen?",
@@ -296,25 +497,25 @@
     "InvalidNameAscii": "Name ist ungültig. Nur ASCII Zeichen sind erlaubt.",
     "InvalidNameEmpty": "Feld darf nicht leer sein!",
     "InvalidNameReserved": "Das Profil 'default' ist reserviert, bitte wähle einen anderen Profilnamen.",
-    "Later": "später",
     "Mesh": "Mesh",
     "Name": "Name",
     "NoBedMeshHasBeenLoadedYet": "Es wurde noch kein Bed Mesh geladen.",
     "NoProfile": "Kein Profil verfügbar",
-    "Ok": "Ok",
     "Probed": "Abgetastet",
     "Profiles": "Profile",
     "Remove": "löschen",
-    "RemoveSaveDescription": "Das Löschen des Höhenprofils wurde registriert. Mit einem Klick auf SAVE_CONFIG wird es aus der printer.cfg gelöscht und Klipper neu gestartet.",
     "Rename": "umbenennen",
     "RenameBedMeshProfile": "Bed Mesh umbenennen",
-    "SAVE_CONFIG": "SAVE_CONFIG",
     "ScaleGradient": "Farbverlauf skalieren",
     "ScaleZMax": "Skaliere z-max.",
     "TitleCalibrate": "Neues Bed Mesh kalibrieren",
     "TitleClear": "Lösche Bed Mesh",
     "TitleHomeAll": "Home alle",
-    "Wireframe": "Drahtgitter"
+    "Wireframe": "Drahtgitter",
+    "Later": "Später",
+    "Ok": "OK",
+    "RemoveSaveDescription": "Das bed_mesh-Profil wurde als gelöscht registriert. \nKlicken Sie auf SAVE_CONFIG, um es aus der Printer.cfg zu entfernen und Klipper neu zu starten.",
+    "SAVE_CONFIG": "SAVE_CONFIG"
   },
   "History": {
     "AddNote": "Notiz hinzufügen",
@@ -325,6 +526,7 @@
     "CreateNote": "Notiz anlegen",
     "Delete": "Löschen",
     "DeleteSelectedQuestion": "Sollen wirklich {count} ausgewählte Jobs gelöscht werden?",
+    "DeleteSingleJobQuestion": "Soll der Job wirklich gelöscht werden?",
     "Details": "Details",
     "EditNote": "Notiz bearbeiten",
     "Empty": "leer",
@@ -346,6 +548,7 @@
     "Jobs": "Drucke",
     "LastModified": "Zuletzt geändert",
     "LayerHeight": "Schichthöhe",
+    "LoadCompleteHistory": "Lade vollständige Historie",
     "LongestPrinttime": "Druckzeit - längste",
     "Note": "Notiz",
     "ObjectHeight": "Objekthöhe",
@@ -369,6 +572,7 @@
       "completed": "Abgeschlossen",
       "error": "Fehler",
       "in_progress": "In Arbeit",
+      "interrupted": "Unterbrochen",
       "klippy_disconnect": "Klippy getrennt",
       "klippy_shutdown": "Klippy heruntergefahren",
       "Others": "Sonstige",
@@ -376,27 +580,29 @@
     },
     "Table": "Tabelle",
     "TitleExportHistory": "Historie exportieren",
-    "TitleRefreshHistory": "Historie aktualisieren",
-    "TitleSettings": "Einstellungen",
     "TotalDuration": "Gesamtdauer",
     "TotalFilamentUsed": "Filament verwendet - gesamt",
     "TotalJobs": "Druckvorgänge - gesamt",
     "TotalPrinttime": "Druckzeit - gesamt",
-    "TotalTime": "Gesamtzeit"
+    "TotalTime": "Gesamtzeit",
+    "TitleRefreshHistory": "Verlauf aktualisieren",
+    "TitleSettings": "Einstellungen",
+    "AddToQueueSuccessful": "Datei {filename} zur Warteschlange hinzugefügt."
   },
   "JobQueue": {
-    "AllJobs": "Alle Aufträge",
-    "ChangeCount": "Anzahl ändern",
     "Cancel": "abbrechen",
+    "ChangeCount": "Anzahl ändern",
     "Count": "Anzahl",
     "Empty": "Leer",
     "InvalidCountEmpty": "Die Eingabe darf nicht leer sein!",
     "InvalidCountGreaterZero": "Die Eingabe muss größer als 0 sein!",
     "JobQueue": "Auftragswarteschlange",
-    "Jobs": "Aufträge",
     "Pause": "Pause",
     "RemoveFromQueue": "Von Auftragswarteschlange entfernen",
-    "Start": "Start"
+    "Start": "Start",
+    "StartPrint": "Auftrag starten",
+    "AllJobs": "Alle Jobs",
+    "Jobs": "Arbeitsplätze"
   },
   "Machine": {
     "ConfigFilesPanel": {
@@ -412,6 +618,7 @@
       "DeleteDirectory": "Verzeichnis löschen",
       "DeleteDirectoryQuestion": "Verzeichnis \"{name}\" und den gesamten Inhalt löschen?",
       "DeleteSelectedQuestion": "{count} ausgewählte Elemente löschen?",
+      "DeleteSingleFileQuestion": "Soll die Datei \"{name}\" wirklich gelöscht werden?",
       "Download": "Herunterladen",
       "Duplicate": "duplizieren",
       "DuplicateFile": "Datei duplizieren",
@@ -450,8 +657,8 @@
       "Logfiles": "Logdateien",
       "Rollover": "Logdatei zurücksetzen",
       "RolloverDescription": "Wähle Logs zum zurücksetzen:",
-      "RolloverToastSuccessful": "Logdatei für \"{name}\" wurde erfolgreich zurückgesetzt.",
-      "RolloverToastFailed": "Logdatei reset \"{name}\": {message}"
+      "RolloverToastFailed": "Logdatei reset \"{name}\": {message}",
+      "RolloverToastSuccessful": "Logdatei für \"{name}\" wurde erfolgreich zurückgesetzt."
     },
     "SystemPanel": {
       "Constants": "Konstanten",
@@ -479,27 +686,54 @@
       }
     },
     "UpdatePanel": {
-      "CheckForUpdates": "auf aktualisierungen prüfen",
+      "Abort": "abbrechen",
+      "AreYouSure": "Bist du dir sicher?",
+      "CheckForUpdates": "auf Aktualisierungen prüfen",
+      "Close": "schließen",
+      "CommitHistory": "Commit Verlauf",
       "Commits": "Commits",
       "CommitsAvailable": "keine Einreichung verfügbar | {count} Einreichung verfügbar | {count} Einreichungen verfügbar",
-      "CommitsOnDate": "Engereicht am {date}",
+      "CommitsOnDate": "Eingereicht am {date}",
       "CommittedDaysAgo": "eingereicht vor {days} Tagen",
       "CommittedHoursAgo": "eingereicht vor {hours} Stunden",
       "CommittedOnDate": "eingereicht am {date}",
       "CommittedYesterday": "eingereicht gestern",
+      "ConfigChanges": "Konfigurationsänderungen",
+      "Corrupt": "Korrupt",
+      "CountPackagesCanBeUpgraded": "{count} Pakete können aktualisiert werden",
       "Detached": "abgetrennt",
       "Dirty": "kompromittiert",
-      "ERROR": "FEHLER",
+      "GenericUpdateQuestion": "Überprüfe den Commit-Verlauf (falls verfügbar) und die GitHub-Projektseite von diesem Projekt, um festzustellen, ob manuelle Anpassungen nach dieser Aktualisierung erforderlich sind.",
+      "GitHubPage": "GitHub Projektseite",
+      "HardRecovery": "Harte Wiederherstellung",
+      "InitUpdateManager": "Der Update Manager ist noch nicht initialisiert. Dies ist normal, wenn das System zum ersten Mal gestartet wird. Bitte klicke auf die Aktualisierungsschaltfläche, um alle Komponenten zu initialisieren.",
       "Invalid": "ungültig",
+      "IUnderstandTheRisks": "Ich habe die Risiken verstanden",
+      "KlipperUpdateQuestionConfig": "Dieses Update kann Änderungen an den Konfigurationsparametern enthalten, die in der Datei printer.cfg geändert werden müssen; Informationen hierzu findest du im Änderungsprotokoll.",
+      "KlipperUpdateQuestionFirmware": "Dadurch wird die Klipper-Host-Software aktualisiert. Steuerplatinen, auf denen die Klipper-Firmware läuft, müssen möglicherweise mit einer neu kompilierten Firmware geflasht werden, bevor die Maschine wieder in Betrieb genommen werden kann.",
+      "LinkToGithub": "Link zu GitHub",
+      "MoonrakerUpdateQuestion": "Dadurch wird die Moonraker-API aktualisiert. Möglicherweise sind Änderungen an der Datei moonraker.conf erforderlich, damit die Maschine wieder verwendet werden kann.",
+      "MoreCommitsInfo": "Hier können maximal 30 Commits angezeigt werden. Um alle Commits zu sehen, klicke bitte auf den folgenden Link:",
       "OSPackages": "OS-Pakete",
-      "PackagesCanBeUpgraded": "Paketupdates sind verfügbar",
+      "SoftRecovery": "einfache Wiederherstellung",
+      "StartUpdate": "Aktualisierung starten",
       "System": "System",
+      "ThesePackagesCanBeUpgrade": "Diese Systempakete können aktualisiert werden:",
       "Unknown": "unbekannt",
       "Update": "update",
       "UpdateAll": "Alle Komponenten updaten",
       "UpdateManager": "Update Manager",
+      "UpdateWarning": "Aktualisierungswarnung: {name}",
       "Upgrade": "upgrade",
-      "UpToDate": "aktuell"
+      "UpgradeableSystemPackages": "Aktualisierbare Systempakete",
+      "UpToDate": "aktuell",
+      "WebClientUpdateQuestion": "In einigen Fällen kann die Aktualisierung des Webclients Änderungen mit sich bringen, die zu Inkompatibilitäten führen können. Weitere Informationen sind in den Veröffentlichungshinweisen zu finden.",
+      "ERROR": "Fehler",
+      "Notification": {
+        "Detached": "",
+        "Dirty": ""
+      },
+      "PackagesCanBeUpgraded": ""
     }
   },
   "ManualProbe": {
@@ -509,23 +743,17 @@
     "Headline": "Manuelle Messung"
   },
   "Panels": {
-    "trilabSlicers": {
-      "prusa": {
-        "title": "PrusaSlicer",
-        "longTitle": "PrusaSlicer 2.7.1",
-        "shortDescription": "PrusaSlicer ist ein quelloffenes, funktionsreiches und häufig aktualisiertes Werkzeug, das alles enthält, was Sie zum Exportieren der perfekten Druckdateien benötigen",
-        "longDescription": "Verwenden Sie die Schaltfläche oben, um das komplette PrusaSlicer-Paket herunterzuladen, einschließlich der Slicer-Profile. Entpacken Sie das Archiv nach dem Herunterladen in den Zielordner. Auf der Windows-Plattform führen Sie das Programm \"prusa-slicer.exe\" aus, auf der MacOS-Plattform führen Sie \"PrusaSlicer.app\" aus. Nach dem Start des Programms wird der Konfigurationsassistent angezeigt. Gehen Sie zur Registerkarte Prusa Pro. Wählen Sie hier Prusa Pro HT90 aus der Liste der Druckervarianten aus. Klicken Sie anschließend auf die Schaltfläche Fertig stellen in der unteren rechten Ecke des Fensters. Damit ist der Slicer einsatzbereit!",
-        "imgsrc": "/img/PrusaSlicer.png"
-      }
-    },
     "ExtruderControlPanel": {
       "Allowed": "Erlaubt",
+      "CleanNozzle": "Düse reinigen",
       "EstimatedExtrusion": "Extrusion:",
       "Extrude": "Extrudieren",
+      "ExtruderControl": "Extruder Control",
       "ExtruderTempTooLow": "Extruder Temp. <",
       "ExtrusionFactor": "Extrusionsfaktor",
       "ExtrusionFeedrate": "Extrusionsgeschwindigkeit",
       "FilamentLength": "Filamentlänge",
+      "FirmwareRetraction": "Firmware Rückzug",
       "FirmwareRetractionSettings": {
         "RetractLength": "Rückzugslänge",
         "RetractSpeed": "Rückzuggeschwindigkeit",
@@ -534,14 +762,17 @@
       },
       "Headline": "Extruder",
       "LoadFilament": "Filament laden",
+      "PressureAdvance": "Pressure Advance",
       "PressureAdvanceSettings": {
         "Advance": "Pressure Advance",
         "Extruder": "Extruder",
         "SmoothTime": "Smooth Time"
       },
+      "PurgeFilament": "Filament reinigen",
       "Requested": "Angefordert",
       "Retract": "Rückzug",
       "TooLargeExtrusion": "Extrusion zu groß!",
+      "Tools": "Werkzeuge",
       "UnloadFilament": "Filament entladen"
     },
     "FarmPrinterPanel": {
@@ -557,13 +788,15 @@
       "PrinterSwitchedOff": "Drucker ist ausgeschaltet",
       "PrinterSwitchedOffDescription": "Der Drucker ist ausgeschaltet und es kann keine Verbindung zu Klipper hergestellt werden. Um den Drucker einzuschalten, auf die Schaltfläche unten klicken:",
       "Restart": "Neustart",
-      "ServiceReports": "{service} meldet"
+      "ServiceReports": "{service} meldet",
+      "KlipperCheck": ""
     },
     "MachineSettingsPanel": {
       "Headline": "Maschine",
       "MotionSettings": {
         "Acceleration": "Beschleunigung",
         "MaxAccelToDecel": "Max. Beschl. zu Verz.",
+        "MinimumCruiseRatio": "Min. Kreuzfahr Quote",
         "SquareCornerVelocity": "Eck-Geschwindigkeit",
         "Velocity": "Geschwindigkeit"
       }
@@ -573,6 +806,7 @@
       "Send": "senden"
     },
     "MiniconsolePanel": {
+      "Autoscroll": "Autoscroll",
       "Headline": "Konsole",
       "HideTemperatures": "Temperaturmeldungen ausblenden",
       "HideTimelapse": "Timelapse ausblenden",
@@ -595,12 +829,8 @@
       },
       "RunoutSensor": {
         "Detected": "erkannt",
-        "Disabled": "deaktiviert",
-        "Empty": "Leer"
-      },
-      "DoorSensor": {
-        "Closed": "geschlossen",
-        "Open": "offen"
+        "Empty": "leer",
+        "Disabled": ""
       }
     },
     "PowerControlPanel": {
@@ -608,6 +838,32 @@
       "Off": "Aus",
       "On": "An",
       "PowerControl": "Stromversorgung"
+    },
+    "SpoolmanPanel": {
+      "Cancel": "Abbrechen",
+      "ChangeSpool": "Rolle wechseln",
+      "DaysAgo": "vor {days} Tagen",
+      "EjectSpool": "Rolle auswerfen",
+      "EjectSpoolQuestion": "Sind Sie sicher, dass Sie die Filamentrolle auswerfen wollen?",
+      "Filament": "Filament",
+      "FilamentTypeMismatch": "Das Material der aktiven Filamentrolle ({spoolType}) stimmt nicht mit dem Material des G-Codes ({fileType}) überein.",
+      "Headline": "Spoolman",
+      "LastUsed": "Zuletzt verwendet",
+      "Location": "Standort",
+      "Material": "Material",
+      "Never": "Nie",
+      "NoActiveSpool": "Die Filamentverfolgung ist inaktiv. Um zu beginnen, wählen Sie bitte eine Rolle aus.",
+      "NoResults": "Keine Rolle mit den aktuellen Suchkriterien gefunden.",
+      "NoSpools": "Keine Rolle verfügbar",
+      "NoSpoolSelected": "Keine Rolle ausgewählt. Bitte wählen Sie eine Spule aus, sonst kann dieser Druck nicht verfolgt werden.",
+      "OpenSpoolManager": "Rollenverwaltung öffnen",
+      "Refresh": "aktualisieren",
+      "Search": "Suchen",
+      "SelectSpool": "Rolle auswählen",
+      "Today": "Heute",
+      "TooLessFilament": "Die aktuelle Rolle hat möglicherweise nicht genug Filament für diesen Druck. ({spoolWeight}g von {fileWeight}g)",
+      "Weight": "Gewicht",
+      "Yesterday": "Gestern"
     },
     "StatusPanel": {
       "CancelPrint": "Druck abbrechen",
@@ -629,7 +885,7 @@
       "Files": "Dateien",
       "Flow": "Fluss",
       "Headline": "Status",
-      "Jobqueue": "Warteschlange ({count})",
+      "Jobqueue": "Warteschlange",
       "JobqueueMoreFiles": "keine weiteren Aufträge | einen weiteren Auftrag | {count} weitere Aufträge",
       "Layer": "Schicht",
       "Max": "max",
@@ -670,6 +926,8 @@
         "Temperature": "Aktuelle Temperatur"
       },
       "Headline": "Temperaturen",
+      "HideMcuHostSensors": "Host/MCU Sensoren ausblenden",
+      "HideMonitors": "Monitore ausblenden",
       "Max": "max",
       "Min": "min",
       "Name": "Name",
@@ -687,13 +945,17 @@
     "ToolheadControlPanel": {
       "Absolute": "absolut",
       "ALL": "ALLE",
+      "ControlButtons": "Kontrollknöpfe",
+      "CoordinateFields": "Koordinatenfelder",
       "Headline": "Werkzeugkopf",
       "PleaseConfigureSteps": "Bitte Schritte konfigurieren",
       "Position": "Position",
+      "PositionOutput": "Positionsausgabe",
       "QGL": "QGL",
       "Relative": "relativ",
       "SettingsInterfaceControl": "Einstellungen > Interface > Steuerung",
       "SpeedFactor": "Geschwindigkeitsfaktor",
+      "ZOffset": "Z-Versatz",
       "ZTilt": "Z Tilt"
     },
     "WebcamPanel": {
@@ -713,52 +975,8 @@
       "SaveInfoDescription": "Der neue Z-Versatz wurde berechnet und registriert. Auf \"SAVE CONFIG\", klicken um den neuen Z-Versatz in der printer.cfg zu speichern und Klipper neu zu starten.",
       "SaveInfoDescriptionPrint": "Der neue Z-Versatz wurde berechnet und registriert. Nach dem Drucken auf \"SAVE CONFIG\" in der oberen Leiste klicken um den neuen Z-Versatz in der printer.cfg zu speichern und Klipper neu zu starten.",
       "SaveInfoHeadline": "Information",
-      "ToEndstop": "bis Endschalter",
-      "ToProbe": "bis Sensor"
-    },
-    "TrilabSlicerPanel": {
-      "notAvailableTitle": ""
-    },
-    "TrilabAccessPassword": {
-      "caption": "Greifen Sie auf Einstellungen zu",
-      "enablePwdControl": "Aktivieren Sie die Passwortkontrolle",
-      "username": "Nutzername",
-      "password": "Passwort",
-      "confirmPassword": "Bestätige das Passwort",
-      "Warning": "Warnung",
-      "DialogMessage": "Nach dem Speichern der Anmeldeeinstellungen wird die Weboberfläche neu gestartet und Sie werden vom Browser aufgefordert, die Anmeldeinformationen einzugeben. \nWollen Sie jetzt wirklich sparen?",
-      "DialogYesButton": "Ja",
-      "DialogNoButton": "Nein"
-    },
-    "TrilabRemote": {
-      "auto_off": "Automatische Abschaltung",
-      "enable": "Aktivieren",
-      "caption": "Fernzugriff"
-    },
-    "settingsTrilabWifi": {
-      "country": "Land",
-      "mode": "Modus",
-      "caption": "W-lan",
-      "password": "Passwort",
-      "accessPoint": "Zugangspunkt",
-      "ssid": "SSID",
-      "confirmPassword": "Bestätige das Passwort"
-    },
-    "settingsTrilabLight": {
-      "brightness": "Helligkeit",
-      "timeoutTextFieldHint": "Timeout(s)",
-      "enable": "Aktivieren",
-      "timeout": "Zeitüberschreitung aktivieren"
-    },
-    "TrilabSettingsInterfaces": {
-      "IP4addresses": "IPv4-Adressen",
-      "IP6addresses": "IPv6-Adressen",
-      "connectWifi": "Stellen Sie eine WLAN-Verbindung her",
-      "AddProfile": "Profil hinzufügen",
-      "ProfilesIn": "Profile in",
-      "ProfileActive": "Aktiv",
-      "ProfileInactive": "Inaktiv",
-      "Interfaces": "Verfügbare Schnittstellen"
+      "ToEndstop": "",
+      "ToProbe": ""
     }
   },
   "PowerDeviceChangeDialog": {
@@ -779,7 +997,15 @@
     "Printers": "Drucker",
     "Timelapse": "Zeitraffer",
     "Webcam": "Webcam",
-    "Calibration": "Kalibrierung"
+    "Calibration": "Kalibrierung",
+    "Diagnostics": "Diagnose"
+  },
+  "ScrewsTiltAdjust": {
+    "Accept": "akzeptieren",
+    "Base": "Basis",
+    "ErrorText": "Ein Fehler ist beim Abtasten aufgetreten.",
+    "Headline": "Neigungsverstellung",
+    "Retry": "wiederholen"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Drucker hinzufügen",
@@ -832,6 +1058,7 @@
       "EnableXYHoming": "Aktiviere kombiniertes X & Y homing",
       "EstimatedExtrusionInfo": "Zeige Info zur geschätzten Extrusion",
       "EstimatedExtrusionInfoDescription": "Anzeigen/ausblenden der Info zur geschätzten Extrusion, basierend auf Extrusionmenge und Extrusionsgeschwindigkeit",
+      "HideDuringPrint": "Achsensteuerung während des Drucks ausblenden",
       "InvertXMovement": "Bewegung der X-Achse invertieren",
       "InvertYMovement": "Bewegung der Y-Achse invertieren",
       "InvertZMovement": "Bewegung der Z-Achse invertieren",
@@ -851,6 +1078,8 @@
       "Style": "Stil",
       "ValueGreaterThan": "Wert muss größer als {value} sein",
       "ZOffsetIncrements": "Schrittweiten Z-Versatz (in mm)",
+      "ZOffsetSaveOption": "Z-Versatz Speicheroption",
+      "ZOffsetSaveOptionDescription": "Wechsel die Option zum Speichern des Z-Versatzes.",
       "ZTiltAdjust": "Z-Tilt Adjust{isDefault}"
     },
     "DashboardTab": {
@@ -868,13 +1097,11 @@
       "Editor": "Editor",
       "KlipperRestartMethod": "Klipper Neustartmethode",
       "KlipperRestartMethodDescription": "Wähle aus, welche Neustartmethode verwendet werden soll wenn 'Speichern & Neustarten' geklickt wir im Editor.",
-      "MoonrakerRestartInstance": "Moonraker Neustartinstanz",
-      "MoonrakerRestartInstanceDescription": "Wähle aus, welche Moonrakerinstanz neu gestartet werden soll wenn 'Speichern & Neustarten' im Editor geklickt wird.",
-      "UseEscToClose": "ESC drücken um Editor zu schließen",
-      "UseEscToCloseDescription": "Erlaubt es den Editor mit ESC zu schließen.",
+      "Spaces": "Leerzeichen: {count}",
       "TabSize": "TAB Größe",
       "TabSizeDescription": "Legt fest, um wie viele Leerzeichen für TAB eingerückt werden sollen",
-      "Spaces": "Leerzeichen: {count}"
+      "UseEscToClose": "ESC drücken um Editor zu schließen",
+      "UseEscToCloseDescription": "Erlaubt es den Editor mit ESC zu schließen."
     },
     "GCodeViewerTab": {
       "BackgroundColor": "Hintergrundfarbe",
@@ -908,27 +1135,37 @@
       "DbConsoleHistory": "Verlauf der Konsole",
       "DbHistoryJobs": "Historie Druckvorgänge",
       "DbHistoryTotals": "Historie Gesamtzähler",
+      "DBNavigation": "Navigation",
       "DbTimelapseSettings": "Zeitraffer Einstellungen",
       "DbView": "Ansichtseinstellungen",
-      "DbWebcams": "Webcams",
       "EstimateValues": {
         "Filament": "Filament",
         "File": "Datei",
         "Slicer": "Slicer"
       },
+      "Everything": "Alle",
       "FactoryDialog": "Bitte wähle alle Abschnitte die du zurücksetzen möchtest:",
       "FactoryReset": "Werkseinstellungen",
       "General": "Allgemein",
       "Language": "Sprache",
-      "MoonrakerDb": "Moonraker Datenbank",
+      "MainsailSettingsMoonrakerDb": "Mainsail Einstellungen in Moonraker DB",
       "PrinterName": "Druckername",
       "Reset": "zurücksetzen",
       "Restore": "Wiederherstellung",
       "RestoreDialog": "Bitte wähle alle Abschnitte aus, die du wiederherstellen möchtest:",
-      "TimeFormat": "Zeitformat",
-      "PrinterNameRequired": "Der Druckername ist erforderlich",
-      "PrinterNameMaxLength": "Die maximal zulässige Namenslänge beträgt 63 Zeichen",
-      "PrinterNameInvalid": "Der Druckername ist ungültig. \nEs sind nur einfache Zeichen, Zahlen und Bindestriche zulässig."
+      "TimeFormat": "Zeitformat"
+    },
+    "HeightmapTab": {
+      "ColorSchemes": "Farbschemen",
+      "Heightmap": "Höhenkarte",
+      "IsDefault": "(Standard)",
+      "Schemes": {
+        "GrayScale": "Graustufen",
+        "Hot": "Heiß",
+        "Hsv": "Hsv",
+        "Portland": "Portland",
+        "Spring": "Frühling"
+      }
     },
     "InterfaceSettings": "Interface Einstellungen",
     "MacrosTab": {
@@ -1066,6 +1303,11 @@
       "RetractDistanceDescription": "Die Länge an Filament die der Extruder zurückzieht.",
       "RetractSpeed": "Rückzuggeschwindigkeit",
       "RetractSpeedDescription": "Geschwindigkeit mit der der Extruder das Filament zurückzieht.",
+      "RulesBetweenMinMax": "Der Wert muss zwischen {min} und {max} sein!",
+      "RulesMin": "Der Wert muss mindestens {min} sein!",
+      "RulesPositive": "Der Wert muss positiv sein!",
+      "RulesRequired": "Der Wert ist erforderlich!",
+      "RulesZeroAndPositive": "Der Wert muss 0 oder größer sein!",
       "SaveFrames": "Bilder speichern",
       "SaveFramesDescription": "Speichern der Bilder in einer Zip-Datei für externes Rendern",
       "StreamDelayCompensation": "Stream-Verzögerungs-Kompensation",
@@ -1091,6 +1333,7 @@
     "UiSettingsTab": {
       "BedScrewsDialog": "Hilfsfenster für Bettschraubenjustierung",
       "BedScrewsDialogDescription": "Zeige ein Hilfsfenster für die Bettschraubenjustierung an.",
+      "BigThumbnailBackground": "Hintergrundfarbe vom großen Vorschaubild",
       "BoolBigThumbnail": "Große Vorschaubilder",
       "BoolBigThumbnailDescription": "Zeige ein großes Thumbnail in der Status-Anzeige während eines Drucks.",
       "BoolHideUploadAndPrintButton": "\"Hochladen & Drucken\" Schaltfläche ausblenden",
@@ -1099,6 +1342,11 @@
       "ConfirmOnEmergencyStopDescription": "Zeige vor einem Notstop einen Bestätigungsdialog.",
       "ConfirmOnPowerDeviceChange": "Bestätigung für Änderung der Stromversorgung von Geräten",
       "ConfirmOnPowerDeviceChangeDescription": "Zeige vor Änderung der Stromversorgung von Geräten einen Bestätigungsdialog.",
+      "DefaultNavigationState": "Standard Navigationszustand",
+      "DefaultNavigationStateAlwaysClosed": "immer geschlossen",
+      "DefaultNavigationStateAlwaysOpen": "immer geöffnet",
+      "DefaultNavigationStateDescription": "Welchen zustand soll die Navigation normalerweise haben?",
+      "DefaultNavigationStateLastState": "letzter Zustand",
       "DisableFanAnimation": "Lüfteranimation deaktivieren",
       "DisableFanAnimationDescription": "Dies kann die Last im Browser senken.",
       "DisplayCANCEL_PRINT": "Zeige CANCEL_PRINT an",
@@ -1108,6 +1356,8 @@
       "Guide": "Leitfaden",
       "HideSaveConfigButtonForBedMesh": "SAVE_CONFIG Schaltfläche ausblenden bei bed_mesh Änderungen",
       "HideSaveConfigButtonForBedMeshDescription": "SAVE_CONFIG nicht anzeigen, wenn nur das Speichern eines bed_mesh in Klipper aussteht.",
+      "HideUpdateWarnings": "Aktualisierungswarnungen ausblenden",
+      "HideUpdateWarningsDescription": "Mit dieser Option werden alle Aktualisierungswarnungen im Aktualisierungsmanager ausgeblendet.",
       "LockSliders": "Sperre Schieberegler auf Touchscreen Geräten",
       "LockSlidersDelay": "Verzögerung der Sperre für Schieberegler",
       "LockSlidersDelayDescription": "Schieberegler werden nach einer bestimmten Verzögerung gesperrt. Wenn 0 oder leer, dann sperren Schieberegler nur nach wechseln/neuladen der Seite.",
@@ -1126,7 +1376,12 @@
       "ScrewsTiltAdjustDialogDescription": "Zeige ein Hilfsfenster für SCREWS_TILT_CALCULATE an.",
       "TempchartHeight": "Temperatur-Chart Höhe",
       "TempchartHeightDescription": "Verändert die Höhe vom Temperatur-Chart auf dem Dashboard.",
-      "UiSettings": "UI-Einstellungen"
+      "Theme": "Theme",
+      "ThemeDark": "Dunkel",
+      "ThemeDescription": "Ändern Sie das allgemeine Erscheinungsbild der Anwendung.",
+      "ThemeLight": "Hell",
+      "UiSettings": "UI-Einstellungen",
+      "ShowWebcamInNavigation": ""
     },
     "Update": "speichern",
     "WebcamsTab": {
@@ -1134,7 +1389,9 @@
       "CreateWebcam": "Erstelle Webcam",
       "EditCrowsnestConf": "crowsnest.conf bearbeiten",
       "EditWebcam": "Webcam bearbeiten",
+      "EnableAudio": "Ton einschalten",
       "FlipWebcam": "Webcam-Bild spiegeln:",
+      "HideFps": "FPS-Anzeige verstecken",
       "Hlsstream": "HLS-Stream",
       "Horizontally": "horizontal",
       "IconBed": "Bett",
@@ -1146,9 +1403,9 @@
       "IconNozzle": "Düse",
       "IconPrinter": "Drucker",
       "Ipstream": "IP Kamera",
+      "JMuxerStream": "Roher h264 stream (jmuxer)",
       "Mjpegstreamer": "MJPEG-Streamer",
       "MjpegstreamerAdaptive": "Adaptive MJPEG-Streamer (experimental)",
-      "JMuxerStream": "Roher h264 stream (jmuxer)",
       "Name": "Name",
       "NameAlreadyExists": "Name existiert bereits",
       "Required": "benötigt",
@@ -1163,20 +1420,10 @@
       "Vertically": "vertikal",
       "Webcams": "Webcams",
       "WebrtcCameraStreamer": "WebRTC (camera-streamer)",
+      "WebrtcGo2rtc": "WebRTC (go2rtc)",
       "WebrtcJanus": "WebRTC (janus-gateway)",
-      "WebrtcMediaMTX": "WebRTC (MediaMTX / rtsp-simple-server)"
-    },
-    "TrilabTab": {
-      "Trilab": "Verze",
-      "TrilabLogs": "Protokolle"
+      "WebrtcMediaMTX": "WebRTC (MediaMTX)"
     }
-  },
-  "ScrewsTiltAdjust": {
-    "Accept": "akzeptieren",
-    "Base": "Basis",
-    "ErrorText": "Ein Fehler ist beim Abtasten aufgetreten.",
-    "Headline": "Neigungsverstellung",
-    "Retry": "wiederholen"
   },
   "Timelapse": {
     "AllFiles": "Alle",
@@ -1189,6 +1436,7 @@
     "DeleteDirectory": "Verzeichnis löschen",
     "DeleteDirectoryQuestion": "Willst du wirklich das Verzeichnis \"{name}\" mit seinem gesamten Inhalt löschen?",
     "DeleteSelectedQuestion": "Sollen wirklich {count} ausgewählte Dateien gelöscht werden?",
+    "DeleteSingleFileQuestion": "Soll die Datei \"{name}\" wirklich gelöscht werden?",
     "Download": "Download",
     "DuplicateLastframe": "Letztes Bild duplizieren",
     "Empty": "Keine fertigen Zeitraffer gefunden.",
@@ -1230,109 +1478,25 @@
     "Video": "Video"
   },
   "title": "Deutsch",
-  "TrilabUpdateDialog": {
-    "title": "Aktualisierung",
-    "RestartPrinter": "Starten Sie den Drucker neu",
-    "titleUSB": "Update von USB"
+  "CoolDownDialog": {
+    "AreYouSure": "Bist du sicher?",
+    "CoolDown": "Abkühlen",
+    "No": "NEIN",
+    "Yes": "Ja"
   },
-  "General": {
-    "Save": "Speichern"
+  "DevicesDialog": {
+    "CanBusInfo": "Es können nur nicht zugewiesene Knoten erkannt werden. \nUm Kommunikationsprobleme zu vermeiden, wird empfohlen, nur ein nicht zugewiesenes Gerät an den CAN-Bus anzuschließen. \nFür weitere Details klicken Sie bitte auf den Link:",
+    "ClickRefresh": "Klicken Sie auf die Schaltfläche „Aktualisieren“, um nach Geräten zu suchen.",
+    "DevicePath": "Gerätepfad",
+    "Formats": "Formate",
+    "Headline": "Geräte",
+    "HideSystemEntries": "Systemeinträge ausblenden",
+    "LibcameraId": "Libcamera-ID",
+    "NoDeviceFound": "Kein Gerät gefunden. \nBitte überprüfen Sie die Verbindung und klicken Sie auf die Schaltfläche „Aktualisieren“.",
+    "PathByHardware": "Pfad nach Hardware",
+    "PathById": "Pfad nach ID",
+    "Refresh": "Aktualisierung",
+    "Resolutions": "Vorsätze"
   },
-  "TrilabLiveUpdate": {
-    "Buttons": {
-      "InstallFromUsb": "Update von USB",
-      "DownloadUpdate": "Aktualisierung herunterladen"
-    },
-    "restartWarning": "Das Update ist zur Installation bereit. \nKlicken Sie auf die Schaltfläche, um das Update zu installieren. \nDer Drucker wird neu gestartet, sobald die Aktualisierung abgeschlossen ist.",
-    "printerIsPrinting": "Sie können diesen Schritt derzeit nicht ausführen, da Ihr Drucker gerade arbeitet. \nBitte warten Sie eine Weile. Dieses Fenster wird automatisch aktualisiert, wenn dieser Schritt abgeschlossen ist",
-    "installAndRebootBtn": "INSTALLIEREN",
-    "Titles": {
-      "Installed": "Update bereit",
-      "UsbInstalled": "USB-Update bereit",
-      "UpdateInProgress": "Aktualisierung läuft",
-      "UpdateAvailable": "Update verfügbar",
-      "UsbUpdateAvailable": "USB-Update verfügbar"
-    }
-  },
-  "Trilab": {
-    "TrilabFilamentLoadWizard": {
-      "FilamentIsLoading": "Filament wird geladen...",
-      "InsertFilamentIntoExtruder": "Filament in den Extruder einlegen und Weiter drücken",
-      "SelectWhichFilamentYouWantToLoad": "Wählen Sie aus, welches Filament Sie laden möchten",
-      "PleaseWaitForTheTemperatureToReach": "Bitte warten Sie, bis die Temperatur den angegebenen Wert erreicht",
-      "IsColorClean": "Ist die Farbe sauber?",
-      "CancelHeating": "Heizung abbrechen",
-      "Continue": "Weitermachen",
-      "OpenFilamentMenu": "Öffnen Sie das Filament-Menü",
-      "CancelWizard": "Abbruchassistent",
-      "PurgeMore": "Mehr bereinigen",
-      "CooldownAndClose": "Abkühlen",
-      "Close": "Schließen",
-      "Step": "Schritt",
-      "FilamentIsUnloading": "Filament wird entladen",
-      "FilamentLoadWizard": "Filament-Ladeassistent",
-      "CancelLoading": "Laden abbrechen"
-    },
-    "TrilabSelectFilamentDialog": {
-      "Cancel": "Stornieren",
-      "Cpnfirm": "Bestätigen",
-      "AreYouSureYouWantToSelectFilament": "Sind Sie sicher, dass Sie Filament auswählen möchten?",
-      "OK": "OK"
-    },
-    "TrilabServiceDialog": {
-      "ServiceLogin": "Service-Login",
-      "Cancel": "Stornieren"
-    },
-    "TrilabUpdateDialog": {
-      "Progres": "Fortschritt:",
-      "ShowErrorTechinicalDetails": "Technische Fehlerdetails anzeigen",
-      "STATUS": "STATUS:",
-      "DANGER": "FEHLER",
-      "INFO": "DIE INFO",
-      "WARNING": "WARNEN"
-    },
-    "SettingsTrilabTab": {
-      "System": "System",
-      "SystemVersion": "Systemversion:",
-      "WenInterfaceVersion": "Webinterface-Version:",
-      "AutomaticCheckForUpdates": "Automatische Suche nach Updates:",
-      "UploadUpdateFile": "Update-Datei hochladen",
-      "Upload": "Hochladen",
-      "CheckForLiveUpdate": "Suchen Sie nach Live-Updates",
-      "NoUpdateAvailable": "Kein Update verfügbar",
-      "UpdateChannelTitle": "Kanal aktualisieren"
-    },
-    "TheTopbar": {
-      "HiddenViewEnbled": "Verborgene Ansicht aktiviert",
-      "ServiceViewEnabled": "Serviceansicht aktiviert"
-    },
-    "ConnectionStatus": {
-      "Mainsail": "Großsegel"
-    },
-    "AdvancedFeatures": "",
-    "SettingsTrilabPrinterTab": {
-      "AdvancedFeatures": "Erweiterte Funktionen:"
-    },
-    "SlicerPanel": {
-      "Download": "Herunterladen"
-    },
-    "PageNotFound": {
-      "404PageNotFound": "404 Seite nicht gefunden"
-    },
-    "TrilabFilamentUnLoadWizard": {
-      "WhichFilamentIsInPrinter": "Welches Material ist im Drucker geladen?",
-      "FilamentUnloadWizard": "Assistent zum Entladen von Filamenten"
-    },
-    "TrilabFilamentUnloadWizard": {
-      "FilamentIsUnloading": "Filament wird entladen",
-      "colorUnloaded": "Filament wurde erfolgreich entladen"
-    },
-    "SettingsAccessPasswordPanel": {
-      "SaveBtn": "Anmeldedaten speichern"
-    }
-  },
-  "Generic": {
-    "Ok": "OK",
-    "Unknown": "Unbekannt"
-  }
+  "_last_update": ""
 }

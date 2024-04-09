@@ -1,7 +1,11 @@
 {
   "App": {
     "Notifications": {
-      "DependencyDescription": "Aktualna {name} wersja nie wspiera wszystkich funkcji Mainsail. Zaktualizuj {name} conajmniej do wersji {neededVersion}.",
+      "BrowserWarnings": {
+        "Description": "{name} jest nieaktualny i nie jest w pełni obsługiwany. Aktualna wersja to {version}, lecz Mainsail wymaga wersji {minVersion} lub wyższej.",
+        "Headline": "Nieaktualna przeglądarka"
+      },
+      "DependencyDescription": "Aktualna wersja {name} nie wspiera wszystkich funkcji Mainsail. Zaktualizuj {name} co najmniej do wersji {neededVersion}.",
       "DependencyName": "Zależność: {name}",
       "DismissAll": "Odrzuć wszystko",
       "KlipperWarnings": {
@@ -16,13 +20,15 @@
         "MoonrakerFailedComponentDescription": "Został wykryty błąd podczas ładowania '{component}'. Proszę sprawdzić rejestr plików i naprawić błąd.",
         "MoonrakerWarning": "Ostrzeżenie Moonraker'a",
         "UnparsedConfigOption": "Błędna wartość '{option}: {value}' w sekcji [{section}]. Ustawienie, które zostało użyte, może nie być już dłużej możliwe lub stało się to wskutek modułu który się nie wczytał. W przyszłości może wystąpić problem podczas startu.",
-        "UnparsedConfigSection": "Błędna wartość w sekcji [{section}] została wykryta. Może być to skutek elementu, który się nie wczytał. W przyszłości może wystąpić problem podczas startu."
+        "UnparsedConfigSection": "Błędna wartość w sekcji [{section}] została wykryta. Może być to skutek elementu, który się nie wczytał. W przyszłości może wystąpić problem podczas startu.",
+        "MoonrakerFailedInitComponentDescription": "Wykryto błąd podczas inicjalizacji komponentu moonraker „{component}”. \nSprawdź plik dziennika i napraw problem.",
+        "MoonrakerInitComponent": "W tym. \nMoonraker: {komponent}"
       },
       "Never": "nigdy",
       "NextReboot": "przy następnym uruchomieniu",
       "NoNotification": "Brak powiadomień",
-      "Remind": "Przypomnij:",
-      "Notifications": "Powiadomienia"
+      "Notifications": "Powiadomienia",
+      "Remind": "Przypomnij:"
     },
     "NumberInput": {
       "GreaterOrEqualError": "Musi być większa lub równa {min}!",
@@ -30,6 +36,11 @@
       "NoEmptyAllowedError": "Wejście nie może być puste!"
     },
     "Printers": "Drukarki",
+    "TheServiceWorker": {
+      "DescriptionNeedUpdate": "Lokalna pamięć podręczna jest nieaktualna i wymaga aktualizacji. Kliknij poniższy przycisk, aby zaktualizować pamięć podręczną.",
+      "TitleNeedUpdate": "PWA wymaga aktualizacji",
+      "Update": "aktualizuj"
+    },
     "ThrottledStates": {
       "DescriptionCurrentlyThrottled": "Częstotliwość rdzeni rPi jest aktualnie obniżona.",
       "DescriptionFrequencyCapped": "Taktowanie rPi ograniczone do 1.2 GHz.",
@@ -52,9 +63,9 @@
       "Complete": "Zakończono - {filename}",
       "Error": "BŁĄD",
       "Pause": "Pauza",
+      "PrinterOff": "Drukarka WYŁ.",
       "Printing": "{percent}% Drukowanie - {filename}",
-      "PrintingETA": "{percent}% Drukowanie - Koniec: {eta} - {filename}",
-      "PrinterOff": "Drukarka WYŁ."
+      "PrintingETA": "{percent}% Drukowanie - Koniec: {eta} - {filename}"
     },
     "TopBar": {
       "CannotUploadTheFile": "Błąd wgrywania pliku!",
@@ -62,11 +73,7 @@
       "SAVE_CONFIG": "ZAPISZ KONFIGURACJE",
       "Uploading": "Wgrywanie",
       "UploadOfFileSuccessful": "Wgranie {file} zakończono pomyślnie!",
-      "UploadPrint": "Wgraj i Drukuj",
-      "LightBtn": "Światło",
-      "ViewStatus": {
-        "Advanced": "Widok zaawansowany włączony"
-      }
+      "UploadPrint": "Wgraj i Drukuj"
     },
     "TopCornerMenu": {
       "Cancel": "Anuluj",
@@ -108,17 +115,223 @@
       "Empty": "Puste",
       "Recovering": "Odzyskiwanie {software}...",
       "RecoveringDone": "Odzyskiwanie {software} zakończone!",
-      "Updating": "Aktualizacja {software}...",
+      "Updating": "Aktualizowanie {software}...",
       "UpdatingDone": "Aktualizacja {software} zakończona!"
+    },
+    "Trilab": {
+      "TopBar": {
+        "LightBtn": "Światło"
+      },
+      "AdvancedFeatures": "",
+      "ConnectionStatus": {
+        "Mainsail": "Grota"
+      },
+      "Generic": {
+        "CancelWizard": "Anuluj kreatora",
+        "Download": "Pobierać",
+        "Ok": "OK",
+        "Save": "Ratować",
+        "Unknown": "Nieznany"
+      },
+      "PageNotFound": {
+        "404PageNotFound": "Nie znaleziono strony 404"
+      },
+      "Panels": {
+        "TrilabAccessPassword": {
+          "DialogMessage": "Po zapisaniu ustawień logowania interfejs sieciowy uruchomi się ponownie, a przeglądarka poprosi o podanie danych uwierzytelniających. \nCzy na pewno chcesz teraz zapisać?",
+          "DialogNoButton": "NIE",
+          "DialogYesButton": "Tak",
+          "Warning": "Ostrzeżenie",
+          "caption": "Dostęp do Ustawień",
+          "confirmPassword": "Potwierdź hasło",
+          "enablePwdControl": "Włącz kontrolę hasłem",
+          "password": "Hasło",
+          "username": "Nazwa użytkownika"
+        },
+        "TrilabRemote": {
+          "auto_off": "Automatyczne wyłączanie",
+          "caption": "Dostęp zdalny",
+          "enable": "Włączać"
+        },
+        "TrilabSettingsInterfaces": {
+          "AddProfile": "Dodaj profil",
+          "IP4addresses": "Adresy IPv4",
+          "IP6addresses": "Adresy IPv6",
+          "Interfaces": "Dostępne interfejsy",
+          "ProfileActive": "Aktywny",
+          "ProfileInactive": "Nieaktywny",
+          "ProfilesIn": "Profile w",
+          "connectWifi": "Połącz się z Wi-Fi"
+        },
+        "TrilabSlicerPanel": {
+          "notAvailableText": "Profil krajalnicy nie jest dostępny dla tej drukarki, platformy systemowej lub nie wykryliśmy poprawnie Twojego systemu. \nSkontaktuj się z pomocą techniczną",
+          "notAvailableTitle": "Profil krajalnicy niedostępny"
+        },
+        "settingsTrilabLight": {
+          "brightness": "Jasność",
+          "caption": "Światło",
+          "enable": "Włączać",
+          "timeout": "Włącz limit czasu",
+          "timeoutTextFieldHint": "Limit czasu (y)"
+        },
+        "settingsTrilabWifi": {
+          "accessPoint": "Punkt dostępu",
+          "caption": "WiFi",
+          "client": "Klient",
+          "confirmPassword": "Potwierdź hasło",
+          "country": "Kraj",
+          "mode": "Tryb",
+          "password": "Hasło",
+          "selectCountry": "Wybierz kraj",
+          "selectNetworkMode": "Wybierz tryb sieciowy",
+          "ssid": "SSID"
+        },
+        "trilabSlicers": {
+          "prusa": {
+            "imgsrc": "/img/PrusaSlicer.png",
+            "longDescription": "Użyj powyższego przycisku, aby pobrać kompletny pakiet PrusaSlicer, w tym profile krajalnic. \nPo pobraniu rozpakuj archiwum do lokalizacji docelowej. \nNa platformie Windows uruchom program „prusa-slicer.exe”, na platformie MacOS uruchom „PrusaSlicer.app”. \nPo uruchomieniu programu pojawi się kreator konfiguracji. \nPrzejdź do zakładki Prusa Pro. \nZ listy wariantów drukarek wybierz Prusa Pro HT90. \nNastępnie naciśnij przycisk Zakończ znajdujący się w prawym dolnym rogu okna. \nDzięki temu krajalnica jest gotowa do użycia!",
+            "longTitle": "PrusaSlicer 2.7.1",
+            "shortDescription": "PrusaSlicer to bogate w funkcje i często aktualizowane narzędzie o otwartym kodzie źródłowym, które zawiera wszystko, czego potrzebujesz do eksportowania doskonałych plików do druku",
+            "title": "PrusaSlicer"
+          }
+        }
+      },
+      "Settings": {
+        "TrilabTab": {
+          "Trilab": "Wersje",
+          "TrilabLogs": "Dzienniki",
+          "TrilabNetwork": "Sieć",
+          "TrilabPrinter": "Drukarka",
+          "TrilabSlicers": "Krajalnice"
+        }
+      },
+      "SettingsAccessPasswordPanel": {
+        "SaveBtn": "Zapisz dane uwierzytelniające"
+      },
+      "SettingsTrilabPrinterTab": {
+        "AdvancedFeatures": "Zaawansowane funkcje:"
+      },
+      "SettingsTrilabTab": {
+        "AutomaticCheckForUpdates": "Automatyczne sprawdzanie dostępności aktualizacji:",
+        "CheckForLiveUpdate": "Sprawdź aktualizację na żywo",
+        "NoUpdateAvailable": "Brak dostępnej aktualizacji",
+        "System": "System",
+        "SystemVersion": "Wersja systemu:",
+        "UpdateChannelTitle": "Zaktualizuj kanał",
+        "Upload": "Wgrywać",
+        "UploadUpdateFile": "Prześlij plik aktualizacji",
+        "WenInterfaceVersion": "Wersja interfejsu internetowego:"
+      },
+      "SlicerPanel": {
+        "Download": "Pobierać"
+      },
+      "TheTopBar": {
+        "AdvancedViewEnabled": "Widok zaawansowany włączony",
+        "HiddenViewEnbled": "Ukryty widok włączony",
+        "HomeBtn": "Dom",
+        "LightBtn": "Światło",
+        "ServiceViewEnabled": "Widok usługi włączony"
+      },
+      "TheTopbar": {
+        "HiddenViewEnbled": "Ukryty widok włączony",
+        "ServiceViewEnabled": "Widok usługi włączony"
+      },
+      "TrilabFilamentLoadWizard": {
+        "CancelHeating": "Anuluj ogrzewanie",
+        "CancelLoading": "Anuluj ładowanie",
+        "CancelWizard": "Anuluj kreatora",
+        "Close": "Zamknąć",
+        "Continue": "Kontynuować",
+        "CooldownAndClose": "Ochłonąć",
+        "FilamentIsLoading": "Trwa ładowanie żarnika...",
+        "FilamentIsUnloading": "Trwa rozładunek włókna",
+        "FilamentLoadWizard": "Kreator ładowania włókien",
+        "InsertFilamentIntoExtruder": "Włóż żarnik do ekstrudera i naciśnij przycisk Kontynuuj",
+        "IsColorClean": "Czy kolor jest czysty?",
+        "OpenFilamentMenu": "Otwórz menu żarnika",
+        "PleaseWaitForTheTemperatureToReach": "Proszę poczekać aż temperatura osiągnie zadaną wartość",
+        "PurgeMore": "Oczyść więcej",
+        "SelectWhichFilamentYouWantToLoad": "Wybierz, który żarnik chcesz załadować",
+        "Step": "Krok"
+      },
+      "TrilabFilamentUnLoadWizard": {
+        "FilamentUnloadWizard": "Kreator rozładunku włókna",
+        "WhichFilamentIsInPrinter": "Jaki materiał jest załadowany do drukarki?"
+      },
+      "TrilabFilamentUnloadWizard": {
+        "FilamentIsUnloading": "Trwa rozładunek włókna",
+        "colorUnloaded": "Filament został pomyślnie rozładowany"
+      },
+      "TrilabLiveUpdate": {
+        "Buttons": {
+          "DownloadUpdate": "Pobierz aktualizację",
+          "InstallFromUsb": "Aktualizacja z USB"
+        },
+        "Titles": {
+          "Installed": "Aktualizacja gotowa",
+          "UpdateAvailable": "Dostępna aktualizacja",
+          "UpdateInProgress": "Aktualizacja w toku",
+          "UsbInstalled": "Aktualizacja USB gotowa",
+          "UsbUpdateAvailable": "Dostępna aktualizacja USB"
+        },
+        "installAndRebootBtn": "ZAINSTALOWAĆ",
+        "printerIsPrinting": "Nie możesz teraz wykonać tego kroku, ponieważ drukarka wykonuje jakąś pracę. \nPoczekaj chwilę, to okno zostanie automatycznie odświeżone, gdy ten krok będzie gotowy",
+        "restartWarning": "Aktualizacja jest gotowa do instalacji. \nNaciśnij przycisk, aby zainstalować aktualizację. \nDrukarka uruchomi się ponownie po zakończeniu aktualizacji.",
+        "statuses": {
+          "DOWNLOADING": "POBIERANIE AKTUALIZACJI",
+          "ERROR": "BŁĄD AKTUALIZACJI",
+          "INSTALLED": "AKTUALIZACJA GOTOWA",
+          "UNPACKING": "AKTUALIZACJA ROZPAKOWANIA",
+          "UPDATE_AVAILABLE": "DOSTĘPNA NOWA AKTUALIZACJA",
+          "UP_TO_DATE": "NAJNOWSZA WERSJA",
+          "USB_UNPACKING": "AKTUALIZACJA ROZPAKOWANIA",
+          "USB_UPDATE_AVAILABLE": "USB - NOWA AKTUALIZACJA"
+        }
+      },
+      "TrilabSelectFilamentDialog": {
+        "AreYouSureYouWantToSelectFilament": "Czy na pewno chcesz wybrać żarnik?",
+        "Cancel": "Anulować",
+        "Cpnfirm": "Potwierdzać",
+        "OK": "OK"
+      },
+      "TrilabServiceDialog": {
+        "Cancel": "Anulować",
+        "ServiceLogin": "Logowanie do serwisu"
+      },
+      "TrilabUpdateDialog": {
+        "DANGER": "NIEBEZPIECZEŃSTWO",
+        "INFO": "INFORMACJE",
+        "Progres": "Postęp:",
+        "RestartPrinter": "Uruchom ponownie drukarkę",
+        "STATUS": "STATUS:",
+        "ShowErrorTechinicalDetails": "Pokaż szczegóły techniczne błędu",
+        "WARNING": "OSTRZEGAĆ",
+        "title": "Aktualizacja",
+        "titleUSB": "Aktualizacja z USB"
+      }
+    },
+    "TextfieldWithCopy": {
+      "Copied": "Skopiowano"
     }
+  },
+  "BedScrews": {
+    "Abort": "przerwij",
+    "Accept": "Akceptuj",
+    "Adjusted": "wyregulowano",
+    "Description": "Kliknij <b>WYREGULOWANO</b>, jeśli bieżąca śruba została wyregulowana. Kliknij <b>AKCEPTUJ</b>, aby kontynuować bez regulacji.",
+    "Headline": "Śruby stołu",
+    "ScrewAccepted": "Śruby zaakceptowane",
+    "ScrewIndex": "Indeks śrub",
+    "ScrewName": "Nazwa śruby",
+    "ScrewOutput": "{current} z {max}"
   },
   "ConnectionDialog": {
     "CannotConnectTo": "Połączenie ({host}) z Moonrakerem nieudane.",
     "CheckMoonrakerLog": "Jeżeli ta wiadomość się powtarza, sprawdź plik:",
     "Connecting": "Łączenie z {host}",
     "Failed": "Połączenie nieudane",
-    "TryAgain": "Spróbuj ponownie",
-    "Initializing": "Inicjowanie"
+    "Initializing": "Inicjowanie",
+    "TryAgain": "Spróbuj ponownie"
   },
   "Console": {
     "CommandList": "Lista komend",
@@ -132,8 +345,9 @@
     "StartPrint": {
       "Cancel": "Anuluj",
       "DoYouWantToStartFilename": "Czy chcesz rozpocząć druk {filename}?",
+      "DoYouWantToStartFilenameFilament": "Rozpocząć {filename} z następującym filamentem?",
       "Headline": "Rozpocznij",
-      "Print": "wydruk",
+      "Print": "drukuj",
       "Timelapse": "Timelapse"
     }
   },
@@ -149,18 +363,23 @@
     "UnsavedChanges": "Niezapisane zmiany",
     "UnsavedChangesMessage": "Chcesz zapisać zmiany w {filename}?",
     "UnsavedChangesSubMessage": "Niezapisane zmiany zostaną utracone. Możesz wyłączyć to okno dialogowe w ustawieniach edytora.",
-    "Uploading": "Wgrywanie"
+    "Uploading": "Wgrywanie",
+    "DeviceDialog": "Urządzenia"
   },
   "EmergencyStopDialog": {
-    "AreYouSure": "Jesteś pewien?",
+    "AreYouSure": "Czy na pewno?",
     "EmergencyStop": "Awaryjny STOP",
     "No": "Nie",
     "Yes": "Tak"
   },
   "Files": {
+    "AddBatchToQueue": "Dodaj serię do kolejki",
     "AddToQueue": "Dodaj do kolejki",
     "AllFiles": "Wszystkie",
+    "BedTemp": "Temp. stołu",
     "Cancel": "Anuluj",
+    "ChamberTemp": "Temp. komory",
+    "Count": "Ilość",
     "Create": "Stwórz",
     "CreateNewDirectory": "Stwórz nowy katalog",
     "CurrentPath": "Aktualna ścieżka",
@@ -168,9 +387,13 @@
     "DeleteDirectory": "Usuwanie katalogu",
     "DeleteDirectoryQuestion": "Czy na pewno chcesz usunąć katalog \"{name}\" z całą jej zawartością?",
     "DeleteSelectedQuestion": "Czy na pewno chcesz usunąć {count} plików?",
+    "DeleteSingleFileQuestion": "Czy na pewno chcesz usunąć plik \"{name}\"?",
     "Download": "Pobierz",
+    "Duplicate": "Duplikat",
+    "DuplicateFile": "Powielony plik",
     "EditFile": "Edytuj plik",
     "Empty": "Puste",
+    "ExtruderTemp": "Temp. ekstrudera",
     "Filament": "Filament",
     "FilamentName": "Nazwa filamentu",
     "FilamentType": "Typ filamentu",
@@ -181,7 +404,10 @@
     "Free": "Wolne",
     "FreeDisk": "Wolne miejsce",
     "GCodeFiles": "Pliki G-Code",
+    "GcodesRootDirectoryDoesntExists": "Nie znaleziono katalogu G-Code. Sprawdź opcję \"path\" w sekcji [virtual_sdcard] konfiguracji Klippera.",
     "HiddenFiles": "Ukryte pliki",
+    "InvalidNameAlreadyExists": "Nazwa już istnieje, wybierz inną.",
+    "InvalidNameEmpty": "Pole wejściowe nie może być puste!",
     "LastEndTime": "Ostatni czas zakończenia",
     "LastFilamentUsed": "Ostatnio używany filament",
     "LastModified": "Ostatnio zmodyfikowane",
@@ -192,7 +418,7 @@
     "Name": "Nazwa",
     "NewDirectory": "Nowy katalog",
     "NozzleDiameter": "Średnica dyszy",
-    "ObjectHeight": "Wysokość objektu",
+    "ObjectHeight": "Wysokość obiektu",
     "Preheat": "Podgrzej",
     "PrintedFiles": "Wydrukowane pliki",
     "PrintStart": "Start wydruku",
@@ -201,6 +427,8 @@
     "Rename": "Zmień nazwę",
     "RenameDirectory": "Zmiana nazwy katalogu",
     "RenameFile": "Zmiana nazwy pliku",
+    "ScanMeta": "Skanuj metadane",
+    "ScanMetaSuccess": "Pomyślnie przeskanowano metadane z: {filename}.",
     "Search": "Wyszukaj",
     "SetupCurrentList": "Ustawienia aktualnych list",
     "Slicer": "Slicer",
@@ -212,19 +440,7 @@
     "Total": "Łącznie",
     "UploadNewGcode": "Wgraj nowy G-Code",
     "Used": "Użyte",
-    "View3D": "Zobacz w 3D",
-    "AddBatchToQueue": "Dodaj serię do kolejki",
-    "GcodesRootDirectoryDoesntExists": "Nie znaleziono katalogu G-Code. Sprawdź opcję \"path\" w sekcji [virtual_sdcard] konfiguracji Klippera.",
-    "ScanMeta": "Skanuj metadane",
-    "BedTemp": "Temp. łóżka",
-    "ChamberTemp": "Temp. komory",
-    "Count": "Ilość",
-    "DuplicateFile": "Powielony plik",
-    "InvalidNameAlreadyExists": "Nazwa już istnieje, wybierz inną.",
-    "InvalidNameEmpty": "Pole wejściowe nie może być puste!",
-    "ExtruderTemp": "Temp. ekstrudera",
-    "Duplicate": "Duplikat",
-    "ScanMetaSuccess": "Pomyślnie przeskanowano metadane z: {filename}."
+    "View3D": "Zobacz w 3D"
   },
   "FullscreenUpload": {
     "CannotUploadFile": "Błąd wgrywania pliku!",
@@ -232,6 +448,7 @@
   },
   "GCodeViewer": {
     "ClearLoadedFile": "Wyczyść",
+    "CNCMode": "Tryb CNC",
     "ColorMode": "Tryb koloru",
     "Downloading": "Pobieranie",
     "ForceLineRendering": "Wymuszanie renderowania linii",
@@ -245,6 +462,7 @@
     "ReloadRequired": "Wymagane załadowanie ponowne",
     "Rendering": "Renderowanie",
     "RenderQuality": "Jakość renderowania",
+    "ShowGCode": "Pokaż kod G",
     "ShowObjectSelection": "Pokazuj wybieranie obiektu",
     "ShowToolhead": "Pokazuj głowicę",
     "ShowTravelMoves": "Pokazuj ruchy podróży głowicy",
@@ -253,9 +471,7 @@
     "Tracking": "Śledzenie",
     "Transparency": "Transparentność",
     "Ultra": "Ultra",
-    "VoxelMode": "Tryb wokseli (ASMBL)",
-    "ShowGCode": "Pokaż kod G",
-    "CNCMode": "Tryb CNC"
+    "VoxelMode": "Tryb wokseli (ASMBL)"
   },
   "Heightmap": {
     "Abort": "Anuluj",
@@ -268,18 +484,23 @@
       "Max": "Maksymalna",
       "Min": "Minimalna",
       "Name": "Nazwa",
+      "Range": "Rozpiętość",
       "Size": "Rozmiar",
-      "Range": "Rozpiętość"
+      "Variance": "Zmienność"
     },
     "DeleteBedMeshProfile": "Usuń siatkę stołu",
     "DoYouReallyWantToDelete": "Czy na pewno chcesz usunąć profil \"{name}\"?",
     "ErrorKlipperNotReady": "Klipper nie jest gotowy. Mapa stołu wyłączona.",
     "Flat": "Stół",
     "Heightmap": "Mapa stołu",
+    "InvalidNameAlreadyExists": "Nazwa profilu już istnieje, wybierz inną nazwę profilu.",
+    "InvalidNameAscii": "Nazwa jest nieprawidłowa. Dozwolone są tylko znaki ASCII.",
+    "InvalidNameEmpty": "Pole wejściowe nie może być puste!",
+    "InvalidNameReserved": "Profil \"default\" jest zarezerwowany, wybierz inną nazwę profilu.",
     "Later": "Później",
     "Mesh": "Siatka",
     "Name": "Nazwa",
-    "NoBedMeshHasBeenLoadedYet": "Nie została jeszcze wgrana żadna siatka.",
+    "NoBedMeshHasBeenLoadedYet": "Nie wczytano siatki stołu.",
     "NoProfile": "Brak profili",
     "Ok": "Ok",
     "Probed": "Zmierzone",
@@ -294,20 +515,18 @@
     "TitleCalibrate": "Kalibracja nowej siatki",
     "TitleClear": "Wyczyść siatkę stołu",
     "TitleHomeAll": "Pozycja zerowa wszystkich osi",
-    "Wireframe": "Szkielet",
-    "InvalidNameAlreadyExists": "Nazwa profilu już istnieje, wybierz inną nazwę profilu.",
-    "InvalidNameAscii": "Nazwa jest nieprawidłowa. Dozwolone są tylko znaki ASCII.",
-    "InvalidNameEmpty": "Pole wejściowe nie może być puste!",
-    "InvalidNameReserved": "Profil \"default\" jest zarezerwowany, wybierz inną nazwę profilu."
+    "Wireframe": "Szkielet"
   },
   "History": {
     "AddNote": "Dodaj notatkę",
     "AllJobs": "Łącznie",
     "AvgPrinttime": "Średni czas wydruku - Ø",
     "Cancel": "Anuluj",
+    "Chart": "Wykres",
     "CreateNote": "Stwórz notatkę",
     "Delete": "Usuń",
     "DeleteSelectedQuestion": "Czy aby na pewno chcesz usunąć {count} wybranych wydruków?",
+    "DeleteSingleJobQuestion": "Czy na pewno chcesz usunąć zadanie?",
     "Details": "Szczegóły",
     "EditNote": "Edytuj notatkę",
     "Empty": "puste",
@@ -354,9 +573,11 @@
       "in_progress": "W trakcie",
       "klippy_disconnect": "Klipper został rozłączony",
       "klippy_shutdown": "Zamykanie Klippera",
+      "Others": "Pozostałe",
       "server_exit": "Wyjście z serwera",
-      "Others": "Pozostałe"
+      "interrupted": "Przerwano"
     },
+    "Table": "Tabela",
     "TitleExportHistory": "Eksportuj historię",
     "TitleRefreshHistory": "Odśwież historię",
     "TitleSettings": "Ustawienia",
@@ -365,28 +586,30 @@
     "TotalJobs": "Ilość wszystkich wydruków",
     "TotalPrinttime": "Łączny czas drukowania",
     "TotalTime": "Całkowity czas druku",
-    "Chart": "Wykres",
-    "Table": "Tabela"
+    "AddToQueueSuccessful": "Plik {nazwa pliku} dodano do kolejki.",
+    "LoadCompleteHistory": "Załaduj pełną historię"
   },
   "JobQueue": {
-    "AllJobs": "Wszystkie wydruki",
+    "Cancel": "Anuluj",
+    "ChangeCount": "Zmień ilość",
+    "Count": "Ilość",
     "Empty": "Puste",
+    "InvalidCountEmpty": "Pole wejściowe nie może być puste!",
+    "InvalidCountGreaterZero": "Wprowadzona wartość musi być większa niż 0!",
     "JobQueue": "Kolejka wydruków",
-    "Jobs": "Wydruki",
     "Pause": "Pauza",
     "RemoveFromQueue": "Usuń z kolejki",
     "Start": "Start",
-    "InvalidCountEmpty": "Pole wejściowe nie może być puste!",
-    "ChangeCount": "Zmień ilość",
-    "Cancel": "Anuluj",
-    "Count": "Ilość",
-    "InvalidCountGreaterZero": "Wprowadzona wartość musi być większa niż 0!"
+    "AllJobs": "Wszystkie prace",
+    "Jobs": "Oferty pracy",
+    "StartPrint": "Rozpocznij pracę"
   },
   "Machine": {
     "ConfigFilesPanel": {
       "AllFiles": "Wszystkie",
       "Cancel": "Anuluj",
       "ConfigFiles": "Pliki konfiguracyjne",
+      "ConfigRootDirectoryDoesntExists": "Nie znaleziono katalogu konfiguracyjnego. Sprawdź opcję \"config_path\" w sekcji [file_manager] konfiguracji Moonrakera.",
       "Create": "Nowy",
       "CreateDirectory": "Nowy katalog",
       "CreateFile": "Nowy plik",
@@ -395,7 +618,10 @@
       "DeleteDirectory": "Usuń katalog",
       "DeleteDirectoryQuestion": "Czy na pewno chcesz usunąć katalog \"{name}\" z jego całą zawartością?",
       "DeleteSelectedQuestion": "Usunąć {count} wybranych elementów?",
+      "DeleteSingleFileQuestion": "Czy na pewno chcesz usunąć plik \"{name}\"?",
       "Download": "Pobierz",
+      "Duplicate": "Duplikat",
+      "DuplicateFile": "Powielony plik",
       "EditFile": "Edytuj pliki",
       "Empty": "Puste",
       "Files": "Pliki",
@@ -416,10 +642,7 @@
       "Total": "Łączne",
       "UploadFile": "Wgraj plik",
       "Uploading": "Wysyłanie",
-      "Used": "Używane",
-      "ConfigRootDirectoryDoesntExists": "Nie znaleziono katalogu konfiguracyjnego. Sprawdź opcję \"config_path\" w sekcji [file_manager] konfiguracji Moonrakera.",
-      "Duplicate": "Duplikat",
-      "DuplicateFile": "Powielony plik"
+      "Used": "Używane"
     },
     "EndstopPanel": {
       "Endstop": "Krańcówka",
@@ -429,11 +652,11 @@
       "TRIGGERED": "URUCHOMIONA"
     },
     "LogfilesPanel": {
-      "Logfiles": "Pliki logów",
       "Accept": "Akceptuj",
-      "RolloverDescription": "Wybierz, które logi mają zostać zresetowane:",
       "Cancel": "Anuluj",
+      "Logfiles": "Pliki logów",
       "Rollover": "Zresetuj logi",
+      "RolloverDescription": "Wybierz, które logi mają zostać zresetowane:",
       "RolloverToastFailed": "Nie udało się zresetować logu dla \"{name}\": {message}",
       "RolloverToastSuccessful": "Log dla \"{name}\" został pomyślnie zresetowany."
     },
@@ -445,46 +668,79 @@
       "Load": "Obciążenie",
       "Memory": "Pamięć",
       "NoMoreInfos": "Brak informacji",
-      "SystemLoad": "Obciążenie systemu",
+      "SystemLoad": "Obciążenia systemowe",
       "Values": {
-        "Awake": "Wzbudzony: {awake}",
-        "Bandwidth": "Pasmo: {bandwidth}/s",
+        "Awake": "Aktywność: {awake}",
+        "Bandwidth": "Przepustowość: {bandwidth}/s",
         "Distro": "Dystrybucja: {name} {version_id}",
         "Frequency": "Częstotliwość: {frequency}",
         "Load": "Obciążenie: {load}",
         "Memory": "Pamięć: {memory}",
-        "Os": "OS: {os}",
-        "Received": "Odebrane: {received}",
+        "Os": "System: {os}",
+        "Received": "Odebrano: {received}",
         "Temp": "Temp.: {temp}°C",
         "TempMax": "max: {temp}°C",
         "TempMin": "min: {temp}°C",
-        "Transmitted": "Przekazywane: {transmitted}",
+        "Transmitted": "Przesłano: {transmitted}",
         "Version": "Wersja: {version}"
       }
     },
     "UpdatePanel": {
+      "Abort": "Przerwij",
+      "AreYouSure": "Czy na pewno?",
       "CheckForUpdates": "Sprawdź dostępność aktualizacji",
-      "Commits": "Wydane",
-      "CommitsAvailable": "Brak nowych wydań | {count} dostępnych wydań| {count} dostępnych wydań",
-      "CommitsOnDate": "Wydano {date}",
-      "CommittedDaysAgo": "Wydano {days} dni temu",
-      "CommittedHoursAgo": "Wydano {hours} godzin temu",
-      "CommittedOnDate": "Wydano {date}",
-      "CommittedYesterday": "Wydano wczoraj",
+      "Close": "Zamknij",
+      "CommitHistory": "Historia zatwierdzeń",
+      "Commits": "Zatwierdzenia",
+      "CommitsAvailable": "Brak nowych zatwierdzeń | Dostępne zatwierdzenia: {count} | Dostępne zatwierdzenia: {count}",
+      "CommitsOnDate": "zatwierdzenia w {date}",
+      "CommittedDaysAgo": "zatwierdzono {days} dni temu",
+      "CommittedHoursAgo": "zatwierdzono {hours} godz. temu",
+      "CommittedOnDate": "zatwierdzono w {date}",
+      "CommittedYesterday": "zatwierdzono wczoraj",
+      "ConfigChanges": "Zmiany konfiguracji",
+      "Corrupt": "uszkodzone",
+      "CountPackagesCanBeUpgraded": "Można uaktualnić {count} pakietów",
       "Detached": "Osobne",
-      "Dirty": "Brudne",
-      "ERROR": "BŁĄD",
+      "Dirty": "brudny",
+      "GenericUpdateQuestion": "Sprawdź historię zatwierdzeń (jeśli dostępne) i stronę GitHub dla tego projektu, aby sprawdzić, czy konieczne są jakiekolwiek ręczne korekty dla tej aktualizacji.",
+      "GitHubPage": "Strona GitHub",
+      "HardRecovery": "Przywróć twardo",
+      "InitUpdateManager": "Menedżer aktualizacji nie został jeszcze zainicjowany. Jest to normalne zjawisko podczas pierwszego uruchomienia systemu. Kliknij przycisk odświeżania, aby zainicjować wszystkie komponenty.",
       "Invalid": "Nieprawidłowe",
+      "IUnderstandTheRisks": "Rozumiem ryzyko",
+      "KlipperUpdateQuestionConfig": "Ta aktualizacja może również zawierać zmiany w parametrach konfiguracyjnych, które będą musiały zostać zmodyfikowane w pliku printer.cfg, szczegóły można znaleźć w dzienniku zmian.",
+      "KlipperUpdateQuestionFirmware": "Spowoduje to aktualizację oprogramowania hosta Klipper. Płyty sterujące z działającym firmware Klipper mogą wymagać flashowania ponownie skompilowanym firmware przed przywróceniem urządzenia do pracy.",
+      "LinkToGithub": "Link do GitHub",
+      "MoonrakerUpdateQuestion": "Spowoduje to aktualizację API Moonrakera. Zmiany w pliku moonraker.conf mogą być wymagane do prawidłowego funkcjonowania drukarki.",
+      "MoreCommitsInfo": "Można zobaczyć tutaj maksymalnie 30 zatwierdzeń. Kliknij poniższy przycisk, aby zobaczyć wszystkie:",
       "OSPackages": "Pakiety systemowe",
-      "PackagesCanBeUpgraded": "pakiety mogą być zaktualizowane",
+      "SoftRecovery": "Przywróć miękko",
+      "StartUpdate": "Rozpocznij aktualizację",
       "System": "System",
-      "Unknown": "Nieznane",
+      "ThesePackagesCanBeUpgrade": "Te pakiety systemowe mogą być zaktualizowane:",
+      "Unknown": "nieznany",
       "Update": "Aktualizuj",
       "UpdateAll": "Zaktualizuj wszystko",
       "UpdateManager": "Menadżer aktualizacji",
+      "UpdateWarning": "Ostrzeżenie o aktualizacji: {name}",
       "Upgrade": "Uaktualnij",
-      "UpToDate": "Aktualne"
+      "UpgradeableSystemPackages": "Pakiety systemowe, które można uaktualnić",
+      "UpToDate": "aktualny",
+      "WebClientUpdateQuestion": "W niektórych przypadkach aktualizacja klienta sieciowego może spowodować zmiany, które mogą spowodować niezgodność. Więcej informacji można znaleźć w uwagach wydania.",
+      "ERROR": "Błąd",
+      "Notification": {
+        "Detached": "",
+        "Dirty": ""
+      },
+      "PackagesCanBeUpgraded": ""
     }
+  },
+  "ManualProbe": {
+    "Abort": "przerwij",
+    "Accept": "Akceptuj",
+    "Advanced": "Zaawansowane",
+    "Headline": "Ręczne sondowanie"
   },
   "Panels": {
     "ExtruderControlPanel": {
@@ -511,7 +767,13 @@
       "Requested": "Wymagane",
       "Retract": "Retrakcja",
       "TooLargeExtrusion": "Długość wysunięcia zbyt duża!",
-      "UnloadFilament": "Wysuń filament"
+      "UnloadFilament": "Wysuń filament",
+      "CleanNozzle": "Wyczyść dyszę",
+      "ExtruderControl": "Sterowanie wytłaczarką",
+      "FirmwareRetraction": "Wycofanie oprogramowania sprzętowego",
+      "PressureAdvance": "Zaliczka ciśnienia",
+      "PurgeFilament": "Oczyść włókno",
+      "Tools": "Narzędzia"
     },
     "FarmPrinterPanel": {
       "ReconnectToPrinter": "Ponownie połącz",
@@ -519,14 +781,15 @@
       "WebcamOff": "Wyłącz"
     },
     "KlippyStatePanel": {
+      "CheckKlippyAndUdsAddress": "Sprawdź, czy usługa Klipper jest uruchomiona i czy \"klippy_uds_address\" jest poprawnie skonfigurowany w pliku moonraker.conf.",
       "FirmwareRestart": "Ponowne uruchomienie oprogramowania",
       "MoonrakerCannotConnect": "Moonraker nie może połączyć się z Klipperem!",
-      "Restart": "Ponowne uruchomienie",
-      "CheckKlippyAndUdsAddress": "Sprawdź, czy usługa Klipper jest uruchomiona i czy \"klippy_uds_address\" jest poprawnie skonfigurowany w pliku moonraker.conf.",
-      "PrinterSwitchedOffDescription": "Drukarka jest obecnie wyłączona i Klipper nie może się z nią połączyć. Aby włączyć drukarkę, kliknij poniższy przycisk:",
-      "PrinterSwitchedOff": "Drukarka jest wyłączona",
       "PowerOn": "Włączone",
-      "ServiceReports": "Raporty {service}"
+      "PrinterSwitchedOff": "Drukarka jest wyłączona",
+      "PrinterSwitchedOffDescription": "Drukarka jest obecnie wyłączona i Klipper nie może się z nią połączyć. Aby włączyć drukarkę, kliknij poniższy przycisk:",
+      "Restart": "Ponowne uruchomienie",
+      "ServiceReports": "Raporty {service}",
+      "KlipperCheck": ""
     },
     "MachineSettingsPanel": {
       "Headline": "Ustawienia drukarki",
@@ -534,7 +797,8 @@
         "Acceleration": "Przyspieszenie",
         "MaxAccelToDecel": "Maks. przysp. do hamowania",
         "SquareCornerVelocity": "Prędkość na rogu kwadratu",
-        "Velocity": "Prędkość"
+        "Velocity": "Prędkość",
+        "MinimumCruiseRatio": "Min. \nWspółczynnik rejsu"
       }
     },
     "MacrosPanel": {
@@ -542,6 +806,7 @@
       "Send": "Wyślij"
     },
     "MiniconsolePanel": {
+      "Autoscroll": "Autoprzewijanie",
       "Headline": "Konsola",
       "HideTemperatures": "Ukryj temperatury",
       "HideTimelapse": "Ukryj timelapse",
@@ -556,20 +821,16 @@
     },
     "MiscellaneousPanel": {
       "Headline": "Różne",
-      "RunoutSensor": {
-        "Detected": "wykryto",
-        "Disabled": "wyłączone",
-        "Empty": "Puste"
-      },
       "Light": {
         "Blue": "niebieski",
         "Green": "zielony",
         "Red": "czerwony",
         "White": "biały"
       },
-      "DoorSensor": {
-        "Closed": "Zamknięte",
-        "Open": "otwarty"
+      "RunoutSensor": {
+        "Detected": "wykryto",
+        "Disabled": "wyłączone",
+        "Empty": "Puste"
       }
     },
     "PowerControlPanel": {
@@ -577,6 +838,32 @@
       "Off": "Wył.",
       "On": "Wł.",
       "PowerControl": "Kontrola zasilania"
+    },
+    "SpoolmanPanel": {
+      "Cancel": "Anuluj",
+      "ChangeSpool": "Zmień szpulę",
+      "DaysAgo": "{days} dni temu",
+      "EjectSpool": "Wysuń szpulę",
+      "EjectSpoolQuestion": "Czy na pewno wysunąć szpulę filamentu?",
+      "Filament": "Filament",
+      "FilamentTypeMismatch": "Materiał aktywnej szpuli ({spoolType}) nie jest zgodny z materiałem G-Code ({fileType}).",
+      "Headline": "Spoolman",
+      "LastUsed": "Ostatnie użycie",
+      "Location": "Lokalizacja",
+      "Material": "Materiał",
+      "Never": "Nigdy",
+      "NoActiveSpool": "Śledzenie filamentu nie jest aktywne. Aby rozpocząć, wybierz szpulę.",
+      "NoResults": "Nie znaleziono szpuli z bieżącymi kryteriami wyszukiwania.",
+      "NoSpools": "Brak dostępnych szpul",
+      "NoSpoolSelected": "Nie wybrano szpuli. Wybierz szpulę, w przeciwnym razie wydruk nie będzie śledzony.",
+      "OpenSpoolManager": "Otwórz menedżer szpul",
+      "Refresh": "Odśwież",
+      "Search": "Szukaj",
+      "SelectSpool": "Wybierz szpulę",
+      "Today": "Dzisiaj",
+      "TooLessFilament": "Bieżąca szpula może nie mieć wystarczającej ilości filamentu dla tego wydruku. ({spoolWeight}g z {fileWeight}g)",
+      "Weight": "Waga",
+      "Yesterday": "Wczoraj"
     },
     "StatusPanel": {
       "CancelPrint": "Anuluj wydruk",
@@ -598,11 +885,23 @@
       "Files": "Pliki",
       "Flow": "Przepływ",
       "Headline": "Status",
-      "Jobqueue": "W kolejce ({count})",
+      "Jobqueue": "W kolejce",
       "JobqueueMoreFiles": "brak więcej wydruków | jeszcze jeden wydruk | {count} więcej wydruków",
       "Layer": "Warstwa",
       "Max": "Maks.",
       "ObjectHeight": "Wysokość obiektu",
+      "PauseAtLayer": {
+        "Abort": "przerwij",
+        "Accept": "Akceptuj",
+        "AtLayer": "na warstwie",
+        "Call": "Wywołaj",
+        "DescriptionPauseAtLayerActive": "Funkcja jest już aktywna i spowoduje wywołanie \"{call}\" na warstwie \"{layer}\". Jeśli ponownie wywołasz to polecenie, te ustawienia zostaną nadpisane.",
+        "DescriptionPauseNextLayerActive": "Ta funkcja jest już aktywna i spowoduje wywołanie \"{call}\" na następnej warstwie.",
+        "Layer": "Warstwa",
+        "NextLayer": "Następna warstwa",
+        "PauseAtLayer": "Pauza na warstwie",
+        "Type": "Typ"
+      },
       "PausePrint": "Pauza wydruku",
       "Print": "Druk",
       "PrintTime": "Czas wydruku",
@@ -613,19 +912,7 @@
       "Speed": "Prędkość",
       "Status": "Status",
       "Total": "Całkowicie",
-      "Unknown": "Nieznany",
-      "PauseAtLayer": {
-        "Abort": "przerwij",
-        "DescriptionPauseAtLayerActive": "Funkcja jest już aktywna i spowoduje wywołanie \"{call}\" na warstwie \"{layer}\". Jeśli ponownie wywołasz to polecenie, te ustawienia zostaną nadpisane.",
-        "Accept": "Akceptuj",
-        "AtLayer": "na warstwie",
-        "Call": "Wywołaj",
-        "DescriptionPauseNextLayerActive": "Ta funkcja jest już aktywna i spowoduje wywołanie \"{call}\" na następnej warstwie.",
-        "Layer": "Warstwa",
-        "NextLayer": "Następna warstwa",
-        "PauseAtLayer": "Pauza na warstwie",
-        "Type": "Typ"
-      }
+      "Unknown": "Nieznany"
     },
     "TemperaturePanel": {
       "AutoscaleChart": "Autoskaluj wykres",
@@ -639,6 +926,8 @@
         "Temperature": "aktualną temperaturę"
       },
       "Headline": "Temperatury",
+      "HideMcuHostSensors": "Ukryj czujniki hosta/MCU",
+      "HideMonitors": "Ukryj monitory",
       "Max": "Maks.",
       "Min": "Min.",
       "Name": "Nazwa",
@@ -663,7 +952,11 @@
       "Relative": "względna",
       "SettingsInterfaceControl": "Ustawienia > Interfejs > Konfiguracja",
       "SpeedFactor": "Wartość prędkości",
-      "ZTilt": "Z-Tilt"
+      "ZTilt": "Z-Tilt",
+      "ControlButtons": "Przyciski sterujące",
+      "CoordinateFields": "Pola współrzędnych",
+      "PositionOutput": "Wyjście pozycji",
+      "ZOffset": "Przesunięcie Z"
     },
     "WebcamPanel": {
       "All": "Wszystkie",
@@ -679,56 +972,15 @@
       "Ok": "Okej",
       "Save": "Zapisz",
       "SaveConfig": "ZAPISZ KONFIGURACJĘ",
-      "SaveInfoDescription": "Nowe przesunięcie osi z zostało przeliczone i zarejestrowane. Kliknij na \"ZAPISZ KONFIGURACJĘ\" aby zapisać nowe przesunięcie w drukarka.cfg i uruchom ponownie Klippera.",
+      "SaveInfoDescription": "Nowe przesunięcie Z zostało obliczone i zarejestrowane. Kliknij przycisk \"ZAPISZ KONFIGURACJĘ\", aby zapisać ją w pliku printer.cfg i zrestartować Klipper.",
       "SaveInfoDescriptionPrint": "Nowe przesunięcie Z zostało obliczone i zarejestrowane. Po wydrukowaniu kliknij \"ZAPISZ KONFIGURACJĘ\" na górnym pasku, aby zapisać ją w pliku printer.cfg i zrestartować Klipper.",
       "SaveInfoHeadline": "Informacja",
-      "ToEndstop": "Do krańcówki",
-      "ToProbe": "Do sondy"
-    },
-    "TrilabAccessPassword": {
-      "caption": "Ustawienia dostępu",
-      "enablePwdControl": "Włącz kontrolę hasła",
-      "username": "Nazwa użytkownika",
-      "password": "Hasło",
-      "confirmPassword": "Potwierdź hasło",
-      "Warning": "Ostrzeżenie",
-      "DialogMessage": "Po zapisaniu ustawień logowania interfejs sieciowy uruchomi się ponownie, a przeglądarka poprosi o podanie danych uwierzytelniających. \nCzy na pewno chcesz teraz zapisać?",
-      "DialogYesButton": "Tak",
-      "DialogNoButton": "NIE"
-    },
-    "TrilabRemote": {
-      "auto_off": "Automatyczne wyłączanie",
-      "enable": "Włączać",
-      "caption": "Zdalny dostęp"
-    },
-    "settingsTrilabWifi": {
-      "country": "Kraj",
-      "mode": "Tryb",
-      "caption": "WiFi",
-      "password": "Hasło",
-      "accessPoint": "Punkt dostępu",
-      "ssid": "SSID",
-      "confirmPassword": "Potwierdź hasło"
-    },
-    "settingsTrilabLight": {
-      "brightness": "Jasność",
-      "timeoutTextFieldHint": "Limit czasu (s)",
-      "enable": "Włączać",
-      "timeout": "Włącz limit czasu"
-    },
-    "TrilabSettingsInterfaces": {
-      "IP4addresses": "Adresy IPv4",
-      "IP6addresses": "Adresy IPv6",
-      "connectWifi": "Połącz się z Wi-Fi",
-      "AddProfile": "Dodaj profil",
-      "ProfilesIn": "Profile w",
-      "ProfileActive": "Aktywny",
-      "ProfileInactive": "Nieaktywny",
-      "Interfaces": "Dostępne interfejsy"
+      "ToEndstop": "",
+      "ToProbe": ""
     }
   },
   "PowerDeviceChangeDialog": {
-    "AreYouSure": "Jesteś pewien?",
+    "AreYouSure": "Czy na pewno?",
     "No": "Nie",
     "TurnDeviceOff": "Wyłącz {device}",
     "TurnDeviceOn": "Włącz {device}",
@@ -745,10 +997,20 @@
     "Printers": "Drukarki",
     "Timelapse": "Timelapse",
     "Webcam": "Kamera internetowa",
-    "Calibration": "Kalibrowanie"
+    "Calibration": "Kalibrowanie",
+    "Diagnostics": "Diagnostyka",
+    "Slicers": "Krajalnica"
+  },
+  "ScrewsTiltAdjust": {
+    "Accept": "Akceptuj",
+    "Base": "Podstawa",
+    "ErrorText": "Wystąpił problem podczas procesu sondowania.",
+    "Headline": "Regulacja nachylenia śrubami",
+    "Retry": "ponów"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Dodaj drukarkę",
+    "AddPrintersToJson": "Proszę dodać drukarki do pliku config.json.",
     "CannotConnectTo": "Połączenie z {host} nieudane.",
     "ChangePrinter": "Zmień drukarkę",
     "Connecting": "Łączenie z {host}",
@@ -764,8 +1026,7 @@
     "SelectPrinter": "Wybierz drukarkę",
     "TryAgain": "Spróbuj ponownie",
     "UpdatePrinter": "Zaktualizuj drukarkę",
-    "YouCanFindMore": "Możesz znaleźć więcej szczegółów w",
-    "AddPrintersToJson": "Proszę dodać drukarki do pliku config.json."
+    "YouCanFindMore": "Możesz znaleźć więcej szczegółów w"
   },
   "Settings": {
     "Cancel": "Anuluj",
@@ -798,6 +1059,7 @@
       "EnableXYHoming": "Włącz łączną pozycję zerową dla osi X i Y",
       "EstimatedExtrusionInfo": "Pokazuj przewidywaną długość wytłaczania filamentu",
       "EstimatedExtrusionInfoDescription": "Pokazuj / Ukryj info dla wytłaczania bazującą na ilości i feedrate",
+      "HideDuringPrint": "Ukryj sterowanie osiami podczas drukowania",
       "InvertXMovement": "Odwróć ruch osi X",
       "InvertYMovement": "Odwróć ruch osi Y",
       "InvertZMovement": "Odwróć ruch osi Z",
@@ -817,7 +1079,9 @@
       "Style": "Styl",
       "ValueGreaterThan": "Wartość musi być większa niż {value}",
       "ZOffsetIncrements": "Wzrost offsetu osi Z (w mm)",
-      "ZTiltAdjust": "Dostosuj Z-Tilt {isDefault}"
+      "ZTiltAdjust": "Dostosuj Z-Tilt {isDefault}",
+      "ZOffsetSaveOption": "Opcja zapisu przesunięcia Z",
+      "ZOffsetSaveOptionDescription": "Zmień opcję zapisania przesunięcia Z"
     },
     "DashboardTab": {
       "Dashboard": "Sterowanie",
@@ -829,18 +1093,16 @@
     },
     "Edit": "Edytuj",
     "EditorTab": {
-      "ConfirmUnsavedChanges": "Potwierdź aby zapisać lub anulować niezapisane zmiany",
+      "ConfirmUnsavedChanges": "Potwierdź, aby zapisać lub anulować niezapisane zmiany",
       "ConfirmUnsavedChangesDescription": "Jeżeli włączone, edytor wymaga potwierdzenia zapisania zmian lub anulowania. Jeżeli wyłączone, edytor nie wymaga potwierdzenia.",
       "Editor": "Edytor",
       "KlipperRestartMethod": "Metoda restartu Klippera",
       "KlipperRestartMethodDescription": "Wybierz która metoda ponownego uruchomienia ma być używana podczas 'Zapisz i Uruchom ponownie' podczas edytowania plików konfiguracyjnych Klippera.",
-      "MoonrakerRestartInstance": "Ponowne uruchomienie instancji Moonrakera",
-      "MoonrakerRestartInstanceDescription": "Wybierz która metoda ponownego uruchomienia ma być używana podczas 'Zapisz i Uruchom ponownie' podczas edytowania plików konfiguracyjnych Moonrakera.",
-      "UseEscToClose": "Naciśnij ESC aby wyjść z Edytora",
-      "UseEscToCloseDescription": "Pozwala aby móc zamknąć edytor za pomocą ESC",
+      "Spaces": "Spacje: {count}",
       "TabSize": "Rozmiar tabulacji",
       "TabSizeDescription": "Ustawia, ile spacji powinno być używanych do wcięcia przy użyciu tabulacji (TAB)",
-      "Spaces": "Spacje: {count}"
+      "UseEscToClose": "Naciśnij ESC, aby wyjść z edytora",
+      "UseEscToCloseDescription": "Umożliwia zamknięcie edytora za pomocą klawisza ESC"
     },
     "GCodeViewerTab": {
       "BackgroundColor": "Kolor tła",
@@ -853,36 +1115,14 @@
       "ShowAxes": "Pokazuj osie"
     },
     "GeneralTab": {
+      "12hours": "12-godzinny ({time})",
+      "24hours": "24-godzinny ({time})",
       "Backup": "Kopia zapasowa",
       "BackupDialog": "Proszę wybrać wszystkie sekcje z których ma zostać utworzona kopia zapasowa:",
       "CalcEstimateTime": "Szacowany czas ukończenia",
       "CalcEstimateTimeDescription": "Jeśli zaznaczono wiele, zostanie obliczona średnia",
       "CalcEtaTime": "Obliczanie godziny ukończenia",
       "CalcEtaTimeDescription": "Po wybraniu kilku opcji zostanie obliczona średnia.",
-      "CannotReadJson": "Brak możliwości przeczytania/przeanalizowania pliku kopii zapasowej.",
-      "DbConsoleHistory": "Historia Konsoli",
-      "DbHistoryJobs": "Historia wydruków",
-      "DbHistoryTotals": "Historia łącznie",
-      "DbTimelapseSettings": "Ustawienia timelapse",
-      "DbView": "Ustawienia",
-      "DbWebcams": "Kamery",
-      "EstimateValues": {
-        "Filament": "Filament",
-        "File": "Plik",
-        "Slicer": "Slicer"
-      },
-      "FactoryDialog": "Proszę wybrać wszystkie sekcje które mają zostać zresetowane:",
-      "FactoryReset": "Ustawienia fabryczne",
-      "General": "Ogólny",
-      "Language": "Język",
-      "MoonrakerDb": "Baza danych Moonraker",
-      "PrinterName": "Nazwa drukarki",
-      "Reset": "reset",
-      "Restore": "Przywróć",
-      "RestoreDialog": "Proszę wybrać wszystkie sekcje do przywrócenia:",
-      "TimeFormat": "Format czasu",
-      "12hours": "12-godzinny ({time})",
-      "24hours": "24-godzinny ({time})",
       "CalcPrintProgress": "Obliczanie postępu drukowania",
       "CalcPrintProgressDescription": "Metoda obliczania postępu drukowania.",
       "CalcPrintProgressItems": {
@@ -891,10 +1131,32 @@
         "FileRelative": "Pozycja pliku (względna)",
         "Slicer": "Slicer (M73)"
       },
+      "CannotReadJson": "Brak możliwości przeczytania/przeanalizowania pliku kopii zapasowej.",
       "DateFormat": "Format daty",
-      "PrinterNameRequired": "Nazwa drukarki jest wymagana",
-      "PrinterNameMaxLength": "Maksymalna dozwolona długość nazwy to 63 znaki",
-      "PrinterNameInvalid": "Nazwa drukarki jest nieprawidłowa. \nDozwolone są tylko podstawowe znaki, cyfry i łączniki."
+      "DbConsoleHistory": "Historia Konsoli",
+      "DbHistoryJobs": "Historia wydruków",
+      "DbHistoryTotals": "Łączna historia",
+      "DBNavigation": "Nawigacja",
+      "DbTimelapseSettings": "Ustawienia timelapse",
+      "DbView": "Ustawienia",
+      "EstimateValues": {
+        "Filament": "Filament",
+        "File": "Plik",
+        "Slicer": "Slicer"
+      },
+      "Everything": "Wszystko",
+      "FactoryDialog": "Proszę wybrać wszystkie sekcje które mają zostać zresetowane:",
+      "FactoryReset": "Ustawienia fabryczne",
+      "General": "Ogólne",
+      "Language": "Język",
+      "MainsailSettingsMoonrakerDb": "Ustawienia Mainsail w bazie danych Moonraker",
+      "PrinterName": "Nazwa drukarki",
+      "Reset": "reset",
+      "Restore": "Przywróć",
+      "RestoreDialog": "Proszę wybrać wszystkie sekcje do przywrócenia:",
+      "TimeFormat": "Format czasu",
+      "DbWebcams": "",
+      "MoonrakerDb": ""
     },
     "InterfaceSettings": "Ustawienia interfejsu",
     "MacrosTab": {
@@ -933,6 +1195,32 @@
       "UnknownGroup": "Nieznana grupa",
       "Warning": "Ostrzeżenie"
     },
+    "MiscellaneousTab": {
+      "AddGroup": "dodaj grupę",
+      "AddPreset": "Dodaj nastawę",
+      "Color": "Kolor",
+      "CreateGroup": "Utwórz grupę",
+      "CreatePreset": "Utwórz nastawę",
+      "End": "Koniec",
+      "EndDescription": "Ostatnia dioda LED tej grupy.",
+      "Groups": "Grupy",
+      "GroupSubTitle": "Początek: {start}, Koniec: {end}",
+      "LightGroups": "{name} - Grupy świateł",
+      "LightPresets": "{name} - Nastawy",
+      "Miscellaneous": "Różne",
+      "Name": "Nazwa",
+      "NoDevicesFound": "Nie znaleziono urządzeń",
+      "NoGroupFound": "Nie znaleziono grupy",
+      "NoPresetFound": "Nie znaleziono nastawy",
+      "Presets": "Nastawy",
+      "Start": "Początek",
+      "StartDescription": "Pierwsza dioda LED tej grupy.",
+      "UnableToLoadLight": "Nie można wczytać światła",
+      "UnableToLoadPreset": "Nie można wczytać nastawy"
+    },
+    "NavigationTab": {
+      "Navigation": "Nawigacja"
+    },
     "PresetsTab": {
       "AddPreset": "Dodaj nastawę",
       "Cooldown": "Czas chłodzenia",
@@ -958,8 +1246,9 @@
       "Port": "Port",
       "RemotePrinters": "Drukarki",
       "UpdatePrinter": "Aktualizuj drukarkę",
-      "UseConfigJson": "Wykryto bazę danych JSON. Aby zmodyfikować listę drukarek, proszę skorzystać z pliku config.json."
+      "UseConfigJson": "Wykryto bazę danych JSON. Użyj pliku config.json, aby zmodyfikować listę drukarek."
     },
+    "Store": "zachowaj",
     "TimelapseTab": {
       "Autorender": "Autorenderowanie",
       "AutorenderDescription": "Jeśli opcja ta jest włączona, timelapse będzie automatycznie renderowany na końcu druku.",
@@ -974,7 +1263,7 @@
       "Extraoutputparams": "Dodatkowe parametry wyjściowe",
       "ExtraoutputparamsDescription": "Definiuje dodatkowe parametry do FFMPEG. UWAGA: Dodawanie czegokolwiek w tym miejscu wyłącza możliwość rotacji obrazu.",
       "FwRetract": "Retrakcja FW",
-      "FwRetractDescription": "Używaj retrakcji firmware'owej w makro timelapse.",
+      "FwRetractDescription": "Używaj retrakcji z firmware w makro timelapse.",
       "GcodeVerbose": "Wgrywanie informacji z G-Code do konsoli",
       "GcodeVerboseDescription": "Jeżeli włączone, makra G-Code będą wypisywały informacje w konsoli.",
       "General": "Ogólne",
@@ -1025,53 +1314,77 @@
       "VariableFpsMax": "Maks. zmiennych kl./s",
       "VariableFpsMaxDescription": "Maksymalnie dozwolona zmienna liczba klatek na sekundę.",
       "VariableFpsMin": "Min. zmiennych kl./s",
-      "VariableFpsMinDescription": "Minimalnie dozwolona zmienna liczba klatek na sekundę."
+      "VariableFpsMinDescription": "Minimalnie dozwolona zmienna liczba klatek na sekundę.",
+      "RulesBetweenMinMax": "Wartość musi mieścić się w przedziale od {min} do {max}!",
+      "RulesMin": "Wartość musi wynosić co najmniej {min}!",
+      "RulesPositive": "Wartość musi być dodatnia!",
+      "RulesRequired": "Wartość jest wymagana!",
+      "RulesZeroAndPositive": "Wartość musi wynosić 0 lub więcej!"
     },
     "UiSettingsTab": {
+      "BedScrewsDialog": "Okno śrub stołu",
+      "BedScrewsDialogDescription": "Wyświetl pomocnicze okno dialogowe dla BED_SCREWS_ADJUST.",
+      "BigThumbnailBackground": "Kolor tła dużej miniatury",
       "BoolBigThumbnail": "Duża miniaturka",
       "BoolBigThumbnailDescription": "Pokazuj dużą miniaturkę podczas wydruku.",
       "BoolHideUploadAndPrintButton": "Ukryj przycisk \"Wgraj i drukuj\"",
       "BoolHideUploadAndPrintButtonDescription": "Pokazuj lub ukrywaj przycisk \"Prześlij i drukuj\" na górnym pasku.",
-      "ConfirmOnEmergencyStop": "Potwierdzenie Nagłego Zatrzymania",
-      "ConfirmOnEmergencyStopDescription": "Pokazuj dialog potwierdzenia po naciśnięciu Nagłego Zatrzymania",
+      "ConfirmOnEmergencyStop": "Potwierdzenie awaryjnego zatrzymania",
+      "ConfirmOnEmergencyStopDescription": "Pokazuj dialog potwierdzenia po naciśnięciu Awaryjny STOP",
       "ConfirmOnPowerDeviceChange": "Potwierdzenie dla zmiany zasilania urządzenia",
-      "ConfirmOnPowerDeviceChangeDescription": "Wyświetlaj okno dialogowe potwierdzenia przy zmianach zasilania urządzenia.",
+      "ConfirmOnPowerDeviceChangeDescription": "Wyświetlaj okno dialogowe potwierdzenia przy zmianach zasilania urządzenia",
+      "DefaultNavigationState": "Domyślny stan nawigacji",
+      "DefaultNavigationStateAlwaysClosed": "zawsze zamknięty",
+      "DefaultNavigationStateAlwaysOpen": "zawsze otwarty",
+      "DefaultNavigationStateDescription": "Który stan powinien mieć domyślną nawigację?",
+      "DefaultNavigationStateLastState": "ostatni stan",
+      "DisableFanAnimation": "Wyłącz animację wentylatora",
+      "DisableFanAnimationDescription": "To może zmniejszyć obciążenie przeglądarki.",
       "DisplayCANCEL_PRINT": "Pokazuj przycisk ANULUJ_WYDRUK",
       "DisplayCANCEL_PRINTDescription": "Pokazuje przycisk ANULUJ_WYDRUK permamentnie - brak potrzeby drugiej warstwy.",
       "GcodeThumbnails": "Pokazuj miniaturki",
-      "GcodeThumbnailsDescription": "Wciśnij aby przejść na stronę z pomocnikiem dot. włączenia funkcji.",
+      "GcodeThumbnailsDescription": "Kliknij przycisk, aby przejść do instrukcji.",
       "Guide": "Przewodnik",
+      "HideSaveConfigButtonForBedMesh": "Ukryj przycisk \"Zapisz konfigurację\" dla zmian w siatce stołu",
+      "HideSaveConfigButtonForBedMeshDescription": "Ukryj przycisk \"Zapisz konfigurację\", jeśli oczekują jedynie zmiany w siatce stołu do zapisania w Klipperze.",
+      "HideUpdateWarnings": "Ukryj ostrzeżenia o aktualizacji",
+      "HideUpdateWarningsDescription": "Ta opcja ukryje wszystkie ostrzeżenia o aktualizacjach w menedżerze aktualizacji.",
       "LockSliders": "Zablokuj suwaki na ekranie dotykowym",
       "LockSlidersDelay": "Opóźnienie blokady suwaków",
       "LockSlidersDelayDescription": "Suwaki zostaną zablokowane po określonym opóźnieniu. Jeśli ustawione na 0 lub pozostawione puste, suwaki będą blokowane tylko podczas zmiany/odświeżenia strony.",
       "LockSlidersDescription": "Suwaki na ekranie dotykowym muszą zostać odblokowane przed wprowadzeniem zmian.",
       "Logo": "Logo",
+      "ManualProbeDialog": "Okno dialogowe pomocnika ręcznego sondowania",
+      "ManualProbeDialogDescription": "Wyświetl pomocnicze okno dialogowe dla sondowania ręcznego (PROBE_CALIBRATE) lub kalibracji krańcówki Z (Z_ENDSTOP_CALIBRATE).",
       "NavigationStyle": "Styl paska nawigacyjnego",
       "NavigationStyleDescription": "Zmiana stylu paska nawigacyjnego",
       "NavigationStyleIconsAndText": "Ikony + Tekst",
       "NavigationStyleIconsOnly": "Tylko ikony",
-      "Primary": "Podstawowe",
-      "UiSettings": "Ustawienia interfejsu",
-      "DisableFanAnimation": "Wyłącz animację wentylatora",
-      "DisableFanAnimationDescription": "To może zmniejszyć obciążenie przeglądarki.",
-      "HideSaveConfigButtonForBedMeshDescription": "Ukryj przycisk \"Zapisz konfigurację\", jeśli oczekują jedynie zmiany w siatce stołu do zapisania w Klipperze.",
-      "ScrewsTiltAdjustDialogDescription": "Wyświetl pomocnicze okno dialogowe do obliczania nachylenia śrubami (SCREWS_TILT_CALCULATE).",
-      "BedScrewsDialog": "Okno śrub stołu",
-      "BedScrewsDialogDescription": "Wyświetl pomocnicze okno dialogowe dla BED_SCREWS_ADJUST.",
-      "HideSaveConfigButtonForBedMesh": "Ukryj przycisk \"Zapisz konfigurację\" dla zmian w siatce stołu",
-      "ManualProbeDialog": "Okno dialogowe pomocnika ręcznego sondowania",
-      "ManualProbeDialogDescription": "Wyświetl pomocnicze okno dialogowe dla sondowania ręcznego (PROBE_CALIBRATE) lub kalibracji krańcówki Z (Z_ENDSTOP_CALIBRATE).",
+      "PowerDeviceName": "Urządzenie zasilające drukarkę",
       "PowerDeviceNameDescription": "Wybierz, które urządzenie zasilające Moonraker powinno być używane do włączania drukarki.",
+      "Primary": "Podstawowe",
       "ScrewsTiltAdjustDialog": "Okno dialogowe regulacji nachylenia śrubami",
+      "ScrewsTiltAdjustDialogDescription": "Wyświetl pomocnicze okno dialogowe do obliczania nachylenia śrubami (SCREWS_TILT_CALCULATE).",
       "TempchartHeight": "Wykres temperatury - wysokość",
       "TempchartHeightDescription": "Modyfikuj wysokość wykresu temperatury w panelu sterowania.",
-      "PowerDeviceName": "Urządzenie zasilające drukarkę"
+      "UiSettings": "Interfejs",
+      "ConfirmOnCoolDown": "Wymagaj potwierdzenia w CoolDown",
+      "ConfirmOnCoolDownDescription": "Pokaż okno dialogowe potwierdzenia w CoolDown",
+      "ShowWebcamInNavigation": "",
+      "Theme": "Temat",
+      "ThemeDark": "Ciemny",
+      "ThemeDescription": "Zmień ogólny wygląd i działanie aplikacji",
+      "ThemeLight": "Światło"
     },
+    "Update": "aktualizuj",
     "WebcamsTab": {
       "AddWebcam": "Dodaj kamerę",
       "CreateWebcam": "Stwórz kamerę",
+      "EditCrowsnestConf": "Edytuj crowsnest.conf",
       "EditWebcam": "Edytuj kamerę",
       "FlipWebcam": "Odwróć widok kamery:",
+      "HideFps": "Ukryj wskaźnik kl./s",
+      "Hlsstream": "Strumień HLS",
       "Horizontally": "poziomo",
       "IconBed": "Stół",
       "IconCam": "Kamera",
@@ -1082,11 +1395,13 @@
       "IconNozzle": "Dysza",
       "IconPrinter": "Drukarka",
       "Ipstream": "Transmisja po IP",
+      "JMuxerStream": "Nieskompresowany strumień h264 (jmuxer)",
       "Mjpegstreamer": "Transmisja MJPEG",
       "MjpegstreamerAdaptive": "Adaptacyjna transmisja MJPEG *(eksperymentalne)",
       "Name": "Nazwa",
       "NameAlreadyExists": "Nazwa już istnieje",
       "Required": "Wymagane",
+      "Rotate": "Obróć",
       "SaveWebcam": "Zapisz kamerę",
       "Service": "Usługi",
       "TargetFPS": "Docelowe kl./s",
@@ -1096,44 +1411,23 @@
       "Uv4lMjpeg": "UV4L-MJPEG",
       "Vertically": "pionowo",
       "Webcams": "Kamery",
+      "WebrtcCameraStreamer": "WebRTC (camera-streamer)",
       "WebrtcJanus": "WebRTC (brama janus)",
-      "EditCrowsnestConf": "Edytuj crowsnest.conf",
-      "Hlsstream": "Strumień HLS",
-      "JMuxerStream": "Nieskompresowany strumień h264 (jmuxer)",
-      "Rotate": "Obróć",
-      "WebrtcCameraStreamer": "WebRTC (camera-streamer)"
+      "WebrtcMediaMTX": "WebRTC (MediaMTX)",
+      "EnableAudio": "Włącz dźwięk",
+      "WebrtcGo2rtc": "WebRTC (go2rtc)"
     },
-    "MiscellaneousTab": {
-      "AddGroup": "dodaj grupę",
-      "EndDescription": "Ostatnia dioda LED tej grupy.",
-      "NoPresetFound": "Nie znaleziono nastawy",
-      "AddPreset": "Dodaj nastawę",
-      "Color": "Kolor",
-      "CreateGroup": "Utwórz grupę",
-      "CreatePreset": "Utwórz nastawę",
-      "End": "Koniec",
-      "Groups": "Grupy",
-      "GroupSubTitle": "Początek: {start}, Koniec: {end}",
-      "LightGroups": "{name} - Grupy świateł",
-      "LightPresets": "{name} - Nastawy",
-      "Miscellaneous": "Różne",
-      "Name": "Nazwa",
-      "NoDevicesFound": "Nie znaleziono urządzeń",
-      "NoGroupFound": "Nie znaleziono grupy",
-      "Presets": "Nastawy",
-      "Start": "Początek",
-      "StartDescription": "Pierwsza dioda LED tej grupy.",
-      "UnableToLoadLight": "Nie można wczytać światła",
-      "UnableToLoadPreset": "Nie można wczytać nastawy"
-    },
-    "Update": "aktualizuj",
-    "NavigationTab": {
-      "Navigation": "Nawigacja"
-    },
-    "Store": "zachowaj",
-    "TrilabTab": {
-      "Trilab": "Trilab nastavení",
-      "TrilabLogs": "Dzienniki"
+    "HeightmapTab": {
+      "ColorSchemes": "Schematy kolorów",
+      "Heightmap": "Mapa wysokości",
+      "IsDefault": "(Domyślny)",
+      "Schemes": {
+        "GrayScale": "Skala szarości",
+        "Hot": "Gorący",
+        "Hsv": "Hsv",
+        "Portland": "Portland",
+        "Spring": "Wiosna"
+      }
     }
   },
   "Timelapse": {
@@ -1146,6 +1440,8 @@
     "Delete": "Usuń",
     "DeleteDirectory": "Usuń katalog",
     "DeleteDirectoryQuestion": "Czy na pewno chcesz usunąć katalog \"{name}\" z jego całą zawartością?",
+    "DeleteSelectedQuestion": "Czy na pewno chcesz usunąć {count} wybranych plików?",
+    "DeleteSingleFileQuestion": "Czy na pewno chcesz usunąć plik \"{name}\"?",
     "Download": "Pobierz",
     "DuplicateLastframe": "Duplikuj ostatnią klatkę",
     "Empty": "Nie znaleziono zakończonych timelapse.",
@@ -1184,136 +1480,28 @@
     "Type": "Typ",
     "Used": "Używane",
     "Variable": "Zmienne",
-    "Video": "Filmy",
-    "DeleteSelectedQuestion": "Czy na pewno chcesz usunąć {count} wybranych plików?"
+    "Video": "Filmy"
   },
   "title": "Polski",
-  "BedScrews": {
-    "Abort": "przerwij",
-    "Accept": "Akceptuj",
-    "Description": "Kliknij <b>WYREGULOWANO</b>, jeśli bieżąca śruba została wyregulowana. Kliknij <b>AKCEPTUJ</b>, aby kontynuować bez regulacji.",
-    "Adjusted": "wyregulowano",
-    "Headline": "Śruby łóżka",
-    "ScrewAccepted": "Śruby zaakceptowane",
-    "ScrewIndex": "Indeks śrub",
-    "ScrewName": "Nazwa śruby",
-    "ScrewOutput": "{current} z {max}"
+  "CoolDownDialog": {
+    "AreYouSure": "Jesteś pewny?",
+    "CoolDown": "Ochłonąć",
+    "No": "NIE",
+    "Yes": "Tak"
   },
-  "ManualProbe": {
-    "Accept": "Akceptuj",
-    "Abort": "przerwij",
-    "Advanced": "Zaawansowane",
-    "Headline": "Ręczne sondowanie"
+  "DevicesDialog": {
+    "CanBusInfo": "Można wykryć tylko nieprzypisane węzły. \nZaleca się, aby do magistrali Can było podłączone tylko jedno nieprzypisane urządzenie, aby uniknąć problemów z komunikacją. \nAby poznać więcej szczegółów, kliknij link:",
+    "ClickRefresh": "Kliknij przycisk odświeżania, aby wyszukać urządzenia.",
+    "DevicePath": "Ścieżka urządzenia",
+    "Formats": "Formaty",
+    "Headline": "Urządzenia",
+    "HideSystemEntries": "Ukryj wpisy systemowe",
+    "LibcameraId": "Identyfikator Libcamera",
+    "NoDeviceFound": "Nie znaleziono urządzenia. \nSprawdź połączenie i kliknij przycisk odświeżania.",
+    "PathByHardware": "Ścieżka sprzętowa",
+    "PathById": "Ścieżka według identyfikatora",
+    "Refresh": "odświeżać",
+    "Resolutions": "Postanowienia"
   },
-  "ScrewsTiltAdjust": {
-    "ErrorText": "Wystąpił problem podczas procesu sondowania.",
-    "Accept": "Akceptuj",
-    "Base": "Podstawa",
-    "Headline": "Regulacja nachylenia śrubami"
-  },
-  "TrilabUpdateDialog": {
-    "title": "Zaktualizuj",
-    "RestartPrinter": "Uruchom ponownie drukarkę",
-    "titleUSB": "Aktualizacja z USB"
-  },
-  "General": {
-    "Save": "Ratować"
-  },
-  "TrilabLiveUpdate": {
-    "Buttons": {
-      "InstallFromUsb": "Aktualizacja z USB",
-      "DownloadUpdate": "Pobierz aktualizację"
-    },
-    "restartWarning": "Aktualizacja jest gotowa do instalacji. \nNaciśnij przycisk, aby zainstalować aktualizację. \nDrukarka uruchomi się ponownie po zakończeniu aktualizacji.",
-    "printerIsPrinting": "Nie możesz teraz wykonać tego kroku, ponieważ drukarka wykonuje jakąś pracę. \nPoczekaj chwilę, to okno zostanie automatycznie odświeżone, gdy ten krok będzie gotowy",
-    "installAndRebootBtn": "ZAINSTALOWAĆ",
-    "Titles": {
-      "Installed": "Aktualizacja gotowa",
-      "UsbInstalled": "Aktualizacja USB gotowa",
-      "UpdateInProgress": "Aktualizacja w toku",
-      "UpdateAvailable": "Dostępna aktualizacja",
-      "UsbUpdateAvailable": "Dostępna aktualizacja USB"
-    }
-  },
-  "Trilab": {
-    "TrilabFilamentLoadWizard": {
-      "FilamentIsLoading": "Trwa ładowanie żarnika...",
-      "InsertFilamentIntoExtruder": "Włóż żarnik do ekstrudera i naciśnij przycisk Kontynuuj",
-      "SelectWhichFilamentYouWantToLoad": "Wybierz, który żarnik chcesz załadować",
-      "PleaseWaitForTheTemperatureToReach": "Proszę poczekać aż temperatura osiągnie zadaną wartość",
-      "IsColorClean": "Czy kolor jest czysty?",
-      "CancelHeating": "Anuluj ogrzewanie",
-      "Continue": "Kontynuować",
-      "OpenFilamentMenu": "Otwórz menu żarnika",
-      "CancelWizard": "Anuluj kreatora",
-      "PurgeMore": "Oczyść więcej",
-      "CooldownAndClose": "Ochłonąć",
-      "Close": "Zamknąć",
-      "Step": "Krok",
-      "FilamentIsUnloading": "Trwa rozładunek włókna",
-      "FilamentLoadWizard": "Kreator ładowania włókien",
-      "CancelLoading": "Anuluj ładowanie"
-    },
-    "TrilabSelectFilamentDialog": {
-      "Cancel": "Anulować",
-      "Cpnfirm": "Potwierdzać",
-      "AreYouSureYouWantToSelectFilament": "Czy na pewno chcesz wybrać żarnik?",
-      "OK": "OK"
-    },
-    "TrilabServiceDialog": {
-      "ServiceLogin": "Logowanie do serwisu",
-      "Cancel": "Anulować"
-    },
-    "TrilabUpdateDialog": {
-      "Progres": "Postęp:",
-      "ShowErrorTechinicalDetails": "Pokaż szczegóły techniczne błędu",
-      "STATUS": "STATUS:",
-      "DANGER": "BŁĄD",
-      "INFO": "INFORMACJE",
-      "WARNING": "OSTRZEGAĆ"
-    },
-    "SettingsTrilabTab": {
-      "System": "System",
-      "SystemVersion": "Wersja systemu:",
-      "WenInterfaceVersion": "Wersja interfejsu internetowego:",
-      "AutomaticCheckForUpdates": "Automatyczne sprawdzanie dostępności aktualizacji:",
-      "UploadUpdateFile": "Prześlij plik aktualizacji",
-      "Upload": "Wgrywać",
-      "CheckForLiveUpdate": "Sprawdź aktualizację na żywo",
-      "NoUpdateAvailable": "Brak dostępnej aktualizacji",
-      "UpdateChannelTitle": "Zaktualizuj kanał"
-    },
-    "TheTopbar": {
-      "HiddenViewEnbled": "Ukryty widok włączony",
-      "ServiceViewEnabled": "Widok usługi włączony"
-    },
-    "ConnectionStatus": {
-      "Mainsail": "Grota"
-    },
-    "AdvancedFeatures": "",
-    "SettingsTrilabPrinterTab": {
-      "AdvancedFeatures": "Zaawansowane funkcje:"
-    },
-    "SlicerPanel": {
-      "Download": "Pobierać"
-    },
-    "PageNotFound": {
-      "404PageNotFound": "Nie znaleziono strony 404"
-    },
-    "TrilabFilamentUnLoadWizard": {
-      "WhichFilamentIsInPrinter": "Jaki materiał jest załadowany do drukarki?",
-      "FilamentUnloadWizard": "Kreator rozładunku włókna"
-    },
-    "TrilabFilamentUnloadWizard": {
-      "FilamentIsUnloading": "Trwa rozładunek włókna",
-      "colorUnloaded": "Filament został pomyślnie rozładowany"
-    },
-    "SettingsAccessPasswordPanel": {
-      "SaveBtn": "Zapisz dane uwierzytelniające"
-    }
-  },
-  "Generic": {
-    "Ok": "OK",
-    "Unknown": "Nieznany"
-  }
+  "_last_update": ""
 }

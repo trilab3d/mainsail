@@ -1,11 +1,12 @@
 <template>
     <v-dialog v-model="isDialogVisible" max-width="800px" persistent>
         <v-card>
-            <v-card-title class="headline">{{ $t('Trilab.TrilabFilamentUnLoadWizard.FilamentUnloadWizard') }}</v-card-title>
+            <v-card-title class="headline">{{ $t('App.Trilab.TrilabFilamentUnLoadWizard.FilamentUnloadWizard')
+                }}</v-card-title>
             <v-card-text>
-                <p>{{ $t('Trilab.TrilabFilamentLoadWizard.Step') }} {{ step + 1 }}</p>
+                <p>{{ $t('App.Trilab.TrilabFilamentLoadWizard.Step') }} {{ step + 1 }}</p>
                 <div v-if="step == 0">
-                    <p>{{ $t("Trilab.TrilabFilamentUnLoadWizard.WhichFilamentIsInPrinter") }}</p>
+                    <p>{{ $t("App.Trilab.TrilabFilamentUnLoadWizard.WhichFilamentIsInPrinter") }}</p>
                     <trilab-select-filament-dialog :showp="showSelectFilamentDialog"
                         @selectFilament="selectFilamentAction"></trilab-select-filament-dialog>
 
@@ -13,8 +14,9 @@
                 </div>
                 <div v-if="step == 1">
                     <div v-if="temperatureProgress < 99.8">
-                        <p>{{ $t("Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }} </p>
-                        <p style="text-align:center">{{ extruderObjects[0].temperature }} °C / {{ selectedFilament.extruder }} °C</p>
+                        <p>{{ $t("App.Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }} </p>
+                        <p style="text-align:center">{{ extruderObjects[0].temperature }} °C / {{
+        selectedFilament.extruder }} °C</p>
 
                         <v-progress-linear :value="temperatureProgress" color="orange darken-1"
                             height="10"></v-progress-linear>
@@ -22,19 +24,20 @@
                         <v-divider class="mt-4 mb-4"></v-divider>
 
                         <v-btn block @click="cancelHeating" class="orange darken-1">{{
-                            $t("Trilab.TrilabFilamentLoadWizard.CancelHeating") }} </v-btn>
+        $t("App.Trilab.TrilabFilamentLoadWizard.CancelHeating") }} </v-btn>
                     </div>
                 </div>
 
                 <div v-if="step == 2">
-                    <p v-if="idleTimeout != 'Ready'">{{ $t('Trilab.TrilabFilamentUnloadWizard.FilamentIsUnloading') }}</p>
+                    <p v-if="idleTimeout != 'Ready'">{{ $t('App.Trilab.TrilabFilamentUnloadWizard.FilamentIsUnloading') }}
+                    </p>
                     <div v-if="idleTimeout == 'Ready'">
-                        <p>{{ $t("Trilab.TrilabFilamentUnloadWizard.colorUnloaded") }} </p>
+                        <p>{{ $t("App.Trilab.TrilabFilamentUnloadWizard.colorUnloaded") }} </p>
                         <v-btn block @click="closeCooldown" class="orange darken-1 mt-2">{{
-                            $t("Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
+        $t("App.Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
                         <v-btn block @click="close" class="orange darken-1 mt-2">{{
-                            $t("Trilab.TrilabFilamentLoadWizard.Close")
-                        }}</v-btn>
+        $t("App.Trilab.TrilabFilamentLoadWizard.Close")
+    }}</v-btn>
                     </div>
                 </div>
 
@@ -44,7 +47,8 @@
 
                 <div v-if="step == 0">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn color="primary" @click="$emit('close')">{{ $t("Trilab.TrilabFilamentLoadWizard.CancelWizard") }}</v-btn>
+                    <v-btn color="primary" @click="$emit('close')">{{ $t("App.Trilab.TrilabFilamentLoadWizard.CancelWizard")
+                        }}</v-btn>
                 </div>
             </v-card-text>
         </v-card>
@@ -52,12 +56,13 @@
 
     </v-dialog>
 </template>
-    
+
 <script lang="ts">
 import BaseMixin from '@/components/mixins/base'
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
 import TrilabMixin from '@/components/mixins/trilab';
 import { PrinterStateAdditionalSensor, PrinterStateTemperatureObject } from '@/store/printer/types'
+import { trilab } from '@/store/trilab';
 
 @Component
 export default class TrilabFilamentUnLoadWizard extends Mixins(TrilabMixin) {
@@ -143,8 +148,9 @@ export default class TrilabFilamentUnLoadWizard extends Mixins(TrilabMixin) {
 
         for (let i = 0; i < this.temperatureObjects.length; i++) {
             const sensor = this.temperatureObjects[i];
-            if (sensor.type.startsWith('extruder')) {
-                this.setTemp(sensor, 0);
+            let trilabObject = this.getTrilabTemperatureObject(sensor);
+            if (sensor.name.startsWith('extruder')) {
+                this.setTemp(trilabObject, 0);
             }
 
         }
@@ -190,19 +196,19 @@ export default class TrilabFilamentUnLoadWizard extends Mixins(TrilabMixin) {
         this.$emit('selectFilament', filamentObj);
     }
     get temperatureObjects() {
-        const sensors = this.$store.getters['printer/getTemperatureObjects'] ?? []
+        const sensors = this.$store.getters['printer/getAvailableHeaters'] ?? []
 
-        return sensors.filter((sensor: PrinterStateTemperatureObject) => !sensor.name.startsWith('_'))
+        return sensors.filter((sensor: string) => !sensor.startsWith('_'))
     }
 
     get extruderObjects() {
-        return this.temperatureObjects.filter((sensor: PrinterStateTemperatureObject) => sensor.type == 'extruder')
+        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'extruder') { return this.getTrilabTemperatureObject(sensor); } })
     }
     get bedObjects() {
-        return this.temperatureObjects.filter((sensor: PrinterStateTemperatureObject) => sensor.type == 'heater_bed')
+        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'heater_bed') {return this.getTrilabTemperatureObject(sensor); } })
     }
     get chamberObjects() {
-        return this.temperatureObjects.filter((sensor: PrinterStateTemperatureObject) => sensor.type == 'heater_chamber')
+        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'heater_chamber') {return this.getTrilabTemperatureObject(sensor); } })
     }
 
 
@@ -321,11 +327,10 @@ export default class TrilabFilamentUnLoadWizard extends Mixins(TrilabMixin) {
 
 }
 </script>
-    
+
 <style scoped>
 /* Adjust the styles as per your design */
 .v-dialog--active {
     transition: opacity 0.3s ease-in-out;
 }
 </style>
-  

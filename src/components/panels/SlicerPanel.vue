@@ -35,22 +35,22 @@
 <template>
 	<v-card outlined>
 		<v-card-title class="pb-0">
-			<span class="slicerTitle" v-html="$t(`Panels.trilabSlicers.${target}.longTitle`)"></span>
+			<span class="slicerTitle" v-html="$t(`App.Trilab.Panels.trilabSlicers.${target}.longTitle`)"></span>
 			<v-spacer class="hiddenS"></v-spacer>
 		</v-card-title>
 
 		<v-card-text>
 			<div class="panel">
 				<!--- <h3 class="panel-subheading">{{ $t(`Panels.trilabSlicers.${target}.longTitle`) }}</h3> --->
-				<img class="panel-image v-card__title" :src="$t(`Panels.trilabSlicers.${target}.imgsrc`)" alt="">
+				<img class="panel-image v-card__title" :src="$t(`App.Trilab.Panels.trilabSlicers.${target}.imgsrc`)" alt="">
 				<v-row>
 					<v-col cols="12" md="8">
-						<p class="panel-description" v-html="$t(`Panels.trilabSlicers.${target}.shortDescription`)"></p>
+						<p class="panel-description" v-html="$t(`App.Trilab.Panels.trilabSlicers.${target}.shortDescription`)"></p>
 					</v-col>
 				</v-row>
 				<v-btn class="panel-download-btn mt-3 mb-3" :href="getHrefLink" @click="downloadSP()" color="primary"
-					block>{{ $t("Trilab.SlicerPanel.Download") }}</v-btn>
-				<p class="panel-long-description" v-html="$t(`Panels.trilabSlicers.${target}.longDescription`)"></p>
+					block>{{ $t("App.Trilab.Generic.Download") }}</v-btn>
+				<p class="panel-long-description" v-html="$t(`App.Trilab.Panels.trilabSlicers.${target}.longDescription`)"></p>
 			</div>
 
 

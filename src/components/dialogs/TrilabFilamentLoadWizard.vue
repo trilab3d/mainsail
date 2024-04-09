@@ -75,7 +75,7 @@
 import BaseMixin from '@/components/mixins/base'
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
 import TrilabMixin from '@/components/mixins/trilab';
-import { PrinterStateAdditionalSensor, PrinterStateTemperatureObject } from '@/store/printer/types'
+import { PrinterStateAdditionalSensor, PrinterStateHeater } from '@/store/printer/types'
 
 @Component
 export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
@@ -413,10 +413,10 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
 
         for (let i = 0; i < this.temperatureObjects.length; i++) {
             const sensor = this.temperatureObjects[i];
-            if (sensor.type.startsWith('extruder') || sensor.type.startsWith('heater_bed') || sensor.type.startsWith('heater_chamber') || sensor.type.startsWith('heater_generic') || sensor.type.startsWith('temperature_fan')) {
+            let trilabObject = this.getTrilabTemperatureObject(sensor);
+            if (trilabObject.name.startsWith('extruder') || trilabObject.name.startsWith('heater_bed') || trilabObject.name.startsWith('heater_chamber') || trilabObject.name.startsWith('heater_generic') || trilabObject.name.startsWith('temperature_fan')) {
                 this.setTemp(sensor, 0);
             }
-
         }
         this.close();
 
@@ -461,24 +461,25 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
         this.$emit('selectFilament', filamentObj);
     }
     get temperatureObjects() {
-        const sensors = this.$store.getters['printer/getTemperatureObjects'] ?? []
+        const sensors = this.$store.getters['printer/getAvailableHeaters'] ?? []
 
-        return sensors.filter((sensor: PrinterStateTemperatureObject) => !sensor.name.startsWith('_'))
+        return sensors.filter((sensor: string) => !sensor.startsWith('_'))
     }
 
     get extruderObjects() {
-        return this.temperatureObjects.filter((sensor: PrinterStateTemperatureObject) => sensor.type == 'extruder')
+        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'extruder') { return this.getTrilabTemperatureObject(sensor); } })
     }
     get bedObjects() {
-        return this.temperatureObjects.filter((sensor: PrinterStateTemperatureObject) => sensor.type == 'heater_bed')
+        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'heater_bed') {return this.getTrilabTemperatureObject(sensor); } })
     }
     get chamberObjects() {
-        return this.temperatureObjects.filter((sensor: PrinterStateTemperatureObject) => sensor.type == 'heater_chamber')
+        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'heater_chamber') {return this.getTrilabTemperatureObject(sensor); } })
     }
 
 
     get flapObject() {
         /// getters in printer store, getmiscellaneous that is servo_flap or stepper_flap
+        /// when it will be used in the future, rewrite, because it changed from the implementation and mainsail version update
         return this.$store.getters['printer/getMiscellaneous'].filter((sensor: any) => sensor.type == 'servo_flap' || sensor.type == 'stepper_flap')
     }
 
@@ -551,19 +552,17 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
     }
 
     setTemp(temperatureObject: any, targetTemp: number) {
-        if (typeof temperatureObject.value === 'object') temperatureObject.value = temperatureObject.value.value ?? 0
-
-        if (targetTemp > temperatureObject.max_temp) {
+        if (targetTemp > temperatureObject.settings.max_temp) {
             this.$toast.error(
-                this.$t('Panels.TemperaturePanel.TempTooHigh', { name: temperatureObject.name, max: temperatureObject.max_temp }) + ''
+                this.$t('Panels.TemperaturePanel.TempTooHigh', { name: temperatureObject.name, max: temperatureObject.settings.max_temp }) + ''
             )
-        } else if (targetTemp < temperatureObject.min_temp && targetTemp != 0) {
+        } else if (targetTemp < temperatureObject.settings.min_temp && targetTemp != 0) {
             this.$toast.error(
-                this.$t('Panels.TemperaturePanel.TempTooLow', { name: temperatureObject.name, min: temperatureObject.min_temp }) + ''
+                this.$t('Panels.TemperaturePanel.TempTooLow', { name: temperatureObject.name, min: temperatureObject.settings.min_temp }) + ''
             )
         } else if (temperatureObject.target !== targetTemp) {
             console.log(temperatureObject);
-            const gcode = temperatureObject.command + ' ' + temperatureObject.commandAttributeName + '=' + temperatureObject.name + ' TARGET=' + targetTemp
+            const gcode = temperatureObject.command + ' ' + temperatureObject.settings.commandAttributeName + '=' + temperatureObject.settings.name + ' TARGET=' + targetTemp
             this.$store.dispatch('server/addEvent', { message: gcode, type: 'command' })
             this.$socket.emit('printer.gcode.script', { script: gcode })
         }

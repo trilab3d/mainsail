@@ -1,52 +1,3 @@
-<style lang="scss" scoped>
-.btnHomeAxis {
-    width: 36px;
-    min-width: 36px !important;
-}
-
-.btnGroup {
-    height: 28px !important;
-}
-
-.btnMinWidthAuto {
-    min-width: auto !important;
-}
-
-._btn-group {
-    border-radius: 4px;
-    display: inline-flex;
-    flex-wrap: nowrap;
-    max-width: 100%;
-    min-width: 100%;
-    width: 100%;
-
-    .v-btn {
-        border-radius: 0;
-        border-color: rgba(255, 255, 255, 0.12);
-        border-style: solid;
-        border-width: thin;
-        box-shadow: none;
-        height: 28px;
-        opacity: 0.8;
-        min-width: auto !important;
-    }
-
-    .v-btn:first-child {
-        border-top-left-radius: inherit;
-        border-bottom-left-radius: inherit;
-    }
-
-    .v-btn:last-child {
-        border-top-right-radius: inherit;
-        border-bottom-right-radius: inherit;
-    }
-
-    .v-btn:not(:first-child) {
-        border-left-width: 0;
-    }
-}
-</style>
-
 <template>
     <div>
         <!-- HOME ALL / ACTION BUTTON -->
@@ -103,7 +54,7 @@
             </v-col>
         </v-row>
         <!-- X MOVEMENT BUTTONGROUPS -->
-        <v-row v-if="AdvancedFeatures" dense>
+        <v-row dense>
             <v-col class="text-center">
                 <v-item-group class="_btn-group row no-gutters">
                     <v-btn
@@ -134,7 +85,7 @@
             </v-col>
         </v-row>
         <!-- Y MOVEMENT BUTTONGROUPS -->
-        <v-row v-if="AdvancedFeatures" dense>
+        <v-row dense>
             <v-col class="text-center">
                 <v-item-group class="_btn-group row no-gutters">
                     <v-btn
@@ -165,7 +116,7 @@
             </v-col>
         </v-row>
         <!-- Z MOVEMENT BUTTONGROUPS -->
-        <v-row v-if="AdvancedFeatures" dense>
+        <v-row dense>
             <v-col class="text-center">
                 <v-item-group class="_btn-group row no-gutters">
                     <v-btn
@@ -202,11 +153,10 @@
 import { Component, Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
 import ControlMixin from '@/components/mixins/control'
-import TrilabMixin from '@/components/mixins/trilab'
 import { mdiEngineOff, mdiHome } from '@mdi/js'
 
 @Component
-export default class BarsControl extends Mixins(BaseMixin, ControlMixin, TrilabMixin) {
+export default class BarsControl extends Mixins(BaseMixin, ControlMixin) {
     mdiEngineOff = mdiEngineOff
     mdiHome = mdiHome
 
@@ -239,3 +189,56 @@ export default class BarsControl extends Mixins(BaseMixin, ControlMixin, TrilabM
     }
 }
 </script>
+
+<style scoped>
+.btnHomeAxis {
+    width: 36px;
+    min-width: 36px !important;
+}
+
+.btnGroup {
+    height: 28px !important;
+}
+
+.btnMinWidthAuto {
+    min-width: auto !important;
+}
+
+._btn-group {
+    border-radius: 4px;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    min-width: 100%;
+    width: 100%;
+
+    .v-btn {
+        border-radius: 0;
+        border-color: rgba(255, 255, 255, 0.12);
+        border-style: solid;
+        border-width: thin;
+        box-shadow: none;
+        height: 28px;
+        opacity: 0.8;
+        min-width: auto !important;
+    }
+
+    .v-btn:first-child {
+        border-top-left-radius: inherit;
+        border-bottom-left-radius: inherit;
+    }
+
+    .v-btn:last-child {
+        border-top-right-radius: inherit;
+        border-bottom-right-radius: inherit;
+    }
+
+    .v-btn:not(:first-child) {
+        border-left-width: 0;
+    }
+}
+
+html.theme--light ._btn-group .v-btn {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+</style>

@@ -11,6 +11,7 @@ import { GuiNavigationStateEntry } from '@/store/gui/navigation/types'
 export interface NaviPoint {
     type: 'link' | 'route'
     title: string
+    orgTitle?: string
     to?: string
     href?: string
     target?: string
@@ -57,6 +58,7 @@ export default class NavigationMixin extends Mixins(BaseMixin, TrilabMixin) {
                 points.push({
                     type: 'route',
                     title: this.$t(`Router.${element.title}`),
+                    orgTitle: element.title,
                     icon: element.icon,
                     iconString: element.iconString,
                     customIcon: element.customIcon,
@@ -171,6 +173,7 @@ export default class NavigationMixin extends Mixins(BaseMixin, TrilabMixin) {
             return false
         else if (route.klipperComponent && !(route.klipperComponent in this.klipperConfigfileSettings)) return false
         else if (route.klipperIsConnected && !this.klippyIsConnected) return false
+
         return true
     }
 

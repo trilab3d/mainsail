@@ -6,7 +6,7 @@
                 <v-btn :href="apiUrl + '/server/files/klippy.log'" block class="primary--text" @click="downloadLog"
                     download>
                     <v-icon class="mr-2">{{ mdiDownload }}</v-icon>
-                    {{ $t('Trilab.SlicerPanel.Download') }}
+                    {{ $t('App.Trilab.Generic.Download') }}
                 </v-btn>
             </settings-row>
             <v-divider class="my-2"></v-divider>
@@ -16,7 +16,7 @@
                 <v-btn :href="apiUrl + '/server/files/moonraker.log'" block class="primary--text" @click="downloadLog"
                     download>
                     <v-icon class="mr-2">{{ mdiDownload }}</v-icon>
-                    {{ $t('Trilab.SlicerPanel.Download') }}
+                    {{ $t('App.Trilab.Generic.Download') }}
                 </v-btn>
             </settings-row>
             <v-divider v-if="existsCrowsnestLog" class="my-2"></v-divider>
@@ -24,7 +24,7 @@
             <settings-row v-if="existsCrowsnestLog" title="Crowsnest">
                 <v-btn :href="apiUrl + '/server/files/logs/crowsnest.log'" block class="primary--text" download>
                     <v-icon class="mr-2">{{ mdiDownload }}</v-icon>
-                    {{ $t('Trilab.SlicerPanel.Download') }}
+                    {{ $t('App.Trilab.Generic.Download') }}
                 </v-btn>
             </settings-row>
             <v-divider v-if="existsSonarLog" class="my-2"></v-divider>
@@ -32,7 +32,7 @@
             <settings-row v-if="existsSonarLog" title="Sonar">
                 <v-btn :href="apiUrl + '/server/files/logs/sonar.log'" block class="primary--text" download>
                     <v-icon class="mr-2">{{ mdiDownload }}</v-icon>
-                    {{ $t('Trilab.SlicerPanel.Download') }}
+                    {{ $t('App.Trilab.Generic.Download') }}
                 </v-btn>
             </settings-row>
         </v-card-text>

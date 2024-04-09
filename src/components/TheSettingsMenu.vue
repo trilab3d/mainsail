@@ -89,9 +89,12 @@ import {
     mdiAccessPointNetwork,
     mdiUpdate,
     mdiMenu,
-    mdiNoteText
+    mdiNoteText,
+    mdiGrid,
 } from '@mdi/js'
 import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneousTab.vue'
+import SettingsHeightmapTab from '@/components/settings/SettingsHeightmapTab.vue'
+
 @Component({
     components: {
         Panel,
@@ -112,7 +115,8 @@ import SettingsMiscellaneousTab from '@/components/settings/SettingsMiscellaneou
         SettingsTrilabTab,
         SettingsTrilabNetworkTab,
         SettingsTrilabPrinterTab,
-        SettingsTrilabLogsTab
+        SettingsTrilabLogsTab,
+        SettingsHeightmapTab,
 
     },
 })
@@ -140,6 +144,7 @@ export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
      */
     mdiCloseThick = mdiCloseThick
     mdiCogs = mdiCogs
+    mdiGrid = mdiGrid
     mdiNoteText = mdiNoteText
 
     declare $refs: {
@@ -228,25 +233,30 @@ export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
             {
                 icon: mdiUpdate,
                 name: 'trilab',
-                title: this.$t('Settings.TrilabTab.Trilab')
+                title: this.$t('App.Trilab.Settings.TrilabTab.Trilab')
             },
+
             {
                 icon: mdiAccessPointNetwork,
                 name: "trilab-network",
-                title: this.$t('Settings.TrilabTab.TrilabNetwork')
+                title: this.$t('App.Trilab.Settings.TrilabTab.TrilabNetwork')
             },
             {
                 icon: mdiPrinter3d,
                 name: "trilab-printer",
-                title: this.$t('Settings.TrilabTab.TrilabPrinter'),
+                title: this.$t('App.Trilab.Settings.TrilabTab.TrilabPrinter'),
                 condition: this.TrilabServiceView == true
             },
             {
                 icon: mdiNoteText,
                 name: "trilab-logs",
-                title: this.$t('Settings.TrilabTab.TrilabLogs'),
+                title: this.$t('App.Trilab.Settings.TrilabTab.TrilabLogs'),
             },
-
+            {
+                icon: mdiGrid,
+                name: 'heightmap',
+                title: this.$t('Settings.HeightmapTab.Heightmap'),
+            },
 
         ]
 
@@ -297,6 +307,10 @@ export default class TheSettingsMenu extends Mixins(BaseMixin, TrilabMixin) {
 .settings-tabs-bar {
     border-right: 1px solid rgba(255, 255, 255, 0.12);
     height: 100%;
+}
+
+html.theme--light .settings-tabs-bar {
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .settings-tabs.height500 {

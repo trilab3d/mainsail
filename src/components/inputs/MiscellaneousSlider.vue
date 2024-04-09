@@ -201,7 +201,7 @@ fill="#ffffff" stroke="none">
     sendCmd(newVal: number): void {
         if (this.value === newVal) return
 
-        let gcode = ''
+        let gcode = `SET_PIN PIN=${this.name} VALUE=${newVal.toFixed(2)}`
         if (newVal < this.min) newVal = 0
         newVal = newVal * this.multi
         if (this.type === 'fan') gcode = `M106 S${newVal.toFixed(0)}`
@@ -362,11 +362,11 @@ fill="#ffffff" stroke="none">
     margin-left: 12px;
 }
 
-._slider-input>>>.v-input__slot {
+._slider-input >>> .v-input__slot {
     min-height: 1rem !important;
 }
 
-._slider-input>>>.v-text-field__slot input {
+._slider-input >>> .v-text-field__slot input {
     padding: 4px 0 4px;
 }
 </style>

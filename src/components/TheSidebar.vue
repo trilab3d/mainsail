@@ -1,7 +1,11 @@
 <template>
-    <v-navigation-drawer :key="navigationStyle" v-model="naviDrawer" :src="sidebarBackground"
+    <v-navigation-drawer :key="navigationStyle" v-model="naviDrawer"
         :mini-variant="navigationStyle === 'iconsOnly'" :width="navigationWidth" :temporary="boolNaviTemp" clipped app
         :style="sidebarCssVars">
+        <template #img>
+            <v-img :src="sidebarBackground" height="100%" />
+        </template>
+
         <overlay-scrollbars class="nav-scrollbar">
             <v-list class="pr-0 pt-0 ml-0">
                 <v-list-item-group active-class="active-nav-item">
@@ -43,6 +47,7 @@ import { navigationWidth, topbarHeight } from '@/store/variables'
 import MainsailLogo from '@/components/ui/MainsailLogo.vue'
 import SidebarItem from '@/components/ui/SidebarItem.vue'
 import NavigationMixin from '@/components/mixins/navigation'
+import ThemeMixin from '@/components/mixins/theme'
 
 @Component({
     components: {
@@ -52,7 +57,7 @@ import NavigationMixin from '@/components/mixins/navigation'
         MainsailLogo,
     },
 })
-export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, TrilabMixin) {
+export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, ThemeMixin, TrilabMixin) {
     navigationWidth = navigationWidth
     topbarHeight = topbarHeight
 
@@ -60,7 +65,7 @@ export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, Trila
         return this.$store.state.naviDrawer
     }
 
-    set naviDrawer(newVal: boolean) {
+    set naviDrawer(newVal) {
         this.$store.dispatch('setNaviDrawer', newVal)
     }
 
@@ -69,7 +74,7 @@ export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, Trila
     }
 
     get sidebarBackground(): string {
-        return this.$store.getters['files/getSidebarBackground']
+        return this.$store.getters['files/getCustomSidebarBackground'] ?? this.sidebarBgImage
     }
 
     get currentPage(): string {
@@ -122,10 +127,6 @@ export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, Trila
         }
 
         return output
-    }
-
-    mounted() {
-        this.naviDrawer = this.$vuetify.breakpoint.lgAndUp
     }
 }
 </script>

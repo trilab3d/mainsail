@@ -1,4 +1,5 @@
 {
+  "_last_update": "2023-02-21",
   "App": {
     "Notifications": {
       "DependencyDescription": "De huidige {name} versie ondersteunt niet alle functies van Mainsail. Update {name} naar ten minste {neededVersion}.",
@@ -16,13 +17,19 @@
         "MoonrakerFailedComponentDescription": "Bij het laden van de moonraker component '{component}' is een fout opgetreden. Controleer de logs en verhelp het probleem.",
         "MoonrakerWarning": "Moonraker waarschuwing",
         "UnparsedConfigOption": "Onbekende config optie '{option}: {value}' gedetecteerd in sectie [{section}]. Dit kan een optie zijn die niet langer beschikbaar is of een module die niet juist geladen is. In de toekomst zal dit een foutmeldig geven bij het opstarten.",
-        "UnparsedConfigSection": "Onbekende config sectie [{section}] gedetecteerd. Dit kan module zijn die niet juist geladen is. In de toekomst zal dit een foutmeldig geven bij het opstarten."
+        "UnparsedConfigSection": "Onbekende config sectie [{section}] gedetecteerd. Dit kan module zijn die niet juist geladen is. In de toekomst zal dit een foutmeldig geven bij het opstarten.",
+        "MoonrakerFailedInitComponentDescription": "Er is een fout gedetecteerd tijdens de initialisatie van de moonraker-component '{component}'. \nControleer het logbestand en los het probleem op.",
+        "MoonrakerInitComponent": "In het. \nMaanraker: {component}"
       },
       "Never": "nooit",
       "NextReboot": "volgende reboot",
       "NoNotification": "Geen notificaties beschikbaar",
       "Notifications": "Notificaties",
-      "Remind": "Herinnering:"
+      "Remind": "Herinnering:",
+      "BrowserWarnings": {
+        "Description": "{name} is verouderd en wordt niet volledig ondersteund. \nDe huidige versie is {version}, maar Mainsail vereist versie {minVersion} of hoger.",
+        "Headline": "Verouderde browser"
+      }
     },
     "NumberInput": {
       "GreaterOrEqualError": "Moet groter of gelijk zijn dan {min}!",
@@ -53,19 +60,16 @@
       "Error": "FOUT",
       "Pause": "Pauzeer print",
       "Printing": "{percent}% Printen - {filename}",
-      "PrintingETA": "{percent}% Printen - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% Printen - ETA: {eta} - {filename}",
+      "PrinterOff": "Printer UIT"
     },
     "TopBar": {
       "CannotUploadTheFile": "Kan het bestand niet uploaden!",
       "EmergencyStop": "Noodstop",
       "SAVE_CONFIG": "CONFIG OPSLAAN",
-      "UploadOfFileSuccessful": "Upload van {file} succesvol!",
-      "UploadPrint": "Upload & Print",
       "Uploading": "Uploaden",
-      "LightBtn": "Licht",
-      "ViewStatus": {
-        "Advanced": "Geavanceerde weergave ingeschakeld"
-      }
+      "UploadOfFileSuccessful": "Upload van {file} succesvol!",
+      "UploadPrint": "Upload & Print"
     },
     "TopCornerMenu": {
       "Cancel": "Annuleer",
@@ -109,6 +113,206 @@
       "RecoveringDone": "Herstellen van {software} voltooid!",
       "Updating": "Updating {software}..",
       "UpdatingDone": "Updaten van {software} voltooid!"
+    },
+    "Trilab": {
+      "TopBar": {
+        "LightBtn": "Licht"
+      },
+      "AdvancedFeatures": "",
+      "ConnectionStatus": {
+        "Mainsail": "Grootzeil"
+      },
+      "Generic": {
+        "CancelWizard": "Wizard annuleren",
+        "Download": "Downloaden",
+        "Ok": "OK",
+        "Save": "Redden",
+        "Unknown": "Onbekend"
+      },
+      "PageNotFound": {
+        "404PageNotFound": "404 pagina niet gevonden"
+      },
+      "Panels": {
+        "TrilabAccessPassword": {
+          "DialogMessage": "Nadat u de inloginstellingen hebt opgeslagen, wordt de webinterface opnieuw opgestart en wordt u door de browser gevraagd de inloggegevens in te voeren. \nWilt u nu echt besparen?",
+          "DialogNoButton": "Nee",
+          "DialogYesButton": "Ja",
+          "Warning": "Waarschuwing",
+          "caption": "Toegang tot Instellingen",
+          "confirmPassword": "Bevestig wachtwoord",
+          "enablePwdControl": "Schakel wachtwoordbeheer in",
+          "password": "Wachtwoord",
+          "username": "Gebruikersnaam"
+        },
+        "TrilabRemote": {
+          "auto_off": "Automatische uitschakeling",
+          "caption": "Toegang op afstand",
+          "enable": "Inschakelen"
+        },
+        "TrilabSettingsInterfaces": {
+          "AddProfile": "Profiel toevoegen",
+          "IP4addresses": "IPv4-adressen",
+          "IP6addresses": "IPv6-adressen",
+          "Interfaces": "Beschikbare interfaces",
+          "ProfileActive": "Actief",
+          "ProfileInactive": "Inactief",
+          "ProfilesIn": "Profielen binnen",
+          "connectWifi": "Maak verbinding met wifi"
+        },
+        "TrilabSlicerPanel": {
+          "notAvailableText": "Het Slicer-profiel is niet beschikbaar voor deze printer of dit systeemplatform, of we hebben uw systeem niet correct gedetecteerd. \nNeem contact op met de ondersteuning",
+          "notAvailableTitle": "Slicerprofiel niet beschikbaar"
+        },
+        "settingsTrilabLight": {
+          "brightness": "Helderheid",
+          "caption": "Licht",
+          "enable": "Inschakelen",
+          "timeout": "Time-out inschakelen",
+          "timeoutTextFieldHint": "Time-out(s)"
+        },
+        "settingsTrilabWifi": {
+          "accessPoint": "Toegangspunt",
+          "caption": "Wifi",
+          "client": "Cliënt",
+          "confirmPassword": "Bevestig wachtwoord",
+          "country": "Land",
+          "mode": "Modus",
+          "password": "Wachtwoord",
+          "selectCountry": "Selecteer land",
+          "selectNetworkMode": "Selecteer netwerkmodus",
+          "ssid": "SSID"
+        },
+        "trilabSlicers": {
+          "prusa": {
+            "imgsrc": "/img/PrusaSlicer.png",
+            "longDescription": "Gebruik de knop hierboven om het volledige PrusaSlicer-pakket te downloaden, inclusief slicerprofielen. \nNa het downloaden pak je het archief uit naar de bestemmingslocatie. \nOp het Windows-platform voert u het programma \"prusa-slicer.exe\" uit, op het MacOS-platform voert u \"PrusaSlicer.app\" uit. \nNa het starten van het programma verschijnt de configuratiewizard. \nGa verder naar het tabblad Prusa Pro. \nSelecteer hier Prusa Pro HT90 uit de lijst met printervarianten. \nDruk vervolgens op de knop Voltooien in de rechter benedenhoek van het venster. \nHierdoor is de snijmachine klaar voor gebruik!",
+            "longTitle": "PrusaSlicer 2.7.1",
+            "shortDescription": "PrusaSlicer is een open source, functierijke, regelmatig bijgewerkte tool die alles bevat wat je nodig hebt om de perfecte printbestanden te exporteren",
+            "title": "PrusaSlicer"
+          }
+        }
+      },
+      "Settings": {
+        "TrilabTab": {
+          "Trilab": "Versies",
+          "TrilabLogs": "Logboeken",
+          "TrilabNetwork": "Netwerk",
+          "TrilabPrinter": "Printer",
+          "TrilabSlicers": "Snijmachines"
+        }
+      },
+      "SettingsAccessPasswordPanel": {
+        "SaveBtn": "Bewaar inloggegevens"
+      },
+      "SettingsTrilabPrinterTab": {
+        "AdvancedFeatures": "Geavanceerde functies:"
+      },
+      "SettingsTrilabTab": {
+        "AutomaticCheckForUpdates": "Automatische controle op updates:",
+        "CheckForLiveUpdate": "Controleer op live-update",
+        "NoUpdateAvailable": "Geen update beschikbaar",
+        "System": "Systeem",
+        "SystemVersion": "Systeemversie:",
+        "UpdateChannelTitle": "Kanaal bijwerken",
+        "Upload": "Uploaden",
+        "UploadUpdateFile": "Updatebestand uploaden",
+        "WenInterfaceVersion": "Versie webinterface:"
+      },
+      "SlicerPanel": {
+        "Download": "Downloaden"
+      },
+      "TheTopBar": {
+        "AdvancedViewEnabled": "Geavanceerde weergave ingeschakeld",
+        "HiddenViewEnbled": "Verborgen weergave ingeschakeld",
+        "HomeBtn": "Thuis",
+        "LightBtn": "Licht",
+        "ServiceViewEnabled": "Serviceweergave ingeschakeld"
+      },
+      "TheTopbar": {
+        "HiddenViewEnbled": "Verborgen weergave ingeschakeld",
+        "ServiceViewEnabled": "Serviceweergave ingeschakeld"
+      },
+      "TrilabFilamentLoadWizard": {
+        "CancelHeating": "Verwarming annuleren",
+        "CancelLoading": "Annuleer het laden",
+        "CancelWizard": "Wizard annuleren",
+        "Close": "Dichtbij",
+        "Continue": "Doorgaan",
+        "CooldownAndClose": "Afkoelen",
+        "FilamentIsLoading": "Filament wordt geladen...",
+        "FilamentIsUnloading": "Het filament wordt verwijderd",
+        "FilamentLoadWizard": "Wizard voor het laden van filamenten",
+        "InsertFilamentIntoExtruder": "Plaats het filament in de extruder en druk op Doorgaan",
+        "IsColorClean": "Is kleur schoon?",
+        "OpenFilamentMenu": "Open het filamentmenu",
+        "PleaseWaitForTheTemperatureToReach": "Wacht tot de temperatuur de opgegeven waarde bereikt",
+        "PurgeMore": "Meer opruimen",
+        "SelectWhichFilamentYouWantToLoad": "Selecteer welk filament je wilt laden",
+        "Step": "Stap"
+      },
+      "TrilabFilamentUnLoadWizard": {
+        "FilamentUnloadWizard": "Wizard voor het verwijderen van filamenten",
+        "WhichFilamentIsInPrinter": "Welk materiaal wordt in de printer geladen?"
+      },
+      "TrilabFilamentUnloadWizard": {
+        "FilamentIsUnloading": "Het filament wordt verwijderd",
+        "colorUnloaded": "Het filament is succesvol verwijderd"
+      },
+      "TrilabLiveUpdate": {
+        "Buttons": {
+          "DownloadUpdate": "Download update",
+          "InstallFromUsb": "Updaten vanaf USB"
+        },
+        "Titles": {
+          "Installed": "Update gereed",
+          "UpdateAvailable": "Update beschikbaar",
+          "UpdateInProgress": "Update wordt uitgevoerd",
+          "UsbInstalled": "USB-update gereed",
+          "UsbUpdateAvailable": "USB-update beschikbaar"
+        },
+        "installAndRebootBtn": "INSTALLEREN",
+        "printerIsPrinting": "U kunt deze stap nu niet uitvoeren, omdat uw printer bezig is. \nWacht even, dit venster wordt automatisch vernieuwd wanneer deze stap klaar is",
+        "restartWarning": "De update is klaar voor installatie. \nDruk op de knop om de update te installeren. \nDe printer wordt opnieuw opgestart zodra de update is voltooid.",
+        "statuses": {
+          "DOWNLOADING": "UPDATE DOWNLOADEN",
+          "ERROR": "UPDATE FOUT",
+          "INSTALLED": "UPDATE KLAAR",
+          "UNPACKING": "UPDATE UITPAKKEN",
+          "UPDATE_AVAILABLE": "NIEUWE UPDATE BESCHIKBAAR",
+          "UP_TO_DATE": "NIEUWSTE VERSIE",
+          "USB_UNPACKING": "UPDATE UITPAKKEN",
+          "USB_UPDATE_AVAILABLE": "USB-NIEUWE UPDATE"
+        }
+      },
+      "TrilabSelectFilamentDialog": {
+        "AreYouSureYouWantToSelectFilament": "Weet u zeker dat u filament wilt selecteren?",
+        "Cancel": "Annuleren",
+        "Cpnfirm": "Bevestigen",
+        "OK": "OK"
+      },
+      "TrilabServiceDialog": {
+        "Cancel": "Annuleren",
+        "ServiceLogin": "Dienstaanmelding"
+      },
+      "TrilabUpdateDialog": {
+        "DANGER": "GEVAAR",
+        "INFO": "INFO",
+        "Progres": "Voortgang:",
+        "RestartPrinter": "Start de printer opnieuw",
+        "STATUS": "TOESTAND:",
+        "ShowErrorTechinicalDetails": "Toon fout technische details",
+        "WARNING": "WAARSCHUWEN",
+        "title": "Update",
+        "titleUSB": "Updaten vanaf USB"
+      }
+    },
+    "TextfieldWithCopy": {
+      "Copied": "Gekopieerd"
+    },
+    "TheServiceWorker": {
+      "DescriptionNeedUpdate": "De lokale cache is verouderd en moet worden bijgewerkt. \nKlik op de onderstaande knop om de cache te updaten.",
+      "TitleNeedUpdate": "PWA heeft een update nodig",
+      "Update": "update"
     }
   },
   "BedScrews": {
@@ -144,7 +348,8 @@
       "DoYouWantToStartFilename": "Wil je {filename} starten?",
       "Headline": "Start print",
       "Print": "print",
-      "Timelapse": "Timelapse"
+      "Timelapse": "Timelapse",
+      "DoYouWantToStartFilenameFilament": "Wil je {filename} starten met het volgende filament?"
     }
   },
   "Editor": {
@@ -159,7 +364,8 @@
     "UnsavedChanges": "Niet opgeslagen wijzigingen",
     "UnsavedChangesMessage": "Wil je de aanpassingen opslaan naar {filename}?",
     "UnsavedChangesSubMessage": "Je aanpassingen zullen verloren gaan als je ze niet opslaat. Je kunt deze melding uitschakelen in de instellingen.",
-    "Uploading": "Uploaden"
+    "Uploading": "Uploaden",
+    "DeviceDialog": "Apparaten"
   },
   "EmergencyStopDialog": {
     "AreYouSure": "Weet je het zeker?",
@@ -212,9 +418,9 @@
     "NozzleDiameter": "Nozzle Diameter",
     "ObjectHeight": "Objecthoogte",
     "Preheat": "Voorverwarmen",
+    "PrintedFiles": "Geprinte bestanden",
     "PrintStart": "Start print",
     "PrintTime": "Printtijd",
-    "PrintedFiles": "Geprinte bestanden",
     "RefreshCurrentDirectory": "Ververs huidige map",
     "Rename": "Hernoem",
     "RenameDirectory": "Hernoem map",
@@ -230,15 +436,20 @@
     "Total": "Totaal",
     "UploadNewGcode": "Upload nieuwe G-Code",
     "Used": "Gebruikt",
-    "View3D": "Bekijk in 3D"
+    "View3D": "Bekijk in 3D",
+    "DeleteSingleFileQuestion": "Wilt u het bestand \"{name}\" echt verwijderen?",
+    "Duplicate": "Duplicaat",
+    "DuplicateFile": "Dubbel bestand",
+    "ScanMeta": "Metagegevens scannen",
+    "ScanMetaSuccess": "Metagegevens gescand van: {filename}."
   },
   "FullscreenUpload": {
     "CannotUploadFile": "Kan bestand niet uploaden!",
     "DropFilesToUploadFiles": "Sleep bestand hier om te uploaden."
   },
   "GCodeViewer": {
-    "CNCMode": "CNC Modus",
     "ClearLoadedFile": "Leeg",
+    "CNCMode": "CNC Modus",
     "ColorMode": "Kleur modus",
     "Downloading": "Downloaden",
     "ForceLineRendering": "Forceer Line Rendering",
@@ -250,8 +461,8 @@
     "Max": "Max",
     "Medium": "Medium",
     "ReloadRequired": "Herladen nodig",
-    "RenderQuality": "Render kwaliteit",
     "Rendering": "Renderen",
+    "RenderQuality": "Render kwaliteit",
     "ShowGCode": "Toon G-Code",
     "ShowObjectSelection": "Toon object selectie",
     "ShowToolhead": "Toon Toolhead",
@@ -275,7 +486,8 @@
       "Min": "Min",
       "Name": "Naam",
       "Range": "Bereik",
-      "Size": "Grootte"
+      "Size": "Grootte",
+      "Variance": "Variantie"
     },
     "DeleteBedMeshProfile": "Verwijder Bed Mesh Profiel",
     "DoYouReallyWantToDelete": "Weet je zeker dat je het profiel \"{name}\" wil verwijderen?",
@@ -303,7 +515,8 @@
     "TitleCalibrate": "Kalibreer nieuwe bed mesh",
     "TitleClear": "Verijwder bed mesh",
     "TitleHomeAll": "Home alles",
-    "Wireframe": "Draadmodel"
+    "Wireframe": "Draadmodel",
+    "InvalidNameAscii": "Naam is ongeldig. \nAlleen ascii-tekens zijn toegestaan."
   },
   "History": {
     "AddNote": "Voeg notitie toe",
@@ -354,14 +567,15 @@
     "Statistics": "Statistieken",
     "Status": "Status",
     "StatusValues": {
-      "Others": "Overige",
       "cancelled": "Geannuleerd",
       "completed": "Voltooid",
       "error": "Fout",
       "in_progress": "Bezig",
       "klippy_disconnect": "Klippy verbinding verbroken",
       "klippy_shutdown": "Klippy afgesloten",
-      "server_exit": "Server exit"
+      "Others": "Overige",
+      "server_exit": "Server exit",
+      "interrupted": "Onderbroken"
     },
     "Table": "Tabel",
     "TitleExportHistory": "Export geschiedenis",
@@ -371,7 +585,10 @@
     "TotalFilamentUsed": "Totaal Filament Verbruikt",
     "TotalJobs": "Totaal Jobs",
     "TotalPrinttime": "Totale Printtijd",
-    "TotalTime": "Totale Tijd"
+    "TotalTime": "Totale Tijd",
+    "AddToQueueSuccessful": "Bestand {bestandsnaam} toegevoegd aan wachtrij.",
+    "DeleteSingleJobQuestion": "Wilt u de vacature echt verwijderen?",
+    "LoadCompleteHistory": "Laad de volledige geschiedenis"
   },
   "JobQueue": {
     "AllJobs": "Alle jobs",
@@ -385,7 +602,8 @@
     "Jobs": "Jobs",
     "Pause": "Pauze",
     "RemoveFromQueue": "Verwijder uit wachtrij",
-    "Start": "Start"
+    "Start": "Start",
+    "StartPrint": "Taak starten"
   },
   "Machine": {
     "ConfigFilesPanel": {
@@ -422,14 +640,17 @@
       "Total": "Totaal",
       "UploadFile": "Upload bestand",
       "Uploading": "Uploaden",
-      "Used": "Gebruikt"
+      "Used": "Gebruikt",
+      "DeleteSingleFileQuestion": "Wilt u het bestand \"{name}\" echt verwijderen?",
+      "Duplicate": "Duplicaat",
+      "DuplicateFile": "Dubbel bestand"
     },
     "EndstopPanel": {
       "Endstop": "Endstop",
       "EndstopInfo": "Druk op de sync-knop rechtsoner om de huidige endstop status te laden.",
       "Endstops": "Endstops",
-      "TRIGGERED": "GETRIGGERED",
-      "open": "OPEN"
+      "open": "OPEN",
+      "TRIGGERED": "GETRIGGERED"
     },
     "LogfilesPanel": {
       "Accept": "accepteer",
@@ -482,11 +703,38 @@
       "PackagesCanBeUpgraded": "pakketten kunnen worden geüpgraded",
       "System": "Systeem",
       "Unknown": "onbekend",
-      "UpToDate": "up-to-date",
       "Update": "update",
       "UpdateAll": "Update alle componenten",
       "UpdateManager": "Update Manager",
-      "Upgrade": "upgrade"
+      "Upgrade": "upgrade",
+      "UpToDate": "up-to-date",
+      "Abort": "Afbreken",
+      "AreYouSure": "Weet je het zeker?",
+      "Close": "Dichtbij",
+      "CommitHistory": "Geschiedenis vastleggen",
+      "ConfigChanges": "Configuratiewijzigingen",
+      "Corrupt": "corrupt",
+      "CountPackagesCanBeUpgraded": "{count} pakketten kunnen worden geüpgraded",
+      "GenericUpdateQuestion": "Controleer de commitgeschiedenis (indien beschikbaar) en de GitHub-pagina voor dit project om te zien of er handmatige aanpassingen nodig zijn voor deze update.",
+      "GitHubPage": "GitHub-pagina",
+      "HardRecovery": "Moeilijk herstel",
+      "IUnderstandTheRisks": "ik begrijp de risico's",
+      "InitUpdateManager": "De Update Manager is nog niet geïnitialiseerd. \nDit is normaal als u het systeem voor de eerste keer opstart. \nKlik op de knop Vernieuwen om alle componenten te initialiseren.",
+      "KlipperUpdateQuestionConfig": "Deze update kan ook wijzigingen in configuratieparameters bevatten die moeten worden aangepast in het bestand printer.cfg. Zie het wijzigingslogboek voor meer informatie.",
+      "KlipperUpdateQuestionFirmware": "Hiermee wordt de Klipper-hostsoftware bijgewerkt. \nBesturingskaarten met de Klipper-firmware moeten mogelijk worden geflasht met opnieuw gecompileerde firmware voordat de machine weer in gebruik kan worden genomen.",
+      "LinkToGithub": "Link naar GitHub",
+      "MoonrakerUpdateQuestion": "Hiermee wordt de Moonraker API bijgewerkt. \nEr zijn mogelijk wijzigingen in het bestand moonraker.conf nodig om de machine te kunnen blijven gebruiken.",
+      "MoreCommitsInfo": "Hier kunnen maximaal 30 commits worden weergegeven. \nOm alle commits te zien, klik op de volgende link:",
+      "Notification": {
+        "Detached": "",
+        "Dirty": ""
+      },
+      "SoftRecovery": "Zacht herstel",
+      "StartUpdate": "Start update",
+      "ThesePackagesCanBeUpgrade": "Deze systeempakketten kunnen worden geüpgraded:",
+      "UpdateWarning": "Updatewaarschuwing: {name}",
+      "UpgradeableSystemPackages": "Upgradebare systeempakketten",
+      "WebClientUpdateQuestion": "In sommige gevallen kan het bijwerken van de webclient wijzigingen met zich meebrengen die incompatibiliteit kunnen veroorzaken. \nZie de releaseopmerkingen voor meer informatie."
     }
   },
   "ManualProbe": {
@@ -520,7 +768,13 @@
       "Requested": "Aangevraagd",
       "Retract": "Retract",
       "TooLargeExtrusion": "Extrusie te lang!",
-      "UnloadFilament": "Filament ontladen"
+      "UnloadFilament": "Filament ontladen",
+      "CleanNozzle": "Schoon mondstuk",
+      "ExtruderControl": "Extrudercontrole",
+      "FirmwareRetraction": "Firmware-intrekking",
+      "PressureAdvance": "Druk vooruit",
+      "PurgeFilament": "Filament verwijderen",
+      "Tools": "Hulpmiddelen"
     },
     "FarmPrinterPanel": {
       "ReconnectToPrinter": "Opnieuw verbinden",
@@ -535,7 +789,8 @@
       "PrinterSwitchedOff": "Printer is uitgeschakeld",
       "PrinterSwitchedOffDescription": "De printer is uitgeschakeld en Klipper kan niet verbinden. Om de printer in te schakelen, klik op de onderstaande knop:",
       "Restart": "Herstart",
-      "ServiceReports": "{service} rapportages"
+      "ServiceReports": "{service} rapportages",
+      "KlipperCheck": ""
     },
     "MachineSettingsPanel": {
       "Headline": "Machine instellingen",
@@ -543,25 +798,27 @@
         "Acceleration": "Acceleratie",
         "MaxAccelToDecel": "Max Accel. naar Decel.",
         "SquareCornerVelocity": "Hoeksnelheid (SCV)",
-        "Velocity": "Snelheid"
+        "Velocity": "Snelheid",
+        "MinimumCruiseRatio": "Min. \nCruise-verhouding"
       }
     },
     "MacrosPanel": {
       "Headline": "Macros",
       "Send": "verstuur"
     },
-    "MinSettingsPanel": {
-      "IncludeMainsailCfg": "Zorg dat je mainsail.cfg in je printer.cfg geïnclude hebt.",
-      "IsNotDefinedInConfig": "is niet gedefinieerd in de config.",
-      "MissingConfiguration": "Ontbrekende configuratie",
-      "MoreInformation": "meer informatie"
-    },
     "MiniconsolePanel": {
       "Headline": "Console",
       "HideTemperatures": "Verberg temperaturen",
       "HideTimelapse": "Verberg Timelapse",
       "SendCode": "Verzend code...",
-      "SetupConsole": "Console Instellingen"
+      "SetupConsole": "Console Instellingen",
+      "Autoscroll": "Automatisch scrollen"
+    },
+    "MinSettingsPanel": {
+      "IncludeMainsailCfg": "Zorg dat je mainsail.cfg in je printer.cfg geïnclude hebt.",
+      "IsNotDefinedInConfig": "is niet gedefinieerd in de config.",
+      "MissingConfiguration": "Ontbrekende configuratie",
+      "MoreInformation": "meer informatie"
     },
     "MiscellaneousPanel": {
       "Headline": "Overige",
@@ -575,10 +832,6 @@
         "Detected": "gedetecteerd",
         "Disabled": "uitgeschakeld",
         "Empty": "Leeg"
-      },
-      "DoorSensor": {
-        "Closed": "gesloten",
-        "Open": "open"
       }
     },
     "PowerControlPanel": {
@@ -591,23 +844,23 @@
       "CancelPrint": "Annuleer print",
       "ClearPrintStats": "Wis print statistieken",
       "Difference": "Verschil",
-      "ETA": "ETA",
       "EmptyGcodes": "Geen G-Code beschikbaar.",
       "EmptyJobqueue": "Er zijn geen bestanden in de wachtrij.",
       "Estimate": "Schatting",
+      "ETA": "ETA",
       "ExcludeObject": {
         "Cancel": "annuleer",
+        "Excluded": "Uitgesloten",
         "ExcludeObject": "Object uitsluiten",
         "ExcludeObjectHeadline": "Object uitsluiten",
-        "ExcludeObjectText": "Weet je zeker dat je \"{name}\" wil uitsluiten?",
-        "Excluded": "Uitgesloten"
+        "ExcludeObjectText": "Weet je zeker dat je \"{name}\" wil uitsluiten?"
       },
       "Filament": "Filament",
       "File": "Bestand",
       "Files": "Bestanden",
       "Flow": "Flow",
       "Headline": "Status",
-      "Jobqueue": "Wachtrij ({count})",
+      "Jobqueue": "Wachtrij",
       "JobqueueMoreFiles": "geen jobs meer | nog een job |  {count} jobs",
       "Layer": "Laag",
       "Max": "max",
@@ -658,13 +911,15 @@
       "ShowNameInList": "Toon {name} in de lijst",
       "State": "Status",
       "Target": "Doel",
+      "TemperaturesInChart": "Temperatuur [°C]",
       "TempTooHigh": "Temperatuur te hoog voor {name}! (max: {max})",
       "TempTooLow": "Temperatuur te laag voor {name}! (min: {min})",
-      "TemperaturesInChart": "Temperatuur [°C]"
+      "HideMcuHostSensors": "Host-/MCU-sensoren verbergen",
+      "HideMonitors": "Monitoren verbergen"
     },
     "ToolheadControlPanel": {
-      "ALL": "ALLES",
       "Absolute": "absoluut",
+      "ALL": "ALLES",
       "Headline": "Toolhead",
       "PleaseConfigureSteps": "Configureer steps",
       "Position": "Positie",
@@ -672,7 +927,11 @@
       "Relative": "relatief",
       "SettingsInterfaceControl": "Instllingen > Interface > Bediening",
       "SpeedFactor": "Snelheid factor",
-      "ZTilt": "Z Tilt"
+      "ZTilt": "Z Tilt",
+      "ControlButtons": "Bedieningsknoppen",
+      "CoordinateFields": "Coördinatievelden",
+      "PositionOutput": "Positie-uitgang",
+      "ZOffset": "Z-offset"
     },
     "WebcamPanel": {
       "All": "Alle",
@@ -694,46 +953,31 @@
       "ToEndstop": "naar Endstop",
       "ToProbe": "naar Probe"
     },
-    "TrilabAccessPassword": {
-      "caption": "Toegang Instellingen",
-      "enablePwdControl": "Wachtwoordbeheer inschakelen",
-      "username": "Gebruikersnaam",
-      "password": "Wachtwoord",
-      "confirmPassword": "Bevestig wachtwoord",
-      "Warning": "Waarschuwing",
-      "DialogMessage": "Nadat u de inloginstellingen hebt opgeslagen, wordt de webinterface opnieuw opgestart en wordt u door de browser gevraagd de inloggegevens in te voeren. \nWilt u nu echt besparen?",
-      "DialogYesButton": "Ja",
-      "DialogNoButton": "Nee"
-    },
-    "TrilabRemote": {
-      "auto_off": "Automatische uitschakeling",
-      "enable": "Inschakelen",
-      "caption": "Toegang op afstand"
-    },
-    "settingsTrilabWifi": {
-      "country": "Land",
-      "mode": "modus",
-      "caption": "Wifi",
-      "password": "Wachtwoord",
-      "accessPoint": "Toegangspunt",
-      "ssid": "SSID",
-      "confirmPassword": "Bevestig wachtwoord"
-    },
-    "settingsTrilabLight": {
-      "brightness": "Helderheid",
-      "timeoutTextFieldHint": "time-out(s)",
-      "enable": "Inschakelen",
-      "timeout": "Schakel time-out in"
-    },
-    "TrilabSettingsInterfaces": {
-      "IP4addresses": "IPv4-adressen",
-      "IP6addresses": "IPv6-adressen",
-      "connectWifi": "Maak verbinding met wifi",
-      "AddProfile": "Profiel toevoegen",
-      "ProfilesIn": "Profielen binnen",
-      "ProfileActive": "Actief",
-      "ProfileInactive": "Inactief",
-      "Interfaces": "Beschikbare interfaces"
+    "SpoolmanPanel": {
+      "Cancel": "Annuleren",
+      "ChangeSpool": "Wissel spoel",
+      "DaysAgo": "{dagen} dagen geleden",
+      "EjectSpool": "Spoel uitwerpen",
+      "EjectSpoolQuestion": "Weet u zeker dat u de filamentspoel uitwerpt?",
+      "Filament": "Gloeidraad",
+      "FilamentTypeMismatch": "Het materiaal van de actieve spoel ({spoolType}) komt niet overeen met het materiaal van de G-code ({fileType}).",
+      "Headline": "Spoelman",
+      "LastUsed": "Laatst gebruikt",
+      "Location": "Plaats",
+      "Material": "Materiaal",
+      "Never": "Nooit",
+      "NoActiveSpool": "Filamenttracking is inactief. \nSelecteer een spoel om te beginnen.",
+      "NoResults": "Er is geen spoel gevonden met de huidige zoekcriteria.",
+      "NoSpoolSelected": "Geen spoel geselecteerd. \nSelecteer een spoel, anders wordt deze afdruk niet gevolgd.",
+      "NoSpools": "Geen spoelen beschikbaar",
+      "OpenSpoolManager": "open Spoolbeheer",
+      "Refresh": "vernieuwen",
+      "Search": "Zoekopdracht",
+      "SelectSpool": "Selecteer Spoel",
+      "Today": "Vandaag",
+      "TooLessFilament": "De huidige spoel bevat mogelijk niet genoeg filament voor deze afdruk. \n({spoolWeight}g van {fileWeight}g)",
+      "Weight": "Gewicht",
+      "Yesterday": "Gisteren"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -754,13 +998,16 @@
     "Printers": "Printers",
     "Timelapse": "Timelapse",
     "Webcam": "Webcam",
-    "Calibration": "Kalibratie"
+    "Calibration": "Kalibratie",
+    "Diagnostics": "Diagnostiek",
+    "Slicers": "Snijmachine"
   },
   "ScrewsTiltAdjust": {
     "Accept": "accepteer",
     "Base": "basis",
     "ErrorText": "Iets ging fout bij het proben.",
-    "Headline": "Schroef kantel-aanpassing"
+    "Headline": "Schroef kantel-aanpassing",
+    "Retry": "opnieuw proberen"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "Voeg printer toe",
@@ -832,7 +1079,10 @@
       "Style": "Stijl",
       "ValueGreaterThan": "Waarde moet groter zijn dan {value}",
       "ZOffsetIncrements": "Z-Offset incrementies (in mm)",
-      "ZTiltAdjust": "Z-Tilt Adjust{isDefault}"
+      "ZTiltAdjust": "Z-Tilt Adjust{isDefault}",
+      "HideDuringPrint": "Asbesturingselementen verbergen tijdens het afdrukken",
+      "ZOffsetSaveOption": "Z-Offset opslagoptie",
+      "ZOffsetSaveOptionDescription": "Wijzig de optie om de Z-Offset op te slaan"
     },
     "DashboardTab": {
       "Dashboard": "Dashboard",
@@ -849,10 +1099,11 @@
       "Editor": "Editor",
       "KlipperRestartMethod": "Klipper restart methode",
       "KlipperRestartMethodDescription": "Selecteerd welke herstart methode gebruikt wordt bij 'Save & Restart' na het bewerken van de Klipper config files.",
-      "MoonrakerRestartInstance": "Moonraker instantie herstarten",
-      "MoonrakerRestartInstanceDescription": "Selecteer welke Moonraker service herstart na 'Save & Restart' bij het bewerken van Moonraker config bestanden.",
       "UseEscToClose": "Gebruik ESC om de editor te sluiten",
-      "UseEscToCloseDescription": "Laat de ESC toets de editor sluiten"
+      "UseEscToCloseDescription": "Laat de ESC toets de editor sluiten",
+      "Spaces": "Spaties: {count}",
+      "TabSize": "TAB-grootte",
+      "TabSizeDescription": "Past aan hoeveel spaties moeten worden ingesprongen voor TAB"
     },
     "GCodeViewerTab": {
       "BackgroundColor": "Achtergrondkleur",
@@ -904,9 +1155,21 @@
       "Restore": "Herstellen",
       "RestoreDialog": "Kies alle secties die je wil herstellen:",
       "TimeFormat": "Tijdformaat",
-      "PrinterNameRequired": "Printernaam is vereist",
-      "PrinterNameMaxLength": "De maximaal toegestane naamlengte is 63 tekens",
-      "PrinterNameInvalid": "Printernaam is ongeldig. \nAlleen basistekens, cijfers en koppeltekens zijn toegestaan."
+      "DBNavigation": "Navigatie",
+      "Everything": "Alles",
+      "MainsailSettingsMoonrakerDb": "Grootzeilinstellingen in Moonraker DB"
+    },
+    "HeightmapTab": {
+      "ColorSchemes": "kleurenschema's",
+      "Heightmap": "Hoogtekaart",
+      "IsDefault": "(Standaard)",
+      "Schemes": {
+        "GrayScale": "Grijstinten",
+        "Hot": "Heet",
+        "Hsv": "Hsv",
+        "Portland": "Portland",
+        "Spring": "Lente"
+      }
     },
     "InterfaceSettings": "Interface Instellingen",
     "MacrosTab": {
@@ -918,8 +1181,8 @@
       "CountMacros": "geen Macros toegevoegd | {count} Macro | {count} Macros",
       "Custom": "custom",
       "CustomColor": "Custom Kleur",
-      "DeleteMacroFromGroup": "Verwijder macro uit groep.",
       "DeletedMacro": "Verwijderde macro",
+      "DeleteMacroFromGroup": "Verwijder macro uit groep.",
       "EditGroup": "Bewerk groep",
       "Error": "fout",
       "Expert": "Expert",
@@ -929,10 +1192,10 @@
       "Macrogroups": "Groepen",
       "Macros": "Macros",
       "Management": "Beheer",
-      "NOMacros": "geen macros gevonden...",
       "Name": "Naam",
       "NoAvailableMacros": "Geen macros beschikbaar.",
       "NoGroups": "Geen groepen gevonden...",
+      "NOMacros": "geen macros gevonden...",
       "NoMacrosInGroup": "Geen macros in deze groep.",
       "Primary": "primair",
       "Secondary": "secundair",
@@ -953,8 +1216,8 @@
       "CreatePreset": "Maak preset aan",
       "End": "Einde",
       "EndDescription": "Laatste LED van deze groep.",
-      "GroupSubTitle": "Start: {start}, Einde: {end}",
       "Groups": "Groepen",
+      "GroupSubTitle": "Start: {start}, Einde: {end}",
       "LightGroups": "{name} - Groepen",
       "LightPresets": "{name} - Presets",
       "Miscellaneous": "Overige",
@@ -1003,6 +1266,8 @@
       "CameraDescription": "Selecteer welke camera gebruikt wordt",
       "ConstantRateFactor": "Constant Rate Factor",
       "ConstantRateFactorDescription": "Dit bepaalt de kwaliteit vs bestandsgrootte van de gerenderde video. De CRF schaal is van 0-51 waar 0 zonder verlies is, 23 de standaard en 51 de slechts mogelijke kwaliteit. Een lagere waarde geeft over het algemeen betere kwaliteit en een gangbare waarde is 17-28. Zie 17 of 18 als praktisch zonder kwaliteitsverlies.",
+      "duplicatelastframe": "duplicatelastframe",
+      "duplicatelastframeDescription": "Herhaal het laatste frame aan het eind van de video",
       "Enabled": "Ingeschakeld",
       "EnabledDescription": "Indien uitgeschakeld, worden gcode macros genegeerd en autorender overgeslagen.",
       "Extraoutputparams": "Extraoutputparams",
@@ -1018,12 +1283,12 @@
       "ModeDescription": "Kies tussen Layermacro en Hyperlapse (tijd gebaseerde) modus",
       "OutputFramerate": "Uitvoer Framerate",
       "OutputFramerateDescription": "Definieert  de framerate van de video. Note: dit wordt genegeerd wanneer variable_fps is ingeschakeld",
-      "ParkTime": "Parkeerduur",
-      "ParkTimeDescription": "Voeg extra tijd toe bij het parkeren.",
       "Parkhead": "Parkhead",
       "ParkheadDescription": "Indien ingeschakeld, wordt de printkop geparkeerd voor een foto te nemen.",
       "Parkpos": "Parkeer postitie",
       "ParkposDescription": "Selecteer de parkeer positie",
+      "ParkTime": "Parkeerduur",
+      "ParkTimeDescription": "Voeg extra tijd toe bij het parkeren.",
       "Pixelformat": "Pixelformat",
       "PixelformatDescription": "Definieer het pixelformaat van de video",
       "PosDZ": "Positie Z",
@@ -1060,8 +1325,11 @@
       "VariableFpsMaxDescription": "Maximale waarde voor variabele FPS",
       "VariableFpsMin": "Variabele FPS max",
       "VariableFpsMinDescription": "Minimale waarde voor variabele FPS",
-      "duplicatelastframe": "duplicatelastframe",
-      "duplicatelastframeDescription": "Herhaal het laatste frame aan het eind van de video"
+      "RulesBetweenMinMax": "Waarde moet tussen {min} en {max} liggen!",
+      "RulesMin": "Waarde moet minimaal {min} zijn!",
+      "RulesPositive": "Waarde moet positief zijn!",
+      "RulesRequired": "Waarde is vereist!",
+      "RulesZeroAndPositive": "Waarde moet 0 of groter zijn!"
     },
     "UiSettingsTab": {
       "BoolBigThumbnail": "Grote thumbnail",
@@ -1092,7 +1360,31 @@
       "PowerDeviceNameDescription": "Selecteer welk Moonraker power apparaat gebruikt moet worden om de printer te schakelen.",
       "Primary": "Primair",
       "ShowWebcamInNavigation": "Toon Webcam in de navigatie",
-      "UiSettings": "UI Instellingen"
+      "UiSettings": "UI Instellingen",
+      "BedScrewsDialog": "Dialoogvenster Bedschroeven",
+      "BedScrewsDialogDescription": "Helperdialoogvenster weergeven voor BED_SCREWS_ADJUST.",
+      "BigThumbnailBackground": "Achtergrondkleur van grote miniatuur",
+      "ConfirmOnCoolDown": "Bevestiging vereist op CoolDown",
+      "ConfirmOnCoolDownDescription": "Toon een bevestigingsvenster op CoolDown",
+      "DefaultNavigationState": "Standaardstatus navigatie",
+      "DefaultNavigationStateAlwaysClosed": "altijd gesloten",
+      "DefaultNavigationStateAlwaysOpen": "altijd open",
+      "DefaultNavigationStateDescription": "Welke staat moet standaard de navigatie hebben.",
+      "DefaultNavigationStateLastState": "laatste staat",
+      "DisableFanAnimation": "Schakel ventilatoranimatie uit",
+      "DisableFanAnimationDescription": "Dit kan de belasting van uw browser verminderen.",
+      "HideUpdateWarnings": "Updatewaarschuwingen verbergen",
+      "HideUpdateWarningsDescription": "Deze optie verbergt alle updatewaarschuwingen in Update Manager.",
+      "ManualProbeDialog": "Dialoogvenster Handmatige sondehelper",
+      "ManualProbeDialogDescription": "Helperdialoogvenster weergeven voor PROBE_CALIBRATE of Z_ENDSTOP_CALIBRATE.",
+      "ScrewsTiltAdjustDialog": "Schroeven Dialoogvenster Kantelaanpassing",
+      "ScrewsTiltAdjustDialogDescription": "Helperdialoogvenster weergeven voor SCREWS_TILT_CALCULATE.",
+      "TempchartHeight": "Hoogte temperatuurgrafiek",
+      "TempchartHeightDescription": "Wijzig de hoogte van de temperatuurgrafiek op het Dashboard.",
+      "Theme": "Thema",
+      "ThemeDark": "Donker",
+      "ThemeDescription": "Verander de algehele look en feel van de applicatie",
+      "ThemeLight": "Licht"
     },
     "Update": "updaten",
     "WebcamsTab": {
@@ -1126,11 +1418,17 @@
       "UrlStream": "URL Stream",
       "Uv4lMjpeg": "UV4L-MJPEG",
       "Vertically": "verticaal",
-      "Webcams": "Webcams"
+      "Webcams": "Webcams",
+      "EnableAudio": "Audio inschakelen",
+      "HideFps": "FPS-teller verbergen",
+      "JMuxerStream": "Ruwe h264-stream (jmuxer)",
+      "WebrtcCameraStreamer": "WebRTC (camera-streamer)",
+      "WebrtcGo2rtc": "WebRTC (go2rtc)",
+      "WebrtcJanus": "WebRTC (Janus-gateway)",
+      "WebrtcMediaMTX": "WebRTC (MediaMTX)"
     },
-    "TrilabTab": {
-      "Trilab": "Trilab nastavení",
-      "TrilabLogs": "Logboeken"
+    "NavigationTab": {
+      "Navigation": "Navigatie"
     }
   },
   "Timelapse": {
@@ -1182,113 +1480,28 @@
     "Type": "Type",
     "Used": "Gebruikt",
     "Variable": "Variable",
-    "Video": "Video"
+    "Video": "Video",
+    "DeleteSingleFileQuestion": "Wilt u het bestand \"{name}\" echt verwijderen?"
   },
-  "_last_update": "2023-02-21",
   "title": "Nederlands",
-  "TrilabUpdateDialog": {
-    "title": "Actief",
-    "RestartPrinter": "Start de printer opnieuw",
-    "titleUSB": "Updaten vanaf USB"
+  "CoolDownDialog": {
+    "AreYouSure": "Weet je het zeker?",
+    "CoolDown": "Afkoelen",
+    "No": "Nee",
+    "Yes": "Ja"
   },
-  "General": {
-    "Save": "Redden"
-  },
-  "TrilabLiveUpdate": {
-    "Buttons": {
-      "InstallFromUsb": "Updaten vanaf USB",
-      "DownloadUpdate": "Download update"
-    },
-    "restartWarning": "De update is klaar voor installatie. \nDruk op de knop om de update te installeren. \nDe printer wordt opnieuw opgestart zodra de update is voltooid.",
-    "printerIsPrinting": "U kunt deze stap nu niet uitvoeren, omdat uw printer wat werk doet. \nWacht even, dit venster wordt automatisch vernieuwd wanneer deze stap gereed is",
-    "installAndRebootBtn": "INSTALLEREN",
-    "Titles": {
-      "Installed": "Update gereed",
-      "UsbInstalled": "USB-update gereed",
-      "UpdateInProgress": "Update wordt uitgevoerd",
-      "UpdateAvailable": "Update beschikbaar",
-      "UsbUpdateAvailable": "USB-update beschikbaar"
-    }
-  },
-  "Trilab": {
-    "TrilabFilamentLoadWizard": {
-      "FilamentIsLoading": "Filament wordt geladen...",
-      "InsertFilamentIntoExtruder": "Plaats het filament in de extruder en druk op Doorgaan",
-      "SelectWhichFilamentYouWantToLoad": "Selecteer welk filament je wilt laden",
-      "PleaseWaitForTheTemperatureToReach": "Wacht tot de temperatuur de opgegeven waarde bereikt",
-      "IsColorClean": "Is kleur schoon?",
-      "CancelHeating": "Verwarming annuleren",
-      "Continue": "Doorgaan",
-      "OpenFilamentMenu": "Open het filamentmenu",
-      "CancelWizard": "Wizard annuleren",
-      "PurgeMore": "Meer opruimen",
-      "CooldownAndClose": "Afkoelen",
-      "Close": "Dichtbij",
-      "Step": "Stap",
-      "FilamentIsUnloading": "Het filament wordt verwijderd",
-      "FilamentLoadWizard": "Wizard voor het laden van filamenten",
-      "CancelLoading": "Annuleer het laden"
-    },
-    "TrilabSelectFilamentDialog": {
-      "Cancel": "Annuleren",
-      "Cpnfirm": "Bevestigen",
-      "AreYouSureYouWantToSelectFilament": "Weet u zeker dat u filament wilt selecteren?",
-      "OK": "OK"
-    },
-    "TrilabServiceDialog": {
-      "ServiceLogin": "Dienstaanmelding",
-      "Cancel": "Annuleren"
-    },
-    "TrilabUpdateDialog": {
-      "Progres": "Voortgang:",
-      "ShowErrorTechinicalDetails": "Toon fout technische details",
-      "STATUS": "TOESTAND:",
-      "DANGER": "FOUT",
-      "INFO": "INFO",
-      "WARNING": "WAARSCHUWEN"
-    },
-    "SettingsTrilabTab": {
-      "System": "Systeem",
-      "SystemVersion": "Systeemversie:",
-      "WenInterfaceVersion": "Versie webinterface:",
-      "AutomaticCheckForUpdates": "Automatische controle op updates:",
-      "UploadUpdateFile": "Updatebestand uploaden",
-      "Upload": "Uploaden",
-      "CheckForLiveUpdate": "Controleer op live-update",
-      "NoUpdateAvailable": "Geen update beschikbaar",
-      "UpdateChannelTitle": "Kanaal bijwerken"
-    },
-    "TheTopbar": {
-      "HiddenViewEnbled": "Verborgen weergave ingeschakeld",
-      "ServiceViewEnabled": "Serviceweergave ingeschakeld"
-    },
-    "ConnectionStatus": {
-      "Mainsail": "Grootzeil"
-    },
-    "AdvancedFeatures": "",
-    "SettingsTrilabPrinterTab": {
-      "AdvancedFeatures": "Geavanceerde functies:"
-    },
-    "SlicerPanel": {
-      "Download": "Downloaden"
-    },
-    "PageNotFound": {
-      "404PageNotFound": "404 pagina niet gevonden"
-    },
-    "TrilabFilamentUnLoadWizard": {
-      "WhichFilamentIsInPrinter": "Welk materiaal wordt in de printer geladen?",
-      "FilamentUnloadWizard": "Wizard voor het verwijderen van filamenten"
-    },
-    "TrilabFilamentUnloadWizard": {
-      "FilamentIsUnloading": "Het filament wordt verwijderd",
-      "colorUnloaded": "Het filament is succesvol verwijderd"
-    },
-    "SettingsAccessPasswordPanel": {
-      "SaveBtn": "Bewaar inloggegevens"
-    }
-  },
-  "Generic": {
-    "Ok": "OK",
-    "Unknown": "Onbekend"
+  "DevicesDialog": {
+    "CanBusInfo": "Alleen niet-toegewezen knooppunten kunnen worden gedetecteerd. \nHet wordt aanbevolen om slechts één niet-toegewezen apparaat op de CAN-bus aan te sluiten om communicatieproblemen te voorkomen. \nVoor meer details kunt u op de link klikken:",
+    "ClickRefresh": "Klik op de knop Vernieuwen om naar apparaten te zoeken.",
+    "DevicePath": "Apparaatpad",
+    "Formats": "Formaten",
+    "Headline": "Apparaten",
+    "HideSystemEntries": "Systeemvermeldingen verbergen",
+    "LibcameraId": "Libcamera-ID",
+    "NoDeviceFound": "Geen apparaat gevonden. \nControleer de verbinding en klik op de knop Vernieuwen.",
+    "PathByHardware": "Pad per hardware",
+    "PathById": "Pad op ID",
+    "Refresh": "vernieuwen",
+    "Resolutions": "Resoluties"
   }
 }

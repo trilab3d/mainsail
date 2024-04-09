@@ -16,13 +16,19 @@
         "MoonrakerFailedComponentDescription": "Moonrakerコンポーネント'{component}'読み込み中にエラーが検出されました。ログファイルを確認して問題を解決してください。",
         "MoonrakerWarning": "Moonraker警告",
         "UnparsedConfigOption": "セクション[{section}]に解析できないオプション'{option}: {value}'が見つかりました。 これはすでに利用できなくなったオプションであるか、モジュールの読み込みに失敗した結果の可能性があります。将来的にこれはスタートアップエラーになる予定です。",
-        "UnparsedConfigSection": "解析できないセクション[{section}]が見つかりました。これはすでに利用できなくなったオプションであるか、モジュールの読み込みに失敗した結果の可能性があります。将来的にこれはスタートアップエラーになる予定です。"
+        "UnparsedConfigSection": "解析できないセクション[{section}]が見つかりました。これはすでに利用できなくなったオプションであるか、モジュールの読み込みに失敗した結果の可能性があります。将来的にこれはスタートアップエラーになる予定です。",
+        "MoonrakerFailedInitComponentDescription": "Moonraker コンポーネント '{component}' の初期化中にエラーが検出されました。\nログ ファイルを確認して問題を修正してください。",
+        "MoonrakerInitComponent": "初期化。\nムーンレイカー: {コンポーネント}"
       },
       "Never": "何もしない",
       "NextReboot": "次回再起動時",
       "NoNotification": "非通知を有効",
       "Notifications": "通知",
-      "Remind": "注意喚起:"
+      "Remind": "注意喚起:",
+      "BrowserWarnings": {
+        "Description": "{name} は古いため、完全にはサポートされていません。\n現在のバージョンは {version} ですが、Mainsail にはバージョン {minVersion} 以降が必要です。",
+        "Headline": "古いブラウザ"
+      }
     },
     "NumberInput": {
       "GreaterOrEqualError": "{min}以上の値が必要です!",
@@ -62,11 +68,7 @@
       "SAVE_CONFIG": "設定保存",
       "Uploading": "アップロード中",
       "UploadOfFileSuccessful": "{file}のアップロードが完了しました!",
-      "UploadPrint": "アップロード & 印刷",
-      "LightBtn": "ライト",
-      "ViewStatus": {
-        "Advanced": "詳細ビューが有効になっています"
-      }
+      "UploadPrint": "アップロード & 印刷"
     },
     "TopCornerMenu": {
       "Cancel": "取り消し",
@@ -110,6 +112,206 @@
       "RecoveringDone": "{software}復旧完了!",
       "Updating": "{software}アップデート中...",
       "UpdatingDone": "{software}完了!"
+    },
+    "Trilab": {
+      "TopBar": {
+        "LightBtn": "ライト"
+      },
+      "AdvancedFeatures": "",
+      "ConnectionStatus": {
+        "Mainsail": "メインセール"
+      },
+      "Generic": {
+        "CancelWizard": "ウィザードのキャンセル",
+        "Download": "ダウンロード",
+        "Ok": "わかりました",
+        "Save": "保存",
+        "Unknown": "未知"
+      },
+      "PageNotFound": {
+        "404PageNotFound": "404 ページが見つかりません"
+      },
+      "Panels": {
+        "TrilabAccessPassword": {
+          "DialogMessage": "ログイン設定を保存すると、Web インターフェイスが再起動し、ブラウザで資格情報を入力するように求められます。\n本当に今すぐ保存しますか?",
+          "DialogNoButton": "いいえ",
+          "DialogYesButton": "はい",
+          "Warning": "警告",
+          "caption": "設定へのアクセス",
+          "confirmPassword": "パスワードを認証する",
+          "enablePwdControl": "パスワード制御を有効にする",
+          "password": "パスワード",
+          "username": "ユーザー名"
+        },
+        "TrilabRemote": {
+          "auto_off": "オートオフ",
+          "caption": "リモートアクセス",
+          "enable": "有効にする"
+        },
+        "TrilabSettingsInterfaces": {
+          "AddProfile": "プロフィールを追加",
+          "IP4addresses": "IPv4アドレス",
+          "IP6addresses": "IPv6アドレス",
+          "Interfaces": "利用可能なインターフェース",
+          "ProfileActive": "アクティブ",
+          "ProfileInactive": "非活性",
+          "ProfilesIn": "のプロファイル",
+          "connectWifi": "Wi-Fiに接続する"
+        },
+        "TrilabSlicerPanel": {
+          "notAvailableText": "スライサー プロファイルはこのプリンター、システム プラットフォームでは利用できないか、システムが正しく検出されませんでした。\nサポートにお問い合わせください",
+          "notAvailableTitle": "スライサープロファイルは使用できません"
+        },
+        "settingsTrilabLight": {
+          "brightness": "輝度",
+          "caption": "ライト",
+          "enable": "有効にする",
+          "timeout": "タイムアウトを有効にする",
+          "timeoutTextFieldHint": "タイムアウト (秒)"
+        },
+        "settingsTrilabWifi": {
+          "accessPoint": "アクセス・ポイント",
+          "caption": "Wi-Fi",
+          "client": "クライアント",
+          "confirmPassword": "パスワードを認証する",
+          "country": "国",
+          "mode": "モード",
+          "password": "パスワード",
+          "selectCountry": "国を選択",
+          "selectNetworkMode": "ネットワークモードを選択します",
+          "ssid": "SSID"
+        },
+        "trilabSlicers": {
+          "prusa": {
+            "imgsrc": "/img/PrusaSlicer.png",
+            "longDescription": "上のボタンを使用して、スライサー プロファイルを含む完全な PrusaSlicer パッケージをダウンロードします。\nダウンロード後、アーカイブを目的の場所に解凍します。 \nWindows プラットフォームでは「prusa-slicer.exe」プログラムを実行し、MacOS プラットフォームでは「PrusaSlicer.app」を実行します。\nプログラムを起動すると、設定ウィザードが表示されます。 \n[Prusa Pro] タブに進みます。\nここのプリンターのバリエーションのリストから Prusa Pro HT90 を選択します。\n次に、ウィンドウの右下隅にある「完了」ボタンを押します。\nこれでスライサーが使えるようになります。",
+            "longTitle": "プルサスライサー 2.7.1",
+            "shortDescription": "PrusaSlicer は、オープンソースで機能が豊富で、頻繁に更新されるツールで、完璧な印刷ファイルをエクスポートするために必要なものがすべて含まれています",
+            "title": "プルサスライサー"
+          }
+        }
+      },
+      "Settings": {
+        "TrilabTab": {
+          "Trilab": "バージョン",
+          "TrilabLogs": "ログ",
+          "TrilabNetwork": "通信網",
+          "TrilabPrinter": "プリンター",
+          "TrilabSlicers": "スライサー"
+        }
+      },
+      "SettingsAccessPasswordPanel": {
+        "SaveBtn": "認証情報の保存"
+      },
+      "SettingsTrilabPrinterTab": {
+        "AdvancedFeatures": "高度な機能："
+      },
+      "SettingsTrilabTab": {
+        "AutomaticCheckForUpdates": "アップデートの自動チェック:",
+        "CheckForLiveUpdate": "ライブアップデートを確認する",
+        "NoUpdateAvailable": "利用可能なアップデートはありません",
+        "System": "システム",
+        "SystemVersion": "システムバージョン:",
+        "UpdateChannelTitle": "チャンネルを更新する",
+        "Upload": "アップロード",
+        "UploadUpdateFile": "アップデートファイルをアップロードする",
+        "WenInterfaceVersion": "Web インターフェースのバージョン:"
+      },
+      "SlicerPanel": {
+        "Download": "ダウンロード"
+      },
+      "TheTopBar": {
+        "AdvancedViewEnabled": "詳細ビューが有効になっています",
+        "HiddenViewEnbled": "隠しビューを有効にする",
+        "HomeBtn": "家",
+        "LightBtn": "ライト",
+        "ServiceViewEnabled": "サービスビューが有効になっています"
+      },
+      "TheTopbar": {
+        "HiddenViewEnbled": "隠しビューを有効にする",
+        "ServiceViewEnabled": "サービスビューが有効になっています"
+      },
+      "TrilabFilamentLoadWizard": {
+        "CancelHeating": "加熱を中止する",
+        "CancelLoading": "ロードをキャンセルする",
+        "CancelWizard": "ウィザードのキャンセル",
+        "Close": "近い",
+        "Continue": "続く",
+        "CooldownAndClose": "クールダウン",
+        "FilamentIsLoading": "フィラメントをロードしています...",
+        "FilamentIsUnloading": "フィラメントがアンロード中です",
+        "FilamentLoadWizard": "フィラメントロードウィザード",
+        "InsertFilamentIntoExtruder": "フィラメントをエクストルーダーに挿入し、続行を押します",
+        "IsColorClean": "色はきれいですか？",
+        "OpenFilamentMenu": "フィラメントメニューを開く",
+        "PleaseWaitForTheTemperatureToReach": "温度が指定の値に達するまでお待ちください",
+        "PurgeMore": "さらにパージ",
+        "SelectWhichFilamentYouWantToLoad": "ロードするフィラメントを選択してください",
+        "Step": "ステップ"
+      },
+      "TrilabFilamentUnLoadWizard": {
+        "FilamentUnloadWizard": "フィラメントアンロードウィザード",
+        "WhichFilamentIsInPrinter": "どの素材がプリンターにロードされていますか?"
+      },
+      "TrilabFilamentUnloadWizard": {
+        "FilamentIsUnloading": "フィラメントがアンロード中です",
+        "colorUnloaded": "フィラメントが正常にアンロードされました"
+      },
+      "TrilabLiveUpdate": {
+        "Buttons": {
+          "DownloadUpdate": "アップデートをダウンロード",
+          "InstallFromUsb": "USBからアップデートする"
+        },
+        "Titles": {
+          "Installed": "アップデートの準備ができました",
+          "UpdateAvailable": "利用可能なアップデート",
+          "UpdateInProgress": "アップデート中です",
+          "UsbInstalled": "USBアップデート準備完了",
+          "UsbUpdateAvailable": "USBアップデートが利用可能"
+        },
+        "installAndRebootBtn": "インストール",
+        "printerIsPrinting": "プリンターが何らかの作業を行っているため、現在この手順を実行することはできません。\nしばらくお待ちください。この手順の準備が完了すると、このウィンドウは自動的に更新されます",
+        "restartWarning": "アップデートをインストールする準備ができました。\nボタンを押してアップデートをインストールします。\nアップデートが完了するとプリンターが再起動します。",
+        "statuses": {
+          "DOWNLOADING": "アップデートをダウンロード中",
+          "ERROR": "アップデートエラー",
+          "INSTALLED": "アップデート準備完了",
+          "UNPACKING": "開梱アップデート",
+          "UPDATE_AVAILABLE": "新しいアップデートが利用可能になりました",
+          "UP_TO_DATE": "最新バージョン",
+          "USB_UNPACKING": "開梱アップデート",
+          "USB_UPDATE_AVAILABLE": "USB - 新しいアップデート"
+        }
+      },
+      "TrilabSelectFilamentDialog": {
+        "AreYouSureYouWantToSelectFilament": "フィラメントを選択してもよろしいですか",
+        "Cancel": "キャンセル",
+        "Cpnfirm": "確認する",
+        "OK": "わかりました"
+      },
+      "TrilabServiceDialog": {
+        "Cancel": "キャンセル",
+        "ServiceLogin": "サービスログイン"
+      },
+      "TrilabUpdateDialog": {
+        "DANGER": "危険",
+        "INFO": "情報",
+        "Progres": "進捗：",
+        "RestartPrinter": "プリンターを再起動します",
+        "STATUS": "状態：",
+        "ShowErrorTechinicalDetails": "エラーの技術的な詳細を表示",
+        "WARNING": "警告",
+        "title": "アップデート",
+        "titleUSB": "USBからアップデートする"
+      }
+    },
+    "TextfieldWithCopy": {
+      "Copied": "コピーされました"
+    },
+    "TheServiceWorker": {
+      "DescriptionNeedUpdate": "ローカル キャッシュは古いため、更新する必要があります。\nキャッシュを更新するには、下のボタンをクリックしてください。",
+      "TitleNeedUpdate": "PWAは更新が必要です",
+      "Update": "アップデート"
     }
   },
   "BedScrews": {
@@ -145,7 +347,8 @@
       "DoYouWantToStartFilename": "{filename}の印刷を開始しますか？",
       "Headline": "ジョブ開始",
       "Print": "印刷",
-      "Timelapse": "タイムラプス"
+      "Timelapse": "タイムラプス",
+      "DoYouWantToStartFilenameFilament": "次のフィラメントで {filename} を開始しますか?"
     }
   },
   "Editor": {
@@ -160,7 +363,8 @@
     "UnsavedChanges": "未保存の変更",
     "UnsavedChangesMessage": "変更を{filename}に保存しますか？",
     "UnsavedChangesSubMessage": "この変更を保存しなければ、この変更は失われます。エディター設定にてこのメッセージを無効にすることができます。",
-    "Uploading": "アップロード中"
+    "Uploading": "アップロード中",
+    "DeviceDialog": "デバイス"
   },
   "EmergencyStopDialog": {
     "AreYouSure": "よろしいですか？",
@@ -231,7 +435,12 @@
     "Total": "総計",
     "UploadNewGcode": "新しいGコードファイルをアップロード",
     "Used": "使用済み",
-    "View3D": "3Dビュー"
+    "View3D": "3Dビュー",
+    "DeleteSingleFileQuestion": "本当にファイル「{name}」を削除してもよろしいですか?",
+    "Duplicate": "重複",
+    "DuplicateFile": "重複ファイル",
+    "ScanMeta": "スキャンメタデータ",
+    "ScanMetaSuccess": "{filename} からのメタデータが正常にスキャンされました。"
   },
   "FullscreenUpload": {
     "CannotUploadFile": "アップロードできませんでした!",
@@ -239,6 +448,7 @@
   },
   "GCodeViewer": {
     "ClearLoadedFile": "クリア",
+    "CNCMode": "CNCモード",
     "ColorMode": "カラーモード",
     "Downloading": "ダウンロード中",
     "ForceLineRendering": "強制ラインレンダリング",
@@ -252,6 +462,7 @@
     "ReloadRequired": "リロードが必要",
     "Rendering": "レンダリング",
     "RenderQuality": "レンダークオリティー",
+    "ShowGCode": "Gコードを表示",
     "ShowObjectSelection": "オブジェクト選択表示",
     "ShowToolhead": "ツールヘッド表示",
     "ShowTravelMoves": "トラベル表示",
@@ -260,9 +471,7 @@
     "Tracking": "トラッキング",
     "Transparency": "透明",
     "Ultra": "ウルトラ",
-    "VoxelMode": "ボクセルモード (ASMBL)",
-    "ShowGCode": "Gコードを表示",
-    "CNCMode": "CNCモード"
+    "VoxelMode": "ボクセルモード (ASMBL)"
   },
   "Heightmap": {
     "Abort": "中止",
@@ -276,7 +485,8 @@
       "Min": "最小",
       "Name": "名前",
       "Range": "範囲",
-      "Size": "サイズ"
+      "Size": "サイズ",
+      "Variance": "分散"
     },
     "DeleteBedMeshProfile": "ベッドメッシュのプロファイルを削除",
     "DoYouReallyWantToDelete": "プロファイル \"{name}\"を削除します。よろしいですか？",
@@ -304,15 +514,16 @@
     "TitleCalibrate": "新規ベッドメッシュの校正",
     "TitleClear": "ベッドメッシュのクリア",
     "TitleHomeAll": "全軸ホームポジション",
-    "Wireframe": "ワイヤーフレーム"
+    "Wireframe": "ワイヤーフレーム",
+    "InvalidNameAscii": "名前が無効です。 \nASCII 文字のみが許可されます。"
   },
   "History": {
     "AddNote": "ノート追加",
     "AllJobs": "全ジョブ",
     "AvgPrinttime": "平均印刷時間",
     "Cancel": "取り消し",
-    "CreateNote": "メモ作成",
     "Chart": "チャート",
+    "CreateNote": "メモ作成",
     "Delete": "削除",
     "DeleteSelectedQuestion": "選択された {count}個のジョブを削除します。よろしいですか？",
     "Details": "詳細",
@@ -362,7 +573,8 @@
       "klippy_disconnect": "Klippy切断",
       "klippy_shutdown": "Klippyシャットダウン",
       "Others": "その他",
-      "server_exit": "サーバー終了"
+      "server_exit": "サーバー終了",
+      "interrupted": "中断されました"
     },
     "Table": "テーブル",
     "TitleExportHistory": "履歴をエクスポート",
@@ -372,12 +584,15 @@
     "TotalFilamentUsed": "総フィラメント長",
     "TotalJobs": "総ジョブ数",
     "TotalPrinttime": "総印刷時間",
-    "TotalTime": "総時間"
+    "TotalTime": "総時間",
+    "AddToQueueSuccessful": "ファイル {filename} がキューに追加されました。",
+    "DeleteSingleJobQuestion": "本当にジョブを削除してもよろしいですか?",
+    "LoadCompleteHistory": "完全な履歴をロードする"
   },
   "JobQueue": {
     "AllJobs": "全ジョブ",
-    "ChangeCount": "回数変更",
     "Cancel": "取り消し",
+    "ChangeCount": "回数変更",
     "Count": "回数",
     "Empty": "空",
     "InvalidCountEmpty": "回数は空であってはなりません！",
@@ -386,7 +601,8 @@
     "Jobs": "ジョブ",
     "Pause": "一時停止",
     "RemoveFromQueue": "キューから削除",
-    "Start": "開始"
+    "Start": "開始",
+    "StartPrint": "ジョブの開始"
   },
   "Machine": {
     "ConfigFilesPanel": {
@@ -423,7 +639,10 @@
       "Total": "総計",
       "UploadFile": "ファイルをアップロードする",
       "Uploading": "アップロード中",
-      "Used": "使用済み"
+      "Used": "使用済み",
+      "DeleteSingleFileQuestion": "本当にファイル「{name}」を削除してもよろしいですか?",
+      "Duplicate": "重複",
+      "DuplicateFile": "重複ファイル"
     },
     "EndstopPanel": {
       "Endstop": "エンドストップ",
@@ -438,8 +657,8 @@
       "Logfiles": "ログファイル",
       "Rollover": "ログファイルのロールオーバー",
       "RolloverDescription": "リセットするログを選んでください:",
-      "RolloverToastSuccessful": "\"{name}\"ログファイルのリセットに成功しました。",
-      "RolloverToastFailed": "\"{name}\"ログファイルのロールオーバー: {message}"
+      "RolloverToastFailed": "\"{name}\"ログファイルのロールオーバー: {message}",
+      "RolloverToastSuccessful": "\"{name}\"ログファイルのリセットに成功しました。"
     },
     "SystemPanel": {
       "Constants": "定数",
@@ -487,7 +706,34 @@
       "UpdateAll": "すべてのコンポーネントを更新",
       "UpdateManager": "アップデートマネージャー",
       "Upgrade": "アップグレード",
-      "UpToDate": "最新の状態"
+      "UpToDate": "最新の状態",
+      "Abort": "アボート",
+      "AreYouSure": "本気ですか？",
+      "Close": "近い",
+      "CommitHistory": "コミット履歴",
+      "ConfigChanges": "構成の変更",
+      "Corrupt": "腐敗した",
+      "CountPackagesCanBeUpgraded": "{count} 個のパッケージをアップグレードできます",
+      "GenericUpdateQuestion": "このプロジェクトのコミット履歴 (利用可能な場合) と GitHub ページをチェックして、この更新に手動調整が必要かどうかを確認してください。",
+      "GitHubPage": "GitHub ページ",
+      "HardRecovery": "ハードリカバリ",
+      "IUnderstandTheRisks": "私はリスクを理解している",
+      "InitUpdateManager": "アップデート マネージャーはまだ初期化されていません。\nこれは、システムを初めて起動するときの正常な動作です。\nすべてのコンポーネントを初期化するには、更新ボタンをクリックしてください。",
+      "KlipperUpdateQuestionConfig": "この更新には、printer.cfg ファイル内で変更する必要がある構成パラメータへの変更も含まれる場合があります。詳細については、変更ログを参照してください。",
+      "KlipperUpdateQuestionFirmware": "これにより、Klipper ホスト ソフトウェアが更新されます。 \nKlipper ファームウェアを実行しているコントロール ボードは、マシンを稼働状態に戻す前に、再コンパイルされたファームウェアでフラッシュする必要がある場合があります。",
+      "LinkToGithub": "GitHubへのリンク",
+      "MoonrakerUpdateQuestion": "これにより、Moonraker API が更新されます。\nマシンを引き続き使用するには、moonraker.conf ファイルの変更が必要になる場合があります。",
+      "MoreCommitsInfo": "ここには最大 30 件のコミットが表示されます。\nすべてのコミットを表示するには、次のリンクをクリックしてください。",
+      "Notification": {
+        "Detached": "",
+        "Dirty": ""
+      },
+      "SoftRecovery": "ソフトリカバリ",
+      "StartUpdate": "アップデートの開始",
+      "ThesePackagesCanBeUpgrade": "これらのシステム パッケージはアップグレードできます。",
+      "UpdateWarning": "更新の警告: {name}",
+      "UpgradeableSystemPackages": "アップグレード可能なシステム パッケージ",
+      "WebClientUpdateQuestion": "場合によっては、Web クライアントを更新すると、非互換性を引き起こす可能性のある変更が加えられる可能性があります。\n詳細については、リリース ノートを参照してください。"
     }
   },
   "ManualProbe": {
@@ -521,7 +767,13 @@
       "Requested": "要求",
       "Retract": "引き込み",
       "TooLargeExtrusion": "押し出しが量が大きすぎます!",
-      "UnloadFilament": "フィラメントのアンロード"
+      "UnloadFilament": "フィラメントのアンロード",
+      "CleanNozzle": "クリーンノズル",
+      "ExtruderControl": "押出機制御",
+      "FirmwareRetraction": "ファームウェアの撤回",
+      "PressureAdvance": "圧力前進",
+      "PurgeFilament": "フィラメントをパージする",
+      "Tools": "ツール"
     },
     "FarmPrinterPanel": {
       "ReconnectToPrinter": "再接続",
@@ -536,7 +788,8 @@
       "PrinterSwitchedOff": "プリンターの電源はオフになっています",
       "PrinterSwitchedOffDescription": "現在、プリンターの電源がオフになっており、Klipperは接続することができません。プリンターの電源を入れるには、下のボタンをクリックしてください。:",
       "Restart": "再始動",
-      "ServiceReports": "{service} レポート"
+      "ServiceReports": "{service} レポート",
+      "KlipperCheck": ""
     },
     "MachineSettingsPanel": {
       "Headline": "機器設定",
@@ -544,7 +797,8 @@
         "Acceleration": "最大加速度",
         "MaxAccelToDecel": "最大加速から減速",
         "SquareCornerVelocity": "コーナー速度(SCV)",
-        "Velocity": "最高速度"
+        "Velocity": "最高速度",
+        "MinimumCruiseRatio": "分。\n巡航率"
       }
     },
     "MacrosPanel": {
@@ -556,7 +810,8 @@
       "HideTemperatures": "温度報告を隠す",
       "HideTimelapse": "タイムラプス報告を隠す",
       "SendCode": "コード送信...",
-      "SetupConsole": "コンソール設定"
+      "SetupConsole": "コンソール設定",
+      "Autoscroll": "自動スクロール"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "printer.cfgにmainsail.cfgがインクルードされているか確認してください。",
@@ -576,10 +831,6 @@
         "Detected": "検出",
         "Disabled": "無効",
         "Empty": "空"
-      },
-      "DoorSensor": {
-        "Closed": "閉まっている",
-        "Open": "開ける"
       }
     },
     "PowerControlPanel": {
@@ -608,7 +859,7 @@
       "Files": "ファイル",
       "Flow": "フロー",
       "Headline": "状態",
-      "Jobqueue": "ジョブキュー ({count})",
+      "Jobqueue": "ジョブキュー",
       "JobqueueMoreFiles": "ジョブなし | あとひとつのジョブ | あと {count}個のジョブ",
       "Layer": "層",
       "Max": "最大",
@@ -661,7 +912,9 @@
       "Target": "目標",
       "TemperaturesInChart": "温度 [°C]",
       "TempTooHigh": "{name}の温度が高すぎます! (最高: {max})",
-      "TempTooLow": "{name}の温度が低すぎます! (最低: {min})"
+      "TempTooLow": "{name}の温度が低すぎます! (最低: {min})",
+      "HideMcuHostSensors": "ホスト/MCU センサーを非表示にする",
+      "HideMonitors": "モニターを非表示にする"
     },
     "ToolheadControlPanel": {
       "Absolute": "絶対",
@@ -673,7 +926,11 @@
       "Relative": "相対",
       "SettingsInterfaceControl": "設定 > インターフェース > コントロール",
       "SpeedFactor": "速度係数",
-      "ZTilt": "Z軸チルト"
+      "ZTilt": "Z軸チルト",
+      "ControlButtons": "コントロールボタン",
+      "CoordinateFields": "座標フィールド",
+      "PositionOutput": "位置出力",
+      "ZOffset": "Z オフセット"
     },
     "WebcamPanel": {
       "All": "すべて",
@@ -695,46 +952,31 @@
       "ToEndstop": "エンドストップまで",
       "ToProbe": "プローブまで"
     },
-    "TrilabAccessPassword": {
-      "caption": "設定へのアクセス",
-      "enablePwdControl": "パスワード制御を有効にする",
-      "username": "ユーザー名",
-      "password": "パスワード",
-      "confirmPassword": "パスワードを認証する",
-      "Warning": "警告",
-      "DialogMessage": "ログイン設定を保存すると、Web インターフェイスが再起動し、ブラウザで資格情報を入力するように求められます。\n本当に今すぐ保存しますか?",
-      "DialogYesButton": "はい",
-      "DialogNoButton": "いいえ"
-    },
-    "TrilabRemote": {
-      "auto_off": "オートオフ",
-      "enable": "有効にする",
-      "caption": "リモートアクセス"
-    },
-    "settingsTrilabWifi": {
-      "country": "国",
-      "mode": "モード",
-      "caption": "Wi-Fi",
-      "password": "パスワード",
-      "accessPoint": "アクセス・ポイント",
-      "ssid": "SSID",
-      "confirmPassword": "パスワードを認証する"
-    },
-    "settingsTrilabLight": {
-      "brightness": "輝度",
-      "timeoutTextFieldHint": "タイムアウト (秒)",
-      "enable": "有効にする",
-      "timeout": "タイムアウトを有効にする"
-    },
-    "TrilabSettingsInterfaces": {
-      "IP4addresses": "IPv4アドレス",
-      "IP6addresses": "IPv6アドレス",
-      "connectWifi": "Wi-Fiに接続する",
-      "AddProfile": "プロフィールを追加",
-      "ProfilesIn": "のプロファイル",
-      "ProfileActive": "アクティブ",
-      "ProfileInactive": "非活性",
-      "Interfaces": "利用可能なインターフェース"
+    "SpoolmanPanel": {
+      "Cancel": "キャンセル",
+      "ChangeSpool": "スプール変更",
+      "DaysAgo": "{日}日前",
+      "EjectSpool": "イジェクトスプール",
+      "EjectSpoolQuestion": "フィラメントスプールをイジェクトしてもよろしいですか?",
+      "Filament": "フィラメント",
+      "FilamentTypeMismatch": "アクティブなスプールの材質 ({spoolType}) が G コードの材質 ({fileType}) と一致しません。",
+      "Headline": "スプールマン",
+      "LastUsed": "最後に使用した",
+      "Location": "位置",
+      "Material": "材料",
+      "Never": "一度もない",
+      "NoActiveSpool": "フィラメント追跡は非アクティブです。\nまず、スプールを選択してください。",
+      "NoResults": "現在の検索条件ではスプールが見つかりません。",
+      "NoSpoolSelected": "スプールが選択されていません。\nスプールを選択してください。選択しない場合、このプリントは追跡されません。",
+      "NoSpools": "利用可能なスプールがありません",
+      "OpenSpoolManager": "スプールマネージャーを開く",
+      "Refresh": "リフレッシュする",
+      "Search": "検索",
+      "SelectSpool": "スプールの選択",
+      "Today": "今日",
+      "TooLessFilament": "現在のスプールには、このプリントに十分なフィラメントがない可能性があります。 \n({fileWeight}g のうち {spoolWeight}g)",
+      "Weight": "重さ",
+      "Yesterday": "昨日"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -755,7 +997,16 @@
     "Printers": "プリンター",
     "Timelapse": "タイムラプス",
     "Webcam": "カメラ",
-    "Calibration": "較正"
+    "Calibration": "較正",
+    "Diagnostics": "診断",
+    "Slicers": "スライサー"
+  },
+  "ScrewsTiltAdjust": {
+    "Accept": "確認",
+    "Base": "ベース",
+    "ErrorText": "プロービング過程で、問題が生じました。",
+    "Headline": "スクリュー傾斜調整",
+    "Retry": "リトライ"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "プリンター追加",
@@ -827,7 +1078,10 @@
       "Style": "スタイル",
       "ValueGreaterThan": "値は {value}よりも大きくなければなりません。",
       "ZOffsetIncrements": "Z軸オフセット増分(mm)",
-      "ZTiltAdjust": "Zチルト調整{isDefault}"
+      "ZTiltAdjust": "Zチルト調整{isDefault}",
+      "HideDuringPrint": "印刷中に軸コントロールを非表示にする",
+      "ZOffsetSaveOption": "Z オフセット保存オプション",
+      "ZOffsetSaveOptionDescription": "Z オフセットを保存するオプションを変更します。"
     },
     "DashboardTab": {
       "Dashboard": "ダッシュボード",
@@ -844,10 +1098,11 @@
       "Editor": "エディター",
       "KlipperRestartMethod": "Klipper再始動の方法",
       "KlipperRestartMethodDescription": "Klipperの設定ファイルを編集する際に'保存して再始動'での再始動方法を選択してください。",
-      "MoonrakerRestartInstance": "Moonraker インスタンスの再始動",
-      "MoonrakerRestartInstanceDescription": "Moonrakerの設定ファイルを編集する際に'保存して再始動'で、どのMoonrakerサービスを再始動するか選択してください。",
       "UseEscToClose": "ESCキーでエディターを終了します。",
-      "UseEscToCloseDescription": "ESCキーでエディターを終了できます。"
+      "UseEscToCloseDescription": "ESCキーでエディターを終了できます。",
+      "Spaces": "スペース: {count}",
+      "TabSize": "タブサイズ",
+      "TabSizeDescription": "TAB にインデントするスペースの数を調整します"
     },
     "GCodeViewerTab": {
       "BackgroundColor": "背景色",
@@ -899,9 +1154,9 @@
       "Restore": "復元",
       "RestoreDialog": "バックアップから復元したい項目をすべて選んでください:",
       "TimeFormat": "時間フォーマット",
-      "PrinterNameRequired": "プリンター名は必須です",
-      "PrinterNameMaxLength": "許可される名前の最大長は 63 文字です",
-      "PrinterNameInvalid": "プリンター名が無効です。\n基本的な文字、数字、ハイフンのみが使用できます。"
+      "DBNavigation": "ナビゲーション",
+      "Everything": "すべて",
+      "MainsailSettingsMoonrakerDb": "Moonraker DB のメインセイル設定"
     },
     "InterfaceSettings": "インターフェース設定",
     "MacrosTab": {
@@ -1056,7 +1311,12 @@
       "VariableFpsMax": "可変フレームレートの最高値",
       "VariableFpsMaxDescription": "",
       "VariableFpsMin": "可変フレームレートの最低値",
-      "VariableFpsMinDescription": ""
+      "VariableFpsMinDescription": "",
+      "RulesBetweenMinMax": "値は {min} と {max} の間である必要があります。",
+      "RulesMin": "値は最小値 {min} である必要があります。",
+      "RulesPositive": "値は正でなければなりません。",
+      "RulesRequired": "値が要求されます！",
+      "RulesZeroAndPositive": "値は 0 以上である必要があります。"
     },
     "UiSettingsTab": {
       "BoolBigThumbnail": "大きなサムネイル",
@@ -1087,7 +1347,31 @@
       "PowerDeviceNameDescription": "プリンターの電源投入に使用するMoonrakerの電源デバイスを選択します。",
       "Primary": "一次",
       "ShowWebcamInNavigation": "ナビゲーションにカメラを表示",
-      "UiSettings": "UI設定"
+      "UiSettings": "UI設定",
+      "BedScrewsDialog": "ベッドネジダイアログ",
+      "BedScrewsDialogDescription": "BED_SCREWS_ADJUST のヘルパー ダイアログを表示します。",
+      "BigThumbnailBackground": "大きなサムネイルの背景色",
+      "ConfirmOnCoolDown": "クールダウン時に確認が必要",
+      "ConfirmOnCoolDownDescription": "CoolDown で確認ダイアログを表示する",
+      "DefaultNavigationState": "ナビゲーションのデフォルト状態",
+      "DefaultNavigationStateAlwaysClosed": "いつも閉まっている",
+      "DefaultNavigationStateAlwaysOpen": "常に開いている",
+      "DefaultNavigationStateDescription": "デフォルトでどの州にナビゲーションが必要か。",
+      "DefaultNavigationStateLastState": "最新の状況",
+      "DisableFanAnimation": "ファンアニメーションを無効にする",
+      "DisableFanAnimationDescription": "これにより、ブラウザの負荷がいくらか軽減されます。",
+      "HideUpdateWarnings": "アップデートの警告を非表示にする",
+      "HideUpdateWarningsDescription": "このオプションは、アップデート マネージャーですべてのアップデート警告を非表示にします。",
+      "ManualProbeDialog": "手動プローブヘルパーダイアログ",
+      "ManualProbeDialogDescription": "PROBE_CALIBRATE または Z_ENDSTOP_CALIBRATE のヘルパー ダイアログを表示します。",
+      "ScrewsTiltAdjustDialog": "ネジの傾き調整ダイアログ",
+      "ScrewsTiltAdjustDialogDescription": "SCREWS_TILT_CALCULATE のヘルパー ダイアログを表示します。",
+      "TempchartHeight": "高さ温度グラフ",
+      "TempchartHeightDescription": "ダッシュボード上の温度チャートの高さを変更します。",
+      "Theme": "テーマ",
+      "ThemeDark": "暗い",
+      "ThemeDescription": "アプリケーション全体のルックアンドフィールを変更する",
+      "ThemeLight": "ライト"
     },
     "Update": "更新",
     "WebcamsTab": {
@@ -1096,6 +1380,7 @@
       "EditCrowsnestConf": "crowsnest.confを編集",
       "EditWebcam": "カメラ編集",
       "FlipWebcam": "カメラ画像の反転:",
+      "Hlsstream": "HLS Stream",
       "Horizontally": "水平方向",
       "IconBed": "ベッド",
       "IconCam": "カメラ",
@@ -1106,7 +1391,6 @@
       "IconNozzle": "ノズル",
       "IconPrinter": "プリンター",
       "Ipstream": "IPカメラ",
-      "Hlsstream": "HLS Stream",
       "Mjpegstreamer": "MJPEG-Streamer",
       "MjpegstreamerAdaptive": "Adaptive MJPEG-Streamer (試験的)",
       "Name": "名前",
@@ -1122,18 +1406,29 @@
       "Uv4lMjpeg": "UV4L-MJPEG",
       "Vertically": "垂直方向",
       "Webcams": "カメラ",
-      "WebrtcCameraStreamer": "WebRTC (camera-streamer)"
+      "WebrtcCameraStreamer": "WebRTC (camera-streamer)",
+      "EnableAudio": "オーディオを有効にする",
+      "HideFps": "FPSカウンターを隠す",
+      "JMuxerStream": "生の h264 ストリーム (jmuxer)",
+      "WebrtcGo2rtc": "WebRTC (go2rtc)",
+      "WebrtcJanus": "WebRTC (ヤヌスゲートウェイ)",
+      "WebrtcMediaMTX": "WebRTC (MediaMTX)"
     },
-    "TrilabTab": {
-      "Trilab": "トリラブ・ナスタベニ",
-      "TrilabLogs": "ログ"
+    "HeightmapTab": {
+      "ColorSchemes": "カラースキーム",
+      "Heightmap": "ハイトマップ",
+      "IsDefault": "（デフォルト）",
+      "Schemes": {
+        "GrayScale": "グレースケール",
+        "Hot": "熱い",
+        "Hsv": "HSV",
+        "Portland": "ポートランド",
+        "Spring": "春"
+      }
+    },
+    "NavigationTab": {
+      "Navigation": "ナビゲーション"
     }
-  },
-  "ScrewsTiltAdjust": {
-    "Accept": "確認",
-    "Base": "ベース",
-    "ErrorText": "プロービング過程で、問題が生じました。",
-    "Headline": "スクリュー傾斜調整"
   },
   "Timelapse": {
     "AllFiles": "すべてのファイル",
@@ -1184,112 +1479,29 @@
     "Type": "タイプ",
     "Used": "使用済み",
     "Variable": "可変",
-    "Video": "ビデオ"
+    "Video": "ビデオ",
+    "DeleteSingleFileQuestion": "本当にファイル「{name}」を削除してもよろしいですか?"
   },
   "title": "日本語",
-  "TrilabUpdateDialog": {
-    "title": "アクチュアリザス",
-    "RestartPrinter": "プリンターを再起動します",
-    "titleUSB": "USBからアップデートする"
+  "CoolDownDialog": {
+    "AreYouSure": "本気ですか？",
+    "CoolDown": "クールダウン",
+    "No": "いいえ",
+    "Yes": "はい"
   },
-  "General": {
-    "Save": "保存"
+  "DevicesDialog": {
+    "CanBusInfo": "未割り当てのノードのみが検出できます。\n通信の問題を避けるために、未割り当てのデバイスを 1 つだけ can バスに接続することをお勧めします。\n詳細については、次のリンクをクリックしてください。",
+    "ClickRefresh": "更新ボタンをクリックしてデバイスを検索します。",
+    "DevicePath": "デバイスパス",
+    "Formats": "フォーマット",
+    "Headline": "デバイス",
+    "HideSystemEntries": "システムエントリを非表示にする",
+    "LibcameraId": "リブカメラID",
+    "NoDeviceFound": "デバイスが見つかりませんでした。\n接続を確認し、更新ボタンをクリックしてください。",
+    "PathByHardware": "ハードウェアによるパス",
+    "PathById": "IDによるパス",
+    "Refresh": "リフレッシュする",
+    "Resolutions": "決議"
   },
-  "TrilabLiveUpdate": {
-    "Buttons": {
-      "InstallFromUsb": "USBからアップデートする",
-      "DownloadUpdate": "アップデートをダウンロード"
-    },
-    "restartWarning": "アップデートをインストールする準備ができました。\nボタンを押してアップデートをインストールします。\nアップデートが完了するとプリンターが再起動します。",
-    "printerIsPrinting": "プリンターが何らかの作業を行っているため、現在この手順を実行することはできません。\nしばらくお待ちください。この手順の準備が完了すると、このウィンドウは自動的に更新されます",
-    "installAndRebootBtn": "インストール",
-    "Titles": {
-      "Installed": "アップデートの準備ができました",
-      "UsbInstalled": "USBアップデート準備完了",
-      "UpdateInProgress": "アップデート中です",
-      "UpdateAvailable": "利用可能なアップデート",
-      "UsbUpdateAvailable": "USBアップデートが利用可能"
-    }
-  },
-  "Trilab": {
-    "TrilabFilamentLoadWizard": {
-      "FilamentIsLoading": "フィラメントをロードしています...",
-      "InsertFilamentIntoExtruder": "フィラメントをエクストルーダーに挿入し、続行を押します",
-      "SelectWhichFilamentYouWantToLoad": "ロードするフィラメントを選択してください",
-      "PleaseWaitForTheTemperatureToReach": "温度が指定の値に達するまでお待ちください",
-      "IsColorClean": "色はきれいですか？",
-      "CancelHeating": "加熱を中止する",
-      "Continue": "続く",
-      "OpenFilamentMenu": "フィラメントメニューを開く",
-      "CancelWizard": "ウィザードのキャンセル",
-      "PurgeMore": "さらにパージ",
-      "CooldownAndClose": "クールダウン",
-      "Close": "近い",
-      "Step": "ステップ",
-      "FilamentIsUnloading": "フィラメントがアンロード中です",
-      "FilamentLoadWizard": "フィラメントロードウィザード",
-      "CancelLoading": "ロードをキャンセルする"
-    },
-    "TrilabSelectFilamentDialog": {
-      "Cancel": "キャンセル",
-      "Cpnfirm": "確認する",
-      "AreYouSureYouWantToSelectFilament": "フィラメントを選択してもよろしいですか",
-      "OK": "わかりました"
-    },
-    "TrilabServiceDialog": {
-      "ServiceLogin": "サービスログイン",
-      "Cancel": "キャンセル"
-    },
-    "TrilabUpdateDialog": {
-      "Progres": "進捗：",
-      "ShowErrorTechinicalDetails": "エラーの技術的な詳細を表示",
-      "STATUS": "状態：",
-      "DANGER": "エラー",
-      "INFO": "情報",
-      "WARNING": "警告"
-    },
-    "SettingsTrilabTab": {
-      "System": "システム",
-      "SystemVersion": "システムバージョン:",
-      "WenInterfaceVersion": "Web インターフェースのバージョン:",
-      "AutomaticCheckForUpdates": "アップデートの自動チェック:",
-      "UploadUpdateFile": "アップデートファイルをアップロードする",
-      "Upload": "アップロード",
-      "CheckForLiveUpdate": "ライブアップデートを確認する",
-      "NoUpdateAvailable": "利用可能なアップデートはありません",
-      "UpdateChannelTitle": "チャンネルを更新する"
-    },
-    "TheTopbar": {
-      "HiddenViewEnbled": "隠しビューを有効にする",
-      "ServiceViewEnabled": "サービスビューが有効になっています"
-    },
-    "ConnectionStatus": {
-      "Mainsail": "メインセール"
-    },
-    "AdvancedFeatures": "",
-    "SettingsTrilabPrinterTab": {
-      "AdvancedFeatures": "高度な機能："
-    },
-    "SlicerPanel": {
-      "Download": "ダウンロード"
-    },
-    "PageNotFound": {
-      "404PageNotFound": "404 ページが見つかりません"
-    },
-    "TrilabFilamentUnLoadWizard": {
-      "WhichFilamentIsInPrinter": "どの素材がプリンターにロードされていますか?",
-      "FilamentUnloadWizard": "フィラメントアンロードウィザード"
-    },
-    "TrilabFilamentUnloadWizard": {
-      "FilamentIsUnloading": "フィラメントがアンロード中です",
-      "colorUnloaded": "フィラメントが正常にアンロードされました"
-    },
-    "SettingsAccessPasswordPanel": {
-      "SaveBtn": "認証情報の保存"
-    }
-  },
-  "Generic": {
-    "Ok": "わかりました",
-    "Unknown": "未知"
-  }
+  "_last_update": ""
 }

@@ -29,6 +29,7 @@ export const actions: ActionTree<SocketState, RootState> = {
     onOpen({ commit, dispatch, rootState }) {
         //set socket connection to connected
         commit('setConnected')
+
         // init server
         dispatch('server/init', null, { root: true })
 
@@ -96,7 +97,7 @@ export const actions: ActionTree<SocketState, RootState> = {
                 break
 
             case 'notify_update_refreshed':
-                commit('server/updateManager/setStatus', payload.params[0], { root: true })
+                dispatch('server/updateManager/onUpdateStatus', payload.params[0], { root: true })
                 break
 
             case 'notify_history_changed':
@@ -127,6 +128,14 @@ export const actions: ActionTree<SocketState, RootState> = {
                 dispatch('server/announcements/getWaked', payload.params[0], { root: true })
                 break
 
+            case 'notify_webcams_changed':
+                dispatch('gui/webcams/initStore', payload.params[0], { root: true })
+                break
+
+            case 'notify_active_spool_set':
+                dispatch('server/spoolman/getActiveSpoolId', payload.params[0], { root: true })
+                break
+
             default:
                 window.console.debug(payload)
         }
@@ -148,8 +157,14 @@ export const actions: ActionTree<SocketState, RootState> = {
         commit('addInitModule', payload)
     },
 
+    // remove only one module from init component like 'server/spoolman/getActiveSpoolId'
     removeInitModule({ commit }, payload: string) {
         commit('removeInitModule', payload)
+    },
+
+    // remove a complete init component like 'server/spoolman'
+    removeInitComponent({ commit }, payload: string) {
+        commit('removeInitComponent', payload)
     },
 
     reportDebug(_, payload) {

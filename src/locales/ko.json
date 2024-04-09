@@ -16,13 +16,19 @@
         "MoonrakerFailedComponentDescription": "문레이커 구성 요소인 '{component}'을(를) 로드하는 동안 오류가 발생했습니다 로 파일을 확인해 문제를 해결해 주세요",
         "MoonrakerWarning": "문레이커 : 주의",
         "UnparsedConfigOption": "[{section}]에서 사용할 수 없는 구성 옵션인 '{option}:{value}'이(가) 존재하며 이는 더 이상 사용할 수 없는 옵션 또는 모듈 로딩을 할 수 없는 경우이며 이제부터 시작 오류가 발생할 수 있습니다",
-        "UnparsedConfigSection": "[{section}]에서 사용할 수 없는 구성이 존재하며 이는 더 이상 사용할 수 없는 옵션 또는 모듈 로딩을 할 수 없는 경우이며 이제부터 시작 오류가 발생할 수 있습니다"
+        "UnparsedConfigSection": "[{section}]에서 사용할 수 없는 구성이 존재하며 이는 더 이상 사용할 수 없는 옵션 또는 모듈 로딩을 할 수 없는 경우이며 이제부터 시작 오류가 발생할 수 있습니다",
+        "MoonrakerFailedInitComponentDescription": "Moonraker 구성요소 '{comComponent}'을(를) 초기화하는 동안 오류가 감지되었습니다. \n로그 파일을 확인하고 문제를 해결하십시오.",
+        "MoonrakerInitComponent": "초기화. \n문레이커: {구성요소}"
       },
       "Never": "안함",
       "NextReboot": "다음 재부팅",
       "NoNotification": "표시할 알림 없음",
       "Notifications": "알림",
-      "Remind": "재확인:"
+      "Remind": "재확인:",
+      "BrowserWarnings": {
+        "Description": "{name}은 오래되었으며 완전히 지원되지 않습니다. \n현재 버전은 {version}이지만 Mainsail에는 {minVersion} 이상의 버전이 필요합니다.",
+        "Headline": "오래된 브라우저"
+      }
     },
     "NumberInput": {
       "GreaterOrEqualError": "{min}의 값 이상으로 설정해 주세요",
@@ -62,11 +68,7 @@
       "SAVE_CONFIG": "설정 저장",
       "Uploading": "업로드 중..",
       "UploadOfFileSuccessful": "{file} 업로드 완료!",
-      "UploadPrint": "업로드 & 출력",
-      "LightBtn": "빛",
-      "ViewStatus": {
-        "Advanced": "고급 보기 활성화됨"
-      }
+      "UploadPrint": "업로드 & 출력"
     },
     "TopCornerMenu": {
       "Cancel": "취소",
@@ -110,6 +112,206 @@
       "RecoveringDone": "{software} 복구 완료!",
       "Updating": "{software} 업데이트 중..",
       "UpdatingDone": "{software} 업데이트 완료!"
+    },
+    "Trilab": {
+      "TopBar": {
+        "LightBtn": "빛"
+      },
+      "AdvancedFeatures": "",
+      "ConnectionStatus": {
+        "Mainsail": "메인세일"
+      },
+      "Generic": {
+        "CancelWizard": "마법사 취소",
+        "Download": "다운로드",
+        "Ok": "좋아요",
+        "Save": "구하다",
+        "Unknown": "알려지지 않은"
+      },
+      "PageNotFound": {
+        "404PageNotFound": "404 페이지를 찾을 수 없습니다"
+      },
+      "Panels": {
+        "TrilabAccessPassword": {
+          "DialogMessage": "로그인 설정을 저장한 후 웹 인터페이스가 다시 시작되고 브라우저에 자격 증명을 입력하라는 메시지가 표시됩니다. \n지금 정말로 저장하시겠습니까?",
+          "DialogNoButton": "아니요",
+          "DialogYesButton": "예",
+          "Warning": "경고",
+          "caption": "액세스 설정",
+          "confirmPassword": "비밀번호 확인",
+          "enablePwdControl": "비밀번호 제어 활성화",
+          "password": "비밀번호",
+          "username": "사용자 이름"
+        },
+        "TrilabRemote": {
+          "auto_off": "자동 꺼짐",
+          "caption": "원격 액세스",
+          "enable": "할 수 있게 하다"
+        },
+        "TrilabSettingsInterfaces": {
+          "AddProfile": "프로필 추가",
+          "IP4addresses": "IPv4 주소",
+          "IP6addresses": "IPv6 주소",
+          "Interfaces": "사용 가능한 인터페이스",
+          "ProfileActive": "활동적인",
+          "ProfileInactive": "비활성",
+          "ProfilesIn": "프로필",
+          "connectWifi": "Wi-Fi에 연결"
+        },
+        "TrilabSlicerPanel": {
+          "notAvailableText": "이 프린터, 시스템 플랫폼에서는 슬라이서 프로필을 사용할 수 없거나 시스템을 올바르게 감지하지 못했습니다. \n지원팀에 문의하세요.",
+          "notAvailableTitle": "슬라이서 프로필을 사용할 수 없습니다."
+        },
+        "settingsTrilabLight": {
+          "brightness": "명도",
+          "caption": "빛",
+          "enable": "할 수 있게 하다",
+          "timeout": "시간 초과 활성화",
+          "timeoutTextFieldHint": "시간 초과(초)"
+        },
+        "settingsTrilabWifi": {
+          "accessPoint": "액세스 포인트",
+          "caption": "와이파이",
+          "client": "고객",
+          "confirmPassword": "비밀번호 확인",
+          "country": "국가",
+          "mode": "방법",
+          "password": "비밀번호",
+          "selectCountry": "국가 선택",
+          "selectNetworkMode": "네트워크 모드 선택",
+          "ssid": "SSID"
+        },
+        "trilabSlicers": {
+          "prusa": {
+            "imgsrc": "/img/PrusaSlicer.png",
+            "longDescription": "슬라이서 프로필을 포함한 전체 PrusaSlicer 패키지를 다운로드하려면 위의 버튼을 사용하세요. \n다운로드 후 대상 위치에 아카이브의 압축을 풉니다. \nWindows 플랫폼에서는 \"prusa-slicer.exe\" 프로그램을 실행하고, MacOS 플랫폼에서는 \"PrusaSlicer.app\"을 실행하세요. \n프로그램을 시작하면 구성 마법사가 나타납니다. \nPrusa Pro 탭으로 계속 진행하세요. \n여기 프린터 변형 목록에서 Prusa Pro HT90을 선택하세요. \n그런 다음 창 오른쪽 하단에 있는 마침 버튼을 누릅니다. \n이렇게 하면 슬라이서를 사용할 수 있습니다!",
+            "longTitle": "프루사슬라이서 2.7.1",
+            "shortDescription": "PrusaSlicer는 완벽한 인쇄 파일을 내보내는 데 필요한 모든 것을 포함하고 있으며 기능이 풍부하고 자주 업데이트되는 오픈 소스 도구입니다.",
+            "title": "프루사슬라이서"
+          }
+        }
+      },
+      "Settings": {
+        "TrilabTab": {
+          "Trilab": "버전",
+          "TrilabLogs": "로그",
+          "TrilabNetwork": "회로망",
+          "TrilabPrinter": "인쇄기",
+          "TrilabSlicers": "슬라이서"
+        }
+      },
+      "SettingsAccessPasswordPanel": {
+        "SaveBtn": "자격 증명 저장"
+      },
+      "SettingsTrilabPrinterTab": {
+        "AdvancedFeatures": "고급 기능:"
+      },
+      "SettingsTrilabTab": {
+        "AutomaticCheckForUpdates": "업데이트 자동 확인:",
+        "CheckForLiveUpdate": "실시간 업데이트 확인",
+        "NoUpdateAvailable": "사용 가능한 업데이트가 없습니다.",
+        "System": "체계",
+        "SystemVersion": "시스템 버전:",
+        "UpdateChannelTitle": "채널 업데이트",
+        "Upload": "업로드",
+        "UploadUpdateFile": "업데이트 파일 업로드",
+        "WenInterfaceVersion": "웹 인터페이스 버전:"
+      },
+      "SlicerPanel": {
+        "Download": "다운로드"
+      },
+      "TheTopBar": {
+        "AdvancedViewEnabled": "고급 보기 활성화됨",
+        "HiddenViewEnbled": "숨겨진 뷰 활성화",
+        "HomeBtn": "집",
+        "LightBtn": "빛",
+        "ServiceViewEnabled": "서비스 보기 활성화됨"
+      },
+      "TheTopbar": {
+        "HiddenViewEnbled": "숨겨진 뷰 활성화",
+        "ServiceViewEnabled": "서비스 보기 활성화됨"
+      },
+      "TrilabFilamentLoadWizard": {
+        "CancelHeating": "난방 취소",
+        "CancelLoading": "로드 취소",
+        "CancelWizard": "마법사 취소",
+        "Close": "닫다",
+        "Continue": "계속하다",
+        "CooldownAndClose": "쿨다운",
+        "FilamentIsLoading": "필라멘트 로드 중...",
+        "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
+        "FilamentLoadWizard": "필라멘트 로드 마법사",
+        "InsertFilamentIntoExtruder": "압출기에 필라멘트를 넣고 계속을 누릅니다.",
+        "IsColorClean": "색상이 깨끗한가요?",
+        "OpenFilamentMenu": "필라멘트 메뉴 열기",
+        "PleaseWaitForTheTemperatureToReach": "온도가 지정된 값에 도달할 때까지 기다려 주십시오.",
+        "PurgeMore": "더 많은 퍼지",
+        "SelectWhichFilamentYouWantToLoad": "로드할 필라멘트를 선택하세요.",
+        "Step": "단계"
+      },
+      "TrilabFilamentUnLoadWizard": {
+        "FilamentUnloadWizard": "필라멘트 언로드 마법사",
+        "WhichFilamentIsInPrinter": "프린터에 어떤 재료가 로드되어 있습니까?"
+      },
+      "TrilabFilamentUnloadWizard": {
+        "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
+        "colorUnloaded": "필라멘트가 성공적으로 언로드되었습니다."
+      },
+      "TrilabLiveUpdate": {
+        "Buttons": {
+          "DownloadUpdate": "업데이트 다운로드",
+          "InstallFromUsb": "USB에서 업데이트"
+        },
+        "Titles": {
+          "Installed": "업데이트 준비됨",
+          "UpdateAvailable": "업데이트 가능",
+          "UpdateInProgress": "업데이트 진행 중",
+          "UsbInstalled": "USB 업데이트 준비됨",
+          "UsbUpdateAvailable": "USB 업데이트 가능"
+        },
+        "installAndRebootBtn": "설치하다",
+        "printerIsPrinting": "프린터가 일부 작업을 수행 중이므로 지금은 이 단계를 수행할 수 없습니다. \n잠시 기다려 주십시오. 이 단계가 준비되면 이 창이 자동으로 새로 고쳐집니다.",
+        "restartWarning": "업데이트를 설치할 준비가 되었습니다. \n버튼을 눌러 업데이트를 설치하세요. \n업데이트가 완료되면 프린터가 다시 시작됩니다.",
+        "statuses": {
+          "DOWNLOADING": "업데이트 다운로드 중",
+          "ERROR": "업데이트 오류",
+          "INSTALLED": "업데이트 준비됨",
+          "UNPACKING": "포장 풀기 업데이트",
+          "UPDATE_AVAILABLE": "새로운 업데이트 이용 가능",
+          "UP_TO_DATE": "최신 버전",
+          "USB_UNPACKING": "포장 풀기 업데이트",
+          "USB_UPDATE_AVAILABLE": "USB - 새로운 업데이트"
+        }
+      },
+      "TrilabSelectFilamentDialog": {
+        "AreYouSureYouWantToSelectFilament": "필라멘트를 선택하시겠습니까?",
+        "Cancel": "취소",
+        "Cpnfirm": "확인하다",
+        "OK": "좋아요"
+      },
+      "TrilabServiceDialog": {
+        "Cancel": "취소",
+        "ServiceLogin": "서비스 로그인"
+      },
+      "TrilabUpdateDialog": {
+        "DANGER": "위험",
+        "INFO": "정보",
+        "Progres": "진전:",
+        "RestartPrinter": "프린터 다시 시작",
+        "STATUS": "상태:",
+        "ShowErrorTechinicalDetails": "오류 기술 세부정보 표시",
+        "WARNING": "경고하다",
+        "title": "업데이트",
+        "titleUSB": "USB에서 업데이트"
+      }
+    },
+    "TextfieldWithCopy": {
+      "Copied": "복사됨"
+    },
+    "TheServiceWorker": {
+      "DescriptionNeedUpdate": "로컬 캐시가 오래되어 업데이트해야 합니다. \n캐시를 업데이트하려면 아래 버튼을 클릭하세요.",
+      "TitleNeedUpdate": "PWA 업데이트 필요",
+      "Update": "업데이트"
     }
   },
   "BedScrews": {
@@ -145,7 +347,8 @@
       "DoYouWantToStartFilename": "{filename} 파일을 출력 하시겠습니까?",
       "Headline": "출력 시작 확인",
       "Print": "출력 시작",
-      "Timelapse": "타임랩스"
+      "Timelapse": "타임랩스",
+      "DoYouWantToStartFilenameFilament": "다음 필라멘트로 {filename}을(를) 시작하시겠습니까?"
     }
   },
   "Editor": {
@@ -160,7 +363,8 @@
     "UnsavedChanges": "저장되지 않은 변경사항",
     "UnsavedChangesMessage": "{filename}의 수정 내용을 저장 하시겠습니까?",
     "UnsavedChangesSubMessage": "저장하지 않으면 변경 사항이 적용되지 않습니다 (에디터 설정에서 이 메세지를 비활성화 시킬 수 있습니다)",
-    "Uploading": "업로드 중.."
+    "Uploading": "업로드 중..",
+    "DeviceDialog": "장치"
   },
   "EmergencyStopDialog": {
     "AreYouSure": "확실합니까?",
@@ -231,7 +435,12 @@
     "Total": "전체 용량",
     "UploadNewGcode": "G-Code 파일 업로드",
     "Used": "사용량",
-    "View3D": "3D Gcode 뷰어"
+    "View3D": "3D Gcode 뷰어",
+    "DeleteSingleFileQuestion": "\"{name}\" 파일을 정말로 삭제하시겠습니까?",
+    "Duplicate": "복제하다",
+    "DuplicateFile": "파일 중복",
+    "ScanMeta": "메타데이터 스캔",
+    "ScanMetaSuccess": "{filename}에서 메타데이터를 성공적으로 스캔했습니다."
   },
   "FullscreenUpload": {
     "CannotUploadFile": "업로드 할 수 없습니다!",
@@ -276,7 +485,8 @@
       "Min": "최소",
       "Name": "이름",
       "Range": "범위",
-      "Size": "메쉬 기준"
+      "Size": "메쉬 기준",
+      "Variance": "변화"
     },
     "DeleteBedMeshProfile": "베드 메쉬 프로파일 삭제",
     "DoYouReallyWantToDelete": "\"{name}\"? 프로파일을 정말 삭제하시겠습니까?",
@@ -363,7 +573,8 @@
       "klippy_disconnect": "클리피 연결 해제",
       "klippy_shutdown": "클리피 종료",
       "Others": "기타",
-      "server_exit": "서버 종료"
+      "server_exit": "서버 종료",
+      "interrupted": "중단된"
     },
     "Table": "테이블",
     "TitleExportHistory": "기록 내보내기",
@@ -373,7 +584,10 @@
     "TotalFilamentUsed": "총 필라 소비",
     "TotalJobs": "전체 출력 횟수",
     "TotalPrinttime": "전체 출력 시간",
-    "TotalTime": "전체 시간"
+    "TotalTime": "전체 시간",
+    "AddToQueueSuccessful": "{filename} 파일이 대기열에 추가되었습니다.",
+    "DeleteSingleJobQuestion": "정말로 작업을 삭제하시겠습니까?",
+    "LoadCompleteHistory": "전체 기록 로드"
   },
   "JobQueue": {
     "AllJobs": "전체 작업",
@@ -387,7 +601,8 @@
     "Jobs": "작업",
     "Pause": "일시정지",
     "RemoveFromQueue": "대기열에서 삭제",
-    "Start": "시작"
+    "Start": "시작",
+    "StartPrint": "작업 시작"
   },
   "Machine": {
     "ConfigFilesPanel": {
@@ -424,7 +639,10 @@
       "Total": "전체",
       "UploadFile": "파일 업로드",
       "Uploading": "업로드 중..",
-      "Used": "사용됨"
+      "Used": "사용됨",
+      "DeleteSingleFileQuestion": "\"{name}\" 파일을 정말로 삭제하시겠습니까?",
+      "Duplicate": "복제하다",
+      "DuplicateFile": "파일 중복"
     },
     "EndstopPanel": {
       "Endstop": "엔드 스탑",
@@ -488,7 +706,34 @@
       "UpdateAll": "모든 항목 업데이트",
       "UpdateManager": "업데이트 관리자",
       "Upgrade": "업그레이드",
-      "UpToDate": "최신 상태 유지중.."
+      "UpToDate": "최신 상태 유지중..",
+      "Abort": "중단",
+      "AreYouSure": "확실합니까?",
+      "Close": "닫다",
+      "CommitHistory": "커밋 기록",
+      "ConfigChanges": "구성 변경",
+      "Corrupt": "부정한",
+      "CountPackagesCanBeUpgraded": "{count}개의 패키지를 업그레이드할 수 있습니다",
+      "GenericUpdateQuestion": "이 업데이트에 수동 조정이 필요한지 확인하려면 커밋 기록(사용 가능한 경우)과 이 프로젝트의 GitHub 페이지를 확인하세요.",
+      "GitHubPage": "GitHub 페이지",
+      "HardRecovery": "하드 복구",
+      "IUnderstandTheRisks": "나는 위험을 이해합니다",
+      "InitUpdateManager": "업데이트 관리자가 아직 초기화되지 않았습니다. \n시스템을 처음 시작하는 경우 이는 정상적인 현상입니다. \n모든 구성요소를 초기화하려면 새로고침 버튼을 클릭하세요.",
+      "KlipperUpdateQuestionConfig": "이 업데이트에는 Printer.cfg 파일에서 수정해야 하는 구성 매개변수에 대한 변경 사항이 포함될 수도 있습니다. 자세한 내용은 변경 로그를 참조하세요.",
+      "KlipperUpdateQuestionFirmware": "그러면 Klipper 호스트 소프트웨어가 업데이트됩니다. \nKlipper 펌웨어를 실행하는 제어 보드는 기계를 다시 서비스하기 전에 재컴파일된 펌웨어로 플래시해야 할 수도 있습니다.",
+      "LinkToGithub": "GitHub에 연결",
+      "MoonrakerUpdateQuestion": "그러면 Moonraker API가 업데이트됩니다. \n머신을 계속 사용하려면 Moonraker.conf 파일을 변경해야 할 수도 있습니다.",
+      "MoreCommitsInfo": "여기에는 최대 30개의 커밋이 표시될 수 있습니다. \n모든 커밋을 보려면 다음 링크를 클릭하세요.",
+      "Notification": {
+        "Detached": "",
+        "Dirty": ""
+      },
+      "SoftRecovery": "소프트 복구",
+      "StartUpdate": "업데이트 시작",
+      "ThesePackagesCanBeUpgrade": "다음 시스템 패키지를 업그레이드할 수 있습니다.",
+      "UpdateWarning": "업데이트 경고: {name}",
+      "UpgradeableSystemPackages": "업그레이드 가능한 시스템 패키지",
+      "WebClientUpdateQuestion": "어떤 경우에는 웹 클라이언트를 업데이트하면 비호환성을 유발할 수 있는 변경 사항이 있을 수 있습니다. \n자세한 내용은 릴리스 노트를 참조하세요."
     }
   },
   "ManualProbe": {
@@ -522,7 +767,13 @@
       "Requested": "요청됨",
       "Retract": "필라 퇴출",
       "TooLargeExtrusion": "압출 길이를 초과합니다!",
-      "UnloadFilament": "필라멘트 퇴출"
+      "UnloadFilament": "필라멘트 퇴출",
+      "CleanNozzle": "노즐 청소",
+      "ExtruderControl": "압출기 제어",
+      "FirmwareRetraction": "펌웨어 철회",
+      "PressureAdvance": "압력 전진",
+      "PurgeFilament": "퍼지 필라멘트",
+      "Tools": "도구"
     },
     "FarmPrinterPanel": {
       "ReconnectToPrinter": "재접속",
@@ -537,7 +788,8 @@
       "PrinterSwitchedOff": "프린터 전원 꺼짐",
       "PrinterSwitchedOffDescription": "프린터가 현재 꺼져 있어 Klipper를 연결할 수 없습니다 프린터 전원을 켜려면 아래 버튼을 클릭해 주세요",
       "Restart": "재시작",
-      "ServiceReports": "{service} 보고"
+      "ServiceReports": "{service} 보고",
+      "KlipperCheck": ""
     },
     "MachineSettingsPanel": {
       "Headline": "프린터 속도 설정",
@@ -545,7 +797,8 @@
         "Acceleration": "가속도",
         "MaxAccelToDecel": "감속을 위한 최대 가속",
         "SquareCornerVelocity": "모서리 통과 속도 [SCV]",
-        "Velocity": "출력 속도"
+        "Velocity": "출력 속도",
+        "MinimumCruiseRatio": "최소 \n크루즈 비율"
       }
     },
     "MacrosPanel": {
@@ -557,7 +810,8 @@
       "HideTemperatures": "온도 숨김",
       "HideTimelapse": "타임랩스 숨김",
       "SendCode": "제어 명령 입력 후 엔터를 눌러 주세요..",
-      "SetupConsole": "콘솔 명령 설정"
+      "SetupConsole": "콘솔 명령 설정",
+      "Autoscroll": "자동 스크롤"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "printer.cfg안에 mainsail.cfg를 포함시켜야 합니다",
@@ -577,10 +831,6 @@
         "Detected": "필라멘트 있음",
         "Disabled": "비활성화됨",
         "Empty": "필라멘트 없음"
-      },
-      "DoorSensor": {
-        "Closed": "닫은",
-        "Open": "열려 있는"
       }
     },
     "PowerControlPanel": {
@@ -609,7 +859,7 @@
       "Files": "파일",
       "Flow": "유량",
       "Headline": "출력 상태",
-      "Jobqueue": "작업 대기열({count})",
+      "Jobqueue": "작업 대기열",
       "JobqueueMoreFiles": "더 이상 작업 없음 | 1개 이상의 작업 | {count}개 이상의 작업",
       "Layer": "레이어",
       "Max": "최대",
@@ -662,7 +912,9 @@
       "Target": "설정 온도",
       "TemperaturesInChart": "온도 [°C]",
       "TempTooHigh": "{name}의 온도가 너무 높습니다! (최대: {max})",
-      "TempTooLow": "{name}의 온도가 너무 낮습니다!! (최저: {min})"
+      "TempTooLow": "{name}의 온도가 너무 낮습니다!! (최저: {min})",
+      "HideMcuHostSensors": "호스트/MCU 센서 숨기기",
+      "HideMonitors": "모니터 숨기기"
     },
     "ToolheadControlPanel": {
       "Absolute": "절대 좌표",
@@ -674,7 +926,11 @@
       "Relative": "상대 좌표",
       "SettingsInterfaceControl": "설정 > 인터페이스 > 컨트롤",
       "SpeedFactor": "속도 비율 설정",
-      "ZTilt": "Z틸트"
+      "ZTilt": "Z틸트",
+      "ControlButtons": "제어 버튼",
+      "CoordinateFields": "좌표계",
+      "PositionOutput": "위치 출력",
+      "ZOffset": "Z 오프셋"
     },
     "WebcamPanel": {
       "All": "전체",
@@ -696,46 +952,31 @@
       "ToEndstop": "Z 엔드스탑 높이 값으로 저장",
       "ToProbe": "프로브 높이 값으로 저장"
     },
-    "TrilabAccessPassword": {
-      "caption": "액세스 설정",
-      "enablePwdControl": "암호 제어 활성화",
-      "username": "사용자 이름",
-      "password": "비밀번호",
-      "confirmPassword": "비밀번호 확인",
-      "Warning": "경고",
-      "DialogMessage": "로그인 설정을 저장한 후 웹 인터페이스가 다시 시작되고 브라우저에 자격 증명을 입력하라는 메시지가 표시됩니다. \n지금 정말로 저장하시겠습니까?",
-      "DialogYesButton": "예",
-      "DialogNoButton": "아니요"
-    },
-    "TrilabRemote": {
-      "auto_off": "자동 꺼짐",
-      "enable": "할 수 있게 하다",
-      "caption": "원격 액세스"
-    },
-    "settingsTrilabWifi": {
-      "country": "국가",
-      "mode": "방법",
-      "caption": "와이파이",
-      "password": "비밀번호",
-      "accessPoint": "액세스 포인트",
-      "ssid": "SSID",
-      "confirmPassword": "비밀번호 확인"
-    },
-    "settingsTrilabLight": {
-      "brightness": "명도",
-      "timeoutTextFieldHint": "시간 초과",
-      "enable": "할 수 있게 하다",
-      "timeout": "시간 초과 활성화"
-    },
-    "TrilabSettingsInterfaces": {
-      "IP4addresses": "IPv4 주소",
-      "IP6addresses": "IPv6 주소",
-      "connectWifi": "Wi-Fi에 연결",
-      "AddProfile": "프로필 추가",
-      "ProfilesIn": "프로필",
-      "ProfileActive": "활동적인",
-      "ProfileInactive": "비활성",
-      "Interfaces": "사용 가능한 인터페이스"
+    "SpoolmanPanel": {
+      "Cancel": "취소",
+      "ChangeSpool": "스풀 변경",
+      "DaysAgo": "{days}일 전",
+      "EjectSpool": "스풀 꺼내기",
+      "EjectSpoolQuestion": "필라멘트 스풀을 배출하시겠습니까?",
+      "Filament": "필라멘트",
+      "FilamentTypeMismatch": "활성 스풀의 재질({spoolType})이 G-코드({fileType})의 재질과 일치하지 않습니다.",
+      "Headline": "스풀맨",
+      "LastUsed": "마지막으로 사용됨",
+      "Location": "위치",
+      "Material": "재료",
+      "Never": "절대",
+      "NoActiveSpool": "필라멘트 추적이 비활성화됩니다. \n시작하려면 스풀을 선택하세요.",
+      "NoResults": "현재 검색 기준으로는 스풀을 찾을 수 없습니다.",
+      "NoSpoolSelected": "스풀을 선택하지 않았습니다. \n스풀을 선택하십시오. 그렇지 않으면 이 인쇄물이 추적되지 않습니다.",
+      "NoSpools": "스풀을 사용할 수 없습니다.",
+      "OpenSpoolManager": "스풀 관리자 열기",
+      "Refresh": "새로 고치다",
+      "Search": "찾다",
+      "SelectSpool": "스풀 선택",
+      "Today": "오늘",
+      "TooLessFilament": "현재 스풀에 이 인쇄에 필요한 필라멘트가 충분하지 않을 수 있습니다. \n({spoolWeight}g/{fileWeight}g)",
+      "Weight": "무게",
+      "Yesterday": "어제"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -756,13 +997,16 @@
     "Printers": "원격 프린터",
     "Timelapse": "타임랩스",
     "Webcam": "웹캠",
-    "Calibration": "구경 측정"
+    "Calibration": "구경 측정",
+    "Diagnostics": "진단",
+    "Slicers": "얇게 써는 기계"
   },
   "ScrewsTiltAdjust": {
     "Accept": "확인",
     "Base": "베이스",
     "ErrorText": "계측 중 문제가 발생했습니다",
-    "Headline": "베드 스크류 틸트 교정"
+    "Headline": "베드 스크류 틸트 교정",
+    "Retry": "다시 해 보다"
   },
   "SelectPrinterDialog": {
     "AddPrinter": "프린터 정보 추가",
@@ -834,7 +1078,10 @@
       "Style": "화면 표시 스타일",
       "ValueGreaterThan": "{value} 값보다 커야 합니다",
       "ZOffsetIncrements": "Z-옵셋 이동 단위(mm)",
-      "ZTiltAdjust": "Z-틸트 조정 {isDefault}"
+      "ZTiltAdjust": "Z-틸트 조정 {isDefault}",
+      "HideDuringPrint": "인쇄하는 동안 축 컨트롤 숨기기",
+      "ZOffsetSaveOption": "Z 오프셋 저장 옵션",
+      "ZOffsetSaveOptionDescription": "Z 오프셋 저장 옵션 변경"
     },
     "DashboardTab": {
       "Dashboard": "대시보드",
@@ -851,10 +1098,11 @@
       "Editor": "파일 편집기",
       "KlipperRestartMethod": "클리퍼 재시작 방법",
       "KlipperRestartMethodDescription": "printer.cfg 파일을 수정 후, '저장 및 다시 시작'을 클릭할 때 사용할 다시 시작 방법을 선택합니다",
-      "MoonrakerRestartInstance": "문래커 재시작 방법",
-      "MoonrakerRestartInstanceDescription": "moonraker.conf 파일을 수정할 때 '저장 및 다시 시작'을 클릭할 때 사용할 문래커 서비스를 선택합니다",
       "UseEscToClose": "ESC키를 눌러 종료",
-      "UseEscToCloseDescription": "ESC 키를 눌렀을 때 파일 편집기를 종료하며 만약 비활성화 했을 경우 ESC 키를 누르는 즉시 기존 입력 값은 모두 취소됩니다"
+      "UseEscToCloseDescription": "ESC 키를 눌렀을 때 파일 편집기를 종료하며 만약 비활성화 했을 경우 ESC 키를 누르는 즉시 기존 입력 값은 모두 취소됩니다",
+      "Spaces": "공백: {count}",
+      "TabSize": "탭 크기",
+      "TabSizeDescription": "TAB에 대해 들여쓰기해야 하는 공백 수를 조정합니다."
     },
     "GCodeViewerTab": {
       "BackgroundColor": "배경 색",
@@ -906,9 +1154,9 @@
       "Restore": "복원하기",
       "RestoreDialog": "복원하고자 하는 모든 섹션을 선택해 주세요:",
       "TimeFormat": "시간 유형",
-      "PrinterNameRequired": "프린터 이름이 필요합니다",
-      "PrinterNameMaxLength": "허용되는 최대 이름 길이는 63자입니다.",
-      "PrinterNameInvalid": "프린터 이름이 잘못되었습니다. \n기본 문자, 숫자, 하이픈만 허용됩니다."
+      "DBNavigation": "항해",
+      "Everything": "모든 것",
+      "MainsailSettingsMoonrakerDb": "Moonraker DB의 메인세일 설정"
     },
     "InterfaceSettings": "인터페이스 설정",
     "MacrosTab": {
@@ -1063,7 +1311,12 @@
       "VariableFpsMax": "최대 가변 FPS",
       "VariableFpsMaxDescription": "최대 가변 FPS 값을 지정합니다",
       "VariableFpsMin": "최소 가변 FPS",
-      "VariableFpsMinDescription": "최소 가변 FPS 값을 지정합니다"
+      "VariableFpsMinDescription": "최소 가변 FPS 값을 지정합니다",
+      "RulesBetweenMinMax": "값은 {min}에서 {max} 사이여야 합니다!",
+      "RulesMin": "값은 최소 {min} 이상이어야 합니다!",
+      "RulesPositive": "값은 양수여야 합니다.",
+      "RulesRequired": "값은 필수입니다!",
+      "RulesZeroAndPositive": "값은 0 이상이어야 합니다!"
     },
     "UiSettingsTab": {
       "BoolBigThumbnail": "큰 썸네일 이미지",
@@ -1096,7 +1349,29 @@
       "PowerDeviceNameDescription": "프린터 전원을 켜는 데 사용할 문레이커 전원 장치를 선택합니다",
       "Primary": "아이콘 컬러",
       "ShowWebcamInNavigation": "좌측 메뉴 바에 웹캠 메뉴 추가",
-      "UiSettings": "UI 설정"
+      "UiSettings": "UI 설정",
+      "BedScrewsDialog": "침대 나사 대화상자",
+      "BedScrewsDialogDescription": "BED_SCREWS_ADJUST에 대한 도우미 대화 상자를 표시합니다.",
+      "BigThumbnailBackground": "큰 축소판 배경 색상",
+      "ConfirmOnCoolDown": "CoolDown에 대한 확인 필요",
+      "ConfirmOnCoolDownDescription": "CoolDown에 확인 대화상자 표시",
+      "DefaultNavigationState": "탐색 기본 상태",
+      "DefaultNavigationStateAlwaysClosed": "항상 닫혀있다",
+      "DefaultNavigationStateAlwaysOpen": "항상 열려있다",
+      "DefaultNavigationStateDescription": "기본적으로 탐색이 있어야 하는 상태입니다.",
+      "DefaultNavigationStateLastState": "마지막 상태",
+      "HideUpdateWarnings": "업데이트 경고 숨기기",
+      "HideUpdateWarningsDescription": "이 옵션은 업데이트 관리자에서 모든 업데이트 경고를 숨깁니다.",
+      "ManualProbeDialog": "수동 프로브 도우미 대화 상자",
+      "ManualProbeDialogDescription": "PROBE_CALIBRATE 또는 Z_ENDSTOP_CALIBRATE에 대한 도우미 대화 상자를 표시합니다.",
+      "ScrewsTiltAdjustDialog": "나사 기울기 조정 대화상자",
+      "ScrewsTiltAdjustDialogDescription": "SCREWS_TILT_CALCULATE에 대한 도우미 대화 상자를 표시합니다.",
+      "TempchartHeight": "높이 온도 차트",
+      "TempchartHeightDescription": "대시보드에서 온도 차트의 높이를 수정합니다.",
+      "Theme": "주제",
+      "ThemeDark": "어두운",
+      "ThemeDescription": "애플리케이션의 전체적인 모양과 느낌을 변경합니다.",
+      "ThemeLight": "빛"
     },
     "Update": "업데이트",
     "WebcamsTab": {
@@ -1131,11 +1406,28 @@
       "Uv4lMjpeg": "UV4L-MJPEG",
       "Vertically": "세로 반전",
       "Webcams": "웹캠",
-      "WebrtcCameraStreamer": "WebRTC (camera-streamer)"
+      "WebrtcCameraStreamer": "WebRTC (camera-streamer)",
+      "EnableAudio": "오디오 활성화",
+      "HideFps": "FPS 카운터 숨기기",
+      "JMuxerStream": "원시 h264 스트림(jmuxer)",
+      "WebrtcGo2rtc": "WebRTC(go2rtc)",
+      "WebrtcJanus": "WebRTC(야누스 게이트웨이)",
+      "WebrtcMediaMTX": "WebRTC(미디어MTX)"
     },
-    "TrilabTab": {
-      "Trilab": "트라이랩 나스타베니",
-      "TrilabLogs": "로그"
+    "HeightmapTab": {
+      "ColorSchemes": "색 구성표",
+      "Heightmap": "하이트맵",
+      "IsDefault": "(기본)",
+      "Schemes": {
+        "GrayScale": "그레이스케일",
+        "Hot": "더운",
+        "Hsv": "Hsv",
+        "Portland": "포틀랜드",
+        "Spring": "봄"
+      }
+    },
+    "NavigationTab": {
+      "Navigation": "항해"
     }
   },
   "Timelapse": {
@@ -1187,112 +1479,29 @@
     "Type": "유형",
     "Used": "사용 됨",
     "Variable": "변수",
-    "Video": "비디오"
+    "Video": "비디오",
+    "DeleteSingleFileQuestion": "\"{name}\" 파일을 정말로 삭제하시겠습니까?"
   },
   "title": "한국어",
-  "TrilabUpdateDialog": {
-    "title": "활성화",
-    "RestartPrinter": "프린터 다시 시작",
-    "titleUSB": "USB에서 업데이트"
+  "CoolDownDialog": {
+    "AreYouSure": "확실합니까?",
+    "CoolDown": "쿨다운",
+    "No": "아니요",
+    "Yes": "예"
   },
-  "General": {
-    "Save": "구하다"
+  "DevicesDialog": {
+    "CanBusInfo": "할당되지 않은 노드만 감지할 수 있습니다. \n통신 문제를 방지하려면 할당되지 않은 장치를 하나만 캔 버스에 연결하는 것이 좋습니다. \n자세한 내용을 보려면 다음 링크를 클릭하세요.",
+    "ClickRefresh": "장치를 검색하려면 새로 고침 버튼을 클릭하세요.",
+    "DevicePath": "장치 경로",
+    "Formats": "형식",
+    "Headline": "장치",
+    "HideSystemEntries": "시스템 항목 숨기기",
+    "LibcameraId": "Lib카메라 ID",
+    "NoDeviceFound": "장치를 찾을 수 없습니다. \n연결을 확인하신 후 새로고침 버튼을 눌러주세요.",
+    "PathByHardware": "하드웨어별 경로",
+    "PathById": "ID별 경로",
+    "Refresh": "새로 고치다",
+    "Resolutions": "결의안"
   },
-  "TrilabLiveUpdate": {
-    "Buttons": {
-      "InstallFromUsb": "USB에서 업데이트",
-      "DownloadUpdate": "업데이트 다운로드"
-    },
-    "restartWarning": "업데이트를 설치할 준비가 되었습니다. \n버튼을 눌러 업데이트를 설치하세요. \n업데이트가 완료되면 프린터가 다시 시작됩니다.",
-    "printerIsPrinting": "프린터가 일부 작업을 수행 중이므로 지금은 이 단계를 수행할 수 없습니다. \n잠시 기다려 주십시오. 이 단계가 준비되면 이 창이 자동으로 새로 고쳐집니다.",
-    "installAndRebootBtn": "설치하다",
-    "Titles": {
-      "Installed": "업데이트 준비됨",
-      "UsbInstalled": "USB 업데이트 준비됨",
-      "UpdateInProgress": "업데이트 진행 중",
-      "UpdateAvailable": "업데이트 가능",
-      "UsbUpdateAvailable": "USB 업데이트 가능"
-    }
-  },
-  "Trilab": {
-    "TrilabFilamentLoadWizard": {
-      "FilamentIsLoading": "필라멘트 로드 중...",
-      "InsertFilamentIntoExtruder": "압출기에 필라멘트를 넣고 계속을 누릅니다.",
-      "SelectWhichFilamentYouWantToLoad": "로드할 필라멘트를 선택하세요.",
-      "PleaseWaitForTheTemperatureToReach": "온도가 지정된 값에 도달할 때까지 기다려 주십시오.",
-      "IsColorClean": "색상이 깨끗한가요?",
-      "CancelHeating": "난방 취소",
-      "Continue": "계속하다",
-      "OpenFilamentMenu": "필라멘트 메뉴 열기",
-      "CancelWizard": "마법사 취소",
-      "PurgeMore": "더 많이 퍼지",
-      "CooldownAndClose": "쿨타임",
-      "Close": "닫다",
-      "Step": "단계",
-      "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
-      "FilamentLoadWizard": "필라멘트 로드 마법사",
-      "CancelLoading": "로드 취소"
-    },
-    "TrilabSelectFilamentDialog": {
-      "Cancel": "취소",
-      "Cpnfirm": "확인하다",
-      "AreYouSureYouWantToSelectFilament": "필라멘트를 선택하시겠습니까?",
-      "OK": "좋아요"
-    },
-    "TrilabServiceDialog": {
-      "ServiceLogin": "서비스 로그인",
-      "Cancel": "취소"
-    },
-    "TrilabUpdateDialog": {
-      "Progres": "진전:",
-      "ShowErrorTechinicalDetails": "오류 기술 세부정보 표시",
-      "STATUS": "상태:",
-      "DANGER": "오류",
-      "INFO": "정보",
-      "WARNING": "경고하다"
-    },
-    "SettingsTrilabTab": {
-      "System": "체계",
-      "SystemVersion": "시스템 버전:",
-      "WenInterfaceVersion": "웹 인터페이스 버전:",
-      "AutomaticCheckForUpdates": "업데이트 자동 확인:",
-      "UploadUpdateFile": "업데이트 파일 업로드",
-      "Upload": "업로드",
-      "CheckForLiveUpdate": "실시간 업데이트 확인",
-      "NoUpdateAvailable": "사용 가능한 업데이트가 없습니다.",
-      "UpdateChannelTitle": "채널 업데이트"
-    },
-    "TheTopbar": {
-      "HiddenViewEnbled": "숨겨진 뷰 활성화",
-      "ServiceViewEnabled": "서비스 보기 활성화됨"
-    },
-    "ConnectionStatus": {
-      "Mainsail": "메인세일"
-    },
-    "AdvancedFeatures": "",
-    "SettingsTrilabPrinterTab": {
-      "AdvancedFeatures": "고급 기능:"
-    },
-    "SlicerPanel": {
-      "Download": "다운로드"
-    },
-    "PageNotFound": {
-      "404PageNotFound": "404 페이지를 찾을 수 없습니다"
-    },
-    "TrilabFilamentUnLoadWizard": {
-      "WhichFilamentIsInPrinter": "프린터에 어떤 재료가 로드되어 있습니까?",
-      "FilamentUnloadWizard": "필라멘트 언로드 마법사"
-    },
-    "TrilabFilamentUnloadWizard": {
-      "FilamentIsUnloading": "필라멘트가 언로드 중입니다.",
-      "colorUnloaded": "필라멘트가 성공적으로 언로드되었습니다."
-    },
-    "SettingsAccessPasswordPanel": {
-      "SaveBtn": "자격 증명 저장"
-    }
-  },
-  "Generic": {
-    "Ok": "좋아요",
-    "Unknown": "알려지지 않은"
-  }
+  "_last_update": ""
 }

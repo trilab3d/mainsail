@@ -46,6 +46,28 @@ export default class TrilabMixin extends Vue {
         return this.$store.state.trilab?.updateStateStatus
     }
 
+
+    getTrilabTemperatureObject(objectName: string) : any {
+        /// returns readable object for some sensor or something else, with all possible values. It was gone from mainsail, needed for some trilab features throughout the system
+        if(!(objectName in this.$store.state.printer)) return {}
+
+        const object = this.$store.state.printer[objectName];
+        object.settings = this.$store.state.printer?.configfile?.settings[objectName.toLowerCase()] ?? {}
+        object.name = objectName
+        object.type = "heater";
+        if(objectName.startsWith('temperature_fan')) {
+            object.command = 'SET_TEMPERATURE_FAN_TARGET';
+            object.commandAttributeName = 'TEMPERATURE_FAN';
+            object.type = "fan";
+        } else if(objectName.startsWith('extruder') || objectName.startsWith('heater_')) {
+            object.command = 'SET_HEATER_TEMPERATURE';
+            object.commandAttributeName = 'HEATER';
+        }
+        
+        return object;
+    }
+
+
     get TrilabPrinterIdle() {
         /// if printer does nothing and is ready for any command
         /// i observed some states of the idle_timeout state. I saw 'Idle' and 'Ready' and 'Printing'

@@ -20,18 +20,18 @@
 
         <v-dialog v-model="selectDialogConfirmation" max-width="400px">
             <v-card>
-                <v-card-title class="headline">{{ $t("Trilab.TrilabSelectFilamentDialog.Cpnfirm") }}</v-card-title>
+                <v-card-title class="headline">{{ $t("App.Trilab.TrilabSelectFilamentDialog.Cpnfirm") }}</v-card-title>
                 <v-card-text>
-                    <p>{{ $t("Trilab.TrilabSelectFilamentDialog.AreYouSureYouWantToSelectFilament") }} {{
+                    <p>{{ $t("App.Trilab.TrilabSelectFilamentDialog.AreYouSureYouWantToSelectFilament") }} {{
                         selectedFilament.title }}?</p>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="green darken-1" text @click="selectDialogConfirmation = false">{{
-                        $t("Trilab.TrilabSelectFilamentDialog.Cancel") }}</v-btn>
+                        $t("App.Trilab.TrilabSelectFilamentDialog.Cancel") }}</v-btn>
                     <v-btn color="green darken-1" text
                         @click="selectDialogConfirmation = false; selectFilament(selectedFilament)">{{
-                            $t("Trilab.TrilabSelectFilamentDialog.OK") }}</v-btn>
+                            $t("App.Trilab.TrilabSelectFilamentDialog.OK") }}</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>

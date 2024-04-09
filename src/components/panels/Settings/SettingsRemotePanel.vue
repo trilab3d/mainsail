@@ -2,15 +2,15 @@
 <template>
 	<v-card outlined :disabled="this.uiFrozen">
 		<v-card-title class="pb-0">
-			<span v-html="$t('Panels.TrilabRemote.caption')"></span> 
+			<span v-html="$t('App.Trilab.Panels.TrilabRemote.caption')"></span> 
 			<v-spacer></v-spacer>
 		</v-card-title>
 
 		<v-card-text>
-			<v-switch :label="$t('Panels.TrilabRemote.enable')" hide-details
+			<v-switch :label="$t('App.Trilab.Panels.TrilabRemote.enable')" hide-details
 				v-model="enabledstate"></v-switch>
 
-				<v-switch v-if="isEnabled" v-model="autooff" :label="$t('Panels.TrilabRemote.auto_off')"
+				<v-switch v-if="isEnabled" v-model="autooff" :label="$t('App.Trilab.Panels.TrilabRemote.auto_off')"
 				></v-switch>
 
 		</v-card-text>

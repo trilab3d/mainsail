@@ -13,6 +13,10 @@
                 :icon="isWriteable ? mdiFileDocumentEditOutline : mdiFileDocumentOutline"
                 :title="title">
                 <template #buttons>
+                    <v-btn text tile class="d-none d-md-flex" @click="dialogDevices = true">
+                        <v-icon small class="mr-1">{{ mdiUsb }}</v-icon>
+                        {{ $t('Editor.DeviceDialog') }}
+                    </v-btn>
                     <v-btn
                         v-if="restartServiceName === 'klipper'"
                         text
@@ -56,7 +60,7 @@
                 </v-card-text>
             </panel>
         </v-dialog>
-        <v-snackbar v-model="loaderBool" :timeout="-1" :value="true" fixed right bottom dark>
+        <v-snackbar v-model="loaderBool" :timeout="-1" :value="true" fixed right bottom>
             <div>
                 {{ snackbarHeadline }}
                 <br />
@@ -116,6 +120,7 @@
                 </v-card-actions>
             </panel>
         </v-dialog>
+        <devices-dialog :show-dialog="dialogDevices" @close="dialogDevices = false" />
     </div>
 </template>
 
@@ -135,14 +140,17 @@ import {
     mdiHelp,
     mdiHelpCircle,
     mdiRestart,
+    mdiUsb,
 } from '@mdi/js'
 import type Codemirror from '@/components/inputs/Codemirror.vue'
+import DevicesDialog from '@/components/dialogs/DevicesDialog.vue'
 
 @Component({
-    components: { Panel, CodemirrorAsync },
+    components: { DevicesDialog, Panel, CodemirrorAsync },
 })
 export default class TheEditor extends Mixins(BaseMixin) {
-    private dialogConfirmChange = false
+    dialogConfirmChange = false
+    dialogDevices = false
 
     formatFilesize = formatFilesize
 
@@ -157,6 +165,7 @@ export default class TheEditor extends Mixins(BaseMixin) {
     mdiHelpCircle = mdiHelpCircle
     mdiFileDocumentEditOutline = mdiFileDocumentEditOutline
     mdiFileDocumentOutline = mdiFileDocumentOutline
+    mdiUsb = mdiUsb
 
     private scrollbarOptions = { scrollbars: { autoHide: 'never' } }
 
@@ -239,25 +248,33 @@ export default class TheEditor extends Mixins(BaseMixin) {
         if (!this.isWriteable) return null
         if (['printing', 'paused'].includes(this.printer_state)) return null
 
+        // check for generic services <service>.conf (like moonraker.conf, crowsnest.conf, sonar.conf)
         if (this.availableServices.includes(this.filenameWithoutExtension) && this.fileExtension === 'conf')
             return this.filenameWithoutExtension
-        if (this.filename.startsWith('webcam') && ['conf', 'txt'].includes(this.fileExtension)) return 'webcamd'
-        if (this.filename.startsWith('mooncord') && this.fileExtension === 'json') return 'mooncord'
-        if (this.filename === 'moonraker.conf') return this.moonrakerRestartInstance ?? 'moonraker'
 
+        // old webcam service DEPRECATED
+        if (this.filename.startsWith('webcam') && ['conf', 'txt'].includes(this.fileExtension)) return 'webcamd'
+
+        // check for mooncord config files
+        if (this.filename.startsWith('mooncord') && this.fileExtension === 'json') return 'mooncord'
+
+        // fallback for moonraker with multi instances
+        if (this.filename === 'moonraker.conf') return 'moonraker'
+
+        // all .cfg files will be klipper config files
         if (this.fileExtension === 'cfg') return 'klipper'
 
         return null
     }
 
     get restartServiceNameExists() {
-        if (this.restartServiceName) return true
+        // hide the button, if there is no service found
+        if (this.restartServiceName === null) return false
+
+        // klipper and moonraker uses specific api calls instead of generic service restart
+        if (['klipper', 'moonraker'].includes(this.restartServiceName)) return true
 
         return this.availableServices.includes(this.restartServiceName)
-    }
-
-    get moonrakerRestartInstance() {
-        return this.$store.state.gui.editor.moonrakerRestartInstance
     }
 
     get confirmUnsavedChanges() {
@@ -333,7 +350,7 @@ export default class TheEditor extends Mixins(BaseMixin) {
     }
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
 ::v-deep .ͼ1 .cm-panel.cm-search *:focus:not(.focus-visible) {
     outline: none;
 }
