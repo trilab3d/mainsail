@@ -11,26 +11,29 @@
                 <!-- KLIPPER MESSAGE -->
                 <div v-if="klippy_message !== null">
                     <pre style="white-space: pre-wrap">{{ klippy_message.trim() }}</pre>
+                    <div class="text-center" v-if="klippy_message.contains('ADC out of range')">
+                        <!--- TRILAB ADDITION --->
+                        LAST KNOWN TEMPS:
+                        <v-row>
+                            <v-col v-for="heater in fullHeatingObjects" :key="heater.name" class="text-center">
+                                <v-chip small class="mx-1" :color="heater.color">
+                                    {{ heater.name }}: {{ heater.temperature }}°C
+                                </v-chip>
+                            </v-col>
+                        </v-row>
+
+
+                    </div>
                     <v-divider class="mt-2 pb-3"></v-divider>
                     <v-row>
                         <!-- RESTART BUTTONS -->
                         <v-col>
-                            <v-btn
-                                small
-                                outlined
-                                text
-                                :class="`${messageType.color}--text my-1`"
-                                style="width: 100%"
+                            <v-btn small outlined text :class="`${messageType.color}--text my-1`" style="width: 100%"
                                 @click="restart">
                                 <v-icon class="mr-sm-2">{{ mdiRestart }}</v-icon>
                                 {{ $t('Panels.KlippyStatePanel.Restart') }}
                             </v-btn>
-                            <v-btn
-                                small
-                                outlined
-                                text
-                                :class="`${messageType.color}--text my-1`"
-                                style="width: 100%"
+                            <v-btn small outlined text :class="`${messageType.color}--text my-1`" style="width: 100%"
                                 @click="firmwareRestart">
                                 <v-icon class="mr-sm-2">{{ mdiRestart }}</v-icon>
                                 {{ $t('Panels.KlippyStatePanel.FirmwareRestart') }}
@@ -38,25 +41,13 @@
                         </v-col>
                         <!-- LOG DOWNLOAD BUTTONS -->
                         <v-col>
-                            <v-btn
-                                :href="apiUrl + '/server/files/klippy.log'"
-                                small
-                                outlined
-                                text
-                                :class="`${messageType.color}--text my-1`"
-                                style="width: 100%"
-                                @click="downloadLog">
+                            <v-btn :href="apiUrl + '/server/files/klippy.log'" small outlined text
+                                :class="`${messageType.color}--text my-1`" style="width: 100%" @click="downloadLog">
                                 <v-icon class="mr-2">{{ mdiDownload }}</v-icon>
                                 Klipper Log
                             </v-btn>
-                            <v-btn
-                                :href="apiUrl + '/server/files/moonraker.log'"
-                                small
-                                outlined
-                                text
-                                :class="`${messageType.color}--text my-1`"
-                                style="width: 100%"
-                                @click="downloadLog">
+                            <v-btn :href="apiUrl + '/server/files/moonraker.log'" small outlined text
+                                :class="`${messageType.color}--text my-1`" style="width: 100%" @click="downloadLog">
                                 <v-icon class="mr-2">{{ mdiDownload }}</v-icon>
                                 Moonraker Log
                             </v-btn>
@@ -107,6 +98,7 @@
 import Component from 'vue-class-component'
 import { Mixins } from 'vue-property-decorator'
 import BaseMixin from '../mixins/base'
+import TrilabMixin from '../mixins/trilab'
 import ConnectionStatus from '../ui/ConnectionStatus.vue'
 import Panel from '@/components/ui/Panel.vue'
 import {
@@ -123,11 +115,24 @@ import {
 @Component({
     components: { Panel, ConnectionStatus },
 })
-export default class KlippyStatePanel extends Mixins(BaseMixin) {
+
+export default class KlippyStatePanel extends Mixins(BaseMixin, TrilabMixin) {
     mdiPrinter3d = mdiPrinter3d
     mdiRestart = mdiRestart
     mdiDownload = mdiDownload
     mdiPower = mdiPower
+
+    get fullHeatingObjects(){
+        /// trilab
+        var heaterNamesList = this.$store.state.printer?.heaters?.available_heaters ?? [];
+        /// method from trilabmixin getTrilabTemperatureObject(objectName)
+        for(var i = 0; i < heaterNamesList.length; i++){
+            heaterNamesList[i] = this.getTrilabTemperatureObject(heaterNamesList[i]);
+        }
+        return heaterNamesList;
+    }
+
+
 
     get klippy_message() {
         return this.$store.state.server.klippy_message ?? null
