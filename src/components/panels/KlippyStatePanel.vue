@@ -11,16 +11,13 @@
                 <!-- KLIPPER MESSAGE -->
                 <div v-if="klippy_message !== null">
                     <pre style="white-space: pre-wrap">{{ klippy_message.trim() }}</pre>
-                    <div class="text-center" v-if="klippy_message.contains('ADC out of range')">
+                    <v-divider v-if="klippy_message.indexOf('ADC out of range') != -1" class="mt-2 mb-2"></v-divider>
+                    <div v-if="klippy_message.indexOf('ADC out of range') != -1">
                         <!--- TRILAB ADDITION --->
-                        LAST KNOWN TEMPS:
-                        <v-row>
-                            <v-col v-for="heater in fullHeatingObjects" :key="heater.name" class="text-center">
-                                <v-chip small class="mx-1" :color="heater.color">
-                                    {{ heater.name }}: {{ heater.temperature }}°C
-                                </v-chip>
-                            </v-col>
-                        </v-row>
+                        <p class="font-weight-medium">
+                            <v-icon :color="messageType.color" class="pr-2">{{ mdiFireAlert }}</v-icon>
+                        Last known temps (Current/Min - Max):</p>
+                        <pre v-for="heater in fullHeatingObjects" :key="heater.name" style="white-space: pre-wrap">{{ heater.name ?? "UNKNOWN" }}: {{ heater.temperature ?? "?" }}°C / {{ heater?.settings?.min_temp ?? "?" }} to {{ heater?.settings?.max_temp ?? "?" }}°C</pre>
 
 
                     </div>
@@ -110,6 +107,7 @@ import {
     mdiConnection,
     mdiPrinter3d,
     mdiPower,
+    mdiFireAlert,
 } from '@mdi/js'
 
 @Component({
@@ -121,13 +119,29 @@ export default class KlippyStatePanel extends Mixins(BaseMixin, TrilabMixin) {
     mdiRestart = mdiRestart
     mdiDownload = mdiDownload
     mdiPower = mdiPower
+    mdiFireAlert = mdiFireAlert
 
-    get fullHeatingObjects(){
+
+    loadHeatersInfo() {
+        /// printer actions call init action, because if error state, printer is not initialised
+        this.$store.dispatch('printer/init', { force: true });
+
+
+    }
+
+    get fullHeatingObjects() {
+
+        console.log("FULL HEATING OBJECTS:");
         /// trilab
         var heaterNamesList = this.$store.state.printer?.heaters?.available_heaters ?? [];
         /// method from trilabmixin getTrilabTemperatureObject(objectName)
-        for(var i = 0; i < heaterNamesList.length; i++){
+        console.log(heaterNamesList);
+        for (var i = 0; i < heaterNamesList.length; i++) {
             heaterNamesList[i] = this.getTrilabTemperatureObject(heaterNamesList[i]);
+        }
+        console.log(heaterNamesList);
+        if (heaterNamesList.length == 0) {
+            this.loadHeatersInfo();
         }
         return heaterNamesList;
     }
