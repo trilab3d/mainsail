@@ -303,6 +303,12 @@
         "WARNING": "WARN",
         "title": "Update",
         "titleUSB": "Update from USB"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "Closed",
+          "Open": "Open"
+        }
       }
     },
     "TextfieldWithCopy": {

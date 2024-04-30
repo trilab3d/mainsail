@@ -304,6 +304,12 @@
         "WARNING": "WAARSCHUWEN",
         "title": "Update",
         "titleUSB": "Updaten vanaf USB"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "Gesloten",
+          "Open": "Open"
+        }
       }
     },
     "TextfieldWithCopy": {

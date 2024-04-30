@@ -303,6 +303,12 @@
         "WARNING": "ПРЕДУПРЕЖДАТЬ",
         "title": "Обновлять",
         "titleUSB": "Обновление с USB"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "Закрыто",
+          "Open": "Открыть"
+        }
       }
     },
     "TextfieldWithCopy": {

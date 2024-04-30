@@ -308,6 +308,12 @@
         "WARNING": "UYARMAK",
         "title": "Güncelleme",
         "titleUSB": "USB'den güncelleme"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "Kapalı",
+          "Open": "Açık"
+        }
       }
     },
     "TextfieldWithCopy": {

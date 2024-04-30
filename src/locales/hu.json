@@ -303,6 +303,12 @@
         "WARNING": "FIGYELMEZTET",
         "title": "Frissítés",
         "titleUSB": "Frissítés USB-ről"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "Zárva",
+          "Open": "Nyisd ki"
+        }
       }
     },
     "TextfieldWithCopy": {

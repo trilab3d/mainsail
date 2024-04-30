@@ -308,6 +308,12 @@
         "WARNING": "AVERTIR",
         "title": "Mise à jour",
         "titleUSB": "Mise à jour depuis USB"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "Fermé",
+          "Open": "Ouvrir"
+        }
       }
     },
     "TextfieldWithCopy": {

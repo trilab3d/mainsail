@@ -311,6 +311,12 @@
         "WARNING": "ПОПЕРЕДЖЕННЯ",
         "title": "оновлення",
         "titleUSB": "Оновлення з USB"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "ЗАЧИНЕНО",
+          "Open": "ВІДЧИНЕНО"
+        }
       }
     }
   },

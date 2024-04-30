@@ -303,6 +303,12 @@
         "WARNING": "AVISAR",
         "title": "Atualizar",
         "titleUSB": "Atualizar de USB"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "Fechado",
+          "Open": "Abrir"
+        }
       }
     },
     "TextfieldWithCopy": {

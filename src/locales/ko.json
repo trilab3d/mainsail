@@ -303,6 +303,12 @@
         "WARNING": "경고하다",
         "title": "업데이트",
         "titleUSB": "USB에서 업데이트"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "닫은",
+          "Open": "열려 있는"
+        }
       }
     },
     "TextfieldWithCopy": {

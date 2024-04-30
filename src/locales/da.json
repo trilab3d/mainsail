@@ -121,6 +121,12 @@
     "Trilab": {
       "TopBar": {
         "LightBtn": "Lys"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Closed": "Lukket",
+          "Open": "Åben"
+        }
       }
     }
   },
