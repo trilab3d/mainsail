@@ -640,12 +640,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
             setTimeout(() => {
                 /// check rpm if it is between 7500 and 8000, then it is ok, otherwise 0
                 const rpm = this.heatbreakfanPresent[0]?.rpm ?? 0;
-
-                console.log("rpm:");
-                console.log(rpm);
-                console.log("HEATBREAKFANPRESENT");
-                console.log(this.heatbreakfanPresent[0]);
-                if (rpm > 15750 && rpm < 16250) {
+                if (rpm > 15000 && rpm < 17000) {
                     this.testResults.heatbreakfan = 1;
                 } else {
                     this.testResults.heatbreakfan = 0;

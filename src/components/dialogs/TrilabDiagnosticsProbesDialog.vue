@@ -4,55 +4,93 @@
             <v-card-title class="headline">Bed probes check wizard</v-card-title>
             <v-card-text>
                 <p>Step {{ step + 1 }}</p>
-                <p>W/o weight: {{ valueWithoutWeight }}</p>
-                <p>First value with weight: {{ firstValueWithWeight }}</p>
                 <div v-if="step == 0">
-                    <p>Remove any possible weights from the bed and click "Check empty weight"</p>
-                    <v-btn block color="primary" @click="sendAnalogProbeCommand()">Bed is empty, continue</v-btn>
+                    <p>Remove any possible weights from the bed and click button below</p>
+                    <v-btn :loading="probeCheckingInProgress" block color="primary"
+                        @click="sendAnalogProbeCommand(); probeCheckingInProgress = true">Bed is empty, continue</v-btn>
+                    <p v-if="probeCheckingInProgress">Averaging the values, please wait...</p>
                 </div>
                 <div v-if="step == 1 && !waitingForChange">
-                    Check bed probe A functionality. Place heavy hammer on the left bottom corner of the bed and press
-                    "Check"
+                    <p>Place 500 grams on place that is highlighted in following image.
+                        Then press "Check" and wait for checking to complete </p>
+                    <img src="/img/bedExampleA.jpg" alt="A" style="width:100%; max-width:300px; margin:0 auto; display:block">
+
+                    <hr class="mt-2 mb-2">
+
+                    <v-btn v-if="!probeARegistered" block color="primary" :loading="probeCheckingInProgress"
+                        @click="sendAnalogProbeCommand(); probeCheckingInProgress = true">{{ checkText }}</v-btn>
+
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="probeARegistered">Registered</span><span color="red"
-                            v-if="!probeARegistered">NOT
-                            Registered ({{ lastVal }})</span></p>
+                            v-if="!probeARegistered">{{ lastVal }}</span></p>
 
                     <v-btn v-if="probeARegistered" block color="primary" @click="step = 2">Next</v-btn>
 
                 </div>
 
                 <div v-if="step == 2 && !waitingForChange">
-                    Check bed probe B functionality. Place heavy hammer on the right bottom corner of the bed and press
-                    "Check"
+                    <p>Place 500 grams on place that is highlighted in following image.
+                        Then press "Check" and wait for checking to complete </p>
+
+                    <img src="/img/bedExampleB.jpg" alt="B" style="width:100%; max-width:300px; display:block; margin:0 auto">
+
+
+                    <hr class="mt-2 mb-2">
+
+
+                    <v-btn v-if="!probeBRegistered" color="primary" :loading="probeCheckingInProgress" block
+                        @click="sendAnalogProbeCommand(); probeCheckingInProgress = true">{{ checkText }}</v-btn>
+
+
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="probeBRegistered">Registered</span><span color="red"
-                            v-if="!probeBRegistered">NOT
-                            Registered ({{ lastVal }})</span></p>
+                            v-if="!probeBRegistered">{{ lastVal }}</span></p>
 
                     <v-btn v-if="probeBRegistered" block color="primary" @click="step = 3">Next</v-btn>
 
                 </div>
 
                 <div v-if="step == 3 && !waitingForChange">
-                    Check bed probe C functionality. Place heavy hammer on the middle far corner of the bed and press
-                    "Check"
+                    <p>Place 500 grams on place that is highlighted in following image.
+                        Then press "Check" and wait for checking to complete </p>
+                    <img src="/img/bedExampleC.jpg" alt="B" style="width:100%; max-width:300px; display:block;margin:0 auto;">
+
+
+                    <hr class="mt-2 mb-2">
+
+                    <v-btn v-if="!probeCRegistered" block color="primary" :loading="probeCheckingInProgress"
+                        @click="sendAnalogProbeCommand(); probeCheckingInProgress = true">{{ checkText }}</v-btn>
+
+
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="endStopCRegistered">Registered</span><span color="red"
-                            v-if="!endStopCRegistered">NOT
-                            Registered ({{ lastVal }})</span></p>
+                            v-if="!endStopCRegistered">{{ lastVal }}</span></p>
 
                 </div>
+
+                <!-- last step, just the results, beautiful -->
+                <div v-if="step == 4">
+                    <p style="color:lime">All points were successfully registered. Please remove the object from the bed and close the wizard with the button below</p>
+
+                    <v-btn block class="mt-2 mb-2" color="green" @click="success()">Close</v-btn>
+                </div>
+
 
 
                 <div v-if="waitingForChange">
-                    <p style="text-align:center">Now remove the heavy object from the desk</p>
+                    <p style="text-align:center; color:lime">Now remove the heavy object from the desk {{ lastVal }}</p>
                 </div>
+
+                <div>
+                    <small v-if="valueWithoutWeightAvgd != 0">W/o weight: {{ valueWithoutWeightAvgd }}</small><br>
+                </div>
+
+
 
                 <div v-if="isCloseBtnVisible">
                     <v-divider class="mt-4 mb-4"></v-divider>
                     <v-btn color="primary" @click="closeReset()">{{ $t("Trilab.TrilabFilamentLoadWizard.CancelWizard")
-                    }}</v-btn>
+                        }}</v-btn>
                 </div>
             </v-card-text>
         </v-card>
@@ -60,13 +98,14 @@
 
     </v-dialog>
 </template>
-    
+
 <script lang="ts">
 import BaseMixin from '@/components/mixins/base'
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
 import TrilabMixin from '@/components/mixins/trilab';
 import { PrinterStateAdditionalSensor, PrinterStateTemperatureObject } from '@/store/printer/types'
 import { maxEventHistory } from '@/store/variables';
+import TheTimelapseRenderingSnackbar from '../TheTimelapseRenderingSnackbar.vue';
 
 @Component
 export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
@@ -81,13 +120,23 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
 
     public step_internal = 0;
 
-    public valueWithoutWeight = 0;
+    public valueWithoutWeightAvgd = 0; /// averaged value of the Array values after it is completed
 
-    public firstValueWithWeight = 0; //// on other probe locations shouldnt show more discrepancy than 70
+
+    public firstValueWithWeight = -1; //// on other probe locations shouldnt show more discrepancy than 70
 
     public probeARegistered = false;
     public probeBRegistered = false;
     public probeCRegistered = false;
+
+    public probeCheckingInProgress = false;
+
+    public firstWeightArrayForAverage: any = [];
+    public firstNoWeightArrayForAverage: any = [];
+
+    public Avals: any = [];
+    public Bvals: any = [];
+    public Cvals: any = [];
 
 
     public lastVal: any = null;
@@ -95,12 +144,19 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
     public lastValBeforeChange: any = null;
 
 
-
-    public maxCheckRetries = 10;
+    public minCheckRetries = 15;
 
     public lastStepForRetry = 0;
 
-    public checkRetries = 0;
+    public checkRetries = 0; /// logic changes now, checkRetries is now the number of how many more times the check has to proceed until it allows or fails next step
+
+    public weightObjectToleranceMin = 150;
+    public weightObjectToleranceMax = 300;
+
+    public waitingTimeoutRef: any = null;
+    public probeTimeoutRef: any = null;
+
+
 
 
     get endStopCRegistered(): boolean {
@@ -113,40 +169,22 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
         }
     }
 
-    sendAnalogProbeCommand() {
-        this.sendGcodeHidden('ANALOG_PROBE_DEBUG');
+
+
+    get checkText() {
+        if (this.probeCheckingInProgress) {
+            return "Checking... Please wait..."
+        } else {
+            return "Check"
+        }
     }
 
-    setupTimeout(forStep: number) {
-        setTimeout(() => {
-            if (this.isDialogVisible == false) {
-                return;
-            }
-            if(this.checkRetries > this.maxCheckRetries){
-                this.fail();
-                this.$toast.error("Probe is probably not working or you didnt place the object to the bed in time, more than" + this.maxCheckRetries + " retries");
-                return;
-            }
-            if (this.waitingForChange) {
-                this.setupTimeout(forStep);
-                this.sendAnalogProbeCommand();
-                console.log('waiting for change');
-                return;
-            }
-            if (this.step < 1) {
-                this.setupTimeout(forStep);
-                console.log('step je pod jedna');
-                return;
-            }
-            if (this.step == forStep) {
-                this.sendAnalogProbeCommand();
-                this.checkRetries += 1;
-                this.setupTimeout(forStep);
-            } else {
-                this.checkRetries = 0;
-                this.setupTimeout(this.step);
-            }
-        }, 1000);
+    sendAnalogProbeCommand() {
+        /// check if dialog is visible
+        if (!this.isDialogVisible) {
+            return;
+        }
+        this.sendGcodeHidden('ANALOG_PROBE_DEBUG');
     }
 
 
@@ -157,9 +195,8 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
             this.probeARegistered = false;
             this.probeBRegistered = false;
             this.probeCRegistered = false;
-            this.valueWithoutWeight = 0;
+            this.valueWithoutWeightAvgd = 0;
             this.firstValueWithWeight = 0;
-            this.setupTimeout(this.step);
             //this.sendGcodeHidden('ANALOG_PROBE_DEBUG');
         }
     }
@@ -191,7 +228,8 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
 
     waitToNoWeight() {
         this.waitingForChange = true;
-        this.lastValBeforeChange = this.valueWithoutWeight;
+        this.lastValBeforeChange = this.valueWithoutWeightAvgd;
+        this.sendAnalogProbeCommand();
     }
     get socketResponses() {
         return this.$store.state.trilab.socketResponses;
@@ -208,70 +246,137 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
         if (isNeededMessage != -1) {
             /// to je ono
             /// get the value after = and before ,
+
+            // increment checkRetries if step > 0
+            if (this.step > 0 && !this.waitingForChange) {
+                this.checkRetries++;
+            }
+
             const equalsIndex = lastResponse.indexOf("=");
             const commaIndex = lastResponse.indexOf(",");
             const parsedValue = lastResponse.substring(equalsIndex + 1, commaIndex);
             this.lastVal = parseInt(parsedValue);
 
-            if(Math.abs(parseInt(parsedValue) - this.lastValBeforeChange) < 80 && this.lastValBeforeChange != null){
-                this.waitingForChange = false;
+            if (Math.abs(parseInt(parsedValue) - this.lastValBeforeChange) < 50 && this.lastValBeforeChange != null) {
+                if (this.waitingForChange == true) {
+                    this.waitingForChange = false;
+                    return;
+                }
+                /// clear timeout
+                clearTimeout(this.waitingTimeoutRef);
                 console.log("waiting for change reset because of difference of" + this.lastValBeforeChange + " : vs now : " + parsedValue);
             }
 
-            if(this.waitingForChange){
+            if (this.waitingForChange) {
                 console.log("waiting for change");
                 console.log("last val before change: " + this.lastValBeforeChange);
                 console.log("val now: " + parsedValue);
                 console.log("needs to be less than 80 difference");
+                this.waitingTimeoutRef = setTimeout(() => {
+                    this.sendAnalogProbeCommand();
+                }, 1000);
                 return false;
             }
 
 
             if (this.step == 0) {
-                /// set the value to the valueWithoutWeight
-                this.valueWithoutWeight = parseInt(parsedValue);
-                this.step = 1;
-            } else if (this.step == 1) {
-                /// check if the value was changed significantly (more than 150)
-                if (Math.abs(this.valueWithoutWeight - parseInt(parsedValue)) < 150) {
-                    /// toast that the probe is not working, not registered any weight
-                    if (this.checkRetries > this.maxCheckRetries) {
-                        this.$toast.error("Probe is not working, registered no change");
+                this.probeCheckingInProgress = true;
+                this.firstNoWeightArrayForAverage.push(parseInt(parsedValue));
+                if (this.firstNoWeightArrayForAverage.length < 15) {
+                    this.probeTimeoutRef = setTimeout(() => {
+                        this.sendAnalogProbeCommand();
+                    }, 200);
+                } else {
+                    clearTimeout(this.probeTimeoutRef);
+                    /// averaging the values to one variable
+                    this.valueWithoutWeightAvgd = Math.round(this.firstNoWeightArrayForAverage.reduce((a: number, b: number) => a + b, 0) / this.firstNoWeightArrayForAverage.length);
+                    let min = Math.min(...this.firstNoWeightArrayForAverage);
+                    let max = Math.max(...this.firstNoWeightArrayForAverage);
+
+                    /// the difference between min and max must be less than 400
+                    if (max - min > 400) {
+                        this.$toast.error("Bed weight sensor value difference is more than 400 from min and max. The sensor is probably not working correctly.");
                         this.fail();
+                        return;
                     }
 
-                } else {
-                    this.firstValueWithWeight = parseInt(parsedValue);
-                    if (this.firstValueWithWeight < 2390 && this.checkRetries > this.maxCheckRetries) {
-                        this.$toast.error("Probe A is not working, sensor value under 2390. Try something heavier or sensor is not working");
+
+
+                    this.probeCheckingInProgress = false;
+                    this.step = 1;
+                }
+
+
+            } else if (this.step == 1) {
+                this.Avals.push(parseInt(parsedValue));
+                if (this.checkRetries >= this.minCheckRetries) {
+                    /// make avg
+                    clearTimeout(this.probeTimeoutRef);
+                    let avgA = this.Avals.reduce((a: number, b: number) => a + b, 0) / this.Avals.length;
+                    /// the avgA has to be min noWeightAvgd + 150 and less than +250 (from the variables)
+                    if (avgA < this.valueWithoutWeightAvgd + this.weightObjectToleranceMin || avgA > this.valueWithoutWeightAvgd + this.weightObjectToleranceMax) {
+                        console.log("avgA: " + avgA + " valueWithoutWeightAvgd: " + this.valueWithoutWeightAvgd);
+                        this.$toast.error("Probe A is not working, the value is not in the expected range. Please check the sensor and try again." + "Current value: " + parsedValue + " First value with weight: " + this.firstValueWithWeight);
                         this.fail();
+                        return;
                     }
+
+                    this.probeARegistered = true;
+                    this.checkRetries = 0;
+                    this.probeCheckingInProgress = false;
                     this.waitToNoWeight();
                     this.step = 2;
+                } else {
+                    /// call again
+                    this.probeTimeoutRef = setTimeout(() => {
+                        this.sendAnalogProbeCommand();
+                    }, 200);
                 }
             } else if (this.step == 2) {
-                /// check if the value was changed more than 70 from the first reading, if yes, then fail, if no, then step 3
-                if (Math.abs(this.firstValueWithWeight - parseInt(parsedValue)) > 70) {
-                    /// toast
-                    if (this.checkRetries > this.maxCheckRetries) {
-                        this.$toast.error("Probe B is not working, more than 70 difference from first weight reading. Be sure to use same weight object. Please check the sensor and try again." + "Current value: " + parsedValue + " First value with weight: " + this.firstValueWithWeight);
+                this.Bvals.push(parseInt(parsedValue));
+                if (this.checkRetries >= this.minCheckRetries) {
+                    /// make avg
+                    let avgB = this.Bvals.reduce((a: number, b: number) => a + b, 0) / this.Bvals.length;
+                    /// the avgA has to be min noWeightAvgd + 150 and less than +250 (from the variables)
+                    if (avgB < this.valueWithoutWeightAvgd + this.weightObjectToleranceMin || avgB > this.valueWithoutWeightAvgd + this.weightObjectToleranceMax) {
+                        this.$toast.error("Probe B is not working, the value is not in the expected range. Please check the sensor and try again." + "Current value: " + parsedValue + " First value with weight: " + this.firstValueWithWeight);
                         this.fail();
+                        return;
                     }
-                } else {
+                    clearTimeout(this.probeTimeoutRef);
                     this.waitToNoWeight();
                     this.step = 3;
+                    this.probeBRegistered = true;
+                    this.probeCheckingInProgress = false;
+                    this.checkRetries = 0;
+                    this.probeBRegistered = true;
+                } else {
+                    /// call again
+                    this.probeTimeoutRef = setTimeout(() => {
+                        this.sendAnalogProbeCommand();
+                    }, 200);
                 }
 
             } else if (this.step == 3) {
-                /// check if the value was changed significantly (more than 100)
-                if (Math.abs(this.firstValueWithWeight - parseInt(parsedValue)) > 70) {
-                    /// toast
-                    if (this.checkRetries > this.maxCheckRetries) {
-                        this.$toast.error("Probe C is not working, more than 70 difference in readings. Please check the sensor and try again." + "Current value: " + parsedValue + " First value with weight: " + this.firstValueWithWeight);
+                this.Cvals.push(parseInt(parsedValue));
+                if (this.checkRetries >= this.minCheckRetries) {
+                    clearTimeout(this.probeTimeoutRef);
+                    let avgC = this.Cvals.reduce((a: number, b: number) => a + b, 0) / this.Cvals.length;
+                    /// the avgC has to be min noWeightAvgd + 150 and less than +250 (from the variables)
+                    if (avgC < this.valueWithoutWeightAvgd + this.weightObjectToleranceMin || avgC > this.valueWithoutWeightAvgd + this.weightObjectToleranceMax) {
+                        this.$toast.error("Probe C is not working, the value is not in the expected range. Please check the sensor and try again." + "Current value: " + parsedValue + " First value with weight: " + this.firstValueWithWeight);
                         this.fail();
+                        return;
                     }
+
+                    this.probeCheckingInProgress = false;
+                    this.step = 4;
                 } else {
-                    this.success();
+                    /// call again
+                    this.probeTimeoutRef = setTimeout(() => {
+                        this.sendAnalogProbeCommand();
+                    }, 200);
+
                 }
             }
 
@@ -291,8 +396,14 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
     closeReset() {
         console.log("close resetting");
         this.step = 0;
-        this.firstValueWithWeight = 0;
-        this.valueWithoutWeight = 0;
+        this.firstValueWithWeight = -1;
+        this.valueWithoutWeightAvgd = -1;
+        this.firstWeightArrayForAverage = [];
+        this.probeCheckingInProgress = false;
+        this.firstNoWeightArrayForAverage = [];
+        this.Avals = [];
+        this.Bvals = [];
+        this.Cvals = [];
         this.probeARegistered = false;
         this.probeBRegistered = false;
         this.probeCRegistered = false;
@@ -303,6 +414,9 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
     }
 
     get isCloseBtnVisible() {
+        if(this.step == 4){
+            return false;
+        }
         return true;
 
         //return this.closeBtnVisible || this.step == 0;
@@ -320,11 +434,10 @@ export default class TrilabDiagnosticsProbesDialog extends Mixins(TrilabMixin) {
 
 }
 </script>
-    
+
 <style scoped>
 /* Adjust the styles as per your design */
 .v-dialog--active {
     transition: opacity 0.3s ease-in-out;
 }
 </style>
-  
