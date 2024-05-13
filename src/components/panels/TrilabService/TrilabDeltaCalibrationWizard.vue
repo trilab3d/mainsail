@@ -7,10 +7,10 @@
 		<v-card-text>
 			<v-row class="justify-center">
 				<v-col cols="6" sm="12" md="6">
-					<!--<v-container v-if="step == 0">
+					<v-container v-if="step == 0">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step {{ step }}. BASIC calibration</h3>
+								<h3>Step {{ step + 1 }}. BASIC calibration</h3>
 							</v-card-title>
 							<v-card-text>
 								<p>First of all, it is <strong>necessary</strong> to start the basic calibration. Start it
@@ -20,11 +20,12 @@
 									@click="sendBasicCalibrationCommand()">START CALIBRATION</v-btn>
 							</v-card-text>
 						</v-card>
-					</v-container> -->
+					</v-container>
+
 					<v-container v-if="step == 1">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step {{ step }}. ADVANCED calibration</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 								Basic delta calibration generally calculates delta parameters well to ensure the nozzle is
@@ -76,7 +77,7 @@
 					<v-container v-if="step == 2">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Start {{ step }}. ADVANCED calibration</h3>
+								<h3>Start {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 
@@ -107,7 +108,7 @@
 					<v-container v-if="step == 3">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step {{ step }}. ADVANCED calibration</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 								<p>Then proceed counterclockwise and measure the distances between the center
@@ -152,7 +153,7 @@
 					<v-container v-if="step == 4">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step {{ step }}. ADVANCED calibration</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 
@@ -189,7 +190,7 @@
 					<v-container v-if="step == 5">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step {{ step }}. ADVANCED calibration</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 
@@ -229,7 +230,7 @@
 					<v-container v-if="step == 6">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step {{ step }}. ADVANCED calibration</h3>
+								<h3>Step {{ step + 1 }}. ADVANCED calibration</h3>
 							</v-card-title>
 							<v-card-text>
 
@@ -275,7 +276,7 @@
 					<v-container v-if="step == 7">
 						<v-card outlined>
 							<v-card-title>
-								<h3>Step {{ step }}. WARNING</h3>
+								<h3>Step {{ step + 1 }}. WARNING</h3>
 							</v-card-title>
 							<v-card-text>
 
@@ -359,7 +360,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 	public advancedCalibrationInProgress = false;
 	public advancedCalibrationStartTime = Date.now();
-	public calibrationstep: number = 1;
+	public calibrationstep: number = 0;
 	public last_step: number = 9;
 	public nextBtnEnabled = true;
 	public sendCalibrateCommandEnabled = true;
@@ -446,8 +447,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		{
 			index: 1,
 			next_enabled: this.checkPrintingDone,
-			prev_enabled: false,
-			prev_visible: false,
+			prev_enabled: true,
 			skip_visible: true,
 		},
 		{
@@ -509,16 +509,13 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		var step = await this.latestStepFromDB();
 		console.log(step);
 		if (step.status != 200) {
-			this.step = 1;
+			this.step = 0;
 			console.log("Setuju step na 0");
 		} else {
 			step = await step.json();
 			console.log("toto je step: ");
 			console.log(step);
 			this.step = parseInt(step.result.value);
-		}
-		if(this.step < 1){
-			this.step = 1;
 		}
 
 
@@ -1034,7 +1031,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 
 	resetWizard() {
-		this.step = 1;
+		this.step = 0;
 		this.basicDeltaCalibrationDone = false;
 		this.testPrintDone = false;
 		this.sendCalibrateCommandEnabled = false;
