@@ -4,7 +4,7 @@
     <v-card-text class="pa-0">
         <v-container class="py-0">
             <v-row class="text-center py-5" align="center">
-                <v-col class="col-3 pa-0">
+                <v-col class="col-4 pa-0">
                     <template v-if="live_velocity !== null">
                         <v-tooltip top>
                             <template #activator="{ on, attrs }">
@@ -23,7 +23,7 @@
                         <span class="text-no-wrap">{{ requested_speed }} mm/s</span>
                     </template>
                 </v-col>
-                <v-col class="col-3 pa-0">
+                <v-col class="col-4 pa-0">
                     <v-tooltip top>
                         <template #activator="{ on, attrs }">
                             <div v-bind="attrs" v-on="on">
@@ -37,7 +37,7 @@
                         <span>{{ $t('Panels.StatusPanel.Max') }}: {{ outputMaxFlow }}</span>
                     </v-tooltip>
                 </v-col>
-                <v-col class="col-3 pa-0">
+                <!--<v-col class="col-3 pa-0">
                     <v-tooltip top>
                         <template #activator="{ on, attrs }">
                             <div v-bind="attrs" v-on="on">
@@ -54,8 +54,8 @@
                             {{ ((100 / current_file.filament_total) * filament_used).toFixed(0) }} %
                         </span>
                     </v-tooltip>
-                </v-col>
-                <v-col class="col-3 pa-0 text-center">
+                </v-col>-->
+                <v-col class="col-4 pa-0 text-center">
                     <v-tooltip top>
                         <template #activator="{ on, attrs }">
                             <div v-bind="attrs" class="text-center" v-on="on">
@@ -74,7 +74,7 @@
         <v-divider class="my-0"></v-divider>
         <v-container class="py-0">
             <v-row class="text-center pt-5 pb-2 mb-0" align="center">
-                <v-col class="col-3 pa-0">
+                <!--<v-col class="col-3 pa-0">
                     <v-tooltip top>
                         <template #activator="{ on, attrs }">
                             <div v-bind="attrs" class="text-center" v-on="on">
@@ -83,6 +83,7 @@
                                 <span class="text-no-wrap">
                                     {{ estimated_time_avg ? formatDuration(estimated_time_avg) : '--' }}
                                 </span>
+                                
                             </div>
                         </template>
                         <div class="text-right">
@@ -93,35 +94,42 @@
                             {{ estimated_time_filament ? formatDuration(estimated_time_filament) : '--' }}
                         </div>
                     </v-tooltip>
+                </v-col>-->
+                <v-col class="col-4 pa-0">
+                    <v-tooltip top>
+                        <template #activator="{ on, attrs }">
+                            <div v-bind="attrs" class="text-center" v-on="on">
+                                <strong>{{ $t('App.Trilab.Panels.StatusPanel.Print') }}</strong>
+                                <br />
+                                <span class="text-no-wrap">
+                                    {{ print_time ? formatDuration(print_time) : '--' }}
+                                </span>
+                            </div>
+                        </template>
+                        <div class="text-right">
+                            <!--{{ $t('Panels.StatusPanel.Total') }} -->
+                            {{ $t('App.Trilab.Panels.StatusPanel.JobTime') }}
+                            <br />
+                            {{ print_time_total ? formatDuration(print_time_total) : '--' }}
+
+                            <!-- {{ $t('App.Trilab.Panels.StatusPanel.Print') }}:
+                            {{ print_time ? formatDuration(print_time) : '--' }}
+                            <br />
+                            {{ $t('Panels.StatusPanel.Difference') }}:
+                            {{ print_time && print_time_total ? formatDuration(print_time_total - print_time) : '--' }}
+                            -->
+                        </div>
+                    </v-tooltip>
                 </v-col>
-                <v-col class="col-3 pa-0">
-                    <strong>{{ $t('Panels.StatusPanel.Slicer') }}</strong>
+
+                <v-col class="col-4 pa-0">
+                    <strong>{{ $t('App.Trilab.Panels.StatusPanel.Remaining') }}</strong>
                     <br />
                     <span class="text-no-wrap">
                         {{ estimated_time_slicer ? formatDuration(estimated_time_slicer) : '--' }}
                     </span>
                 </v-col>
-                <v-col class="col-3 pa-0">
-                    <v-tooltip top>
-                        <template #activator="{ on, attrs }">
-                            <div v-bind="attrs" class="text-center" v-on="on">
-                                <strong>{{ $t('Panels.StatusPanel.Total') }}</strong>
-                                <br />
-                                <span class="text-no-wrap">
-                                    {{ print_time_total ? formatDuration(print_time_total) : '--' }}
-                                </span>
-                            </div>
-                        </template>
-                        <div class="text-right">
-                            {{ $t('Panels.StatusPanel.Print') }}:
-                            {{ print_time ? formatDuration(print_time) : '--' }}
-                            <br />
-                            {{ $t('Panels.StatusPanel.Difference') }}:
-                            {{ print_time && print_time_total ? formatDuration(print_time_total - print_time) : '--' }}
-                        </div>
-                    </v-tooltip>
-                </v-col>
-                <v-col class="col-3 pa-0">
+                <v-col class="col-4 pa-0">
                     <strong>{{ $t('Panels.StatusPanel.ETA') }}</strong>
                     <br />
                     <span class="text-no-wrap">{{ eta }}</span>
@@ -238,7 +246,7 @@ export default class StatusPanelPrintstatusPrinting extends Mixins(BaseMixin) {
             : this.filament_used.toFixed(2) + ' mm'
     }
 
-    formatDuration(seconds: number) {
+    formatDuration(seconds: number, showSeconds: boolean = true) {
         let prefix = seconds < 0 ? '-' : ''
         let absSeconds = Math.abs(seconds)
 
@@ -246,6 +254,9 @@ export default class StatusPanelPrintstatusPrinting extends Mixins(BaseMixin) {
         absSeconds %= 3600
         let m = ('0' + Math.floor(absSeconds / 60)).slice(-2)
         let s = ('0' + (absSeconds % 60).toFixed(0)).slice(-2)
+        if(!showSeconds){
+            return prefix + h + ':' + m
+        }
 
         return prefix + h + ':' + m + ':' + s
     }

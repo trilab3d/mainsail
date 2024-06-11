@@ -190,6 +190,11 @@
             "shortDescription": "PrusaSlicer is een open source, functierijke, regelmatig bijgewerkte tool die alles bevat wat je nodig hebt om de perfecte printbestanden te exporteren",
             "title": "PrusaSlicer"
           }
+        },
+        "StatusPanel": {
+          "Print": "Afdrukken",
+          "JobTime": "Taak tijd",
+          "Remaining": "Overig"
         }
       },
       "Settings": {
@@ -889,7 +894,7 @@
       "ReprintJob": "Herprint job",
       "Requested": "Aangevraagd",
       "ResumePrint": "Hervat print",
-      "Slicer": "Slicer",
+      "Slicer": "Overig",
       "Speed": "Snelheid",
       "Status": "Status",
       "Total": "Totaal",

@@ -66,6 +66,11 @@
           "ProfileActive": "Active",
           "ProfileInactive": "Inactive",
           "Interfaces": "Available interfaces"
+        },
+        "StatusPanel": {
+          "Print": "Printing",
+          "JobTime": "Job Time",
+          "Remaining": "Remaining"
         }
       },
       "Settings": {
@@ -927,7 +932,7 @@
       "ReprintJob": "Reprint Job",
       "Requested": "Requested",
       "ResumePrint": "Resume Print",
-      "Slicer": "Slicer",
+      "Slicer": "Remaining",
       "Speed": "Speed",
       "Status": "Status",
       "Total": "Total",

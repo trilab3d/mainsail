@@ -194,6 +194,11 @@
             "shortDescription": "PrusaSlicer es una herramienta de código abierto, rica en funciones y que se actualiza con frecuencia y que contiene todo lo que necesita para exportar los archivos de impresión perfectos.",
             "title": "PrusaSlicer"
           }
+        },
+        "StatusPanel": {
+          "Print": "Impresión",
+          "JobTime": "Tiempo de trabajo",
+          "Remaining": "Restante"
         }
       },
       "Settings": {
@@ -888,7 +893,7 @@
       "ReprintJob": "Reimprimir trabajo",
       "Requested": "Solicitada",
       "ResumePrint": "Reanudar impresión",
-      "Slicer": "Laminador",
+      "Slicer": "Restante",
       "Speed": "Velocidad",
       "Status": "Estado",
       "Total": "Total",

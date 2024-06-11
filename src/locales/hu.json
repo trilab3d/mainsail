@@ -189,6 +189,11 @@
             "shortDescription": "A PrusaSlicer egy nyílt forráskódú, funkciókban gazdag, gyakran frissített eszköz, amely mindent tartalmaz, ami a tökéletes nyomtatási fájlok exportálásához szükséges.",
             "title": "PrusaSlicer"
           }
+        },
+        "StatusPanel": {
+          "Print": "Nyomtatás",
+          "JobTime": "Munkaidő",
+          "Remaining": "Többi"
         }
       },
       "Settings": {
@@ -859,7 +864,7 @@
       "ReprintJob": "Munka újranyomtatása",
       "Requested": "Kért",
       "ResumePrint": "Nyomtatás folytatása",
-      "Slicer": "Slicer",
+      "Slicer": "Többi",
       "Speed": "Sebesség",
       "Status": "Státusz",
       "Total": "Összesen",

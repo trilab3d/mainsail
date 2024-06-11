@@ -189,6 +189,11 @@
             "shortDescription": "PrusaSlicer는 완벽한 인쇄 파일을 내보내는 데 필요한 모든 것을 포함하고 있으며 기능이 풍부하고 자주 업데이트되는 오픈 소스 도구입니다.",
             "title": "프루사슬라이서"
           }
+        },
+        "StatusPanel": {
+          "Print": "인쇄",
+          "JobTime": "작업 시간",
+          "Remaining": "남은"
         }
       },
       "Settings": {
@@ -888,7 +893,7 @@
       "ReprintJob": "다시 출력",
       "Requested": "요청됨",
       "ResumePrint": "작업 재개",
-      "Slicer": "슬라이서",
+      "Slicer": "남은",
       "Speed": "출력 속도",
       "Status": "출력 상태",
       "Total": "전체",

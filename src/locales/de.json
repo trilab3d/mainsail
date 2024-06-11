@@ -194,6 +194,11 @@
             "shortDescription": "PrusaSlicer ist ein quelloffenes, funktionsreiches und häufig aktualisiertes Tool, das alles enthält, was Sie zum Exportieren der perfekten Druckdateien benötigen",
             "title": "PrusaSlicer"
           }
+        },
+        "StatusPanel": {
+          "Print": "Drucken",
+          "JobTime": "Arbeitszeit",
+          "Remaining": "Übrig"
         }
       },
       "Settings": {
@@ -914,7 +919,7 @@
       "ReprintJob": "Auftrag erneut drucken",
       "Requested": "Angefordert",
       "ResumePrint": "Druck fortführen",
-      "Slicer": "Slicer",
+      "Slicer": "Übrig",
       "Speed": "Geschwindigkeit",
       "Status": "Status",
       "Total": "Gesamt",

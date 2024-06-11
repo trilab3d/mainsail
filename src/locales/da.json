@@ -127,6 +127,13 @@
           "Closed": "Lukket",
           "Open": "Åben"
         }
+      },
+      "Panels": {
+        "StatusPanel": {
+          "Print": "Trykning",
+          "JobTime": "Job tid",
+          "Remaining": "Tilbage"
+        }
       }
     }
   },
@@ -713,7 +720,7 @@
       "ReprintJob": "Print job igen",
       "Requested": "Anmodet",
       "ResumePrint": "Genoptag print",
-      "Slicer": "Slicer",
+      "Slicer": "Tilbage",
       "Speed": "Hastighed",
       "Status": "Status",
       "Total": "Total",

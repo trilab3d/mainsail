@@ -17,8 +17,13 @@ import { RootState } from '@/store/types'
 
 export const getters: GetterTree<PrinterState, RootState> = {
     getPrintPercent: (state, getters, rootState) => {
-        const type = rootState?.gui?.general?.calcPrintProgress ?? 'file-relative'
-        switch (type) {
+        /// trilab change, only allow percent by slicer
+        
+        const type = rootState?.gui?.general?.calcPrintProgress ?? 'slicer'
+
+        return getters['getPrintPercentBySlicer']
+
+        /*switch (type) {
             case 'file-relative':
                 return getters['getPrintPercentByFilepositionRelative']
             case 'file-absolute':
@@ -30,7 +35,7 @@ export const getters: GetterTree<PrinterState, RootState> = {
 
             default:
                 return getters['getPrintPercentByFilepositionRelative']
-        }
+        }*/
     },
 
     getPrintPercentByFilepositionRelative: (state) => {

@@ -194,6 +194,11 @@
             "shortDescription": "PrusaSlicer to bogate w funkcje i często aktualizowane narzędzie o otwartym kodzie źródłowym, które zawiera wszystko, czego potrzebujesz do eksportowania doskonałych plików do druku",
             "title": "PrusaSlicer"
           }
+        },
+        "StatusPanel": {
+          "Print": "Druk",
+          "JobTime": "Czas pracy",
+          "Remaining": "Pozostały"
         }
       },
       "Settings": {
@@ -914,7 +919,7 @@
       "ReprintJob": "Ponownie wydrukuj",
       "Requested": "Wymagane",
       "ResumePrint": "Wznowienie wydruku",
-      "Slicer": "Slicer",
+      "Slicer": "Pozostały",
       "Speed": "Prędkość",
       "Status": "Status",
       "Total": "Całkowicie",

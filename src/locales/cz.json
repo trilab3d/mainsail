@@ -189,6 +189,11 @@
             "shortDescription": "PrusaSlicer is an open-source, feature-rich, frequently updated tool that contains everything you need to export the perfect print files",
             "title": "PrusaSlicer"
           }
+        },
+        "StatusPanel": {
+          "Print": "Printing",
+          "JobTime": "Čas úlohy",
+          "Remaining": "Remaining"
         }
       },
       "Settings": {
@@ -888,7 +893,7 @@
       "ReprintJob": "Znovu vytisknout úlohu",
       "Requested": "Požadováno",
       "ResumePrint": "Pokračovat v tisku",
-      "Slicer": "Slicer",
+      "Slicer": "Remaining",
       "Speed": "Rychlost",
       "Status": "Stav",
       "Total": "Celkem",

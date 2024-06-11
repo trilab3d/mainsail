@@ -189,6 +189,11 @@
             "shortDescription": "PrusaSlicer は、オープンソースで機能が豊富で、頻繁に更新されるツールで、完璧な印刷ファイルをエクスポートするために必要なものがすべて含まれています",
             "title": "プルサスライサー"
           }
+        },
+        "StatusPanel": {
+          "Print": "印刷",
+          "JobTime": "作業時間",
+          "Remaining": "残り"
         }
       },
       "Settings": {
@@ -888,7 +893,7 @@
       "ReprintJob": "再印刷ジョブ",
       "Requested": "要求",
       "ResumePrint": "印刷再開",
-      "Slicer": "スライサー",
+      "Slicer": "残り",
       "Speed": "速度",
       "Status": "状態",
       "Total": "総計",

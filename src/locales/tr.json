@@ -194,6 +194,11 @@
             "shortDescription": "PrusaSlicer, mükemmel yazdırma dosyalarını dışa aktarmak için ihtiyacınız olan her şeyi içeren, açık kaynaklı, zengin özelliklere sahip, sık sık güncellenen bir araçtır",
             "title": "Prusa Dilimleyici"
           }
+        },
+        "StatusPanel": {
+          "Print": "Baskı",
+          "JobTime": "İş Süresi",
+          "Remaining": "Geriye kalan"
         }
       },
       "Settings": {
@@ -888,7 +893,7 @@
       "ReprintJob": "İşi Tekrarla",
       "Requested": "Talep Edildi",
       "ResumePrint": "Baskıya Devam Et",
-      "Slicer": "Dilleyici",
+      "Slicer": "Geriye kalan",
       "Speed": "Hız",
       "Status": "Durum",
       "Total": "toplam",
