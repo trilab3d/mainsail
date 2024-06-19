@@ -21,7 +21,7 @@
 
                 <div v-if="isCloseBtnVisible">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn color="primary" @click="closeReset()">{{ $t("App.Trilab.Generic.CancelWizard")
+                    <v-btn color="primary" @click="fail()">{{ $t("App.Trilab.Generic.CancelWizard")
                         }}</v-btn>
                 </div>
             </v-card-text>

@@ -90,15 +90,15 @@ export default {
 			var platform = this.getOS();
 			var href = "";
 			if (platform == "mac64" || platform == "macos" || platform == "ios") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.2/PrusaSlicer-2.7.2+MacOS-universal-202402291330.dmg";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0-alpha5/PrusaSlicer-2.8.0-alpha5+MacOS-universal-202406142211.dmg";
 			} else if (platform == "win64") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.2/PrusaSlicer-2.7.2+win64-202402291307.zip";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0-alpha5/PrusaSlicer-2.8.0-alpha5+win64-202406142204.zip";
 			} else if (platform == "archlinux") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.2/PrusaSlicer-2.7.2+win64-202402291307.zip";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0-alpha5/PrusaSlicer-2.8.0-alpha5+linux-x64-GTK3-202406142204.AppImage";
 			} else if (platform == "armv7l") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.2/PrusaSlicer-2.7.2+linux-armv7l-GTK2-202402291307.AppImage";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0-alpha5/PrusaSlicer-2.8.0-alpha5+linux-x64-GTK3-202406142204.AppImage";
 			} else if (platform == "linux") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.7.2/PrusaSlicer-2.7.2+win64-202402291307.zip";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0-alpha5/PrusaSlicer-2.8.0-alpha5+linux-x64-GTK3-202406142204.AppImage";
 			} else {
 				href = "https://github.com/prusa3d/PrusaSlicer/releases";
 			}
@@ -146,7 +146,7 @@ export default {
 		},*/
 		downloadSP() {
 			if (this.getHrefLink == "#") {
-				this.$toast.warning(this.$t('Panels.TrilabSlicerPanel.notAvailableText').toString());
+				this.$toast.warning(this.$t('App.Trilab.Panels.TrilabSlicerPanel.notAvailableText').toString());
 				return;
 			}
 
