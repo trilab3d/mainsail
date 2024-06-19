@@ -3,6 +3,19 @@ import Component from 'vue-class-component'
 
 @Component
 export default class TrilabMixin extends Vue {
+
+    // trilab feature, variables like filament retracted, door sensor , last filament, loaded filament, last_printhead etc...
+    get savedVariables(): any | null{
+        return this.$store.state.printer?.save_variables?.variables ?? null;
+    }
+    getSavedVariable(variableName: string): any | null{
+        /// check if the variable exists in it and return it else return false
+        const variables = this.savedVariables;
+        if(variables == null) return false;
+        const isInside = variableName in variables;
+        if(isInside) return variables[variableName];
+    }
+    ////
     get AdvancedFeatures(): boolean {
         if (
             this.$store.state.trilab.advancedView == true ||
