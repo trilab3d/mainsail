@@ -190,7 +190,7 @@
           "prusa": {
             "imgsrc": "/img/PrusaSlicer.png",
             "longDescription": "Użyj powyższego przycisku, aby pobrać kompletny pakiet PrusaSlicer, w tym profile krajalnic. \nPo pobraniu rozpakuj archiwum do lokalizacji docelowej. \nNa platformie Windows uruchom program „prusa-slicer.exe”, na platformie MacOS uruchom „PrusaSlicer.app”. \nPo uruchomieniu programu pojawi się kreator konfiguracji. \nPrzejdź do zakładki Prusa Pro. \nZ listy wariantów drukarek wybierz Prusa Pro HT90. \nNastępnie naciśnij przycisk Zakończ znajdujący się w prawym dolnym rogu okna. \nDzięki temu krajalnica jest gotowa do użycia!",
-            "longTitle": "PrusaSlicer 2.7.1",
+            "longTitle": "PrusaSlicer 2.8.0",
             "shortDescription": "PrusaSlicer to bogate w funkcje i często aktualizowane narzędzie o otwartym kodzie źródłowym, które zawiera wszystko, czego potrzebujesz do eksportowania doskonałych plików do druku",
             "title": "PrusaSlicer"
           }

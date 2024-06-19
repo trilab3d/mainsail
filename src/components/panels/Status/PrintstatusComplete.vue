@@ -4,26 +4,26 @@
     <v-card-text class="pa-0">
         <v-container class="py-0">
             <v-row class="text-center pt-5 pb-2 mb-0" align="center">
-                <v-col class="col-3 pa-0">
+                <v-col :class="col4Or3">
                     <strong>{{ $t('Panels.StatusPanel.Filament') }}</strong>
                     <br />
                     <span class="text-no-wrap">
                         {{ outputFilamentUsed }}
                     </span>
                 </v-col>
-                <v-col class="col-3 pa-0">
+                <v-col v-if="TrilabHiddenView" :class="col4Or3">
                     <strong>{{ $t('Panels.StatusPanel.Slicer') }}</strong>
                     <br />
                     <span class="text-no-wrap">
                         {{ 'estimated_time' in current_file ? formatTime(current_file.estimated_time) : '--' }}
                     </span>
                 </v-col>
-                <v-col class="col-3 pa-0">
+                <v-col :class="col4Or3">
                     <strong>{{ $t('Panels.StatusPanel.Print') }}</strong>
                     <br />
                     <span class="text-no-wrap">{{ print_time ? formatTime(print_time) : '--' }}</span>
                 </v-col>
-                <v-col class="col-3 pa-0">
+                <v-col :class="col4Or3">
                     <strong>{{ $t('Panels.StatusPanel.Total') }}</strong>
                     <br />
                     <span class="text-no-wrap">
@@ -39,11 +39,12 @@
 import Component from 'vue-class-component'
 import { Mixins } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
+import TrilabMixin from '@/components/mixins/trilab'
 
 @Component({
     components: {},
 })
-export default class StatusPanelPrintstatusComplete extends Mixins(BaseMixin) {
+export default class StatusPanelPrintstatusComplete extends Mixins(BaseMixin, TrilabMixin) {
     get current_file() {
         return this.$store.state.printer.current_file ?? {}
     }
@@ -73,6 +74,10 @@ export default class StatusPanelPrintstatusComplete extends Mixins(BaseMixin) {
         let s = ('0' + (seconds % 60).toFixed(0)).slice(-2)
 
         return h + ':' + m + ':' + s
+    }
+
+    get col4Or3() {
+        return this.TrilabHiddenView ? 'col-3 pa-0' : 'col-4 pa-0'
     }
 }
 </script>
