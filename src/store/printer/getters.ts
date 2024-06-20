@@ -684,6 +684,14 @@ export const getters: GetterTree<PrinterState, RootState> = {
         return 0
     },
 
+    getEstimatedTimeSlicerTLB: (state) => {
+        if('display_status' in state){
+            /// in seconds
+            return state.display_status?.remaining ?? 0;
+        }
+        return 0;
+    },
+
     getEstimatedTimeSlicer: (state) => {
         if (
             'print_stats' in state &&
