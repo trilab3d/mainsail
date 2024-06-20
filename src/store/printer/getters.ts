@@ -723,10 +723,14 @@ export const getters: GetterTree<PrinterState, RootState> = {
     getEstimatedTimeETA: (state, getters, rootState) => {
         let time = 0
         let timeCount = 0
-        const boolFileCalc = rootState.gui?.general?.calcEtaTime?.includes('file') ?? false
-        const boolFilamentCalc = rootState.gui?.general?.calcEtaTime?.includes('filament') ?? false
-        const boolSlicerCalc = rootState.gui?.general?.calcEtaTime?.includes('slicer') ?? false
-
+        
+        //TLB edit
+        //const boolFileCalc = rootState.gui?.general?.calcEtaTime?.includes('file') ?? false
+        //const boolFilamentCalc = rootState.gui?.general?.calcEtaTime?.includes('filament') ?? false
+        //const boolSlicerCalc = rootState.gui?.general?.calcEtaTime?.includes('slicer') ?? true
+        const boolSlicerCalc = true
+        const boolFileCalc = false
+        const boolFilamentCalc = false
         if (boolFileCalc && getters.getEstimatedTimeFile > 0) {
             time += parseInt(getters.getEstimatedTimeFile)
             timeCount++
