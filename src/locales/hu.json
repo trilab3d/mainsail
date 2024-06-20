@@ -203,6 +203,11 @@
           "TrilabNetwork": "Hálózat",
           "TrilabPrinter": "Nyomtató",
           "TrilabSlicers": "Szeletelők"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "A nyomtató neve kötelező",
+          "PrinterNameMaxLength": "A név megengedett maximális hossza 63 karakter",
+          "PrinterNameInvalid": "A nyomtató neve érvénytelen. \nCsak alapkarakterek, számok és kötőjelek megengedettek."
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -314,6 +319,11 @@
           "Closed": "Zárva",
           "Open": "Nyisd ki"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "A gazdagépnév megváltozott, megpróbálunk újra csatlakozni ugyanarra a címre",
+        "hostnameChangedRedirecting": "A gazdagépnév megváltozott, átirányítás új gazdagépnévre.",
+        "SomethingHappened": "Valami történt, jelenleg nem lehet megváltoztatni a gazdagép nevét a háttérben"
       }
     },
     "TextfieldWithCopy": {

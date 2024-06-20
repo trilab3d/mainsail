@@ -208,6 +208,11 @@
           "TrilabNetwork": "Rete",
           "TrilabPrinter": "Stampante",
           "TrilabSlicers": "Affettatrici"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "Il nome della stampante è obbligatorio",
+          "PrinterNameMaxLength": "La lunghezza massima consentita del nome è di 63 caratteri",
+          "PrinterNameInvalid": "Il nome della stampante non è valido. \nSono consentiti solo caratteri di base, numeri e trattini."
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -319,6 +324,11 @@
           "Closed": "Chiuso",
           "Open": "Aprire"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "Nome host cambiato, tentativo di riconnettersi allo stesso indirizzo",
+        "hostnameChangedRedirecting": "Nome host modificato, reindirizzamento al nuovo nome host.",
+        "SomethingHappened": "È successo qualcosa, al momento non è possibile modificare il nome host nel backend"
       }
     },
     "TextfieldWithCopy": {

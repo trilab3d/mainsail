@@ -203,6 +203,11 @@
           "TrilabNetwork": "Network",
           "TrilabPrinter": "Printer",
           "TrilabSlicers": "Slicers"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "Pole název tiskárny je povinné",
+          "PrinterNameMaxLength": "Maximální povolená délka je 63 znaků",
+          "PrinterNameInvalid": "Název tiskárny není validní. Povoleny jsou jen základní znaky, čísla a pomlčky"
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -314,6 +319,11 @@
           "Closed": "Closed",
           "Open": "Open"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "Hostname změněno, zkouším se připojit na samou adresu.",
+        "hostnameChangedRedirecting": "Hostname změněno, probíhá přesměrování na nové hostname.",
+        "SomethingHappened": "Something happened, cannot change hostname on backend right now"
       }
     },
     "TextfieldWithCopy": {

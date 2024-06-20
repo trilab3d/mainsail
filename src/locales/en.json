@@ -80,6 +80,11 @@
           "TrilabSlicers": "Slicers",
           "TrilabPrinter": "Printer",
           "TrilabLogs": "Logs"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "Printer name is required",
+          "PrinterNameMaxLength": "Maximum allowed name length is 63 characters",
+          "PrinterNameInvalid": "Printer name is invalid. Only basic characters, numbers and hyphens are allowed."
         }
       },
       "TrilabLiveUpdate": {
@@ -201,6 +206,11 @@
           "Closed": "Closed",
           "Open": "Open"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "Hostname changed, trying to reconnect to the same address",
+        "hostnameChangedRedirecting": "Hostname changed, redirecting to new hostname.",
+        "SomethingHappened": "Something happened, cannot change hostname on backend right now"
       }
     },
     "Notifications": {

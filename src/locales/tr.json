@@ -208,6 +208,11 @@
           "TrilabNetwork": "Ağ",
           "TrilabPrinter": "Yazıcı",
           "TrilabSlicers": "Dilimleyiciler"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "Yazıcı adı gerekli",
+          "PrinterNameMaxLength": "İzin verilen maksimum ad uzunluğu 63 karakterdir",
+          "PrinterNameInvalid": "Yazıcı adı geçersiz. \nYalnızca temel karakterlere, sayılara ve kısa çizgilere izin verilir."
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -319,6 +324,11 @@
           "Closed": "Kapalı",
           "Open": "Açık"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "Ana bilgisayar adı değişti, aynı adrese yeniden bağlanmaya çalışılıyor",
+        "hostnameChangedRedirecting": "Ana makine adı değişti, yeni ana makine adına yönlendiriliyor.",
+        "SomethingHappened": "Bir sorun oluştu, şu anda arka uçta ana bilgisayar adı değiştirilemiyor"
       }
     },
     "TextfieldWithCopy": {

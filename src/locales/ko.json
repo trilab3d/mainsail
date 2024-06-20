@@ -203,6 +203,11 @@
           "TrilabNetwork": "회로망",
           "TrilabPrinter": "인쇄기",
           "TrilabSlicers": "슬라이서"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "프린터 이름이 필요합니다",
+          "PrinterNameMaxLength": "허용되는 최대 이름 길이는 63자입니다.",
+          "PrinterNameInvalid": "프린터 이름이 잘못되었습니다. \n기본 문자, 숫자, 하이픈만 허용됩니다."
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -314,6 +319,11 @@
           "Closed": "닫은",
           "Open": "열려 있는"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "호스트 이름이 변경되어 동일한 주소에 다시 연결하려고 합니다.",
+        "hostnameChangedRedirecting": "호스트 이름이 변경되어 새 호스트 이름으로 리디렉션됩니다.",
+        "SomethingHappened": "문제가 발생했습니다. 지금은 백엔드에서 호스트 이름을 변경할 수 없습니다."
       }
     },
     "TextfieldWithCopy": {

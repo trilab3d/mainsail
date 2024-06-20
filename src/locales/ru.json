@@ -203,6 +203,11 @@
           "TrilabNetwork": "Сеть",
           "TrilabPrinter": "Принтер",
           "TrilabSlicers": "Слайсеры"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "Укажите имя принтера.",
+          "PrinterNameMaxLength": "Максимально допустимая длина имени — 63 символа.",
+          "PrinterNameInvalid": "Имя принтера неверно. \nРазрешены только основные символы, цифры и дефисы."
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -314,6 +319,11 @@
           "Closed": "Закрыто",
           "Open": "Открыть"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "Имя хоста изменено, пытаюсь повторно подключиться к тому же адресу.",
+        "hostnameChangedRedirecting": "Имя хоста изменено, происходит перенаправление на новое имя хоста.",
+        "SomethingHappened": "Что-то произошло, сейчас невозможно изменить имя хоста на серверной стороне."
       }
     },
     "TextfieldWithCopy": {

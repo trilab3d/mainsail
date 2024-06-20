@@ -134,6 +134,18 @@
           "JobTime": "Job tid",
           "Remaining": "Tilbage"
         }
+      },
+      "Settings": {
+        "GeneralTab": {
+          "PrinterNameRequired": "Printernavn er påkrævet",
+          "PrinterNameMaxLength": "Den maksimale tilladte navnelængde er 63 tegn",
+          "PrinterNameInvalid": "Printernavnet er ugyldigt. \nKun grundlæggende tegn, tal og bindestreger er tilladt."
+        }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "Værtsnavn ændret, forsøger at oprette forbindelse til den samme adresse igen",
+        "hostnameChangedRedirecting": "Værtsnavn ændret, omdirigerer til nyt værtsnavn.",
+        "SomethingHappened": "Der skete noget, kan ikke ændre værtsnavn på backend lige nu"
       }
     }
   },
