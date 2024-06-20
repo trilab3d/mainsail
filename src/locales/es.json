@@ -208,6 +208,11 @@
           "TrilabNetwork": "Red",
           "TrilabPrinter": "Impresora",
           "TrilabSlicers": "Rebanadoras"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "El nombre de la impresora es obligatorio",
+          "PrinterNameMaxLength": "La longitud máxima permitida del nombre es 63 caracteres",
+          "PrinterNameInvalid": "El nombre de la impresora no es válido. \nSólo se permiten caracteres básicos, números y guiones."
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -319,6 +324,11 @@
           "Closed": "Cerrado",
           "Open": "Abierto"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "El nombre de host cambió, intentando volver a conectarme a la misma dirección",
+        "hostnameChangedRedirecting": "El nombre de host cambió y se redirige al nuevo nombre de host.",
+        "SomethingHappened": "Algo sucedió, no se puede cambiar el nombre de host en el servidor en este momento"
       }
     },
     "TextfieldWithCopy": {

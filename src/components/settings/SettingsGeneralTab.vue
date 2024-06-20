@@ -3,7 +3,8 @@
         <v-card flat>
             <v-card-text>
                 <settings-row :title="$t('Settings.GeneralTab.PrinterName')">
-                    <v-text-field v-model="printerName" hide-details outlined dense></v-text-field>
+                    <v-text-field v-model="printerName" outlined dense :hide-details="printerNameHiddenDetails" @change="changeTrilabHostname()"
+                        :rules="[rules.valid, rules.max, rules.required]" ref="printerNameField"></v-text-field>
                 </settings-row>
                 <v-divider class="my-2" />
                 <settings-row :title="$t('Settings.GeneralTab.Language')">
@@ -66,6 +67,8 @@ import SettingsGeneralTabBackupDatabase from '@/components/settings/General/Gene
 import SettingsGeneralTabRestoreDatabase from '@/components/settings/General/GeneralRestore.vue'
 import SettingsGeneralTabResetDatabase from '@/components/settings/General/GeneralReset.vue'
 import SettingsGeneralDatabase from '@/components/mixins/settingsGeneralDatabase'
+import axios from 'axios'
+
 
 @Component({
     components: {
@@ -96,6 +99,58 @@ export default class SettingsGeneralTab extends Mixins(BaseMixin, SettingsGenera
 
         this.availableLanguages = languages
     }
+
+
+    public printerNameOk = true;
+    public printerNameHiddenDetails = true;
+
+    public rules = {
+        required: (value: string) => !!value || this.$t('App.Trilab.Settings.GeneralTab.PrinterNameRequired').toString(),
+        max: (v: string) => (v && v.length <= 63) || this.$t('App.Trilab.Settings.GeneralTab.PrinterNameMaxLength').toString(),
+        valid: (v: string) => (v && /^[a-zA-Z0-9-]+$/.test(v)) || this.$t('App.Trilab.Settings.GeneralTab.PrinterNameInvalid').toString(),
+    }
+
+
+    changeTrilabHostname() {
+        /// checkneme si ze odpovida pravidlum
+        if(this.printerNameOk == false){
+            return;
+        }
+        axios.post(this.$store.getters['trilab/trilabPrefix'] + '/set_hostname', { "hostname": this.printerName }).then(response => {
+            /// test ipv6 with (([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])) 
+            /// and for ipv4 with ^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$
+
+            if (this.hostname.match(/^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/) || this.hostname.match(/^(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])$/)) {
+                /// je to ip, neni potreba delat presmerovani, ale zase to rekonektneme
+                this.$toast.success(this.$t('App.Trilab.SettingsGeneralTab.hostnameChangedTryingToReconnect').toString());
+                this.$socket.connect()
+            } else {
+                /// je to nejaky string, je potreba delat presmerovani
+                let urloriginal = this.protocol + '://' + this.hostname + ':' + this.port + '/websocket';
+                //let url =  printer.socket.hostname;
+                this.$socket.setUrl(urloriginal)
+                this.$socket.connect()
+                this.$toast.success(this.$t('App.Trilab.SettingsGeneralTab.hostnameChangedRedirecting').toString());
+            }
+        }).catch(error => {
+            this.$toast.error(this.$t('App.Trilab.SettingsGeneralTab.SomethingHappened').toString());
+        });
+
+    }
+
+    get protocol() {
+        return this.$store.state.socket.protocol
+    }
+
+    get hostname() {
+        return this.$store.state.socket.hostname
+    }
+
+    get port() {
+        return this.$store.state.socket.port
+    }
+
+
 
     get printerName() {
         return this.$store.state.gui.general.printername

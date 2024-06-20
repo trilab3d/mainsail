@@ -204,6 +204,11 @@
           "TrilabNetwork": "Netwerk",
           "TrilabPrinter": "Printer",
           "TrilabSlicers": "Snijmachines"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "Printernaam is vereist",
+          "PrinterNameMaxLength": "De maximaal toegestane naamlengte is 63 tekens",
+          "PrinterNameInvalid": "Printernaam is ongeldig. \nAlleen basistekens, cijfers en koppeltekens zijn toegestaan."
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -315,6 +320,11 @@
           "Closed": "Gesloten",
           "Open": "Open"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "Hostnaam gewijzigd, probeert opnieuw verbinding te maken met hetzelfde adres",
+        "hostnameChangedRedirecting": "Hostnaam gewijzigd, omleiding naar nieuwe hostnaam.",
+        "SomethingHappened": "Er is iets gebeurd. De hostnaam op de backend kan momenteel niet worden gewijzigd"
       }
     },
     "TextfieldWithCopy": {

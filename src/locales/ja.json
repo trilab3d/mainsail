@@ -203,6 +203,11 @@
           "TrilabNetwork": "通信網",
           "TrilabPrinter": "プリンター",
           "TrilabSlicers": "スライサー"
+        },
+        "GeneralTab": {
+          "PrinterNameRequired": "プリンター名は必須です",
+          "PrinterNameMaxLength": "許可される名前の最大長は 63 文字です",
+          "PrinterNameInvalid": "プリンター名が無効です。\n基本的な文字、数字、ハイフンのみが使用できます。"
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -314,6 +319,11 @@
           "Closed": "閉まっている",
           "Open": "開ける"
         }
+      },
+      "SettingsGeneralTab": {
+        "hostnameChangedTryingToReconnect": "ホスト名が変更されました。同じアドレスに再接続しようとしています",
+        "hostnameChangedRedirecting": "ホスト名が変更され、新しいホスト名にリダイレクトされます。",
+        "SomethingHappened": "問題が発生したため、現在バックエンドのホスト名を変更できません"
       }
     },
     "TextfieldWithCopy": {
