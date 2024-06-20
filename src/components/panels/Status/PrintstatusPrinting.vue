@@ -126,13 +126,13 @@
                     <strong>{{ $t('App.Trilab.Panels.StatusPanel.Remaining') }}</strong>
                     <br />
                     <span class="text-no-wrap">
-                        {{ estimated_time_slicer ? formatDuration(estimated_time_slicer) : '--' }}
+                        {{ estimated_time_slicer_tlb ? this.formatRemainingTime(estimated_time_slicer_tlb) : '--' }}
                     </span>
                 </v-col>
                 <v-col class="col-4 pa-0">
                     <strong>{{ $t('Panels.StatusPanel.ETA') }}</strong>
                     <br />
-                    <span class="text-no-wrap">{{ eta }}</span>
+                    <span class="text-no-wrap">{{ eta_tlb }}</span>
                 </v-col>
             </v-row>
         </v-container>
@@ -142,6 +142,7 @@
 <script lang="ts">
 import Component from 'vue-class-component'
 import { Mixins } from 'vue-property-decorator'
+import TrilabMixin from '@/components/mixins/trilab'
 import BaseMixin from '@/components/mixins/base'
 import StatusPanelFilesJobqueue from '@/components/panels/Status/Jobqueue.vue'
 import StatusPanelFilesGcodes from '@/components/panels/Status/Gcodefiles.vue'
@@ -152,7 +153,7 @@ import StatusPanelFilesGcodes from '@/components/panels/Status/Gcodefiles.vue'
         StatusPanelFilesGcodes,
     },
 })
-export default class StatusPanelPrintstatusPrinting extends Mixins(BaseMixin) {
+export default class StatusPanelPrintstatusPrinting extends Mixins(BaseMixin, TrilabMixin) {
     private maxFlow: number = 0
 
     get current_file() {
@@ -214,6 +215,14 @@ export default class StatusPanelPrintstatusPrinting extends Mixins(BaseMixin) {
 
     get estimated_time_slicer() {
         return this.$store.getters['printer/getEstimatedTimeSlicer']
+    }
+
+    get estimated_time_slicer_tlb() {
+        return this.$store.getters['printer/getEstimatedTimeSlicerTLB']
+    }
+
+    get eta_tlb(){
+        return this.formatETAnew(this.estimated_time_slicer_tlb); 
     }
 
     get estimated_time_avg() {
