@@ -66,7 +66,7 @@ export const getters: GetterTree<FarmPrinterState, any> = {
     },
 
     getPrintPercent: (state, getters) => {
-        const type = state.data.gui?.general?.calcPrintProgress ?? 'file-relative'
+        const type = state.data.gui?.general?.calcPrintProgress ?? 'slicer'
         return getters['getPrintPercentBySlicer'] /// hardcoded trilab
         switch (type) {
             case 'file-relative':
