@@ -133,15 +133,15 @@
       },
       "Panels": {
         "TrilabAccessPassword": {
-          "DialogMessage": "After saving the login settings, web interface will restart and you will be prompted to type in the credentials by the browser. Do you really want to save now?",
+          "DialogMessage": "Po uložení přihlašovacích údajů se webové rozhraní restartuje a budete vyzváni k zadání přihlašovacích údajů. Opravdu si přejete uložit nastavení?",
           "DialogNoButton": "No",
           "DialogYesButton": "Yes",
-          "Warning": "Warning",
-          "caption": "Access Settings",
-          "confirmPassword": "Confirm password",
-          "enablePwdControl": "Enable password control",
-          "password": "Password",
-          "username": "Username"
+          "Warning": "Upozornění",
+          "caption": "Nastavení přístupu",
+          "confirmPassword": "Potvrďte heslo",
+          "enablePwdControl": "Povolit přístup s heslem",
+          "password": "Heslo",
+          "username": "Uživatelské jméno"
         },
         "TrilabRemote": {
           "auto_off": "Auto off",
@@ -244,7 +244,7 @@
       "TrilabFilamentLoadWizard": {
         "CancelHeating": "Cancel heating",
         "CancelLoading": "Cancel loading",
-        "CancelWizard": "Cancel wizard",
+        "CancelWizard": "Zrušit průvodce",
         "Close": "Close",
         "Continue": "Continue",
         "CooldownAndClose": "Cooldown",

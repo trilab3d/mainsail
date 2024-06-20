@@ -8,7 +8,7 @@
                     <p>Checking for default states. You should not see this page for long</p>
                 </div>
                 <div v-if="step == 1">
-                    Check endstop A functionality. Press the following endstop multiple times until you see "Registered"
+                    Check endstop A functionality. Press endstop multiple times until you see "Registered"
                     message
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="endStopARegistered">Registered</span><span color="red"
@@ -21,7 +21,7 @@
                 </div>
 
                 <div v-if="step == 2">
-                    Check endstop B functionality. Press the following endstop multiple times until you see "Registered"
+                    Check endstop B functionality. Press endstop multiple times until you see "Registered"
                     message
 
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
@@ -35,7 +35,7 @@
                 </div>
 
                 <div v-if="step == 3">
-                    Check endstop C functionality. Press the following endstop multiple times. If it is registered, dialog
+                    Check endstop C functionality. Press endstop multiple times. If it is registered, dialog
                     will close
 
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
@@ -49,7 +49,7 @@
 
                 <div v-if="isCloseBtnVisible">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn color="primary" @click="closeReset()">{{ $t("Trilab.TrilabFilamentLoadWizard.CancelWizard")
+                    <v-btn color="primary" @click="fail()">{{ $t("App.Trilab.TrilabFilamentLoadWizard.CancelWizard")
                     }}</v-btn>
                 </div>
             </v-card-text>
