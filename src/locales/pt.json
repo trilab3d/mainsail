@@ -185,7 +185,7 @@
           "prusa": {
             "imgsrc": "/img/PrusaSlicer.png",
             "longDescription": "Use o botão acima para baixar o pacote PrusaSlicer completo, incluindo perfis de slicer. \nApós o download, descompacte o arquivo no local de destino. \nNa plataforma Windows execute o programa \"prusa-slicer.exe\", na plataforma MacOS execute \"PrusaSlicer.app\". \nApós iniciar o programa, o assistente de configuração aparecerá. \nContinue para a guia Prusa Pro. \nSelecione Prusa Pro HT90 na lista de variantes de impressoras aqui. \nEm seguida, pressione o botão Concluir no canto inferior direito da janela. \nIsso deixa o fatiador pronto para uso!",
-            "longTitle": "PrusaSlicer 2.7.1",
+            "longTitle": "PrusaSlicer 2.8.0",
             "shortDescription": "PrusaSlicer é uma ferramenta de código aberto, rica em recursos e atualizada com frequência que contém tudo que você precisa para exportar os arquivos de impressão perfeitos",
             "title": "PrusaSlicer"
           }

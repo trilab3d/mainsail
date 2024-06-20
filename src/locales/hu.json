@@ -185,7 +185,7 @@
           "prusa": {
             "imgsrc": "/img/PrusaSlicer.png",
             "longDescription": "A fenti gombbal töltse le a teljes PrusaSlicer csomagot, beleértve a szeletelő profilokat. \nA letöltés után csomagolja ki az archívumot a célhelyre. \nWindows platformon futtassa a \"prusa-slicer.exe\" programot, MacOS platformon futtassa a \"PrusaSlicer.app\" programot. \nA program elindítása után megjelenik a konfigurációs varázsló. \nLépjen tovább a Prusa Pro lapra. \nVálassza ki a Prusa Pro HT90-et az itt található nyomtatóváltozatok listájából. \nEzután nyomja meg a Befejezés gombot az ablak jobb alsó sarkában. \nEzzel a szeletelő készen áll a használatra!",
-            "longTitle": "PrusaSlicer 2.7.1",
+            "longTitle": "PrusaSlicer 2.8.0",
             "shortDescription": "A PrusaSlicer egy nyílt forráskódú, funkciókban gazdag, gyakran frissített eszköz, amely mindent tartalmaz, ami a tökéletes nyomtatási fájlok exportálásához szükséges.",
             "title": "PrusaSlicer"
           }
