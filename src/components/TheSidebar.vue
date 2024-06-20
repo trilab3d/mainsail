@@ -1,6 +1,12 @@
 <template>
-    <v-navigation-drawer :key="navigationStyle" v-model="naviDrawer"
-        :mini-variant="navigationStyle === 'iconsOnly'" :width="navigationWidth" :temporary="boolNaviTemp" clipped app
+    <v-navigation-drawer
+        :key="navigationStyle"
+        v-model="naviDrawer"
+        :mini-variant="navigationStyle === 'iconsOnly'"
+        :width="navigationWidth"
+        :temporary="boolNaviTemp"
+        clipped
+        app
         :style="sidebarCssVars">
         <template #img>
             <v-img :src="sidebarBackground" height="100%" />
@@ -9,8 +15,13 @@
         <overlay-scrollbars class="nav-scrollbar">
             <v-list class="pr-0 pt-0 ml-0">
                 <v-list-item-group active-class="active-nav-item">
-                    <v-list-item v-if="isMobile" router to="/" :class="mobileLogoClass"
-                        :style="'height: ' + topbarHeight + 'px'" :ripple="false">
+                    <v-list-item
+                        v-if="isMobile"
+                        router
+                        to="/"
+                        :class="mobileLogoClass"
+                        :style="'height: ' + topbarHeight + 'px'"
+                        :ripple="false">
                         <template v-if="sidebarLogo">
                             <img :src="sidebarLogo" :style="logoCssVars" class="nav-logo" alt="Logo" />
                         </template>
@@ -32,7 +43,6 @@
                 </v-list-item-icon>
             </v-list-item>
         </template>
-
     </v-navigation-drawer>
 </template>
 
@@ -74,7 +84,12 @@ export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, Theme
     }
 
     get sidebarBackground(): string {
-        return this.$store.getters['files/getCustomSidebarBackground'] ?? this.sidebarBgImage
+        //return this.sidebarBgImage;
+        const customBg = this.$store.getters['files/getCustomSidebarBackground']
+        if (customBg == '/img/sidebar-background.svg') {
+            return this.sidebarBgImage
+        }
+        return customBg
     }
 
     get currentPage(): string {
@@ -158,11 +173,11 @@ export default class TheSidebar extends Mixins(NavigationMixin, BaseMixin, Theme
 }
 
 .v-chip {
-    display:inline-block;
-    margin-bottom:8px;
+    display: inline-block;
+    margin-bottom: 8px;
     text-shadow: 0px 0px 4px #1e1e1e;
 }
-.viewsBadges{
+.viewsBadges {
     text-align: center;
 }
 </style>
