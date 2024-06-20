@@ -191,9 +191,9 @@
           }
         },
         "StatusPanel": {
-          "Print": "Printing",
+          "Print": "Tisk",
           "JobTime": "Čas úlohy",
-          "Remaining": "Remaining"
+          "Remaining": "Zbývá"
         }
       },
       "Settings": {
