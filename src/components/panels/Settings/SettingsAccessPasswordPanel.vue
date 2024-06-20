@@ -35,7 +35,7 @@
                         :label="$t('App.Trilab.Panels.TrilabAccessPassword.confirmPassword')"
                         hide-details></v-text-field>
                     <v-divider class="my-2"></v-divider>
-                    <v-btn block primary @click="showWarningDialog = true" :disabled="!passwordsOk">
+                    <v-btn block primary @click="showWarningDialog = true" :disabled="!passwordsOk && enabledPasswordControl">
                         {{ $t('App.Trilab.SettingsAccessPasswordPanel.SaveBtn') }}
                     </v-btn>
                 </v-col>
