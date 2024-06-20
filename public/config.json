@@ -20,6 +20,9 @@
         { "hostname": "10.1.20.68", "port": 80 },
         { "hostname": "10.1.20.69", "port": 80 },
         { "hostname": "10.1.1.225", "port": 80 },
-        { "hostname": "10.1.20.200", "port": 80 }
+        { "hostname": "10.1.20.199", "port": 80 },
+        { "hostname": "jaqson.local", "port": 80 },
+        { "hostname": "qqq.local", "port": 80 }
+
     ]
 }
