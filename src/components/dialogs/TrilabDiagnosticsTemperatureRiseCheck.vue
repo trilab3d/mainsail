@@ -59,13 +59,13 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         Bed: {
             tempTo: 150,
             minValueToStartTest: 50,
-            maxTimeAllowed: 600000,
+            maxTimeAllowed: 1200000,
             returnKey: 'bedCheck',
         },
         Panels: {
             tempTo: 90,
             minValueToStartTest: 50,
-            maxTimeAllowed: 1600000,
+            maxTimeAllowed: 3200000,
             returnKey: 'panelCheck',
         },
     }
@@ -79,6 +79,8 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
     onIsDialogVisibleChanged(newValue: boolean, oldValue: boolean) {
         if (newValue == true && oldValue == false) {
             /// inicialize of values based on type and start the heating process
+            const gcode = `SET_FAN_SPEED FAN=intake_flap SPEED=0`
+            this.sendGcode(gcode)
             this.initialization()
         }
     }
@@ -170,7 +172,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         ) {
             this.setTemp(this.targetHeaterFromTemperatureObjects, this.tempTo)
             if (this.heaterType == 'Panels') {
-                this.setTemp(this.targetHeaterBedFromTemperatureObjects, 140)
+                this.setTemp(this.targetHeaterBedFromTemperatureObjects, 150)
             }
             this.startedHeatingFromWizard = true
             this.heatingStartTime = new Date().getTime()
@@ -210,10 +212,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
 
     get percentage() {
         if (this.targetHeaterFromTemperatureObjects == null) return 0
-        return (
-            (this.targetHeaterFromTemperatureObjects.temperature / this.tempTo) *
-            100
-        )
+        return (this.targetHeaterFromTemperatureObjects.temperature / this.tempTo) * 100
     }
 
     sendGcode(gcode: string) {
