@@ -46,8 +46,6 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
 
     public startedHeatingFromWizard = false
 
-    public timeoutRef: any = null
-    public targetTempCheckTimeoutRef: any = null
 
     public configCheckSettings: any = {
         Extruder: {
@@ -59,13 +57,13 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         Bed: {
             tempTo: 150,
             minValueToStartTest: 50,
-            maxTimeAllowed: 1200000,
+            maxTimeAllowed: 600000, ///10min
             returnKey: 'bedCheck',
         },
         Panels: {
             tempTo: 90,
             minValueToStartTest: 50,
-            maxTimeAllowed: 3200000,
+            maxTimeAllowed: 2880000, ///48min
             returnKey: 'panelCheck',
         },
     }
@@ -132,7 +130,25 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         return this.getTrilabTemperatureObject(this.heatersObjectNames.find((sensor: any) => sensor == 'heater_bed'))
     }
 
+    public setTempPeriodicTimeout() {
+        if (this.targetHeaterFromTemperatureObjects == null || this.isDialogVisible == false || this.startedHeatingFromWizard == false) {
+            return
+        }
+        var thisref = this;
+        (window as any).temp_periodic_timeout = setTimeout(() => {
+            if (thisref.targetHeaterFromTemperatureObjects == null || thisref.isDialogVisible == false || thisref.startedHeatingFromWizard == false) {
+                return
+            }
+            thisref.setTemps()
+            thisref.setTempPeriodicTimeout()
+        }, 10000)
+    }
+
     public initialization() {
+        /// remove any timeout that could be set
+        if ((window as any).temp_periodic_timeout != null && (window as any).temp_periodic_timeout != undefined) {
+            clearTimeout((window as any).temp_periodic_timeout)
+        }
         console.log('initializing TEMP RISE CHECK DIALOG')
         console.log(this.targetHeaterFromTemperatureObjects)
         if (this.targetHeaterFromTemperatureObjects == null) {
@@ -147,6 +163,8 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         ) {
             this.step = 1 /// it is minimum so we will step into step 2 automatically
             console.log('AUTOSTEPPING 1')
+            /// set timeout for settings temps. set temps every 10 seconds because of the idle timeout that happens after XX mins
+            this.setTempPeriodicTimeout()
         } else {
             console.log('DID NOT STEP BECAUSE OF TEMPERATURE VALUE:')
             console.log(this.targetHeaterFromTemperatureObjects.temperature)
@@ -161,6 +179,13 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         return this.configCheckSettings[this.heaterType]
     }
 
+    setTemps() {
+        this.setTemp(this.targetHeaterFromTemperatureObjects, this.tempTo)
+        if (this.heaterType == 'Panels') {
+            this.setTemp(this.targetHeaterBedFromTemperatureObjects, 150)
+        }
+    }
+
     @Watch('watchedTemperature')
     onWatchedTemperatureChanged(newValue: number, oldValue: number) {
         if (this.isDialogVisible == false) {
@@ -170,15 +195,13 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             this.targetHeaterFromTemperatureObjects?.temperature < this.configObject.minValueToStartTest &&
             !this.startedHeatingFromWizard
         ) {
-            this.setTemp(this.targetHeaterFromTemperatureObjects, this.tempTo)
-            if (this.heaterType == 'Panels') {
-                this.setTemp(this.targetHeaterBedFromTemperatureObjects, 150)
-            }
+            this.setTemps()
             this.startedHeatingFromWizard = true
+            this.setTempPeriodicTimeout()
             this.heatingStartTime = new Date().getTime()
             this.step = 1
-            clearTimeout(this.targetTempCheckTimeoutRef)
-            this.targetTempCheckTimeoutRef = setTimeout(() => {
+            clearTimeout((window as any).targetTempCheckTimeoutRef);
+            (window as any).targetTempCheckTimeoutRef = setTimeout(() => {
                 this.fail()
                 this.$toast.error('Temperature not reached in time')
             }, this.maxTime)
@@ -187,7 +210,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             return
         }
         if (newValue >= this.tempTo) {
-            clearTimeout(this.targetTempCheckTimeoutRef)
+            clearTimeout((window as any).targetTempCheckTimeoutRef)
             this.success()
             this.$toast.success('Temperature (' + this.heaterType + ') reached in time')
         }
@@ -196,7 +219,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             console.log(new Date().getTime())
             console.log('heating start time:')
             console.log(this.heatingStartTime)
-            clearTimeout(this.targetTempCheckTimeoutRef)
+            clearTimeout((window as any).targetTempCheckTimeoutRef)
             this.fail()
             this.$toast.error('Temperature not reached in time')
         }
@@ -245,8 +268,13 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         this.step = 0
         this.isDialogVisible = false
         /// remove timeout for cooling
-        clearTimeout(this.timeoutRef)
-        clearTimeout(this.targetTempCheckTimeoutRef)
+        if ((window as any).targetTempCheckTimeoutRef != null && (window as any).targetTempCheckTimeoutRef != undefined) {
+            clearTimeout((window as any).targetTempCheckTimeoutRef)
+        }
+        if ((window as any).temp_periodic_timeout != null && (window as any).temp_periodic_timeout != undefined) {
+            clearTimeout((window as any).temp_periodic_timeout)
+        }
+
     }
 
     get isCloseBtnVisible() {
