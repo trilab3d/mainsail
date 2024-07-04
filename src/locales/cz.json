@@ -324,6 +324,15 @@
         "hostnameChangedTryingToReconnect": "Hostname změněno, zkouším se připojit na samou adresu.",
         "hostnameChangedRedirecting": "Hostname změněno, probíhá přesměrování na nové hostname.",
         "SomethingHappened": "Something happened, cannot change hostname on backend right now"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Upozornění filamentu",
+        "PleaseLoadFilament": "Před tiskem nejdříve zaveďte filament!",
+        "currentFilament": "Aktuální filament",
+        "requestedFilament": "Žádaný filament",
+        "nozzleWarning": "Upozornění trysky",
+        "currentNozzle": "Aktuální tryska",
+        "requestedNozzle": "Žádaná tryska"
       }
     },
     "TextfieldWithCopy": {

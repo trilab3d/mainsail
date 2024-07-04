@@ -1,18 +1,64 @@
+<style scoped>
+/* only for screen with viewport height less than 800px and min 600px */
+@media screen and (max-height: 800px) and (min-height: 600px) {
+    .tlb_responsive_height {
+        min-height: 150px;
+        max-height: 30vh;
+        margin: 0 auto;
+        display: block;
+        width: 50%;
+    }
+}
+
+@media screen and (max-height: 599px) and (min-height: 0px) {
+    .tlb_responsive_height {
+        min-height: 50px;
+        max-height: 20vh;
+        margin: 0 auto;
+        display: block;
+        width: 40%;
+    }
+}
+
+@media screen and (min-height:801px) {
+    .tlb_responsive_height {
+        min-height: 200px;
+        max-height: 40vh;
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+    }
+
+}
+</style>
 <template>
     <v-dialog v-model="bool" :max-width="400" @click:outside="closeDialog" @keydown.esc="closeDialog">
-        <v-card>
-            <div v-if="file.big_thumbnail" class="d-flex align-center justify-center" style="min-height: 200px">
-                <v-img
-                    :src="file.big_thumbnail"
-                    :max-width="maxThumbnailWidth"
-                    class="d-inline-block"
+        <v-card style="overflow-x:hidden">
+            <v-card-title class="text-h5">{{ $t('Dialogs.StartPrint.Headline') }}</v-card-title>
+            <div v-if="file.big_thumbnail" class="d-flex align-center justify-center tlb_responsive_height"
+                style="overflow-y:auto; overflow-x:auto;">
+                <v-img :src="file.big_thumbnail" :max-width="'100%'" :overflow-y="'scroll'" class="d-inline-block;"
                     :style="bigThumbnailStyle" />
             </div>
-            <v-card-title class="text-h5">{{ $t('Dialogs.StartPrint.Headline') }}</v-card-title>
-            <v-card-text class="pb-0">
+            <v-card-text class="pb-0 mt-4">
                 <p class="body-2">
                     {{ question }}
                 </p>
+                <div>
+                    <div v-if="tlb_filament_ok == false" class="mx-0 mb-4 px-0 py-0">
+                        <h3 class="mb-0"><v-icon color="warning">{{ mdiAlert }}</v-icon> {{ $t('App.Trilab.StartPrintDialog.FilamentWarning') }}</h3>
+                        <p v-if="tlbFilamentLoaded == 'NONE'" class="warning--text px-0 mx-0 my-0 py-0"> {{ $t('App.Trilab.StartPrintDialog.PleaseLoadFilament') }}</p>
+                        <p v-if="tlbFilamentLoaded != 'NONE' && tlb_filament_ok == false">{{ $t('App.Trilab.StartPrintDialog.currentFilament') }}: <span
+                                class="red--text">{{ tlbFilamentLoaded
+                                }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span class="green--text">{{ tlbFilamentNeeded
+                                }}</span></p>
+                    </div>
+                    <div v-if="nozzle_ok == false">
+                        <h3 class="mb-0"><v-icon color="warning">{{ mdiAlert }}</v-icon> {{ $t('App.Trilab.StartPrintDialog.nozzleWarning') }}</h3>
+                        <p class="">{{ $t('App.Trilab.StartPrintDialog.currentNozzle') }}: <span class="red--text">{{ nozzleCurrent }}</span><br>{{$t('App.Trilab.StartPrintDialog.requestedNozzle') }}: <span class="success--text">{{ nozzleWanted }}</span></p>
+                    </div>
+
+                </div>
             </v-card-text>
             <start-print-dialog-spoolman v-if="moonrakerComponents.includes('spoolman')" :file="file" />
             <template v-if="moonrakerComponents.includes('timelapse')">
@@ -27,10 +73,7 @@
             <v-card-actions>
                 <v-spacer />
                 <v-btn text @click="closeDialog">{{ $t('Dialogs.StartPrint.Cancel') }}</v-btn>
-                <v-btn
-                    color="primary"
-                    text
-                    :disabled="printerIsPrinting || !klipperReadyForGui"
+                <v-btn color="primary" text :disabled="printerIsPrinting || !klipperReadyForGui"
                     @click="startPrint(file.filename)">
                     {{ $t('Dialogs.StartPrint.Print') }}
                 </v-btn>
@@ -42,9 +85,10 @@
 <script lang="ts">
 import { Component, Mixins, Prop } from 'vue-property-decorator'
 import BaseMixin from '@/components/mixins/base'
+import TrilabMixin from '@/components/mixins/trilab'
 import { FileStateGcodefile } from '@/store/files/types'
 import SettingsRow from '@/components/settings/SettingsRow.vue'
-import { mdiPrinter3d } from '@mdi/js'
+import { mdiPrinter3d, mdiAlert } from '@mdi/js'
 import { ServerSpoolmanStateSpool } from '@/store/server/spoolman/types'
 import { defaultBigThumbnailBackground } from '@/store/variables'
 
@@ -53,8 +97,9 @@ import { defaultBigThumbnailBackground } from '@/store/variables'
         SettingsRow,
     },
 })
-export default class StartPrintDialog extends Mixins(BaseMixin) {
+export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
     mdiPrinter3d = mdiPrinter3d
+    mdiAlert = mdiAlert
 
     @Prop({ required: true, default: false })
     declare readonly bool: boolean
@@ -64,6 +109,14 @@ export default class StartPrintDialog extends Mixins(BaseMixin) {
 
     @Prop({ required: true })
     declare file: FileStateGcodefile
+
+    public NOZZLE_DICTIONARY: any = {
+        "HF": "HF",
+        "ObX": "ObXidian",
+        "HT": "HT"
+    };
+
+
 
     get timelapseEnabled() {
         return this.$store.state.server.timelapse?.settings?.enabled ?? false
@@ -123,6 +176,74 @@ export default class StartPrintDialog extends Mixins(BaseMixin) {
         this.closeDialog()
         this.$socket.emit('printer.print.start', { filename: filename }, { action: 'switchToDashboard' })
     }
+
+    get tlb_isFTypePresent() {
+        const isPresent = 'filament_type' in this.file
+        return isPresent;
+    }
+
+    get tlbFilamentNeeded() {
+        return this.file.filament_type ?? 'UNKNOWN';
+    }
+    get tlb_filamentName() {
+        let fNameToReturn = this.file.filament_name ?? 'UNKNOWN';
+        /// split it by @, return first part stripped
+        if (fNameToReturn.includes('@')) {
+            fNameToReturn = fNameToReturn.split('@')[0];
+        }
+        return fNameToReturn;
+    }
+
+    get nozzleWanted() {
+        const filament_notes = this.file.filament_notes ?? null;
+        const nozzle_diameter = this.file.nozzle_diameter ?? null;
+        console.log("filament_notes:");
+        console.log(filament_notes);
+        console.log("nozzle_diameter:");
+        console.log(nozzle_diameter);
+        if (filament_notes && nozzle_diameter && filament_notes in this.NOZZLE_DICTIONARY) {
+            //            nozzle_wanted = f"{nozzle_diameter} {NOZZLE_DICTIONARY[filament_notes]}"
+            return `${nozzle_diameter} ${this.NOZZLE_DICTIONARY[filament_notes]}`;
+        }
+        return 'UNKNOWN';
+    }
+
+    get nozzleCurrent() {
+        if (this.savedVariablesExists == false) {
+            return 'UNKNOWN';
+        }
+        if (this.getSavedVariable('nozzle') == null) {
+            return 'NONE';
+        }
+        return this.getSavedVariable('nozzle');
+    }
+
+    get nozzle_ok() {
+        return this.nozzleWanted == this.nozzleCurrent;
+    }
+
+    get tlb_filament_ok() {
+        return this.tlbFilamentNeeded == this.tlbFilamentLoaded;
+    }
+
+    get AllOk() {
+        return this.nozzle_ok && this.tlb_filament_ok;
+    }
+
+    get tlbFilamentLoaded() {
+        if (this.savedVariablesExists == false) {
+            return 'UNKNOWN';
+        }
+        const floaded = this.getSavedVariable('loaded_filament');
+        if (floaded == null) {
+            return 'NONE';
+        }
+        if (typeof floaded === 'string') {
+            return floaded.replaceAll('-', '');
+        }
+        return floaded;
+    }
+
 
     closeDialog() {
         this.$emit('closeDialog')

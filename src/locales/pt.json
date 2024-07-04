@@ -324,6 +324,15 @@
         "hostnameChangedTryingToReconnect": "Nome do host alterado, tentando reconectar-se ao mesmo endereço",
         "hostnameChangedRedirecting": "Nome do host alterado, redirecionando para o novo nome do host.",
         "SomethingHappened": "Algo aconteceu, não é possível alterar o nome do host no back-end agora"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Aviso de filamento",
+        "PleaseLoadFilament": "Por favor carregue o filamento antes de imprimir!",
+        "currentFilament": "Filamento atual",
+        "requestedFilament": "Filamento solicitado",
+        "nozzleWarning": "Aviso de bocal",
+        "currentNozzle": "Bocal atual",
+        "requestedNozzle": "Bico solicitado"
       }
     },
     "TextfieldWithCopy": {

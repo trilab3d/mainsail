@@ -329,6 +329,15 @@
         "hostnameChangedTryingToReconnect": "Der Hostname wurde geändert und es wird versucht, die Verbindung zur gleichen Adresse wiederherzustellen",
         "hostnameChangedRedirecting": "Hostname geändert, Umleitung auf neuen Hostnamen.",
         "SomethingHappened": "Es ist etwas passiert. Der Hostname im Backend kann derzeit nicht geändert werden"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Filamentwarnung",
+        "PleaseLoadFilament": "Bitte laden Sie Filament vor dem Drucken!",
+        "currentFilament": "Aktuelles Filament",
+        "requestedFilament": "Angefordertes Filament",
+        "nozzleWarning": "Düsenwarnung",
+        "currentNozzle": "Aktuelle Düse",
+        "requestedNozzle": "Angeforderte Düse"
       }
     },
     "TextfieldWithCopy": {

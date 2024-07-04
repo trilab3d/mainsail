@@ -146,6 +146,15 @@
         "hostnameChangedTryingToReconnect": "Værtsnavn ændret, forsøger at oprette forbindelse til den samme adresse igen",
         "hostnameChangedRedirecting": "Værtsnavn ændret, omdirigerer til nyt værtsnavn.",
         "SomethingHappened": "Der skete noget, kan ikke ændre værtsnavn på backend lige nu"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Filament advarsel",
+        "PleaseLoadFilament": "Indlæs filament før udskrivning!",
+        "currentFilament": "Nuværende filament",
+        "requestedFilament": "Anmodet filament",
+        "nozzleWarning": "Dyseadvarsel",
+        "currentNozzle": "Nuværende dyse",
+        "requestedNozzle": "Ønsket dyse"
       }
     }
   },

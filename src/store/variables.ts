@@ -58,6 +58,7 @@ export const allowedMetadata = [
     'filament_name',
     'filament_type',
     'filament_total',
+    'filament_notes',
     'filament_weight_total',
     'nozzle_diameter',
     'first_layer_bed_temp',

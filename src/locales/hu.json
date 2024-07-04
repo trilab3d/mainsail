@@ -324,6 +324,15 @@
         "hostnameChangedTryingToReconnect": "A gazdagépnév megváltozott, megpróbálunk újra csatlakozni ugyanarra a címre",
         "hostnameChangedRedirecting": "A gazdagépnév megváltozott, átirányítás új gazdagépnévre.",
         "SomethingHappened": "Valami történt, jelenleg nem lehet megváltoztatni a gazdagép nevét a háttérben"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Izzószál figyelmeztetés",
+        "PleaseLoadFilament": "Nyomtatás előtt töltse be az izzószálat!",
+        "currentFilament": "Jelenlegi izzószál",
+        "requestedFilament": "Kért izzószál",
+        "nozzleWarning": "Figyelmeztetés a fúvókára",
+        "currentNozzle": "Jelenlegi fúvóka",
+        "requestedNozzle": "Kért fúvóka"
       }
     },
     "TextfieldWithCopy": {
