@@ -25,6 +25,7 @@ export interface FileStateFile {
     job_id?: string | null
     estimated_time?: number
     filament_total?: number
+    filament_notes?: string
     filament_weight_total?: number
     first_layer_height?: number
     first_layer_bed_temp?: number

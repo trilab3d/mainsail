@@ -324,6 +324,15 @@
         "hostnameChangedTryingToReconnect": "호스트 이름이 변경되어 동일한 주소에 다시 연결하려고 합니다.",
         "hostnameChangedRedirecting": "호스트 이름이 변경되어 새 호스트 이름으로 리디렉션됩니다.",
         "SomethingHappened": "문제가 발생했습니다. 지금은 백엔드에서 호스트 이름을 변경할 수 없습니다."
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "필라멘트 경고",
+        "PleaseLoadFilament": "프린팅하기 전에 필라멘트를 넣어주세요!",
+        "currentFilament": "현재 필라멘트",
+        "requestedFilament": "요청된 필라멘트",
+        "nozzleWarning": "노즐 경고",
+        "currentNozzle": "현재 노즐",
+        "requestedNozzle": "요청된 노즐"
       }
     },
     "TextfieldWithCopy": {

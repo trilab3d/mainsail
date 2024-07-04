@@ -10,10 +10,16 @@ export default class TrilabMixin extends Vue {
     getSavedVariable(variableName: string): any | null {
         /// check if the variable exists in it and return it else return false
         const variables = this.savedVariables
-        if (variables == null) return false
+        if (variables == null) return null
         const isInside = variableName in variables
         if (isInside) return variables[variableName]
+        return null
     }
+
+    get savedVariablesExists(): boolean {
+        return 'save_variables' in this.$store.state.printer ? true : false 
+    }
+
     ////
     get AdvancedFeatures(): boolean {
         if (

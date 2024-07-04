@@ -211,6 +211,15 @@
         "hostnameChangedTryingToReconnect": "Hostname changed, trying to reconnect to the same address",
         "hostnameChangedRedirecting": "Hostname changed, redirecting to new hostname.",
         "SomethingHappened": "Something happened, cannot change hostname on backend right now"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Filament warning",
+        "PleaseLoadFilament": "Please load filament before printing!",
+        "currentFilament": "Current filament",
+        "requestedFilament": "Requested filament",
+        "nozzleWarning": "Nozzle warning",
+        "currentNozzle": "Current nozzle",
+        "requestedNozzle": "Requested nozzle"
       }
     },
     "Notifications": {

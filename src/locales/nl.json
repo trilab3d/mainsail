@@ -325,6 +325,15 @@
         "hostnameChangedTryingToReconnect": "Hostnaam gewijzigd, probeert opnieuw verbinding te maken met hetzelfde adres",
         "hostnameChangedRedirecting": "Hostnaam gewijzigd, omleiding naar nieuwe hostnaam.",
         "SomethingHappened": "Er is iets gebeurd. De hostnaam op de backend kan momenteel niet worden gewijzigd"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Gloeidraadwaarschuwing",
+        "PleaseLoadFilament": "Laad filament voordat u gaat afdrukken!",
+        "currentFilament": "Huidig ​​filament",
+        "requestedFilament": "Gevraagd filament",
+        "nozzleWarning": "Waarschuwing voor mondstuk",
+        "currentNozzle": "Huidig ​​mondstuk",
+        "requestedNozzle": "Gevraagd mondstuk"
       }
     },
     "TextfieldWithCopy": {

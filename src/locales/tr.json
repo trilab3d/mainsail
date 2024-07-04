@@ -329,6 +329,15 @@
         "hostnameChangedTryingToReconnect": "Ana bilgisayar adı değişti, aynı adrese yeniden bağlanmaya çalışılıyor",
         "hostnameChangedRedirecting": "Ana makine adı değişti, yeni ana makine adına yönlendiriliyor.",
         "SomethingHappened": "Bir sorun oluştu, şu anda arka uçta ana bilgisayar adı değiştirilemiyor"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Filament uyarısı",
+        "PleaseLoadFilament": "Lütfen yazdırmadan önce filamenti yükleyin!",
+        "currentFilament": "Mevcut filaman",
+        "requestedFilament": "İstenilen filaman",
+        "nozzleWarning": "Nozul uyarısı",
+        "currentNozzle": "Akım nozulu",
+        "requestedNozzle": "İstenilen nozül"
       }
     },
     "TextfieldWithCopy": {

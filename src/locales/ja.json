@@ -324,6 +324,15 @@
         "hostnameChangedTryingToReconnect": "ホスト名が変更されました。同じアドレスに再接続しようとしています",
         "hostnameChangedRedirecting": "ホスト名が変更され、新しいホスト名にリダイレクトされます。",
         "SomethingHappened": "問題が発生したため、現在バックエンドのホスト名を変更できません"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "フィラメントの警告",
+        "PleaseLoadFilament": "印刷する前にフィラメントをロードしてください。",
+        "currentFilament": "電流フィラメント",
+        "requestedFilament": "要求されたフィラメント",
+        "nozzleWarning": "ノズル警告",
+        "currentNozzle": "現在のノズル",
+        "requestedNozzle": "要求されたノズル"
       }
     },
     "TextfieldWithCopy": {

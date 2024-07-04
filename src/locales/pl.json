@@ -329,6 +329,15 @@
         "hostnameChangedTryingToReconnect": "Nazwa hosta została zmieniona. Próba ponownego połączenia z tym samym adresem",
         "hostnameChangedRedirecting": "Nazwa hosta została zmieniona, przekierowanie do nowej nazwy hosta.",
         "SomethingHappened": "Coś się stało, nie można teraz zmienić nazwy hosta na zapleczu"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Ostrzeżenie dotyczące włókna",
+        "PleaseLoadFilament": "Proszę załadować żarnik przed drukowaniem!",
+        "currentFilament": "Aktualny włókno",
+        "requestedFilament": "Żądany włókno",
+        "nozzleWarning": "Ostrzeżenie dotyczące dyszy",
+        "currentNozzle": "Aktualna dysza",
+        "requestedNozzle": "Żądana dysza"
       }
     },
     "TextfieldWithCopy": {
