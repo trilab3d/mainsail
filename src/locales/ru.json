@@ -324,6 +324,15 @@
         "hostnameChangedTryingToReconnect": "Имя хоста изменено, пытаюсь повторно подключиться к тому же адресу.",
         "hostnameChangedRedirecting": "Имя хоста изменено, происходит перенаправление на новое имя хоста.",
         "SomethingHappened": "Что-то произошло, сейчас невозможно изменить имя хоста на серверной стороне."
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Предупреждение о нити",
+        "PleaseLoadFilament": "Пожалуйста, загрузите нить перед печатью!",
+        "currentFilament": "Текущая нить накала",
+        "requestedFilament": "Запрошенная нить",
+        "nozzleWarning": "Предупреждение о сопле",
+        "currentNozzle": "Текущее сопло",
+        "requestedNozzle": "Требуемая насадка"
       }
     },
     "TextfieldWithCopy": {

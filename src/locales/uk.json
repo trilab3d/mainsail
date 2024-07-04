@@ -332,6 +332,15 @@
         "hostnameChangedTryingToReconnect": "Ім’я хосту змінено, спроба підключитися до тієї самої адреси",
         "hostnameChangedRedirecting": "Ім’я хосту змінено, переспрямування на нове ім’я хосту.",
         "SomethingHappened": "Щось трапилося, зараз неможливо змінити ім’я хоста на сервері"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Попередження про розжарювання",
+        "PleaseLoadFilament": "Завантажте нитку перед друком!",
+        "currentFilament": "Нитка струму",
+        "requestedFilament": "Запитана нитка",
+        "nozzleWarning": "Попередження про сопло",
+        "currentNozzle": "Форсунка струму",
+        "requestedNozzle": "Запитана насадка"
       }
     }
   },

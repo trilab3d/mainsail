@@ -329,6 +329,15 @@
         "hostnameChangedTryingToReconnect": "Le nom d'hôte a changé, j'essaie de me reconnecter à la même adresse",
         "hostnameChangedRedirecting": "Le nom d'hôte a changé, redirigeant vers le nouveau nom d'hôte.",
         "SomethingHappened": "Quelque chose s'est produit, impossible de changer le nom d'hôte sur le backend pour le moment"
+      },
+      "StartPrintDialog": {
+        "FilamentWarning": "Avertissement concernant les filaments",
+        "PleaseLoadFilament": "Veuillez charger le filament avant d'imprimer !",
+        "currentFilament": "Filament actuel",
+        "requestedFilament": "Filament demandé",
+        "nozzleWarning": "Avertissement de buse",
+        "currentNozzle": "Buse actuelle",
+        "requestedNozzle": "Buse demandée"
       }
     },
     "TextfieldWithCopy": {
