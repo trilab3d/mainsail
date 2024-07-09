@@ -97,7 +97,11 @@
             @closeLiveUpdateDialog="closeLiveUpdateDialog()"></trilab-update-dialog-live>
         <trilab-start-door-open-dialog></trilab-start-door-open-dialog>
         <trilab-print-door-open-dialog></trilab-print-door-open-dialog>
-
+        <start-print-dialog
+            :bool="tlb_showPrintDialog"
+            :file="tlb_dialogPrintFile"
+            :current-path="tlb_currentPrintPath"
+            @closeDialog="tlb_closePrintDialog" />
     </div>
 </template>
 
@@ -160,6 +164,12 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     mdiLightbulbOn = mdiLightbulbOn
     mdiPaletteAdvanced = mdiPaletteAdvanced
 
+    tlb_showPrintDialog = false
+    tlb_dialogPrintFile = null
+    tlb_currentPrintPath = ''
+    tlb_closePrintDialog() {
+        this.tlb_showPrintDialog = false
+    }
 
     lightFirstRun = false
 
@@ -323,20 +333,77 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
             await this.$store.dispatch('socket/addLoading', { name: 'btnUploadAndStart' })
             let successFiles = []
             for (const file of this.$refs.fileUploadAndStart?.files || []) {
-                const result = await this.doUploadAndStart(file)
+                const result = await this.doUpload_Trilab(file)
                 successFiles.push(result)
             }
 
             await this.$store.dispatch('socket/removeLoading', { name: 'btnUploadAndStart' })
+            let gcodes = this.$store.getters['files/getAllGcodes'] ?? []
+
             for (const file of successFiles) {
-                const text = this.$t('App.TopBar.UploadOfFileSuccessful', { file: file }).toString()
+                const filename = file.path ?? "file";
+                const text = this.$t('App.TopBar.UploadOfFileSuccessful', { file: filename }).toString()
+                /// start the print
+                /// its json, so parse it and 
                 this.$toast.success(text)
+                /// store files getFile
+                for(let i = 0; i < gcodes.length; i++) {
+                    if(gcodes[i].filename == file.path) {
+                        console.log("found file!");
+                        this.tlb_dialogPrintFile = gcodes[i]
+                        this.tlb_showPrintDialog = true
+                        break;
+                    }
+                }
             }
 
             this.$refs.fileUploadAndStart.value = ''
             if (this.currentPage !== '/') await this.$router.push('/')
         }
     }
+
+
+    doUpload_Trilab(file: File) {
+        const formData = new FormData()
+        const filename = file.name
+
+        this.uploadSnackbar.filename = filename
+        this.uploadSnackbar.status = true
+        this.uploadSnackbar.percent = 0
+        this.uploadSnackbar.speed = 0
+        this.uploadSnackbar.lastProgress.loaded = 0
+        this.uploadSnackbar.lastProgress.time = 0
+
+        formData.append('file', file, filename)
+        formData.append('print', 'false')
+
+
+        return new Promise((resolve) => {
+            this.uploadSnackbar.cancelTokenSource = axios.CancelToken.source()
+            axios
+                .post(this.apiUrl + '/server/files/upload', formData, {
+                    cancelToken: this.uploadSnackbar.cancelTokenSource.token,
+                    headers: { 'Content-Type': 'multipart/form-data' },
+                    onUploadProgress: (progressEvent: AxiosProgressEvent) => {
+                        this.uploadSnackbar.percent = (progressEvent.progress ?? 0) * 100
+                        this.uploadSnackbar.speed = progressEvent.rate ?? 0
+                        this.uploadSnackbar.total = progressEvent.total ?? 0
+                    },
+                })
+                .then((result) => {
+                    this.uploadSnackbar.status = false
+                    resolve(result.data?.item ?? "file")
+                })
+                .catch(() => {
+                    this.uploadSnackbar.status = false
+                    this.$store.dispatch('socket/removeLoading', { name: 'btnUploadAndStart' })
+                    const text = this.$t('App.TopBar.CannotUploadTheFile').toString()
+                    this.$toast.error(text)
+                })
+        })
+    }
+
+
 
     doUploadAndStart(file: File) {
         const formData = new FormData()
@@ -350,7 +417,8 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         this.uploadSnackbar.lastProgress.time = 0
 
         formData.append('file', file, filename)
-        formData.append('print', 'true')
+        formData.append('print', 'false')
+
 
         return new Promise((resolve) => {
             this.uploadSnackbar.cancelTokenSource = axios.CancelToken.source()
