@@ -487,7 +487,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 		},
 	];
 
-	public scaleFactor: any = "1.0";
+	public scaleFactor: any = "2.0";
 
 
 	created() {
@@ -865,7 +865,7 @@ export default class TrilabDeltaCalibrationWizard extends Mixins(BaseMixin, Cont
 
 
 	sendPrintTestObject() {
-		const filename = (".service-gcodes/calibrate_size_v3_HT90_HF0.4_PLA_35m_17g.gcode")
+		const filename = (".service-gcodes/calibrate_size_v4_HT90_HF0.4_PLA_1h29m_47g.gcode")
 		this.$socket.emit('printer.print.start', { filename: filename }, { loading: 'DeltaCalibrationWizardPrint' })
 		fetch(this.dbUrl("testPrintDone", "true"), { method: 'POST' });
 		this.testPrintDone = true;
