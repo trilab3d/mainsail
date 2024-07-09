@@ -38,36 +38,43 @@ export default class TheErrorMessagesSnackbar extends Mixins(BaseMixin) {
         return dateFormatted + " : " + this.queue[0].formatMessage;
     }
 
+    getformattedText(event: any){
+        var dateFormatted = this.formatTime(event.date.getTime(), true);
+        return dateFormatted + " : " + event.formatMessage;
+    }
 
     get events() {
-        return this.$store.getters['server/getConsoleEvents'];
+		return this.$store.getters['server/getConsoleEvents'](false, 30);
     }
 
     @Watch('events')
-    eventsChanged() {
-
-        const events = this.events();
+    onEventsChange() {
+        
+        console.log("EVENTS CHANGED");
+        //const events = this.events;
         //console.log("EVENTS:");
-        //console.log(this.events());
+        //console.log(this.events);
         const lastDisplayDate = this.lastDisplayDate;
-        const lastDisplayDateIndex = events.findIndex((event: any) => event.date.getTime() > lastDisplayDate);
+        const lastDisplayDateIndex = this.events.findIndex((event: any) => event.date.getTime() > lastDisplayDate);
         if (lastDisplayDateIndex === -1) return;
 
-        const lastEvents = events.slice(lastDisplayDateIndex);
+        const lastEvents = this.events.slice(lastDisplayDateIndex);
         const lastErrorEvents = lastEvents.filter((event: any) => event.message.startsWith('!!') || event.message.startsWith('echo'));
-
         for (const event of lastErrorEvents) {
             if (event.date.getTime() > this.lastDisplayDate) {
                 this.lastDisplayDate = event.date.getTime();
             }
-            this.queue.push(event);
+            this.$toast.error(this.getformattedText(event));
+            //console.log('New event!' + event.message);
+            //this.$toast.error(event.message);
+            //this.queue.push(event);
         }
 
 
     }
     mounted() {
         ///simulate eventsChanged
-        this.eventsChanged();
+        this.onEventsChange();
     }
 }
 </script>
