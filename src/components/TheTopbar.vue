@@ -1,10 +1,12 @@
+<!-- eslint-disable no-unreachable -->
 <template>
     <div>
         <v-app-bar app elevate-on-scroll :height="topbarHeight" class="topbar pa-0" clipped-left>
             <v-app-bar-nav-icon tile @click.stop="naviDrawer = !naviDrawer"></v-app-bar-nav-icon>
             <router-link to="/">
                 <template v-if="sidebarLogo">
-                    <img :src="sidebarLogo" style="height: 32px" class="nav-logo ml-4 mr-1 d-none d-sm-flex" alt="Logo" />
+                    <img :src="sidebarLogo" style="height: 32px" class="nav-logo ml-4 mr-1 d-none d-sm-flex"
+                        alt="Logo" />
                 </template>
                 <template v-else>
                     <mainsail-logo :color="logoColor" style="height: 32px" class="nav-logo ml-4 mr-1 d-none d-sm-flex"
@@ -42,8 +44,8 @@
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.SAVE_CONFIG') }}</span>
             </v-btn>
             <t-light-btn></t-light-btn>
-            <v-btn v-if="TrilabServiceView" tile :icon="$vuetify.breakpoint.smAndDown" :text="$vuetify.breakpoint.mdAndUp"
-                color="primary" :disabled="['printing'].includes(printer_state)"
+            <v-btn v-if="TrilabServiceView" tile :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp" color="primary" :disabled="['printing'].includes(printer_state)"
                 class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button" @click="doHome">
                 <v-icon class="mr-md-2">{{ mdiHome }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.Trilab.TheTopBar.HomeBtn') }}</span>
@@ -55,8 +57,8 @@
                 <v-icon class="mr-md-2">{{ mdiFileUpload }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.UploadPrint') }}</span>
             </v-btn>
-            <v-btn v-if="klippyIsConnected" tile :icon="$vuetify.breakpoint.smAndDown" :text="$vuetify.breakpoint.mdAndUp"
-                color="error" class="button-min-width-auto px-3 emergency-button"
+            <v-btn v-if="klippyIsConnected" tile :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp" color="error" class="button-min-width-auto px-3 emergency-button"
                 :loading="loadings.includes('topbarEmergencyStop')" @click="btnEmergencyStop">
                 <v-icon class="mr-md-2">{{ mdiAlertOctagonOutline }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.EmergencyStop') }}</span>
@@ -97,10 +99,7 @@
             @closeLiveUpdateDialog="closeLiveUpdateDialog()"></trilab-update-dialog-live>
         <trilab-start-door-open-dialog></trilab-start-door-open-dialog>
         <trilab-print-door-open-dialog></trilab-print-door-open-dialog>
-        <start-print-dialog
-            :bool="tlb_showPrintDialog"
-            :file="tlb_dialogPrintFile"
-            :current-path="tlb_currentPrintPath"
+        <start-print-dialog :bool="tlb_showPrintDialog" :file="tlb_dialogPrintFile" :current-path="tlb_currentPrintPath"
             @closeDialog="tlb_closePrintDialog" />
     </div>
 </template>
@@ -169,6 +168,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     tlb_currentPrintPath = ''
     tlb_closePrintDialog() {
         this.tlb_showPrintDialog = false
+        this.fileToStart = null
     }
 
     lightFirstRun = false
@@ -328,6 +328,9 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         this.$refs.fileUploadAndStart.click()
     }
 
+
+    public fileToStart: any = null;
+
     async uploadAndStart() {
         if (this.$refs.fileUploadAndStart?.files.length) {
             await this.$store.dispatch('socket/addLoading', { name: 'btnUploadAndStart' })
@@ -335,31 +338,58 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
             for (const file of this.$refs.fileUploadAndStart?.files || []) {
                 const result = await this.doUpload_Trilab(file)
                 successFiles.push(result)
+
             }
-
-            await this.$store.dispatch('socket/removeLoading', { name: 'btnUploadAndStart' })
-            let gcodes = this.$store.getters['files/getAllGcodes'] ?? []
-
-            for (const file of successFiles) {
-                const filename = file.path ?? "file";
-                const text = this.$t('App.TopBar.UploadOfFileSuccessful', { file: filename }).toString()
-                /// start the print
-                /// its json, so parse it and 
-                this.$toast.success(text)
-                /// store files getFile
-                for(let i = 0; i < gcodes.length; i++) {
-                    if(gcodes[i].filename == file.path) {
-                        console.log("found file!");
-                        this.tlb_dialogPrintFile = gcodes[i]
-                        this.tlb_showPrintDialog = true
-                        break;
-                    }
-                }
+            if (successFiles.length == 0) {
+                await this.$store.dispatch('socket/removeLoading', { name: 'btnUploadAndStart' })
+                return;
             }
+            this.fileToStart = successFiles[0];
+           // console.log("setting fileToStart to:");
+           // console.log(successFiles[0]);
 
-            this.$refs.fileUploadAndStart.value = ''
-            if (this.currentPage !== '/') await this.$router.push('/')
+
+            return;
         }
+    }
+
+    get gCodes() {
+        return this.$store.getters['files/getAllGcodes'] ?? []
+    }
+
+    @Watch('gCodes')
+    async onGCodesChange(newGcodes: any) {
+        //console.log("gCodes changed");
+        if (this.fileToStart == null) { return; }
+        //console.log("fileToStart");
+        //console.log(this.fileToStart);
+        var FtS: any = this.fileToStart;
+        const filename = FtS?.path ?? "";
+
+        /// store files getFile
+        var fileFound = false;
+        for (let i = 0; i < newGcodes.length; i++) {
+            if (newGcodes[i].filename == filename) {
+                /// check if thubmnail is already loaded
+                this.fileToStart = null;
+                console.log("found file!" + filename);
+                this.tlb_dialogPrintFile = newGcodes[i]
+                this.tlb_showPrintDialog = true
+                fileFound = true;
+                break;
+            }
+        }
+        if (fileFound == false) {
+          //console.log("file not found!");
+            return;
+        }
+
+        await this.$store.dispatch('socket/removeLoading', { name: 'btnUploadAndStart' })
+
+
+        this.$refs.fileUploadAndStart.value = ''
+        if (this.currentPage !== '/') await this.$router.push('/')
+
     }
 
 
@@ -392,6 +422,8 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
                 })
                 .then((result) => {
                     this.uploadSnackbar.status = false
+                    const text = this.$t('App.TopBar.UploadOfFileSuccessful', { file: filename }).toString()
+                    this.$toast.success(text)
                     resolve(result.data?.item ?? "file")
                 })
                 .catch(() => {
