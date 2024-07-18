@@ -35,9 +35,9 @@
     <v-dialog v-model="bool" :max-width="400" @click:outside="closeDialog" @keydown.esc="closeDialog">
         <v-card style="overflow-x:hidden">
             <v-card-title class="text-h5">{{ $t('Dialogs.StartPrint.Headline') }}</v-card-title>
-            <div v-if="file.big_thumbnail" class="d-flex align-center justify-center tlb_responsive_height"
+            <div v-if="bigThumbnail() ?? false" class="d-flex align-center justify-center tlb_responsive_height"
                 style="overflow-y:auto; overflow-x:auto;">
-                <v-img :src="file.big_thumbnail" :max-width="'100%'" :overflow-y="'scroll'" class="d-inline-block;"
+                <v-img :src="bigThumbnail() ?? ''" :max-width="'100%'" :overflow-y="'scroll'" class="d-inline-block;"
                     :style="bigThumbnailStyle" />
             </div>
             <v-card-text class="pb-0 mt-4">
@@ -45,17 +45,24 @@
                     {{ question }}
                 </p>
                 <div>
-                    <div v-if="tlb_filament_ok == false" class="mx-0 mb-4 px-0 py-0">
-                        <h3 class="mb-0"><v-icon color="warning">{{ mdiAlert }}</v-icon> {{ $t('App.Trilab.StartPrintDialog.FilamentWarning') }}</h3>
-                        <p v-if="tlbFilamentLoaded == 'NONE'" class="warning--text px-0 mx-0 my-0 py-0"> {{ $t('App.Trilab.StartPrintDialog.PleaseLoadFilament') }}</p>
-                        <p v-if="tlbFilamentLoaded != 'NONE' && tlb_filament_ok == false">{{ $t('App.Trilab.StartPrintDialog.currentFilament') }}: <span
-                                class="red--text">{{ tlbFilamentLoaded
-                                }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span class="green--text">{{ tlbFilamentNeeded
+                    <div v-if="tlb_filament_ok() == false" class="mx-0 mb-4 px-0 py-0">
+                        <h3 class="mb-0"><v-icon color="warning">{{ mdiAlert }}</v-icon> {{
+                            $t('App.Trilab.StartPrintDialog.FilamentWarning') }}</h3>
+                        <p v-if="tlbFilamentLoaded == 'NONE'" class="warning--text px-0 mx-0 my-0 py-0"> {{
+                            $t('App.Trilab.StartPrintDialog.PleaseLoadFilament') }}</p>
+                        <p v-if="tlbFilamentLoaded != 'NONE' && tlb_filament_ok() == false">{{
+                            $t('App.Trilab.StartPrintDialog.currentFilament') }}: <span class="red--text">{{
+                                tlbFilamentLoaded
+                            }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span
+                                class="green--text">{{ tlbFilamentNeeded()
                                 }}</span></p>
                     </div>
-                    <div v-if="nozzle_ok == false">
-                        <h3 class="mb-0"><v-icon color="warning">{{ mdiAlert }}</v-icon> {{ $t('App.Trilab.StartPrintDialog.nozzleWarning') }}</h3>
-                        <p class="">{{ $t('App.Trilab.StartPrintDialog.currentNozzle') }}: <span class="red--text">{{ nozzleCurrent }}</span><br>{{$t('App.Trilab.StartPrintDialog.requestedNozzle') }}: <span class="success--text">{{ nozzleWanted }}</span></p>
+                    <div v-if="nozzle_ok() == false">
+                        <h3 class="mb-0"><v-icon color="warning">{{ mdiAlert }}</v-icon> {{
+                            $t('App.Trilab.StartPrintDialog.nozzleWarning') }}</h3>
+                        <p class="">{{ $t('App.Trilab.StartPrintDialog.currentNozzle') }}: <span class="red--text">{{
+                            nozzleCurrent }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedNozzle') }}:
+                            <span class="success--text">{{ nozzleWanted() }}</span></p>
                     </div>
 
                 </div>
@@ -74,7 +81,7 @@
                 <v-spacer />
                 <v-btn text @click="closeDialog">{{ $t('Dialogs.StartPrint.Cancel') }}</v-btn>
                 <v-btn color="primary" text :disabled="printerIsPrinting || !klipperReadyForGui"
-                    @click="startPrint(file.filename)">
+                    @click="startPrint(getFile()?.filename ?? '')">
                     {{ $t('Dialogs.StartPrint.Print') }}
                 </v-btn>
             </v-card-actions>
@@ -91,6 +98,7 @@ import SettingsRow from '@/components/settings/SettingsRow.vue'
 import { mdiPrinter3d, mdiAlert } from '@mdi/js'
 import { ServerSpoolmanStateSpool } from '@/store/server/spoolman/types'
 import { defaultBigThumbnailBackground } from '@/store/variables'
+import { Watch } from 'vue-property-decorator'
 
 @Component({
     components: {
@@ -108,15 +116,32 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
     declare readonly currentPath: string
 
     @Prop({ required: true })
-    declare file: FileStateGcodefile
+    declare file: null | FileStateGcodefile
+
+    public updatedFile: null | FileStateGcodefile = null;
+
+
+    @Watch('bool')
+    onBoolChange(newVal: boolean) {
+        if (newVal == false) {
+            this.closeDialog()
+        } else {
+            this.updatedFile = null;
+        }
+    }
+
+    getFile(): any {
+        if (this.updatedFile != null) {
+            return this.updatedFile;
+        }
+        return this.file;
+    }
 
     public NOZZLE_DICTIONARY: any = {
         "HF": "HF",
         "ObX": "ObXidian",
         "HT": "HT"
     };
-
-
 
     get timelapseEnabled() {
         return this.$store.state.server.timelapse?.settings?.enabled ?? false
@@ -128,6 +153,29 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
             { enabled: newVal },
             { action: 'server/timelapse/initSettings' }
         )
+    }
+
+    bigThumbnail() {
+        return this.getFile()?.big_thumbnail ?? null
+    }
+
+    get gCodes() {
+        return this.$store.getters['files/getAllGcodes'] ?? []
+    }
+
+    /// watch gCodes
+    @Watch('gCodes')
+    onGCodesChange(newVal: any) {
+        //console.log("startPrintDialogOnGcodesChange");
+        if (this.getFile() != null) {
+            /// for each gcode file, check if it is the same as the current file
+            for (let i = 0; i < newVal.length; i++) {
+                if (newVal[i].filename == this.getFile().filename) {
+                    this.updatedFile = newVal[i];
+                    break;
+                }
+            }
+        }
     }
 
     get bigThumbnailBackground() {
@@ -161,32 +209,38 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
     get question() {
         if (this.active_spool)
             return this.$t('Dialogs.StartPrint.DoYouWantToStartFilenameFilament', {
-                filename: this.file?.filename ?? 'unknown',
+                filename: this.getFile()?.filename ?? 'unknown',
             })
 
-        return this.$t('Dialogs.StartPrint.DoYouWantToStartFilename', { filename: this.file?.filename ?? 'unknown' })
+        return this.$t('Dialogs.StartPrint.DoYouWantToStartFilename', { filename: this.getFile()?.filename ?? 'unknown' })
     }
 
     get maxThumbnailWidth() {
-        return this.file?.big_thumbnail_width ?? 400
+        return this.getFile()?.big_thumbnail_width ?? 400
     }
 
     startPrint(filename = '') {
+        if (filename == '') {
+            return;
+        }
         filename = (this.currentPath + '/' + filename).substring(1)
         this.closeDialog()
         this.$socket.emit('printer.print.start', { filename: filename }, { action: 'switchToDashboard' })
     }
 
     get tlb_isFTypePresent() {
-        const isPresent = 'filament_type' in this.file
+        if (this.getFile() == null) {
+            return false;
+        }
+        const isPresent = 'filament_type' in this.getFile()
         return isPresent;
     }
 
-    get tlbFilamentNeeded() {
-        return this.file.filament_type ?? 'UNKNOWN';
+    tlbFilamentNeeded() {
+        return this.getFile()?.filament_type ?? 'UNKNOWN';
     }
     get tlb_filamentName() {
-        let fNameToReturn = this.file.filament_name ?? 'UNKNOWN';
+        let fNameToReturn = this.getFile()?.filament_name ?? 'UNKNOWN';
         /// split it by @, return first part stripped
         if (fNameToReturn.includes('@')) {
             fNameToReturn = fNameToReturn.split('@')[0];
@@ -194,13 +248,13 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
         return fNameToReturn;
     }
 
-    get nozzleWanted() {
-        const filament_notes = this.file.filament_notes ?? null;
-        const nozzle_diameter = this.file.nozzle_diameter ?? null;
-        console.log("filament_notes:");
-        console.log(filament_notes);
-        console.log("nozzle_diameter:");
-        console.log(nozzle_diameter);
+    nozzleWanted() {
+        const filament_notes = this.getFile()?.filament_notes ?? null;
+        const nozzle_diameter = this.getFile()?.nozzle_diameter ?? null;
+        //console.log("filament_notes:");
+        //console.log(filament_notes);
+        //console.log("nozzle_diameter:");
+        //console.log(nozzle_diameter);
         if (filament_notes && nozzle_diameter && filament_notes in this.NOZZLE_DICTIONARY) {
             //            nozzle_wanted = f"{nozzle_diameter} {NOZZLE_DICTIONARY[filament_notes]}"
             return `${nozzle_diameter} ${this.NOZZLE_DICTIONARY[filament_notes]}`;
@@ -218,16 +272,16 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
         return this.getSavedVariable('nozzle');
     }
 
-    get nozzle_ok() {
-        return this.nozzleWanted == this.nozzleCurrent;
+    nozzle_ok() {
+        return this.nozzleWanted() == this.nozzleCurrent;
     }
 
-    get tlb_filament_ok() {
-        return this.tlbFilamentNeeded == this.tlbFilamentLoaded;
+    tlb_filament_ok() {
+        return this.tlbFilamentNeeded() == this.tlbFilamentLoaded;
     }
 
     get AllOk() {
-        return this.nozzle_ok && this.tlb_filament_ok;
+        return this.nozzle_ok() && this.tlb_filament_ok;
     }
 
     get tlbFilamentLoaded() {
@@ -246,6 +300,7 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
 
 
     closeDialog() {
+        this.updatedFile = null;
         this.$emit('closeDialog')
     }
 }
