@@ -1,3 +1,37 @@
+<style scoped lang="scss">
+.noTopBorderRow {
+    td {
+        border-top: none !important;
+    }
+}
+
+/* for 2nd column in the diagTable min-width: 20px; */
+.diagTable {
+    table-layout: auto;
+
+    td {
+        .v-btn {
+            width: 100%;
+        }
+    }
+
+    th:nth-child(2) {
+        min-width: 150px;
+        width: 150px;
+    }
+
+
+    .trCommon:hover+tr {
+        background: #616161;
+    }
+
+    .trCommonUp:nth-child(-1):hover {
+        background: #616161;
+    }
+
+
+}
+</style>
 <template>
     <v-container py-0 px-0>
         <v-tabs v-model="activeTab">
@@ -12,368 +46,327 @@
                 <v-col cols="12" md="12" sm="12" class="pa-3 mt-3">
                     <div v-if="activeTab == 'basic'">
                         <div class="pa-4">
-                            <v-btn
-                                color="primary"
-                                class="mr-2"
-                                :loading="testAllInProgress"
-                                :disabled="testAllInProgress"
-                                @click="testAll()">
+                            <v-btn color="primary" class="mr-2" :loading="testAllInProgress"
+                                :disabled="testAllInProgress" @click="testAll()">
                                 Run all tests
                             </v-btn>
 
-                            <v-btn
-                                color="primary"
-                                class="mr-2"
+                            <v-btn color="primary" class="mr-2"
                                 :disabled="testAllInProgress || currentStep == null || currentStep == testOrder[0]"
                                 @click="resumeTestAll()">
                                 Resume from last
                             </v-btn>
                         </div>
 
-                        <!--- ENDSTOPS CHECK  ---->
-                        <v-row align="center">
-                            <v-col cols="6">Endstops Check</v-col>
-                            <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="endstopACheckDialogOpen = true">Test</v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon v-if="testResults.endstopsOpenState == 1" color="success">
-                                    {{ mdiCheckCircle }}
-                                </v-icon>
-                                <v-icon v-if="testResults.endstopsOpenState == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
+                        <v-simple-table class="diagTable">
+                            <thead>
+                                <tr>
+                                    <th>Test Name</th>
+                                    <th class="width:20px;">Action</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Endstops Check -->
+                                <tr>
+                                    <td>Endstops Check</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2" @click="endstopACheckDialogOpen = true">
+                                            Test
+                                        </v-btn>
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.endstopsOpenState == 1" color="success">
+                                            {{ mdiCheckCircle }}
+                                        </v-icon>
+                                        <v-icon v-if="testResults.endstopsOpenState == 0" color="red">{{ mdiCross
+                                            }}</v-icon>
+                                    </td>
+                                </tr>
 
-                            <trilab-diagnostics-endstops-test-dialog
-                                :showp="endstopACheckDialogOpen"
-                                @close="endstopACheckDialogOpen = false"
-                                @catchResult="catchResult"></trilab-diagnostics-endstops-test-dialog>
-                        </v-row>
-                        <!--- END ENSTOPS CHECK  ---->
+                                <!-- Heatbreak Fan Test -->
+                                <tr v-if="heatbreakfanPresent">
+                                    <td>Fan - speed control</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2" :loading="fanTestLoading"
+                                            :disabled="fanTestLoading" @click="testFan(1)">
+                                            Test
+                                        </v-btn>
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.heatbreakfan == 1" color="success">
+                                            {{ mdiCheckCircle }}
+                                        </v-icon>
+                                        <v-icon v-if="testResults.heatbreakfan == 0" color="red">{{ mdiCross }}</v-icon>
+                                    </td>
+                                </tr>
 
-                        <!--- HEATBREAK FAN TEST  ---->
-                        <v-row v-if="heatbreakfanPresent" align="center">
-                            <v-col class="justify-center" cols="6">Fan - speed control</v-col>
-                            <v-col cols="1">
-                                <v-btn
-                                    color="primary"
-                                    class="mr-2"
-                                    :loading="fanTestLoading"
-                                    :disabled="fanTestLoading"
-                                    @click="testFan(1)">
-                                    Test
-                                </v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon color="success" v-if="testResults.heatbreakfan == 1">
-                                    {{ mdiCheckCircle }}
-                                </v-icon>
-                                <v-icon v-if="testResults.heatbreakfan == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-                        </v-row>
-                        <!--- END HEATBREAK FAN TEST  ---->
-
-                        <!--- PRINT FLAP TEST  ---->
-                        <v-row v-if="printFlapPresent" align="center">
-                            <v-col cols="6">Print flap - motion control</v-col>
-                            <v-col cols="1">
-                                <v-btn
-                                    color="primary"
-                                    class="mr-2"
-                                    @click="
-                                        testPrintFlap(1)
+                                <!-- Print Flap Test -->
+                                <tr v-if="printFlapPresent">
+                                    <td>Print flap - motion control</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2" @click="
+                                            testPrintFlap(1)
                                         printflapTestDialogOpen = true
-                                    ">
-                                    Test
-                                </v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon color="success" v-if="testResults.printflap == 1">{{ mdiCheckCircle }}</v-icon>
-                                <v-icon color="red" v-if="testResults.printflap == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-                            <v-dialog
-                                v-model="printflapTestDialogOpen"
-                                max-width="290"
-                                @close="printflapTestDialogOpen = false">
-                                <v-card>
-                                    <v-card-title class="text-h5">Did the print flap move?</v-card-title>
-                                    <v-card-text>
-                                        The flap is depicted in the image below. Its movement can also be recognized by
-                                        sound.
-                                    </v-card-text>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                        <v-btn
-                                            color="green darken-1"
-                                            text
-                                            @click="
-                                                printflapTestDialogOpen = false
-                                                testResults.printflap = 1
                                             ">
-                                            Yes
+                                            Test
                                         </v-btn>
-                                        <v-btn
-                                            color="red darken-1"
-                                            text
-                                            @click="
-                                                printflapTestDialogOpen = false
-                                                testResults.printflap = 0
-                                            ">
-                                            No
-                                        </v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                        </v-row>
-                        <!--- END PRINT FLAP TEST  ---->
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.printflap == 1" color="success">{{ mdiCheckCircle
+                                            }}</v-icon>
+                                        <v-icon v-if="testResults.printflap == 0" color="red">{{ mdiCross }}</v-icon>
+                                    </td>
+                                </tr>
 
-                        <!--- CHAMBER INTAKE FLAP TEST  ---->
-                        <v-row v-if="chamberIntakeFlapPresent" align="center">
-                            <v-col cols="6">Chamber Intake flap - motion control</v-col>
-                            <v-col cols="1">
-                                <v-btn
-                                    color="primary"
-                                    class="mr-2"
-                                    @click="
-                                        testChamberFlapIntake(1)
+                                <!-- Chamber Intake Flap Test -->
+                                <tr v-if="chamberIntakeFlapPresent">
+                                    <td>Chamber Intake flap - motion control</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2" @click="
+                                            testChamberFlapIntake(1)
                                         chamberflapTestDialogOpen = true
-                                    ">
-                                    Test
-                                </v-btn>
-                            </v-col>
-                            <v-col cols="3">
-                                <v-icon color="success" v-if="testResults.chamberflap == 1">
-                                    {{ mdiCheckCircle }}
-                                </v-icon>
-                                <v-icon color="red" v-if="testResults.chamberflap == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-                            <v-dialog
-                                v-model="chamberflapTestDialogOpen"
-                                max-width="290"
-                                @close="chamberflapTestDialogOpen = false">
-                                <v-card>
-                                    <v-card-title class="text-h5">Did the chamber flap move?</v-card-title>
-                                    <v-card-text>
-                                        The flap is depicted in the image below. Its movement can also be recognized by
-                                        sound.
-                                    </v-card-text>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                        <v-btn
-                                            color="green darken-1"
-                                            text
-                                            @click="
-                                                chamberflapTestDialogOpen = false
-                                                testResults.chamberflap = 1
                                             ">
-                                            Yes
+                                            Test
                                         </v-btn>
-                                        <v-btn
-                                            color="red darken-1"
-                                            text
-                                            @click="
-                                                chamberflapTestDialogOpen = false
-                                                testResults.chamberflap = 0
-                                            ">
-                                            No
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.chamberflap == 1" color="success">
+                                            {{ mdiCheckCircle }}
+                                        </v-icon>
+                                        <v-icon v-if="testResults.chamberflap == 0" color="red">{{ mdiCross }}</v-icon>
+                                    </td>
+                                </tr>
+
+                                <!-- Bed Probes Check -->
+                                <tr>
+                                    <td>Bed probes check</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2"
+                                            @click="BedProbesCheckingDialog = true">Test</v-btn>
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.bedProbes == 1" color="success">{{ mdiCheckCircle
+                                            }}</v-icon>
+                                        <v-icon color="red" v-if="testResults.bedProbes == 0">{{ mdiCross }}</v-icon>
+                                    </td>
+                                </tr>
+
+                                <!-- Extruder Temperature Rise Check -->
+                                <tr>
+                                    <td>Extruder temp rise check</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2"
+                                            @click="temperatureRiseDialogExtruder = true">
+                                            Test
                                         </v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                        </v-row>
-                        <!--- END CHAMBER INTAKE FLAP TEST  ---->
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.extruderCheck == 1" color="success">
+                                            {{ mdiCheckCircle }}
+                                        </v-icon>
+                                        <v-icon v-if="testResults.extruderCheck == 0" color="red">{{ mdiCross
+                                            }}</v-icon>
+                                    </td>
+                                </tr>
 
-                        <!--- EXTRUDER TEMPERATURE RISE CHECK  ---->
-                        <v-row align="center">
-                            <v-col cols="6">Extruder temp rise check</v-col>
-                            <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogExtruder = true">
-                                    Test
-                                </v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon v-if="testResults.extruderCheck == 1" color="success">
-                                    {{ mdiCheckCircle }}
-                                </v-icon>
-                                <v-icon v-if="testResults.extruderCheck == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-
-                            <trilab-diagnostics-temperature-rise-check
-                                :showp="temperatureRiseDialogExtruder"
-                                @close="temperatureRiseDialogExtruder = false"
-                                heaterType="Extruder"
-                                @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
-                        </v-row>
-                        <!--- END EXTRUDER TEMPERATURE RISE CHECK  ---->
-
-                        <!--- BED TEMPERATURE RISE CHECK  ---->
-                        <v-row align="center">
-                            <v-col cols="6">Bed temp rise check</v-col>
-                            <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogBed = true">
-                                    Test
-                                </v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon v-if="testResults.bedCheck == 1" color="success">{{ mdiCheckCircle }}</v-icon>
-                                <v-icon v-if="testResults.bedCheck == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-
-                            <trilab-diagnostics-temperature-rise-check
-                                heaterType="Bed"
-                                :showp="temperatureRiseDialogBed"
-                                @close="temperatureRiseDialogBed = false"
-                                @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
-                        </v-row>
-                        <!--- END BED TEMPERATURE RISE CHECK  ---->
-
-                        <!--- CHAMBER TEMPERATURE RISE CHECK (PANEL CHECK) ---->
-                        <v-row align="center">
-                            <v-col cols="6">Chamber temp rise check</v-col>
-                            <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="temperatureRiseDialogChamber = true">
-                                    Test
-                                </v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon v-if="testResults.panelCheck == 1" color="success">{{ mdiCheckCircle }}</v-icon>
-                                <v-icon v-if="testResults.panelCheck == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-
-                            <trilab-diagnostics-temperature-rise-check
-                                :showp="temperatureRiseDialogChamber"
-                                @close="temperatureRiseDialogChamber = false"
-                                heaterType="Panels"
-                                @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
-                        </v-row>
-                        <!--- END CHAMBER TEMPERATURE RISE CHECK  ---->
-
-                        <!--- ANALOG PROBE DEBUG  ---->
-                        <v-row align="center">
-                            <v-col cols="6">Bed probes check</v-col>
-                            <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="BedProbesCheckingDialog = true">Test</v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon v-if="testResults.bedProbes == 1" color="success">{{ mdiCheckCircle }}</v-icon>
-                                <v-icon v-if="testResults.bedProbes == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-
-                            <trilab-diagnostics-probes-dialog
-                                :showp="BedProbesCheckingDialog"
-                                @close="BedProbesCheckingDialog = false"
-                                @catchResult="catchResult"></trilab-diagnostics-probes-dialog>
-                        </v-row>
-                        <!--- END ANALOG PROBE DEBUG  ---->
-
-                        <!--- FILAMENT SENSOR CHECK  ---->
-                        <v-row align="center">
-                            <v-col cols="6">Filament sensor check</v-col>
-                            <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="filamentDialogOpen = true">Test</v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon color="success" v-if="testResults.filamentCheck == 1">
-                                    {{ mdiCheckCircle }}
-                                </v-icon>
-                                <v-icon color="red" v-if="testResults.filamentCheck == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-
-                            <trilab-diagnostics-filament-sensor-dialog
-                                :showp="filamentDialogOpen"
-                                @close="filamentDialogOpen = false"
-                                @catchResult="catchResult"></trilab-diagnostics-filament-sensor-dialog>
-                        </v-row>
-                        <!--- END FILAMENT SENSOR CHECK  ---->
-
-                        <!--- EMERGENCY STOP RESET CHECK ---->
-                        <v-row align="center">
-                            <v-col cols="6">Emergency stop reset check</v-col>
-                            <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="setEmergencyStopCheckStart()">Test</v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon color="success" v-if="testResults.emergencyStopCheck == 1">
-                                    {{ mdiCheckCircle }}
-                                </v-icon>
-                                <v-icon color="red" v-if="testResults.emergencyStopCheck == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-                        </v-row>
-                        <!--- END EMERGENCY STOP RESET CHECK --->
-
-                        <!--- USB PORT CHECK  ---->
-                        <v-row align="center">
-                            <v-col cols="6">USB port check</v-col>
-                            <v-col cols="1">
-                                <v-btn color="primary" class="mr-2" @click="usbTestDialogOpen = true">Test</v-btn>
-                            </v-col>
-                            <v-col cols="5">
-                                <v-icon color="success" v-if="testResults.usb == 1">{{ mdiCheckCircle }}</v-icon>
-                                <v-icon color="red" v-if="testResults.usb == 0">{{ mdiCross }}</v-icon>
-                            </v-col>
-                            <v-dialog v-model="usbTestDialogOpen" max-width="290" @close="usbTestDialogOpen = false">
-                                <v-card>
-                                    <v-card-title class="text-h5">Test of USB ports</v-card-title>
-                                    <v-card-text>
-                                        <p>
-                                            Plug the USB in each available port and wait for the detected USB number to
-                                            change. Was every USB port recognized?
-                                        </p>
-                                        <p style="text-align: center">Currently detected devices: {{ usbNumber }}</p>
-                                    </v-card-text>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
-                                        <v-btn
-                                            color="green darken-1"
-                                            text
-                                            @click="
-                                                usbTestDialogOpen = false
-                                                catchResult('usb', 1)
-                                            ">
-                                            Yes
+                                <!-- Bed Temperature Rise Check -->
+                                <tr class="trCommon">
+                                    <td>Bed temp rise check</td>
+                                    <td rowspan="2">
+                                        <v-btn color="primary" style="height:70% !important;"
+                                            @click="temperatureRiseDialogChamber = true">
+                                            Test
                                         </v-btn>
-                                        <v-btn
-                                            color="red darken-1"
-                                            text
-                                            @click="
-                                                usbTestDialogOpen = false
-                                                catchResult('usb', 0)
-                                            ">
-                                            No
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.bedCheck == 1" color="success">{{ mdiCheckCircle
+                                            }}</v-icon>
+                                        <v-icon v-if="testResults.bedCheck == 0" color="red">{{ mdiCross }}</v-icon>
+                                    </td>
+                                </tr>
+
+                                <!-- Chamber Temperature Rise Check -->
+                                <tr>
+                                    <td>Chamber temp rise check</td>
+                                    <!-- <td>
+                                        <v-btn color="primary" class="mr-2"
+                                            @click="temperatureRiseDialogChamber = true">
+                                            Test
                                         </v-btn>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-dialog>
-                        </v-row>
-                        <!--- END USB PORT CHECK  ---->
+                                    </td> -->
+                                    <td>
+                                        <v-icon v-if="testResults.panelCheck == 1" color="success">{{ mdiCheckCircle
+                                            }}</v-icon>
+                                        <v-icon v-if="testResults.panelCheck == 0" color="red">{{ mdiCross }}</v-icon>
+                                    </td>
+                                </tr>
 
-                        <!--- PRINT PROTOCOL ROW, IF ALL SUCCESSFUL  ---->
-                        <v-row v-if="allSucessfull">
-                            <v-col cols="6">
-                                <v-text-field
-                                    hide-details
-                                    v-model="responsibleTester"
-                                    label="Fill the responsible person here first"
-                                    outlined
-                                    dense></v-text-field>
-                            </v-col>
-                            <v-col cols="6">
-                                <v-btn
-                                    style="vertical-align: center"
-                                    :disabled="responsibleTester.trim() == ''"
-                                    color="success"
-                                    class="mr-2"
-                                    @click="printProtocol()">
-                                    Download protocol for printing
-                                </v-btn>
-                            </v-col>
-                        </v-row>
+                                <!-- Filament Sensor Check -->
+                                <tr>
+                                    <td>Filament sensor check</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2"
+                                            @click="filamentDialogOpen = true">Test</v-btn>
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.filamentCheck == 1" color="success">
+                                            {{ mdiCheckCircle }}
+                                        </v-icon>
+                                        <v-icon v-if="testResults.filamentCheck == 0" color="red">{{ mdiCross
+                                            }}</v-icon>
+                                    </td>
+                                </tr>
 
-                        <!---<miscellaneous-panel></miscellaneous-panel>--->
+                                <!-- Emergency Stop Reset Check -->
+                                <tr>
+                                    <td>Emergency stop reset check</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2"
+                                            @click="setEmergencyStopCheckStart()">Test</v-btn>
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.emergencyStopCheck == 1" color="success">
+                                            {{ mdiCheckCircle }}
+                                        </v-icon>
+                                        <v-icon v-if="testResults.emergencyStopCheck == 0" color="red">{{ mdiCross
+                                            }}</v-icon>
+                                    </td>
+                                </tr>
+
+                                <!-- USB Port Check -->
+                                <tr>
+                                    <td>USB port check</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2"
+                                            @click="usbTestDialogOpen = true">Test</v-btn>
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.usb == 1" color="success">{{ mdiCheckCircle
+                                            }}</v-icon>
+                                        <v-icon v-if="testResults.usb == 0" color="red">{{ mdiCross }}</v-icon>
+                                    </td>
+                                </tr>
+                                <tr v-if="allSucessfull">
+                                    <td>Print Protocol</td>
+                                    <td>
+                                        <v-text-field v-model="responsibleTester" hide-details
+                                            label="Fill the responsible person here first" outlined
+                                            dense></v-text-field>
+                                    </td>
+                                    <td>
+                                        <v-btn style="vertical-align: center" :disabled="responsibleTester.trim() == ''"
+                                            color="success" class="mr-2" @click="printProtocol()">
+                                            Download protocol for printing
+                                        </v-btn>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </v-simple-table>
+
+                        <!-- <miscellaneous-panel></miscellaneous-panel> -->
                         <miscellaneous-panel v-if="false"></miscellaneous-panel>
                     </div>
                 </v-col>
             </v-row>
         </v-container>
+        <trilab-diagnostics-endstops-test-dialog :showp="endstopACheckDialogOpen"
+            @close="endstopACheckDialogOpen = false"
+            @catchResult="catchResult"></trilab-diagnostics-endstops-test-dialog>
+
+        <!-- THIS IS JUST FOR EXTRUDER -->
+        <trilab-diagnostics-temperature-rise-check :showp="temperatureRiseDialogExtruder" heater-type="Extruder"
+            @close="temperatureRiseDialogExtruder = false"
+            @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
+        <!-- END -->
+
+        <!-- this is for panels and bed together -->
+        <trilab-diagnostics-temperature-rise-check :showp="temperatureRiseDialogChamber" heater-type="Panels"
+            @close="temperatureRiseDialogChamber = false"
+            @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
+        <!-- END -->
+
+
+        <v-dialog v-model="chamberflapTestDialogOpen" max-width="290" @close="chamberflapTestDialogOpen = false">
+            <v-card>
+                <v-card-title class="text-h5">Did the chamber flap move?</v-card-title>
+                <v-card-text>
+                    The flap is depicted in the image below. Its movement can also be recognized by
+                    sound.
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="green darken-1" text @click="
+                        chamberflapTestDialogOpen = false
+                    testResults.chamberflap = 1
+                        ">
+                        Yes
+                    </v-btn>
+                    <v-btn color="red darken-1" text @click="
+                        chamberflapTestDialogOpen = false
+                    testResults.chamberflap = 0
+                        ">
+                        No
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+        <v-dialog v-model="printflapTestDialogOpen" max-width="290" @close="printflapTestDialogOpen = false">
+            <v-card>
+                <v-card-title class="text-h5">Did the print flap move?</v-card-title>
+                <v-card-text>
+                    The flap is depicted in the image below. Its movement can also be recognized by
+                    sound.
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="green darken-1" text @click="
+                        printflapTestDialogOpen = false
+                    testResults.printflap = 1
+                        ">
+                        Yes
+                    </v-btn>
+                    <v-btn color="red darken-1" text @click="
+                        printflapTestDialogOpen = false
+                    testResults.printflap = 0
+                        ">
+                        No
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
+        <!-- BED PROBES DIALOG -->
+        <trilab-diagnostics-probes-dialog :showp="BedProbesCheckingDialog" @close="BedProbesCheckingDialog = false"
+            @catchResult="catchResult"></trilab-diagnostics-probes-dialog>
+        <!-- END -->
+
+
+        <!-- FILAMENT SENSOR DIALOG -->
+        <trilab-diagnostics-filament-sensor-dialog :showp="filamentDialogOpen" @close="filamentDialogOpen = false"
+            @catchResult="catchResult"></trilab-diagnostics-filament-sensor-dialog>
+        <!-- END -->
+
+        <!-- USB TEST DIALOG -->
+        <v-dialog>
+            <v-card>
+                <v-card-title class="text-h5">Test of USB ports</v-card-title>
+                <v-card-text>
+                    <p>
+                        Plug the USB in each available port and wait for the detected USB number to
+                        change. Was every USB port recognized?
+                    </p>
+                    <p style="text-align: center">Currently detected devices: {{ usbNumber }}</p>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="green darken-1" text
+                        @click="usbTestDialogOpen = false; catchResult('usb', 1)">Yes</v-btn>
+                    <v-btn color="red darken-1" text
+                        @click="usbTestDialogOpen = false; catchResult('usb', 0)">No</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </v-container>
 </template>
 
@@ -434,10 +427,10 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         'heatbreakfan',
         'printflap',
         'chamberflap',
-        'extruderCheck',
-        'bedCheck',
-        'panelCheck',
         'bedProbes',
+        'extruderCheck',
+        //'bedCheck',
+        'panelCheck',
         'filamentCheck',
         'emergencyStopCheck',
         'usb',
@@ -469,32 +462,56 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         if (oldValue == undefined) {
             return false
         }
+        var changedRecord = ''
+        for (const key in newValue) {
+            if (newValue[key] != oldValue[key]) {
+                changedRecord = key
+                break
+            }
+        }
+        if (changedRecord == '') {
+            return false
+        }
+
+        console.log('changedRecord: ' + changedRecord)
+
         console.log(this.getTestResults)
         if (this.testAllInProgress == true) {
             console.log('testAllInProgress is true')
             /// if it is running, then check last step that has 1 and if
-            console.log('currentStep is ' + this.currentStep + ' and it is ' + this.testResults[this.currentStep])
+            console.log('currentStep is ' + this.currentStep + ' and it is ' + this.testResults[changedRecord])
 
-            if (this.testResults[this.currentStep] == 1) {
+            if (this.testResults[changedRecord] == 1) {
                 /// test was done sucessfully, set next step to DB and handle it here
                 /// set db test start to current time and log also current name
                 /// post to DB key currentStep and json array with startTime and endTime
                 /// get current datetime and convert it to CET time string
                 /// entry should exist in the db history because it had to be started before
-                var stepHistory = await this.getHistory(this.currentStep)
+                var stepHistory: any = false;
+                if (changedRecord == 'bedCheck') {
+                    stepHistory = await this.getHistory('panelCheck')
+                } else {
+                    stepHistory = await this.getHistory(changedRecord)
+                }
                 console.log('stepHistory: ')
                 console.log(stepHistory)
                 if (stepHistory == false) {
                     /// write history
-                    this.writeHistory(this.currentStep, this.getCurrTimeCETString(), this.getCurrTimeCETString(), 1)
+                    this.writeHistory(changedRecord, this.getCurrTimeCETString(), this.getCurrTimeCETString(), 1)
                 } else {
                     ///check if it is object
                     if (typeof stepHistory == 'object') {
-                        this.writeHistory(this.currentStep, stepHistory.startTime, this.getCurrTimeCETString(), 1)
+                        this.writeHistory(changedRecord, stepHistory.startTime ?? "", this.getCurrTimeCETString(), 1)
                     }
                 }
 
-                let nextStep = this.testOrder[this.testOrder.indexOf(this.currentStep) + 1]
+                let currentStepExistsInTestOrder = this.testOrder.indexOf(changedRecord)
+                if (currentStepExistsInTestOrder == -1) {
+                    console.log('current step does not exist in the testOrder array')
+                    return
+                }
+
+                let nextStep = this.testOrder[this.testOrder.indexOf(changedRecord) + 1]
                 console.log('test was done sucessfully, setting next step to: ' + nextStep)
                 if (nextStep != null && nextStep != undefined) {
                     this.setCurrentStep(nextStep)
@@ -679,9 +696,9 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
             this.endstopACheckDialogOpen = true
         } else if (this.currentStep == 'extruderCheck') {
             this.temperatureRiseDialogExtruder = true
-        } else if (this.currentStep == 'bedCheck') {
+        } /*else if (this.currentStep == 'bedCheck') {
             this.temperatureRiseDialogBed = true
-        } else if (this.currentStep == 'panelCheck') {
+        } */ else if (this.currentStep == 'panelCheck') {
             this.temperatureRiseDialogChamber = true
         } else if (this.currentStep == 'filamentCheck') {
             this.filamentDialogOpen = true
@@ -1037,12 +1054,12 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
                     }
                     doc.text(
                         humanTextToUse +
-                            ': ' +
-                            element.startTime +
-                            //' - ' +
-                            //element.endTime +
-                            ' - ' +
-                            passedText,
+                        ': ' +
+                        element.startTime +
+                        //' - ' +
+                        //element.endTime +
+                        ' - ' +
+                        passedText,
                         10,
                         ypos
                     )
