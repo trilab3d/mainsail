@@ -23,13 +23,13 @@
                     <p v-if="heaterType == 'Panels'">Waiting for temperature rise to {{ tempTo }} for chamber and {{
                         configCheckSettings.Bed.tempTo }} for bed. Door has to be closed</p>
                     <p style="text-align: center">Current temp: {{ parseFloat(watchedTemperature)?.toFixed(1) }}</p>
-                    <p v-if="heaterType == 'Panels' && bedOk" style="text-align: center">Bed temperature: {{
+                    <p v-if="heaterType == 'Panels'" style="text-align: center">Bed temperature: {{
                         parseFloat(targetHeaterBedFromTemperatureObjects?.temperature).toFixed(1) ?? "?" }} °C <v-icon v-if="bedOk"
                             color="success">{{ mdiCheckCircle }}</v-icon></p>
 
                     <p style="text-align:center">Remaining time: {{
                         getRemainingTimeFormatted(getRemainingTimeInSeconds()) }}</p>
-                    <p v-if="heaterType == 'Panels' && bedOk == false">
+                    <p v-if="heaterType == 'Panels' && bedOk == false" style="text-align: center;">
                         Remaining time for bed: {{ getRemainingTimeFormatted(getBedRemainingTimeInSeconds()) }}</p>
 
                 </div>
