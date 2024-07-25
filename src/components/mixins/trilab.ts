@@ -134,4 +134,11 @@ export default class TrilabMixin extends Vue {
         }
         return false
     }
+
+    isEmptyJS(vari :any){
+        if (vari == undefined || vari == null || vari == '' || vari == 'undefined') {
+            return true
+        }
+        return false
+    }
 }

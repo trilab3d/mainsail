@@ -28,8 +28,10 @@
     .trCommonUp:nth-child(-1):hover {
         background: #616161;
     }
+}
 
-
+.v-card__title {
+    word-break: break-word;
 }
 </style>
 <template>
@@ -46,13 +48,15 @@
                 <v-col cols="12" md="12" sm="12" class="pa-3 mt-3">
                     <div v-if="activeTab == 'basic'">
                         <div class="pa-4">
+                            <p v-if="canRunTests == false && !testAllInProgress" class="warning--text">Test or print is
+                                in progress. Printer is not in idle state - can't run tests</p>
                             <v-btn color="primary" class="mr-2" :loading="testAllInProgress"
-                                :disabled="testAllInProgress" @click="testAll()">
+                                :disabled="canRunTests == false" @click="testAll()">
                                 Run all tests
                             </v-btn>
 
                             <v-btn color="primary" class="mr-2"
-                                :disabled="testAllInProgress || currentStep == null || currentStep == testOrder[0]"
+                                :disabled="canRunTests == false || currentStep == null || currentStep == testOrder[0]"
                                 @click="resumeTestAll()">
                                 Resume from last
                             </v-btn>
@@ -71,7 +75,8 @@
                                 <tr>
                                     <td>Endstops Check</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2" @click="endstopACheckDialogOpen = true">
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
+                                            @click="endstopACheckDialogOpen = true">
                                             Test
                                         </v-btn>
                                     </td>
@@ -89,7 +94,7 @@
                                     <td>Fan - speed control</td>
                                     <td>
                                         <v-btn color="primary" class="mr-2" :loading="fanTestLoading"
-                                            :disabled="fanTestLoading" @click="testFan(1)">
+                                            :disabled="fanTestLoading || canRunTests == false" @click="testFan(1)">
                                             Test
                                         </v-btn>
                                     </td>
@@ -105,7 +110,7 @@
                                 <tr v-if="printFlapPresent">
                                     <td>Print flap - motion control</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2" @click="
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false" @click="
                                             testPrintFlap(1)
                                         printflapTestDialogOpen = true
                                             ">
@@ -123,7 +128,7 @@
                                 <tr v-if="chamberIntakeFlapPresent">
                                     <td>Chamber Intake flap - motion control</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2" @click="
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false" @click="
                                             testChamberFlapIntake(1)
                                         chamberflapTestDialogOpen = true
                                             ">
@@ -142,7 +147,7 @@
                                 <tr>
                                     <td>Bed probes check</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2"
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
                                             @click="BedProbesCheckingDialog = true">Test</v-btn>
                                     </td>
                                     <td>
@@ -157,7 +162,8 @@
                                     <td>Extruder temp rise check</td>
                                     <td>
                                         <v-btn color="primary" class="mr-2"
-                                            @click="temperatureRiseDialogExtruder = true">
+                                            @click="temperatureRiseDialogExtruder = true"
+                                            :disabled="canRunTests == false">
                                             Test
                                         </v-btn>
                                     </td>
@@ -170,11 +176,34 @@
                                     </td>
                                 </tr>
 
+                                <!-- Endstops Check -->
+                                <tr>
+                                    <td>Extruder motor test</td>
+                                    <td>
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
+                                            @click="extruderMotorTestDialogOpen = true">
+                                            Test
+                                        </v-btn>
+                                    </td>
+                                    <td>
+                                        <v-icon v-if="testResults.extruderMotorCheck == 1" color="success">
+                                            {{ mdiCheckCircle }}
+                                        </v-icon>
+                                        <v-icon v-if="testResults.extruderMotorCheck == 0" color="red">{{ mdiCross
+                                            }}</v-icon>
+                                    </td>
+                                </tr>
+
+
+
+
+
                                 <!-- Bed Temperature Rise Check -->
                                 <tr class="trCommon">
                                     <td>Bed temp rise check</td>
                                     <td rowspan="2">
                                         <v-btn color="primary" style="height:70% !important;"
+                                            :disabled="canRunTests == false"
                                             @click="temperatureRiseDialogChamber = true">
                                             Test
                                         </v-btn>
@@ -206,7 +235,7 @@
                                 <tr>
                                     <td>Filament sensor check</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2"
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
                                             @click="filamentDialogOpen = true">Test</v-btn>
                                     </td>
                                     <td>
@@ -222,7 +251,7 @@
                                 <tr>
                                     <td>Emergency stop reset check</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2"
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
                                             @click="setEmergencyStopCheckStart()">Test</v-btn>
                                     </td>
                                     <td>
@@ -238,7 +267,7 @@
                                 <tr>
                                     <td>USB port check</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2"
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
                                             @click="usbTestDialogOpen = true">Test</v-btn>
                                     </td>
                                     <td>
@@ -287,6 +316,7 @@
         <!-- END -->
 
 
+
         <v-dialog v-model="chamberflapTestDialogOpen" max-width="290" @close="chamberflapTestDialogOpen = false">
             <v-card>
                 <v-card-title class="text-h5">Did the chamber flap move?</v-card-title>
@@ -311,7 +341,7 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-        <v-dialog v-model="printflapTestDialogOpen" max-width="290" @close="printflapTestDialogOpen = false">
+        <v-dialog v-model="printflapTestDialogOpen" max-width="320" @close="printflapTestDialogOpen = false">
             <v-card>
                 <v-card-title class="text-h5">Did the print flap move?</v-card-title>
                 <v-card-text>
@@ -347,6 +377,9 @@
             @catchResult="catchResult"></trilab-diagnostics-filament-sensor-dialog>
         <!-- END -->
 
+        <!-- EXTRUDER MOTOR TEST DIALOG -->
+        <trilab-diagnostics-motor-extruder-test-dialog :showp="extruderMotorTestDialogOpen" @close="extruderMotorTestDialogOpen = false" @catchResult="catchResult"></trilab-diagnostics-motor-extruder-test-dialog>
+
         <!-- USB TEST DIALOG -->
         <v-dialog>
             <v-card>
@@ -381,18 +414,22 @@ import jsPDF from 'jspdf'
 import TrilabDiagnosticsEndstopsTestDialog from '@/components/dialogs/TrilabDiagnosticsEndstopsTestDialog.vue'
 import TrilabDiagnosticsFilamentSensorDialog from '@/components/dialogs/TrilabDiagnosticsFilamentSensorDialog.vue'
 import TrilabDiagnosticsTemperatureRiseCheckDialog from '@/components/dialogs/TrilabDiagnosticsTemperatureRiseCheck.vue'
+import TrilabDiagnosticsMotorExtruderTestDialog from '@/components/dialogs/TrilabDiagnosticsMotorExtruderTestDialog.vue'
 import { mdiCog, mdiPackageVariantClosed, mdiAlphaBBox, mdiCheckCircle, mdiCloseOctagon } from '@mdi/js'
+import TrilabMixin from '@/components/mixins/trilab'
 @Component({
     components: {
         TrilabDiagnosticsEndstopsTestDialog,
         TrilabDiagnosticsProbesDialog,
         TrilabDiagnosticsFilamentSensorDialog,
         TrilabDiagnosticsTemperatureRiseCheckDialog,
+        TrilabDiagnosticsMotorExtruderTestDialog,
+
 
         //TrilabDeltaCalibrationWizard,
     },
 })
-export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
+export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin) {
     mdiCheckCircle = mdiCheckCircle
     mdiCross = mdiCloseOctagon
 
@@ -400,6 +437,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
 
     public printflapTestDialogOpen = false
     public chamberflapTestDialogOpen = false
+    public extruderMotorTestDialogOpen = false
 
     public endStopsData = ''
     public endstopACheckDialogOpen = false
@@ -429,6 +467,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         'chamberflap',
         'bedProbes',
         'extruderCheck',
+        'extruderMotorCheck',
         //'bedCheck',
         'panelCheck',
         'filamentCheck',
@@ -445,6 +484,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
         bedProbes: -1,
         endstopsOpenState: -1,
         extruderCheck: -1,
+        extruderMotorCheck: -1,
         bedCheck: -1,
         panelCheck: -1,
         emergencyStopCheck: -1,
@@ -548,6 +588,12 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
 
     public currentStep: any = null
     public testAllInProgress = false
+
+
+    get canRunTests() {
+        return !this.testAllInProgress && this.TrilabPrinterIdle
+
+    }
 
     get getTestResults() {
         return Object.assign({}, this.testResults)
@@ -698,7 +744,11 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
             this.temperatureRiseDialogExtruder = true
         } /*else if (this.currentStep == 'bedCheck') {
             this.temperatureRiseDialogBed = true
-        } */ else if (this.currentStep == 'panelCheck') {
+        } */
+        else if (this.currentStep == 'extruderMotorCheck') {
+            this.extruderMotorTestDialogOpen = true
+        }
+        else if (this.currentStep == 'panelCheck') {
             this.temperatureRiseDialogChamber = true
         } else if (this.currentStep == 'filamentCheck') {
             this.filamentDialogOpen = true
@@ -1030,6 +1080,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin) {
                 printflap: 'Print flap',
                 chamberflap: 'Chamber flap',
                 extruderCheck: 'Hotend heater',
+                extruderMotorCheck: 'Extruder motor',
                 bedCheck: 'Bed heater',
                 panelCheck: 'Chamber heater',
                 bedProbes: 'Probe',
