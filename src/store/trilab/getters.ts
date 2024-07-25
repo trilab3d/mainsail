@@ -15,6 +15,6 @@ export const getters: GetterTree<TrilabState, any> = {
         return state.updateFile
     },
     getMainAddress: (state, getters, rootState) => {
-        return window.location.protocol + '//' + rootState.socket.hostname + ':' + rootState.socket.port
+        return window.location.protocol + '//' + rootState.socket.hostname
     },
 }
