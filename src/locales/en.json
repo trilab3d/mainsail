@@ -175,7 +175,9 @@
         "AdvancedFeatures": "Advanced Features:"
       },
       "SlicerPanel": {
-        "Download": "Download"
+        "Download": "Download",
+        "DownloadProfiles": "Download slicer profiles",
+        "downloadSlicer": "Download slicer"
       },
       "PageNotFound": {
         "404PageNotFound": "404 page not found"
@@ -220,6 +222,20 @@
         "nozzleWarning": "Nozzle warning",
         "currentNozzle": "Current nozzle",
         "requestedNozzle": "Requested nozzle"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "PrusaSlicer profiles import tutorial",
+          "Description": "When slicing a project for the Prusa Pro HT90, the PrusaSlicer needs a specific profile that is not pre-installed in the first download of the program. These profiles are only available if you have purchased the printer. After receiving the printer, your PrusaAccount will be associated with the HT90. The Prusa Account can be used directly in the PrusaSlicer to download the profiles, or you can download them here by clicking the button below",
+          "StepsForImporting": "Steps for importing the profiles into PrusaSlicer",
+          "FirstStep": "On the top left go to Menu -> Configuration -> Configuration Wizard",
+          "SecondStep": "In PrusaSlicer, click \"Load\"",
+          "ThirdStep": "Select the .zip file with the presets. Do not unzip the file.",
+          "FourthStep": "Click \"Next\", and the configurations will be shown",
+          "FifthStep": "Find the Prusa Pro HT on the right side menu in the Configuration Wizard",
+          "SixthStep": "Select all that apply, click \"Next\" to continue the configuration, or click \"Finish\" to return to the main Plater."
+        },
+        "CloseWizard": "Close wizard"
       }
     },
     "Notifications": {

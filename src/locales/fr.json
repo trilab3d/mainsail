@@ -233,7 +233,9 @@
         "WenInterfaceVersion": "Version de l'interface Web :"
       },
       "SlicerPanel": {
-        "Download": "Télécharger"
+        "Download": "Télécharger",
+        "DownloadProfiles": "Télécharger les profils de slicer",
+        "downloadSlicer": "Télécharger le trancheur"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "Affichage avancé activé",
@@ -338,6 +340,20 @@
         "nozzleWarning": "Avertissement de buse",
         "currentNozzle": "Buse actuelle",
         "requestedNozzle": "Buse demandée"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "Tutoriel d'importation de profils PrusaSlicer",
+          "Description": "Lors du découpage d'un projet pour le Prusa Pro HT90, le PrusaSlicer a besoin d'un profil spécifique qui n'est pas préinstallé lors du premier téléchargement du programme. \nCes profils ne sont disponibles que si vous avez acheté l'imprimante. \nAprès avoir reçu l'imprimante, votre compte Prusa sera associé au HT90. \nLe compte Prusa peut être utilisé directement dans PrusaSlicer pour télécharger les profils, ou vous pouvez les télécharger ici en cliquant sur le bouton ci-dessous",
+          "StepsForImporting": "Étapes pour importer les profils dans PrusaSlicer",
+          "FirstStep": "En haut à gauche, allez dans Menu -> Configuration -> Assistant de configuration",
+          "SecondStep": "Dans PrusaSlicer, cliquez sur \"Charger\"",
+          "ThirdStep": "Sélectionnez le fichier .zip avec les préréglages. \nNe décompressez pas le fichier.",
+          "FourthStep": "Cliquez sur \"Suivant\" et les configurations seront affichées",
+          "FifthStep": "Recherchez le Prusa Pro HT dans le menu de droite de l'assistant de configuration.",
+          "SixthStep": "Sélectionnez tout ce qui s'applique, cliquez sur \"Suivant\" pour continuer la configuration, ou cliquez sur \"Terminer\" pour revenir au Plater principal."
+        },
+        "CloseWizard": "Fermer l'assistant"
       }
     },
     "TextfieldWithCopy": {

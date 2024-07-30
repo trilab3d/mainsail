@@ -233,7 +233,9 @@
         "WenInterfaceVersion": "Web arayüzü sürümü:"
       },
       "SlicerPanel": {
-        "Download": "İndirmek"
+        "Download": "İndirmek",
+        "DownloadProfiles": "Dilimleyici profillerini indirin",
+        "downloadSlicer": "Dilimleyiciyi indir"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "Gelişmiş Görünüm Etkin",
@@ -338,6 +340,20 @@
         "nozzleWarning": "Nozul uyarısı",
         "currentNozzle": "Akım nozulu",
         "requestedNozzle": "İstenilen nozül"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "PrusaSlicer profillerini içe aktarma eğitimi",
+          "Description": "Prusa Pro HT90 için bir projeyi dilimlerken PrusaSlicer, programın ilk indirmesinde önceden kurulmamış belirli bir profile ihtiyaç duyar. \nBu profiller yalnızca yazıcıyı satın aldıysanız kullanılabilir. \nYazıcıyı aldıktan sonra PrusaHesabınız HT90 ile ilişkilendirilecektir. \nProfilleri indirmek için Prusa Hesabını doğrudan PrusaSlicer'da kullanabilir veya aşağıdaki butona tıklayarak buradan indirebilirsiniz.",
+          "StepsForImporting": "Profilleri PrusaSlicer'a aktarma adımları",
+          "FirstStep": "Sol üstte Menü -> Yapılandırma -> Yapılandırma Sihirbazı'na gidin",
+          "SecondStep": "PrusaSlicer'da \"Yükle\"ye tıklayın",
+          "ThirdStep": "Ön ayarların bulunduğu .zip dosyasını seçin. \nDosyayı açmayın.",
+          "FourthStep": "\"İleri\"ye tıkladığınızda yapılandırmalar gösterilecektir",
+          "FifthStep": "Yapılandırma Sihirbazı'nın sağ tarafındaki menüde Prusa Pro HT'yi bulun",
+          "SixthStep": "Geçerli olanların tümünü seçin, konfigürasyona devam etmek için \"İleri\"ye tıklayın veya ana Plater'a dönmek için \"Bitir\"e tıklayın."
+        },
+        "CloseWizard": "Sihirbazı kapat"
       }
     },
     "TextfieldWithCopy": {

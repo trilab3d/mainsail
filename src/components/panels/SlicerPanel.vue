@@ -4,7 +4,7 @@
 	top: 0;
 	right: 0;
 	width: 35%;
-	max-width:150px;
+	max-width:100%;
 }
 
 /* under 1000 */
@@ -49,10 +49,18 @@
 					</v-col>
 				</v-row>
 				<v-btn class="panel-download-btn mt-3 mb-3" :href="getHrefLink" @click="downloadSP()" color="primary"
-					block>{{ $t("App.Trilab.Generic.Download") }}</v-btn>
+					block>{{ $t("App.Trilab.SlicerPanel.downloadSlicer") }}</v-btn>
+				<v-btn v-if="slicerProfilesDownloadUrl != ''" block color="#ED6B21" class="panel-download-btn mt-3 mb-3" @click="showWizard = true">
+					{{ $t('App.Trilab.SlicerPanel.DownloadProfiles') }}
+				</v-btn>
+				
+				
+				
 				<p class="panel-long-description" v-html="$t(`App.Trilab.Panels.trilabSlicers.${target}.longDescription`)"></p>
+				
+			
 			</div>
-
+			<trilab-prusa-slicers-wizard v-if="showWizard" @close="showWizard = false" :slicer-profiles-download-url="slicerProfilesDownloadUrl"></trilab-prusa-slicers-wizard>
 
 		</v-card-text>
 	</v-card>
@@ -62,7 +70,7 @@
 
 import axios from 'axios';
 import { mapState, mapGetters, mapMutations } from 'vuex'
-
+import TrilabPrusaSlicersWizard from '../wizards/TrilabPrusaSlicersWizard.vue';
 
 export default {
 	props: {
@@ -74,15 +82,27 @@ export default {
 			type: String,
 			required: false,
 			default: ""
+		},
+		slicerProfilesDownloadUrl: {
+			type: String,
+			required: false,
+			default: ""
+		},
+		slicerWizard: {
+			type: Boolean,
+			required: false,
+			default: false
 		}
 	},
 
 	data() {
 		return {
-
+			showWizard: false,
 		}
 	},
 	computed: {
+
+
 		//...mapState('trilab', ['settings']),
 		//...mapGetters(['uiFrozen']),
 		//...mapGetters('trilab', ['trilabPrefix', 'corePrefix']),

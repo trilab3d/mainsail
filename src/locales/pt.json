@@ -228,7 +228,9 @@
         "WenInterfaceVersion": "Versão da interface web:"
       },
       "SlicerPanel": {
-        "Download": "Download"
+        "Download": "Download",
+        "DownloadProfiles": "Baixar perfis de segmentação de dados",
+        "downloadSlicer": "Baixar fatiador"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "Visualização avançada ativada",
@@ -333,6 +335,20 @@
         "nozzleWarning": "Aviso de bocal",
         "currentNozzle": "Bocal atual",
         "requestedNozzle": "Bico solicitado"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "Tutorial de importação de perfis PrusaSlicer",
+          "Description": "Ao fatiar um projeto para o Prusa Pro HT90, o PrusaSlicer necessita de um perfil específico que não vem pré-instalado no primeiro download do programa. \nEsses perfis só estarão disponíveis se você tiver adquirido a impressora. \nApós receber a impressora, sua PrusaAccount será associada ao HT90. \nA Conta Prusa pode ser utilizada diretamente no PrusaSlicer para baixar os perfis, ou você pode baixá-los aqui clicando no botão abaixo",
+          "StepsForImporting": "Etapas para importar os perfis para o PrusaSlicer",
+          "FirstStep": "No canto superior esquerdo vá para Menu -> Configuração -> Assistente de configuração",
+          "SecondStep": "No PrusaSlicer, clique em \"Carregar\"",
+          "ThirdStep": "Selecione o arquivo .zip com as predefinições. \nNão descompacte o arquivo.",
+          "FourthStep": "Clique em \"Avançar\" e as configurações serão mostradas",
+          "FifthStep": "Encontre o Prusa Pro HT no menu do lado direito do Assistente de configuração",
+          "SixthStep": "Selecione todas as opções aplicáveis, clique em “Avançar” para continuar a configuração ou clique em “Concluir” para retornar ao Plater principal."
+        },
+        "CloseWizard": "Fechar assistente"
       }
     },
     "TextfieldWithCopy": {
