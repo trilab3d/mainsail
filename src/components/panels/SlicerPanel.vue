@@ -4,7 +4,7 @@
 	top: 0;
 	right: 0;
 	width: 35%;
-	max-width:100%;
+	max-width:150px;
 }
 
 /* under 1000 */
