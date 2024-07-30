@@ -228,7 +228,9 @@
         "WenInterfaceVersion": "Web interface version:"
       },
       "SlicerPanel": {
-        "Download": "Download"
+        "Download": "Download",
+        "DownloadProfiles": "Stáhnout tiskové profily",
+        "downloadSlicer": "Stáhnout slicer"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "Advanced View Enabled",
@@ -333,6 +335,20 @@
         "nozzleWarning": "Upozornění trysky",
         "currentNozzle": "Aktuální tryska",
         "requestedNozzle": "Žádaná tryska"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "PrusaSlicer profiles import tutorial",
+          "Description": "Během slicingu projektu pro tiskárnu Prusa Pro HT90, musí být specifikovány profily, které nejsou ve výchozím stavu přítomné v instalaci PrusaSliceru. Ty jsou dostupné jen pokud jste si tiskárnu zakoupili. Po obdržení tiskárny, Váš Prusa účet může být využit přímo v PrusaSliceru ke stažení tiskových profilů, nebo si je můžete stáhnout stiskem tlačítka níže",
+          "StepsForImporting": "Kroky k importu profilů do programu PrusaSlicer",
+          "FirstStep": "V levém horním rohu klikněte na Menu -> Configuration -> Configuration Wizard",
+          "SecondStep": "V PrusaSliceru klikněte na tlačítko \"Load\"",
+          "ThirdStep": "Vyberte .zip soubor s předvolbami. Nerozbalujte soubor",
+          "FourthStep": "Klepněte na \"Next\" a objeví se konfigurace",
+          "FifthStep": "Najděte \"Prusa Pro HT\" na pravé straně menu v konfiguračním průvodci",
+          "SixthStep": "Vyberte všechna, která odpovídají, klepněte na \"Next\" pro pokračování nebo vyberte \"Finish\" pro navrácení na pokládací plochu"
+        },
+        "CloseWizard": "Close wizard"
       }
     },
     "TextfieldWithCopy": {

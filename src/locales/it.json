@@ -233,7 +233,9 @@
         "WenInterfaceVersion": "Versione dell'interfaccia web:"
       },
       "SlicerPanel": {
-        "Download": "Scaricamento"
+        "Download": "Scaricamento",
+        "DownloadProfiles": "Scarica i profili dell'affettatrice",
+        "downloadSlicer": "Scarica affettatrice"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "Visualizzazione avanzata abilitata",
@@ -338,6 +340,20 @@
         "nozzleWarning": "Avviso ugelli",
         "currentNozzle": "Ugello attuale",
         "requestedNozzle": "Ugello richiesto"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "Tutorial sull'importazione dei profili PrusaSlicer",
+          "Description": "Quando si affetta un progetto per Prusa Pro HT90, PrusaSlicer necessita di un profilo specifico che non è preinstallato nel primo download del programma. \nQuesti profili sono disponibili solo se hai acquistato la stampante. \nDopo aver ricevuto la stampante, il tuo PrusaAccount sarà associato all'HT90. \nL'account Prusa può essere utilizzato direttamente in PrusaSlicer per scaricare i profili, oppure puoi scaricarli qui facendo clic sul pulsante in basso",
+          "StepsForImporting": "Passaggi per importare i profili in PrusaSlicer",
+          "FirstStep": "In alto a sinistra vai su Menu -> Configurazione -> Configurazione guidata",
+          "SecondStep": "In PrusaSlicer, fai clic su \"Carica\"",
+          "ThirdStep": "Seleziona il file .zip con le preimpostazioni. \nNon decomprimere il file.",
+          "FourthStep": "Fare clic su \"Avanti\" e verranno visualizzate le configurazioni",
+          "FifthStep": "Trova Prusa Pro HT nel menu a destra nella procedura guidata di configurazione",
+          "SixthStep": "Selezionare tutto ciò che si applica, fare clic su \"Avanti\" per continuare la configurazione oppure fare clic su \"Fine\" per tornare al Plater principale."
+        },
+        "CloseWizard": "Chiudi procedura guidata"
       }
     },
     "TextfieldWithCopy": {

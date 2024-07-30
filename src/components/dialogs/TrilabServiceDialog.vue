@@ -25,7 +25,7 @@ export default class TrilabServiceDialog extends Mixins(TrilabMixin) {
 
   localShowp: boolean = false;
   username = '';
-  correctPasswordHash = "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4";
+  correctPasswordHash = "58785735f95f2e02e939c9a7973aaf30f9ba862e4659fecead16446308ebd432";
   password: string = '';
   computeHash(inputval: string) {
     return SHA256(inputval).toString();

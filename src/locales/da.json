@@ -155,6 +155,24 @@
         "nozzleWarning": "Dyseadvarsel",
         "currentNozzle": "Nuværende dyse",
         "requestedNozzle": "Ønsket dyse"
+      },
+      "SlicerPanel": {
+        "DownloadProfiles": "Download slicer-profiler",
+        "downloadSlicer": "Download skæremaskine"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "PrusaSlicer profiler import tutorial",
+          "Description": "Når du opskærer et projekt til Prusa Pro HT90, har PrusaSlicer brug for en specifik profil, som ikke er forudinstalleret i den første download af programmet. \nDisse profiler er kun tilgængelige, hvis du har købt printeren. \nEfter at have modtaget printeren, vil din Prusa-konto blive knyttet til HT90. \nPrusa-kontoen kan bruges direkte i PrusaSlicer til at downloade profilerne, eller du kan downloade dem her ved at klikke på knappen nedenfor",
+          "StepsForImporting": "Trin til at importere profilerne til PrusaSlicer",
+          "FirstStep": "Øverst til venstre skal du gå til Menu -> Konfiguration -> Konfigurationsguide",
+          "SecondStep": "Klik på \"Load\" i PrusaSlicer",
+          "ThirdStep": "Vælg .zip-filen med forudindstillingerne. \nUdpak ikke filen.",
+          "FourthStep": "Klik på \"Næste\", og konfigurationerne vil blive vist",
+          "FifthStep": "Find Prusa Pro HT i menuen til højre i konfigurationsguiden",
+          "SixthStep": "Vælg alle relevante, klik på \"Næste\" for at fortsætte konfigurationen, eller klik på \"Udfør\" for at vende tilbage til hovedpladen."
+        },
+        "CloseWizard": "Luk guiden"
       }
     }
   },
