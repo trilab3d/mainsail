@@ -228,7 +228,9 @@
         "WenInterfaceVersion": "Webes felület verziója:"
       },
       "SlicerPanel": {
-        "Download": "Letöltés"
+        "Download": "Letöltés",
+        "DownloadProfiles": "Szeletelő profilok letöltése",
+        "downloadSlicer": "Szeletelő letöltése"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "Speciális nézet engedélyezve",
@@ -333,6 +335,20 @@
         "nozzleWarning": "Figyelmeztetés a fúvókára",
         "currentNozzle": "Jelenlegi fúvóka",
         "requestedNozzle": "Kért fúvóka"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "PrusaSlicer profilok importálási oktatóanyaga",
+          "Description": "A Prusa Pro HT90 projektjének szeletelésekor a PrusaSlicernek egy speciális profilra van szüksége, amely nincs előre telepítve a program első letöltésekor. \nEzek a profilok csak akkor érhetők el, ha megvásárolta a nyomtatót. \nA nyomtató kézhezvétele után a PrusaAccount a HT90-hez lesz társítva. \nA Prusa fiók közvetlenül a PrusaSlicerben használható a profilok letöltésére, vagy letöltheti őket innen az alábbi gombra kattintva",
+          "StepsForImporting": "A profilok PrusaSlicerbe történő importálásának lépései",
+          "FirstStep": "A bal felső sarokban lépjen a Menü -> Konfiguráció -> Konfigurációs varázsló menüpontra",
+          "SecondStep": "A PrusaSlicerben kattintson a \"Betöltés\" gombra",
+          "ThirdStep": "Válassza ki a .zip fájlt az előre beállított értékekkel. \nNe bontsa ki a fájlt.",
+          "FourthStep": "Kattintson a \"Tovább\" gombra, és megjelennek a konfigurációk",
+          "FifthStep": "Keresse meg a Prusa Pro HT-t a Konfigurációs varázsló jobb oldali menüjében",
+          "SixthStep": "Jelölje ki az összes megfelelőt, kattintson a \"Tovább\" gombra a konfiguráció folytatásához, vagy kattintson a \"Befejezés\" gombra a fő Platerhez való visszatéréshez."
+        },
+        "CloseWizard": "Varázsló bezárása"
       }
     },
     "TextfieldWithCopy": {

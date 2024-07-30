@@ -233,7 +233,9 @@
         "WenInterfaceVersion": "Wersja interfejsu internetowego:"
       },
       "SlicerPanel": {
-        "Download": "Pobierać"
+        "Download": "Pobierać",
+        "DownloadProfiles": "Pobierz profile fragmentatorów",
+        "downloadSlicer": "Pobierz fragmentator"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "Widok zaawansowany włączony",
@@ -338,6 +340,20 @@
         "nozzleWarning": "Ostrzeżenie dotyczące dyszy",
         "currentNozzle": "Aktualna dysza",
         "requestedNozzle": "Żądana dysza"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "Samouczek importowania profili PrusaSlicer",
+          "Description": "Podczas krojenia projektu dla Prusa Pro HT90, PrusaSlicer potrzebuje określonego profilu, który nie jest preinstalowany przy pierwszym pobraniu programu. \nProfile te są dostępne tylko w przypadku zakupu drukarki. \nPo otrzymaniu drukarki Twoje konto PrusaAccount zostanie powiązane z HT90. \nKonta Prusa można używać bezpośrednio w PrusaSlicer do pobierania profili lub możesz je pobrać tutaj, klikając przycisk poniżej",
+          "StepsForImporting": "Kroki importowania profili do PrusaSlicer",
+          "FirstStep": "W lewym górnym rogu przejdź do Menu -> Konfiguracja -> Kreator konfiguracji",
+          "SecondStep": "W PrusaSlicer kliknij „Załaduj”",
+          "ThirdStep": "Wybierz plik .zip z ustawieniami wstępnymi. \nNie rozpakowuj pliku.",
+          "FourthStep": "Kliknij „Dalej”, a zostaną wyświetlone konfiguracje",
+          "FifthStep": "Znajdź Prusa Pro HT w menu po prawej stronie Kreatora konfiguracji",
+          "SixthStep": "Wybierz wszystko, co ma zastosowanie, kliknij „Dalej”, aby kontynuować konfigurację lub kliknij „Zakończ”, aby powrócić do głównego Plater."
+        },
+        "CloseWizard": "Zamknij kreatora"
       }
     },
     "TextfieldWithCopy": {

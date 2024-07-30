@@ -233,7 +233,9 @@
         "WenInterfaceVersion": "Webinterface-Version:"
       },
       "SlicerPanel": {
-        "Download": "Herunterladen"
+        "Download": "Herunterladen",
+        "DownloadProfiles": "Laden Sie Slicer-Profile herunter",
+        "downloadSlicer": "Slicer herunterladen"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "Erweiterte Ansicht aktiviert",
@@ -338,6 +340,20 @@
         "nozzleWarning": "Düsenwarnung",
         "currentNozzle": "Aktuelle Düse",
         "requestedNozzle": "Angeforderte Düse"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "Tutorial zum Importieren von PrusaSlicer-Profilen",
+          "Description": "Beim Slicen eines Projekts für den Prusa Pro HT90 benötigt der PrusaSlicer ein bestimmtes Profil, das beim ersten Download des Programms nicht vorinstalliert ist. \nDiese Profile sind nur verfügbar, wenn Sie den Drucker gekauft haben. \nNach Erhalt des Druckers wird Ihr PrusaAccount mit dem HT90 verknüpft. \nDas Prusa-Konto kann direkt im PrusaSlicer verwendet werden, um die Profile herunterzuladen, oder Sie können sie hier herunterladen, indem Sie auf die Schaltfläche unten klicken",
+          "StepsForImporting": "Schritte zum Importieren der Profile in PrusaSlicer",
+          "FirstStep": "Gehen Sie oben links zu Menü -> Konfiguration -> Konfigurationsassistent",
+          "SecondStep": "Klicken Sie in PrusaSlicer auf „Laden“",
+          "ThirdStep": "Wählen Sie die ZIP-Datei mit den Voreinstellungen aus. \nEntpacken Sie die Datei nicht.",
+          "FourthStep": "Klicken Sie auf „Weiter“ und die Konfigurationen werden angezeigt",
+          "FifthStep": "Suchen Sie den Prusa Pro HT im Menü auf der rechten Seite des Konfigurationsassistenten",
+          "SixthStep": "Wählen Sie alles aus, was zutrifft, klicken Sie auf „Weiter“, um mit der Konfiguration fortzufahren, oder klicken Sie auf „Fertig stellen“, um zum Hauptplater zurückzukehren."
+        },
+        "CloseWizard": "Assistent schließen"
       }
     },
     "TextfieldWithCopy": {

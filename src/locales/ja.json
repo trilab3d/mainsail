@@ -228,7 +228,9 @@
         "WenInterfaceVersion": "Web インターフェースのバージョン:"
       },
       "SlicerPanel": {
-        "Download": "ダウンロード"
+        "Download": "ダウンロード",
+        "DownloadProfiles": "スライサープロファイルをダウンロードする",
+        "downloadSlicer": "スライサーをダウンロード"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "詳細ビューが有効になっています",
@@ -333,6 +335,20 @@
         "nozzleWarning": "ノズル警告",
         "currentNozzle": "現在のノズル",
         "requestedNozzle": "要求されたノズル"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "PrusaSlicer プロファイルのインポート チュートリアル",
+          "Description": "Prusa Pro HT90 のプロジェクトをスライスする場合、PrusaSlicer には、プログラムの最初のダウンロードではプリインストールされていない特定のプロファイルが必要です。\nこれらのプロファイルは、プリンターを購入した場合にのみ使用できます。\nプリンターを受け取った後、PrusaAccount が HT90 に関連付けられます。 \nPrusa アカウントを PrusaSlicer で直接使用してプロファイルをダウンロードすることも、下のボタンをクリックしてここからダウンロードすることもできます。",
+          "StepsForImporting": "PrusaSlicer にプロファイルをインポートする手順",
+          "FirstStep": "左上で、メニュー -> 構成 -> 構成ウィザードに移動します。",
+          "SecondStep": "PrusaSlicerで「ロード」をクリックします。",
+          "ThirdStep": "プリセットを含む .zip ファイルを選択します。\nファイルを解凍しないでください。",
+          "FourthStep": "「次へ」をクリックすると、設定が表示されます",
+          "FifthStep": "構成ウィザードの右側のメニューで Prusa Pro HT を見つけます。",
+          "SixthStep": "該当するものをすべて選択し、「次へ」をクリックして構成を続行するか、「完了」をクリックしてメインのプラッターに戻ります。"
+        },
+        "CloseWizard": "ウィザードを閉じる"
       }
     },
     "TextfieldWithCopy": {

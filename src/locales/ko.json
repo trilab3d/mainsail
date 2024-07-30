@@ -228,7 +228,9 @@
         "WenInterfaceVersion": "웹 인터페이스 버전:"
       },
       "SlicerPanel": {
-        "Download": "다운로드"
+        "Download": "다운로드",
+        "DownloadProfiles": "슬라이서 프로필 다운로드",
+        "downloadSlicer": "슬라이서 다운로드"
       },
       "TheTopBar": {
         "AdvancedViewEnabled": "고급 보기 활성화됨",
@@ -333,6 +335,20 @@
         "nozzleWarning": "노즐 경고",
         "currentNozzle": "현재 노즐",
         "requestedNozzle": "요청된 노즐"
+      },
+      "SlicerWizards": {
+        "Prusa": {
+          "Title": "PrusaSlicer 프로필 가져오기 튜토리얼",
+          "Description": "Prusa Pro HT90용 프로젝트를 슬라이싱할 때 PrusaSlicer에는 프로그램을 처음 다운로드할 때 사전 설치되지 않은 특정 프로필이 필요합니다. \n이 프로파일은 프린터를 구입한 경우에만 사용할 수 있습니다. \n프린터를 받은 후 PrusaAccount가 HT90과 연결됩니다. \nPrusa 계정은 PrusaSlicer에서 직접 프로필을 다운로드하는 데 사용되거나 아래 버튼을 클릭하여 여기에서 다운로드할 수 있습니다.",
+          "StepsForImporting": "프로필을 PrusaSlicer로 가져오는 단계",
+          "FirstStep": "왼쪽 상단에서 메뉴 -> 구성 -> 구성 마법사로 이동합니다.",
+          "SecondStep": "PrusaSlicer에서 \"로드\"를 클릭하세요.",
+          "ThirdStep": "사전 설정이 포함된 .zip 파일을 선택합니다. \n파일의 압축을 풀지 마십시오.",
+          "FourthStep": "\"다음\"을 클릭하면 구성이 표시됩니다.",
+          "FifthStep": "구성 마법사의 오른쪽 메뉴에서 Prusa Pro HT를 찾으세요.",
+          "SixthStep": "적용되는 항목을 모두 선택하고 \"다음\"을 클릭하여 구성을 계속하거나 \"마침\"을 클릭하여 기본 Plater로 돌아갑니다."
+        },
+        "CloseWizard": "마법사 닫기"
       }
     },
     "TextfieldWithCopy": {
