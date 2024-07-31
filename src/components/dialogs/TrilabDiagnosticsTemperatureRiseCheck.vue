@@ -147,7 +147,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
 
     get minTempText() {
         if (this.heaterType == 'Panels') {
-            return this.configCheckSettings['Bed'].minValueToStartTest + '°C for bed' + ' and ' + this.configCheckSettings['Panels'].minValueToStartTest + '°C for Panels'
+            return this.configCheckSettings['Bed'].minValueToStartTest + '°C for bed' + ' and ' + this.configCheckSettings['Panels'].minValueToStartTest + '°C for Chamber'
         }
         return this.configCheckSettings[this.heaterType].minValueToStartTest + '°C'
     }

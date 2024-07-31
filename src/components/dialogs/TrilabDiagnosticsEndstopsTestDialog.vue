@@ -8,8 +8,9 @@
                     <p>Checking for default states. You should not see this page for long</p>
                 </div>
                 <div v-if="step == 1">
-                    Check endstop A functionality. Press endstop multiple times until you see "Registered"
+                    Check endstop A functionality. Press down endstop multiple times until you see "Registered"
                     message
+                    <img src="/img/diagnostics/endstopsA.gif" style="max-width:300px">
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="endStopARegistered">Registered</span><span color="red"
                             v-if="!endStopARegistered">NOT
@@ -21,9 +22,9 @@
                 </div>
 
                 <div v-if="step == 2">
-                    Check endstop B functionality. Press endstop multiple times until you see "Registered"
+                    Check endstop B functionality. Press down endstop multiple times until you see "Registered"
                     message
-
+                    <img src="/img/diagnostics/endstopsB.gif" style="max-width:300px">
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="endStopBRegistered">Registered</span><span color="red"
                             v-if="!endStopBRegistered">NOT
@@ -35,9 +36,9 @@
                 </div>
 
                 <div v-if="step == 3">
-                    Check endstop C functionality. Press endstop multiple times. If it is registered, dialog
+                    Check endstop C functionality. Press down endstop multiple times. If it is registered, dialog
                     will close
-
+                    <img src="/img/diagnostics/endstopsB.gif" style="max-width:300px">
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="endStopCRegistered">Registered</span><span color="red"
                             v-if="!endStopCRegistered">NOT

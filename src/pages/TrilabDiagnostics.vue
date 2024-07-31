@@ -252,7 +252,7 @@
                                     <td>Emergency stop reset check</td>
                                     <td>
                                         <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
-                                            @click="setEmergencyStopCheckStart()">Test</v-btn>
+                                            @click="emergencyStopDialogOpen = true">Test</v-btn>
                                     </td>
                                     <td>
                                         <v-icon v-if="testResults.emergencyStopCheck == 1" color="success">
@@ -315,6 +315,26 @@
             @catchResult="catchResult"></trilab-diagnostics-temperature-rise-check>
         <!-- END -->
 
+        <v-dialog v-model="emergencyStopDialogOpen" max-width="500" @close="emergencyStopDialogOpen = false">
+            <v-card>
+                <v-card-title class="text-h5">Emergency stop reset check</v-card-title>
+                <v-card-text>
+                    <p>
+                        Watch the instructions in the animation below, press the "Start the test" button, then press and release the physical emergency stop button. Then after firmware restart button shows on the printer display, press it and wait for web interface reinitialization. Do it all as quickly as possible as you have only 30 seconds to complete the restart after pressing the "Start the test" button. If it takes more than 30 seconds, the test will fail.
+                    </p>
+                    <img class="mb-3 mt-3" src="/img/diagnostics/emergencycheck.gif"
+                        style="max-width:300px; display:block; margin: 0 auto">
+                    <v-btn color="red" class="mb-3 mt-3" block @click="setEmergencyStopCheckStart()"
+                        :disabled="emergencyStopStarted">Start the test</v-btn>
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn color="primary" @click="cancelEmergencyCheck()
+                        ">
+                        Cancel
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
 
 
         <v-dialog v-model="chamberflapTestDialogOpen" max-width="290" @close="chamberflapTestDialogOpen = false">
@@ -322,7 +342,8 @@
                 <v-card-title class="text-h5">Did the chamber flap move?</v-card-title>
                 <v-card-text>
                     The flap is depicted in the image below. Its movement can also be recognized by
-                    sound.
+                    sound. If you are unsure, you can move it again by pressing the button below.
+                    <v-btn color="primary" class="mb-3 mt-3" @click="testChamberFlapIntake(1)">Move chamber flap</v-btn>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -341,12 +362,15 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-        <v-dialog v-model="printflapTestDialogOpen" max-width="320" @close="printflapTestDialogOpen = false">
+        <v-dialog v-model="printflapTestDialogOpen" max-width="350" @close="printflapTestDialogOpen = false">
             <v-card>
                 <v-card-title class="text-h5">Did the print flap move?</v-card-title>
                 <v-card-text>
-                    The flap is depicted in the image below. Its movement can also be recognized by
-                    sound.
+                    <p>The change is depicted in the animation below. If you didn't catch the movement, you can try moving it again by by pressing button below</p>
+                    <img src="/img/diagnostics/printflap.gif" class="mb-3 mt-3"  style="max-width:300px; display:block; margin: 0 auto">
+                    <v-btn block color="primary" class="mt-3 mb-3" @click="testPrintFlap(1)">Move print flap
+                        again</v-btn>
+
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -378,10 +402,12 @@
         <!-- END -->
 
         <!-- EXTRUDER MOTOR TEST DIALOG -->
-        <trilab-diagnostics-motor-extruder-test-dialog :showp="extruderMotorTestDialogOpen" @close="extruderMotorTestDialogOpen = false" @catchResult="catchResult"></trilab-diagnostics-motor-extruder-test-dialog>
+        <trilab-diagnostics-motor-extruder-test-dialog :showp="extruderMotorTestDialogOpen"
+            @close="extruderMotorTestDialogOpen = false"
+            @catchResult="catchResult"></trilab-diagnostics-motor-extruder-test-dialog>
 
         <!-- USB TEST DIALOG -->
-        <v-dialog>
+        <v-dialog v-model="usbTestDialogOpen" max-width="350">
             <v-card>
                 <v-card-title class="text-h5">Test of USB ports</v-card-title>
                 <v-card-text>
@@ -390,6 +416,7 @@
                         change. Was every USB port recognized?
                     </p>
                     <p style="text-align: center">Currently detected devices: {{ usbNumber }}</p>
+                    <img src="/img/diagnostics/usbTest.png" class="mb-3 mt-3" style="margin: 0 auto; max-width:300px; display:block;">
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
@@ -445,7 +472,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
     public endstopCCheckDialogOpen = false
 
     public filamentDialogOpen = false
-
+    public emergencyStopDialogOpen = false
     /// loadings
     public fanTestLoading = false
 
@@ -633,6 +660,9 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         if (emergencyStopCheckStart.status != 200) {
             console.log('emergencyStopCheckStart not found')
         } else {
+            /// delete the value from db
+            fetch(this.dbUrl('emergencyStopCheckStart', ''), { method: 'DELETE' })
+
             let emergencyStopCheckStartJson = await emergencyStopCheckStart.json()
             let emergencyStopCheckStartValue = emergencyStopCheckStartJson.result.value
             if (emergencyStopCheckStartValue != null) {
@@ -655,6 +685,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
                     }
                     /// check if it was testAll
                     var resp = await fetch(this.dbUrl('resumeTestAll'))
+                    this.$toast.success('Emergency stop check was successful and was restarted in time.')
                     if (resp.status == 200) {
                         /// existuje
                         await fetch(this.dbUrl('resumeTestAll'), { method: 'DELETE' }) /// delete the remembered state
@@ -666,10 +697,8 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
                         console.log('changing testResults emergencyStop to 1, but resumeTestAll was false')
                         this.testResults.emergencyStopCheck = 1
                     }
-
-                    /// delete the value from db
-                    fetch(this.dbUrl('emergencyStopCheckStart', ''), { method: 'DELETE' })
                 } else {
+                    this.$toast.error('Emergency stop check took too long. Test was not successful. Try again.')
                     this.testResults.emergencyStopCheck = 0
                 }
             }
@@ -754,7 +783,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
             this.filamentDialogOpen = true
         } else if (this.currentStep == 'emergencyStopCheck') {
             await fetch(this.dbUrl('resumeTestAll', '1'), { method: 'POST' })
-            this.setEmergencyStopCheckStart()
+            this.emergencyStopDialogOpen = true
         }
     }
 
@@ -863,7 +892,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
     }
 
     public summaryTestLastStep = null
-
+    public emergencyStopStarted = false
     async getCurrentStep() {
         let step = await fetch(this.dbUrl('step'))
         if (step.status != 200) {
@@ -881,8 +910,20 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         await fetch(this.dbUrl('emergencyStopCheckStart', new Date().getTime().toString()), {
             method: 'POST',
         })
+        /// resumetestall to 1 if alltest is running now
+        if (this.testAllInProgress) {
+            await fetch(this.dbUrl('resumeTestAll', '1'), { method: 'POST' })
+        }
+        this.emergencyStopStarted = true
         /// after the time is set, we have to do the emergency stop
-        this.$socket.emit('printer.emergency_stop', {}, { loading: 'topbarEmergencyStop' })
+        /*this.$socket.emit('printer.emergency_stop', {}, { loading: 'topbarEmergencyStop' }) */
+    }
+    cancelEmergencyCheck() {
+        this.emergencyStopDialogOpen = false
+        this.testAllInProgress = false
+        fetch(this.dbUrl('emergencyStopCheckStart', ''), { method: 'DELETE' })
+        fetch(this.dbUrl('resumeTestAll', ''), { method: 'DELETE' })
+        this.emergencyStopStarted = false
     }
 
     async setCurrentStep(step: string) {
@@ -979,6 +1020,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
                     this.testResults.heatbreakfan = 1
                 } else {
                     this.testResults.heatbreakfan = 0
+                    this.testAllInProgress = false;
                     console.log('FAILED BECAUSE RPM WAS ' + rpm)
                 }
                 this.testFan(0)
