@@ -18,19 +18,19 @@ img {
 
 				<h3>{{ $t('App.Trilab.SlicerWizards.Prusa.StepsForImporting')  }}</h3>
 				<p>1. {{ $t('App.Trilab.SlicerWizards.Prusa.FirstStep') }}</p>
-				<img src="/public/img/wizards/prusaprofileimport/1.jpg" alt="Step 1">
+				<img src="/img/wizards/prusaprofileimport/1.jpg" alt="Step 1">
 				<v-divider class="mb-3 mt-3"></v-divider>
 				<p>2. {{ $t('App.Trilab.SlicerWizards.Prusa.SecondStep') }}</p>
-				<img src="/public/img/wizards/prusaprofileimport/3.jpeg" alt="Step 3">
+				<img src="/img/wizards/prusaprofileimport/3.jpeg" alt="Step 3">
 				<v-divider class="mb-3 mt-3"></v-divider>
 				<p>3. {{ $t('App.Trilab.SlicerWizards.Prusa.ThirdStep') }}</p>
-				<img src="/public/img/wizards/prusaprofileimport/4.jpeg" alt="Step 4">
+				<img src="/img/wizards/prusaprofileimport/4.jpeg" alt="Step 4">
 				<v-divider class="mb-3 mt-3"></v-divider>
 				<p>4. {{ $t('App.Trilab.SlicerWizards.Prusa.FourthStep') }} </p>
-				<img src="/public/img/wizards/prusaprofileimport/5.jpeg" alt="Step 5">
+				<img src="/img/wizards/prusaprofileimport/5.jpeg" alt="Step 5">
 				<v-divider class="mb-3 mt-3"></v-divider>
 				<p>5. {{ $t('App.Trilab.SlicerWizards.Prusa.FifthStep') }}</p>
-				<img src="/public/img/wizards/prusaprofileimport/6.jpeg" alt="Step 6">
+				<img src="/img/wizards/prusaprofileimport/6.jpeg" alt="Step 6">
 				<p>6. {{ $t('App.Trilab.SlicerWizards.Prusa.SixthStep') }}</p>
 
 
