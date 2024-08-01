@@ -280,7 +280,7 @@
                                     <td>Print Protocol</td>
                                     <td>
                                         <v-text-field v-model="responsibleTester" hide-details
-                                            label="Fill the responsible person here first" outlined
+                                            label="Fill name" outlined
                                             dense></v-text-field>
                                     </td>
                                     <td>
@@ -1148,7 +1148,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
                     doc.text(
                         humanTextToUse +
                         ': ' +
-                        element.startTime +
+                        element.endTime +
                         //' - ' +
                         //element.endTime +
                         ' - ' +
