@@ -38,7 +38,7 @@
                 <div v-if="step == 3">
                     Check endstop C functionality. Press down endstop multiple times. If it is registered, dialog
                     will close
-                    <img src="/img/diagnostics/endstopsB.gif" style="max-width:300px">
+                    <img src="/img/diagnostics/endstopsC.gif" style="max-width:300px">
                     <p class="mb-4 mt-4" style="text-align:center; font-weight:bold; font-size:125%"><span
                             style="color:lime" v-if="endStopCRegistered">Registered</span><span color="red"
                             v-if="!endStopCRegistered">NOT
