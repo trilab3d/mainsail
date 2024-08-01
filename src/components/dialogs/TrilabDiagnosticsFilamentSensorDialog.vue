@@ -17,6 +17,8 @@
                     <p>Now remove the filament from the printer</p>
                 </div>
 
+                <img v-if="step == 1 || step == 2" src="/img/diagnostics/filamentTest.gif" class="mt-3 mb-3" style="display:block; margin: 0 auto; max-width:300px">
+
                 <v-btn block color="red" @click="fail()">Mark as fail</v-btn>
 
                 <div v-if="isCloseBtnVisible">
