@@ -70,7 +70,7 @@ export default class TrilabPrintDoorOpenDialog extends Mixins(BaseMixin, TrilabM
     get isDialogVisible() {
         /*return (this.$store.state.printer?.print_stats?.state === "paused" && this.localDoorsClosedVisible && this.localVisible) || */
         return (this.$store.state.printer?.pause_resume?.is_paused == true &&
-            (this.$store.state.printer?.pause_resume?.pause_reason == "door_sensor"));
+            (this.$store.state.printer?.pause_resume?.pause_reason == "door_sensor" && this.TrilabPrinterIdle == false));
     }
     get doorSensors() {
         return this.$store?.getters['trilab/getDoorSensors'] ?? []
