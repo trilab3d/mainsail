@@ -133,3 +133,9 @@
       signal: string;
     };
   }
+
+  export interface PrinterStateDoorSensors {
+    name: string
+    enabled: boolean
+    door_closed: Number
+}

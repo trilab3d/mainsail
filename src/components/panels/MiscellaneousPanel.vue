@@ -48,7 +48,7 @@ export default class MiscellaneousPanel extends Mixins(BaseMixin, TrilabMixin) {
     }
 
     get doorSensors() {
-        return this.$store.getters['printer/getDoorSensors'] ?? []
+        return this.$store.getters['trilab/getDoorSensors'] ?? []
     }
 
     get miscellaneous() {

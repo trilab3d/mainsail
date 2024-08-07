@@ -126,7 +126,9 @@
         "Download": "ダウンロード",
         "Ok": "わかりました",
         "Save": "保存",
-        "Unknown": "未知"
+        "Unknown": "未知",
+        "Continue": "続く",
+        "Retry": "リトライ"
       },
       "PageNotFound": {
         "404PageNotFound": "404 ページが見つかりません"
@@ -349,6 +351,19 @@
           "SixthStep": "該当するものをすべて選択し、「次へ」をクリックして構成を続行するか、「完了」をクリックしてメインのプラッターに戻ります。"
         },
         "CloseWizard": "ウィザードを閉じる"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "現在のノズル"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "ノズルなし",
+        "NoFilament": "フィラメントなし"
+      },
+      "PrintingOpenDoorsDialogText": "ドアが開いたため、印刷は一時停止されました。\nドアセンサーを無効にするか、ドアを閉じて印刷を続行してください",
+      "PrintingOpenDoorsDialogTitle": "ドアが開いた",
+      "PrintStartOpenDoorsDialogTitle": "ドアが開いています",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "ドアが開いているため、印刷を開始できません。\nドアセンサーを無効にするか、ドアを閉めて再試行を押してください"
       }
     },
     "TextfieldWithCopy": {

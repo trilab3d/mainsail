@@ -126,7 +126,9 @@
         "Download": "Download",
         "Ok": "Ok",
         "Save": "Save",
-        "Unknown": "Unknown"
+        "Unknown": "Unknown",
+        "Continue": "Pokračovat",
+        "Retry": "Zkusit znovu"
       },
       "PageNotFound": {
         "404PageNotFound": "404 page not found"
@@ -349,6 +351,19 @@
           "SixthStep": "Vyberte všechna, která odpovídají, klepněte na \"Next\" pro pokračování nebo vyberte \"Finish\" pro navrácení na pokládací plochu"
         },
         "CloseWizard": "Close wizard"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Současná tryska"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "žádná tryska",
+        "NoFilament": "žádný filament"
+      },
+      "PrintingOpenDoorsDialogText": "Tisk pozastaven - dvířka komory otevřeny. Deaktivujte senzor dveří nebo zavřete dveře a pokračujte v tisku",
+      "PrintingOpenDoorsDialogTitle": "Dveře komory otevřeny",
+      "PrintStartOpenDoorsDialogTitle": "Dvířka komory jsou otevřeny",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Tisk nemůže být zahájen, protože jsou otevřeny dvířka komory. Deaktivujte senzor dveří nebo je zavřete a opakujte akci"
       }
     },
     "TextfieldWithCopy": {

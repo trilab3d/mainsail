@@ -198,7 +198,9 @@
         "Unknown": "Unknown",
         "Download": "Download",
         "Save": "Save",
-        "CancelWizard": "Cancel Wizard"
+        "CancelWizard": "Cancel Wizard",
+        "Continue": "Continue",
+        "Retry": "Retry"
       },
       "TopBar": {
         "LightBtn": "Light"
@@ -236,6 +238,19 @@
           "SixthStep": "Select all that apply, click \"Next\" to continue the configuration, or click \"Finish\" to return to the main Plater."
         },
         "CloseWizard": "Close wizard"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Nozzle/Filament"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "no nozzle",
+        "NoFilament": "no filament"
+      },
+      "PrintingOpenDoorsDialogText": "Doors opened, therefore printing was paused. Either disable the door sensor or close the door and continue the print",
+      "PrintingOpenDoorsDialogTitle": "Doors opened",
+      "PrintStartOpenDoorsDialogTitle": "Doors are opened",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Doors are open and the print cannot be started. Either disable the door sensor or close the door and press retry"
       }
     },
     "Notifications": {

@@ -131,7 +131,9 @@
         "Download": "Scaricamento",
         "Ok": "OK",
         "Save": "Salva",
-        "Unknown": "Sconosciuto"
+        "Unknown": "Sconosciuto",
+        "Continue": "Continua",
+        "Retry": "Riprova"
       },
       "PageNotFound": {
         "404PageNotFound": "404 pagina non trovata"
@@ -354,6 +356,19 @@
           "SixthStep": "Selezionare tutto ciò che si applica, fare clic su \"Avanti\" per continuare la configurazione oppure fare clic su \"Fine\" per tornare al Plater principale."
         },
         "CloseWizard": "Chiudi procedura guidata"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Ugello attuale"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "nessun ugello",
+        "NoFilament": "nessun filamento"
+      },
+      "PrintingOpenDoorsDialogText": "Gli sportelli si sono aperti, pertanto la stampa è stata sospesa. \nDisattivare il sensore dello sportello oppure chiudere lo sportello e continuare la stampa",
+      "PrintingOpenDoorsDialogTitle": "Le porte si aprirono",
+      "PrintStartOpenDoorsDialogTitle": "Le porte sono aperte",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Gli sportelli sono aperti e non è possibile avviare la stampa. \nDisattivare il sensore della porta oppure chiudere la porta e premere Riprova"
       }
     },
     "TextfieldWithCopy": {
