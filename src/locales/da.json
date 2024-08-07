@@ -173,6 +173,23 @@
           "SixthStep": "Vælg alle relevante, klik på \"Næste\" for at fortsætte konfigurationen, eller klik på \"Udfør\" for at vende tilbage til hovedpladen."
         },
         "CloseWizard": "Luk guiden"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Nuværende dyse"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "ingen dyse",
+        "NoFilament": "ingen filament"
+      },
+      "PrintingOpenDoorsDialogText": "Dørene åbnede, derfor blev udskrivningen sat på pause. \nDeaktiver enten dørsensoren eller luk døren og fortsæt udskrivningen",
+      "Generic": {
+        "Continue": "Blive ved",
+        "Retry": "Prøve igen"
+      },
+      "PrintingOpenDoorsDialogTitle": "Dørene åbnede",
+      "PrintStartOpenDoorsDialogTitle": "Dørene åbnes",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Dørene er åbne, og printet kan ikke startes. \nDeaktiver enten dørsensoren eller luk døren og tryk på Forsøg igen"
       }
     }
   },

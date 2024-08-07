@@ -126,7 +126,9 @@
         "Download": "다운로드",
         "Ok": "좋아요",
         "Save": "구하다",
-        "Unknown": "알려지지 않은"
+        "Unknown": "알려지지 않은",
+        "Continue": "계속하다",
+        "Retry": "다시 해 보다"
       },
       "PageNotFound": {
         "404PageNotFound": "404 페이지를 찾을 수 없습니다"
@@ -349,6 +351,19 @@
           "SixthStep": "적용되는 항목을 모두 선택하고 \"다음\"을 클릭하여 구성을 계속하거나 \"마침\"을 클릭하여 기본 Plater로 돌아갑니다."
         },
         "CloseWizard": "마법사 닫기"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "현재 노즐"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "노즐 없음",
+        "NoFilament": "필라멘트 없음"
+      },
+      "PrintingOpenDoorsDialogText": "도어가 열려서 인쇄가 일시 중지되었습니다. \n도어 센서를 비활성화하거나 도어를 닫고 인쇄를 계속하십시오.",
+      "PrintingOpenDoorsDialogTitle": "문이 열렸습니다",
+      "PrintStartOpenDoorsDialogTitle": "문이 열렸습니다",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "도어가 열려 있고 인쇄를 시작할 수 없습니다. \n도어 센서를 비활성화하거나 도어를 닫고 다시 시도를 누르세요."
       }
     },
     "TextfieldWithCopy": {

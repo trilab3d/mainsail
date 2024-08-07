@@ -126,7 +126,7 @@
                     <strong>{{ $t('App.Trilab.Panels.StatusPanel.Remaining') }}</strong>
                     <br />
                     <span class="text-no-wrap">
-                        {{ estimated_time_slicer_tlb ? this.formatRemainingTime(estimated_time_slicer_tlb) : '--' }}
+                        {{ estimated_time_slicer_tlb ? formatRemainingTime(estimated_time_slicer_tlb) : '--' }}
                     </span>
                 </v-col>
                 <v-col class="col-4 pa-0">

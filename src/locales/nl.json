@@ -127,7 +127,9 @@
         "Download": "Downloaden",
         "Ok": "OK",
         "Save": "Redden",
-        "Unknown": "Onbekend"
+        "Unknown": "Onbekend",
+        "Continue": "Doorgaan",
+        "Retry": "Opnieuw proberen"
       },
       "PageNotFound": {
         "404PageNotFound": "404 pagina niet gevonden"
@@ -350,6 +352,19 @@
           "SixthStep": "Selecteer alles wat van toepassing is, klik op \"Volgende\" om door te gaan met de configuratie, of klik op \"Voltooien\" om terug te keren naar het hoofdmenu van Plater."
         },
         "CloseWizard": "Wizard sluiten"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Huidig ​​mondstuk"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "geen mondstuk",
+        "NoFilament": "geen filament"
+      },
+      "PrintingOpenDoorsDialogText": "De deuren gingen open, waardoor het afdrukken werd onderbroken. \nSchakel de deursensor uit of sluit de deur en ga door met afdrukken",
+      "PrintingOpenDoorsDialogTitle": "Deuren gingen open",
+      "PrintStartOpenDoorsDialogTitle": "Deuren worden geopend",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "De deuren staan ​​open en het printen kan niet worden gestart. \nSchakel de deursensor uit of sluit de deur en druk op opnieuw proberen"
       }
     },
     "TextfieldWithCopy": {

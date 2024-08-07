@@ -131,7 +131,9 @@
         "Download": "Descargar",
         "Ok": "De acuerdo",
         "Save": "Ahorrar",
-        "Unknown": "Desconocido"
+        "Unknown": "Desconocido",
+        "Continue": "Continuar",
+        "Retry": "Rever"
       },
       "PageNotFound": {
         "404PageNotFound": "404 Pagina no encontrada"
@@ -354,6 +356,19 @@
           "SixthStep": "Seleccione todo lo que corresponda, haga clic en \"Siguiente\" para continuar con la configuración, o haga clic en \"Finalizar\" para regresar al Plater principal."
         },
         "CloseWizard": "Cerrar asistente"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Boquilla actual"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "sin boquilla",
+        "NoFilament": "sin filamento"
+      },
+      "PrintingOpenDoorsDialogText": "Las puertas se abrieron, por lo que se detuvo la impresión. \nDesactive el sensor de la puerta o cierre la puerta y continúe con la impresión.",
+      "PrintingOpenDoorsDialogTitle": "puertas abiertas",
+      "PrintStartOpenDoorsDialogTitle": "Se abren las puertas",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Las puertas están abiertas y no se puede iniciar la impresión. \nDesactive el sensor de la puerta o cierre la puerta y presione Reintentar"
       }
     },
     "TextfieldWithCopy": {

@@ -126,7 +126,9 @@
         "Download": "Download",
         "Ok": "OK",
         "Save": "Salvar",
-        "Unknown": "Desconhecido"
+        "Unknown": "Desconhecido",
+        "Continue": "Continuar",
+        "Retry": "Tentar novamente"
       },
       "PageNotFound": {
         "404PageNotFound": "404 Página Não Encontrada"
@@ -349,6 +351,19 @@
           "SixthStep": "Selecione todas as opções aplicáveis, clique em “Avançar” para continuar a configuração ou clique em “Concluir” para retornar ao Plater principal."
         },
         "CloseWizard": "Fechar assistente"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Bocal atual"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "sem bico",
+        "NoFilament": "sem filamento"
+      },
+      "PrintingOpenDoorsDialogText": "As portas se abriram, portanto a impressão foi pausada. \nDesative o sensor da porta ou feche a porta e continue a impressão",
+      "PrintingOpenDoorsDialogTitle": "Portas abertas",
+      "PrintStartOpenDoorsDialogTitle": "As portas estão abertas",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "As portas estão abertas e a impressão não pode ser iniciada. \nDesative o sensor da porta ou feche a porta e pressione tentar novamente"
       }
     },
     "TextfieldWithCopy": {

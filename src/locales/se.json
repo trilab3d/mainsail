@@ -119,7 +119,24 @@
       "UpdatingDone": "Uppdatering av {software} klar!"
     },
     "Trilab": {
-      "AdvancedFeatures": ""
+      "AdvancedFeatures": "",
+      "StatusPanel": {
+        "CurrentNozzle": "Dálá njuoskka"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "ii njuoskka",
+        "NoFilament": "ii leat filámentta"
+      },
+      "PrintingOpenDoorsDialogText": "Uvssat rahppojuvvojedje, danin prentehus bissehuvvui. \nJuogo deaktivere uvssa sensora dahje gidde uvssa ja joatkit prentema",
+      "Generic": {
+        "Continue": "Joatkit",
+        "Retry": "Geahččal fas"
+      },
+      "PrintingOpenDoorsDialogTitle": "Uvssat rahpasit",
+      "PrintStartOpenDoorsDialogTitle": "Uvssat rahpasit",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Uvssat leat rabas ja prentema ii sáhte álggahit. \nJuogo deaktivere uvssa sensora dahje gidde uvssa ja deaddilat geahččalit fas"
+      }
     }
   },
   "BedScrews": {

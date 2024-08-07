@@ -1,17 +1,16 @@
 <template>
-    <v-dialog v-model="isDialogVisible" @close="close" width="720">
+    <v-dialog v-model="isDialogVisible" @close="close" :max-width="720">
         <v-card>
             <v-card-title>
                 <span class="headline">
-                    Doors opened
+                    {{ $t('App.Trilab.PrintingOpenDoorsDialogTitle') }}
                 </span>
             </v-card-title>
 
             <v-card-text>
-                <p>Doors opened, therefore printing was paused. Either disable the sensor or close the door and continue the
-                    print</p>
+                <p>{{ $t('App.Trilab.PrintingOpenDoorsDialogText') }}</p>
                 <v-btn block color="green" :disabled="!allDoorsClosed" @click="continuePrint()">
-                    <v-icon left>{{ mdiPlay }}</v-icon>Continue</v-btn>
+                    <v-icon left>{{ mdiPlay }}</v-icon>{{ $t('App.Trilab.Generic.Continue') }}</v-btn>
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
@@ -69,10 +68,12 @@ export default class TrilabPrintDoorOpenDialog extends Mixins(BaseMixin, TrilabM
         return "primary";
     }
     get isDialogVisible() {
-        return this.$store.state.printer?.print_stats?.state === "paused" && this.localDoorsClosedVisible && this.localVisible;
+        /*return (this.$store.state.printer?.print_stats?.state === "paused" && this.localDoorsClosedVisible && this.localVisible) || */
+        return (this.$store.state.printer?.pause_resume?.is_paused == true &&
+            (this.$store.state.printer?.pause_resume?.pause_reason == "door_sensor"));
     }
     get doorSensors() {
-        return this.$store?.getters['printer/getDoorSensors'] ?? []
+        return this.$store?.getters['trilab/getDoorSensors'] ?? []
     }
     get allDoorsClosed(): boolean {
         /// enabled is when all doors are closed    
@@ -93,12 +94,26 @@ export default class TrilabPrintDoorOpenDialog extends Mixins(BaseMixin, TrilabM
         return this.$store.state.printer.idle_timeout?.state
     }
 
+
     @Watch('printerBusy')
     onPrinterBusyChanged() {
         if (this.printerBusy) {
             this.localVisible = true;
             this.localDoorsClosedVisible = false;
         }
+    }
+
+    // on init
+    mounted() {
+        /// trigger alldoorclosedchanged
+        this.onAllDoorsClosedChanged();
+        console.log("TRILABPRINTDOOROPENMOUNTED");
+        console.log(this.localDoorsClosedVisible);
+        console.log(this.$store.state.printer?.print_stats?.state);
+        console.log(this.localVisible);
+        console.log(this.allDoorsClosed);
+        console.log(this.doorSensors);
+        console.log(this.$store.state.printer?.pause_resume ?? null);
     }
 
     @Watch('allDoorsClosed')

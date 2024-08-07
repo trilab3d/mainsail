@@ -3,15 +3,14 @@
         <v-card>
             <v-card-title>
                 <span class="headline">
-                    Doors are open
+                    {{ $t('App.Trilab.PrintStartOpenDoorsDialogTitle') }}
                 </span>
             </v-card-title>
 
             <v-card-text>
-                <p>Doors are open and the print cannot be started. Either disable the sensor or close the door and press
-                    retry</p>
+                <p> {{ $t('App.Trilab.PrintStartOpenDoorsDialog.Text') }} </p>
                 <v-btn block color="green" :disabled="!allDoorsClosed" @click="retryPrint()">
-                    <v-icon left>{{ mdiReload }}</v-icon>Retry</v-btn>
+                    <v-icon left>{{ mdiReload }}</v-icon> {{ $t('App.Trilab.Generic.Retry') }}</v-btn>
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
@@ -55,12 +54,6 @@ export default class TrilabStartDoorOpenDialog extends Mixins(BaseMixin, TrilabM
         this.isDialogVisible = false;
     }
 
-    get uploadFileProgressbarColor() {
-        if (this.liveUpdateStatus == "ERROR") {
-            return "danger";
-        }
-        return "primary";
-    }
     get isDialogVisible() {
         return this.$store.state.trilab.showStartDoorOpenDialog;
     }
@@ -68,7 +61,7 @@ export default class TrilabStartDoorOpenDialog extends Mixins(BaseMixin, TrilabM
         this.$store.commit('trilab/setData', { showStartDoorOpenDialog: value });
     }
     get doorSensors() {
-        return this.$store?.getters['printer/getDoorSensors'] ?? []
+        return this.$store?.getters['trilab/getDoorSensors'] ?? []
     }
     get allDoorsClosed(): boolean {
         /// enabled is when all doors are closed    
@@ -81,19 +74,21 @@ export default class TrilabStartDoorOpenDialog extends Mixins(BaseMixin, TrilabM
     }
 
 
-    get printerBusy() {
-        const idle_timeout_state = this.$store.state.printer.idle_timeout?.state
-        return this.printerIsPrinting || idle_timeout_state === "Printing";
+
+    get isIdle() {
+        return this.TrilabPrinterIdle;
     }
-    get get_state() {
-        return this.$store.state.printer.idle_timeout?.state
-    }
-    @Watch('get_state')
-    onIdleTimeoutStateChange(newVal: String, oldVal: String) {
-        if (newVal == "Printing") {
+
+
+
+    @Watch('isIdle')
+    onIdleChange(newVal: boolean, oldVal: boolean) {
+        if (newVal == false) {
             this.isDialogVisible = false;
         }
     }
+
+
     @Watch('printer_state')
     onPrinterStateChange(newVal: String, oldVal: String) {
         console.log("Printer state changed from " + oldVal + " to " + newVal);
