@@ -131,7 +131,9 @@
         "Download": "Pobierać",
         "Ok": "OK",
         "Save": "Ratować",
-        "Unknown": "Nieznany"
+        "Unknown": "Nieznany",
+        "Continue": "Kontynuować",
+        "Retry": "Spróbować ponownie"
       },
       "PageNotFound": {
         "404PageNotFound": "Nie znaleziono strony 404"
@@ -354,6 +356,19 @@
           "SixthStep": "Wybierz wszystko, co ma zastosowanie, kliknij „Dalej”, aby kontynuować konfigurację lub kliknij „Zakończ”, aby powrócić do głównego Plater."
         },
         "CloseWizard": "Zamknij kreatora"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Aktualna dysza"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "brak dyszy",
+        "NoFilament": "brak włókna"
+      },
+      "PrintingOpenDoorsDialogText": "Drzwi się otworzyły, dlatego drukowanie zostało wstrzymane. \nWyłącz czujnik drzwi lub zamknij drzwi i kontynuuj drukowanie",
+      "PrintingOpenDoorsDialogTitle": "Drzwi się otworzyły",
+      "PrintStartOpenDoorsDialogTitle": "Drzwi są otwarte",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Drzwi są otwarte i nie można rozpocząć drukowania. \nWyłącz czujnik drzwi lub zamknij drzwi i naciśnij przycisk Ponów"
       }
     },
     "TextfieldWithCopy": {

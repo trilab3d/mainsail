@@ -131,7 +131,9 @@
         "Download": "İndirmek",
         "Ok": "Tamam",
         "Save": "Kaydetmek",
-        "Unknown": "Bilinmeyen"
+        "Unknown": "Bilinmeyen",
+        "Continue": "Devam etmek",
+        "Retry": "Yeniden dene"
       },
       "PageNotFound": {
         "404PageNotFound": "404 Sayfa Bulunamadı"
@@ -354,6 +356,19 @@
           "SixthStep": "Geçerli olanların tümünü seçin, konfigürasyona devam etmek için \"İleri\"ye tıklayın veya ana Plater'a dönmek için \"Bitir\"e tıklayın."
         },
         "CloseWizard": "Sihirbazı kapat"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Akım nozulu"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "meme yok",
+        "NoFilament": "filaman yok"
+      },
+      "PrintingOpenDoorsDialogText": "Kapılar açıldı, bu nedenle baskı durduruldu. \nYa kapı sensörünü devre dışı bırakın ya da kapıyı kapatıp yazdırmaya devam edin",
+      "PrintingOpenDoorsDialogTitle": "Kapılar açıldı",
+      "PrintStartOpenDoorsDialogTitle": "Kapılar açıldı",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Kapılar açık ve yazdırma başlatılamıyor. \nYa kapı sensörünü devre dışı bırakın ya da kapıyı kapatıp yeniden dene tuşuna basın"
       }
     },
     "TextfieldWithCopy": {

@@ -126,7 +126,9 @@
         "Download": "Letöltés",
         "Ok": "Rendben",
         "Save": "Megment",
-        "Unknown": "Ismeretlen"
+        "Unknown": "Ismeretlen",
+        "Continue": "Folytatni",
+        "Retry": "Próbálja újra"
       },
       "PageNotFound": {
         "404PageNotFound": "404 Oldal nem található"
@@ -349,6 +351,19 @@
           "SixthStep": "Jelölje ki az összes megfelelőt, kattintson a \"Tovább\" gombra a konfiguráció folytatásához, vagy kattintson a \"Befejezés\" gombra a fő Platerhez való visszatéréshez."
         },
         "CloseWizard": "Varázsló bezárása"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Jelenlegi fúvóka"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "nincs fúvóka",
+        "NoFilament": "nincs izzószál"
+      },
+      "PrintingOpenDoorsDialogText": "Az ajtók kinyíltak, ezért a nyomtatás szünetel. \nVagy kapcsolja ki az ajtóérzékelőt, vagy csukja be az ajtót, és folytassa a nyomtatást",
+      "PrintingOpenDoorsDialogTitle": "Ajtók nyíltak",
+      "PrintStartOpenDoorsDialogTitle": "Az ajtók nyitva vannak",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Az ajtók nyitva vannak, és a nyomtatás nem indítható el. \nVagy kapcsolja ki az ajtóérzékelőt, vagy csukja be az ajtót, és nyomja meg az Újra gombot"
       }
     },
     "TextfieldWithCopy": {

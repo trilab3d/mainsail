@@ -131,7 +131,9 @@
         "Download": "Télécharger",
         "Ok": "D'accord",
         "Save": "Sauvegarder",
-        "Unknown": "Inconnu"
+        "Unknown": "Inconnu",
+        "Continue": "Continuer",
+        "Retry": "Recommencez"
       },
       "PageNotFound": {
         "404PageNotFound": "404 Page non trouvée"
@@ -354,6 +356,19 @@
           "SixthStep": "Sélectionnez tout ce qui s'applique, cliquez sur \"Suivant\" pour continuer la configuration, ou cliquez sur \"Terminer\" pour revenir au Plater principal."
         },
         "CloseWizard": "Fermer l'assistant"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Buse actuelle"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "pas de buse",
+        "NoFilament": "pas de filament"
+      },
+      "PrintingOpenDoorsDialogText": "Les portes se sont ouvertes, l'impression a donc été interrompue. \nSoit désactivez le capteur de porte, soit fermez la porte et poursuivez l'impression.",
+      "PrintingOpenDoorsDialogTitle": "Portes ouvertes",
+      "PrintStartOpenDoorsDialogTitle": "Les portes sont ouvertes",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Les portes sont ouvertes et l'impression ne peut pas démarrer. \nDésactivez le capteur de porte ou fermez la porte et appuyez sur Réessayer."
       }
     },
     "TextfieldWithCopy": {

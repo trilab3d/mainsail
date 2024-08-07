@@ -131,7 +131,9 @@
         "Download": "Herunterladen",
         "Ok": "OK",
         "Save": "Speichern",
-        "Unknown": "Unbekannt"
+        "Unknown": "Unbekannt",
+        "Continue": "Weitermachen",
+        "Retry": "Wiederholen"
       },
       "PageNotFound": {
         "404PageNotFound": "404 Seite nicht gefunden"
@@ -354,6 +356,19 @@
           "SixthStep": "Wählen Sie alles aus, was zutrifft, klicken Sie auf „Weiter“, um mit der Konfiguration fortzufahren, oder klicken Sie auf „Fertig stellen“, um zum Hauptplater zurückzukehren."
         },
         "CloseWizard": "Assistent schließen"
+      },
+      "StatusPanel": {
+        "CurrentNozzle": "Aktuelle Düse"
+      },
+      "TemperaturePanel": {
+        "NoNozzle": "keine düse",
+        "NoFilament": "kein Filament"
+      },
+      "PrintingOpenDoorsDialogText": "Türen öffneten sich, daher wurde der Druck unterbrochen. \nDeaktivieren Sie entweder den Türsensor oder schließen Sie die Tür und setzen Sie den Druck fort",
+      "PrintingOpenDoorsDialogTitle": "Türen geöffnet",
+      "PrintStartOpenDoorsDialogTitle": "Türen werden geöffnet",
+      "PrintStartOpenDoorsDialog": {
+        "Text": "Türen sind offen und der Druck kann nicht gestartet werden. \nDeaktivieren Sie entweder den Türsensor oder schließen Sie die Tür und drücken Sie erneut"
       }
     },
     "TextfieldWithCopy": {

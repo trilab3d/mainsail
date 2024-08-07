@@ -8,7 +8,7 @@
         <td class="name">
             <span class="cursor-pointer" @click="showEditDialog = true">{{ formatName }} <small
                     v-if="name.indexOf('extruder') != -1">({{ $store.state.printer["config_constant printhead_pretty"]?.value ?? $store.state.printer["config_constant printhead"]?.value ??
-            $t("Trilab.Generic.Unknown") }})</small></span>
+            $t("App.Trilab.Generic.Unknown") }}, {{ NozzleText }}, {{ FilamentText }})</small></span>
         </td>
         <td v-if="!isResponsiveMobile" class="state">
             <v-tooltip v-if="state !== null" top>
@@ -63,9 +63,9 @@ import {
     mdiThermometer,
 } from '@mdi/js'
 import { additionalSensors, opacityHeaterActive, opacityHeaterInactive } from '@/store/variables'
-
+import TrilabMixin from '@/components/mixins/trilab'
 @Component
-export default class TemperaturePanelListItem extends Mixins(BaseMixin) {
+export default class TemperaturePanelListItem extends Mixins(BaseMixin, TrilabMixin) {
     @Prop({ type: String, required: true }) readonly objectName!: string
     @Prop({ type: Boolean, required: true }) readonly isResponsiveMobile!: boolean
 
@@ -131,6 +131,23 @@ export default class TemperaturePanelListItem extends Mixins(BaseMixin) {
 
         return mdiThermometer
     }
+
+
+    get NozzleText(){
+        var sVar = this.getSavedVariable('nozzle');
+        if(sVar == "NONE" || sVar == null){
+            return this.$t('App.Trilab.TemperaturePanel.NoNozzle');
+        }
+        return sVar;
+    }
+    get FilamentText(){
+        var sVar = this.getSavedVariable('loaded_filament');
+        if(sVar == "NONE" || sVar == null){
+            return this.$t('App.Trilab.TemperaturePanel.NoFilament');
+        }
+        return sVar;
+    }
+
 
     get color() {
         return this.$store.getters['printer/tempHistory/getDatasetColor'](this.objectName) ?? '#FFFFFF'
