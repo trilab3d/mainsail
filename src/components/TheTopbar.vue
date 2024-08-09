@@ -29,7 +29,7 @@
                 <b>{{ $t("App.Trilab.TheTopbar.ServiceViewEnabled") }}</b>
             </v-chip>
             <v-divider v-if="liveUpdateStatus != 'UP_TO_DATE'" class="mx-2" vertical></v-divider>
-            <v-chip v-if="liveUpdateStatus != 'UP_TO_DATE'" color="#FFA500" @click="showLiveUpdateDialogAction()">
+            <v-chip v-if="liveUpdateStatus != 'UP_TO_DATE'" :color="liveUpdateBtnColor" @click="showLiveUpdateDialogAction()">
                 <b> {{ $t('App.Trilab.TrilabLiveUpdate.statuses.' + liveUpdateStatus) }} </b>
             </v-chip>
 
@@ -196,6 +196,15 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     }
 
 
+    get liveUpdateBtnColor() {
+        var value = this.liveUpdateStatus;
+        if (typeof value === 'string') {
+            if (value.indexOf("FAILED") > -1 || value.indexOf("ERROR") > -1) {
+                return "red";
+            }
+        }
+        return "#FFA500";
+    }
     get showLiveUpdateDialog() {
         return this.$store.state.trilab.showLiveUpdateDialog;
     }
@@ -345,8 +354,8 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
                 return;
             }
             this.fileToStart = successFiles[0];
-           // console.log("setting fileToStart to:");
-           // console.log(successFiles[0]);
+            // console.log("setting fileToStart to:");
+            // console.log(successFiles[0]);
 
 
             return;
@@ -380,7 +389,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
             }
         }
         if (fileFound == false) {
-          //console.log("file not found!");
+            //console.log("file not found!");
             return;
         }
 
