@@ -306,10 +306,11 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         var endTest = this.heatingStartTime + this.maxTime < new Date().getTime();
         /// also end test if it is panels and bed temp is not reached in time
 
-        if (this.bedOk == false) {
+        if (this.bedOk == false && this.heaterType == 'Panels') {
             const bed = this.targetHeaterBedFromTemperatureObjects;
             if (bed.temperature >= this.configCheckSettings.Bed.tempTo) {
                 this.bedOk = true
+
                 this.$emit('catchResult', this.configCheckSettings['Bed'].returnKey, 1);
             }
         }
