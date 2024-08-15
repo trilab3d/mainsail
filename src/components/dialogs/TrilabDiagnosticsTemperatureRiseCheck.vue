@@ -131,6 +131,9 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             this.sendGcode(gcode)
             this.initialization()
         }
+        if(newValue == false && oldValue == true) {
+            this.closeReset()
+        }
     }
 
     coolingCheck() {
@@ -211,7 +214,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         if (this.targetHeaterFromTemperatureObjects == null) {
             /// error toast and closeReset
             this.$toast.error('No temperature sensor found for ' + this.heaterType)
-            this.closeReset()
+            this.isDialogVisible = false;
         }
 
         var canStep = this.targetHeaterFromTemperatureObjects.temperature < this.configCheckSettings[this.heaterType].minValueToStartTest;
@@ -310,7 +313,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             const bed = this.targetHeaterBedFromTemperatureObjects;
             if (bed.temperature >= this.configCheckSettings.Bed.tempTo) {
                 this.bedOk = true
-
+                
                 this.$emit('catchResult', this.configCheckSettings['Bed'].returnKey, 1);
             }
         }
@@ -356,7 +359,6 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
     }
 
     fail(bed = false, panels = false) {
-        this.closeReset()
         if (this.heaterType == 'Panels') { /// also fail the bed
             if (panels == true) {
                 /// fail panels
@@ -372,6 +374,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         } else {
             this.$emit('catchResult', this.configCheckSettings[this.heaterType].returnKey, 0)
         }
+        this.isDialogVisible = false;
 
     }
     success() {
@@ -379,7 +382,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         if (this.heaterType == 'Panels') { /// also success the bed
             this.$emit('catchResult', this.configCheckSettings['Bed'].returnKey, 1)
         }
-        this.closeReset()
+        this.isDialogVisible = false;
     }
 
     closeReset() {
@@ -395,7 +398,6 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         this.startedHeatingFromWizard = false
         this.step = 0
         this.bedOk = false;
-        this.isDialogVisible = false
         /// remove timeout for cooling
         clearTimeout((window as any).targetTempCheckTimeoutRef)
         clearTimeout((window as any).targetBedTempCheckTimeoutRef)
