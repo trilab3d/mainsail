@@ -53,7 +53,7 @@
                         <p v-if="tlbFilamentLoaded != 'NONE' && tlb_filament_ok() == false">{{
                             $t('App.Trilab.StartPrintDialog.currentFilament') }}: <span class="red--text">{{
                                 tlbFilamentLoaded
-                            }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span
+                                }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span
                                 class="green--text">{{ tlbFilamentNeeded()
                                 }}</span></p>
                     </div>
@@ -62,7 +62,8 @@
                             $t('App.Trilab.StartPrintDialog.nozzleWarning') }}</h3>
                         <p class="">{{ $t('App.Trilab.StartPrintDialog.currentNozzle') }}: <span class="red--text">{{
                             nozzleCurrent }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedNozzle') }}:
-                            <span class="success--text">{{ nozzleWanted() }}</span></p>
+                            <span class="success--text">{{ nozzleWanted() }}</span>
+                        </p>
                     </div>
 
                 </div>
@@ -118,15 +119,52 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
     @Prop({ required: true })
     declare file: null | FileStateGcodefile
 
+    @Prop({ required: false, default: false })
+    declare immediateStartIfOk: boolean
+
     public updatedFile: null | FileStateGcodefile = null;
+
+    public wasWarning = false;
 
 
     @Watch('bool')
     onBoolChange(newVal: boolean) {
+        //console.log("BOOLCHANGE");
         if (newVal == false) {
             this.closeDialog()
         } else {
             this.updatedFile = null;
+            //console.log("IS FILAMENT OK?" + this.tlb_filament_ok());
+            //console.log("IS NOZZLE OK?" + this.nozzle_ok());
+            //console.log("isImmediateStartIfOk?" + this.immediateStartIfOk);
+            if (this.immediateStartIfOk && this.AllOk) {
+                //console.log("immediateStartIfOk && AllOk. Starting print");
+                let filenameToStart = this.getFile()?.filename ?? '';
+                if (filenameToStart != '') {
+                    this.startPrint(filenameToStart);
+                }
+            }
+            if (this.AllOk == false) {
+                this.wasWarning = true;
+                //console.log("wasWarning set to true");
+            }
+            ///
+        }
+    }
+
+    @Watch('updatedFile')
+    onUpdatedFileChange(newVal: any) {
+        if (this.bool == false) {
+            return;
+        }
+        if (newVal != null) {
+            //console.log("updatedFile changed. IS ALL OK? " + this.AllOk);
+            //console.log("IS FILAMENT OK?" + this.tlb_filament_ok());
+            //console.log("IS NOZZLE OK?" + this.nozzle_ok());
+            //console.log("isImmediateStartIfOk?" + this.immediateStartIfOk);
+            if (this.immediateStartIfOk && this.AllOk && this.wasWarning == false) {
+                this.startPrint(this.getFile()?.filename ?? '')
+            }
         }
     }
 
@@ -220,6 +258,7 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
     }
 
     startPrint(filename = '') {
+        //console.log("STARTPRINT CALLED" + filename);
         if (filename == '') {
             return;
         }
@@ -281,7 +320,7 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
     }
 
     get AllOk() {
-        return this.nozzle_ok() && this.tlb_filament_ok;
+        return this.nozzle_ok() && this.tlb_filament_ok();
     }
 
     get tlbFilamentLoaded() {
@@ -302,6 +341,7 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
     closeDialog() {
         this.updatedFile = null;
         this.$emit('closeDialog')
+        this.wasWarning = false;
     }
 }
 </script>

@@ -29,7 +29,8 @@
                 <b>{{ $t("App.Trilab.TheTopbar.ServiceViewEnabled") }}</b>
             </v-chip>
             <v-divider v-if="liveUpdateStatus != 'UP_TO_DATE'" class="mx-2" vertical></v-divider>
-            <v-chip v-if="liveUpdateStatus != 'UP_TO_DATE'" :color="liveUpdateBtnColor" @click="showLiveUpdateDialogAction()">
+            <v-chip v-if="liveUpdateStatus != 'UP_TO_DATE'" :color="liveUpdateBtnColor"
+                @click="showLiveUpdateDialogAction()">
                 <b> {{ $t('App.Trilab.TrilabLiveUpdate.statuses.' + liveUpdateStatus) }} </b>
             </v-chip>
 
@@ -99,7 +100,7 @@
             @closeLiveUpdateDialog="closeLiveUpdateDialog()"></trilab-update-dialog-live>
         <trilab-start-door-open-dialog></trilab-start-door-open-dialog>
         <trilab-print-door-open-dialog></trilab-print-door-open-dialog>
-        <start-print-dialog :bool="tlb_showPrintDialog" :file="tlb_dialogPrintFile" :current-path="tlb_currentPrintPath"
+        <start-print-dialog :bool="tlb_showPrintDialog" :immediate-start-if-ok="true" :file="tlb_dialogPrintFile" :current-path="tlb_currentPrintPath"
             @closeDialog="tlb_closePrintDialog" />
     </div>
 </template>
@@ -169,6 +170,8 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     tlb_closePrintDialog() {
         this.tlb_showPrintDialog = false
         this.fileToStart = null
+        this.tlb_dialogPrintFile = null
+        this.tlb_currentPrintPath = ''
     }
 
     lightFirstRun = false
@@ -380,6 +383,11 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         for (let i = 0; i < newGcodes.length; i++) {
             if (newGcodes[i].filename == filename) {
                 /// check if thubmnail is already loaded
+
+                /// here we must check if filament and printhead is ok and if yes, we can start the print
+                //if (this.filamentOK == false || this.printheadOK == false) {
+
+                //}
                 this.fileToStart = null;
                 console.log("found file!" + filename);
                 this.tlb_dialogPrintFile = newGcodes[i]
@@ -402,7 +410,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     }
 
 
-    doUpload_Trilab(file: File) {
+    doUpload_Trilab(file: File, startIfFilamentAndPrintheadOK: boolean = true) {
         const formData = new FormData()
         const filename = file.name
 

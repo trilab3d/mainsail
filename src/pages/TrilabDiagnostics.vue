@@ -33,6 +33,33 @@
 .v-card__title {
     word-break: break-word;
 }
+
+.yaigif {
+    max-height: 100vh;
+    max-width: 100%;
+    animation: rotationSizing 5s infinite linear;
+    pointer-events: none;
+    cursor: progress;
+    user-select: none;
+}
+
+@keyframes rotationSizing {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    10% {
+        transform: rotate(15deg) scale(0.75);
+    }
+
+    50% {
+        transform: rotate(-180deg) scale(0.5);
+    }
+
+    100% {
+        transform: rotate(-360deg) scale(1);
+    }
+}
 </style>
 <template>
     <v-container py-0 px-0>
@@ -110,10 +137,8 @@
                                 <tr v-if="printFlapPresent">
                                     <td>Print flap - motion control</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false" @click="
-                                            testPrintFlap(1)
-                                        printflapTestDialogOpen = true
-                                            ">
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
+                                            @click="printflapTestDialogOpen = true">
                                             Test
                                         </v-btn>
                                     </td>
@@ -128,10 +153,8 @@
                                 <tr v-if="chamberIntakeFlapPresent">
                                     <td>Chamber Intake flap - motion control</td>
                                     <td>
-                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false" @click="
-                                            testChamberFlapIntake(1)
-                                        chamberflapTestDialogOpen = true
-                                            ">
+                                        <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
+                                            @click="chamberflapTestDialogOpen = true">
                                             Test
                                         </v-btn>
                                     </td>
@@ -279,9 +302,8 @@
                                 <tr v-if="allSucessfull">
                                     <td>Print Protocol</td>
                                     <td>
-                                        <v-text-field v-model="responsibleTester" hide-details
-                                            label="Fill name" outlined
-                                            dense></v-text-field>
+                                        <v-text-field v-model="responsibleTester" hide-details label="Fill name"
+                                            outlined dense></v-text-field>
                                     </td>
                                     <td>
                                         <v-btn style="vertical-align: center" :disabled="responsibleTester.trim() == ''"
@@ -320,7 +342,11 @@
                 <v-card-title class="text-h5">Emergency stop reset check</v-card-title>
                 <v-card-text>
                     <p>
-                        Watch the instructions in the animation below, press the "Start the test" button, then press and release the physical emergency stop button. Then after firmware restart button shows on the printer display, press it and wait for web interface reinitialization. Do it all as quickly as possible as you have only 30 seconds to complete the restart after pressing the "Start the test" button. If it takes more than 30 seconds, the test will fail.
+                        Watch the instructions in the animation below, press the "Start the test" button, then press and
+                        release the physical emergency stop button. Then after firmware restart button shows on the
+                        printer display, press it and wait for web interface reinitialization. Do it all as quickly as
+                        possible as you have only 30 seconds to complete the restart after pressing the "Start the test"
+                        button. If it takes more than 30 seconds, the test will fail.
                     </p>
                     <img class="mb-3 mt-3" src="/img/diagnostics/emergencycheck.gif"
                         style="max-width:300px; display:block; margin: 0 auto">
@@ -343,20 +369,16 @@
                 <v-card-text>
                     The flap is depicted in the image below. Its movement can also be recognized by
                     sound. If you are unsure, you can move it again by pressing the button below.
-                    <v-btn color="primary" class="mb-3 mt-3" @click="testChamberFlapIntake(1)">Move chamber flap</v-btn>
+                    <v-btn :disabled="!enabledChamberCommandDialogButton" color="primary" class="mb-3 mt-3"
+                        @click="testChamberFlapIntake(1)">Move chamber flap</v-btn>
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="green darken-1" text @click="
-                        chamberflapTestDialogOpen = false
-                    testResults.chamberflap = 1
-                        ">
+                    <v-btn :disabled="!enabledChamberYesButton" color="green darken-1" text
+                        @click="chamberFlapResult(1)">
                         Yes
                     </v-btn>
-                    <v-btn color="red darken-1" text @click="
-                        chamberflapTestDialogOpen = false
-                    testResults.chamberflap = 0
-                        ">
+                    <v-btn color="red darken-1" text @click="chamberFlapResult(0)">
                         No
                     </v-btn>
                 </v-card-actions>
@@ -366,24 +388,21 @@
             <v-card>
                 <v-card-title class="text-h5">Did the print flap move?</v-card-title>
                 <v-card-text>
-                    <p>The change is depicted in the animation below. If you didn't catch the movement, you can try moving it again by by pressing button below</p>
-                    <img src="/img/diagnostics/printflap.gif" class="mb-3 mt-3"  style="max-width:300px; display:block; margin: 0 auto">
-                    <v-btn block color="primary" class="mt-3 mb-3" @click="testPrintFlap(1)">Move print flap
-                        again</v-btn>
+                    <p>The change is depicted in the animation below. If you didn't catch the movement, you can try
+                        moving it again by by pressing button below</p>
+                    <img src="/img/diagnostics/printflap.gif" class="mb-3 mt-3"
+                        style="max-width:300px; display:block; margin: 0 auto">
+                    <v-btn :disabled="!enabledPrintflapCommandDialogButton" block color="primary" class="mt-3 mb-3"
+                        @click="testPrintFlap(1)">Move print flap</v-btn>
 
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="green darken-1" text @click="
-                        printflapTestDialogOpen = false
-                    testResults.printflap = 1
-                        ">
+                    <v-btn :disabled="!enabledPrintflapYesDialogButton" color="green darken-1" text
+                        @click="printFlapTestResult(1)">
                         Yes
                     </v-btn>
-                    <v-btn color="red darken-1" text @click="
-                        printflapTestDialogOpen = false
-                    testResults.printflap = 0
-                        ">
+                    <v-btn color="red darken-1" text @click="printFlapTestResult(0)">
                         No
                     </v-btn>
                 </v-card-actions>
@@ -416,17 +435,23 @@
                         change. Was every USB port recognized?
                     </p>
                     <p style="text-align: center">Currently detected devices: {{ usbNumber }}</p>
-                    <img src="/img/diagnostics/usbTest.png" class="mb-3 mt-3" style="margin: 0 auto; max-width:300px; display:block;">
+                    <img src="/img/diagnostics/usbTest.png" class="mb-3 mt-3"
+                        style="margin: 0 auto; max-width:300px; display:block;">
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="green darken-1" text
-                        @click="usbTestDialogOpen = false; catchResult('usb', 1)">Yes</v-btn>
-                    <v-btn color="red darken-1" text
-                        @click="usbTestDialogOpen = false; catchResult('usb', 0)">No</v-btn>
+                    <v-btn color="green darken-1" text @click="usbTestResult(1)">Yes</v-btn>
+                    <v-btn color="red darken-1" text @click="usbTestResult(0)">No</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
+
+        <v-dialog v-model="showYAI" max-width="100%" width="100%; height:100%" persistent>
+            <img src="/img/diagnostics/yai.gif" style="max-width:100%; display:block; margin: 0 auto; max-height:100vh"
+                class="yaigif">
+        </v-dialog>
+
+
     </v-container>
 </template>
 
@@ -486,6 +511,18 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
     public temperatureRiseDialogChamber = false
 
     public endstopsOpenCheckDialog = false
+
+
+    public trickChamberDialog = true; /// zaznam jestli je aktivni trik (tedy se command na pohnuti po kliku na tlacitko neprovedl)
+    public enabledChamberYesButton = false;
+    public enabledChamberCommandDialogButton = false;
+
+    public trickPrintflapDialog = true;/// zaznam jestli je aktivni trik (tedy se command na pohnuti po kliku na tlacitko neprovedl)
+    public enabledPrintflapYesDialogButton = false;
+    public enabledPrintflapCommandDialogButton = false;
+
+    public showYAI = false;
+
 
     public testOrder = [
         'endstopsOpenState',
@@ -616,6 +653,75 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
     public currentStep: any = null
     public testAllInProgress = false
 
+    showYAIgif() {
+        clearTimeout((window as any).yaiTimeout)
+        this.showYAI = true
+        /// dont allow reload
+        window.onbeforeunload = function () {
+            return 'Are you sure you want to leave?';
+        };
+        /// set cookie yai to 1
+        window.document.cookie = 'yai=1; expires=Sun, 18 Dec 2039 12:00:00 UTC; path=/';
+        (window as any).yaiTimeout = window.setTimeout(() => {
+            this.showYAI = false
+            window.onbeforeunload = null
+            window.document.cookie = 'yai=0; expires=Thu, 18 Dec 1980 12:00:00 UTC; path=/';
+        }, 60000);
+    }
+
+    chamberFlapResult(result: number) {
+        //// check if trick is active, and if yes and he clicked that it moved, then show YAI gif
+        if (this.trickChamberDialog) {
+            if (result == 1) {
+                this.showYAIgif()
+                this.enabledChamberCommandDialogButton = true
+                this.enabledChamberYesButton = false
+                this.$toast.warning("You have been tricked! Nothing was sent to the printer so it couldn't move. Look at the test result and don't be LAZY you WORTHLESS PEASANT", { duration: 15000 })
+            } else {
+                /// umoznime udelat dalsi pokus, uzivatel neni I
+                this.$toast.info("OK, you weren't fooled. You can try again.")
+                this.enabledChamberCommandDialogButton = true
+                this.enabledChamberYesButton = false
+                this.trickChamberDialog = Math.random() < 0.5
+            }
+        } else {
+            this.chamberflapTestDialogOpen = false
+            this.testResults.chamberflap = result
+            this.enabledChamberCommandDialogButton = true
+        }
+    }
+
+    usbTestResult(result: number) {
+        if (this.usbNumberChangeObserved == false && result == 1) {
+            this.$toast.warning("You have been tricked! USB number NOT changed so it CAN'T  be marked as yes. Look at the test result and don't be LAZY you WORTHLESS PEASANT", { duration: 15000 })
+            this.showYAIgif();
+            return
+        }
+        this.usbTestDialogOpen = false
+        this.testResults.usb = result
+    }
+
+
+    printFlapTestResult(result: number) {
+        if (this.trickPrintflapDialog) {
+            if (result == 1) {
+                this.showYAIgif()
+                this.enabledPrintflapCommandDialogButton = true
+                this.enabledPrintflapYesDialogButton = false
+                this.$toast.warning("You have been tricked! Nothing was sent to the printer so it couldn't move. Look at the test result and don't be LAZY you WORTHLESS PEASANT", { duration: 15000 })
+            } else {
+                /// umoznime udelat dalsi pokus, uzivatel neni I 
+                this.$toast.info('OK, you can try again.')
+                this.enabledPrintflapCommandDialogButton = true
+                this.enabledPrintflapYesDialogButton = false
+                this.trickPrintflapDialog = Math.random() < 0.5
+            }
+        } else {
+            this.printflapTestDialogOpen = false
+            this.testResults.printflap = result
+            this.enabledPrintflapCommandDialogButton = true
+        }
+    }
 
     get canRunTests() {
         return !this.testAllInProgress && this.TrilabPrinterIdle
@@ -633,7 +739,12 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
 
     created() {
         this.init()
+        /// check if yai cookie is set to 1 and if yes show the gif
+        if (document.cookie.indexOf('yai=1') > -1) {
+            this.showYAIgif()
+        }
     }
+
     async init() {
         this.currentStep = await this.getCurrentStep()
         /// check if current step exists in the testOrder array, if not set it to first
@@ -744,6 +855,25 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         await fetch(this.dbUrl('testAllEnd'), { method: 'DELETE' })
         this.resumeTestAll()
     }
+
+    @Watch('chamberflapTestDialogOpen')
+    onChamberflapTestDialogOpenChanged(newValue: any, oldValue: any) {
+        if (newValue == true) {
+            this.trickChamberDialog = Math.random() < 0.5
+            this.enabledChamberYesButton = false
+            this.enabledChamberCommandDialogButton = true
+        }
+    }
+    @Watch('printflapTestDialogOpen')
+    onPrintflapTestDialogOpenChanged(newValue: any, oldValue: any) {
+        if (newValue == true) {
+            this.trickPrintflapDialog = Math.random() < 0.5
+            console.log('trickPrintflapDialog is ' + this.trickPrintflapDialog)
+            this.enabledPrintflapYesDialogButton = false
+            this.enabledPrintflapCommandDialogButton = true
+        }
+    }
+
 
     async resumeTestAll() {
         this.testAllInProgress = true
@@ -951,8 +1081,17 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         this.testResults[key] = value
     }
 
+
     testChamberFlapIntake(status: number) {
         //console.log("testChamberFlapIntake");
+        this.enabledChamberYesButton = true
+        this.enabledChamberCommandDialogButton = false
+        if (this.trickChamberDialog) {
+            return false; /// dale nepokracujeme pokud je trik
+        }
+
+
+
         const power = this.chamberIntakeFlapPresent[0]?.power ?? 0
         //console.log("testChamberFlapIntake");
         //console.log(this.chamberIntakeFlapPresent[0]);
@@ -969,6 +1108,11 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         this.sendGcode(gcode)
     }
     testPrintFlap(status: number) {
+        this.enabledPrintflapYesDialogButton = true
+        this.enabledPrintflapCommandDialogButton = false
+        if (this.trickPrintflapDialog) {
+            return false; /// dale nepokracujeme pokud je trik
+        }
         /// status depends on target power attribute
         const power = this.printFlapPresent[0]?.power ?? 0
         //console.log("testPrintFlap");
@@ -1052,6 +1196,12 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
     get miscellaneous() {
         return this.$store.getters['printer/getMiscellaneous'] ?? []
     }
+    public usbNumberChangeObserved = false
+    @Watch('usbNumber')
+    onUsbNumberChanged(newValue: any, oldValue: any) {
+        this.usbNumberChangeObserved = true
+    }
+
 
     get usbNumber() {
         /// filter this store files filetree - that is list with objects. It has childrens[], disk_usage, filename,isDirectory (bool), modified, permissions
@@ -1097,6 +1247,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
                 }
             }
         }
+
         return usbNumber
     }
 
