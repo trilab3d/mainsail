@@ -291,7 +291,7 @@
                                     <td>USB port check</td>
                                     <td>
                                         <v-btn color="primary" class="mr-2" :disabled="canRunTests == false"
-                                            @click="usbTestDialogOpen = true">Test</v-btn>
+                                            @click="usbNumberChangeObserved = false; usbTestDialogOpen = true">Test</v-btn>
                                     </td>
                                     <td>
                                         <v-icon v-if="testResults.usb == 1" color="success">{{ mdiCheckCircle
