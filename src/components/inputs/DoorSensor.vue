@@ -54,7 +54,7 @@ export default class DoorSensor extends Mixins(BaseMixin) {
     }
 
     get statusText() {
-        if (!this.enabled) return this.$t('Panels.MiscellaneousPanel.RunoutSensor.Disabled')
+        if (!this.enabled) return this.$t('App.Trilab.MiscellaneousPanel.DoorSensor.Disabled')
         else if (this.door_closed) return this.$t('App.Trilab.MiscellaneousPanel.DoorSensor.Closed')
         else return this.$t('App.Trilab.MiscellaneousPanel.DoorSensor.Open')
     }

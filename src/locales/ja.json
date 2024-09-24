@@ -321,7 +321,8 @@
       "MiscellaneousPanel": {
         "DoorSensor": {
           "Closed": "閉まっている",
-          "Open": "開ける"
+          "Open": "開ける",
+          "Disabled": "無効"
         }
       },
       "SettingsGeneralTab": {

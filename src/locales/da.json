@@ -125,7 +125,8 @@
       "MiscellaneousPanel": {
         "DoorSensor": {
           "Closed": "Lukket",
-          "Open": "Åben"
+          "Open": "Åben",
+          "Disabled": "Handicappet"
         }
       },
       "Panels": {

@@ -322,7 +322,8 @@
       "MiscellaneousPanel": {
         "DoorSensor": {
           "Closed": "Gesloten",
-          "Open": "Open"
+          "Open": "Open",
+          "Disabled": "Gehandicapt"
         }
       },
       "SettingsGeneralTab": {

@@ -321,7 +321,8 @@
       "MiscellaneousPanel": {
         "DoorSensor": {
           "Closed": "Zárva",
-          "Open": "Nyisd ki"
+          "Open": "Nyisd ki",
+          "Disabled": "Letiltva"
         }
       },
       "SettingsGeneralTab": {

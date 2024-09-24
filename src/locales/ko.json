@@ -321,7 +321,8 @@
       "MiscellaneousPanel": {
         "DoorSensor": {
           "Closed": "닫은",
-          "Open": "열려 있는"
+          "Open": "열려 있는",
+          "Disabled": "장애가 있는"
         }
       },
       "SettingsGeneralTab": {

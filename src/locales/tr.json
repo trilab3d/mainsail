@@ -326,7 +326,8 @@
       "MiscellaneousPanel": {
         "DoorSensor": {
           "Closed": "Kapalı",
-          "Open": "Açık"
+          "Open": "Açık",
+          "Disabled": "Engelli"
         }
       },
       "SettingsGeneralTab": {

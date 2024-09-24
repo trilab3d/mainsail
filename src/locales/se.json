@@ -136,6 +136,11 @@
       "PrintStartOpenDoorsDialogTitle": "Uvssat rahpasit",
       "PrintStartOpenDoorsDialog": {
         "Text": "Uvssat leat rabas ja prentema ii sáhte álggahit. \nJuogo deaktivere uvssa sensora dahje gidde uvssa ja deaddilat geahččalit fas"
+      },
+      "MiscellaneousPanel": {
+        "DoorSensor": {
+          "Disabled": "Bargonávccaheapme"
+        }
       }
     }
   },

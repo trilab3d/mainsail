@@ -321,7 +321,8 @@
       "MiscellaneousPanel": {
         "DoorSensor": {
           "Closed": "Закрыто",
-          "Open": "Открыть"
+          "Open": "Открыть",
+          "Disabled": "Неполноценный"
         }
       },
       "SettingsGeneralTab": {

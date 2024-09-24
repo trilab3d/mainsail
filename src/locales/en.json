@@ -208,6 +208,7 @@
       },
       "MiscellaneousPanel": {
         "DoorSensor": {
+          "Disabled": "Disabled",
           "Closed": "Closed",
           "Open": "Open"
         }
