@@ -53,7 +53,7 @@
                         <p v-if="tlbFilamentLoaded != 'NONE' && tlb_filament_ok() == false">{{
                             $t('App.Trilab.StartPrintDialog.currentFilament') }}: <span class="red--text">{{
                                 tlbFilamentLoaded
-                                }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span
+                            }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span
                                 class="green--text">{{ tlbFilamentNeeded()
                                 }}</span></p>
                     </div>
@@ -144,7 +144,8 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
                     this.startPrint(filenameToStart);
                 }
             }
-            if (this.AllOk == false) {
+            if (this.AllOk == false && this.getFile()?.big_thumbnail != null) {
+                /// set waswarning only if all metadata is loaded now, because otherwise it is not yet known if all is ok or not, until the metadata is loaded
                 this.wasWarning = true;
                 //console.log("wasWarning set to true");
             }
@@ -153,16 +154,20 @@ export default class StartPrintDialog extends Mixins(BaseMixin, TrilabMixin) {
     }
 
     @Watch('updatedFile')
-    onUpdatedFileChange(newVal: any) {
+    onUpdatedFileChange(newVal: any, oldVal: any) {
         if (this.bool == false) {
             return;
         }
         if (newVal != null) {
             //console.log("updatedFile changed. IS ALL OK? " + this.AllOk);
+            //console.log("New Object: ");
+            //console.log(newVal);
+            //console.log("Old Object: ");
+            //console.log(oldVal);
             //console.log("IS FILAMENT OK?" + this.tlb_filament_ok());
             //console.log("IS NOZZLE OK?" + this.nozzle_ok());
             //console.log("isImmediateStartIfOk?" + this.immediateStartIfOk);
-            if (this.immediateStartIfOk && this.AllOk && this.wasWarning == false) {
+            if (this.immediateStartIfOk && this.AllOk && oldVal?.big_thumbnail == null && newVal.big_thumbnail != null) {
                 this.startPrint(this.getFile()?.filename ?? '')
             }
         }
