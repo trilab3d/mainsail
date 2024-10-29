@@ -192,7 +192,7 @@
           "prusa": {
             "imgsrc": "/img/PrusaSlicer.png",
             "longDescription": "Klicken Sie auf die Schaltfläche oben, um das komplette PrusaSlicer-Paket inklusive Slicer-Profilen herunterzuladen. \nEntpacken Sie das Archiv nach dem Herunterladen an den Zielort. \nFühren Sie auf der Windows-Plattform das Programm „prusa-slicer.exe“ aus, auf der MacOS-Plattform führen Sie „PrusaSlicer.app“ aus. \nNach dem Start des Programms erscheint der Konfigurationsassistent. \nFahren Sie mit der Registerkarte Prusa Pro fort. \nWählen Sie hier Prusa Pro HT90 aus der Liste der Druckervarianten aus. \nKlicken Sie dann auf die Schaltfläche „Fertig stellen“ in der unteren rechten Ecke des Fensters. \nDamit ist der Allesschneider sofort einsatzbereit!",
-            "longTitle": "PrusaSlicer 2.8.0",
+            "longTitle": "PrusaSlicer 2.8.1",
             "shortDescription": "PrusaSlicer ist ein quelloffenes, funktionsreiches und häufig aktualisiertes Tool, das alles enthält, was Sie zum Exportieren der perfekten Druckdateien benötigen",
             "title": "PrusaSlicer"
           }

@@ -192,7 +192,7 @@
           "prusa": {
             "imgsrc": "/img/PrusaSlicer.png",
             "longDescription": "Utilice el botón de arriba para descargar el paquete PrusaSlicer completo, incluidos los perfiles de segmentación. \nDespués de la descarga, descomprima el archivo en la ubicación de destino. \nEn la plataforma Windows ejecute el programa \"prusa-slicer.exe\", en la plataforma MacOS ejecute \"PrusaSlicer.app\". \nDespués de iniciar el programa, aparecerá el asistente de configuración. \nContinúe hasta la pestaña Prusa Pro. \nSeleccione Prusa Pro HT90 de la lista de variantes de impresora aquí. \nLuego presione el botón Finalizar en la esquina inferior derecha de la ventana. \n¡Esto hace que la cortadora esté lista para usar!",
-            "longTitle": "PrusaSlicer 2.8.0",
+            "longTitle": "PrusaSlicer 2.8.1",
             "shortDescription": "PrusaSlicer es una herramienta de código abierto, rica en funciones y que se actualiza con frecuencia y que contiene todo lo que necesita para exportar los archivos de impresión perfectos.",
             "title": "PrusaSlicer"
           }

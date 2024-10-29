@@ -188,7 +188,7 @@
           "prusa": {
             "imgsrc": "/img/PrusaSlicer.png",
             "longDescription": "Gebruik de knop hierboven om het volledige PrusaSlicer-pakket te downloaden, inclusief slicerprofielen. \nNa het downloaden pak je het archief uit naar de bestemmingslocatie. \nOp het Windows-platform voert u het programma \"prusa-slicer.exe\" uit, op het MacOS-platform voert u \"PrusaSlicer.app\" uit. \nNa het starten van het programma verschijnt de configuratiewizard. \nGa verder naar het tabblad Prusa Pro. \nSelecteer hier Prusa Pro HT90 uit de lijst met printervarianten. \nDruk vervolgens op de knop Voltooien in de rechter benedenhoek van het venster. \nHierdoor is de snijmachine klaar voor gebruik!",
-            "longTitle": "PrusaSlicer 2.8.0",
+            "longTitle": "PrusaSlicer 2.8.1",
             "shortDescription": "PrusaSlicer is een open source, functierijke, regelmatig bijgewerkte tool die alles bevat wat je nodig hebt om de perfecte printbestanden te exporteren",
             "title": "PrusaSlicer"
           }
