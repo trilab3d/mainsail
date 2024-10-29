@@ -1,12 +1,7 @@
 <template>
     <v-dialog :value="showDialog" width="400" persistent :fullscreen="isMobile">
-        <panel
-            :title="headline"
-            :icon="mdiInformation"
-            card-class="macro_prompt-dialog"
-            :margin-bottom="false"
-            style="overflow: hidden"
-            :height="isMobile ? 0 : 548">
+        <panel :title="headline" :icon="mdiInformation" card-class="macro_prompt-dialog" :margin-bottom="false"
+            style="overflow: hidden" :height="isMobile ? 0 : 548">
             <template #buttons>
                 <v-btn icon tile @click="closePrompt">
                     <v-icon>{{ mdiCloseThick }}</v-icon>
@@ -15,23 +10,15 @@
             <v-card-text>
                 <template v-for="(event, index) in activePromptContent">
                     <macro-prompt-text v-if="event.type === 'text'" :key="'prompt_' + index" :event="event" />
-                    <macro-prompt-button-group
-                        v-if="event.type === 'button_group'"
-                        :key="'prompt_' + index"
-                        :group-index="index"
-                        :children="event.children ?? []" />
-                    <macro-prompt-button-group
-                        v-if="event.type === 'button'"
-                        :key="'prompt_' + index"
-                        :group-index="index"
-                        :children="[event]" />
+                    <macro-prompt-button-group v-if="event.type === 'button_group'" :key="'prompt_' + index"
+                        :group-index="index" :children="event.children ?? []" />
+                    <macro-prompt-button-group v-if="event.type === 'button'" :key="'prompt_' + index"
+                        :group-index="index" :children="[event]" />
                 </template>
             </v-card-text>
             <v-card-actions v-if="footerButtons.length">
                 <v-spacer />
-                <macro-prompt-footer-button
-                    v-for="(button, index) in footerButtons"
-                    :key="'prompt_footer_' + index"
+                <macro-prompt-footer-button v-for="(button, index) in footerButtons" :key="'prompt_footer_' + index"
                     :event="button" />
             </v-card-actions>
         </panel>

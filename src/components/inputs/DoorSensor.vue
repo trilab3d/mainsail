@@ -40,7 +40,7 @@ export default class DoorSensor extends Mixins(BaseMixin) {
     mdiDoorClosed = mdiDoorClosed
     mdiDoor = mdiDoor
 
-    
+
     convertName = convertName
 
     @Prop({ type: String, required: true }) declare readonly name: string

@@ -4,7 +4,7 @@
 	top: 0;
 	right: 0;
 	width: 35%;
-	max-width:150px;
+	max-width: 150px;
 }
 
 /* under 1000 */
@@ -12,19 +12,21 @@
 	.panel-image {
 		position: static;
 		margin: 0 auto;
-		max-width:unset;
+		max-width: unset;
 	}
 
 	.slicerTitle {
-		display:block;
+		display: block;
 		text-align: center;
-		margin:0 auto;
+		margin: 0 auto;
 	}
+
 	.hiddenS {
 		display: none;
 	}
-	.v-card{
-		text-align:center;
+
+	.v-card {
+		text-align: center;
 	}
 }
 
@@ -42,25 +44,30 @@
 		<v-card-text>
 			<div class="panel">
 				<!--- <h3 class="panel-subheading">{{ $t(`Panels.trilabSlicers.${target}.longTitle`) }}</h3> --->
-				<img class="panel-image v-card__title" :src="$t(`App.Trilab.Panels.trilabSlicers.${target}.imgsrc`)" alt="">
+				<img class="panel-image v-card__title" :src="$t(`App.Trilab.Panels.trilabSlicers.${target}.imgsrc`)"
+					alt="">
 				<v-row>
 					<v-col cols="12" md="8">
-						<p class="panel-description" v-html="$t(`App.Trilab.Panels.trilabSlicers.${target}.shortDescription`)"></p>
+						<p class="panel-description"
+							v-html="$t(`App.Trilab.Panels.trilabSlicers.${target}.shortDescription`)"></p>
 					</v-col>
 				</v-row>
 				<v-btn class="panel-download-btn mt-3 mb-3" :href="getHrefLink" @click="downloadSP()" color="primary"
 					block>{{ $t("App.Trilab.SlicerPanel.downloadSlicer") }}</v-btn>
-				<v-btn v-if="slicerProfilesDownloadUrl != ''" block color="#ED6B21" class="panel-download-btn mt-3 mb-3" @click="showWizard = true">
+				<v-btn v-if="slicerProfilesDownloadUrl != ''" block color="#ED6B21" class="panel-download-btn mt-3 mb-3"
+					@click="showWizard = true">
 					{{ $t('App.Trilab.SlicerPanel.DownloadProfiles') }}
 				</v-btn>
-				
-				
-				
-				<p class="panel-long-description" v-html="$t(`App.Trilab.Panels.trilabSlicers.${target}.longDescription`)"></p>
-				
-			
+
+
+
+				<p class="panel-long-description"
+					v-html="$t(`App.Trilab.Panels.trilabSlicers.${target}.longDescription`)"></p>
+
+
 			</div>
-			<trilab-prusa-slicers-wizard v-if="showWizard" @close="showWizard = false" :slicer-profiles-download-url="slicerProfilesDownloadUrl"></trilab-prusa-slicers-wizard>
+			<trilab-prusa-slicers-wizard v-if="showWizard" @close="showWizard = false"
+				:slicer-profiles-download-url="slicerProfilesDownloadUrl"></trilab-prusa-slicers-wizard>
 
 		</v-card-text>
 	</v-card>
@@ -110,15 +117,15 @@ export default {
 			var platform = this.getOS();
 			var href = "";
 			if (platform == "mac64" || platform == "macos" || platform == "ios") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0/PrusaSlicer-2.8.0+MacOS-universal-202406270936.dmg";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.1/PrusaSlicer-2.8.1+macOS-universal-202409181403.dmg";
 			} else if (platform == "win64") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0/PrusaSlicer-2.8.0+win64-202406270929.zip";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.1/PrusaSlicer-2.8.1+win64-202409181359.zip";
 			} else if (platform == "archlinux") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0/PrusaSlicer-2.8.0+linux-x64-GTK3-202406270929.AppImage";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.1/PrusaSlicer-2.8.1+linux-x64-newer-distros-GTK3-202409181416.AppImage";
 			} else if (platform == "armv7l") {
 				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0/PrusaSlicer-2.8.0+linux-x64-GTK3-202406270929.AppImage";
 			} else if (platform == "linux") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.0/PrusaSlicer-2.8.0+linux-x64-GTK3-202406270929.AppImage";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.1/PrusaSlicer-2.8.1+linux-x64-newer-distros-GTK3-202409181416.AppImage";
 			} else {
 				href = "https://github.com/prusa3d/PrusaSlicer/releases";
 			}

@@ -1,20 +1,22 @@
 <template>
     <v-dialog v-model="isDialogVisible" max-width="800px" persistent>
         <v-card>
-            <v-card-title class="headline">{{ $t('App.Trilab.TrilabFilamentLoadWizard.FilamentLoadWizard') }}</v-card-title>
+            <v-card-title class="headline">{{ $t('App.Trilab.TrilabFilamentLoadWizard.FilamentLoadWizard')
+                }}</v-card-title>
             <v-card-text>
                 <div v-if="step == 0">
                     <p>{{ $t("App.Trilab.TrilabFilamentLoadWizard.SelectWhichFilamentYouWantToLoad") }}</p>
                     <trilab-select-filament-dialog :showp="showSelectFilamentDialog"
                         @selectFilament="selectFilamentAction"></trilab-select-filament-dialog>
-                    
+
 
                 </div>
                 <div v-if="step == 1">
                     <div v-if="temperatureProgress < 99.8">
                         <p>{{ $t("App.Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }}<br /></p>
-                        <p style="text-align:center"> {{ extruderObjects[0].temperature }} °C / {{ selectedFilament.extruder
-                        }} °C
+                        <p style="text-align:center"> {{ extruderObjects[0].temperature }} °C / {{
+                            selectedFilament.extruder
+                            }} °C
                         </p>
 
                         <v-progress-linear :value="temperatureProgress" color="orange darken-1"
@@ -33,7 +35,7 @@
                             $t("App.Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
                         <v-btn block @click="close" class="orange darken-1 mt-2">{{
                             $t("App.Trilab.TrilabFilamentLoadWizard.Close")
-                        }}</v-btn>
+                            }}</v-btn>
 
                     </div>
                 </div>
@@ -55,7 +57,7 @@
                             $t("App.Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
                         <v-btn block @click="close" class="orange darken-1 mt-2">{{
                             $t("App.Trilab.TrilabFilamentLoadWizard.Close")
-                        }}</v-btn>
+                            }}</v-btn>
                     </div>
                 </div>
 
@@ -70,7 +72,7 @@
 
     </v-dialog>
 </template>
-    
+
 <script lang="ts">
 import BaseMixin from '@/components/mixins/base'
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
@@ -78,7 +80,7 @@ import TrilabMixin from '@/components/mixins/trilab';
 import { PrinterStateAdditionalSensor, PrinterStateHeater } from '@/store/printer/types'
 
 @Component
-export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
+export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMixin) {
     @Prop({ required: false, default: false })
     declare showp: boolean
 
@@ -252,16 +254,16 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
             calculated = 0;
         }
 
-       // console.log("calculated: " + calculated);
-       // console.log("startPercentage: " + startPercentage);
-       // console.log("nextStartPercentage" + nextStartPercentage);
-       // console.log("currentCommandPercentage" + currentCommandPercentage);
+        // console.log("calculated: " + calculated);
+        // console.log("startPercentage: " + startPercentage);
+        // console.log("nextStartPercentage" + nextStartPercentage);
+        // console.log("currentCommandPercentage" + currentCommandPercentage);
 
         let percentage = startPercentage + calculated;
 
 
-       // console.log("current percentage");
-       // console.log(percentage);
+        // console.log("current percentage");
+        // console.log(percentage);
 
         percentage = Math.max(0, Math.min(percentage, 100));
 
@@ -336,7 +338,7 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
         if (commandToUse.onlyFirstRun == true && this.purgeCount > 0) {
             //console.log("skipping command, because onlyFirstRun and purgeCount > 0");
         }
-        if(commandToUseCopy.command.indexOf("REPLACE_FILAMENT_NAME") != -1){
+        if (commandToUseCopy.command.indexOf("REPLACE_FILAMENT_NAME") != -1) {
             //console.log("replacing filament name");
             commandToUseCopy.command = commandToUseCopy.command.replace("REPLACE_FILAMENT_NAME", this.selectedFilament.title);
         } /// intercepting so we can replace the filament name
@@ -467,13 +469,13 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
     }
 
     get extruderObjects() {
-        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'extruder') { return this.getTrilabTemperatureObject(sensor); } })
+        return this.temperatureObjects.filter((sensor: string) => { if (sensor == 'extruder') { return this.getTrilabTemperatureObject(sensor); } })
     }
     get bedObjects() {
-        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'heater_bed') {return this.getTrilabTemperatureObject(sensor); } })
+        return this.temperatureObjects.filter((sensor: string) => { if (sensor == 'heater_bed') { return this.getTrilabTemperatureObject(sensor); } })
     }
     get chamberObjects() {
-        return this.temperatureObjects.filter((sensor: string) => { if(sensor == 'heater_chamber') {return this.getTrilabTemperatureObject(sensor); } })
+        return this.temperatureObjects.filter((sensor: string) => { if (sensor == 'heater_chamber') { return this.getTrilabTemperatureObject(sensor); } })
     }
 
 
@@ -578,11 +580,10 @@ export default class TrilabFilamentLoadWizard extends Mixins(TrilabMixin) {
 
 }
 </script>
-    
+
 <style scoped>
 /* Adjust the styles as per your design */
 .v-dialog--active {
     transition: opacity 0.3s ease-in-out;
 }
 </style>
-  

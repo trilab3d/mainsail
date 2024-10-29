@@ -53,7 +53,7 @@
                         <p v-if="tlbFilamentLoaded != 'NONE' && tlb_filament_ok() == false">{{
                             $t('App.Trilab.StartPrintDialog.currentFilament') }}: <span class="red--text">{{
                                 tlbFilamentLoaded
-                            }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span
+                                }}</span><br>{{ $t('App.Trilab.StartPrintDialog.requestedFilament') }}: <span
                                 class="green--text">{{ tlbFilamentNeeded()
                                 }}</span></p>
                     </div>

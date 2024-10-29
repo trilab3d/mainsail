@@ -515,11 +515,11 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
 
     public trickChamberDialog = true; /// zaznam jestli je aktivni trik (tedy se command na pohnuti po kliku na tlacitko neprovedl)
     public enabledChamberYesButton = false;
-    public enabledChamberCommandDialogButton = false;
+    public enabledChamberCommandDialogButton = true;
 
     public trickPrintflapDialog = true;/// zaznam jestli je aktivni trik (tedy se command na pohnuti po kliku na tlacitko neprovedl)
     public enabledPrintflapYesDialogButton = false;
-    public enabledPrintflapCommandDialogButton = false;
+    public enabledPrintflapCommandDialogButton = true;
 
     public showYAI = false;
 
@@ -674,20 +674,20 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         if (this.trickChamberDialog) {
             if (result == 1) {
                 this.showYAIgif()
-                this.enabledChamberCommandDialogButton = true
+                //this.enabledChamberCommandDialogButton = true
                 this.enabledChamberYesButton = false
                 this.$toast.warning("You have been tricked! Nothing was sent to the printer so it couldn't move. Look at the test result and don't be LAZY you WORTHLESS PEASANT", { duration: 15000 })
             } else {
                 /// umoznime udelat dalsi pokus, uzivatel neni I
                 this.$toast.info("OK, you weren't fooled. You can try again.")
-                this.enabledChamberCommandDialogButton = true
+                //this.enabledChamberCommandDialogButton = true
                 this.enabledChamberYesButton = false
                 this.trickChamberDialog = Math.random() < 0.5
             }
         } else {
             this.chamberflapTestDialogOpen = false
             this.testResults.chamberflap = result
-            this.enabledChamberCommandDialogButton = true
+            //this.enabledChamberCommandDialogButton = true
         }
     }
 
@@ -706,20 +706,17 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         if (this.trickPrintflapDialog) {
             if (result == 1) {
                 this.showYAIgif()
-                this.enabledPrintflapCommandDialogButton = true
                 this.enabledPrintflapYesDialogButton = false
                 this.$toast.warning("You have been tricked! Nothing was sent to the printer so it couldn't move. Look at the test result and don't be LAZY you WORTHLESS PEASANT", { duration: 15000 })
             } else {
                 /// umoznime udelat dalsi pokus, uzivatel neni I 
                 this.$toast.info('OK, you can try again.')
-                this.enabledPrintflapCommandDialogButton = true
                 this.enabledPrintflapYesDialogButton = false
                 this.trickPrintflapDialog = Math.random() < 0.5
             }
         } else {
             this.printflapTestDialogOpen = false
             this.testResults.printflap = result
-            this.enabledPrintflapCommandDialogButton = true
         }
     }
 
@@ -861,7 +858,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         if (newValue == true) {
             this.trickChamberDialog = Math.random() < 0.5
             this.enabledChamberYesButton = false
-            this.enabledChamberCommandDialogButton = true
+            //this.enabledChamberCommandDialogButton = true
         }
     }
     @Watch('printflapTestDialogOpen')
@@ -1085,7 +1082,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
     testChamberFlapIntake(status: number) {
         //console.log("testChamberFlapIntake");
         this.enabledChamberYesButton = true
-        this.enabledChamberCommandDialogButton = false
+        //this.enabledChamberCommandDialogButton = false
         if (this.trickChamberDialog) {
             return false; /// dale nepokracujeme pokud je trik
         }
@@ -1109,7 +1106,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
     }
     testPrintFlap(status: number) {
         this.enabledPrintflapYesDialogButton = true
-        this.enabledPrintflapCommandDialogButton = false
+        //this.enabledPrintflapCommandDialogButton = false
         if (this.trickPrintflapDialog) {
             return false; /// dale nepokracujeme pokud je trik
         }
