@@ -1,5 +1,8 @@
 <template>
-    <v-dialog v-model="isDialogVisible" max-width="800px" persistent>
+    <v-dialog
+        v-model="isDialogVisible"
+        max-width="800px"
+        persistent>
         <v-card>
             <v-card-title class="headline">{{ heaterTypeText }} temperature rise check</v-card-title>
             <v-card-text>
@@ -8,35 +11,61 @@
                         Please first off cool down the temperature to at least {{ minTempText }}
                     </p>
                     <p style="text-align: center">Current temperature</p>
-                    <p style="text-align: center"><span v-if="heaterType == 'Panels'">Chamber:</span> {{
-                        targetHeaterFromTemperatureObjects?.temperature?.toFixed(1) ?? '?' }}</p>
-                    <p style="text-align:center" v-if="heaterType == 'Panels'">Bed: {{
-                        targetHeaterBedFromTemperatureObjects?.temperature?.toFixed(1) ?? "?"
-                        }}
+                    <p style="text-align: center">
+                        <span v-if="heaterType == 'Panels'">Chamber:</span>
+                        {{ targetHeaterFromTemperatureObjects?.temperature?.toFixed(1) ?? '?' }}
                     </p>
-                    <v-btn block color="primary" @click="coolingCheck()">Start cooling down</v-btn>
+                    <p
+                        style="text-align: center"
+                        v-if="heaterType == 'Panels'">
+                        Bed: {{ targetHeaterBedFromTemperatureObjects?.temperature?.toFixed(1) ?? '?' }}
+                    </p>
+                    <v-btn
+                        block
+                        color="primary"
+                        @click="coolingCheck()">
+                        Start cooling down
+                    </v-btn>
                 </div>
 
                 <div v-if="step == 1">
-                    <p v-if="heaterType != 'Panels'">Waiting for temperature rise to {{ tempTo }}. Door has to be closed
+                    <p v-if="heaterType != 'Panels'">
+                        Waiting for temperature rise to {{ tempTo }}. Door has to be closed
                     </p>
-                    <p v-if="heaterType == 'Panels'">Waiting for temperature rise to {{ tempTo }} for chamber and {{
-                        configCheckSettings.Bed.tempTo }} for bed. Door has to be closed</p>
+                    <p v-if="heaterType == 'Panels'">
+                        Waiting for temperature rise to {{ tempTo }} for chamber and
+                        {{ configCheckSettings.Bed.tempTo }} for bed. Door has to be closed
+                    </p>
                     <p style="text-align: center">Current temp: {{ parseFloat(watchedTemperature)?.toFixed(1) }}</p>
-                    <p v-if="heaterType == 'Panels'" style="text-align: center">Bed temperature: {{
-                        parseFloat(targetHeaterBedFromTemperatureObjects?.temperature).toFixed(1) ?? "?" }} °C <v-icon v-if="bedOk"
-                            color="success">{{ mdiCheckCircle }}</v-icon></p>
+                    <p
+                        v-if="heaterType == 'Panels'"
+                        style="text-align: center">
+                        Bed temperature:
+                        {{ parseFloat(targetHeaterBedFromTemperatureObjects?.temperature).toFixed(1) ?? '?' }} °C
+                        <v-icon
+                            v-if="bedOk"
+                            color="success">
+                            {{ mdiCheckCircle }}
+                        </v-icon>
+                    </p>
 
-                    <p style="text-align:center">Remaining time: {{
-                        getRemainingTimeFormatted(getRemainingTimeInSeconds()) }}</p>
-                    <p v-if="heaterType == 'Panels' && bedOk == false" style="text-align: center;">
-                        Remaining time for bed: {{ getRemainingTimeFormatted(getBedRemainingTimeInSeconds()) }}</p>
-
+                    <p style="text-align: center">
+                        Remaining time: {{ getRemainingTimeFormatted(getRemainingTimeInSeconds()) }}
+                    </p>
+                    <p
+                        v-if="heaterType == 'Panels' && bedOk == false"
+                        style="text-align: center">
+                        Remaining time for bed: {{ getRemainingTimeFormatted(getBedRemainingTimeInSeconds()) }}
+                    </p>
                 </div>
 
                 <div v-if="isCloseBtnVisible">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn color="primary" @click="fail(true, true)">{{ $t('App.Trilab.Generic.CancelWizard') }}</v-btn>
+                    <v-btn
+                        color="primary"
+                        @click="fail(true, true)">
+                        {{ $t('App.Trilab.Generic.CancelWizard') }}
+                    </v-btn>
                 </div>
             </v-card-text>
         </v-card>
@@ -64,7 +93,6 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
 
     mdiCheckCircle = mdiCheckCircle
 
-
     public bedOk = false
     public startedHeatingFromWizard = false
 
@@ -73,7 +101,6 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             return 'Chamber & Bed'
         }
         return this.heaterType
-
     }
 
     getRemainingTimeInSeconds() {
@@ -89,13 +116,10 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
     }
 
     getBedRemainingTimeInSeconds() {
-        return Math.floor((this.heatingStartTime + this.configCheckSettings.Bed.maxTimeAllowed - new Date().getTime()) / 1000)
-
-
+        return Math.floor(
+            (this.heatingStartTime + this.configCheckSettings.Bed.maxTimeAllowed - new Date().getTime()) / 1000
+        )
     }
-
-
-
 
     public configCheckSettings: any = {
         Extruder: {
@@ -131,7 +155,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             this.sendGcode(gcode)
             this.initialization()
         }
-        if(newValue == false && oldValue == true) {
+        if (newValue == false && oldValue == true) {
             this.closeReset()
         }
     }
@@ -150,7 +174,13 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
 
     get minTempText() {
         if (this.heaterType == 'Panels') {
-            return this.configCheckSettings['Bed'].minValueToStartTest + '°C for bed' + ' and ' + this.configCheckSettings['Panels'].minValueToStartTest + '°C for Chamber'
+            return (
+                this.configCheckSettings['Bed'].minValueToStartTest +
+                '°C for bed' +
+                ' and ' +
+                this.configCheckSettings['Panels'].minValueToStartTest +
+                '°C for Chamber'
+            )
         }
         return this.configCheckSettings[this.heaterType].minValueToStartTest + '°C'
     }
@@ -191,12 +221,20 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
     }
 
     public setTempPeriodicTimeout() {
-        if (this.targetHeaterFromTemperatureObjects == null || this.isDialogVisible == false || this.startedHeatingFromWizard == false) {
+        if (
+            this.targetHeaterFromTemperatureObjects == null ||
+            this.isDialogVisible == false ||
+            this.startedHeatingFromWizard == false
+        ) {
             return
         }
-        var thisref = this;
-        (window as any).temp_periodic_timeout = setTimeout(() => {
-            if (thisref.targetHeaterFromTemperatureObjects == null || thisref.isDialogVisible == false || thisref.startedHeatingFromWizard == false) {
+        var thisref = this
+        ;(window as any).temp_periodic_timeout = setTimeout(() => {
+            if (
+                thisref.targetHeaterFromTemperatureObjects == null ||
+                thisref.isDialogVisible == false ||
+                thisref.startedHeatingFromWizard == false
+            ) {
                 return
             }
             thisref.setTemps()
@@ -208,29 +246,34 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         /// remove any timeout that could be set
         clearTimeout((window as any).targetTempCheckTimeoutRef)
         clearTimeout((window as any).targetBedTempCheckTimeoutRef)
-        clearTimeout((window as any).temp_periodic_timeout);
-        console.log('initializing TEMP RISE CHECK DIALOG')
-        console.log(this.targetHeaterFromTemperatureObjects)
+        clearTimeout((window as any).temp_periodic_timeout)
+        //console.log('initializing TEMP RISE CHECK DIALOG')
+        //console.log(this.targetHeaterFromTemperatureObjects)
         if (this.targetHeaterFromTemperatureObjects == null) {
             /// error toast and closeReset
             this.$toast.error('No temperature sensor found for ' + this.heaterType)
-            this.isDialogVisible = false;
+            this.isDialogVisible = false
         }
 
-        var canStep = this.targetHeaterFromTemperatureObjects.temperature < this.configCheckSettings[this.heaterType].minValueToStartTest;
+        var canStep =
+            this.targetHeaterFromTemperatureObjects.temperature <
+            this.configCheckSettings[this.heaterType].minValueToStartTest
         if (this.heaterType == 'Panels') {
-            canStep = canStep && this.targetHeaterBedFromTemperatureObjects.temperature < this.configCheckSettings.Bed.minValueToStartTest
+            canStep =
+                canStep &&
+                this.targetHeaterBedFromTemperatureObjects.temperature <
+                    this.configCheckSettings.Bed.minValueToStartTest
         }
 
         if (canStep) {
-            /// also check if it is panels then it must also be minValueToStartTest                
+            /// also check if it is panels then it must also be minValueToStartTest
             this.step = 1 /// it is minimum so we will step into step 2 automatically
-            console.log('AUTOSTEPPING 1')
+            //console.log('AUTOSTEPPING 1')
             /// set timeout for settings temps. set temps every 10 seconds because of the idle timeout that happens after XX mins
             this.setTempPeriodicTimeout()
         } else {
-            console.log('DID NOT STEP BECAUSE OF TEMPERATURE VALUE:')
-            console.log(this.targetHeaterFromTemperatureObjects.temperature)
+            //console.log('DID NOT STEP BECAUSE OF TEMPERATURE VALUE:')
+            //console.log(this.targetHeaterFromTemperatureObjects.temperature)
         }
     }
 
@@ -258,7 +301,6 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             this.targetHeaterFromTemperatureObjects?.temperature < this.configObject.minValueToStartTest &&
             !this.startedHeatingFromWizard
         ) {
-
             /// check if it is chamber test and if so, check even bed temperature
             if (this.heaterType == 'Panels') {
                 const bed = this.targetHeaterBedFromTemperatureObjects
@@ -272,24 +314,22 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             this.setTempPeriodicTimeout()
             this.heatingStartTime = new Date().getTime()
             this.step = 1
-            clearTimeout((window as any).targetTempCheckTimeoutRef);
-            clearTimeout((window as any).targetBedTempCheckTimeoutRef);
-            (window as any).targetTempCheckTimeoutRef = setTimeout(() => {
+            clearTimeout((window as any).targetTempCheckTimeoutRef)
+            clearTimeout((window as any).targetBedTempCheckTimeoutRef)
+            ;(window as any).targetTempCheckTimeoutRef = setTimeout(() => {
                 this.fail(false, true)
                 this.$toast.error('Temperature not reached in time')
             }, this.maxTime)
             /// if this heater is panels also set timeout for bed
             if (this.heaterType == 'Panels') {
-                (window as any).targetBedTempCheckTimeoutRef = setTimeout(() => {
+                ;(window as any).targetBedTempCheckTimeoutRef = setTimeout(() => {
                     if (this.bedOk == true) {
-                        return false;
+                        return false
                     }
                     this.fail(true, false)
                     this.$toast.error('Bed temperature not reached in time 1')
-                }, this.configCheckSettings["Bed"].maxTimeAllowed)
+                }, this.configCheckSettings['Bed'].maxTimeAllowed)
             }
-
-
         }
         if (!this.startedHeatingFromWizard) {
             return
@@ -298,39 +338,44 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
             ///  if it is panels, check also bed temperature
             if (this.heaterType == 'Panels') {
                 const bed = this.targetHeaterBedFromTemperatureObjects
-                if (bed.temperature < (this.configCheckSettings["Bed"].tempTo - 5)) {
+                if (bed.temperature < this.configCheckSettings['Bed'].tempTo - 5) {
                     return
                 }
             }
-            console.log("Trilab Diagnostics Temperature rise check dialog: Temperature changed newValue:" + newValue + " tempTo:" + this.tempTo)
+            /*console.log(
+                'Trilab Diagnostics Temperature rise check dialog: Temperature changed newValue:' +
+                    newValue +
+                    ' tempTo:' +
+                    this.tempTo
+            )*/
             this.success()
             this.$toast.success('Temperature (' + this.heaterType + ') reached in time')
         }
-        var endTest = this.heatingStartTime + this.maxTime < new Date().getTime();
+        var endTest = this.heatingStartTime + this.maxTime < new Date().getTime()
         /// also end test if it is panels and bed temp is not reached in time
 
         if (this.bedOk == false && this.heaterType == 'Panels') {
-            const bed = this.targetHeaterBedFromTemperatureObjects;
+            const bed = this.targetHeaterBedFromTemperatureObjects
             if (bed.temperature >= this.configCheckSettings.Bed.tempTo) {
                 this.bedOk = true
-                
-                this.$emit('catchResult', this.configCheckSettings['Bed'].returnKey, 1);
+
+                this.$emit('catchResult', this.configCheckSettings['Bed'].returnKey, 1)
             }
         }
         if (this.heaterType == 'Panels' && this.bedOk == false) {
             const endTestFromBed = this.getBedRemainingTimeInSeconds() < 0
             if (endTestFromBed) {
                 this.$toast.error('Bed temperature not reached in time 2')
-                this.fail(true, false);
-                return;
+                this.fail(true, false)
+                return
             }
         }
 
         if (endTest) {
-            console.log('time is up why? Time now:')
+            /*console.log('time is up why? Time now:')
             console.log(new Date().getTime())
             console.log('heating start time:')
-            console.log(this.heatingStartTime)
+            console.log(this.heatingStartTime)*/
             this.fail(false, true)
             this.$toast.error('Temperature not reached in time')
         }
@@ -354,12 +399,13 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         this.$socket.emit('printer.gcode.script', { script: gcode })
     }
     sendGcodeHidden(gcode: string) {
-        console.log('sending request for endstops query')
+        //console.log('sending request for endstops query')
         this.$socket.emit('printer.gcode.script', { script: gcode })
     }
 
     fail(bed = false, panels = false) {
-        if (this.heaterType == 'Panels') { /// also fail the bed
+        if (this.heaterType == 'Panels') {
+            /// also fail the bed
             if (panels == true) {
                 /// fail panels
                 this.$emit('catchResult', this.configCheckSettings['Panels'].returnKey, 0)
@@ -374,35 +420,34 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
         } else {
             this.$emit('catchResult', this.configCheckSettings[this.heaterType].returnKey, 0)
         }
-        this.isDialogVisible = false;
-
+        this.isDialogVisible = false
     }
     success() {
         this.$emit('catchResult', this.configCheckSettings[this.heaterType].returnKey, 1)
-        if (this.heaterType == 'Panels') { /// also success the bed
+        if (this.heaterType == 'Panels') {
+            /// also success the bed
             this.$emit('catchResult', this.configCheckSettings['Bed'].returnKey, 1)
         }
-        this.isDialogVisible = false;
+        this.isDialogVisible = false
     }
 
     closeReset() {
-        console.log('close resetting')
+        //console.log('close resetting')
         if (this.startedHeatingFromWizard) {
             this.setTemp(this.targetHeaterFromTemperatureObjects, 0) ///auto cool down if heating  was started from this wizard
-            console.log("CLOSERESETTING TRILABDIAGNOSTICSTEMPRISECHECKDIALOG. SETTING TEMP TO 0");
+            //console.log('CLOSERESETTING TRILABDIAGNOSTICSTEMPRISECHECKDIALOG. SETTING TEMP TO 0')
             if (this.heaterType == 'Panels') {
                 this.setTemp(this.targetHeaterBedFromTemperatureObjects, 0) /// also cool off the bed
-                console.log("CLOSERESETTING TRILABDIAGNOSTICSTEMPRISECHECKDIALOG. SETTING BED TEMP TO 0");
+                //console.log('CLOSERESETTING TRILABDIAGNOSTICSTEMPRISECHECKDIALOG. SETTING BED TEMP TO 0')
             }
         }
         this.startedHeatingFromWizard = false
         this.step = 0
-        this.bedOk = false;
+        this.bedOk = false
         /// remove timeout for cooling
         clearTimeout((window as any).targetTempCheckTimeoutRef)
         clearTimeout((window as any).targetBedTempCheckTimeoutRef)
         clearTimeout((window as any).temp_periodic_timeout)
-
     }
 
     get isCloseBtnVisible() {
@@ -423,8 +468,8 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
     get heatersObjectNames() {
         const sensors = this.$store.getters['printer/getAvailableHeaters'] ?? []
 
-        console.log('AVAILABLE HEATERS: ')
-        console.log(sensors)
+        //console.log('AVAILABLE HEATERS: ')
+        //console.log(sensors)
         return sensors
     }
 
@@ -446,7 +491,7 @@ export default class TrilabDiagnosticsTemperatureRiseCheckDialog extends Mixins(
                 }) + ''
             )
         } else if (temperatureObject.target !== targetTemp) {
-            console.log(temperatureObject)
+            //console.log(temperatureObject)
             const gcode =
                 temperatureObject.command +
                 ' ' +

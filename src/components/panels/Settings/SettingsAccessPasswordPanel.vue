@@ -12,7 +12,9 @@
                 v-model="enabledPasswordControl"></v-switch>
 
             <v-row :dense="$vuetify.breakpoint.mobile">
-                <v-col cols="12" sm="12">
+                <v-col
+                    cols="12"
+                    sm="12">
                     <v-text-field
                         type="text"
                         v-model="username"
@@ -35,12 +37,18 @@
                         :label="$t('App.Trilab.Panels.TrilabAccessPassword.confirmPassword')"
                         hide-details></v-text-field>
                     <v-divider class="my-2"></v-divider>
-                    <v-btn block primary @click="showWarningDialog = true" :disabled="!passwordsOk && enabledPasswordControl">
+                    <v-btn
+                        block
+                        primary
+                        @click="showWarningDialog = true"
+                        :disabled="!passwordsOk && enabledPasswordControl">
                         {{ $t('App.Trilab.SettingsAccessPasswordPanel.SaveBtn') }}
                     </v-btn>
                 </v-col>
             </v-row>
-            <v-dialog v-model="showWarningDialog" max-width="400">
+            <v-dialog
+                v-model="showWarningDialog"
+                max-width="400">
                 <v-card>
                     <v-card-title class="headline">
                         {{ $t('App.Trilab.Panels.TrilabAccessPassword.Warning') }}
@@ -52,7 +60,10 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="red darken-1" text @click="showWarningDialog = false">
+                        <v-btn
+                            color="red darken-1"
+                            text
+                            @click="showWarningDialog = false">
                             {{ $t('App.Trilab.Panels.TrilabAccessPassword.DialogNoButton') }}
                         </v-btn>
                         <v-btn
@@ -141,15 +152,15 @@ export default {
                 .get(addressToAsk)
                 .then((response) => {
                     var obj = response.data
-                    console.log('CREDENTIALS RESPONSE')
-                    console.log(obj)
+                    //console.log('CREDENTIALS RESPONSE')
+                    //console.log(obj)
                     if (obj.user?.trim() == '') {
-                        console.log('CREDENTIALS NOT SET')
+                        //console.log('CREDENTIALS NOT SET')
                         this.credentialsSet = false
                     } else if (obj.user?.trim() != '') {
                         this.credentialsSet = true
                         this.username = obj.user
-                        console.log('CREDENTIALS ARE SET')
+                        //console.log('CREDENTIALS ARE SET')
                     }
                 })
                 .catch((error) => {

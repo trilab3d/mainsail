@@ -220,10 +220,14 @@ export default class TempChart extends Mixins(BaseMixin, ThemeMixin, TrilabMixin
     }
 
     get series() {
-        console.log("SERIES:");
-        console.log(this.$store.state.printer.tempHistory.series);
+        //console.log("SERIES:");
+        //console.log(this.$store.state.printer.tempHistory.series);
         if (!this.TrilabServiceView) {
-            return this.$store.state.printer.tempHistory.series?.filter((item: any) => !item.name.toLowerCase().includes('panel') && !item.name.includes('pson')) ?? {}
+            return (
+                this.$store.state.printer.tempHistory.series?.filter(
+                    (item: any) => !item.name.toLowerCase().includes('panel') && !item.name.includes('pson')
+                ) ?? {}
+            )
         }
         return this.$store.state.printer.tempHistory.series ?? {}
     }
@@ -364,10 +368,9 @@ export default class TempChart extends Mixins(BaseMixin, ThemeMixin, TrilabMixin
 
     @Watch('series', { deep: true })
     seriesChanged(newVal: PrinterTempHistoryStateSerie[], oldVal: PrinterTempHistoryStateSerie[]) {
-
         /// check if there is less or more series than before
         if (newVal.length !== oldVal.length) {
-            this.chart?.clear(); /// this is needed to correctly update (or remove the series)
+            this.chart?.clear() /// this is needed to correctly update (or remove the series)
             this.initChart()
             return
         } else {
@@ -379,7 +382,6 @@ export default class TempChart extends Mixins(BaseMixin, ThemeMixin, TrilabMixin
                     false,
                     true
                 )
-
             }
         }
     }

@@ -1,5 +1,8 @@
 <template>
-    <v-dialog v-model="isDialogVisible" @close="close" width="720">
+    <v-dialog
+        v-model="isDialogVisible"
+        @close="close"
+        width="720">
         <v-card>
             <v-card-title>
                 <span class="headline">
@@ -8,9 +11,15 @@
             </v-card-title>
 
             <v-card-text>
-                <p> {{ $t('App.Trilab.PrintStartOpenDoorsDialog.Text') }} </p>
-                <v-btn block color="green" :disabled="!allDoorsClosed" @click="retryPrint()">
-                    <v-icon left>{{ mdiReload }}</v-icon> {{ $t('App.Trilab.Generic.Retry') }}</v-btn>
+                <p>{{ $t('App.Trilab.PrintStartOpenDoorsDialog.Text') }}</p>
+                <v-btn
+                    block
+                    color="green"
+                    :disabled="!allDoorsClosed"
+                    @click="retryPrint()">
+                    <v-icon left>{{ mdiReload }}</v-icon>
+                    {{ $t('App.Trilab.Generic.Retry') }}
+                </v-btn>
             </v-card-text>
             <v-card-actions>
                 <v-spacer></v-spacer>
@@ -20,13 +29,11 @@
 </template>
 
 <script lang="ts">
-
 import axios from 'axios'
 
 import store from '@/store'
 
-import { mdiReload } from '@mdi/js';
-
+import { mdiReload } from '@mdi/js'
 
 import BaseMixin from '../mixins/base'
 import TrilabMixin from '../mixins/trilab'
@@ -37,68 +44,62 @@ import { trilab } from '@/store/trilab'
 
 @Component({})
 export default class TrilabStartDoorOpenDialog extends Mixins(BaseMixin, TrilabMixin) {
-    public dismissVisible: boolean = true;
-    public localVisible: boolean = false;
-    public mdiReload = mdiReload;
-
+    public dismissVisible: boolean = true
+    public localVisible: boolean = false
+    public mdiReload = mdiReload
 
     retryPrint() {
         /// check if the lastemitcommand is not null
         if (this.$store.state.trilab.lastEmitCommand == null) {
-            console.log("Last emit command is null");
-            return;
+            //console.log("Last emit command is null");
+            return
         }
-        this.$socket.emit(this.$store.state.trilab.lastEmitCommand.method, this.$store.state.trilab.lastEmitCommand.params, this.$store.state.trilab.lastEmitCommand.options);
+        this.$socket.emit(
+            this.$store.state.trilab.lastEmitCommand.method,
+            this.$store.state.trilab.lastEmitCommand.params,
+            this.$store.state.trilab.lastEmitCommand.options
+        )
     }
     close() {
-        this.isDialogVisible = false;
+        this.isDialogVisible = false
     }
 
     get isDialogVisible() {
-        return this.$store.state.trilab.showStartDoorOpenDialog;
+        return this.$store.state.trilab.showStartDoorOpenDialog
     }
     set isDialogVisible(value) {
-        this.$store.commit('trilab/setData', { showStartDoorOpenDialog: value });
+        this.$store.commit('trilab/setData', { showStartDoorOpenDialog: value })
     }
     get doorSensors() {
         return this.$store?.getters['trilab/getDoorSensors'] ?? []
     }
     get allDoorsClosed(): boolean {
-        /// enabled is when all doors are closed    
+        /// enabled is when all doors are closed
         for (let i = 0; i < this.doorSensors.length; i++) {
             if (!this.doorSensors[i].door_closed && this.doorSensors[i].enabled) {
-                return false;
+                return false
             }
         }
-        return true;
+        return true
     }
-
-
 
     get isIdle() {
-        return this.TrilabPrinterIdle;
+        return this.TrilabPrinterIdle
     }
-
-
 
     @Watch('isIdle')
     onIdleChange(newVal: boolean, oldVal: boolean) {
         if (newVal == false) {
-            this.isDialogVisible = false;
+            this.isDialogVisible = false
         }
     }
 
-
     @Watch('printer_state')
     onPrinterStateChange(newVal: String, oldVal: String) {
-        console.log("Printer state changed from " + oldVal + " to " + newVal);
+        //console.log('Printer state changed from ' + oldVal + ' to ' + newVal)
     }
-
-
 }
-
 </script>
-
 
 <style scoped>
 .ulog p {

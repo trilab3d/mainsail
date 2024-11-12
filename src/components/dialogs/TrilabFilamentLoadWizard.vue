@@ -1,82 +1,122 @@
 <template>
-    <v-dialog v-model="isDialogVisible" max-width="800px" persistent>
+    <v-dialog
+        v-model="isDialogVisible"
+        max-width="800px"
+        persistent>
         <v-card>
-            <v-card-title class="headline">{{ $t('App.Trilab.TrilabFilamentLoadWizard.FilamentLoadWizard')
-                }}</v-card-title>
+            <v-card-title class="headline">
+                {{ $t('App.Trilab.TrilabFilamentLoadWizard.FilamentLoadWizard') }}
+            </v-card-title>
             <v-card-text>
                 <div v-if="step == 0">
-                    <p>{{ $t("App.Trilab.TrilabFilamentLoadWizard.SelectWhichFilamentYouWantToLoad") }}</p>
-                    <trilab-select-filament-dialog :showp="showSelectFilamentDialog"
+                    <p>{{ $t('App.Trilab.TrilabFilamentLoadWizard.SelectWhichFilamentYouWantToLoad') }}</p>
+                    <trilab-select-filament-dialog
+                        :showp="showSelectFilamentDialog"
                         @selectFilament="selectFilamentAction"></trilab-select-filament-dialog>
-
-
                 </div>
                 <div v-if="step == 1">
                     <div v-if="temperatureProgress < 99.8">
-                        <p>{{ $t("App.Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach") }}<br /></p>
-                        <p style="text-align:center"> {{ extruderObjects[0].temperature }} °C / {{
-                            selectedFilament.extruder
-                            }} °C
+                        <p>
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.PleaseWaitForTheTemperatureToReach') }}
+                            <br />
+                        </p>
+                        <p style="text-align: center">
+                            {{ extruderObjects[0].temperature }} °C / {{ selectedFilament.extruder }} °C
                         </p>
 
-                        <v-progress-linear :value="temperatureProgress" color="orange darken-1"
+                        <v-progress-linear
+                            :value="temperatureProgress"
+                            color="orange darken-1"
                             height="10"></v-progress-linear>
 
                         <v-divider class="mt-4 mb-4"></v-divider>
 
-                        <v-btn block @click="cancelHeating" class="red darken-1">{{
-                            $t("App.Trilab.TrilabFilamentLoadWizard.CancelHeating") }} </v-btn>
+                        <v-btn
+                            block
+                            @click="cancelHeating"
+                            class="red darken-1">
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.CancelHeating') }}
+                        </v-btn>
                     </div>
                     <div v-if="temperatureProgress >= 99.8">
-                        <p>{{ $t("App.Trilab.TrilabFilamentLoadWizard.InsertFilamentIntoExtruder") }}</p>
-                        <v-btn block @click="loadFilament" class="orange darken-1">{{
-                            $t("App.Trilab.TrilabFilamentLoadWizard.Continue") }}</v-btn>
-                        <v-btn block @click="closeCooldown" class="orange darken-1 mt-2">{{
-                            $t("App.Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
-                        <v-btn block @click="close" class="orange darken-1 mt-2">{{
-                            $t("App.Trilab.TrilabFilamentLoadWizard.Close")
-                            }}</v-btn>
-
+                        <p>{{ $t('App.Trilab.TrilabFilamentLoadWizard.InsertFilamentIntoExtruder') }}</p>
+                        <v-btn
+                            block
+                            @click="loadFilament"
+                            class="orange darken-1">
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.Continue') }}
+                        </v-btn>
+                        <v-btn
+                            block
+                            @click="closeCooldown"
+                            class="orange darken-1 mt-2">
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.CooldownAndClose') }}
+                        </v-btn>
+                        <v-btn
+                            block
+                            @click="close"
+                            class="orange darken-1 mt-2">
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.Close') }}
+                        </v-btn>
                     </div>
                 </div>
 
                 <div v-if="step == 2">
                     <div v-if="idleTimeout != 'Ready'">
                         <p>{{ $t('App.Trilab.TrilabFilamentLoadWizard.FilamentIsLoading') }}</p>
-                        <v-progress-linear :value="currentProgressPercentage" color="orange darken-1"
+                        <v-progress-linear
+                            :value="currentProgressPercentage"
+                            color="orange darken-1"
                             height="10"></v-progress-linear>
                         <v-divider class="mt-4 mb-4"></v-divider>
-                        <v-btn block @click="cancelLoading()" class="red darken-1">{{
-                            $t("App.Trilab.TrilabFilamentLoadWizard.CancelLoading") }} </v-btn>
+                        <v-btn
+                            block
+                            @click="cancelLoading()"
+                            class="red darken-1">
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.CancelLoading') }}
+                        </v-btn>
                     </div>
                     <div v-if="idleTimeout == 'Ready'">
-                        <p>{{ $t("App.Trilab.TrilabFilamentLoadWizard.IsColorClean") }} </p>
-                        <v-btn block @click="purgeMore" class="orange darken-1 mt-2">{{
-                            $t("App.Trilab.TrilabFilamentLoadWizard.PurgeMore") }}</v-btn>
-                        <v-btn block @click="closeCooldown" class="orange darken-1 mt-2">{{
-                            $t("App.Trilab.TrilabFilamentLoadWizard.CooldownAndClose") }}</v-btn>
-                        <v-btn block @click="close" class="orange darken-1 mt-2">{{
-                            $t("App.Trilab.TrilabFilamentLoadWizard.Close")
-                            }}</v-btn>
+                        <p>{{ $t('App.Trilab.TrilabFilamentLoadWizard.IsColorClean') }}</p>
+                        <v-btn
+                            block
+                            @click="purgeMore"
+                            class="orange darken-1 mt-2">
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.PurgeMore') }}
+                        </v-btn>
+                        <v-btn
+                            block
+                            @click="closeCooldown"
+                            class="orange darken-1 mt-2">
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.CooldownAndClose') }}
+                        </v-btn>
+                        <v-btn
+                            block
+                            @click="close"
+                            class="orange darken-1 mt-2">
+                            {{ $t('App.Trilab.TrilabFilamentLoadWizard.Close') }}
+                        </v-btn>
                     </div>
                 </div>
 
                 <div v-if="step == 0">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn block color="red darken-1" @click="$emit('close')">{{
-                        $t("App.Trilab.TrilabFilamentLoadWizard.CancelWizard") }}</v-btn>
+                    <v-btn
+                        block
+                        color="red darken-1"
+                        @click="$emit('close')">
+                        {{ $t('App.Trilab.TrilabFilamentLoadWizard.CancelWizard') }}
+                    </v-btn>
                 </div>
             </v-card-text>
         </v-card>
-
-
     </v-dialog>
 </template>
 
 <script lang="ts">
 import BaseMixin from '@/components/mixins/base'
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
-import TrilabMixin from '@/components/mixins/trilab';
+import TrilabMixin from '@/components/mixins/trilab'
 import { PrinterStateAdditionalSensor, PrinterStateHeater } from '@/store/printer/types'
 
 @Component
@@ -84,174 +124,197 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
     @Prop({ required: false, default: false })
     declare showp: boolean
 
-    public purgeCount = 0;
+    public purgeCount = 0
 
-    public showSelectFilamentDialog: boolean = false;
+    public showSelectFilamentDialog: boolean = false
 
-    public selectedFilament: any = {};
+    public selectedFilament: any = {}
 
-    public step = 0;
+    public step = 0
 
-    public idleTimeoutOverride = '';
+    public idleTimeoutOverride = ''
 
-    public loadingSequenceStart = new Date();
+    public loadingSequenceStart = new Date()
 
-    public commandStart = new Date();
+    public commandStart = new Date()
 
-    public loadingStarted = 0;
+    public loadingStarted = 0
 
-    public loadingFinished = 0;
+    public loadingFinished = 0
 
-    public currentCommandIndex = 0;
+    public currentCommandIndex = 0
 
-    public loadingTimeout: any = null;
+    public loadingTimeout: any = null
 
-    public currentProgressPercentage = 0;
+    public currentProgressPercentage = 0
 
-    public updateProgressInterval: any = null;
+    public updateProgressInterval: any = null
 
-    public actionTimeout: any = null;
+    public actionTimeout: any = null
 
     //// SEQUENCES
     public commandSequence = [
         {
-            command: "SAVE_GCODE_STATE NAME=LOAD_FILAMENT", duration: 0, repeat: 1, originalRepeat: 1
+            command: 'SAVE_GCODE_STATE NAME=LOAD_FILAMENT',
+            duration: 0,
+            repeat: 1,
+            originalRepeat: 1,
         },
         {
             //self._screen._ws.klippy.gcode_script(f"SAVE_VARIABLE VARIABLE=loaded_filament VALUE='\"{self.currently_loading}\"'")
-            command: "SAVE_VARIABLE VARIABLE=loaded_filament VALUE='\"REPLACE_FILAMENT_NAME\"'", duration: 0, repeat: 1, originalRepeat: 1, onlyFirstRun: true
+            command: 'SAVE_VARIABLE VARIABLE=loaded_filament VALUE=\'"REPLACE_FILAMENT_NAME"\'',
+            duration: 0,
+            repeat: 1,
+            originalRepeat: 1,
+            onlyFirstRun: true,
         },
         {
-            command: "M83", duration: 0, repeat: 1, originalRepeat: 1
+            command: 'M83',
+            duration: 0,
+            repeat: 1,
+            originalRepeat: 1,
         },
         {
-            command: "G0 E5 F600", duration: 1000, originalRepeat: 6, repeat: 6
+            command: 'G0 E5 F600',
+            duration: 1000,
+            originalRepeat: 6,
+            repeat: 6,
         },
         {
-            command: "G0 E5 F300", duration: 1000, originalRepeat: 10, repeat: 10
+            command: 'G0 E5 F300',
+            duration: 1000,
+            originalRepeat: 10,
+            repeat: 10,
         },
         {
-            command: "SAVE_VARIABLE VARIABLE=filamentretracted VALUE=0", duration: 0, repeat: 1, originalRepeat: 1
+            command: 'SAVE_VARIABLE VARIABLE=filamentretracted VALUE=0',
+            duration: 0,
+            repeat: 1,
+            originalRepeat: 1,
         },
         {
-            command: "_FILAMENT_RETRACT", duration: 0, originalRepeat: 1, repeat: 1
+            command: '_FILAMENT_RETRACT',
+            duration: 0,
+            originalRepeat: 1,
+            repeat: 1,
         },
         {
-            command: "RESTORE_GCODE_STATE NAME=LOAD_FILAMENT", duration: 0, repeat: 1, originalRepeat: 1
+            command: 'RESTORE_GCODE_STATE NAME=LOAD_FILAMENT',
+            duration: 0,
+            repeat: 1,
+            originalRepeat: 1,
         },
-
     ]
-
 
     get totalDuration() {
         /// will return the total duration in ms
-        let total = 0;
+        let total = 0
         for (let i = 0; i < this.commandSequence.length; i++) {
-            const element = this.commandSequence[i];
-            total += element.duration * (element.originalRepeat ?? 1);
+            const element = this.commandSequence[i]
+            total += element.duration * (element.originalRepeat ?? 1)
         }
-        return total;
+        return total
     }
 
     remainingDuration() {
         /// will return the remaining duration in ms
-        let total = 0;
+        let total = 0
         for (let i = this.currentCommandIndex; i < this.commandSequence.length; i++) {
-            const element = this.commandSequence[i];
-            total += element.duration * (element.repeat ?? 1);
+            const element = this.commandSequence[i]
+            total += element.duration * (element.repeat ?? 1)
         }
-        return total;
+        return total
     }
     nextRemainingDuration() {
         /// will return the remaining duration in ms
-        let total = 0;
+        let total = 0
         if (this.currentCommandIndex + 1 >= this.commandSequence.length) {
-            return 0;
+            return 0
         }
-        var originalI = this.currentCommandIndex;
+        var originalI = this.currentCommandIndex
         for (let i = this.currentCommandIndex; i < this.commandSequence.length; i++) {
-            const element = this.commandSequence[i];
-            let elemRepeat = element.repeat ?? 1;
+            const element = this.commandSequence[i]
+            let elemRepeat = element.repeat ?? 1
             if (i == originalI) {
-                elemRepeat -= 1;
+                elemRepeat -= 1
             }
-            total += element.duration * (elemRepeat);
+            total += element.duration * elemRepeat
         }
-        return total;
+        return total
     }
     resetSequences() {
         try {
-            clearInterval(this.updateProgressInterval);
+            clearInterval(this.updateProgressInterval)
         } catch (e) {
             //console.log(e);
         }
         /// set the repeat to original
         for (let i = 0; i < this.commandSequence.length; i++) {
-            const element = this.commandSequence[i];
+            const element = this.commandSequence[i]
             if ('repeat' in element) {
-                element.repeat = element.originalRepeat;
+                element.repeat = element.originalRepeat
             }
         }
-        this.currentCommandIndex = 0;
+        this.currentCommandIndex = 0
     }
     get totalCommands() {
-        let total = 0;
+        let total = 0
         for (let i = 0; i < this.commandSequence.length; i++) {
-            total += this.commandSequence[i].repeat ?? 1;
+            total += this.commandSequence[i].repeat ?? 1
         }
-        return total;
+        return total
     }
     get remainingCommands() {
-        let total = 0;
+        let total = 0
         for (let i = 0; i < this.commandSequence.length; i++) {
             if (this.currentCommandIndex >= i) {
-                total += this.commandSequence[i].repeat ?? 1;
+                total += this.commandSequence[i].repeat ?? 1
             }
         }
-        return total;
+        return total
     }
     nextKrok() {
-        this.commandSequence[this.currentCommandIndex].repeat -= 1;
+        this.commandSequence[this.currentCommandIndex].repeat -= 1
         if (this.commandSequence[this.currentCommandIndex].repeat > 0) {
-            this.commandStart = new Date();
-            return true;
+            this.commandStart = new Date()
+            return true
         }
-        this.commandStart = new Date();
-        this.currentCommandIndex += 1;
+        this.commandStart = new Date()
+        this.currentCommandIndex += 1
         if (this.currentCommandIndex >= this.commandSequence.length) {
-            this.currentCommandIndex = this.commandSequence.length - 1;
-            return false;
+            this.currentCommandIndex = this.commandSequence.length - 1
+            return false
         }
-        return true;
+        return true
     }
     updateCurrentPercentage() {
-        const currentTime: any = new Date();
-        let elapsedCommandTime = currentTime.getTime() - this.commandStart.getTime();
+        const currentTime: any = new Date()
+        let elapsedCommandTime = currentTime.getTime() - this.commandStart.getTime()
         if (elapsedCommandTime > this.commandSequence[this.currentCommandIndex].duration) {
-            elapsedCommandTime = this.commandSequence[this.currentCommandIndex].duration;
+            elapsedCommandTime = this.commandSequence[this.currentCommandIndex].duration
         }
-        console.log('elapsed: ' + elapsedCommandTime);
+        //console.log('elapsed: ' + elapsedCommandTime);
         /// make let startpercentage based on totalDuration and remainingDuration
-        const startPercentage = 100 - (this.remainingDuration() / this.totalDuration * 100);
-        const nextStartPercentage = 100 - (this.nextRemainingDuration() / this.totalDuration * 100);
+        const startPercentage = 100 - (this.remainingDuration() / this.totalDuration) * 100
+        const nextStartPercentage = 100 - (this.nextRemainingDuration() / this.totalDuration) * 100
         /// nowe we have where it started, we need to add the percentage of the current command based on currentTime and command duration and commandStart
-        const currentCommand = this.commandSequence[this.currentCommandIndex];
-        const ccduration = currentCommand.duration;
-        let currentCommandPercentage = 100;
+        const currentCommand = this.commandSequence[this.currentCommandIndex]
+        const ccduration = currentCommand.duration
+        let currentCommandPercentage = 100
         if (ccduration > 0) {
-            currentCommandPercentage = elapsedCommandTime / ccduration * 100;
+            currentCommandPercentage = (elapsedCommandTime / ccduration) * 100
         }
         if (currentCommandPercentage > 100) {
-            currentCommandPercentage = 100;
+            currentCommandPercentage = 100
         }
 
         /// calculate the percentage based on currentCommandPercentage between startPercentage and nextStartPercentage
-        let calculated = (nextStartPercentage - startPercentage) * (currentCommandPercentage / 100);
+        let calculated = (nextStartPercentage - startPercentage) * (currentCommandPercentage / 100)
         if (calculated > 100) {
-            calculated = 100;
+            calculated = 100
         }
         if (calculated < 0) {
-            calculated = 0;
+            calculated = 0
         }
 
         // console.log("calculated: " + calculated);
@@ -259,88 +322,85 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
         // console.log("nextStartPercentage" + nextStartPercentage);
         // console.log("currentCommandPercentage" + currentCommandPercentage);
 
-        let percentage = startPercentage + calculated;
-
+        let percentage = startPercentage + calculated
 
         // console.log("current percentage");
         // console.log(percentage);
 
-        percentage = Math.max(0, Math.min(percentage, 100));
+        percentage = Math.max(0, Math.min(percentage, 100))
 
-        this.currentProgressPercentage = percentage;
+        this.currentProgressPercentage = percentage
     }
-
-
 
     //// END SEQUENCES ///
 
-
     get isDialogVisible() {
-        return this.showp;
+        return this.showp
     }
     set isDialogVisible(value) {
         if (!value) {
-            this.$emit('close', value);
-            this.showp = false;
+            this.$emit('close', value)
+            this.showp = false
         }
     }
 
-
     get idleTimeout() {
         if (this.idleTimeoutOverride != '') {
-            return this.idleTimeoutOverride;
+            return this.idleTimeoutOverride
         }
-        return this.$store.state.printer.idle_timeout?.state ?? "unknown"
+        return this.$store.state.printer.idle_timeout?.state ?? 'unknown'
     }
 
     cancelLoading() {
         try {
-            clearInterval(this.updateProgressInterval);
+            clearInterval(this.updateProgressInterval)
         } catch (e) {
-            console.log(e);
+            //console.log(e)
         }
         try {
-            clearTimeout(this.actionTimeout);
+            clearTimeout(this.actionTimeout)
         } catch (e) {
-            console.log(e);
+            //console.log(e)
         }
-        this.resetSequences();
-        this.cancelHeating();
-        this.step = 0;
-        this.currentProgressPercentage = 0;
+        this.resetSequences()
+        this.cancelHeating()
+        this.step = 0
+        this.currentProgressPercentage = 0
 
         /// send restore gcode state
-        this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
+        this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`)
     }
 
     async loadFilament() {
-        this.loadingSequenceStart = new Date();
+        this.loadingSequenceStart = new Date()
         /// immediately call the first command
-        this.loadFilamentPart();
+        this.loadFilamentPart()
         this.updateProgressInterval = setInterval(() => {
-            this.updateCurrentPercentage();
-        }, 100);
+            this.updateCurrentPercentage()
+        }, 100)
 
         /// set the idleTimeout to 'Loading' temporarily
-        this.idleTimeoutOverride = 'Loading';
+        this.idleTimeoutOverride = 'Loading'
         /// after 2 seconds set it to ''
         setTimeout(() => {
-            this.idleTimeoutOverride = '';
-        }, 2000);
-        this.step = 2;
+            this.idleTimeoutOverride = ''
+        }, 2000)
+        this.step = 2
     }
 
-
     async loadFilamentPart() {
-        let commandToUse = this.commandSequence[this.currentCommandIndex];
+        let commandToUse = this.commandSequence[this.currentCommandIndex]
         /// if the command is onlyFirstRun and purgeCount is more than 0, skip the command
-        let commandToUseCopy = JSON.parse(JSON.stringify(commandToUse));
+        let commandToUseCopy = JSON.parse(JSON.stringify(commandToUse))
         if (commandToUse.onlyFirstRun == true && this.purgeCount > 0) {
             //console.log("skipping command, because onlyFirstRun and purgeCount > 0");
         }
-        if (commandToUseCopy.command.indexOf("REPLACE_FILAMENT_NAME") != -1) {
+        if (commandToUseCopy.command.indexOf('REPLACE_FILAMENT_NAME') != -1) {
             //console.log("replacing filament name");
-            commandToUseCopy.command = commandToUseCopy.command.replace("REPLACE_FILAMENT_NAME", this.selectedFilament.title);
+            commandToUseCopy.command = commandToUseCopy.command.replace(
+                'REPLACE_FILAMENT_NAME',
+                this.selectedFilament.title
+            )
         } /// intercepting so we can replace the filament name
         //console.log("sending command");
         //console.log(commandToUseCopy.command);
@@ -348,27 +408,25 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
         //console.log(this.currentCommandIndex);
         /// send the command
         //console.log("awaitResult under: ");
-        console.log(await this.$store.dispatch('printer/sendGcode', commandToUseCopy.command));
+        console.log(await this.$store.dispatch('printer/sendGcode', commandToUseCopy.command))
         /// sent, next add events
         await this.$store.dispatch('server/addEvent', { message: commandToUseCopy.command, type: 'command' })
 
         /// nextKrok
-        let canNext = this.nextKrok();
+        let canNext = this.nextKrok()
         //console.log("CANNEXT: ");
         //console.log(canNext);
-        var currentDuration = commandToUse.duration;
+        var currentDuration = commandToUse.duration
         if (canNext == true) {
             this.actionTimeout = setTimeout(() => {
-                this.loadFilamentPart();
-            }, currentDuration);
+                this.loadFilamentPart()
+            }, currentDuration)
         } else {
-            this.step = 2;
-            this.purgeCount++;
-            this.resetSequences();
+            this.step = 2
+            this.purgeCount++
+            this.resetSequences()
         }
     }
-
-
 
     async purgeMore() {
         /*        self._screen._ws.klippy.gcode_script(f"SAVE_GCODE_STATE NAME=LOAD_FILAMENT")
@@ -378,21 +436,26 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
         self._screen._ws.klippy.gcode_script(f"G1 E-18.0 F1500")
         self._screen._ws.klippy.gcode_script(f"RESTORE_GCODE_STATE NAME=LOAD_FILAMENT")
         */
-        await this.$store.dispatch('printer/sendGcode', `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`);
-        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_DERETRACT`);
-        await this.$store.dispatch('printer/sendGcode', `M83`);
-        await this.$store.dispatch('printer/sendGcode', `G0 E50 F300`);
-        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_RETRACT`);
-        await this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`);
+        await this.$store.dispatch('printer/sendGcode', `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`)
+        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_DERETRACT`)
+        await this.$store.dispatch('printer/sendGcode', `M83`)
+        await this.$store.dispatch('printer/sendGcode', `G0 E50 F300`)
+        await this.$store.dispatch('printer/sendGcode', `_FILAMENT_RETRACT`)
+        await this.$store.dispatch('printer/sendGcode', `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`)
 
         /// add events
-        await this.$store.dispatch('server/addEvent', { message: `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
+        await this.$store.dispatch('server/addEvent', {
+            message: `SAVE_GCODE_STATE NAME=LOAD_FILAMENT`,
+            type: 'command',
+        })
         await this.$store.dispatch('server/addEvent', { message: `_FILAMENT_DERETRACT`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `M83`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `G0 E50 F300`, type: 'command' })
         await this.$store.dispatch('server/addEvent', { message: `_FILAMENT_RETRACT`, type: 'command' })
-        await this.$store.dispatch('server/addEvent', { message: `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`, type: 'command' })
-
+        await this.$store.dispatch('server/addEvent', {
+            message: `RESTORE_GCODE_STATE NAME=LOAD_FILAMENT`,
+            type: 'command',
+        })
     }
 
     async closeCooldown() {
@@ -414,23 +477,27 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
             */
 
         for (let i = 0; i < this.temperatureObjects.length; i++) {
-            const sensor = this.temperatureObjects[i];
-            let trilabObject = this.getTrilabTemperatureObject(sensor);
-            if (trilabObject.name.startsWith('extruder') || trilabObject.name.startsWith('heater_bed') || trilabObject.name.startsWith('heater_chamber') || trilabObject.name.startsWith('heater_generic') || trilabObject.name.startsWith('temperature_fan')) {
-                this.setTemp(sensor, 0);
+            const sensor = this.temperatureObjects[i]
+            let trilabObject = this.getTrilabTemperatureObject(sensor)
+            if (
+                trilabObject.name.startsWith('extruder') ||
+                trilabObject.name.startsWith('heater_bed') ||
+                trilabObject.name.startsWith('heater_chamber') ||
+                trilabObject.name.startsWith('heater_generic') ||
+                trilabObject.name.startsWith('temperature_fan')
+            ) {
+                this.setTemp(sensor, 0)
             }
         }
-        this.close();
-
-
+        this.close()
     }
 
     async cancelHeating() {
-        this.step = 0;
-        await this.$store.dispatch('printer/sendGcode', `M104 S0`);
-        await this.$store.dispatch('printer/sendGcode', `M140 S0`);
-        await this.$store.dispatch('printer/sendGcode', `M141 S0`);
-        await this.$store.dispatch('printer/sendGcode', `M106 S0`);
+        this.step = 0
+        await this.$store.dispatch('printer/sendGcode', `M104 S0`)
+        await this.$store.dispatch('printer/sendGcode', `M140 S0`)
+        await this.$store.dispatch('printer/sendGcode', `M141 S0`)
+        await this.$store.dispatch('printer/sendGcode', `M106 S0`)
 
         /// add events
         await this.$store.dispatch('server/addEvent', { message: `M104 S0`, type: 'command' })
@@ -444,23 +511,23 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
             //console.log(this.extruderObjects[0].temperature);
             //console.log(this.selectedFilament.extruder);
             //console.log(this.extruderObjects[0].temperature / this.selectedFilament.extruder * 100);
-            return this.extruderObjects[0].temperature / this.selectedFilament.extruder * 100;
+            return (this.extruderObjects[0].temperature / this.selectedFilament.extruder) * 100
         }
         //console.log("Neznamy progress");
-        return 0;
+        return 0
     }
-    localShowSelectFilamentDialog: boolean = false;
+    localShowSelectFilamentDialog: boolean = false
     created() {
-        this.localShowSelectFilamentDialog = this.showp; // Initialize localShowp in the created hook
+        this.localShowSelectFilamentDialog = this.showp // Initialize localShowp in the created hook
     }
 
     close() {
-        this.step = 0;
-        this.purgeCount = 0;
-        this.$emit('close');
+        this.step = 0
+        this.purgeCount = 0
+        this.$emit('close')
     }
     selectFilament(filamentObj: any) {
-        this.$emit('selectFilament', filamentObj);
+        this.$emit('selectFilament', filamentObj)
     }
     get temperatureObjects() {
         const sensors = this.$store.getters['printer/getAvailableHeaters'] ?? []
@@ -469,51 +536,57 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
     }
 
     get extruderObjects() {
-        return this.temperatureObjects.filter((sensor: string) => { if (sensor == 'extruder') { return this.getTrilabTemperatureObject(sensor); } })
+        return this.temperatureObjects.filter((sensor: string) => {
+            if (sensor == 'extruder') {
+                return this.getTrilabTemperatureObject(sensor)
+            }
+        })
     }
     get bedObjects() {
-        return this.temperatureObjects.filter((sensor: string) => { if (sensor == 'heater_bed') { return this.getTrilabTemperatureObject(sensor); } })
+        return this.temperatureObjects.filter((sensor: string) => {
+            if (sensor == 'heater_bed') {
+                return this.getTrilabTemperatureObject(sensor)
+            }
+        })
     }
     get chamberObjects() {
-        return this.temperatureObjects.filter((sensor: string) => { if (sensor == 'heater_chamber') { return this.getTrilabTemperatureObject(sensor); } })
+        return this.temperatureObjects.filter((sensor: string) => {
+            if (sensor == 'heater_chamber') {
+                return this.getTrilabTemperatureObject(sensor)
+            }
+        })
     }
-
 
     get flapObject() {
         /// getters in printer store, getmiscellaneous that is servo_flap or stepper_flap
         /// when it will be used in the future, rewrite, because it changed from the implementation and mainsail version update
-        return this.$store.getters['printer/getMiscellaneous'].filter((sensor: any) => sensor.type == 'servo_flap' || sensor.type == 'stepper_flap')
+        return this.$store.getters['printer/getMiscellaneous'].filter(
+            (sensor: any) => sensor.type == 'servo_flap' || sensor.type == 'stepper_flap'
+        )
     }
 
     selectFilamentAction(filamentObj: any) {
-        console.log(filamentObj);
-        this.showSelectFilamentDialog = false;
-        this.selectedFilament = filamentObj;
+        //console.log(filamentObj)
+        this.showSelectFilamentDialog = false
+        this.selectedFilament = filamentObj
         /// start heating
-
 
         /// najdeme chamber, extruder, bed a flap
 
-        console.log(this.temperatureObjects);
+        //console.log(this.temperatureObjects)
 
-        this.$store.dispatch('printer/sendGcode', `M104 S${filamentObj.extruder}`);
-        this.$store.dispatch('printer/sendGcode', `M140 S${filamentObj.bed}`);
-        this.$store.dispatch('printer/sendGcode', `M141 S${filamentObj.chamber}`);
+        this.$store.dispatch('printer/sendGcode', `M104 S${filamentObj.extruder}`)
+        this.$store.dispatch('printer/sendGcode', `M140 S${filamentObj.bed}`)
+        this.$store.dispatch('printer/sendGcode', `M141 S${filamentObj.chamber}`)
 
-        this.step = 1;
+        this.step = 1
 
         //this.$store.dispatch('printer/sendGcode', `M106 S${filamentObj.flap}`);
-
 
         ///const extruderObject = this.temperatureObjects.find((sensor: PrinterStateTemperatureObject) => sensor.type == 'extruder')
         //const bedObject = this.temperatureObjects.find((sensor: PrinterStateTemperatureObject) => sensor.type == 'heater_bed')
         //const chamberObject = this.temperatureObjects.find((sensor: PrinterStateTemperatureObject) => sensor.type == 'heater_chamber')
         /// waiting for backend klipper implementation const flapObject = this.flapObject;
-
-
-
-
-
 
         /*if (typeof extruderObject == 'object') {
                 this.setTemp(extruderObject, filamentObj.extruder);
@@ -526,8 +599,6 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
         }*/
 
         /// we will set all the things and we have to send the gcode
-
-
 
         /* <temperature-input
          v -if= "object.command !== null"
@@ -545,8 +616,6 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
          this.$store.dispatch('server/addEvent', { message: gcode, type: 'command' })
          this.$socket.emit('printer.gcode.script', { script: gcode })*/
 
-
-
         /*this.$store.dispatch('printer/sendGcode', `M104 S${filamentObj.extruder}`);
         this.$store.dispatch('printer/sendGcode', `M140 S${filamentObj.bed}`);
         this.$store.dispatch('printer/sendGcode', `M141 S${filamentObj.chamber}`);
@@ -556,28 +625,36 @@ export default class TrilabFilamentLoadWizard extends Mixins(BaseMixin, TrilabMi
     setTemp(temperatureObject: any, targetTemp: number) {
         if (targetTemp > temperatureObject.settings.max_temp) {
             this.$toast.error(
-                this.$t('Panels.TemperaturePanel.TempTooHigh', { name: temperatureObject.name, max: temperatureObject.settings.max_temp }) + ''
+                this.$t('Panels.TemperaturePanel.TempTooHigh', {
+                    name: temperatureObject.name,
+                    max: temperatureObject.settings.max_temp,
+                }) + ''
             )
         } else if (targetTemp < temperatureObject.settings.min_temp && targetTemp != 0) {
             this.$toast.error(
-                this.$t('Panels.TemperaturePanel.TempTooLow', { name: temperatureObject.name, min: temperatureObject.settings.min_temp }) + ''
+                this.$t('Panels.TemperaturePanel.TempTooLow', {
+                    name: temperatureObject.name,
+                    min: temperatureObject.settings.min_temp,
+                }) + ''
             )
         } else if (temperatureObject.target !== targetTemp) {
-            console.log(temperatureObject);
-            const gcode = temperatureObject.command + ' ' + temperatureObject.settings.commandAttributeName + '=' + temperatureObject.settings.name + ' TARGET=' + targetTemp
+            //console.log(temperatureObject)
+            const gcode =
+                temperatureObject.command +
+                ' ' +
+                temperatureObject.settings.commandAttributeName +
+                '=' +
+                temperatureObject.settings.name +
+                ' TARGET=' +
+                targetTemp
             this.$store.dispatch('server/addEvent', { message: gcode, type: 'command' })
             this.$socket.emit('printer.gcode.script', { script: gcode })
         }
-
     }
-
 
     closeFilamentSelect() {
-        this.showSelectFilamentDialog = false;
+        this.showSelectFilamentDialog = false
     }
-
-
-
 }
 </script>
 

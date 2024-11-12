@@ -1,5 +1,8 @@
 <template>
-    <v-dialog v-model="isDialogVisible" max-width="800px" persistent>
+    <v-dialog
+        v-model="isDialogVisible"
+        max-width="800px"
+        persistent>
         <v-card>
             <v-card-title class="headline">Extruder motor test dialog</v-card-title>
             <v-card-text>
@@ -8,41 +11,52 @@
                     <p>Waiting for extruder temperature to reach {{ tempToSet }} °C. Current temp: {{ currentTemp }}</p>
                 </div>
                 <div v-if="step == 1">
-
-                    <v-btn color="primary" @click="rollExtruderMotor()">Move extruder motor</v-btn>
-
+                    <v-btn
+                        color="primary"
+                        @click="rollExtruderMotor()">
+                        Move extruder motor
+                    </v-btn>
 
                     <p class="mt-3">Did the extruder move?</p>
 
-					<v-row class="">
-						<v-col cols="6">
-							<v-btn v-if="true" block color="success" @click="success()">Yes</v-btn>
-						</v-col>
-						<v-col cols="6">
-							<v-btn block color="red" @click="fail()">No</v-btn>
-						</v-col>
+                    <v-row class="">
+                        <v-col cols="6">
+                            <v-btn
+                                v-if="true"
+                                block
+                                color="success"
+                                @click="success()">
+                                Yes
+                            </v-btn>
+                        </v-col>
+                        <v-col cols="6">
+                            <v-btn
+                                block
+                                color="red"
+                                @click="fail()">
+                                No
+                            </v-btn>
+                        </v-col>
                     </v-row>
-
-
                 </div>
-
 
                 <div v-if="isCloseBtnVisible">
                     <v-divider class="mt-4 mb-4"></v-divider>
-                    <v-btn color="primary" @click="fail()">{{ $t("App.Trilab.TrilabFilamentLoadWizard.CancelWizard")
-                        }}</v-btn>
+                    <v-btn
+                        color="primary"
+                        @click="fail()">
+                        {{ $t('App.Trilab.TrilabFilamentLoadWizard.CancelWizard') }}
+                    </v-btn>
                 </div>
             </v-card-text>
         </v-card>
-
-
     </v-dialog>
 </template>
 
 <script lang="ts">
 import BaseMixin from '@/components/mixins/base'
 import { Component, Mixins, Prop, Watch } from 'vue-property-decorator'
-import TrilabMixin from '@/components/mixins/trilab';
+import TrilabMixin from '@/components/mixins/trilab'
 import { PrinterStateAdditionalSensor, PrinterStateTemperatureObject } from '@/store/printer/types'
 
 @Component
@@ -50,19 +64,15 @@ export default class TrilabDiagnosticsEndstopsTestDialog extends Mixins(TrilabMi
     @Prop({ required: false, default: false })
     declare showp: boolean
 
+    public tempToSet = 250
+    public closeBtnVisible = false
+    public showSelectFilamentDialog: boolean = false
+    public showQuestion = false
 
-    public tempToSet = 250;
-    public closeBtnVisible = false;
-    public showSelectFilamentDialog: boolean = false;
-    public showQuestion = false;
-
-    public step_internal = 0;
-
+    public step_internal = 0
 
     get extruderObject() {
-        return this.getTrilabTemperatureObject(
-            this.heatersObjectNames.find((sensor: any) => sensor == 'extruder')
-        )
+        return this.getTrilabTemperatureObject(this.heatersObjectNames.find((sensor: any) => sensor == 'extruder'))
     }
     get heatersObjectNames() {
         const sensors = this.$store.getters['printer/getAvailableHeaters'] ?? []
@@ -73,22 +83,19 @@ export default class TrilabDiagnosticsEndstopsTestDialog extends Mixins(TrilabMi
     @Watch('isDialogVisible')
     onIsDialogVisibleChanged(newValue: boolean, oldValue: boolean) {
         if (newValue == true && oldValue == false) {
-            this.initialize();
+            this.initialize()
         }
     }
-
 
     initialize() {
         /// setujeme teplotu na extruder
         if (typeof this.extruderObject != 'object') {
-            this.$toast.error("Extruder object not found");
-            this.fail();
-            return;
+            this.$toast.error('Extruder object not found')
+            this.fail()
+            return
         }
 
-
-
-        this.setTemp(this.extruderObject, this.tempToSet);
+        this.setTemp(this.extruderObject, this.tempToSet)
     }
 
     rollExtruderMotor() {
@@ -97,18 +104,17 @@ export default class TrilabDiagnosticsEndstopsTestDialog extends Mixins(TrilabMi
         this.sendGcodeHidden('G0 E30 F500')
     }
     get currentTemp() {
-        return this.extruderObject.temperature;
+        return this.extruderObject.temperature
     }
 
     @Watch('currentTemp')
     onCurrentTempChanged(newValue: number, oldValue: number) {
-        if(this.isDialogVisible == false) return;
+        if (this.isDialogVisible == false) return
         if (newValue >= this.tempToSet && this.step == 0) {
-            this.step = 1;
+            this.step = 1
         }
-        console.log("NEW CURRENT TEMP OF EXTRUDER: " + newValue);
+        //console.log("NEW CURRENT TEMP OF EXTRUDER: " + newValue);
     }
-
 
     setTemp(temperatureObject: any, targetTemp: number) {
         if (typeof temperatureObject.value === 'object') temperatureObject.value = temperatureObject.value.value ?? 0
@@ -128,7 +134,7 @@ export default class TrilabDiagnosticsEndstopsTestDialog extends Mixins(TrilabMi
                 }) + ''
             )
         } else if (temperatureObject.target !== targetTemp) {
-            console.log(temperatureObject)
+            //console.log(temperatureObject)
             const gcode =
                 temperatureObject.command +
                 ' ' +
@@ -142,64 +148,56 @@ export default class TrilabDiagnosticsEndstopsTestDialog extends Mixins(TrilabMi
         }
     }
 
-
-
     get step(): number {
-        return this.step_internal;
+        return this.step_internal
     }
     set step(value: number) {
         /// if step is 2, we have to set timeout on window to wait for endstop to be pressed, each 50 ms
-        this.step_internal = value;
+        this.step_internal = value
     }
-
-
-
 
     sendGcode(gcode: string) {
         this.$store.dispatch('server/addEvent', { message: gcode, type: 'command' })
         this.$socket.emit('printer.gcode.script', { script: gcode })
     }
     sendGcodeHidden(gcode: string) {
-        console.log("sending request for endstops query");
+        //console.log('sending request for endstops query')
         this.$socket.emit('printer.gcode.script', { script: gcode })
     }
 
-
     get socketResponses() {
-        return this.$store.state.trilab.socketResponses;
+        return this.$store.state.trilab.socketResponses
     }
     fail() {
-        this.$emit('catchResult', 'extruderMotorCheck', 0);
-        this.closeReset();
+        this.$emit('catchResult', 'extruderMotorCheck', 0)
+        this.closeReset()
     }
     success() {
-        this.$emit('catchResult', 'extruderMotorCheck', 1);
-        this.closeReset();
+        this.$emit('catchResult', 'extruderMotorCheck', 1)
+        this.closeReset()
     }
 
     closeReset() {
         /// setting extruder temp to 0, extruder heating is no longer needed
-        this.setTemp(this.extruderObject, 0);
-        console.log("close resetting TDMETD");
-        this.step = 0;
+        this.setTemp(this.extruderObject, 0)
+        //console.log('close resetting TDMETD')
+        this.step = 0
 
-        this.isDialogVisible = false;
+        this.isDialogVisible = false
     }
 
     get isCloseBtnVisible() {
-        return this.closeBtnVisible || this.step == 0;
+        return this.closeBtnVisible || this.step == 0
     }
 
     get isDialogVisible() {
-        return this.showp;
+        return this.showp
     }
     set isDialogVisible(value) {
         if (!value) {
-            this.$emit('close', value);
+            this.$emit('close', value)
         }
     }
-
-
 }
 </script>
 

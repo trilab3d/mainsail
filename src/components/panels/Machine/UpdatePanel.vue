@@ -28,11 +28,18 @@
             <v-card-text class="px-0 py-0 update-manager-list">
                 <template v-if="checkInitState">
                     <template v-for="(module, index) in modules">
-                        <v-divider v-if="index" :key="'divider_' + module.name" class="my-0" />
-                        <update-panel-entry :key="module.name" :repo="module.data" />
+                        <v-divider
+                            v-if="index"
+                            :key="'divider_' + module.name"
+                            class="my-0" />
+                        <update-panel-entry
+                            :key="module.name"
+                            :repo="module.data" />
                     </template>
                     <template v-if="existsSystemModul">
-                        <v-divider v-if="modules.length" class="my-0" />
+                        <v-divider
+                            v-if="modules.length"
+                            class="my-0" />
                         <update-panel-entry-system />
                     </template>
                     <template v-if="showUpdateAll">
@@ -43,7 +50,12 @@
                 <template v-else>
                     <v-row class="mt-0 mb-0">
                         <v-col class="px-6">
-                            <v-alert class="mb-0" text dense type="info" border="left">
+                            <v-alert
+                                class="mb-0"
+                                text
+                                dense
+                                type="info"
+                                border="left">
                                 {{ $t('Machine.UpdatePanel.InitUpdateManager') }}
                             </v-alert>
                         </v-col>
@@ -75,7 +87,8 @@ export default class UpdatePanel extends Mixins(BaseMixin) {
     mdiUpdate = mdiUpdate
 
     get enableUpdateManager() {
-        return this.$store.state.server.components.includes('update_manager')
+        return false
+        //return this.$store.state.server.components.includes('update_manager')
     }
 
     get modules() {

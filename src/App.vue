@@ -23,7 +23,9 @@
         </template>
         <the-select-printer-dialog v-else-if="instancesDB !== 'moonraker'" />
         <the-connecting-dialog v-else />
-        <trilab-service-dialog :showp="isLoginPopupOpen" :requestedacess="reqAccess"
+        <trilab-service-dialog
+            :showp="isLoginPopupOpen"
+            :requestedacess="reqAccess"
             @close="onCloseServiceLogin"></trilab-service-dialog>
     </v-app>
 </template>
@@ -76,8 +78,8 @@ Component.registerHooks(['metaInfo'])
     },
 })
 export default class App extends Mixins(BaseMixin, ThemeMixin, TrilabMixin) {
-    public isLoginPopupOpen: boolean = false;
-    public reqAccess: string = 'service';
+    public isLoginPopupOpen: boolean = false
+    public reqAccess: string = 'service'
     public metaInfo(): any {
         let title = this.$store.getters['getTitle']
 
@@ -152,7 +154,7 @@ export default class App extends Mixins(BaseMixin, ThemeMixin, TrilabMixin) {
     }
     get updateFile() {
         /// TLB
-        return this.$store.getters['trilab/getUpdateFile'];
+        return this.$store.getters['trilab/getUpdateFile']
     }
 
     get warningColor(): string {
@@ -247,10 +249,8 @@ export default class App extends Mixins(BaseMixin, ThemeMixin, TrilabMixin) {
     }
 
     onCloseServiceLogin() {
-        this.isLoginPopupOpen = false;
+        this.isLoginPopupOpen = false
     }
-
-
 
     drawFavicon(val: number): void {
         const favicon16: HTMLLinkElement | null = document.querySelector("link[rel*='icon'][sizes='16x16']")
@@ -356,12 +356,12 @@ export default class App extends Mixins(BaseMixin, ThemeMixin, TrilabMixin) {
     }
 
     handleKeyDown(event: any) {
-        var type = '';
-        let exclusionTags = ['input', 'textarea', 'select'];
-        let otherRulesPassed = true;
+        var type = ''
+        let exclusionTags = ['input', 'textarea', 'select']
+        let otherRulesPassed = true
         /// check if it has attribute role "textbox" or contenteditable=true
-        if (event.target.getAttribute('role') == "textbox" || event.target.getAttribute('contenteditable') == "true") {
-            otherRulesPassed = false;
+        if (event.target.getAttribute('role') == 'textbox' || event.target.getAttribute('contenteditable') == 'true') {
+            otherRulesPassed = false
         }
 
         if (exclusionTags.indexOf(event.target.tagName.toLowerCase()) === -1 && otherRulesPassed) {
@@ -373,63 +373,62 @@ export default class App extends Mixins(BaseMixin, ThemeMixin, TrilabMixin) {
                 /// if it is escape
                 if (event.keyCode == 27) {
                     if (this.isLoginPopupOpen) {
-                        this.isLoginPopupOpen = false;
-                        return;
+                        this.isLoginPopupOpen = false
+                        return
                     }
                 }
-                if (event.keyCode == 82 && event.shiftKey) { /// shift+r
+                if (event.keyCode == 82 && event.shiftKey) {
+                    /// shift+r
                     if (this.TrilabServiceView == false && this.TrilabHiddenView == false) {
-                        this.reqAccess = "hidden";
-                        console.log("debugStavs");
-                        this.isLoginPopupOpen = true;
-                        return;
+                        this.reqAccess = 'hidden'
+                        //console.log("debugStavs");
+                        this.isLoginPopupOpen = true
+                        return
                     }
                     if (this.$store.state.trilab.hiddenView == true) {
-                        this.TrilabHiddenView = false;
-                        console.log("nastavuju HW na false");
+                        this.TrilabHiddenView = false
+                        //console.log("nastavuju HW na false");
                     } else {
-                        this.TrilabHiddenView = true;
-                        console.log("nastavuju HW na true");
+                        this.TrilabHiddenView = true
+                        //console.log("nastavuju HW na true");
                     }
-                    this.AdvancedFeatures = false;
-                    this.TrilabServiceView = false;
-                    console.log('shift+r');
-                }
-                else if (event.keyCode == 65 && event.shiftKey) { /// shift+a /// advancedview
+                    this.AdvancedFeatures = false
+                    this.TrilabServiceView = false
+                    //console.log('shift+r');
+                } else if (event.keyCode == 65 && event.shiftKey) {
+                    /// shift+a /// advancedview
                     if (this.TrilabHiddenView == true || this.TrilabServiceView == true) {
-                        console.log("debugStavs");
-                        console.log("endDebugStavs");
-                        return false; /// it shouldnt work in more privileged view 
+                        //console.log('debugStavs')
+                        //console.log('endDebugStavs')
+                        return false /// it shouldnt work in more privileged view
                     }
                     if (this.$store.state.trilab.advancedView == false) {
-                        this.AdvancedFeatures = true;
+                        this.AdvancedFeatures = true
                         /// nastavuji AF na true
                     } else {
-                        this.AdvancedFeatures = false;
+                        this.AdvancedFeatures = false
 
                         /// nastavuji AF na false
                     }
-                    console.log('shift+a');
-
-                }
-                else if (event.keyCode == 81 && event.shiftKey) { /// shift+q (service view)
+                    //console.log('shift+a');
+                } else if (event.keyCode == 81 && event.shiftKey) {
+                    /// shift+q (service view)
                     if (this.TrilabHiddenView == true) {
-                        return false; /// it shouldnt work in more privileged view
+                        return false /// it shouldnt work in more privileged view
                     }
                     if (this.TrilabServiceView == false) {
-                        this.reqAccess = "service";
-                        this.isLoginPopupOpen = true;
-                        return;
+                        this.reqAccess = 'service'
+                        this.isLoginPopupOpen = true
+                        return
                     }
 
                     if (this.$store.state.trilab.serviceView == true) {
-                        this.TrilabServiceView = false;
+                        this.TrilabServiceView = false
                     } else {
-                        this.TrilabServiceView = true;
+                        this.TrilabServiceView = true
                     }
 
-                    console.log('shift+q');
-
+                    //console.log('shift+q')
                 }
             }
         }
@@ -440,13 +439,12 @@ export default class App extends Mixins(BaseMixin, ThemeMixin, TrilabMixin) {
         this.appHeight()
         window.addEventListener('resize', this.appHeight)
         window.addEventListener('orientationchange', this.appHeight)
-        window.addEventListener('keydown', this.handleKeyDown);
+        window.addEventListener('keydown', this.handleKeyDown)
         /// check local storage for item trilabAdvancedFeatures and if it exists and is true set the advanced features to true
         if (localStorage.getItem('trilabAdvancedFeatures') == 'true') {
-            this.AdvancedFeatures = true;
+            this.AdvancedFeatures = true
         }
     }
-
 }
 </script>
 

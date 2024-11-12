@@ -17,7 +17,7 @@ export default class TrilabMixin extends Vue {
     }
 
     get savedVariablesExists(): boolean {
-        return 'save_variables' in this.$store.state.printer ? true : false 
+        return 'save_variables' in this.$store.state.printer ? true : false
     }
 
     ////
@@ -49,7 +49,7 @@ export default class TrilabMixin extends Vue {
 
     formatETAnew(minutes: number) {
         if (minutes <= 0) {
-            return "--";
+            return '--'
         }
         const days = Math.floor(minutes / 1440)
         const hours = Math.floor((minutes % 1440) / 60)
@@ -58,7 +58,9 @@ export default class TrilabMixin extends Vue {
         const eta = new Date()
         eta.setSeconds(minutes * 60)
 
-        return `${eta.getHours().toString().padStart(2, '0')}:${eta.getMinutes().toString().padStart(2, '0')} ${days > 0 ? ` +${days}d` : ''}`
+        return `${eta.getHours().toString().padStart(2, '0')}:${eta.getMinutes().toString().padStart(2, '0')} ${
+            days > 0 ? ` +${days}d` : ''
+        }`
     }
 
     get TrilabServiceView(): boolean {
@@ -114,7 +116,7 @@ export default class TrilabMixin extends Vue {
         const idle_timeout_state = this.$store.state.printer.idle_timeout?.state
         const printer_state =
             this.$store.state.printer.print_stats?.state ?? this.$store.state.printer.idle_timeout?.state ?? ''
-        console.log('printer_state: ' + printer_state + ' idle_timeout_state: ' + idle_timeout_state)
+        //console.log('printer_state: ' + printer_state + ' idle_timeout_state: ' + idle_timeout_state)
         if (
             (idle_timeout_state == 'Idle' || idle_timeout_state == 'Ready') &&
             (printer_state == 'standby' ||
@@ -135,7 +137,7 @@ export default class TrilabMixin extends Vue {
         return false
     }
 
-    isEmptyJS(vari :any){
+    isEmptyJS(vari: any) {
         if (vari == undefined || vari == null || vari == '' || vari == 'undefined') {
             return true
         }
