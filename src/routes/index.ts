@@ -151,6 +151,7 @@ const routes: AppRoute[] = [
         icon: mdiWrench,
         component: Machine,
         alwaysShow: true,
+        securityLevel: 'service',
         identificator: 'machine',
         showInNavi: true,
         position: 90,
@@ -173,6 +174,7 @@ const routes: AppRoute[] = [
         icon: mdiPencilRuler,
         component: TrilabCalibrations,
         alwaysShow: true,
+        securityLevel: 'service',
         identificator: 'trilabcalibration',
         showInNavi: true,
         position: 90,
@@ -184,6 +186,7 @@ const routes: AppRoute[] = [
         icon: mdiMedicalBag,
         component: TrilabDiagnostics,
         alwaysShow: true,
+        securityLevel: 'service',
         identificator: 'trilabdiagnostics',
         showInNavi: true,
         position: 100,
@@ -193,6 +196,7 @@ const routes: AppRoute[] = [
         component: null,
         alwaysShow: false,
         showInNavi: false,
+        securityLevel: 'service',
         path: '/settings/machine',
         redirect: '/config',
     },
@@ -213,6 +217,7 @@ export interface AppRoute {
     showInNavi: boolean
     identificator?: string
     condition?: any
+    securityLevel?: string
     registeredDirectory?: string
     moonrakerComponent?: string
     klipperComponent?: string
