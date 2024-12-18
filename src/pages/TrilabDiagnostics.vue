@@ -768,7 +768,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
                 //this.enabledChamberCommandDialogButton = true
                 this.enabledChamberYesButton = false
                 this.$toast.warning(
-                    "You have been tricked! Nothing was sent to the printer so it couldn't move. Look at the test result and don't be LAZY you WORTHLESS PEASANT",
+                    "You have been tricked! Nothing was sent to the printer so it couldn't move. Please try again and next time be more careful!",
                     { duration: 15000 }
                 )
             } else {
@@ -788,7 +788,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
     usbTestResult(result: number) {
         if (this.usbNumberChangeObserved == false && result == 1) {
             this.$toast.warning(
-                "You have been tricked! USB number NOT changed so it CAN'T  be marked as yes. Look at the test result and don't be LAZY you WORTHLESS PEASANT",
+                "You have been tricked! USB number NOT changed so it CAN'T  be marked as yes. Look at the test result and please try again and next time be more careful!",
                 { duration: 15000 }
             )
             this.showYAIgif()
@@ -804,7 +804,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
                 this.showYAIgif()
                 this.enabledPrintflapYesDialogButton = false
                 this.$toast.warning(
-                    "You have been tricked! Nothing was sent to the printer so it couldn't move. Look at the test result and don't be LAZY you WORTHLESS PEASANT",
+                    "You have been tricked! Nothing was sent to the printer so it couldn't move. Look at the test result and please try again. Next time be more careful!",
                     { duration: 15000 }
                 )
             } else {
