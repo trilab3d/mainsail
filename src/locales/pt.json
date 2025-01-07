@@ -60,7 +60,8 @@
       "Pause": "Pausar impressão",
       "PrinterOff": "Impressora DESLIGADA",
       "Printing": "{percent}% Imprimindo - {filename}",
-      "PrintingETA": "{percent}% Imprimindo - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% Imprimindo - ETA: {eta} - {filename}",
+      "Disconnected": "Desconectado"
     },
     "TopBar": {
       "CannotUploadTheFile": "Não é possível carregar o arquivo!",

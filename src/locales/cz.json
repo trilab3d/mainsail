@@ -60,7 +60,8 @@
       "Pause": "Pozastavit tisk",
       "PrinterOff": "Tiskárna vypnuta",
       "Printing": "{percent}% Tisk - {filename}",
-      "PrintingETA": "{percent}% Tisk - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% Tisk - ETA: {eta} - {filename}",
+      "Disconnected": "Nepřipojeno"
     },
     "TopBar": {
       "CannotUploadTheFile": "Soubor nelze nahrát!",

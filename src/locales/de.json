@@ -65,7 +65,8 @@
       "Pause": "Druck pausiert",
       "PrinterOff": "Drucker AUS",
       "Printing": "{percent}% Drucken - {filename}",
-      "PrintingETA": "{percent}% Drucken - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% Drucken - ETA: {eta} - {filename}",
+      "Disconnected": "Getrennt"
     },
     "TopBar": {
       "CannotUploadTheFile": "Hochladen nicht möglich!",

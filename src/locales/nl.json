@@ -61,7 +61,8 @@
       "Pause": "Pauzeer print",
       "Printing": "{percent}% Printen - {filename}",
       "PrintingETA": "{percent}% Printen - ETA: {eta} - {filename}",
-      "PrinterOff": "Printer UIT"
+      "PrinterOff": "Printer UIT",
+      "Disconnected": "Verbinding verbroken"
     },
     "TopBar": {
       "CannotUploadTheFile": "Kan het bestand niet uploaden!",

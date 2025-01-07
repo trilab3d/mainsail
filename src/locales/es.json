@@ -65,7 +65,8 @@
       "Pause": "Pausar impresión",
       "PrinterOff": "Impresora Apagada",
       "Printing": "{percent}% impreso - {filename}",
-      "PrintingETA": "{percent}% impreso - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% impreso - ETA: {eta} - {filename}",
+      "Disconnected": "Desconectado"
     },
     "TopBar": {
       "CannotUploadTheFile": "¡No se pudo subir el Archivo!",

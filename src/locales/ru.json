@@ -60,7 +60,8 @@
       "Pause": "Пауза печати",
       "PrinterOff": "Принтер выключен",
       "Printing": "{percent}% напечатано - {filename}",
-      "PrintingETA": "{percent}% напечатано - Завершение: {eta} - {filename}"
+      "PrintingETA": "{percent}% напечатано - Завершение: {eta} - {filename}",
+      "Disconnected": "Отключено"
     },
     "TopBar": {
       "CannotUploadTheFile": "Не получается загрузить файл!",

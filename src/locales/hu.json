@@ -60,7 +60,8 @@
       "Pause": "Nyomtatás Állj",
       "Printing": "{percent}% Nyomtatás - {filename}",
       "PrintingETA": "{percent}% Nyomtatás - IDŐ: {eta} - {filename}",
-      "PrinterOff": "Nyomtató KI"
+      "PrinterOff": "Nyomtató KI",
+      "Disconnected": "Szétkapcsolt"
     },
     "TopBar": {
       "CannotUploadTheFile": "A fájl nem feltölthető!",

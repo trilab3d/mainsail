@@ -68,7 +68,8 @@
       "Pause": "Призупинення друку",
       "PrinterOff": "Принтер вимкнений",
       "Printing": "{percent}% Друк - {filename}",
-      "PrintingETA": "{percent}% Друк - Очікуваний час: {eta} - {filename}"
+      "PrintingETA": "{percent}% Друк - Очікуваний час: {eta} - {filename}",
+      "Disconnected": "Відключено"
     },
     "TopBar": {
       "CannotUploadTheFile": "Не вдається завантажити файл!",

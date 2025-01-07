@@ -323,7 +323,8 @@
       "Pause": "Pause Print",
       "PrinterOff": "Printer OFF",
       "Printing": "{percent}% Printing - {filename}",
-      "PrintingETA": "{percent}% Printing - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% Printing - ETA: {eta} - {filename}",
+      "Disconnected": "Disconnected"
     },
     "TopBar": {
       "CannotUploadTheFile": "Cannot upload the file!",

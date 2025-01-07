@@ -65,7 +65,8 @@
       "Pause": "Pauza",
       "PrinterOff": "Drukarka WYŁ.",
       "Printing": "{percent}% Drukowanie - {filename}",
-      "PrintingETA": "{percent}% Drukowanie - Koniec: {eta} - {filename}"
+      "PrintingETA": "{percent}% Drukowanie - Koniec: {eta} - {filename}",
+      "Disconnected": "Bezładny"
     },
     "TopBar": {
       "CannotUploadTheFile": "Błąd wgrywania pliku!",

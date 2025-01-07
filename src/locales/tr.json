@@ -65,7 +65,8 @@
       "Pause": "Baskıyı Duraklat",
       "PrinterOff": "Yazıcı Kapalı",
       "Printing": "{percent}% Yazdırılıyor - {filename}",
-      "PrintingETA": "{percent}% Yazdırılıyor - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% Yazdırılıyor - ETA: {eta} - {filename}",
+      "Disconnected": "Bağlantı kesildi"
     },
     "TopBar": {
       "CannotUploadTheFile": "Dosya yüklenemiyor!",

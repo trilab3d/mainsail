@@ -12,14 +12,14 @@ export const getters: GetterTree<RootState, any> = {
 
     getTitle: (state, getters) => {
         let printerNameToDisplay = 'Mainsail'
-        if (state.gui?.general.printername) {
-            printerNameToDisplay = state.gui?.general.printername
-        } else if (state.printer?.hostname) {
+        if ((state.gui?.general.printername ?? '').length > 0) {
+            printerNameToDisplay = state.gui?.general.printername ?? 'Mainsail'
+        } else if ((state.printer?.hostname ?? '').length > 0) {
             printerNameToDisplay = state.printer?.hostname
         }
 
-        if (!state.socket?.isConnected) return 'Mainsail'
-        if (state.server?.klippy_state !== 'ready') return i18n.t('App.Titles.Error')
+        if (!state.socket?.isConnected) return printerNameToDisplay + ' - ' + i18n.t('App.Titles.Disconnected')
+        if (state.server?.klippy_state !== 'ready') return printerNameToDisplay + ' - ' + i18n.t('App.Titles.Error')
 
         // get printer_state
         let printer_state = state.printer?.print_stats?.state ?? ''
@@ -28,7 +28,7 @@ export const getters: GetterTree<RootState, any> = {
             printer_state = 'printing'
 
         // return pause title
-        if (printer_state === 'paused') return i18n.t('App.Titles.Pause')
+        if (printer_state === 'paused') return `${printerNameToDisplay} - ` + i18n.t('App.Titles.Pause')
 
         // return complete title
         if (state.printer?.print_stats?.state === 'complete') {
@@ -37,7 +37,7 @@ export const getters: GetterTree<RootState, any> = {
             })
 
             // add printer name to title if it exists
-            if (state.gui?.general.printername) output += `- ${state.gui?.general.printername}`
+            output = `${printerNameToDisplay} - ` + output
 
             return output
         }
@@ -55,7 +55,7 @@ export const getters: GetterTree<RootState, any> = {
                 })
 
                 // add printer name to title if it exists
-                if (state.gui?.general.printername) output += `- ${state.gui?.general.printername}`
+                output = `${printerNameToDisplay} - ` + output
 
                 return output
             }
@@ -66,12 +66,12 @@ export const getters: GetterTree<RootState, any> = {
             })
 
             // add printer name to title if it exists
-            if (state.gui?.general.printername) output += `- ${state.gui?.general.printername}`
+            output = `${printerNameToDisplay} - ` + output
 
             return output
         }
 
-        return printerNameToDisplay;
+        return printerNameToDisplay
     },
 
     getDependencies: (state) => {

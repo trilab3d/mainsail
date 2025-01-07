@@ -65,7 +65,8 @@
       "Pause": "Pausa utskrift",
       "PrinterOff": "Skrivaren AV",
       "Printing": "{percent}% Skriver ut - {filename}",
-      "PrintingETA": "{percent}% Skriver ut - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% Skriver ut - ETA: {eta} - {filename}",
+      "Disconnected": "Heaittihuvvon"
     },
     "TopBar": {
       "CannotUploadTheFile": "Det går inte att ladda upp filen!",

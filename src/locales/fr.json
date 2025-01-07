@@ -65,7 +65,8 @@
       "Pause": "Pause impression",
       "PrinterOff": "Imprimante OFF",
       "Printing": "{percent}% imprimé - {filename}",
-      "PrintingETA": "{percent}% imprimé - TEA: {eta} - {filename}"
+      "PrintingETA": "{percent}% imprimé - TEA: {eta} - {filename}",
+      "Disconnected": "Déconnecté"
     },
     "TopBar": {
       "CannotUploadTheFile": "Chargement du fichier impossible!",

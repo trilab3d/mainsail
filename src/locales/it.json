@@ -65,7 +65,8 @@
       "Pause": "Pausa Stampa",
       "PrinterOff": "Spegni Stampante",
       "Printing": "{percent}% Stampando - {filename}",
-      "PrintingETA": "{percent}% Stampando - ETA: {eta} - {filename}"
+      "PrintingETA": "{percent}% Stampando - ETA: {eta} - {filename}",
+      "Disconnected": "Disconnesso"
     },
     "TopBar": {
       "CannotUploadTheFile": "Impossibile caricare il file!",

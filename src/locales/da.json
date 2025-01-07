@@ -65,7 +65,8 @@
       "Pause": "Pause",
       "PrinterOff": "Printer slukket",
       "Printing": "{percent}% printet",
-      "PrintingETA": "{percent}% printet - ETA {eta}"
+      "PrintingETA": "{percent}% printet - ETA {eta}",
+      "Disconnected": "Afbrudt"
     },
     "TopBar": {
       "CannotUploadTheFile": "Kan ikke uploade filen!",

@@ -60,7 +60,8 @@
       "Pause": "일시정지",
       "PrinterOff": "프린터 끄기",
       "Printing": "{filename} 파일, 현재 {percent}% 출력 중..",
-      "PrintingETA": "{filename} 파일 현재 {percent}% 프린트 중, 완료 예정 시간 : {eta}"
+      "PrintingETA": "{filename} 파일 현재 {percent}% 프린트 중, 완료 예정 시간 : {eta}",
+      "Disconnected": "연결이 끊김"
     },
     "TopBar": {
       "CannotUploadTheFile": "파일을 업로드 할 수 없습니다!",

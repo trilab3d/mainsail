@@ -60,7 +60,8 @@
       "Pause": "一時停止",
       "PrinterOff": "プリンター オフ",
       "Printing": "{percent}% 印刷中 - {filename}",
-      "PrintingETA": "{percent}% 印刷中 - 完了時刻: {eta} - {filename}"
+      "PrintingETA": "{percent}% 印刷中 - 完了時刻: {eta} - {filename}",
+      "Disconnected": "切断されました"
     },
     "TopBar": {
       "CannotUploadTheFile": "アップロードできませんでした!",
