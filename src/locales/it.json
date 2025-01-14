@@ -193,7 +193,7 @@
           "prusa": {
             "imgsrc": "/img/PrusaSlicer.png",
             "longDescription": "Utilizza il pulsante qui sopra per scaricare il pacchetto PrusaSlicer completo, inclusi i profili slicer. \nDopo il download, decomprimi l'archivio nella posizione di destinazione. \nSulla piattaforma Windows esegui il programma \"prusa-slicer.exe\", sulla piattaforma MacOS esegui \"PrusaSlicer.app\". \nDopo aver avviato il programma, apparirà la procedura guidata di configurazione. \nContinua alla scheda Prusa Pro. \nSeleziona Prusa Pro HT90 dall'elenco delle varianti di stampante qui. \nQuindi premere il pulsante Fine nell'angolo in basso a destra della finestra. \nQuesto rende l'affettatrice pronta per l'uso!",
-            "longTitle": "PrusaSlicer 2.8.1",
+            "longTitle": "PrusaSlicer 2.9.0",
             "shortDescription": "PrusaSlicer è uno strumento open source, ricco di funzionalità e frequentemente aggiornato che contiene tutto il necessario per esportare file di stampa perfetti",
             "title": "PrusaSlicer"
           }
