@@ -117,9 +117,9 @@ export default {
 			var platform = this.getOS();
 			var href = "";
 			if (platform == "mac64" || platform == "macos" || platform == "ios") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.1/PrusaSlicer-2.8.1+macOS-universal-202409181403.dmg";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.9.0/PrusaSlicer-2.9.0+macOS-universal.dmg";
 			} else if (platform == "win64") {
-				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.1/PrusaSlicer-2.8.1+win64-202409181359.zip";
+				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.9.0/PrusaSlicer-2.9.0+win64.zip";
 			} else if (platform == "archlinux") {
 				href = "https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.8.1/PrusaSlicer-2.8.1+linux-x64-newer-distros-GTK3-202409181416.AppImage";
 			} else if (platform == "armv7l") {

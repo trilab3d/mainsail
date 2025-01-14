@@ -5,62 +5,104 @@
             <v-app-bar-nav-icon tile @click.stop="naviDrawer = !naviDrawer"></v-app-bar-nav-icon>
             <router-link to="/">
                 <template v-if="sidebarLogo">
-                    <img :src="sidebarLogo" style="height: 32px" class="nav-logo ml-4 mr-1 d-none d-sm-flex"
+                    <img
+                        :src="sidebarLogo"
+                        style="height: 32px"
+                        class="nav-logo ml-4 mr-1 d-none d-sm-flex"
                         alt="Logo" />
                 </template>
                 <template v-else>
-                    <mainsail-logo :color="logoColor" style="height: 32px" class="nav-logo ml-4 mr-1 d-none d-sm-flex"
-                        router to="/" :ripple="false"></mainsail-logo>
+                    <mainsail-logo
+                        :color="logoColor"
+                        style="height: 32px"
+                        class="nav-logo ml-4 mr-1 d-none d-sm-flex"
+                        router
+                        to="/"
+                        :ripple="false"></mainsail-logo>
                 </template>
             </router-link>
             <v-toolbar-title class="text-no-wrap ml-0 pl-2 mr-2">{{ printerName }}</v-toolbar-title>
             <printer-selector v-if="countPrinters" />
             <v-divider
-                v-if="$store.state.trilab.advancedView || $store.state.trilab.hiddenView || $store.state.trilab.serviceView"
-                class="mx-2" vertical></v-divider>
+                v-if="
+                    $store.state.trilab.advancedView ||
+                    $store.state.trilab.hiddenView ||
+                    $store.state.trilab.serviceView
+                "
+                class="mx-2"
+                vertical></v-divider>
             <v-chip v-if="$store.state.trilab.advancedView" color="#C0CBD8">
                 <v-icon class="d-md-none">{{ mdiPaletteAdvanced }}</v-icon>
                 <b class="hidden-md-and-down">{{ $t('App.Trilab.TheTopBar.AdvancedViewEnabled') }}</b>
             </v-chip>
             <v-chip v-if="$store.state.trilab.hiddenView" color="#31FF3C">
-                <b>{{ $t("App.Trilab.TheTopbar.HiddenViewEnbled") }}</b>
+                <b>{{ $t('App.Trilab.TheTopbar.HiddenViewEnbled') }}</b>
             </v-chip>
             <v-chip v-if="$store.state.trilab.serviceView" color="#FF4820">
-                <b>{{ $t("App.Trilab.TheTopbar.ServiceViewEnabled") }}</b>
+                <b>{{ $t('App.Trilab.TheTopbar.ServiceViewEnabled') }}</b>
             </v-chip>
             <v-divider v-if="liveUpdateStatus != 'UP_TO_DATE'" class="mx-2" vertical></v-divider>
-            <v-chip v-if="liveUpdateStatus != 'UP_TO_DATE'" :color="liveUpdateBtnColor"
+            <v-chip
+                v-if="liveUpdateStatus != 'UP_TO_DATE'"
+                :color="liveUpdateBtnColor"
                 @click="showLiveUpdateDialogAction()">
-                <b> {{ $t('App.Trilab.TrilabLiveUpdate.statuses.' + liveUpdateStatus) }} </b>
+                <b>{{ $t('App.Trilab.TrilabLiveUpdate.statuses.' + liveUpdateStatus) }}</b>
             </v-chip>
 
             <v-spacer></v-spacer>
-            <input ref="fileUploadAndStart" type="file" :accept="gcodeInputFileAccept.join(', ')" style="display: none"
+            <input
+                ref="fileUploadAndStart"
+                type="file"
+                :accept="gcodeInputFileAccept.join(', ')"
+                style="display: none"
                 @change="uploadAndStart" />
-            <v-btn v-if="showSaveConfigButton" tile :icon="$vuetify.breakpoint.smAndDown"
-                :text="$vuetify.breakpoint.mdAndUp" color="primary"
-                class="button-min-width-auto px-3 d-none d-sm-flex save-config-button" :disabled="printerIsPrinting"
-                :loading="loadings.includes('topbarSaveConfig')" @click="saveConfig">
+            <v-btn
+                v-if="showSaveConfigButton"
+                tile
+                :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp"
+                color="primary"
+                class="button-min-width-auto px-3 d-none d-sm-flex save-config-button"
+                :disabled="printerIsPrinting"
+                :loading="loadings.includes('topbarSaveConfig')"
+                @click="saveConfig">
                 <v-icon class="d-md-none">{{ mdiContentSave }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.SAVE_CONFIG') }}</span>
             </v-btn>
             <t-light-btn></t-light-btn>
-            <v-btn v-if="TrilabServiceView" tile :icon="$vuetify.breakpoint.smAndDown"
-                :text="$vuetify.breakpoint.mdAndUp" color="primary" :disabled="['printing'].includes(printer_state)"
-                class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button" @click="doHome">
+            <v-btn
+                v-if="TrilabServiceView"
+                tile
+                :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp"
+                color="primary"
+                :disabled="['printing'].includes(printer_state)"
+                class="button-min-width-auto px-3 d-none d-sm-flex home-button upload-and-start-button"
+                @click="doHome">
                 <v-icon class="mr-md-2">{{ mdiHome }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.Trilab.TheTopBar.HomeBtn') }}</span>
             </v-btn>
-            <v-btn v-if="boolShowUploadAndPrint" tile :icon="$vuetify.breakpoint.smAndDown"
-                :text="$vuetify.breakpoint.mdAndUp" color="primary"
+            <v-btn
+                v-if="boolShowUploadAndPrint"
+                tile
+                :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp"
+                color="primary"
                 class="button-min-width-auto px-3 d-none d-sm-flex upload-and-start-button"
-                :loading="loadings.includes('btnUploadAndStart')" @click="btnUploadAndStart">
+                :loading="loadings.includes('btnUploadAndStart')"
+                @click="btnUploadAndStart">
                 <v-icon class="mr-md-2">{{ mdiFileUpload }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.UploadPrint') }}</span>
             </v-btn>
-            <v-btn v-if="klippyIsConnected" tile :icon="$vuetify.breakpoint.smAndDown"
-                :text="$vuetify.breakpoint.mdAndUp" color="error" class="button-min-width-auto px-3 emergency-button"
-                :loading="loadings.includes('topbarEmergencyStop')" @click="btnEmergencyStop">
+            <v-btn
+                v-if="klippyIsConnected"
+                tile
+                :icon="$vuetify.breakpoint.smAndDown"
+                :text="$vuetify.breakpoint.mdAndUp"
+                color="error"
+                class="button-min-width-auto px-3 emergency-button"
+                :loading="loadings.includes('topbarEmergencyStop')"
+                @click="btnEmergencyStop">
                 <v-icon class="mr-md-2">{{ mdiAlertOctagonOutline }}</v-icon>
                 <span class="d-none d-md-inline">{{ $t('App.TopBar.EmergencyStop') }}</span>
             </v-btn>
@@ -81,8 +123,12 @@
             </template>
         </v-snackbar>
         <v-dialog v-model="showEmergencyStopDialog" width="400" :fullscreen="isMobile">
-            <panel :title="$t('EmergencyStopDialog.EmergencyStop')" toolbar-color="error"
-                card-class="emergency-stop-dialog" :icon="mdiAlertOctagonOutline" :margin-bottom="false">
+            <panel
+                :title="$t('EmergencyStopDialog.EmergencyStop')"
+                toolbar-color="error"
+                card-class="emergency-stop-dialog"
+                :icon="mdiAlertOctagonOutline"
+                :margin-bottom="false">
                 <template #buttons>
                     <v-btn icon tile @click="showEmergencyStopDialog = false">
                         <v-icon>{{ mdiCloseThick }}</v-icon>
@@ -96,11 +142,16 @@
                 </v-card-actions>
             </panel>
         </v-dialog>
-        <trilab-update-dialog-live :showp="showLiveUpdateDialog"
+        <trilab-update-dialog-live
+            :showp="showLiveUpdateDialog"
             @closeLiveUpdateDialog="closeLiveUpdateDialog()"></trilab-update-dialog-live>
         <trilab-start-door-open-dialog></trilab-start-door-open-dialog>
         <trilab-print-door-open-dialog></trilab-print-door-open-dialog>
-        <start-print-dialog :bool="tlb_showPrintDialog" :immediate-start-if-ok="true" :file="tlb_dialogPrintFile" :current-path="tlb_currentPrintPath"
+        <start-print-dialog
+            :bool="tlb_showPrintDialog"
+            :immediate-start-if-ok="true"
+            :file="tlb_dialogPrintFile"
+            :current-path="tlb_currentPrintPath"
             @closeDialog="tlb_closePrintDialog" />
     </div>
 </template>
@@ -123,7 +174,17 @@ import PrinterSelector from '@/components/ui/PrinterSelector.vue'
 import MainsailLogo from '@/components/ui/MainsailLogo.vue'
 import TheNotificationMenu from '@/components/notifications/TheNotificationMenu.vue'
 import { topbarHeight } from '@/store/variables'
-import { mdiAlertOctagonOutline, mdiContentSave, mdiFileUpload, mdiClose, mdiCloseThick, mdiHome, mdiLightbulbOff, mdiLightbulbOn, mdiPaletteAdvanced } from '@mdi/js'
+import {
+    mdiAlertOctagonOutline,
+    mdiContentSave,
+    mdiFileUpload,
+    mdiClose,
+    mdiCloseThick,
+    mdiHome,
+    mdiLightbulbOff,
+    mdiLightbulbOn,
+    mdiPaletteAdvanced,
+} from '@mdi/js'
 import ControlMixin from './mixins/control'
 import { Watch } from 'vue-property-decorator'
 
@@ -198,18 +259,17 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         fileUploadAndStart: HTMLFormElement
     }
 
-
     get liveUpdateBtnColor() {
-        var value = this.liveUpdateStatus;
+        var value = this.liveUpdateStatus
         if (typeof value === 'string') {
-            if (value.indexOf("FAILED") > -1 || value.indexOf("ERROR") > -1) {
-                return "red";
+            if (value.indexOf('FAILED') > -1 || value.indexOf('ERROR') > -1) {
+                return 'red'
             }
         }
-        return "#FFA500";
+        return '#FFA500'
     }
     get showLiveUpdateDialog() {
-        return this.$store.state.trilab.showLiveUpdateDialog;
+        return this.$store.state.trilab.showLiveUpdateDialog
     }
     set showLiveUpdateDialog(value) {
         this.$store.commit('trilab/setData', { showLiveUpdateDialog: value })
@@ -220,7 +280,6 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
 
         return validGcodeExtensions
     }
-
 
     get naviDrawer() {
         return this.$store.state.naviDrawer
@@ -244,7 +303,9 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
 
     get showSaveConfigButton() {
         if (!this.klipperReadyForGui) return false
-        if (!this.TrilabServiceView) { return false; }
+        if (!this.TrilabServiceView) {
+            return false
+        }
         if (!this.hideSaveConfigForBedMash) return this.saveConfigPending
         let pendingKeys = Object.keys(this.$store.state.printer.configfile?.save_config_pending_items ?? {})
         pendingKeys = pendingKeys.filter((key: string) => !key.startsWith('bed_mesh '))
@@ -305,15 +366,14 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
             default:
                 this.naviDrawer = this.$vuetify.breakpoint.lgAndUp
         }
-
     }
     showLiveUpdateDialogAction() {
-        this.showLiveUpdateDialog = true;
-        this.$store.dispatch('trilab/setupLiveUpdateTimer', 2000);
+        this.showLiveUpdateDialog = true
+        this.$store.dispatch('trilab/setupLiveUpdateTimer', 2000)
     }
     closeLiveUpdateDialog() {
-        this.showLiveUpdateDialog = false;
-        this.$store.dispatch('trilab/setupLiveUpdateTimer', 30000);
+        this.showLiveUpdateDialog = false
+        this.$store.dispatch('trilab/setupLiveUpdateTimer', 30000)
     }
 
     btnEmergencyStop() {
@@ -340,8 +400,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         this.$refs.fileUploadAndStart.click()
     }
 
-
-    public fileToStart: any = null;
+    public fileToStart: any = null
 
     async uploadAndStart() {
         if (this.$refs.fileUploadAndStart?.files.length) {
@@ -350,18 +409,16 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
             for (const file of this.$refs.fileUploadAndStart?.files || []) {
                 const result = await this.doUpload_Trilab(file)
                 successFiles.push(result)
-
             }
             if (successFiles.length == 0) {
                 await this.$store.dispatch('socket/removeLoading', { name: 'btnUploadAndStart' })
-                return;
+                return
             }
-            this.fileToStart = successFiles[0];
+            this.fileToStart = successFiles[0]
             // console.log("setting fileToStart to:");
             // console.log(successFiles[0]);
 
-
-            return;
+            return
         }
     }
 
@@ -372,14 +429,16 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     @Watch('gCodes')
     async onGCodesChange(newGcodes: any) {
         //console.log("gCodes changed");
-        if (this.fileToStart == null) { return; }
+        if (this.fileToStart == null) {
+            return
+        }
         //console.log("fileToStart");
         //console.log(this.fileToStart);
-        var FtS: any = this.fileToStart;
-        const filename = FtS?.path ?? "";
+        var FtS: any = this.fileToStart
+        const filename = FtS?.path ?? ''
 
         /// store files getFile
-        var fileFound = false;
+        var fileFound = false
         for (let i = 0; i < newGcodes.length; i++) {
             if (newGcodes[i].filename == filename) {
                 /// check if thubmnail is already loaded
@@ -388,27 +447,24 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
                 //if (this.filamentOK == false || this.printheadOK == false) {
 
                 //}
-                this.fileToStart = null;
-                console.log("found file!" + filename);
+                this.fileToStart = null
+                console.log('found file!' + filename)
                 this.tlb_dialogPrintFile = newGcodes[i]
                 this.tlb_showPrintDialog = true
-                fileFound = true;
-                break;
+                fileFound = true
+                break
             }
         }
         if (fileFound == false) {
             //console.log("file not found!");
-            return;
+            return
         }
 
         await this.$store.dispatch('socket/removeLoading', { name: 'btnUploadAndStart' })
 
-
         this.$refs.fileUploadAndStart.value = ''
         if (this.currentPage !== '/') await this.$router.push('/')
-
     }
-
 
     doUpload_Trilab(file: File, startIfFilamentAndPrintheadOK: boolean = true) {
         const formData = new FormData()
@@ -424,11 +480,9 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         formData.append('file', file, filename)
         formData.append('print', 'false')
 
-
         return new Promise((resolve) => {
             this.uploadSnackbar.cancelTokenSource = axios.CancelToken.source()
-            axios
-                .post(this.apiUrl + '/server/files/upload', formData, {
+            axios.post(this.apiUrl + '/server/files/upload', formData, {
                     cancelToken: this.uploadSnackbar.cancelTokenSource.token,
                     headers: { 'Content-Type': 'multipart/form-data' },
                     onUploadProgress: (progressEvent: AxiosProgressEvent) => {
@@ -439,9 +493,11 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
                 })
                 .then((result) => {
                     this.uploadSnackbar.status = false
-                    const text = this.$t('App.TopBar.UploadOfFileSuccessful', { file: filename }).toString()
+                    const text = this.$t('App.TopBar.UploadOfFileSuccessful', {
+                        file: filename,
+                    }).toString()
                     this.$toast.success(text)
-                    resolve(result.data?.item ?? "file")
+                    resolve(result.data?.item ?? 'file')
                 })
                 .catch(() => {
                     this.uploadSnackbar.status = false
@@ -451,8 +507,6 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
                 })
         })
     }
-
-
 
     doUploadAndStart(file: File) {
         const formData = new FormData()
@@ -467,7 +521,6 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
 
         formData.append('file', file, filename)
         formData.append('print', 'false')
-
 
         return new Promise((resolve) => {
             this.uploadSnackbar.cancelTokenSource = axios.CancelToken.source()
@@ -498,7 +551,6 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         this.uploadSnackbar.cancelTokenSource.cancel()
         this.uploadSnackbar.status = false
     }
-
 }
 </script>
 
