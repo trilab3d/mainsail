@@ -203,8 +203,8 @@
         "TrilabTab": {
           "Trilab": "Versions",
           "TrilabLogs": "Logs",
-          "TrilabNetwork": "Network",
-          "TrilabPrinter": "Printer",
+          "TrilabNetwork": "Síť",
+          "TrilabPrinter": "Tiskárna",
           "TrilabSlicers": "Slicers"
         },
         "GeneralTab": {
@@ -214,30 +214,30 @@
         }
       },
       "SettingsAccessPasswordPanel": {
-        "SaveBtn": "Save credentials"
+        "SaveBtn": "Uložit údaje"
       },
       "SettingsTrilabPrinterTab": {
-        "AdvancedFeatures": "Advanced features:"
+        "AdvancedFeatures": "Pokročilé možnosti:"
       },
       "SettingsTrilabTab": {
-        "AutomaticCheckForUpdates": "Automatic check for updates:",
-        "CheckForLiveUpdate": "Check for live update",
-        "NoUpdateAvailable": "No update available",
-        "System": "System",
-        "SystemVersion": "System version:",
-        "UpdateChannelTitle": "Update channel",
-        "Upload": "Upload",
-        "UploadUpdateFile": "Upload update file",
+        "AutomaticCheckForUpdates": "Automatická kontrola aktualizací:",
+        "CheckForLiveUpdate": "Zkontrolovat aktualizace",
+        "NoUpdateAvailable": "Není k dispozici žádná aktualizace",
+        "System": "Systém",
+        "SystemVersion": "Verze systému:",
+        "UpdateChannelTitle": "Aktualizační kanál",
+        "Upload": "Nahrát",
+        "UploadUpdateFile": "Nahrát aktualizační balíček",
         "WenInterfaceVersion": "Web interface version:"
       },
       "SlicerPanel": {
-        "Download": "Download",
+        "Download": "Stáhnout",
         "DownloadProfiles": "Stáhnout tiskové profily",
         "downloadSlicer": "Stáhnout slicer"
       },
       "TheTopBar": {
-        "AdvancedViewEnabled": "Advanced View Enabled",
-        "HiddenViewEnbled": "Hidden View Enabled",
+        "AdvancedViewEnabled": "Pokročilý mód",
+        "HiddenViewEnbled": "Skrytý mód",
         "HomeBtn": "Home",
         "LightBtn": "Light",
         "ServiceViewEnabled": "Service View Enabled"
@@ -278,41 +278,41 @@
           "InstallFromUsb": "Update from USB"
         },
         "Titles": {
-          "Installed": "Update ready",
-          "UpdateAvailable": "Update available",
-          "UpdateInProgress": "Update in progress",
-          "UsbInstalled": "USB update ready",
-          "UsbUpdateAvailable": "USB update available"
+          "Installed": "INSTALOVY",
+          "UpdateAvailable": "AKTUALIZACE K DISPOZICI",
+          "UpdateInProgress": "PROBÍHÁ AKTUALIZACE",
+          "UsbInstalled": "USB AKTUALIZACE PŘIPRAVENA",
+          "UsbUpdateAvailable": "USB AKTUALIZACE K DISPOZICI"
         },
-        "installAndRebootBtn": "INSTALL",
-        "printerIsPrinting": "You cannot perform this step right now, because your printer is doing some work. Please wait a while, this window will automatically refresh when this step is ready",
-        "restartWarning": "The update is ready for installation. Press the button to install the update. The printer will restart once the update is completed.",
+        "installAndRebootBtn": "INSTALOVAT",
+        "printerIsPrinting": "Tento krok nelze nyní provést, protože tiskárna pracuje. Prosíme, počkejte chvíli, toto okno se automaticky aktualizuje jakmile to bude možné.",
+        "restartWarning": "Aktualizace je připravena k instalaci. Stiskněte tlačítko pro instalaci aktualizace. Po dokončení aktualizace se tiskárna restartuje.",
         "statuses": {
-          "DOWNLOADING": "DOWNLOADING UPDATE",
-          "ERROR": "UPDATE ERROR",
-          "INSTALLED": "UPDATE READY",
-          "UNPACKING": "UNPACKING UPDATE",
-          "UPDATE_AVAILABLE": "NEW UPDATE AVAILABLE",
-          "UP_TO_DATE": "NEWEST VERSION",
-          "USB_UNPACKING": "UNPACKING UPDATE",
-          "USB_UPDATE_AVAILABLE": "USB - NEW UPDATE"
+          "DOWNLOADING": "STAHOVÁNÍ AKTUALIZACE",
+          "ERROR": "CHYBA PŘI AKTUALIZACI",
+          "INSTALLED": "AKTUALIZACE PŘIPRAVENA",
+          "UNPACKING": "ROZBALOVÁNÍ AKTUALIZACE",
+          "UPDATE_AVAILABLE": "NOVÁ AKTUALIZACE",
+          "UP_TO_DATE": "NEJNOVĚJŠÍ VERZE",
+          "USB_UNPACKING": "ROZBALOVÁNÍ AKTUALIZACE",
+          "USB_UPDATE_AVAILABLE": "USB - NOVÁ AKTUALIZACE"
         }
       },
       "TrilabSelectFilamentDialog": {
-        "AreYouSureYouWantToSelectFilament": "Are you sure you want to select filament",
-        "Cancel": "Cancel",
-        "Cpnfirm": "Confirm",
+        "AreYouSureYouWantToSelectFilament": "Jste si jisti, že chcete vybrat filament?",
+        "Cancel": "Zrušit",
+        "Cpnfirm": "Potvrdit",
         "OK": "OK"
       },
       "TrilabServiceDialog": {
-        "Cancel": "Cancel",
-        "ServiceLogin": "Service Login"
+        "Cancel": "Zrušit",
+        "ServiceLogin": "Servisní ověření"
       },
       "TrilabUpdateDialog": {
-        "DANGER": "DANGER",
+        "DANGER": "POZOR",
         "INFO": "INFO",
         "Progres": "Progress:",
-        "RestartPrinter": "Restart printer",
+        "RestartPrinter": "Restartovat tiskárnu",
         "STATUS": "STATUS:",
         "ShowErrorTechinicalDetails": "Show error technical details",
         "WARNING": "WARN",
@@ -352,7 +352,7 @@
           "FifthStep": "Najděte \"Prusa Pro HT\" na pravé straně menu v konfiguračním průvodci",
           "SixthStep": "Vyberte všechna, která odpovídají, klepněte na \"Next\" pro pokračování nebo vyberte \"Finish\" pro navrácení na pokládací plochu"
         },
-        "CloseWizard": "Close wizard"
+        "CloseWizard": "Zavřít průvodce"
       },
       "StatusPanel": {
         "CurrentNozzle": "Současná tryska"
