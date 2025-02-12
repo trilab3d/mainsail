@@ -1065,7 +1065,9 @@
       "FPS": "FPS",
       "Headline": "Webcam",
       "NoWebcam": "Nenhuma webcam disponível. Adicione uma webcam em \"Configurações da Interface\" -> \"Webcams\".",
-      "UnknownWebcamService": "Serviço Webcam Desconhecido"
+      "UnknownWebcamService": "Serviço Webcam Desconhecido",
+      "ConnectingTo": "Conectando -se a {url}",
+      "Disconnected": "Desconectado"
     },
     "ZoffsetPanel": {
       "Clear": "Limpar",

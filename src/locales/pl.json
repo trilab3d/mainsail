@@ -1091,7 +1091,9 @@
       "FPS": "kl./s",
       "Headline": "Kamera internetowa",
       "NoWebcam": "Brak dostępnej kamery. Dodaj kamerę w \"Ustawienia Interfejsu\" -> \"Kamera Internetowa\".",
-      "UnknownWebcamService": "Nieznana usługa kamery"
+      "UnknownWebcamService": "Nieznana usługa kamery",
+      "ConnectingTo": "Łączenie z {url}",
+      "Disconnected": "Bezładny"
     },
     "ZoffsetPanel": {
       "Clear": "Wyczyść",

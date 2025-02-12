@@ -1105,7 +1105,9 @@
       "FPS": "FPS",
       "Headline": "Веб-камера",
       "NoWebcam": "Немає веб-камери. Додайте веб -камеру \"Налаштування Інтерфейсу\" -> \"Веб-камери\".",
-      "UnknownWebcamService": "Невідома служба веб-камери"
+      "UnknownWebcamService": "Невідома служба веб-камери",
+      "ConnectingTo": "Підключення до {url}",
+      "Disconnected": "Роз'єднаний"
     },
     "ZoffsetPanel": {
       "Clear": "Очистити",

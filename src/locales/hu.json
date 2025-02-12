@@ -1048,7 +1048,9 @@
       "FPS": "FPS",
       "Headline": "Webkamera",
       "UnknownWebcamService": "Ismeretlen webkamera szolg.",
-      "NoWebcam": "Nem elérhető webkamera. \nAdjon hozzá egy webkamerát az \"Interfész beállítások\" -> \"Webkamerák\" alatt."
+      "NoWebcam": "Nem elérhető webkamera. \nAdjon hozzá egy webkamerát az \"Interfész beállítások\" -> \"Webkamerák\" alatt.",
+      "ConnectingTo": "Csatlakozás a {URL} -hez",
+      "Disconnected": "Szétkapcsolt"
     },
     "ZoffsetPanel": {
       "Headline": "Z-eltolás",

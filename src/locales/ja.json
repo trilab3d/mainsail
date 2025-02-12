@@ -1065,7 +1065,9 @@
       "FPS": "FPS",
       "Headline": "カメラ",
       "NoWebcam": "カメラがありません。\"インターフェース設定\" -> \"カメラ\"からカメラを追加してください。",
-      "UnknownWebcamService": "不明なカメラサービス"
+      "UnknownWebcamService": "不明なカメラサービス",
+      "ConnectingTo": "{url}に接続する",
+      "Disconnected": "切断された"
     },
     "ZoffsetPanel": {
       "Clear": "初期化",

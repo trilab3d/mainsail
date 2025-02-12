@@ -1091,7 +1091,9 @@
       "FPS": "IPS",
       "Headline": "Caméra",
       "NoWebcam": "Aucune webcam n'est disponible. Ajouter une webcam sous \"Réglages interface\" -> \"Caméras\".",
-      "UnknownWebcamService": "Service Caméra inconnu"
+      "UnknownWebcamService": "Service Caméra inconnu",
+      "ConnectingTo": "Connexion à {url}",
+      "Disconnected": "Déconnecté"
     },
     "ZoffsetPanel": {
       "Clear": "Effacer",

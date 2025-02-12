@@ -1065,7 +1065,9 @@
       "FPS": "FPS",
       "Headline": "Web Kamerası",
       "NoWebcam": "Kullanılabilir bir web kamerası yok. \"Arayüz Ayarları\" -> \"Web Kameraları\" altından bir web kamerası ekleyin.",
-      "UnknownWebcamService": "Bilinmeyen Web Kamerası Hizmeti"
+      "UnknownWebcamService": "Bilinmeyen Web Kamerası Hizmeti",
+      "ConnectingTo": "{url} 'e bağlanma",
+      "Disconnected": "Bağlantısı kesilmiş"
     },
     "ZoffsetPanel": {
       "Clear": "Temizle",

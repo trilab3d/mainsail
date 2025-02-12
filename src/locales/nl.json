@@ -1066,7 +1066,9 @@
       "FPS": "FPS",
       "Headline": "Webcam",
       "NoWebcam": "Geen webcam beschikbaar. Voeg een webcam toe onder \"Interface Settings\" -> \"Webcams\".",
-      "UnknownWebcamService": "Onbekende Webcam Service"
+      "UnknownWebcamService": "Onbekende Webcam Service",
+      "ConnectingTo": "Verbinding maken met {url}",
+      "Disconnected": "Losgekoppeld"
     },
     "ZoffsetPanel": {
       "Clear": "Wissen",

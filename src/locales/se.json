@@ -859,7 +859,9 @@
       "FPS": "FPS",
       "Headline": "Webbkamera",
       "NoWebcam": "Ingen webbkamera tillgänglig. Lägg till en webbkamera under \"Gränssnittsinställningar\" -> \"Webbkameror\".",
-      "UnknownWebcamService": "Okänd webbkameratjänst"
+      "UnknownWebcamService": "Okänd webbkameratjänst",
+      "ConnectingTo": "Oktavuohta {url}",
+      "Disconnected": "Heaittihuvvon"
     },
     "ZoffsetPanel": {
       "Clear": "Rensa",
