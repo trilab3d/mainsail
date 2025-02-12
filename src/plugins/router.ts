@@ -4,7 +4,11 @@ import routes from '@/routes'
 import store from '@/store'
 
 Vue.use(VueRouter)
-const router = new VueRouter({ mode: 'history', routes })
+const router = new VueRouter({
+    base: import.meta.env.BASE_URL,
+    mode: 'history',
+    routes,
+})
 
 router.beforeEach((to, from, next) => {
     const routeFound = routes.find((route) => route.name === to.name)

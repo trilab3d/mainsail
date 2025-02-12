@@ -13,7 +13,8 @@
         "DeprecatedOptionHeadline": "Przestarzała funkcja Klipper'a",
         "DeprecatedValue": "Ustawienie '{value}' w opcji '{option}' w sekcji '{section}' jest przestarzała i zostanie usunięta w przyszłych wydaniach.",
         "DeprecatedValueHeadline": "Przestarzała wartość Klipper'a",
-        "KlipperWarning": "Ostrzeżenie Klipper'a"
+        "KlipperWarning": "Ostrzeżenie Klipper'a",
+        "KlipperRuntimeWarning": "Ostrzeżenie dotyczące czasu działania Klippera"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "NextReboot": "przy następnym uruchomieniu",
       "NoNotification": "Brak powiadomień",
       "Notifications": "Powiadomienia",
-      "Remind": "Przypomnij:"
+      "Remind": "Przypomnij:",
+      "ShowDetails": "pokaż szczegóły",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1 W",
+      "MaintenanceReminder": "Przypomnienie o konserwacji",
+      "MaintenanceReminderText": "Termin konserwacji „{name}”.",
+      "TmcOtFlag": "Błąd sterownika krokowego: ustawiona flaga OT",
+      "TmcOtFlagText": "Sterownik krokowy „{name}” wyzwolił flagę OT i przestał działać. \nMoże to być spowodowane zbyt dużym prądem. \nSprawdź ustawienia sterownika krokowego i chłodzenie.",
+      "TmcOtpwFlag": "Ostrzeżenie sterownika krokowego: ustawiona flaga OTPW",
+      "TmcOtpwFlagText": "Sterownik krokowy „{name}” wyzwolił flagę OTPW i może przestać działać, jeśli zrobi się cieplej. \nJest to oznaką nadmiernej temperatury. \nMoże to być spowodowane zbyt dużym prądem. \nSprawdź ustawienia sterownika krokowego i chłodzenie."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Musi być większa lub równa {min}!",
@@ -123,7 +134,7 @@
       "TopBar": {
         "LightBtn": "Światło"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Zaawansowane funkcje",
       "ConnectionStatus": {
         "Mainsail": "Grota"
       },
@@ -216,6 +227,25 @@
           "PrinterNameRequired": "Nazwa drukarki jest wymagana",
           "PrinterNameMaxLength": "Maksymalna dozwolona długość nazwy to 63 znaki",
           "PrinterNameInvalid": "Nazwa drukarki jest nieprawidłowa. \nDozwolone są tylko podstawowe znaki, cyfry i łączniki."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Profil sieci został zapisany!",
+            "ErrorNoConnections": "Błąd - Zła odpowiedź - brak połączeń",
+            "ErrorBadResponse": "Błąd - zła odpowiedź",
+            "ErrorWhileLoadingWifi": "Błąd podczas ładowania sieci Wi -Fi",
+            "ConnectedTo": "Połączony z:",
+            "InvalidMacFormat": "Nieprawidłowy format adresu MAC",
+            "invalidIP6Format": "Nieprawidłowy format adresu IPv6",
+            "invalidIP4PatternFormat": "Nieprawidłowy format. \nWprowadź w formacie x.x.x.x, x.x.x.x",
+            "invalidIP4Format": "Nieprawidłowy format. \nWprowadź w formacie x.x.x.x",
+            "DiscardChanges": "Odrzuć zmiany",
+            "ProfileSettingsTitle": "Ustawienia profilu",
+            "interface": "Interfejs",
+            "connectionInProgress": "Połączenie w toku ..",
+            "signal": "SYGNAŁ",
+            "AvailableWirelessNetworks": "Dostępne sieci bezprzewodowe"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -301,7 +331,7 @@
           "UP_TO_DATE": "NAJNOWSZA WERSJA",
           "USB_UNPACKING": "AKTUALIZACJA ROZPAKOWANIA",
           "USB_UPDATE_AVAILABLE": "USB - NOWA AKTUALIZACJA",
-          "UNPACKING_FAILED": "Rozpakowanie nie powiodło się"
+          "UNPACKING_FAILED": "ROZPAKOWANIE NIEUDANE"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -651,7 +681,39 @@
     "TotalPrinttime": "Łączny czas drukowania",
     "TotalTime": "Całkowity czas druku",
     "AddToQueueSuccessful": "Plik {nazwa pliku} dodano do kolejki.",
-    "LoadCompleteHistory": "Załaduj pełną historię"
+    "LoadCompleteHistory": "Załaduj pełną historię",
+    "AddMaintenance": "Dodaj konserwację",
+    "Name": "Nazwa",
+    "AddANote": "Dodaj notatkę",
+    "DateBasedReminder": "Data",
+    "DateBasedReminderDescription": "To przypomnienie jest oparte na dacie.",
+    "Days": "dni",
+    "EditMaintenance": "Edytuj konserwację",
+    "EntryCreatedAt": "Utworzono o godzinie {data}.",
+    "EntryNextPerform": "Następny występ:",
+    "EntryPerformedAt": "Wykonano w {data}.",
+    "EntrySince": "Używany od:",
+    "Filament": "Włókno",
+    "FilamentBasedReminder": "Włókno",
+    "FilamentBasedReminderDescription": "To przypomnienie opiera się na zużyciu żarnika.",
+    "Hours": "godziny",
+    "InvalidNameEmpty": "Nieprawidłowa nazwa. \nNazwa nie może być pusta!",
+    "Maintenance": "Konserwacja",
+    "MaintenanceEntries": "Wpisy konserwacyjne",
+    "Meter": "metr",
+    "NoReminder": "Brak przypomnienia",
+    "OneTime": "Jednorazowy",
+    "Perform": "dokonywać",
+    "PerformMaintenance": "Wykonaj konserwację",
+    "Performed": "wykonane",
+    "PerformedAndReschedule": "wykonane i przełożone",
+    "PrintJobs": "Drukuj zadania",
+    "PrinttimeBasedReminder": "Czas drukowania",
+    "PrinttimeBasedReminderDescription": "To przypomnienie jest oparte na czasie drukowania.",
+    "Reminder": "Przypomnienie",
+    "Repeat": "Powtarzać",
+    "Settings": "Ustawienia",
+    "Time": "Czas"
   },
   "JobQueue": {
     "Cancel": "Anuluj",
@@ -794,10 +856,10 @@
       "WebClientUpdateQuestion": "W niektórych przypadkach aktualizacja klienta sieciowego może spowodować zmiany, które mogą spowodować niezgodność. Więcej informacji można znaleźć w uwagach wydania.",
       "ERROR": "Błąd",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Wolnostojący",
+        "Dirty": "Brudny"
       },
-      "PackagesCanBeUpgraded": ""
+      "PackagesCanBeUpgraded": "Pakiety można ulepszać"
     }
   },
   "ManualProbe": {
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "Drukarka jest obecnie wyłączona i Klipper nie może się z nią połączyć. Aby włączyć drukarkę, kliknij poniższy przycisk:",
       "Restart": "Ponowne uruchomienie",
       "ServiceReports": "Raporty {service}",
-      "KlipperCheck": ""
+      "KlipperCheck": "Sprawdź, czy usługa Klipper jest uruchomiona i czy skonfigurowano UDS (Unix Domain Socket).",
+      "KlipperLog": "Dziennik Klippera",
+      "MoonrakerLog": "Dziennik Moonrakera"
     },
     "MachineSettingsPanel": {
       "Headline": "Ustawienia drukarki",
@@ -1039,8 +1103,8 @@
       "SaveInfoDescription": "Nowe przesunięcie Z zostało obliczone i zarejestrowane. Kliknij przycisk \"ZAPISZ KONFIGURACJĘ\", aby zapisać ją w pliku printer.cfg i zrestartować Klipper.",
       "SaveInfoDescriptionPrint": "Nowe przesunięcie Z zostało obliczone i zarejestrowane. Po wydrukowaniu kliknij \"ZAPISZ KONFIGURACJĘ\" na górnym pasku, aby zapisać ją w pliku printer.cfg i zrestartować Klipper.",
       "SaveInfoHeadline": "Informacja",
-      "ToEndstop": "Do endstop",
-      "ToProbe": "Do zbadania"
+      "ToEndstop": "Do przystanku końcowego",
+      "ToProbe": "sondować"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1219,8 +1283,10 @@
       "Restore": "Przywróć",
       "RestoreDialog": "Proszę wybrać wszystkie sekcje do przywrócenia:",
       "TimeFormat": "Format czasu",
-      "DbWebcams": "",
-      "MoonrakerDb": ""
+      "DbWebcams": "Kamery internetowe",
+      "MoonrakerDb": "Baza danych Moonrakera",
+      "DbMaintenance": "Konserwacja",
+      "DbNavigation": "Nawigacja"
     },
     "InterfaceSettings": "Ustawienia interfejsu",
     "MacrosTab": {
@@ -1310,7 +1376,10 @@
       "Port": "Port",
       "RemotePrinters": "Drukarki",
       "UpdatePrinter": "Aktualizuj drukarkę",
-      "UseConfigJson": "Wykryto bazę danych JSON. Użyj pliku config.json, aby zmodyfikować listę drukarek."
+      "UseConfigJson": "Wykryto bazę danych JSON. Użyj pliku config.json, aby zmodyfikować listę drukarek.",
+      "Path": "Ścieżka",
+      "Name": "Nazwa",
+      "NameDescription": "Ta nazwa nie będzie wyświetlana w GUI i będzie używana tylko do przekierowań."
     },
     "Store": "zachowaj",
     "TimelapseTab": {
@@ -1383,7 +1452,12 @@
       "RulesMin": "Wartość musi wynosić co najmniej {min}!",
       "RulesPositive": "Wartość musi być dodatnia!",
       "RulesRequired": "Wartość jest wymagana!",
-      "RulesZeroAndPositive": "Wartość musi wynosić 0 lub więcej!"
+      "RulesZeroAndPositive": "Wartość musi wynosić 0 lub więcej!",
+      "CameraDescriptionWithSnapshotUrl": "Wybierz, która kamera (z adresem URL migawki) ma zostać użyta",
+      "CameraWarningAlreadySet": "Ta wartość jest już ustawiona w pliku konfiguracyjnym Moonrakera",
+      "CameraWarningAlreadySetSmall": "snapshoturl w sekcji [timelapse].",
+      "NoWebcamFound": "Brak dostępnej kamery internetowej",
+      "SelectWebcam": "Wybierz kamerę internetową..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Okno śrub stołu",
@@ -1438,7 +1512,28 @@
       "Theme": "Temat",
       "ThemeDark": "Ciemny",
       "ThemeDescription": "Zmień ogólny wygląd i działanie aplikacji",
-      "ThemeLight": "Światło"
+      "ThemeLight": "Światło",
+      "Mode": "Tryb",
+      "PrintstatusThumbnailZoom": "Duże powiększenie miniatur",
+      "PrintstatusThumbnailZoomDescription": "Spowoduje to wyłączenie efektu powiększenia miniatury w panelu stanu.",
+      "ProgressAsFavicon": "Pokaż postęp jako favicon",
+      "ProgressAsFaviconDescription": "Zmień ikonę logo Grota na kółko postępu.",
+      "ModeDescription": "Zmień ogólny wygląd aplikacji.",
+      "DashboardFilesFilter": "Filtr plików pulpitu",
+      "DashboardFilesFilterCompleted": "Zakończony",
+      "DashboardFilesFilterDescription": "Filtruj pliki w panelu stanu pulpitu nawigacyjnego według ich ostatniego statusu.",
+      "DashboardFilesFilterFailed": "Przegrany",
+      "DashboardFilesFilterNew": "Nowy",
+      "DashboardFilesLimit": "Limit plików pulpitu",
+      "DashboardFilesLimitDescription": "Wybierz maksymalną liczbę plików do wyświetlania na panelu stanu pulpitu nawigacyjnego. \n(0 ukrywa kartę plików)",
+      "DashboardFilesLimitLabel": "{count} pliki",
+      "DashboardHistoryLimit": "Limit historii deski rozdzielczej",
+      "DashboardHistoryLimitDescription": "Wybierz maksymalną liczbę zadań, które można wyświetlić na panelu deski rozdzielczej w panelu stanu. \n(0 ukrywa zakładkę historii)",
+      "DashboardHistoryLimitLabel": "{count} zadania",
+      "HideOtherInstances": "Ukryj inne instancje",
+      "HideOtherInstancesDescription": "Ukryj inne instancje Klipper",
+      "ConfirmOnCancelJob": "Wymagaj potwierdzenia na zadaniu anulowania",
+      "ConfirmOnCancelJobDescription": "Pokaż okno dialogowe potwierdzenia w Anuluj zadanie"
     },
     "Update": "aktualizuj",
     "WebcamsTab": {
@@ -1491,6 +1586,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Wiosna"
+      },
+      "DefaultOrientationDescription": "Wybierz domyślną orientację wizualizacji siatki łóżka.",
+      "DefaultOrientation": "Domyślna orientacja",
+      "Orientations": {
+        "Front": "Przód",
+        "LeftFront": "Lewy front",
+        "RightFront": "Prawy front",
+        "Top": "Szczyt"
       }
     }
   },
@@ -1567,5 +1670,10 @@
     "Refresh": "odświeżać",
     "Resolutions": "Postanowienia"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Reset do ustawień fabrycznych"
+    }
+  }
 }

@@ -13,7 +13,8 @@
         "DeprecatedOptionHeadline": "Застаріла опція Klipper",
         "DeprecatedValue": "Значення '{value}' опції '{option}' у секції '{section}' застаріла і буде видалена у майбутньому випуску.",
         "DeprecatedValueHeadline": "Застаріле значення Klipper",
-        "KlipperWarning": "Попередження Klipper"
+        "KlipperWarning": "Попередження Klipper",
+        "KlipperRuntimeWarning": "Попередження про виконання Klipper"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "NextReboot": "наступне перезавантаження",
       "NoNotification": "Нема Повідомлень",
       "Notifications": "Повідомлення",
-      "Remind": "Нагадування:"
+      "Remind": "Нагадування:",
+      "ShowDetails": "показати деталі",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1 Вт",
+      "MaintenanceReminder": "Нагадування про технічне обслуговування",
+      "MaintenanceReminderText": "Термін технічного обслуговування \"{name}\".",
+      "TmcOtFlag": "Помилка крокового драйвера: встановлено прапор OT",
+      "TmcOtFlagText": "Кроковий драйвер \"{name}\" активував прапор OT і перестав працювати. \nЦе може бути викликано занадто високим струмом. \nБудь ласка, перевірте налаштування крокового драйвера та охолодження.",
+      "TmcOtpwFlag": "Попередження драйвера крокового кроку: установлено позначку OTPW",
+      "TmcOtpwFlagText": "Кроковий драйвер \"{name}\" активував прапор OTPW і може перестати працювати, якщо стане гарячішим. \nЦе ознака перегріву. \nЦе може бути викликано занадто високим струмом. \nБудь ласка, перевірте налаштування крокового драйвера та охолодження."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Повинен бути більшим або рівним, ніж {min}!",
@@ -126,7 +137,7 @@
       "TopBar": {
         "LightBtn": "світло"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Розширені функції",
       "ConnectionStatus": {
         "Mainsail": "Грот"
       },
@@ -219,6 +230,25 @@
           "PrinterNameRequired": "Потрібно вказати назву принтера",
           "PrinterNameMaxLength": "Максимальна дозволена довжина імені – 63 символи",
           "PrinterNameInvalid": "Ім'я принтера недійсне. \nДозволяються лише прості символи, цифри та дефіси."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Мережевий профіль був успішним збереженим!",
+            "ErrorNoConnections": "Помилка - погана відповідь - немає з'єднань",
+            "ErrorBadResponse": "Помилка - погана відповідь",
+            "ErrorWhileLoadingWifi": "Помилка під час завантаження Wi -Fi Networks",
+            "ConnectedTo": "Підключений до:",
+            "InvalidMacFormat": "Недійсний формат MAC -адреси",
+            "invalidIP6Format": "Недійсний формат адреси IPv6",
+            "invalidIP4PatternFormat": "Недійсний формат. \nВведіть у форматі x.x.x.x, x.x.x.x",
+            "invalidIP4Format": "Недійсний формат. \nВведіть у форматі x.x.x.x",
+            "DiscardChanges": "Відкиньте зміни",
+            "ProfileSettingsTitle": "Налаштування профілю",
+            "interface": "Інтерфейс",
+            "connectionInProgress": "Зв'язок у процесі ..",
+            "signal": "Сигнал",
+            "AvailableWirelessNetworks": "Доступні бездротові мережі"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -304,7 +334,7 @@
           "UP_TO_DATE": "НАЙНОВІША ВЕРСІЯ",
           "USB_UNPACKING": "РОЗПАКУВАННЯ ОНОВЛЕННЯ",
           "USB_UPDATE_AVAILABLE": "USB - НОВЕ ОНОВЛЕННЯ",
-          "UNPACKING_FAILED": "Розпакування не вдалося"
+          "UNPACKING_FAILED": "ПОМИЛКА РОЗПАКУВАННЯ"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -665,7 +695,39 @@
     "TotalPrinttime": "Загальний Час Друку",
     "TotalTime": "Загальний Час",
     "TitleRefreshHistory": "Оновити історію",
-    "TitleSettings": "Налаштування"
+    "TitleSettings": "Налаштування",
+    "AddMaintenance": "Додати технічне обслуговування",
+    "Name": "Ім'я",
+    "AddANote": "Додайте примітку",
+    "DateBasedReminder": "Дата",
+    "DateBasedReminderDescription": "Це нагадування базується на даті.",
+    "Days": "днів",
+    "EditMaintenance": "Редагувати технічне обслуговування",
+    "EntryCreatedAt": "Створено {date}.",
+    "EntryNextPerform": "Далі виконати:",
+    "EntryPerformedAt": "Виконано {date}.",
+    "EntrySince": "Використовується з:",
+    "Filament": "Нитка розжарення",
+    "FilamentBasedReminder": "Нитка розжарення",
+    "FilamentBasedReminderDescription": "Це нагадування базується на використанні нитки.",
+    "Hours": "години",
+    "InvalidNameEmpty": "Недійсне ім'я. \nНазва не повинна бути пустою!",
+    "Maintenance": "Технічне обслуговування",
+    "MaintenanceEntries": "Записи щодо технічного обслуговування",
+    "Meter": "метр",
+    "NoReminder": "Жодного нагадування",
+    "OneTime": "Одноразовий",
+    "Perform": "виконувати",
+    "PerformMaintenance": "Виконайте технічне обслуговування",
+    "Performed": "виконується",
+    "PerformedAndReschedule": "виконано та переплановано",
+    "PrintJobs": "Завдання друку",
+    "PrinttimeBasedReminder": "Час друку",
+    "PrinttimeBasedReminderDescription": "Це нагадування базується на часу друку.",
+    "Reminder": "Нагадування",
+    "Repeat": "Повторіть",
+    "Settings": "Налаштування",
+    "Time": "час"
   },
   "JobQueue": {
     "Cancel": "Скасувати",
@@ -808,10 +870,10 @@
       "WebClientUpdateQuestion": "У деяких випадках оновлення веб-клієнт має зміни, які можуть спричинити несумісність. Для отримання додаткової інформації див. примітки до релізу.",
       "ERROR": "Помилка",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Відокремлений",
+        "Dirty": "Брудний"
       },
-      "PackagesCanBeUpgraded": ""
+      "PackagesCanBeUpgraded": "Пакети можна оновлювати"
     }
   },
   "ManualProbe": {
@@ -867,7 +929,9 @@
       "PrinterSwitchedOffDescription": "Принтер наразі вимкнено, і Klipper не може підключитися. Щоб увімкнути принтер, натисніть кнопку нижче:",
       "Restart": "Перезапустити",
       "ServiceReports": "{service} повідомляє",
-      "KlipperCheck": ""
+      "KlipperCheck": "Переконайтеся, що служба Klipper запущена та що налаштовано UDS (сокет домену Unix).",
+      "KlipperLog": "Журнал кліпера",
+      "MoonrakerLog": "Журнал Мунрейкера"
     },
     "MachineSettingsPanel": {
       "Headline": "Машина",
@@ -908,7 +972,7 @@
       "RunoutSensor": {
         "Detected": "виявлено",
         "Empty": "Порожньо",
-        "Disabled": "Інвалід"
+        "Disabled": "Вимкнено"
       }
     },
     "PowerControlPanel": {
@@ -1053,8 +1117,8 @@
       "SaveInfoDescription": "Новий Z-Offset був обчислений та зареєстрований. Натисніть на \"ЗБЕРЕГТИ КОНФІГУРАЦІЮ\" Щоб зберегти його на printer.cfg та перезапустити Klipper.",
       "SaveInfoDescriptionPrint": "Новий Z-Offset був обчислений та зареєстрований. Після друку натисніть на \"ЗБЕРЕГТИ КОНФІГУРАЦІЮ\" у верхній панелі, щоб зберегти його у printer.cfg та перезапустити Klipper.",
       "SaveInfoHeadline": "Інформація",
-      "ToEndstop": "До кінця",
-      "ToProbe": "Зондувати"
+      "ToEndstop": "До кінцевої зупинки",
+      "ToProbe": "зондувати"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1233,8 +1297,10 @@
       "Restore": "Відновити",
       "RestoreDialog": "Будь ласка, виберіть усі розділи, які ви хочете відновити:",
       "TimeFormat": "Формат часу",
-      "DbWebcams": "",
-      "MoonrakerDb": ""
+      "DbWebcams": "веб-камери",
+      "MoonrakerDb": "База даних Moonraker",
+      "DbMaintenance": "Технічне обслуговування",
+      "DbNavigation": "Навігація"
     },
     "HeightmapTab": {
       "ColorSchemes": "Палітри кольорів",
@@ -1246,6 +1312,14 @@
         "Hsv": "Hsv",
         "Portland": "Портленд",
         "Spring": "Весна"
+      },
+      "DefaultOrientationDescription": "Виберіть орієнтацію за замовчуванням для візуалізації сітки ліжка.",
+      "DefaultOrientation": "Орієнтація за замовчуванням",
+      "Orientations": {
+        "Front": "Фронт",
+        "LeftFront": "Лівий фронт",
+        "RightFront": "Правий фронт",
+        "Top": "Топ"
       }
     },
     "InterfaceSettings": "Налаштування інтерфейсу",
@@ -1336,7 +1410,10 @@
       "Port": "Порт",
       "RemotePrinters": "Принтери",
       "UpdatePrinter": "Оновити принтер",
-      "UseConfigJson": "InstanceDB = JSON виявлений. Будь ласка, використовуйте config.json щоб змінити список принтерів."
+      "UseConfigJson": "InstanceDB = JSON виявлений. Будь ласка, використовуйте config.json щоб змінити список принтерів.",
+      "Path": "шлях",
+      "Name": "Ім'я",
+      "NameDescription": "Це ім’я не відображатиметься в графічному інтерфейсі і використовуватиметься лише для перенаправлення."
     },
     "Store": "зберегти",
     "TimelapseTab": {
@@ -1409,7 +1486,12 @@
       "VariableFpsMax": "Динамічний FPS макс",
       "VariableFpsMaxDescription": "Максимальне значення при динамічному FPS",
       "VariableFpsMin": "Динамічний FPS мін",
-      "VariableFpsMinDescription": "Мінімальне значення при динамічному FPS"
+      "VariableFpsMinDescription": "Мінімальне значення при динамічному FPS",
+      "CameraDescriptionWithSnapshotUrl": "Виберіть, яку камеру (з URL-адресою знімка) слід використовувати",
+      "CameraWarningAlreadySet": "Це значення вже встановлено у файлі конфігурації Moonraker",
+      "CameraWarningAlreadySetSmall": "snapshoturl у розділі [timelapse].",
+      "NoWebcamFound": "Веб-камера недоступна",
+      "SelectWebcam": "Виберіть веб-камеру..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Вікно гвинтів стола",
@@ -1464,7 +1546,28 @@
       "UiSettings": "Налаштування в інтерфейсі",
       "ConfirmOnCoolDown": "Вимагати підтвердження на CoolDown",
       "ConfirmOnCoolDownDescription": "Показати діалогове вікно підтвердження на CoolDown",
-      "ShowWebcamInNavigation": "Показати веб -камеру в навігації"
+      "Mode": "Режим",
+      "PrintstatusThumbnailZoom": "Велике масштабування мініатюр",
+      "PrintstatusThumbnailZoomDescription": "Це вимкне ефект масштабування мініатюри на панелі стану.",
+      "ProgressAsFavicon": "Показувати прогрес як фавікон",
+      "ProgressAsFaviconDescription": "Змініть фавікон логотипу «Грот» на коло прогресу.",
+      "ShowWebcamInNavigation": "Показати веб-камеру в навігації",
+      "ModeDescription": "Змініть загальний вигляд та відчуття програми.",
+      "DashboardFilesFilter": "Фільтр файлів приладів",
+      "DashboardFilesFilterCompleted": "Завершений",
+      "DashboardFilesFilterDescription": "Відфільтруйте файли на панелі стану приладної панелі за останнім статусом.",
+      "DashboardFilesFilterFailed": "Провалився",
+      "DashboardFilesFilterNew": "Новачок",
+      "DashboardFilesLimit": "Обмеження файлів приладної панелі",
+      "DashboardFilesLimitDescription": "Виберіть максимальну кількість файлів для відображення на панелі стану приладної панелі. \n(0 приховує вкладку Файли)",
+      "DashboardFilesLimitLabel": "{count} файли",
+      "DashboardHistoryLimit": "Ліміт історії панелі приладів",
+      "DashboardHistoryLimitDescription": "Виберіть максимальну кількість завдань для відображення на панелі приладів на панелі статусу. \n(0 приховує вкладку історію)",
+      "DashboardHistoryLimitLabel": "{count} Робота",
+      "HideOtherInstances": "Сховати інші випадки",
+      "HideOtherInstancesDescription": "Сховати інші випадки Кліппера",
+      "ConfirmOnCancelJob": "Вимагати підтвердження на роботі скасування",
+      "ConfirmOnCancelJobDescription": "Показати діалогове вікно підтвердження про скасування роботи"
     },
     "Update": "оновлення",
     "WebcamsTab": {
@@ -1566,5 +1669,10 @@
     "CoolDown": "Заспокойся",
     "No": "Немає",
     "Yes": "Так"
+  },
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Скидання до заводських налаштувань"
+    }
   }
 }

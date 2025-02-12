@@ -4,22 +4,9 @@
         <v-app-bar app elevate-on-scroll :height="topbarHeight" class="topbar pa-0" clipped-left>
             <v-app-bar-nav-icon tile @click.stop="naviDrawer = !naviDrawer"></v-app-bar-nav-icon>
             <router-link to="/">
-                <template v-if="sidebarLogo">
-                    <img
-                        :src="sidebarLogo"
-                        style="height: 32px"
-                        class="nav-logo ml-4 mr-1 d-none d-sm-flex"
-                        alt="Logo" />
-                </template>
-                <template v-else>
-                    <mainsail-logo
-                        :color="logoColor"
-                        style="height: 32px"
-                        class="nav-logo ml-4 mr-1 d-none d-sm-flex"
-                        router
-                        to="/"
-                        :ripple="false"></mainsail-logo>
-                </template>
+                <inline-svg v-if="sidebarLogo && isSvgLogo" :src="sidebarLogo" :class="logoClasses" />
+                <img v-else-if="sidebarLogo" :src="sidebarLogo" :class="logoClasses" alt="Logo" />
+                <mainsail-logo v-else :color="logoColor" :class="logoClasses" router to="/" :ripple="false" />
             </router-link>
             <v-toolbar-title class="text-no-wrap ml-0 pl-2 mr-2">{{ printerName }}</v-toolbar-title>
             <printer-selector v-if="countPrinters" />
@@ -110,7 +97,7 @@
             <the-settings-menu />
             <the-top-corner-menu />
         </v-app-bar>
-        <v-snackbar v-model="uploadSnackbar.status" :timeout="-1" :value="true" fixed right bottom>
+        <v-snackbar v-model="uploadSnackbar.status" :timeout="-1" fixed right bottom>
             <strong>{{ $t('App.TopBar.Uploading') }} {{ uploadSnackbar.filename }}</strong>
             <br />
             {{ Math.round(uploadSnackbar.percent) }} % @ {{ formatFilesize(Math.round(uploadSnackbar.speed)) }}/s
@@ -153,6 +140,7 @@
             :file="tlb_dialogPrintFile"
             :current-path="tlb_currentPrintPath"
             @closeDialog="tlb_closePrintDialog" />
+        <emergency-stop-dialog :show-dialog="showEmergencyStopDialog" @close="showEmergencyStopDialog = false" />
     </div>
 </template>
 
@@ -187,6 +175,9 @@ import {
 } from '@mdi/js'
 import ControlMixin from './mixins/control'
 import { Watch } from 'vue-property-decorator'
+import EmergencyStopDialog from '@/components/dialogs/EmergencyStopDialog.vue'
+import InlineSvg from 'vue-inline-svg'
+import ThemeMixin from '@/components/mixins/theme'
 
 type uploadSnackbar = {
     status: boolean
@@ -203,6 +194,8 @@ type uploadSnackbar = {
 
 @Component({
     components: {
+        EmergencyStopDialog,
+        InlineSvg,
         Panel,
         TheSettingsMenu,
         TheTopCornerMenu,
@@ -214,7 +207,7 @@ type uploadSnackbar = {
         TrilabPrintDoorOpenDialog,
     },
 })
-export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMixin) {
+export default class TheTopbar extends Mixins(BaseMixin, ThemeMixin, ControlMixin, TrilabMixin) {
     mdiAlertOctagonOutline = mdiAlertOctagonOutline
     mdiContentSave = mdiContentSave
     mdiFileUpload = mdiFileUpload
@@ -319,10 +312,6 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         return this.$store.state.printer.hostname
     }
 
-    get boolWideNavDrawer() {
-        return this.$store.state.gui.uiSettings.boolWideNavDrawer ?? false
-    }
-
     get countPrinters() {
         return this.$store.getters['farm/countPrinters']
     }
@@ -331,12 +320,16 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
         return this.$store.state.gui.uiSettings.boolHideUploadAndPrintButton ?? false
     }
 
-    get sidebarLogo(): string {
-        return this.$store.getters['files/getSidebarLogo']
+    get isSvgLogo() {
+        return this.sidebarLogo.includes('.svg?timestamp=') || this.sidebarLogo.endsWith('.svg')
     }
 
     get logoColor(): string {
         return this.$store.state.gui.uiSettings.logo
+    }
+
+    get logoClasses() {
+        return ['nav-logo', 'ml-2', 'mr-1', 'd-none', 'd-sm-flex']
     }
 
     get boolShowUploadAndPrint() {
@@ -482,7 +475,8 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
 
         return new Promise((resolve) => {
             this.uploadSnackbar.cancelTokenSource = axios.CancelToken.source()
-            axios.post(this.apiUrl + '/server/files/upload', formData, {
+            axios
+                .post(this.apiUrl + '/server/files/upload', formData, {
                     cancelToken: this.uploadSnackbar.cancelTokenSource.token,
                     headers: { 'Content-Type': 'multipart/form-data' },
                     onUploadProgress: (progressEvent: AxiosProgressEvent) => {
@@ -493,9 +487,7 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
                 })
                 .then((result) => {
                     this.uploadSnackbar.status = false
-                    const text = this.$t('App.TopBar.UploadOfFileSuccessful', {
-                        file: filename,
-                    }).toString()
+                    const text = this.$t('App.TopBar.UploadOfFileSuccessful', { file: filename }).toString()
                     this.$toast.success(text)
                     resolve(result.data?.item ?? 'file')
                 })
@@ -570,7 +562,10 @@ export default class TheTopbar extends Mixins(BaseMixin, ControlMixin, TrilabMix
     height: 100% !important;
     max-height: none;
 }
-
+::v-deep .topbar .nav-logo {
+    width: auto;
+    height: 32px;
+}
 /*noinspection CssUnusedSymbol*/
 .topbar .v-btn.v-btn--icon {
     /*noinspection CssUnresolvedCustomProperty*/

@@ -9,7 +9,8 @@
         "DeprecatedOptionHeadline": "Elavult Klipper Opció",
         "DeprecatedValue": "'{section}' / '{option}' / Value '{value}' opcióját leírtuk, és a következő verzióban már nem lesz benne.",
         "DeprecatedValueHeadline": "Elavult Klipper Érték",
-        "KlipperWarning": "Klipper figyelmeztetés"
+        "KlipperWarning": "Klipper figyelmeztetés",
+        "KlipperRuntimeWarning": "Klipper futásidejű figyelmeztetés"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
         "Description": "A(z) {name} elavult és nem teljesen támogatott. \nA jelenlegi verzió a {version}, de a Mainsailhez {minVersion} vagy újabb verzió szükséges.",
         "Headline": "Elavult böngésző"
       },
-      "Notifications": "Értesítések"
+      "Notifications": "Értesítések",
+      "ShowDetails": "részletek megjelenítése",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "Karbantartási emlékeztető",
+      "MaintenanceReminderText": "„{name}” karbantartás esedékes.",
+      "TmcOtFlag": "Stepper illesztőprogram hiba: OT jelző beállítva",
+      "TmcOtFlagText": "A „{name}” léptető-illesztőprogram aktiválta az OT jelzőt, és leállt. \nEzt túl nagy áram okozhatja. \nKérjük, ellenőrizze a léptető-illesztőprogram beállításait és a hűtést.",
+      "TmcOtpwFlag": "Stepper driver figyelmeztetés: OTPW zászló beállítva",
+      "TmcOtpwFlagText": "A „{name}” léptető-illesztőprogram aktiválta az OTPW jelzőt, és leállhat, ha felmelegszik. \nEz a túlmelegedés jele. \nEzt túl nagy áram okozhatja. \nKérjük, ellenőrizze a léptető-illesztőprogram beállításait és a hűtést."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Nagyobbnak vagy egyenlőnek kell lennie mint {min}!",
@@ -118,7 +129,7 @@
       "TopBar": {
         "LightBtn": "Fény"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Fejlett funkciók",
       "ConnectionStatus": {
         "Mainsail": "Nagyvitorla"
       },
@@ -211,6 +222,25 @@
           "PrinterNameRequired": "A nyomtató neve kötelező",
           "PrinterNameMaxLength": "A név megengedett maximális hossza 63 karakter",
           "PrinterNameInvalid": "A nyomtató neve érvénytelen. \nCsak alapkarakterek, számok és kötőjelek megengedettek."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "A hálózati profil sikeresen mentett!",
+            "ErrorNoConnections": "Hiba - Rossz válasz - nincs kapcsolat",
+            "ErrorBadResponse": "Hiba - Rossz válasz",
+            "ErrorWhileLoadingWifi": "Hiba a wifi hálózatok betöltésekor",
+            "ConnectedTo": "Csatlakozik:",
+            "InvalidMacFormat": "Érvénytelen MAC -címformátum",
+            "invalidIP6Format": "Érvénytelen IPv6 címformátum",
+            "invalidIP4PatternFormat": "Érvénytelen formátum. \nÍrja be az x.x.x.x formátumot, x.x.x.x",
+            "invalidIP4Format": "Érvénytelen formátum. \nÍrja be az x.x.x.x formátumot",
+            "DiscardChanges": "Dobja el a változásokat",
+            "ProfileSettingsTitle": "Profilbeállítások",
+            "interface": "Felület",
+            "connectionInProgress": "Kapcsolat a folyamatban ..",
+            "signal": "JEL",
+            "AvailableWirelessNetworks": "Elérhető vezeték nélküli hálózatok"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -296,7 +326,7 @@
           "UP_TO_DATE": "LEGÚJABB VERZIÓ",
           "USB_UNPACKING": "KICSOMAGOLÁSI FRISSÍTÉS",
           "USB_UPDATE_AVAILABLE": "USB - ÚJ FRISSÍTÉS",
-          "UNPACKING_FAILED": "A kicsomagolás sikertelen"
+          "UNPACKING_FAILED": "KICSOMAGOLÁS SIKERTELEN"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -640,7 +670,39 @@
     "Chart": "Diagram",
     "DeleteSingleJobQuestion": "Valóban törölni szeretné a munkát?",
     "LoadCompleteHistory": "Teljes előzmények betöltése",
-    "Table": "asztal"
+    "Table": "asztal",
+    "AddMaintenance": "Karbantartás hozzáadása",
+    "Name": "Név",
+    "AddANote": "Jegyzet hozzáadása",
+    "DateBasedReminder": "Dátum",
+    "DateBasedReminderDescription": "Ez az emlékeztető a dátumon alapul.",
+    "Days": "napokon",
+    "EditMaintenance": "Karbantartás szerkesztése",
+    "EntryCreatedAt": "Létrehozva: {date}.",
+    "EntryNextPerform": "Következő előadás:",
+    "EntryPerformedAt": "Előadás dátuma: {date}.",
+    "EntrySince": "óta használatos:",
+    "Filament": "Szál",
+    "FilamentBasedReminder": "Szál",
+    "FilamentBasedReminderDescription": "Ez az emlékeztető az izzószál használatán alapul.",
+    "Hours": "óra",
+    "InvalidNameEmpty": "Érvénytelen név. \nA név nem lehet üres!",
+    "Maintenance": "Karbantartás",
+    "MaintenanceEntries": "Karbantartási bejegyzések",
+    "Meter": "méter",
+    "NoReminder": "Nincs emlékeztető",
+    "OneTime": "Egykori",
+    "Perform": "előadni",
+    "PerformMaintenance": "Karbantartás végrehajtása",
+    "Performed": "teljesített",
+    "PerformedAndReschedule": "elvégezni és átütemezni",
+    "PrintJobs": "Nyomtatási munkák",
+    "PrinttimeBasedReminder": "Nyomtatási idő",
+    "PrinttimeBasedReminderDescription": "Ez az emlékeztető a nyomtatási időn alapul.",
+    "Reminder": "Emlékeztető",
+    "Repeat": "Ismétlés",
+    "Settings": "Beállítások elemre",
+    "Time": "Idő"
   },
   "JobQueue": {
     "AllJobs": "Minden Feladat",
@@ -778,8 +840,8 @@
       "MoonrakerUpdateQuestion": "Ez frissíti a Moonraker API-t. \nA gép használatának folytatásához szükség lehet a moonraker.conf fájl módosítására.",
       "MoreCommitsInfo": "Itt maximum 30 commit jeleníthető meg. \nAz összes commit megtekintéséhez kattintson a következő linkre:",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Különálló",
+        "Dirty": "Piszkos"
       },
       "SoftRecovery": "Lágy helyreállítás",
       "StartUpdate": "Frissítés indítása",
@@ -836,7 +898,9 @@
       "PowerOn": "Bekapcsolás",
       "PrinterSwitchedOff": "A nyomtató ki van kapcsolva",
       "PrinterSwitchedOffDescription": "A nyomtató jelenleg ki van kapcsolva, és a Klipper nem tud csatlakozni. \nA nyomtató bekapcsolásához kattintson az alábbi gombra:",
-      "ServiceReports": "{service} jelentések"
+      "ServiceReports": "{service} jelentések",
+      "KlipperLog": "Klipper Log",
+      "MoonrakerLog": "Moonraker Log"
     },
     "MachineSettingsPanel": {
       "Headline": "Gép beállításai",
@@ -1196,7 +1260,9 @@
       "DateFormat": "Dátum formátum",
       "Everything": "Minden",
       "MainsailSettingsMoonrakerDb": "A nagyvitorla beállításai a Moonraker DB-ben",
-      "TimeFormat": "Idő formátum"
+      "TimeFormat": "Idő formátum",
+      "DbMaintenance": "Karbantartás",
+      "DbNavigation": "Navigáció"
     },
     "InterfaceSettings": "Interfész beállításai",
     "MacrosTab": {
@@ -1260,7 +1326,10 @@
       "Port": "Port",
       "RemotePrinters": "Nyomtatók",
       "UpdatePrinter": "Nyomtató frissítése",
-      "UseConfigJson": "InstanceDB = JSON észlelve. \nKérjük, használja a config.json fájlt a nyomtatók listájának módosításához."
+      "UseConfigJson": "InstanceDB = JSON észlelve. \nKérjük, használja a config.json fájlt a nyomtatók listájának módosításához.",
+      "Path": "Útvonal",
+      "Name": "Név",
+      "NameDescription": "Ez a név nem jelenik meg a grafikus felhasználói felületen, és csak átirányításokhoz használható."
     },
     "TimelapseTab": {
       "Autorender": "Auto renderelés",
@@ -1332,7 +1401,12 @@
       "RulesMin": "Az értéknek legalább {min}-nak kell lennie!",
       "RulesPositive": "Az értéknek pozitívnak kell lennie!",
       "RulesRequired": "Érték szükséges!",
-      "RulesZeroAndPositive": "Az értéknek 0-nak vagy nagyobbnak kell lennie!"
+      "RulesZeroAndPositive": "Az értéknek 0-nak vagy nagyobbnak kell lennie!",
+      "CameraDescriptionWithSnapshotUrl": "Válassza ki, hogy melyik kamerát (pillanatfelvétel URL-lel) szeretné használni",
+      "CameraWarningAlreadySet": "Ez az érték már be van állítva a Moonraker konfigurációs fájljában",
+      "CameraWarningAlreadySetSmall": "pillanatfelvétel a [timelapse] részben",
+      "NoWebcamFound": "Nem elérhető webkamera",
+      "SelectWebcam": "Webkamera kiválasztása..."
     },
     "UiSettingsTab": {
       "BoolBigThumbnail": "Nagy előnézet",
@@ -1387,7 +1461,28 @@
       "Theme": "Téma",
       "ThemeDark": "Sötét",
       "ThemeDescription": "Módosítsa az alkalmazás általános megjelenését és hangulatát",
-      "ThemeLight": "Fény"
+      "ThemeLight": "Fény",
+      "Mode": "Mód",
+      "PrintstatusThumbnailZoom": "Nagy miniatűr zoom",
+      "PrintstatusThumbnailZoomDescription": "Ezzel kikapcsolja a miniatűr nagyítási hatását az állapotpanelen.",
+      "ProgressAsFavicon": "A haladás megjelenítése faviconként",
+      "ProgressAsFaviconDescription": "Módosítsa a Mainsail logó faviconját egy folyamatkörre.",
+      "ModeDescription": "Változtassa meg az alkalmazás általános megjelenését és hangulatát.",
+      "DashboardFilesFilter": "Műszerfal fájlok szűrője",
+      "DashboardFilesFilterCompleted": "Befejezett",
+      "DashboardFilesFilterDescription": "Szűrje ki a fájlokat a műszerfal állapota panelen az utolsó állapotuk szerint.",
+      "DashboardFilesFilterFailed": "Sikertelen",
+      "DashboardFilesFilterNew": "Új",
+      "DashboardFilesLimit": "Irányítópultfájlok limit",
+      "DashboardFilesLimitDescription": "Válassza ki a műszerfal állapot panelen megjelenő fájlok maximális számát. \n(0 elrejti a fájlokat)",
+      "DashboardFilesLimitLabel": "{count} fájlok",
+      "DashboardHistoryLimit": "Műszerfal előzmények korlátja",
+      "DashboardHistoryLimitDescription": "Válassza ki az Állapot panelen megjelenő műszerfalon megjelenő feladatok maximális számát. \n(0 elrejti a történelem fület)",
+      "DashboardHistoryLimitLabel": "{count} Jobok",
+      "HideOtherInstances": "Elrejteni más példányokat",
+      "HideOtherInstancesDescription": "Elrejteni a klipper többi példányát",
+      "ConfirmOnCancelJob": "Megkérje megerősítést a lemondáskor",
+      "ConfirmOnCancelJobDescription": "Mutassa meg a megerősítő párbeszédpanelt a törlési feladaton"
     },
     "WebcamsTab": {
       "AddWebcam": "Webkamera hozzáadása",
@@ -1439,6 +1534,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Tavaszi"
+      },
+      "DefaultOrientationDescription": "Válassza ki az alapértelmezett orientációt az ágyháló megjelenítéséhez.",
+      "DefaultOrientation": "Alapértelmezett orientáció",
+      "Orientations": {
+        "Front": "Elülső",
+        "LeftFront": "Bal oldali front",
+        "RightFront": "Jobb front",
+        "Top": "Felső"
       }
     },
     "MiscellaneousTab": {
@@ -1567,5 +1670,10 @@
     "Headline": "Csavarok dőlésszög beállítása",
     "Retry": "próbálja újra"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Gyári visszaállítás"
+    }
+  }
 }

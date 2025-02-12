@@ -13,7 +13,8 @@
         "DeprecatedOptionHeadline": "Utfasad Klipper Alternativ",
         "DeprecatedValue": "Värdet '{value}' i alternativet '{option}' i avsnittet '{section}' är utfasat och kommer att tas bort i en framtida version.",
         "DeprecatedValueHeadline": "Utfasad Klipper-värde",
-        "KlipperWarning": "Klipper varning"
+        "KlipperWarning": "Klipper varning",
+        "KlipperRuntimeWarning": "Klipper doaibmaáigeváruhus"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {komponent}",
@@ -28,7 +29,17 @@
       "NextReboot": "nästa omstart",
       "NoNotification": "Ingen avisering tillgänglig",
       "Notifications": "Aviseringar",
-      "Remind": "Påminn:"
+      "Remind": "Påminn:",
+      "ShowDetails": "čájehit dieđuid",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "Fuolahusmuittuhus",
+      "MaintenanceReminderText": "Fuolaheapmi \"{name}\" lea áigemearri.",
+      "TmcOtFlag": "Stepper-jođiheaddji meattáhus: OT-leavga biddjon",
+      "TmcOtFlagText": "Stepper-driver '{name}' lea álggahan OT-leavgga ja heaitán doaimmas. \nDát sáhttá čuožžilit go lea menddo alla elrávdnji. \nDárkkis stepper-drivera njuolggadusaid ja čáhcebohcci.",
+      "TmcOtpwFlag": "Stepper-vuoddji váruhus: OTPW-leavga lea biddjon",
+      "TmcOtpwFlagText": "Stepper-driver '{name}' lea álggahan OTPW-leavgga ja sáhttá heaitit doaimmas jus dat šaddá lieggaseabbon. \nDát lea čujuhus dasa ahte lea badjelmeare temperatuvra. \nDát sáhttá čuožžilit go lea menddo alla elrávdnji. \nDárkkis stepper-drivera njuolggadusaid ja čáhcebohcci."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Måste vara större än eller lika med {min}!",
@@ -120,7 +131,7 @@
       "UpdatingDone": "Uppdatering av {software} klar!"
     },
     "Trilab": {
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Ovddiduvvon iešvuođat",
       "StatusPanel": {
         "CurrentNozzle": "Dálá njuoskka"
       },
@@ -145,7 +156,28 @@
       },
       "TrilabLiveUpdate": {
         "statuses": {
-          "UNPACKING_FAILED": "UNPÁLAŠVUOĐA FAILEJUVVON"
+          "UNPACKING_FAILED": "ČÁHČEHEAPMI LEA lihkostuvvan"
+        }
+      },
+      "Settings": {
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Neahttaprofiila lea lihkostuvvan vurkejuvvot!",
+            "ErrorNoConnections": "Vearba - heajos vástádus - ii oktavuohta",
+            "ErrorBadResponse": "Vearro - heajos vástádus",
+            "ErrorWhileLoadingWifi": "Vearru go bidjá wifi-fierpmádagaid",
+            "ConnectedTo": "Oktasašvuohta:",
+            "InvalidMacFormat": "Eahpevuoiggalaš MAC-čujuhusformáhtta .",
+            "invalidIP6Format": "Eahpegilvvolaš IPv6 čujuhusformáhtta",
+            "invalidIP4PatternFormat": "Eahpevuoiggalaš formáhtta. \nBija sisa formáhtas x.x.x.x,x.x.x.x",
+            "invalidIP4Format": "Eahpevuoiggalaš formáhtta. \nSisdoallu lea x.x.x.x.x",
+            "DiscardChanges": "Heaittihit rievdadusaid",
+            "ProfileSettingsTitle": "Profiilla njuolggadusat",
+            "interface": "Rámma",
+            "connectionInProgress": "Oktavuohta jođus..",
+            "signal": "SIGNÁLA",
+            "AvailableWirelessNetworks": "VÁRUHUS VÁLLJEJUVVON NETWORKS"
+          }
         }
       }
     }
@@ -419,7 +451,39 @@
     "TotalFilamentUsed": "Totalt använt filament",
     "TotalJobs": "Totalt antal jobb",
     "TotalPrinttime": "Total utskriftstid",
-    "TotalTime": "Total tid"
+    "TotalTime": "Total tid",
+    "AddMaintenance": "Lasit bajásdoallama",
+    "Name": "Namma",
+    "AddANote": "Lasit mearkkašumi",
+    "DateBasedReminder": "Beaivemearri",
+    "DateBasedReminderDescription": "Dát muittuhus lea vuođđuduvvon beaivái.",
+    "Days": "beaivvi",
+    "EditMaintenance": "Rievdat bajásdoallama",
+    "EntryCreatedAt": "Ráhkaduvvon {beaivvi}.",
+    "EntryNextPerform": "Boahtte ovdanbuktin:",
+    "EntryPerformedAt": "Čájehuvvo {date}.",
+    "EntrySince": "Geavahuvvon dan rájes:",
+    "Filament": "Filámentta",
+    "FilamentBasedReminder": "Filámentta",
+    "FilamentBasedReminderDescription": "Dát muittuhus lea vuođđuduvvon filámenttaid geavaheapmái.",
+    "Hours": "diimmut",
+    "InvalidNameEmpty": "Eai dohkálaš namma. \nNamma ii galgga leat guoros!",
+    "Maintenance": "Fuolahus",
+    "MaintenanceEntries": "Fuolahusdieđut",
+    "Meter": "mehter",
+    "NoReminder": "Ii muittuhus",
+    "OneTime": "Ovtta geardde",
+    "Perform": "loaiddastit",
+    "PerformMaintenance": "Čuovvut bajásdoallama",
+    "Performed": "čađahuvvon",
+    "PerformedAndReschedule": "čađahuvvon ja ođđasit plánejuvvon",
+    "PrintJobs": "Prentebarggut",
+    "PrinttimeBasedReminder": "Prentema áigi",
+    "PrinttimeBasedReminderDescription": "Dát muittuhus vuođđuduvvá prentema áigái.",
+    "Reminder": "Muittuhus",
+    "Repeat": "Geardduhit",
+    "Settings": "Ásahusat",
+    "Time": "Áigi"
   },
   "JobQueue": {
     "AllJobs": "Alla jobb",
@@ -560,10 +624,10 @@
       "UpToDate": "aktuell",
       "WebClientUpdateQuestion": "I vissa fall kan uppdatering av webbklienten ha ändringar som kan orsaka inkompatibilitet. Se versionskommentarerna för mer information.",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Sirrejuvvon",
+        "Dirty": "Duolvvas"
       },
-      "PackagesCanBeUpgraded": ""
+      "PackagesCanBeUpgraded": "Pakeahtaid sáhttá ođasmahttit"
     }
   },
   "ManualProbe": {
@@ -619,7 +683,9 @@
       "PrinterSwitchedOffDescription": "Skrivaren är för närvarande avstängd och Klipper kan inte ansluta. För att slå på skrivaren, klicka på knappen nedan:",
       "Restart": "Starta om",
       "ServiceReports": "{service} rapporter",
-      "KlipperCheck": ""
+      "KlipperCheck": "Dárkkis ahte Klipper-bálvalus lea doaimmas ja ahte UDS (Unix Domain Socket) lea konfigurerejuvvon.",
+      "KlipperLog": "Klipper Log",
+      "MoonrakerLog": "Moonraker Log"
     },
     "MachineSettingsPanel": {
       "Headline": "Maskininställningar",
@@ -805,8 +871,8 @@
       "SaveInfoDescription": "Den nya z-offset har beräknats och registrerats. Klicka på SAVE_CONFIG för att lagra den nya z-offset i din printer.cfg och starta om Klipper.",
       "SaveInfoDescriptionPrint": "Den nya Z-offseten har beräknats och registrerats. Efter utskrift, klicka på SAVE_CONFIG i den övre raden för att lagra den i printer.cfg och starta om Klipper.",
       "SaveInfoHeadline": "Information",
-      "ToEndstop": "Loahppastohpu",
-      "ToProbe": "Sondda"
+      "ToEndstop": "Loahpahit",
+      "ToProbe": "guorahallat"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -982,8 +1048,10 @@
       "Restore": "Återställ",
       "RestoreDialog": "Välj alla sektioner som du vill återställa:",
       "TimeFormat": "Tidsformat",
-      "DbWebcams": "",
-      "MoonrakerDb": ""
+      "DbWebcams": "Neahttakámerat",
+      "MoonrakerDb": "Moonraker diehtovuođđu",
+      "DbMaintenance": "Fuolahus",
+      "DbNavigation": "Navigeren"
     },
     "HeightmapTab": {
       "ColorSchemes": "Färgscheman",
@@ -995,6 +1063,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Fjäder"
+      },
+      "DefaultOrientationDescription": "Vállje standárdaorienterema vuodjinmeahccevisualiseremii.",
+      "DefaultOrientation": "Vealaheapmi orienteren",
+      "Orientations": {
+        "Front": "Ovdabealli",
+        "LeftFront": "Olgeš ovdafronta",
+        "RightFront": "Rievttes fronta",
+        "Top": "Čohkka"
       }
     },
     "InterfaceSettings": "Gränssnittsinställningar",
@@ -1085,7 +1161,10 @@
       "Port": "Port",
       "RemotePrinters": "Skrivare",
       "UpdatePrinter": "Uppdatera skrivaren",
-      "UseConfigJson": "InstanceDB = JSON upptäckt. Använd config.json för att ändra skrivarlistan."
+      "UseConfigJson": "InstanceDB = JSON upptäckt. Använd config.json för att ändra skrivarlistan.",
+      "Path": "Bálggis",
+      "Name": "Namma",
+      "NameDescription": "Dát namma ii čájehuvvo GUI:s ja geavahuvvo dušše čujuhusaide."
     },
     "Store": "lagra",
     "TimelapseTab": {
@@ -1153,7 +1232,12 @@
       "VariableFpsMax": "Variable FPS max",
       "VariableFpsMaxDescription": "Maximalt värde för variabel FPS",
       "VariableFpsMin": "Variable FPS min",
-      "VariableFpsMinDescription": "Minsta värde för variabel FPS"
+      "VariableFpsMinDescription": "Minsta värde för variabel FPS",
+      "CameraDescriptionWithSnapshotUrl": "Vállje makkár kámera (mas lea čuovgagovva URL) galggat geavahuvvot",
+      "CameraWarningAlreadySet": "Dát árvu lea juo biddjon Moonraker-konfigurašuvdnafiillas",
+      "CameraWarningAlreadySetSmall": "snapshoturl [timelapse] oasis",
+      "NoWebcamFound": "Ii gávdno neahttakamera",
+      "SelectWebcam": "Vállje webkamera..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Bäddskruvar dialog",
@@ -1206,7 +1290,28 @@
       "ThemeDescription": "Ändra applikationens övergripande utseende och känsla",
       "ThemeLight": "Ljus",
       "UiSettings": "Användargränssnittsinställningar",
-      "ShowWebcamInNavigation": "Čájet webkamera navigašuvnnas"
+      "ShowWebcamInNavigation": "Čájet webkamera navigašuvnnas",
+      "Mode": "Modealla",
+      "PrintstatusThumbnailZoom": "Stuorra smávvagovva stuorru",
+      "PrintstatusThumbnailZoomDescription": "Dát deaktivere smávvagova zoom-effeavtta stáhtuspanelas.",
+      "ProgressAsFavicon": "Čájet ovdáneami favicon",
+      "ProgressAsFaviconDescription": "Rievdat Mainsail-logo favikona ovdáneami sirkuvlan.",
+      "ModeDescription": "Rievdadit ollislaš čalmmiid ja dovdduid ohcamis.",
+      "DashboardFilesFilter": "Dashboard-fiillaid filter",
+      "DashboardFilesFilterCompleted": "Loahpahuvvon",
+      "DashboardFilesFilterDescription": "Filtreret fiillaid Dashboard Status-panelas maŋimuš stáhtusa mielde.",
+      "DashboardFilesFilterFailed": "Eahpelihkostuvvan",
+      "DashboardFilesFilterNew": "Ođas",
+      "DashboardFilesLimit": "Dashboard-fiillaid ráddjejupmi",
+      "DashboardFilesLimitDescription": "Vállje maksimala fiillaid mat čájehuvvojit dávvirbáhpáriin Statuspanelas. \n(0 čiegada fiillaid távvala)",
+      "DashboardFilesLimitLabel": "{count} fiillat",
+      "DashboardHistoryLimit": "Dashboard Historjjá ráddjejupmi",
+      "DashboardHistoryLimitDescription": "Vállje alimus bargosajiid mat čájehuvvojit dávvirbáhpáriin Status-panelas. \n(0 čihkko historjjá čuoggá)",
+      "DashboardHistoryLimitLabel": "{count} barggut",
+      "HideOtherInstances": "Lohket eará dáhpáhusaid",
+      "HideOtherInstancesDescription": "Klipper eará dáhpáhusat",
+      "ConfirmOnCancelJob": "Gáibidit duođaštit Heaittiheami barggu birra",
+      "ConfirmOnCancelJobDescription": "Čájet konfirmašuvdnadialoga heaittihanbarggus"
     },
     "Update": "uppdatering",
     "WebcamsTab": {
@@ -1303,5 +1408,10 @@
     "Video": "Video"
   },
   "title": "Svenska",
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Fabrihka nuppástuhttin"
+    }
+  }
 }

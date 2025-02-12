@@ -9,7 +9,8 @@
         "DeprecatedOptionHeadline": "Zastaralá volba Klipper",
         "DeprecatedValue": "Hodnota '{value}' v volbě '{option}' v sekci '{section}' je zastaralá a bude odstraněna v budoucí verzi.",
         "DeprecatedValueHeadline": "Zastaralá hodnota Klipper",
-        "KlipperWarning": "Upozornění Klipperu"
+        "KlipperWarning": "Upozornění Klipperu",
+        "KlipperRuntimeWarning": "Upozornění běhu Klipperu"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "BrowserWarnings": {
         "Description": "{name} is outdated and not fully supported. The current version is {version}, but Mainsail requires version {minVersion} or higher.",
         "Headline": "Outdated Browser"
-      }
+      },
+      "ShowDetails": "ukázat detaily",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1T",
+      "MaintenanceReminder": "Připomenutí Údržby",
+      "MaintenanceReminderText": "Je potřeba provést údržbu \"{name}\"",
+      "TmcOtFlag": "Error ovladače stepperu: OT vlajka nastavena",
+      "TmcOtFlagText": "Krokový ovladač '{jméno}' spustil příznak OT a přestal pracovat. To může být způsobeno příliš vysokým proudem. Zkontrolujte prosím nastavení krokového ovladače a chlazení.",
+      "TmcOtpwFlag": "Varování ovladače stepperu: OTPW vlajka nastavena",
+      "TmcOtpwFlagText": "Ovladač stepperu '{name}' spustil příznak OTPW a může přestat fungovat, pokud se ještě více zahřeje. Jedná se o indikaci stavu přehřátí. To může být způsobeno příliš vysokým proudem. Zkontrolujte prosím nastavení krokového ovladače a chlazení."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Musí být větší nebo rovno {min}!",
@@ -118,7 +129,7 @@
       "TopBar": {
         "LightBtn": "Světlo"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Pokročilé možnosti",
       "ConnectionStatus": {
         "Mainsail": "Mainsail"
       },
@@ -155,11 +166,11 @@
           "AddProfile": "Add profile",
           "IP4addresses": "IPv4 Addresses",
           "IP6addresses": "IPv6 Addresses",
-          "Interfaces": "Available interfaces",
+          "Interfaces": "Dostupná rozhraní",
           "ProfileActive": "Active",
           "ProfileInactive": "Inactive",
-          "ProfilesIn": "Profiles in",
-          "connectWifi": "Connect to Wi-Fi"
+          "ProfilesIn": "Profily v",
+          "connectWifi": "Připojit se na Wifi"
         },
         "TrilabSlicerPanel": {
           "notAvailableText": "Slicer profile is not available for this printer, system platform, or we didn't detect your system correctly. Please contact support",
@@ -187,9 +198,9 @@
         "trilabSlicers": {
           "prusa": {
             "imgsrc": "/img/PrusaSlicer.png",
-            "longDescription": "Use the button above to download the complete PrusaSlicer package, including slicer profiles. After downloading, unzip the archive to the destination location. On the Windows platform run the \"prusa-slicer.exe\" program, on the MacOS platform run \"PrusaSlicer.app\". After starting the program, the configuration wizard will appear. Continue to the Prusa Pro tab. Select Prusa Pro HT90 from the list of printer variants here. Then press the Finish button in the lower right corner of the window. This makes the slicer ready to use !",
+            "longDescription": "Použijte tlačítko výše ke stažení kompletního PrusaSlicer balíčku, který obsahuje i nastavení sliceru. Po stažení rozbalte archiv do určeného umístění. Na platformě Windows spusťte \"prusa-slicer.exe\" program, na MacOS platformě spusťte \"PrusaSlicer.app\". Po spuštění programu se zobrazí průvodce konfigurací. Pokračujte na záložku Prusa Pro. Vyberte z nabídky Prusa Pro HT90. Poté stiskněte na Dokončit v pravém dolním rohu okna. Tyto kroky zajistí, že je slicer připravený k použití!",
             "longTitle": "PrusaSlicer 2.9.0",
-            "shortDescription": "PrusaSlicer is an open-source, feature-rich, frequently updated tool that contains everything you need to export the perfect print files",
+            "shortDescription": "PrusaSlicer je open-source, funkčně bohatý a často aktualizovaný nástroj, který obsahuje vše, co potřebujete k exportu perfektních tiskových souborů.",
             "title": "PrusaSlicer"
           }
         },
@@ -203,43 +214,62 @@
         "TrilabTab": {
           "Trilab": "Versions",
           "TrilabLogs": "Logs",
-          "TrilabNetwork": "Síť",
-          "TrilabPrinter": "Tiskárna",
+          "TrilabNetwork": "Network",
+          "TrilabPrinter": "Printer",
           "TrilabSlicers": "Slicers"
         },
         "GeneralTab": {
           "PrinterNameRequired": "Pole název tiskárny je povinné",
           "PrinterNameMaxLength": "Maximální povolená délka je 63 znaků",
           "PrinterNameInvalid": "Název tiskárny není validní. Povoleny jsou jen základní znaky, čísla a pomlčky"
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Síťový profil byl úspěšně uložen!",
+            "ErrorNoConnections": "Chyba - špatná síťová odpověď - žádná připojení",
+            "ErrorBadResponse": "Chyba - odpověď v nesprávném formátu",
+            "ErrorWhileLoadingWifi": "Chyba při načítání wifi sítí",
+            "ConnectedTo": "Připojeno k:",
+            "InvalidMacFormat": "Špatný formát MAC adresy",
+            "invalidIP6Format": "Špatný formát IPv6 adresy",
+            "invalidIP4PatternFormat": "Špatný tvar adresy. Zadejte ve tvaru x.x.x.x,x.x.x.x",
+            "invalidIP4Format": "Chybný tvar adresy. Zadejte ve tvaru x.x.x.x",
+            "DiscardChanges": "Zrušit změny",
+            "ProfileSettingsTitle": "Nastavení profilu",
+            "interface": "Rozhraní",
+            "connectionInProgress": "Připojování...",
+            "signal": "SIGNÁL",
+            "AvailableWirelessNetworks": "DOSTUPNÉ BEZDRÁTOVÉ SÍTĚ"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
         "SaveBtn": "Uložit údaje"
       },
       "SettingsTrilabPrinterTab": {
-        "AdvancedFeatures": "Pokročilé možnosti:"
+        "AdvancedFeatures": "Advanced features:"
       },
       "SettingsTrilabTab": {
-        "AutomaticCheckForUpdates": "Automatická kontrola aktualizací:",
-        "CheckForLiveUpdate": "Zkontrolovat aktualizace",
-        "NoUpdateAvailable": "Není k dispozici žádná aktualizace",
-        "System": "Systém",
-        "SystemVersion": "Verze systému:",
-        "UpdateChannelTitle": "Aktualizační kanál",
-        "Upload": "Nahrát",
-        "UploadUpdateFile": "Nahrát aktualizační balíček",
+        "AutomaticCheckForUpdates": "Automatic check for updates:",
+        "CheckForLiveUpdate": "Check for live update",
+        "NoUpdateAvailable": "No update available",
+        "System": "System",
+        "SystemVersion": "System version:",
+        "UpdateChannelTitle": "Update channel",
+        "Upload": "Upload",
+        "UploadUpdateFile": "Upload update file",
         "WenInterfaceVersion": "Web interface version:"
       },
       "SlicerPanel": {
-        "Download": "Stáhnout",
+        "Download": "Download",
         "DownloadProfiles": "Stáhnout tiskové profily",
         "downloadSlicer": "Stáhnout slicer"
       },
       "TheTopBar": {
-        "AdvancedViewEnabled": "Pokročilý mód",
-        "HiddenViewEnbled": "Skrytý mód",
-        "HomeBtn": "Home",
-        "LightBtn": "Light",
+        "AdvancedViewEnabled": "Advanced View Enabled",
+        "HiddenViewEnbled": "Hidden View Enabled",
+        "HomeBtn": "Domů",
+        "LightBtn": "Světlo",
         "ServiceViewEnabled": "Service View Enabled"
       },
       "TheTopbar": {
@@ -278,42 +308,42 @@
           "InstallFromUsb": "Update from USB"
         },
         "Titles": {
-          "Installed": "INSTALOVY",
+          "Installed": "AKTUALIZACE PŘIPRAVENA",
           "UpdateAvailable": "AKTUALIZACE K DISPOZICI",
           "UpdateInProgress": "PROBÍHÁ AKTUALIZACE",
           "UsbInstalled": "USB AKTUALIZACE PŘIPRAVENA",
           "UsbUpdateAvailable": "USB AKTUALIZACE K DISPOZICI"
         },
-        "installAndRebootBtn": "INSTALOVAT",
-        "printerIsPrinting": "Tento krok nelze nyní provést, protože tiskárna pracuje. Prosíme, počkejte chvíli, toto okno se automaticky aktualizuje jakmile to bude možné.",
-        "restartWarning": "Aktualizace je připravena k instalaci. Stiskněte tlačítko pro instalaci aktualizace. Po dokončení aktualizace se tiskárna restartuje.",
+        "installAndRebootBtn": "INSTALL",
+        "printerIsPrinting": "You cannot perform this step right now, because your printer is doing some work. Please wait a while, this window will automatically refresh when this step is ready",
+        "restartWarning": "The update is ready for installation. Press the button to install the update. The printer will restart once the update is completed.",
         "statuses": {
-          "DOWNLOADING": "STAHOVÁNÍ AKTUALIZACE",
-          "ERROR": "CHYBA PŘI AKTUALIZACI",
-          "INSTALLED": "AKTUALIZACE PŘIPRAVENA",
-          "UNPACKING": "ROZBALOVÁNÍ AKTUALIZACE",
-          "UPDATE_AVAILABLE": "NOVÁ AKTUALIZACE",
-          "UP_TO_DATE": "NEJNOVĚJŠÍ VERZE",
-          "USB_UNPACKING": "ROZBALOVÁNÍ AKTUALIZACE",
-          "USB_UPDATE_AVAILABLE": "USB - NOVÁ AKTUALIZACE",
+          "DOWNLOADING": "DOWNLOADING UPDATE",
+          "ERROR": "UPDATE ERROR",
+          "INSTALLED": "UPDATE READY",
+          "UNPACKING": "UNPACKING UPDATE",
+          "UPDATE_AVAILABLE": "NEW UPDATE AVAILABLE",
+          "UP_TO_DATE": "NEWEST VERSION",
+          "USB_UNPACKING": "UNPACKING UPDATE",
+          "USB_UPDATE_AVAILABLE": "USB - NEW UPDATE",
           "UNPACKING_FAILED": "ROZBALOVÁNÍ SELHALO"
         }
       },
       "TrilabSelectFilamentDialog": {
-        "AreYouSureYouWantToSelectFilament": "Jste si jisti, že chcete vybrat filament?",
-        "Cancel": "Zrušit",
-        "Cpnfirm": "Potvrdit",
+        "AreYouSureYouWantToSelectFilament": "Are you sure you want to select filament",
+        "Cancel": "Cancel",
+        "Cpnfirm": "Confirm",
         "OK": "OK"
       },
       "TrilabServiceDialog": {
-        "Cancel": "Zrušit",
-        "ServiceLogin": "Servisní ověření"
+        "Cancel": "Cancel",
+        "ServiceLogin": "Service Login"
       },
       "TrilabUpdateDialog": {
-        "DANGER": "POZOR",
+        "DANGER": "DANGER",
         "INFO": "INFO",
         "Progres": "Progress:",
-        "RestartPrinter": "Restartovat tiskárnu",
+        "RestartPrinter": "Restart printer",
         "STATUS": "STATUS:",
         "ShowErrorTechinicalDetails": "Show error technical details",
         "WARNING": "WARN",
@@ -651,7 +681,39 @@
     "TotalTime": "Celkový čas",
     "AddToQueueSuccessful": "File {filename} added to Queue.",
     "DeleteSingleJobQuestion": "Do you really want to delete the job?",
-    "LoadCompleteHistory": "Load complete history"
+    "LoadCompleteHistory": "Load complete history",
+    "AddMaintenance": "Přidat údržbu",
+    "Name": "Název",
+    "AddANote": "Přidat poznámku",
+    "DateBasedReminder": "Datum",
+    "DateBasedReminderDescription": "Toto připomenutí je založeno na datu",
+    "Days": "dny",
+    "EditMaintenance": "Upravit údržbu",
+    "EntryCreatedAt": "Vytvořeno {date}.",
+    "EntryNextPerform": "Další provedení:",
+    "EntryPerformedAt": "Provedeno v {date}.",
+    "EntrySince": "Použito od:",
+    "Filament": "Filament",
+    "FilamentBasedReminder": "Filament",
+    "FilamentBasedReminderDescription": "Toto připomenutí je založeno na používání filamentu.",
+    "Hours": "hodiny",
+    "InvalidNameEmpty": "Neplatný název. Název nesmí být prázdný!",
+    "Maintenance": "Údržba",
+    "MaintenanceEntries": "Seznam údržby",
+    "Meter": "metr",
+    "NoReminder": "Žádné připomenutí",
+    "OneTime": "Jednorázové",
+    "Perform": "provést",
+    "PerformMaintenance": "Provést údržbu",
+    "Performed": "provedeno",
+    "PerformedAndReschedule": "Provedeno a znovu naplánovat",
+    "PrintJobs": "Tiskové úlohy",
+    "PrinttimeBasedReminder": "Čas tisku",
+    "PrinttimeBasedReminderDescription": "Toto připomenutí je založeno na času tisku",
+    "Reminder": "Připomenutí",
+    "Repeat": "Opakovat",
+    "Settings": "Nastavení",
+    "Time": "Čas"
   },
   "JobQueue": {
     "AllJobs": "Všechny tisky",
@@ -789,8 +851,8 @@
       "MoonrakerUpdateQuestion": "This will update the Moonraker API. Changes to the moonraker.conf file may be required to continue using the machine.",
       "MoreCommitsInfo": "A maximum of 30 commits can be displayed here. To see all commits, please click on the following link:",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Oddělený",
+        "Dirty": "Špinavý"
       },
       "SoftRecovery": "Soft Recovery",
       "StartUpdate": "Start Update",
@@ -832,12 +894,12 @@
       "Retract": "Vytáhnout",
       "TooLargeExtrusion": "Příliš velká extruze!",
       "UnloadFilament": "Vyjmout filament",
-      "CleanNozzle": "Vyčistit trysku",
-      "ExtruderControl": "Ovládání extruderu",
+      "CleanNozzle": "Clean Nozzle",
+      "ExtruderControl": "Extruder Control",
       "FirmwareRetraction": "Firmware Retraction",
       "PressureAdvance": "Pressure Advance",
-      "PurgeFilament": "Vytlačit filament",
-      "Tools": "Nástroje"
+      "PurgeFilament": "Purge Filament",
+      "Tools": "Tools"
     },
     "FarmPrinterPanel": {
       "ReconnectToPrinter": "Připojit znovu",
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "Tiskárna je momentálně vypnutá a Klipper nemůže navázat spojení. Pro zapnutí tiskárny klikněte na tlačítko níže:",
       "Restart": "Restartovat",
       "ServiceReports": "{service} hlásí",
-      "KlipperCheck": ""
+      "KlipperCheck": "Ověřte, zda je spuštěna služba Klipper a zda je nakonfigurován UDS (Unix Domain Socket).",
+      "KlipperLog": "Log Klipperu",
+      "MoonrakerLog": "Log Moonrakeru"
     },
     "MachineSettingsPanel": {
       "Headline": "Tiskárna",
@@ -893,7 +957,7 @@
       },
       "RunoutSensor": {
         "Detected": "detekováno",
-        "Disabled": "vypnuto",
+        "Disabled": "Zakázán",
         "Empty": "prázdné"
       }
     },
@@ -950,7 +1014,6 @@
       "Speed": "Rychlost",
       "Status": "Stav",
       "Total": "Celkem",
-      "TotalTime": "Celkový čas",
       "Unknown": "Neznámý"
     },
     "TemperaturePanel": {
@@ -978,8 +1041,8 @@
       "TemperaturesInChart": "Teplota [°C]",
       "TempTooHigh": "Teplota pro {name} je příliš vysoká! (max.: {max})",
       "TempTooLow": "Teplota pro {name} je příliš nízká! (min.: {min})",
-      "HideMcuHostSensors": "Schovat Host/MCU senzory",
-      "HideMonitors": "Schovat monitory"
+      "HideMcuHostSensors": "Hide Host/MCU Sensors",
+      "HideMonitors": "Hide Monitors"
     },
     "ToolheadControlPanel": {
       "Absolute": "absolutní",
@@ -992,8 +1055,8 @@
       "SettingsInterfaceControl": "Nastavení > Rozhraní > Ovládání",
       "SpeedFactor": "Rychlost",
       "ZTilt": "Z-tilt",
-      "ControlButtons": "Ovládací tlačítka",
-      "CoordinateFields": "Pole souřadnic",
+      "ControlButtons": "Control buttons",
+      "CoordinateFields": "Coordinate fields",
       "PositionOutput": "Position output",
       "ZOffset": "Z-Offset"
     },
@@ -1026,10 +1089,10 @@
       "Filament": "Filament",
       "FilamentTypeMismatch": "The material of the active spool ({spoolType}) does not match the material of the G-Code ({fileType}).",
       "Headline": "Spoolman",
-      "LastUsed": "Poslední použití",
-      "Location": "Umístění",
-      "Material": "Materiál",
-      "Never": "Nikdy",
+      "LastUsed": "Last Used",
+      "Location": "Location",
+      "Material": "Material",
+      "Never": "Never",
       "NoActiveSpool": "Filament tracking is inactive. To get started, please select a spool.",
       "NoResults": "No spool found with the current search criteria.",
       "NoSpoolSelected": "No spool selected. Please select a spool or this print will not be tracked.",
@@ -1062,8 +1125,8 @@
     "Printers": "Tiskárny",
     "Timelapse": "Time-lapse",
     "Webcam": "Webkamera",
-    "Calibration": "Kalibrace",
-    "Diagnostics": "Diagnostika",
+    "Calibration": "Calibration",
+    "Diagnostics": "Diagnostics",
     "Slicers": "Slicer"
   },
   "ScrewsTiltAdjust": {
@@ -1220,8 +1283,10 @@
       "RestoreDialog": "Prosím zvolte všechny sekce, které chcete obnovit:",
       "TimeFormat": "Formát času",
       "DBNavigation": "Navigace",
-      "Everything": "Vše",
-      "MainsailSettingsMoonrakerDb": "Mainsail Settings in Moonraker DB"
+      "Everything": "Everything",
+      "MainsailSettingsMoonrakerDb": "Mainsail Settings in Moonraker DB",
+      "DbMaintenance": "Údržba",
+      "DbNavigation": "Navigace"
     },
     "InterfaceSettings": "Nastavení rozhraní",
     "MacrosTab": {
@@ -1308,7 +1373,10 @@
       "Port": "Port",
       "RemotePrinters": "Vzdálené tiskárny",
       "UpdatePrinter": "Aktualizovat tiskárnu",
-      "UseConfigJson": "Byla zjištěna InstanceDB = JSON. Pro úpravu seznamu tiskáren použijte prosím config.json."
+      "UseConfigJson": "Byla zjištěna InstanceDB = JSON. Pro úpravu seznamu tiskáren použijte prosím config.json.",
+      "Path": "Cesta",
+      "Name": "Název",
+      "NameDescription": "Tento název nebude zobrazen v GUI a bude použit jen pro přesměrování"
     },
     "Store": "uložit",
     "TimelapseTab": {
@@ -1381,7 +1449,12 @@
       "RulesMin": "Value must be minimum {min}!",
       "RulesPositive": "Value must be positive!",
       "RulesRequired": "Value is required!",
-      "RulesZeroAndPositive": "Value must be 0 or greater!"
+      "RulesZeroAndPositive": "Value must be 0 or greater!",
+      "CameraDescriptionWithSnapshotUrl": "Vyberte, která kamera (s vyplněnou snapshot URL) by měla být použita",
+      "CameraWarningAlreadySet": "Tato hodnota je už nastavena v konfiguračním souboru Moonrakeru",
+      "CameraWarningAlreadySetSmall": "snapshoturl v [timelapse] sekci",
+      "NoWebcamFound": "No Webcam available",
+      "SelectWebcam": "Vyberte webkameru..."
     },
     "UiSettingsTab": {
       "BoolBigThumbnail": "Velký náhled",
@@ -1436,7 +1509,28 @@
       "Theme": "Theme",
       "ThemeDark": "Dark",
       "ThemeDescription": "Change the overall look and feel of the application",
-      "ThemeLight": "Light"
+      "ThemeLight": "Light",
+      "Mode": "Mód",
+      "PrintstatusThumbnailZoom": "Přiblížení velkého náhledu",
+      "PrintstatusThumbnailZoomDescription": "Toto deaktivuje efekt přiblížení náhledu ve stavovém panelu.",
+      "ProgressAsFavicon": "Ukázat průběh jako favikonu",
+      "ProgressAsFaviconDescription": "Změnit logo mainsailu na ukazatel průběhu",
+      "ModeDescription": "Změna celkového vzhledu aplikace",
+      "DashboardFilesFilter": "Filtr souborů v přehledu",
+      "DashboardFilesFilterCompleted": "Dokončeno",
+      "DashboardFilesFilterDescription": "Filtruje soubory v panelu přehledu podle jejich posledního stavu",
+      "DashboardFilesFilterFailed": "Selhání",
+      "DashboardFilesFilterNew": "Nový",
+      "DashboardFilesLimit": "Limit souborů v přehledu",
+      "DashboardFilesLimitDescription": "Vyberte maximální množství souborů, které se zobrazí ve stavovém panelu na záložce přehledu. (0 schová záložku souborů)",
+      "DashboardFilesLimitLabel": "{count} souborů",
+      "DashboardHistoryLimit": "Limit historie přehledu",
+      "DashboardHistoryLimitDescription": "Vyberte maximální počet aktivit, které se zobrazí v přehledu ve stavovém panelu. (0 schová panel historie)",
+      "DashboardHistoryLimitLabel": "{count} úloh",
+      "HideOtherInstances": "Schovat ostatní instance",
+      "HideOtherInstancesDescription": "Schovat ostatní instance Klipperu a Moonrakeru v servisním menu",
+      "ConfirmOnCancelJob": "Vyžadovat potvrzení ke zrušení úlohy",
+      "ConfirmOnCancelJobDescription": "Zobrazit potvrzovací dialog ke zrušení tiskové úlohy"
     },
     "Update": "Aktualizovat",
     "WebcamsTab": {
@@ -1489,6 +1583,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Spring"
+      },
+      "DefaultOrientationDescription": "Vyberte výchozí orientaci pro vizualizaci modelu tiskové podložky.",
+      "DefaultOrientation": "Výchozí orientace",
+      "Orientations": {
+        "Front": "Přední",
+        "LeftFront": "Levá přední",
+        "RightFront": "Pravá přední",
+        "Top": "Vrchní"
       }
     },
     "NavigationTab": {
@@ -1568,5 +1670,10 @@
     "Refresh": "refresh",
     "Resolutions": "Resolutions"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Tovární nastavení"
+    }
+  }
 }

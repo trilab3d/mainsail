@@ -27,7 +27,9 @@
                         :object-name="objectName"
                         :is-responsive-mobile="el.is.mobile ?? false" />
                     <temperature-panel-list-item-nevermore
-                        v-if="existsNevermoreFilter"
+                        v-for="objectName in nevermoreObjects"
+                        :key="objectName"
+                        :object-name="objectName"
                         :is-responsive-mobile="el.is.mobile ?? false" />
                     <temperature-panel-list-item
                         v-for="objectName in temperature_sensors"
@@ -84,6 +86,10 @@ export default class TemperaturePanelList extends Mixins(BaseMixin, TrilabMixin)
         return this.$store.state.printer?.heaters?.available_monitors ?? []
     }
 
+    get available_nevermores() {
+        return Object.keys(this.$store.state.printer).filter((name) => name.startsWith('nevermore'))
+    }
+
     get monitors() {
         return this.available_monitors.sort(this.sortObjectName)
     }
@@ -92,10 +98,6 @@ export default class TemperaturePanelList extends Mixins(BaseMixin, TrilabMixin)
         return this.available_sensors
             .filter((name: string) => name.startsWith('temperature_fan') && !name.startsWith('temperature_fan _'))
             .sort(this.sortObjectName)
-    }
-
-    get existsNevermoreFilter() {
-        return 'nevermore' in this.$store.state.printer
     }
 
     get hideMcuHostSensors(): boolean {
@@ -107,25 +109,23 @@ export default class TemperaturePanelList extends Mixins(BaseMixin, TrilabMixin)
     }
 
     get temperature_sensors() {
-        return this.available_sensors
-            .filter((fullName: string) => {
-                if (this.available_heaters.includes(fullName)) return false
-                if (this.temperature_fans.includes(fullName)) return false
+        return this.filterNamesAndSort(this.available_sensors).filter((fullName: string) => {
+            if (this.available_heaters.includes(fullName)) return false
+            if (this.temperature_fans.includes(fullName)) return false
 
-                // hide MCU & Host sensors, if the function is enabled
-                if (this.hideMcuHostSensors && this.checkMcuHostSensor(fullName)) return false
+            // hide MCU & Host sensors, if the function is enabled
+            if (this.hideMcuHostSensors && this.checkMcuHostSensor(fullName)) return false
 
-                const splits = fullName.split(' ')
-                let name = splits[0]
-                if (splits.length > 1) name = splits[1]
-
-                return !name.startsWith('_')
-            })
-            .sort(this.sortObjectName)
+            return true
+        })
     }
 
     get heaterObjects() {
         return [...this.filteredHeaters, ...this.temperature_fans]
+    }
+
+    get nevermoreObjects() {
+        return this.filterNamesAndSort(this.available_nevermores)
     }
 
     get settings() {
@@ -139,21 +139,27 @@ export default class TemperaturePanelList extends Mixins(BaseMixin, TrilabMixin)
         return ['temperature_mcu', 'temperature_host'].includes(sensor_type)
     }
 
-    sortObjectName(a: string, b: string) {
-        const splitsA = a.split(' ')
-        let nameA = splitsA[0]
-        if (splitsA.length > 1) nameA = splitsA[1]
-        nameA = nameA.toUpperCase()
+    filterNamesAndSort(fullNames: string[]) {
+        return fullNames.filter(this.isVisibleName).sort(this.sortObjectName)
+    }
 
-        const splitsB = b.split(' ')
-        let nameB = splitsB[0]
-        if (splitsB.length > 1) nameB = splitsB[1]
-        nameB = nameB.toUpperCase()
+    isVisibleName(fullName: string) {
+        return !this.shortName(fullName).startsWith('_')
+    }
+
+    sortObjectName(a: string, b: string) {
+        const nameA = this.shortName(a).toUpperCase()
+        const nameB = this.shortName(b).toUpperCase()
 
         if (nameA < nameB) return -1
         if (nameA > nameB) return 1
 
         return 0
+    }
+
+    shortName(fullName: string) {
+        const splits = fullName.split(' ')
+        return splits.length == 1 ? splits[0] : splits[1]
     }
 }
 </script>

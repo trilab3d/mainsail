@@ -28,7 +28,7 @@ export const getters: GetterTree<RootState, any> = {
             printer_state = 'printing'
 
         // return pause title
-        if (printer_state === 'paused') return `${printerNameToDisplay} - ` + i18n.t('App.Titles.Pause')
+        if (printer_state === 'paused') return printerNameToDisplay + ' - ' + i18n.t('App.Titles.Pause')
 
         // return complete title
         if (state.printer?.print_stats?.state === 'complete') {
@@ -37,8 +37,7 @@ export const getters: GetterTree<RootState, any> = {
             })
 
             // add printer name to title if it exists
-            output = `${printerNameToDisplay} - ` + output
-
+            output = printerNameToDisplay + ' - ' + output
             return output
         }
 
@@ -55,8 +54,7 @@ export const getters: GetterTree<RootState, any> = {
                 })
 
                 // add printer name to title if it exists
-                output = `${printerNameToDisplay} - ` + output
-
+                output = printerNameToDisplay + ' - ' + output
                 return output
             }
 
@@ -66,8 +64,7 @@ export const getters: GetterTree<RootState, any> = {
             })
 
             // add printer name to title if it exists
-            output = `${printerNameToDisplay} - ` + output
-
+            output = printerNameToDisplay + ' - ' + output
             return output
         }
 

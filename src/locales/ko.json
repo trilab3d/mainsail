@@ -9,7 +9,8 @@
         "DeprecatedOptionHeadline": "사용 불가 클리퍼 옵션",
         "DeprecatedValue": "'{section}' 섹션의 '{option}'에 지정한 '{value}'값은 값은 더 이상 사용할 수 없으며 차후 릴리즈 버전에서 제거됩니다",
         "DeprecatedValueHeadline": "사용 불가 클리퍼 옵션",
-        "KlipperWarning": "클리퍼 : 주의"
+        "KlipperWarning": "클리퍼 : 주의",
+        "KlipperRuntimeWarning": "Klipper 런타임 경고"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "문레이커: {component}",
@@ -28,7 +29,17 @@
       "BrowserWarnings": {
         "Description": "{name}은 오래되었으며 완전히 지원되지 않습니다. \n현재 버전은 {version}이지만 Mainsail에는 {minVersion} 이상의 버전이 필요합니다.",
         "Headline": "오래된 브라우저"
-      }
+      },
+      "ShowDetails": "세부정보 표시",
+      "OneHourShort": "상반기",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "유지보수 알림",
+      "MaintenanceReminderText": "\"{name}\" 유지 관리가 만료되었습니다.",
+      "TmcOtFlag": "스테퍼 드라이버 오류: OT 플래그가 설정되었습니다.",
+      "TmcOtFlagText": "스테퍼 드라이버 '{name}'이(가) OT 플래그를 트리거하고 작동을 중지했습니다. \n이는 전류가 너무 높기 때문에 발생할 수 있습니다. \n스테퍼 드라이버 설정 및 냉각을 확인하십시오.",
+      "TmcOtpwFlag": "스테퍼 드라이버 경고: OTPW 플래그가 설정되었습니다.",
+      "TmcOtpwFlagText": "스테퍼 드라이버 '{name}'이(가) OTPW 플래그를 트리거했으며 더 뜨거워지면 작동을 멈출 수 있습니다. \n이는 과열 상태를 나타냅니다. \n이는 전류가 너무 높기 때문에 발생할 수 있습니다. \n스테퍼 드라이버 설정 및 냉각을 확인하십시오."
     },
     "NumberInput": {
       "GreaterOrEqualError": "{min}의 값 이상으로 설정해 주세요",
@@ -118,7 +129,7 @@
       "TopBar": {
         "LightBtn": "빛"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "고급 기능",
       "ConnectionStatus": {
         "Mainsail": "메인세일"
       },
@@ -211,6 +222,25 @@
           "PrinterNameRequired": "프린터 이름이 필요합니다",
           "PrinterNameMaxLength": "허용되는 최대 이름 길이는 63자입니다.",
           "PrinterNameInvalid": "프린터 이름이 잘못되었습니다. \n기본 문자, 숫자, 하이픈만 허용됩니다."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "네트워크 프로필이 성공했습니다!",
+            "ErrorNoConnections": "오류 - 잘못된 응답 - 연결 없음",
+            "ErrorBadResponse": "오류 - 잘못된 응답",
+            "ErrorWhileLoadingWifi": "Wi -Fi 네트워크를로드하는 동안 오류",
+            "ConnectedTo": "연결 :",
+            "InvalidMacFormat": "잘못된 MAC 주소 형식",
+            "invalidIP6Format": "잘못된 IPv6 주소 형식",
+            "invalidIP4PatternFormat": "잘못된 형식. \nX.X.X.X 형식으로 입력하십시오. X.X.X.X",
+            "invalidIP4Format": "잘못된 형식. \nX.X.X.X 형식으로 입력하십시오",
+            "DiscardChanges": "변경 사항을 폐기하십시오",
+            "ProfileSettingsTitle": "프로필 설정",
+            "interface": "인터페이스",
+            "connectionInProgress": "진행중인 연결 ..",
+            "signal": "신호",
+            "AvailableWirelessNetworks": "사용 가능한 무선 네트워크"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -651,7 +681,39 @@
     "TotalTime": "전체 시간",
     "AddToQueueSuccessful": "{filename} 파일이 대기열에 추가되었습니다.",
     "DeleteSingleJobQuestion": "정말로 작업을 삭제하시겠습니까?",
-    "LoadCompleteHistory": "전체 기록 로드"
+    "LoadCompleteHistory": "전체 기록 로드",
+    "AddMaintenance": "유지보수 추가",
+    "Name": "이름",
+    "AddANote": "메모 추가",
+    "DateBasedReminder": "날짜",
+    "DateBasedReminderDescription": "이 알림은 날짜를 기준으로 합니다.",
+    "Days": "날",
+    "EditMaintenance": "유지 관리 편집",
+    "EntryCreatedAt": "{날짜}에 생성되었습니다.",
+    "EntryNextPerform": "다음 수행:",
+    "EntryPerformedAt": "{날짜}에 수행되었습니다 {date}.",
+    "EntrySince": "사용된 날짜:",
+    "Filament": "필라멘트",
+    "FilamentBasedReminder": "필라멘트",
+    "FilamentBasedReminderDescription": "이 알림은 필라멘트 사용량을 기준으로 합니다.",
+    "Hours": "시간",
+    "InvalidNameEmpty": "이름이 잘못되었습니다. \n이름은 비워둘 수 없습니다!",
+    "Maintenance": "유지",
+    "MaintenanceEntries": "유지 관리 항목",
+    "Meter": "미터",
+    "NoReminder": "알림 없음",
+    "OneTime": "일회성",
+    "Perform": "공연하다",
+    "PerformMaintenance": "유지보수 수행",
+    "Performed": "수행",
+    "PerformedAndReschedule": "수행하고 일정을 변경",
+    "PrintJobs": "인쇄 작업",
+    "PrinttimeBasedReminder": "인쇄 시간",
+    "PrinttimeBasedReminderDescription": "이 알림은 인쇄 시간을 기준으로 합니다.",
+    "Reminder": "알림",
+    "Repeat": "반복하다",
+    "Settings": "설정",
+    "Time": "시간"
   },
   "JobQueue": {
     "AllJobs": "전체 작업",
@@ -789,8 +851,8 @@
       "MoonrakerUpdateQuestion": "그러면 Moonraker API가 업데이트됩니다. \n머신을 계속 사용하려면 Moonraker.conf 파일을 변경해야 할 수도 있습니다.",
       "MoreCommitsInfo": "여기에는 최대 30개의 커밋이 표시될 수 있습니다. \n모든 커밋을 보려면 다음 링크를 클릭하세요.",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "떨어져 있는",
+        "Dirty": "더러운"
       },
       "SoftRecovery": "소프트 복구",
       "StartUpdate": "업데이트 시작",
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "프린터가 현재 꺼져 있어 Klipper를 연결할 수 없습니다 프린터 전원을 켜려면 아래 버튼을 클릭해 주세요",
       "Restart": "재시작",
       "ServiceReports": "{service} 보고",
-      "KlipperCheck": ""
+      "KlipperCheck": "Klipper 서비스가 실행 중이고 UDS(Unix Domain Socket)가 구성되어 있는지 확인하세요.",
+      "KlipperLog": "클리퍼 로그",
+      "MoonrakerLog": "문레이커 로그"
     },
     "MachineSettingsPanel": {
       "Headline": "프린터 속도 설정",
@@ -1220,7 +1284,9 @@
       "TimeFormat": "시간 유형",
       "DBNavigation": "항해",
       "Everything": "모든 것",
-      "MainsailSettingsMoonrakerDb": "Moonraker DB의 메인세일 설정"
+      "MainsailSettingsMoonrakerDb": "Moonraker DB의 메인세일 설정",
+      "DbMaintenance": "유지",
+      "DbNavigation": "항해"
     },
     "InterfaceSettings": "인터페이스 설정",
     "MacrosTab": {
@@ -1307,7 +1373,10 @@
       "Port": "접속 포트 [외부 접속 포트 입력]",
       "RemotePrinters": "원격 프린터",
       "UpdatePrinter": "적용",
-      "UseConfigJson": "InstanceDB = JSON을 감지했습니다 config.json을 확인해 프린터 목록을 수정해 주세요"
+      "UseConfigJson": "InstanceDB = JSON을 감지했습니다 config.json을 확인해 프린터 목록을 수정해 주세요",
+      "Path": "길",
+      "Name": "이름",
+      "NameDescription": "이 이름은 GUI에 표시되지 않으며 리디렉션에만 사용됩니다."
     },
     "Store": "복원",
     "TimelapseTab": {
@@ -1380,7 +1449,12 @@
       "RulesMin": "값은 최소 {min} 이상이어야 합니다!",
       "RulesPositive": "값은 양수여야 합니다.",
       "RulesRequired": "값은 필수입니다!",
-      "RulesZeroAndPositive": "값은 0 이상이어야 합니다!"
+      "RulesZeroAndPositive": "값은 0 이상이어야 합니다!",
+      "CameraDescriptionWithSnapshotUrl": "어떤 카메라(스냅샷 URL 포함)를 사용해야 하는지 선택하세요.",
+      "CameraWarningAlreadySet": "이 값은 Moonraker 구성 파일에 이미 설정되어 있습니다.",
+      "CameraWarningAlreadySetSmall": "[timelapse] 섹션의 snapshoturl",
+      "NoWebcamFound": "사용할 수 있는 웹캠 없음",
+      "SelectWebcam": "웹캠을 선택하세요..."
     },
     "UiSettingsTab": {
       "BoolBigThumbnail": "큰 썸네일 이미지",
@@ -1435,7 +1509,28 @@
       "Theme": "주제",
       "ThemeDark": "어두운",
       "ThemeDescription": "애플리케이션의 전체적인 모양과 느낌을 변경합니다.",
-      "ThemeLight": "빛"
+      "ThemeLight": "빛",
+      "Mode": "방법",
+      "PrintstatusThumbnailZoom": "큰 썸네일 확대/축소",
+      "PrintstatusThumbnailZoomDescription": "이렇게 하면 상태 패널에서 축소판의 확대/축소 효과가 비활성화됩니다.",
+      "ProgressAsFavicon": "진행 상황을 파비콘으로 표시",
+      "ProgressAsFaviconDescription": "Mainsail 로고 파비콘을 진행률 원으로 변경합니다.",
+      "ModeDescription": "응용 프로그램의 전반적인 모양과 느낌을 변경하십시오.",
+      "DashboardFilesFilter": "대시 보드 파일 필터",
+      "DashboardFilesFilterCompleted": "완전한",
+      "DashboardFilesFilterDescription": "대시 보드 상태 패널에서 파일을 마지막 상태로 필터링하십시오.",
+      "DashboardFilesFilterFailed": "실패한",
+      "DashboardFilesFilterNew": "새로운",
+      "DashboardFilesLimit": "대시 보드 파일 제한",
+      "DashboardFilesLimitDescription": "대시 보드 상태 패널에 표시 할 최대 파일 수를 선택하십시오. \n(0 파일 탭을 숨 깁니다)",
+      "DashboardFilesLimitLabel": "{count} 파일",
+      "DashboardHistoryLimit": "대시 보드 기록 제한",
+      "DashboardHistoryLimitDescription": "상태 패널의 대시 보드에 표시 할 최대 작업 수를 선택하십시오. \n(0은 히스토리 탭을 숨 깁니다)",
+      "DashboardHistoryLimitLabel": "{count} 작업",
+      "HideOtherInstances": "다른 인스턴스를 숨기십시오",
+      "HideOtherInstancesDescription": "Klipper의 다른 사례를 숨기십시오",
+      "ConfirmOnCancelJob": "취소 작업을 확인해야합니다",
+      "ConfirmOnCancelJobDescription": "취소 작업에 대한 확인 대화 상자를 표시하십시오"
     },
     "Update": "업데이트",
     "WebcamsTab": {
@@ -1488,6 +1583,14 @@
         "Hsv": "Hsv",
         "Portland": "포틀랜드",
         "Spring": "봄"
+      },
+      "DefaultOrientationDescription": "베드 메쉬 시각화의 기본 방향을 선택하십시오.",
+      "DefaultOrientation": "기본 방향",
+      "Orientations": {
+        "Front": "앞쪽",
+        "LeftFront": "왼쪽 앞",
+        "RightFront": "오른쪽 앞",
+        "Top": "맨 위"
       }
     },
     "NavigationTab": {
@@ -1567,5 +1670,10 @@
     "Refresh": "새로 고치다",
     "Resolutions": "결의안"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "공장 초기화"
+    }
+  }
 }

@@ -9,7 +9,8 @@
         "DeprecatedOptionHeadline": "Устаревшая опция Klipper",
         "DeprecatedValue": "Значение '{value}' в опции '{option}' в '{section}' устарела и будет удалена в будущих релизах.",
         "DeprecatedValueHeadline": "Устаревшее значение Klipper",
-        "KlipperWarning": "Предупреждение Klipper"
+        "KlipperWarning": "Предупреждение Klipper",
+        "KlipperRuntimeWarning": "Предупреждение во время выполнения Klipper"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "BrowserWarnings": {
         "Description": "{name} устарело и не поддерживается полностью. \nТекущая версия — {version}, но для Mainsail требуется версия {minVersion} или выше.",
         "Headline": "Устаревший браузер"
-      }
+      },
+      "ShowDetails": "показать детали",
+      "OneHourShort": "1 час",
+      "OneDayShort": "1Д",
+      "OneWeekShort": "1 Вт",
+      "MaintenanceReminder": "Напоминание о техническом обслуживании",
+      "MaintenanceReminderText": "Наступило техническое обслуживание \"{name}\".",
+      "TmcOtFlag": "Ошибка драйвера шагового двигателя: установлен флаг OT",
+      "TmcOtFlagText": "Драйвер шагового двигателя «{name}» активировал флаг OT и перестал работать. \nЭто может быть вызвано слишком большим током. \nПожалуйста, проверьте настройки шагового драйвера и охлаждение.",
+      "TmcOtpwFlag": "Предупреждение драйвера шагового двигателя: установлен флаг OTPW",
+      "TmcOtpwFlagText": "Драйвер шагового двигателя «{name}» активировал флаг OTPW и может перестать работать, если станет еще жарче. \nЭто признак перегрева. \nЭто может быть вызвано слишком большим током. \nПожалуйста, проверьте настройки шагового драйвера и охлаждение."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Должно быть больше или равно {min}!",
@@ -118,7 +129,7 @@
       "TopBar": {
         "LightBtn": "Свет"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Расширенные функции",
       "ConnectionStatus": {
         "Mainsail": "Грот"
       },
@@ -211,6 +222,25 @@
           "PrinterNameRequired": "Укажите имя принтера.",
           "PrinterNameMaxLength": "Максимально допустимая длина имени — 63 символа.",
           "PrinterNameInvalid": "Имя принтера неверно. \nРазрешены только основные символы, цифры и дефисы."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Сетевой профиль был успешно сохранен!",
+            "ErrorNoConnections": "Ошибка - плохой ответ - нет подключений",
+            "ErrorBadResponse": "Ошибка - плохой ответ",
+            "ErrorWhileLoadingWifi": "Ошибка при загрузке сетей Wi -Fi",
+            "ConnectedTo": "Связано с:",
+            "InvalidMacFormat": "Неверный формат MAC -адреса",
+            "invalidIP6Format": "Неверный формат адреса IPv6",
+            "invalidIP4PatternFormat": "Неверный формат. \nВведите в формате x.x.x.x, x.x.x.x",
+            "invalidIP4Format": "Неверный формат. \nВведите в формате x.x.x.x",
+            "DiscardChanges": "Отбросить изменения",
+            "ProfileSettingsTitle": "Настройки профиля",
+            "interface": "Интерфейс",
+            "connectionInProgress": "Связь в процессе ..",
+            "signal": "Сигнал",
+            "AvailableWirelessNetworks": "Доступные беспроводные сети"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -296,7 +326,7 @@
           "UP_TO_DATE": "НОВАЯ ВЕРСИЯ",
           "USB_UNPACKING": "РАСПАКОВКА ОБНОВЛЕНИЯ",
           "USB_UPDATE_AVAILABLE": "USB – НОВОЕ ОБНОВЛЕНИЕ",
-          "UNPACKING_FAILED": "Распаковка не удалась"
+          "UNPACKING_FAILED": "РАСПАКОВКА НЕ УДАЛАСЬ"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -651,7 +681,39 @@
     "TotalTime": "Общая длит.",
     "AddToQueueSuccessful": "Файл {filename} добавлен в очередь.",
     "DeleteSingleJobQuestion": "Вы действительно хотите удалить задание?",
-    "LoadCompleteHistory": "Загрузить полную историю"
+    "LoadCompleteHistory": "Загрузить полную историю",
+    "AddMaintenance": "Добавить обслуживание",
+    "Name": "Имя",
+    "AddANote": "Добавить заметку",
+    "DateBasedReminder": "Дата",
+    "DateBasedReminderDescription": "Это напоминание основано на дате.",
+    "Days": "дни",
+    "EditMaintenance": "Редактировать техническое обслуживание",
+    "EntryCreatedAt": "Создано {дата}.",
+    "EntryNextPerform": "Следующее выполнение:",
+    "EntryPerformedAt": "Выполнено {date}.",
+    "EntrySince": "Используется с:",
+    "Filament": "Нить",
+    "FilamentBasedReminder": "Нить",
+    "FilamentBasedReminderDescription": "Это напоминание основано на использовании нити.",
+    "Hours": "часы",
+    "InvalidNameEmpty": "Неверное имя. \nИмя не должно быть пустым!",
+    "Maintenance": "Обслуживание",
+    "MaintenanceEntries": "Записи о техническом обслуживании",
+    "Meter": "метр",
+    "NoReminder": "Нет напоминаний",
+    "OneTime": "Один раз",
+    "Perform": "выполнять",
+    "PerformMaintenance": "Выполнение технического обслуживания",
+    "Performed": "выполненный",
+    "PerformedAndReschedule": "выполнено и перенесено",
+    "PrintJobs": "Задания печати",
+    "PrinttimeBasedReminder": "Время печати",
+    "PrinttimeBasedReminderDescription": "Это напоминание основано на времени печати.",
+    "Reminder": "Напоминание",
+    "Repeat": "Повторить",
+    "Settings": "Настройки",
+    "Time": "Время"
   },
   "JobQueue": {
     "AllJobs": "Все задачи",
@@ -789,8 +851,8 @@
       "MoonrakerUpdateQuestion": "Это обновит API Moonraker. \nДля продолжения использования машины могут потребоваться изменения в файле Moonraker.conf.",
       "MoreCommitsInfo": "Здесь можно отобразить максимум 30 коммитов. \nЧтобы просмотреть все коммиты, нажмите на следующую ссылку:",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Отдельностоящий",
+        "Dirty": "Грязный"
       },
       "SoftRecovery": "Мягкое восстановление",
       "StartUpdate": "Начать обновление",
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "Принтер сейчас выключен и Klipper не может подключиться. Включите принтер, нажав кнопку ниже:",
       "Restart": "Перезапуск",
       "ServiceReports": "Статус {service}",
-      "KlipperCheck": ""
+      "KlipperCheck": "Убедитесь, что служба Klipper запущена и настроен UDS (сокет домена Unix).",
+      "KlipperLog": "Клиппер Журнал",
+      "MoonrakerLog": "Журнал Лунного гонщика"
     },
     "MachineSettingsPanel": {
       "Headline": "Настройки кинематики",
@@ -1220,7 +1284,9 @@
       "TimeFormat": "Формат времени",
       "DBNavigation": "Навигация",
       "Everything": "Все",
-      "MainsailSettingsMoonrakerDb": "Настройки грота в базе данных Moonraker"
+      "MainsailSettingsMoonrakerDb": "Настройки грота в базе данных Moonraker",
+      "DbMaintenance": "Обслуживание",
+      "DbNavigation": "Навигация"
     },
     "InterfaceSettings": "Настройки интерфейса",
     "MacrosTab": {
@@ -1310,7 +1376,10 @@
       "Port": "Порт",
       "RemotePrinters": "Принтеры",
       "UpdatePrinter": "Обновить принтер",
-      "UseConfigJson": "InstanceDB = JSON определён. Используйте config.json для редактирования списка принтеров."
+      "UseConfigJson": "InstanceDB = JSON определён. Используйте config.json для редактирования списка принтеров.",
+      "Path": "Путь",
+      "Name": "Имя",
+      "NameDescription": "Это имя не будет отображаться в графическом интерфейсе и будет использоваться только для перенаправления."
     },
     "Store": "Сохранение",
     "TimelapseTab": {
@@ -1383,7 +1452,12 @@
       "RulesMin": "Значение должно быть минимум {min}!",
       "RulesPositive": "Значение должно быть положительным!",
       "RulesRequired": "Требуется значение!",
-      "RulesZeroAndPositive": "Значение должно быть 0 или больше!"
+      "RulesZeroAndPositive": "Значение должно быть 0 или больше!",
+      "CameraDescriptionWithSnapshotUrl": "Выберите, какую камеру (с URL-адресом снимка) следует использовать.",
+      "CameraWarningAlreadySet": "Это значение уже установлено в файле конфигурации Moonraker.",
+      "CameraWarningAlreadySetSmall": "snapshoturl в разделе [timelapse]",
+      "NoWebcamFound": "Нет доступной веб-камеры",
+      "SelectWebcam": "Выберите веб-камеру..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Диалог регулировки винтов стола",
@@ -1434,11 +1508,32 @@
       "DefaultNavigationStateLastState": "последнее состояние",
       "HideUpdateWarnings": "Скрыть предупреждения об обновлениях",
       "HideUpdateWarningsDescription": "Эта опция скроет все предупреждения об обновлениях в диспетчере обновлений.",
-      "ShowWebcamInNavigation": "Показать веб -камеру в навигации",
+      "ShowWebcamInNavigation": "Показывать веб-камеру в навигации",
       "Theme": "Тема",
       "ThemeDark": "Темный",
       "ThemeDescription": "Измените общий внешний вид приложения.",
-      "ThemeLight": "Свет"
+      "ThemeLight": "Свет",
+      "Mode": "Режим",
+      "PrintstatusThumbnailZoom": "Большой масштаб миниатюр",
+      "PrintstatusThumbnailZoomDescription": "Это отключит эффект масштабирования миниатюры на панели состояния.",
+      "ProgressAsFavicon": "Показывать прогресс в виде значка",
+      "ProgressAsFaviconDescription": "Измените значок логотипа Грота на круг прогресса.",
+      "ModeDescription": "Измените общий вид приложения.",
+      "DashboardFilesFilter": "Файлы панели фильтра",
+      "DashboardFilesFilterCompleted": "Завершенный",
+      "DashboardFilesFilterDescription": "Отфильтруйте файлы на панели состояния панели панели по последнему статусу.",
+      "DashboardFilesFilterFailed": "Неуспешный",
+      "DashboardFilesFilterNew": "Новый",
+      "DashboardFilesLimit": "Ограничение файлов панели панели",
+      "DashboardFilesLimitDescription": "Выберите максимальное количество файлов для отображения на панели состояния панели. \n(0 скрывает вкладку «Файлы»)",
+      "DashboardFilesLimitLabel": "{count} файлы",
+      "DashboardHistoryLimit": "Ограничение истории панели панели",
+      "DashboardHistoryLimitDescription": "Выберите максимальное количество заданий для отображения на панели панели на панели состояния. \n(0 скрывает вкладку «История»)",
+      "DashboardHistoryLimitLabel": "{count} задания",
+      "HideOtherInstances": "Скрыть другие случаи",
+      "HideOtherInstancesDescription": "Скрыть другие случаи Клиппера",
+      "ConfirmOnCancelJob": "Требовать подтверждения на работе",
+      "ConfirmOnCancelJobDescription": "Показать диалог подтверждения на работу отмены"
     },
     "Update": "обновить",
     "WebcamsTab": {
@@ -1491,6 +1586,14 @@
         "Hsv": "HSV",
         "Portland": "Портленд",
         "Spring": "Весна"
+      },
+      "DefaultOrientationDescription": "Выберите ориентацию по умолчанию для визуализации сетки кровати.",
+      "DefaultOrientation": "Ориентация по умолчанию",
+      "Orientations": {
+        "Front": "Передний",
+        "LeftFront": "Левый фронт",
+        "RightFront": "Правый фронт",
+        "Top": "Вершина"
       }
     }
   },
@@ -1567,5 +1670,10 @@
     "Refresh": "обновить",
     "Resolutions": "Резолюции"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Сброс к заводским настройкам"
+    }
+  }
 }

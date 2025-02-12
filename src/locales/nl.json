@@ -10,7 +10,8 @@
         "DeprecatedOptionHeadline": "Verouderde Klipper optie",
         "DeprecatedValue": "Waarde '{value}' in optie '{option}' in sectie '{section}' is verouderd en wordt in een toekomstige versie verwijderd.",
         "DeprecatedValueHeadline": "Verouderde Klipper waarde",
-        "KlipperWarning": "Klipper waarschuwing"
+        "KlipperWarning": "Klipper waarschuwing",
+        "KlipperRuntimeWarning": "Klipper Runtime-waarschuwing"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -29,7 +30,17 @@
       "BrowserWarnings": {
         "Description": "{name} is verouderd en wordt niet volledig ondersteund. \nDe huidige versie is {version}, maar Mainsail vereist versie {minVersion} of hoger.",
         "Headline": "Verouderde browser"
-      }
+      },
+      "ShowDetails": "details weergeven",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "Onderhoudsherinnering",
+      "MaintenanceReminderText": "Onderhoud \"{name}\" is nodig.",
+      "TmcOtFlag": "Stappenstuurprogrammafout: OT-vlag ingesteld",
+      "TmcOtFlagText": "De stappenmotor '{name}' heeft de OT-vlag geactiveerd en werkt niet meer. \nDit kan worden veroorzaakt door een te hoge stroom. \nControleer de instellingen van de stappenmotor en de koeling.",
+      "TmcOtpwFlag": "Waarschuwing stappenmotorbestuurder: OTPW-vlag ingesteld",
+      "TmcOtpwFlagText": "De stappenmotor '{name}' heeft de OTPW-vlag geactiveerd en werkt mogelijk niet meer als het warmer wordt. \nDit is een indicatie van een te hoge temperatuur. \nDit kan worden veroorzaakt door een te hoge stroom. \nControleer de instellingen van de stappenmotor en de koeling."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Moet groter of gelijk zijn dan {min}!",
@@ -119,7 +130,7 @@
       "TopBar": {
         "LightBtn": "Licht"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Geavanceerde functies",
       "ConnectionStatus": {
         "Mainsail": "Grootzeil"
       },
@@ -212,6 +223,25 @@
           "PrinterNameRequired": "Printernaam is vereist",
           "PrinterNameMaxLength": "De maximaal toegestane naamlengte is 63 tekens",
           "PrinterNameInvalid": "Printernaam is ongeldig. \nAlleen basistekens, cijfers en koppeltekens zijn toegestaan."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Netwerkprofiel is succesvol opgeslagen!",
+            "ErrorNoConnections": "Fout - Slechte reactie - Geen verbindingen",
+            "ErrorBadResponse": "Fout - Slechte reactie",
+            "ErrorWhileLoadingWifi": "Fout tijdens het laden van WiFi -netwerken",
+            "ConnectedTo": "Verbonden met:",
+            "InvalidMacFormat": "Ongeldig Mac -adresformaat",
+            "invalidIP6Format": "Ongeldig IPv6 -adresformaat",
+            "invalidIP4PatternFormat": "Ongeldig formaat. \nVoer het formaat in x.x.x.x, x.x.x.x in",
+            "invalidIP4Format": "Ongeldig formaat. \nVoer het formaat in x.x.x.x in",
+            "DiscardChanges": "Veranderingen weggooien",
+            "ProfileSettingsTitle": "Profielinstellingen",
+            "interface": "Interface",
+            "connectionInProgress": "Aansluiting in uitvoering ..",
+            "signal": "SIGNAAL",
+            "AvailableWirelessNetworks": "Beschikbare draadloze netwerken"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -297,7 +327,7 @@
           "UP_TO_DATE": "NIEUWSTE VERSIE",
           "USB_UNPACKING": "UPDATE UITPAKKEN",
           "USB_UPDATE_AVAILABLE": "USB-NIEUWE UPDATE",
-          "UNPACKING_FAILED": "Uitpakken is mislukt"
+          "UNPACKING_FAILED": "UITPAKKEN MISLUKT"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -652,7 +682,39 @@
     "TotalTime": "Totale Tijd",
     "AddToQueueSuccessful": "Bestand {bestandsnaam} toegevoegd aan wachtrij.",
     "DeleteSingleJobQuestion": "Wilt u de vacature echt verwijderen?",
-    "LoadCompleteHistory": "Laad de volledige geschiedenis"
+    "LoadCompleteHistory": "Laad de volledige geschiedenis",
+    "AddMaintenance": "Onderhoud toevoegen",
+    "Name": "Naam",
+    "AddANote": "Voeg een notitie toe",
+    "DateBasedReminder": "Datum",
+    "DateBasedReminderDescription": "Deze herinnering is gebaseerd op de datum.",
+    "Days": "dagen",
+    "EditMaintenance": "Onderhoud bewerken",
+    "EntryCreatedAt": "Gemaakt op {date}.",
+    "EntryNextPerform": "Volgende uitvoering:",
+    "EntryPerformedAt": "Uitgevoerd op {date}.",
+    "EntrySince": "Gebruikt sinds:",
+    "Filament": "Gloeidraad",
+    "FilamentBasedReminder": "Gloeidraad",
+    "FilamentBasedReminderDescription": "Deze herinnering is gebaseerd op het filamentgebruik.",
+    "Hours": "uur",
+    "InvalidNameEmpty": "Ongeldige naam. \nNaam mag niet leeg zijn!",
+    "Maintenance": "Onderhoud",
+    "MaintenanceEntries": "Onderhoudsinvoer",
+    "Meter": "meter",
+    "NoReminder": "Geen herinnering",
+    "OneTime": "Eenmalig",
+    "Perform": "presteren",
+    "PerformMaintenance": "Onderhoud uitvoeren",
+    "Performed": "uitgevoerd",
+    "PerformedAndReschedule": "uitgevoerd en opnieuw gepland",
+    "PrintJobs": "Afdruktaken",
+    "PrinttimeBasedReminder": "Afdruktijd",
+    "PrinttimeBasedReminderDescription": "Deze herinnering is gebaseerd op de printtijd.",
+    "Reminder": "Herinnering",
+    "Repeat": "Herhalen",
+    "Settings": "Instellingen",
+    "Time": "Tijd"
   },
   "JobQueue": {
     "AllJobs": "Alle jobs",
@@ -790,8 +852,8 @@
       "MoonrakerUpdateQuestion": "Hiermee wordt de Moonraker API bijgewerkt. \nEr zijn mogelijk wijzigingen in het bestand moonraker.conf nodig om de machine te kunnen blijven gebruiken.",
       "MoreCommitsInfo": "Hier kunnen maximaal 30 commits worden weergegeven. \nOm alle commits te zien, klik op de volgende link:",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Losgemaakt",
+        "Dirty": "Vies"
       },
       "SoftRecovery": "Zacht herstel",
       "StartUpdate": "Start update",
@@ -854,7 +916,9 @@
       "PrinterSwitchedOffDescription": "De printer is uitgeschakeld en Klipper kan niet verbinden. Om de printer in te schakelen, klik op de onderstaande knop:",
       "Restart": "Herstart",
       "ServiceReports": "{service} rapportages",
-      "KlipperCheck": ""
+      "KlipperCheck": "Controleer of de Klipper-service actief is en of er een UDS (Unix Domain Socket) is geconfigureerd.",
+      "KlipperLog": "Klipper-logboek",
+      "MoonrakerLog": "Moonraker-logboek"
     },
     "MachineSettingsPanel": {
       "Headline": "Machine instellingen",
@@ -1221,7 +1285,9 @@
       "TimeFormat": "Tijdformaat",
       "DBNavigation": "Navigatie",
       "Everything": "Alles",
-      "MainsailSettingsMoonrakerDb": "Grootzeilinstellingen in Moonraker DB"
+      "MainsailSettingsMoonrakerDb": "Grootzeilinstellingen in Moonraker DB",
+      "DbMaintenance": "Onderhoud",
+      "DbNavigation": "Navigatie"
     },
     "HeightmapTab": {
       "ColorSchemes": "kleurenschema's",
@@ -1233,6 +1299,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Lente"
+      },
+      "DefaultOrientationDescription": "Selecteer de standaardoriëntatie voor de visualisatie van het bedmesh.",
+      "DefaultOrientation": "Standaardoriëntatie",
+      "Orientations": {
+        "Front": "Voorkant",
+        "LeftFront": "Aan de voorkant",
+        "RightFront": "Aan de voorkant",
+        "Top": "Bovenkant"
       }
     },
     "InterfaceSettings": "Interface Instellingen",
@@ -1320,7 +1394,10 @@
       "Port": "Poort",
       "RemotePrinters": "Printers op afstand",
       "UpdatePrinter": "Update Printer",
-      "UseConfigJson": "InstanceDB = JSON gedetecteerd. Gebruik de config.json om de printerlijst aan te passen."
+      "UseConfigJson": "InstanceDB = JSON gedetecteerd. Gebruik de config.json om de printerlijst aan te passen.",
+      "Path": "Pad",
+      "Name": "Naam",
+      "NameDescription": "Deze naam wordt niet weergegeven in de GUI en wordt alleen gebruikt voor omleidingen."
     },
     "Store": "opslaan",
     "TimelapseTab": {
@@ -1393,7 +1470,12 @@
       "RulesMin": "Waarde moet minimaal {min} zijn!",
       "RulesPositive": "Waarde moet positief zijn!",
       "RulesRequired": "Waarde is vereist!",
-      "RulesZeroAndPositive": "Waarde moet 0 of groter zijn!"
+      "RulesZeroAndPositive": "Waarde moet 0 of groter zijn!",
+      "CameraDescriptionWithSnapshotUrl": "Selecteer welke camera (met snapshot-URL) moet worden gebruikt",
+      "CameraWarningAlreadySet": "Deze waarde is al ingesteld in het Moonraker-configuratiebestand",
+      "CameraWarningAlreadySetSmall": "snapshoturl in de sectie [timelapse].",
+      "NoWebcamFound": "Geen webcam beschikbaar",
+      "SelectWebcam": "Selecteer webcam..."
     },
     "UiSettingsTab": {
       "BoolBigThumbnail": "Grote thumbnail",
@@ -1448,7 +1530,28 @@
       "Theme": "Thema",
       "ThemeDark": "Donker",
       "ThemeDescription": "Verander de algehele look en feel van de applicatie",
-      "ThemeLight": "Licht"
+      "ThemeLight": "Licht",
+      "Mode": "Modus",
+      "PrintstatusThumbnailZoom": "Grote miniatuurzoom",
+      "PrintstatusThumbnailZoomDescription": "Hierdoor wordt het zoomeffect van de miniatuur in het statuspaneel gedeactiveerd.",
+      "ProgressAsFavicon": "Toon voortgang als favicon",
+      "ProgressAsFaviconDescription": "Verander het favicon met het grootzeillogo in een voortgangscirkel.",
+      "ModeDescription": "Verander de algehele uitstraling van de toepassing.",
+      "DashboardFilesFilter": "Filter van dashboardbestanden",
+      "DashboardFilesFilterCompleted": "Voltooid",
+      "DashboardFilesFilterDescription": "Filter de bestanden in het dashboardstatuspaneel op hun laatste status.",
+      "DashboardFilesFilterFailed": "Mislukt",
+      "DashboardFilesFilterNew": "Nieuw",
+      "DashboardFilesLimit": "Limiet van dashboardbestanden",
+      "DashboardFilesLimitDescription": "Selecteer het maximale aantal bestanden dat moet worden weergegeven in het dashboardstatuspaneel. \n(0 verbergt het tabblad Bestanden)",
+      "DashboardFilesLimitLabel": "{count} bestanden",
+      "DashboardHistoryLimit": "Limiet van de geschiedenis van de dashboard",
+      "DashboardHistoryLimitDescription": "Selecteer het maximale aantal taken om op het dashboard in het statuspaneel weer te geven. \n(0 verbergt het tabblad Geschiedenis)",
+      "DashboardHistoryLimitLabel": "{count} banen",
+      "HideOtherInstances": "Verberg andere instanties",
+      "HideOtherInstancesDescription": "Verberg andere instanties van Klipper",
+      "ConfirmOnCancelJob": "Vereist Bevestig bij annuleren Job",
+      "ConfirmOnCancelJobDescription": "Toon een bevestigingsdialoogvenster bij annuleren taak"
     },
     "Update": "updaten",
     "WebcamsTab": {
@@ -1567,5 +1670,10 @@
     "PathById": "Pad op ID",
     "Refresh": "vernieuwen",
     "Resolutions": "Resoluties"
+  },
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Fabrieksreset"
+    }
   }
 }

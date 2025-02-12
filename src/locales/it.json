@@ -13,7 +13,8 @@
         "DeprecatedOptionHeadline": "Opzione obsoleta di Klipper",
         "DeprecatedValue": "Il valore '{value}' in '{option}' nella sezione '{section}' è obsoleto e sarà rimosso in una versione futura.",
         "DeprecatedValueHeadline": "Valore obsoleto di Klipper",
-        "KlipperWarning": "Avviso di Klipper"
+        "KlipperWarning": "Avviso di Klipper",
+        "KlipperRuntimeWarning": "Avviso sull'esecuzione di Klipper"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "NextReboot": "prossimo riavvio",
       "NoNotification": "Nessuna notifica disponibile",
       "Notifications": "Notifiche",
-      "Remind": "Ricorda:"
+      "Remind": "Ricorda:",
+      "ShowDetails": "mostra i dettagli",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1 W",
+      "MaintenanceReminder": "Promemoria di manutenzione",
+      "MaintenanceReminderText": "La manutenzione \"{name}\" è in scadenza.",
+      "TmcOtFlag": "Errore driver passo-passo: flag OT impostato",
+      "TmcOtFlagText": "Il driver passo-passo '{name}' ha attivato il flag OT e ha smesso di funzionare. \nCiò può essere causato da una corrente troppo elevata. \nControllare le impostazioni e il raffreddamento del driver passo-passo.",
+      "TmcOtpwFlag": "Avviso driver passo-passo: flag OTPW impostato",
+      "TmcOtpwFlagText": "Il driver passo-passo '{name}' ha attivato il flag OTPW e potrebbe smettere di funzionare se la temperatura aumenta. \nQuesta è un'indicazione di una condizione di sovratemperatura. \nCiò può essere causato da una corrente troppo elevata. \nControllare le impostazioni e il raffreddamento del driver passo-passo."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Deve essere maggiore o uguale a {min}!.",
@@ -123,7 +134,7 @@
       "TopBar": {
         "LightBtn": "Leggero"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Caratteristiche avanzate",
       "ConnectionStatus": {
         "Mainsail": "Randa"
       },
@@ -216,6 +227,25 @@
           "PrinterNameRequired": "Il nome della stampante è obbligatorio",
           "PrinterNameMaxLength": "La lunghezza massima consentita del nome è di 63 caratteri",
           "PrinterNameInvalid": "Il nome della stampante non è valido. \nSono consentiti solo caratteri di base, numeri e trattini."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Il profilo di rete ha avuto successo salvato!",
+            "ErrorNoConnections": "Errore - Bad Response - Nessuna connessione",
+            "ErrorBadResponse": "Errore: cattiva risposta",
+            "ErrorWhileLoadingWifi": "Errore durante il caricamento di reti WiFi",
+            "ConnectedTo": "Connesso a:",
+            "InvalidMacFormat": "Formato dell'indirizzo MAC non valido",
+            "invalidIP6Format": "Formato dell'indirizzo IPv6 non valido",
+            "invalidIP4PatternFormat": "Formato non valido. \nImmettere nel formato x.x.x.x, x.x.x.x",
+            "invalidIP4Format": "Formato non valido. \nImmettere nel formato x.x.x.x",
+            "DiscardChanges": "Scartare i cambiamenti",
+            "ProfileSettingsTitle": "Impostazioni del profilo",
+            "interface": "Interfaccia",
+            "connectionInProgress": "Connessione in corso ..",
+            "signal": "SEGNALE",
+            "AvailableWirelessNetworks": "Reti wireless disponibili"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -301,7 +331,7 @@
           "UP_TO_DATE": "ULTIMA VERSIONE",
           "USB_UNPACKING": "AGGIORNAMENTO DISIMBALLAGGIO",
           "USB_UPDATE_AVAILABLE": "USB - NUOVO AGGIORNAMENTO",
-          "UNPACKING_FAILED": "Disimballaggio fallito"
+          "UNPACKING_FAILED": "DISIMBALLAGGIO NON FALLITO"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -651,7 +681,39 @@
     "TotalTime": "Tempo Totale",
     "TitleRefreshHistory": "Aggiorna cronologia",
     "TitleSettings": "Impostazioni",
-    "AddToQueueSuccessful": "File {filename} aggiunto alla coda."
+    "AddToQueueSuccessful": "File {filename} aggiunto alla coda.",
+    "AddMaintenance": "Aggiungi manutenzione",
+    "Name": "Nome",
+    "AddANote": "Aggiungi una nota",
+    "DateBasedReminder": "Data",
+    "DateBasedReminderDescription": "Questo promemoria è basato sulla data.",
+    "Days": "giorni",
+    "EditMaintenance": "Modifica manutenzione",
+    "EntryCreatedAt": "Creato il {data}.",
+    "EntryNextPerform": "Successivamente esegui:",
+    "EntryPerformedAt": "Eseguito il {date}.",
+    "EntrySince": "Utilizzato dal:",
+    "Filament": "Filamento",
+    "FilamentBasedReminder": "Filamento",
+    "FilamentBasedReminderDescription": "Questo promemoria si basa sull'utilizzo del filamento.",
+    "Hours": "ore",
+    "InvalidNameEmpty": "Nome non valido. \nIl nome non deve essere vuoto!",
+    "Maintenance": "Manutenzione",
+    "MaintenanceEntries": "Voci di manutenzione",
+    "Meter": "metro",
+    "NoReminder": "Nessun promemoria",
+    "OneTime": "Una volta",
+    "Perform": "eseguire",
+    "PerformMaintenance": "Eseguire la manutenzione",
+    "Performed": "eseguito",
+    "PerformedAndReschedule": "eseguito e riprogrammare",
+    "PrintJobs": "Lavori di stampa",
+    "PrinttimeBasedReminder": "Orario di stampa",
+    "PrinttimeBasedReminderDescription": "Questo promemoria si basa sull'ora di stampa.",
+    "Reminder": "Promemoria",
+    "Repeat": "Ripetere",
+    "Settings": "Impostazioni",
+    "Time": "Tempo"
   },
   "JobQueue": {
     "AllJobs": "Tutti i Lavori",
@@ -794,10 +856,10 @@
       "WebClientUpdateQuestion": "In alcuni casi, l'aggiornamento del client Web potrebbe comportare modifiche che potrebbero causare incompatibilità. Per ulteriori informazioni, consultare le note di rilascio.",
       "ERROR": "Errore",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Distaccato",
+        "Dirty": "Sporco"
       },
-      "PackagesCanBeUpgraded": ""
+      "PackagesCanBeUpgraded": "I pacchetti possono essere aggiornati"
     }
   },
   "ManualProbe": {
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "La stampante è attualmente spenta e Klipper non può connettersi. Per accendere la stampante, fare clic sul pulsante qui sotto:",
       "Restart": "Riavvia",
       "ServiceReports": "Rapporti {service}",
-      "KlipperCheck": ""
+      "KlipperCheck": "Verifica che il servizio Klipper sia in esecuzione e che sia configurato un UDS (Unix Domain Socket).",
+      "KlipperLog": "Registro di Klipper",
+      "MoonrakerLog": "Registro di Moonraker"
     },
     "MachineSettingsPanel": {
       "Headline": "Impostazioni Macchina",
@@ -894,7 +958,7 @@
       "RunoutSensor": {
         "Detected": "rilevato",
         "Empty": "vuoto",
-        "Disabled": "Disabile"
+        "Disabled": "Disabilitato"
       }
     },
     "PowerControlPanel": {
@@ -1039,8 +1103,8 @@
       "SaveInfoDescription": "Il nuovo z-offset è stato calcolato e registrato. Fai clic su \"SAVE CONFIG\" per memorizzare il nuovo z-offset nel tuo printer.cfg e riavviare Klipper.",
       "SaveInfoDescriptionPrint": "Il nuovo Z offset è stato calcolato e registrato. Dopo la stampa, fai clic su \"SAVE CONFIG\" nella barra in alto per salvarlo in printer.cfg e riavviare Klipper.",
       "SaveInfoHeadline": "Informazione",
-      "ToEndstop": "Per eliminare",
-      "ToProbe": "Per sondare"
+      "ToEndstop": "Per finire",
+      "ToProbe": "sondare"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1219,8 +1283,10 @@
       "Restore": "Ripristina",
       "RestoreDialog": "Seleziona tutte le sezioni che vuoi ripristinare:",
       "TimeFormat": "Formato Data",
-      "DbWebcams": "",
-      "MoonrakerDb": ""
+      "DbWebcams": "Webcam",
+      "MoonrakerDb": "Banca dati Moonraker",
+      "DbMaintenance": "Manutenzione",
+      "DbNavigation": "Navigazione"
     },
     "HeightmapTab": {
       "ColorSchemes": "Schemi Colore",
@@ -1232,6 +1298,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Spring"
+      },
+      "DefaultOrientationDescription": "Seleziona l'orientamento predefinito per la visualizzazione della mesh del letto.",
+      "DefaultOrientation": "Orientamento predefinito",
+      "Orientations": {
+        "Front": "Davanti",
+        "LeftFront": "Davanti a sinistra",
+        "RightFront": "Fronte destro",
+        "Top": "Superiore"
       }
     },
     "InterfaceSettings": "Impostazioni Interfaccia",
@@ -1322,7 +1396,10 @@
       "Port": "Porta",
       "RemotePrinters": "Stampanti Remote",
       "UpdatePrinter": "Aggiorna Stampante",
-      "UseConfigJson": "InstanceDB = JSON presente. Utilizza il file config.json per modificare l'elenco delle stampanti."
+      "UseConfigJson": "InstanceDB = JSON presente. Utilizza il file config.json per modificare l'elenco delle stampanti.",
+      "Path": "Sentiero",
+      "Name": "Nome",
+      "NameDescription": "Questo nome non verrà visualizzato nella GUI e verrà utilizzato solo per i reindirizzamenti."
     },
     "Store": "store",
     "TimelapseTab": {
@@ -1395,7 +1472,12 @@
       "VariableFpsMax": "FPS Variabili max",
       "VariableFpsMaxDescription": "",
       "VariableFpsMin": "FPS Variabili min",
-      "VariableFpsMinDescription": ""
+      "VariableFpsMinDescription": "",
+      "CameraDescriptionWithSnapshotUrl": "Selezionare quale telecamera (con URL dell'istantanea) deve essere utilizzata",
+      "CameraWarningAlreadySet": "Questo valore è già impostato nel file di configurazione Moonraker",
+      "CameraWarningAlreadySetSmall": "snapshoturl nella sezione [timelapse].",
+      "NoWebcamFound": "Nessuna webcam disponibile",
+      "SelectWebcam": "Seleziona webcam..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Finestra di dialogo per il BED_SCREWS_ADJUST",
@@ -1450,7 +1532,28 @@
       "UiSettings": "Impostazioni Interfaccia Utente",
       "ConfirmOnCoolDown": "Richiedi conferma su CoolDown",
       "ConfirmOnCoolDownDescription": "Mostra una finestra di dialogo di conferma su CoolDown",
-      "ShowWebcamInNavigation": "Mostra webcam in navigazione"
+      "ShowWebcamInNavigation": "Mostra la webcam nella navigazione",
+      "Mode": "Modalità",
+      "PrintstatusThumbnailZoom": "Zoom delle miniature di grandi dimensioni",
+      "PrintstatusThumbnailZoomDescription": "Ciò disattiverà l'effetto zoom della miniatura nel pannello di stato.",
+      "ProgressAsFavicon": "Mostra i progressi come favicon",
+      "ProgressAsFaviconDescription": "Cambia la favicon del logo della randa in un cerchio di avanzamento.",
+      "ModeDescription": "Cambia l'aspetto generale dell'applicazione.",
+      "DashboardFilesFilter": "Filtro file dashboard",
+      "DashboardFilesFilterCompleted": "Completato",
+      "DashboardFilesFilterDescription": "Filtra i file nel pannello di stato della dashboard per il loro ultimo stato.",
+      "DashboardFilesFilterFailed": "Fallito",
+      "DashboardFilesFilterNew": "Nuovo",
+      "DashboardFilesLimit": "Limite di file dashboard",
+      "DashboardFilesLimitDescription": "Selezionare il numero massimo di file da visualizzare nel pannello di stato della dashboard. \n(0 nasconde la scheda File)",
+      "DashboardFilesLimitLabel": "{count} file",
+      "DashboardHistoryLimit": "Limite di cronologia del cruscotto",
+      "DashboardHistoryLimitDescription": "Selezionare il numero massimo di lavori da visualizzare sulla dashboard nel pannello di stato. \n(0 nasconde la scheda cronologia)",
+      "DashboardHistoryLimitLabel": "{count} Jobs",
+      "HideOtherInstances": "Nascondi altri casi",
+      "HideOtherInstancesDescription": "Nascondi altri casi di klipper",
+      "ConfirmOnCancelJob": "Richiedere conferma sul lavoro di annullamento",
+      "ConfirmOnCancelJobDescription": "Mostra una finestra di dialogo di conferma sul lavoro Annulla"
     },
     "Update": "update",
     "WebcamsTab": {
@@ -1567,5 +1670,10 @@
     "Refresh": "ricaricare",
     "Resolutions": "Risoluzioni"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Ripristino delle impostazioni di fabbrica"
+    }
+  }
 }

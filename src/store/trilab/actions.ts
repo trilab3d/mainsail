@@ -208,7 +208,7 @@ export const actions: ActionTree<TrilabState, any> = {
 
         /// first for each result.interfaces, empty the result.interfaces[i].connection['available-connections'] (make empty array)
         for (let i = 0; i < result.interfaces.length; i++) {
-            result.interfaces[i].CONNECTIONS['AVAILABLE-CONNECTIONS'] = [] ?? []
+            result.interfaces[i].CONNECTIONS['AVAILABLE-CONNECTIONS'] = []
         }
 
         /// for each list-connections result, find the corresponding interface and compare it to the result[i].general.device and if it matches then add the connection to the interface (to available interfaces)

@@ -1,15 +1,33 @@
 <template v-if="TrilabIsVisibleRule">
     <v-item-group class="vItemGroup" v-if="TrilabIsVisibleRule">
-        <v-btn style="width:100%" small :color="color" :class="paramArray.length ? 'macroWithParameters' : ''"
-            :loading="loadings.includes('macro_' + macro.name)" :disabled="TrilabIsDisabledLocal"
-            @click="doSendMacro(macro.name)">
-            {{ alias ? alias : macro.name.replace(/_/g, ' ') }}
-        </v-btn>
+        <v-tooltip :disabled="!hasDescription" top>
+            <template #activator="{ on, attrs }">
+                <v-btn
+                    style="width: 100%"
+                    small
+                    :color="color"
+                    :class="paramArray.length ? 'macroWithParameters' : ''"
+                    :loading="loadings.includes('macro_' + macro.name)"
+                    :disabled="TrilabIsDisabledLocal"
+                    v-bind="attrs"
+                    v-on="on"
+                    @click="doSendMacro(macro.name)">
+                    {{ alias ? alias : macro.name.replace(/_/g, ' ') }}
+                </v-btn>
+            </template>
+            <span>{{ klipperMacro.description }}</span>
+        </v-tooltip>
         <template v-if="paramArray.length">
             <v-menu v-if="!isMobile" offset-y :close-on-content-click="false">
                 <template #activator="{ on, attrs }">
-                    <v-btn style="position:absolute; right:0;" :disabled="TrilabIsDisabledLocal" :color="color"
-                        v-bind="attrs" class="minwidth-0 px-1 btnMacroMenu" small v-on="on">
+                    <v-btn
+                        style="position: absolute; right: 0"
+                        :disabled="TrilabIsDisabledLocal"
+                        :color="color"
+                        v-bind="attrs"
+                        class="minwidth-0 px-1 btnMacroMenu"
+                        small
+                        v-on="on">
                         <v-icon>{{ mdiMenuDown }}</v-icon>
                     </v-btn>
                 </template>
@@ -17,9 +35,17 @@
                     <v-card-text class="py-2">
                         <v-row class="my-2">
                             <v-col v-for="(name, key) in paramArray" :key="'param_' + key" :cols="paramCssCols">
-                                <v-text-field v-model="params[name].value" :label="name" :placeholder="params[name].default"
-                                    :persistent-placeholder="true" hide-details outlined dense clearable
-                                    :clear-icon="mdiRefresh" @keyup.enter="sendWithParams"></v-text-field>
+                                <v-text-field
+                                    v-model="params[name].value"
+                                    :label="name"
+                                    :placeholder="params[name].default"
+                                    :persistent-placeholder="true"
+                                    hide-details
+                                    outlined
+                                    dense
+                                    clearable
+                                    :clear-icon="mdiRefresh"
+                                    @keyup.enter="sendWithParams"></v-text-field>
                             </v-col>
                         </v-row>
                         <v-row class="my-2">
@@ -33,8 +59,13 @@
                 </v-card>
             </v-menu>
             <template v-else>
-                <v-btn :disabled="TrilabIsDisabledLocal" :color="color" style="position:absolute; right:0;"
-                    class="minwidth-0 px-1 btnMacroMenu" small @click="paramsDialog = true">
+                <v-btn
+                    :disabled="TrilabIsDisabledLocal"
+                    :color="color"
+                    style="position: absolute; right: 0"
+                    class="minwidth-0 px-1 btnMacroMenu"
+                    small
+                    @click="paramsDialog = true">
                     <v-icon>{{ mdiMenuDown }}</v-icon>
                 </v-btn>
                 <v-dialog v-model="paramsDialog">
@@ -47,9 +78,16 @@
                         <v-card-text>
                             <v-row>
                                 <v-col v-for="(name, key) in paramArray" :key="'param_mobile_' + key" :cols="6">
-                                    <v-text-field v-model="params[name].value" :label="name"
-                                        :placeholder="params[name].default" :persistent-placeholder="true" hide-details
-                                        outlined dense clearable :clear-icon="mdiRefresh"
+                                    <v-text-field
+                                        v-model="params[name].value"
+                                        :label="name"
+                                        :placeholder="params[name].default"
+                                        :persistent-placeholder="true"
+                                        hide-details
+                                        outlined
+                                        dense
+                                        clearable
+                                        :clear-icon="mdiRefresh"
                                         @keyup.enter="sendWithParams"></v-text-field>
                                 </v-col>
                             </v-row>
@@ -91,6 +129,8 @@ interface params {
     components: { Panel },
 })
 export default class MacroButton extends Mixins(BaseMixin, TrilabMixin) {
+    DEFAULT_DESC = 'G-Code macro'
+
     /**
      * Icons
      */
@@ -98,9 +138,9 @@ export default class MacroButton extends Mixins(BaseMixin, TrilabMixin) {
     mdiMenuDown = mdiMenuDown
     mdiRefresh = mdiRefresh
 
-    private paramArray: string[] = []
-    private params: params = {}
-    private paramsDialog = false
+    paramArray: string[] = []
+    params: params = {}
+    paramsDialog = false
 
     @Prop({ required: true })
     declare readonly macro: GuiMacrosStateMacrogroupMacro | PrinterStateMacro
@@ -114,27 +154,30 @@ export default class MacroButton extends Mixins(BaseMixin, TrilabMixin) {
     @Prop({ default: false })
     declare readonly disabled: boolean
 
-
-    get TrilabIsVisibleRule(): boolean{
-        if (this.macro.name == "FILAMENT_CHANGE") {
-            return false;
+    get TrilabIsVisibleRule(): boolean {
+        if (this.macro.name == 'FILAMENT_CHANGE') {
+            return false
         }
-        return true;
+        return true
     }
 
     get TrilabIsDisabledLocal(): boolean {
         if (this.disabled) {
-            return true;
+            return true
         }
-        if (this.macro.name == 'LOAD_FILAMENT' || this.macro.name == 'UNLOAD_FILAMENT' || this.macro.name == 'FILAMENT_CHANGE') {
+        if (
+            this.macro.name == 'LOAD_FILAMENT' ||
+            this.macro.name == 'UNLOAD_FILAMENT' ||
+            this.macro.name == 'FILAMENT_CHANGE'
+        ) {
             /// check if printer is paused
             if (this.TrilabPrinterPaused || this.TrilabPrinterIdle) {
-                return false;
+                return false
             } else {
-                return true;
+                return true
             }
         }
-        return false;
+        return false
     }
     get klipperMacro() {
         return this.$store.getters['printer/getMacro'](this.macro.name)
@@ -160,6 +203,10 @@ export default class MacroButton extends Mixins(BaseMixin, TrilabMixin) {
 
     get paramsOverlayWidth() {
         return 200 * this.paramCols
+    }
+
+    get hasDescription(): boolean {
+        return this.klipperMacro.description && this.klipperMacro.description !== this.DEFAULT_DESC
     }
 
     @Watch('klipperMacro')
@@ -188,13 +235,12 @@ export default class MacroButton extends Mixins(BaseMixin, TrilabMixin) {
     doSendMacro(gcode: string) {
         if (this.macro.name == 'LOAD_FILAMENT') {
             /// TRILAB emit event to show load filament wizard instead of macro sending macro directly
-            this.$emit('clickLoadFilament');
-            return true;
-        }
-        else if (this.macro.name == 'UNLOAD_FILAMENT') {
-            /// TRILAB emit event to show unload filament wizard instead of sending macro directly 
-            this.$emit('clickUnloadFilament');
-            return true;
+            this.$emit('clickLoadFilament')
+            return true
+        } else if (this.macro.name == 'UNLOAD_FILAMENT') {
+            /// TRILAB emit event to show unload filament wizard instead of sending macro directly
+            this.$emit('clickUnloadFilament')
+            return true
         }
 
         this.$store.dispatch('server/addEvent', {

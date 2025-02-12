@@ -179,7 +179,7 @@
                 @click="activeView = 'connections_list'">
                 <v-icon>{{ mdiArrowLeft }}</v-icon>
             </v-btn>
-            <span>AVAILABLE WIRELESS NETWORKS</span>
+            <span>{{ $t('App.Trilab.Settings.Network.InterfacesPanel.AvailableWirelessNetworks') }}</span>
             <v-list>
                 <template v-for="(item, index) in wifiList">
                     <!-- <v-subheader v-if="item.header" :key="item.header" v-text="item.header"></v-subheader> -->
@@ -194,7 +194,7 @@
                         <v-list-item-content>
                             <v-list-item-title v-html="item.SSID"></v-list-item-title>
                             <v-list-item-subtitle>
-                                <small>SIGNAL: {{ item.SIGNAL }}</small>
+                                <small>{{ $t('App.Trilab.Settings.Network.InterfacesPanel.signal') }} {{ item.SIGNAL }}</small>
                                 <br />
                                 <small>BSSID: {{ item.BSSID }}</small>
                                 <v-container
@@ -215,7 +215,7 @@
                                     </v-btn>
                                 </v-container>
                                 <v-container v-if="item.connecting">
-                                    <p>Connection in progress...</p>
+                                    <p>{{ $t('App.Trilab.Settings.Network.InterfacesPanel.connectionInProgress') }}</p>
                                     <v-progress-linear
                                         color="white"
                                         indeterminate></v-progress-linear>
@@ -255,7 +255,7 @@
             <h3>
                 {{ selectedConnection.details.connection.id }}
                 <small style="display: block; position: absolute; top: 10px; right: 10px">
-                    interface: {{ selectedInterface.GENERAL.DEVICE }}
+                    {{ $t('App.Trilab.Settings.Network.InterfacesPanel.interface') }} {{ selectedInterface.GENERAL.DEVICE }}
                 </small>
             </h3>
 
@@ -399,7 +399,7 @@
             </v-container>
 
             <v-container v-if="activeTab == 'wireless'">
-                <h3>Nastavení profilu {{ selectedInterface.GENERAL.DEVICE }}</h3>
+                <h3>{{ $t('App.Trilab.Settings.Network.InterfacesPanel.ProfileSettingsTitle') }} {{ selectedInterface.GENERAL.DEVICE }}</h3>
                 <!---             wireless_mode_label = Gtk.Label(label="IPv6 Method:")  --->
 
                 <v-select
@@ -441,7 +441,7 @@
                             color="red"
                             @click="unselectConnection()">
                             <v-icon>{{ mdiClose }}</v-icon>
-                            Discard changes
+                            {{ $t('App.Trilab.Settings.Network.InterfacesPanel.DiscardChanges') }}
                         </v-btn>
                     </v-col>
                     <v-col
@@ -539,7 +539,7 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
             const ipv4Pattern = /^(\d{1,3}\.){3}\d{1,3}$/
             let isValid = ipv4Pattern.test(value)
             if (!isValid) {
-                return 'Invalid. Enter in the format x.x.x.x'
+                return this.$t('App.Trilab.Settings.Network.InterfacesPanel.invalidIP4Format')
             }
             return true
         },
@@ -548,7 +548,7 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
                 /(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))/
             let isValid = ipv6Pattern.test(value)
             if (!isValid) {
-                return 'Invalid IPv6 address format'
+                return this.$t('App.Trilab.Settings.Network.InterfacesPanel.invalidIP6Format')
             }
             return true
         },
@@ -557,7 +557,7 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
             const ipv4Pattern = /^(\d{1,3}\.){3}\d{1,3}(,(\d{1,3}\.){3}\d{1,3})*$/
             let isValid = ipv4Pattern.test(value)
             if (!isValid) {
-                return 'Invalid. Enter in the format x.x.x.x, x.x.x.x'
+                return this.$t('App.Trilab.Settings.Network.InterfacesPanel.invalidIP4PatternFormat')
             }
             return true
         },
@@ -565,7 +565,7 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
             const ipv6Pattern = /^[0-9a-fA-F:]+(,[0-9a-fA-F:]+)*$/
             let isValid = ipv6Pattern.test(value)
             if (!isValid) {
-                return 'Invalid IPv6 address format'
+                return this.$t('App.Trilab.Settings.Network.InterfacesPanel.invalidIP6Format')
             }
             return true
         },
@@ -573,7 +573,7 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
             const macPattern = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/
             let isValid = macPattern.test(value)
             if (!isValid) {
-                return 'Invalid MAC address format'
+                return this.$t('App.Trilab.Settings.Network.InterfacesPanel.InvalidMacFormat')
             }
             return true
         },
@@ -680,7 +680,7 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 
     get interfaces() {
         /// filter interfaces that have general.device == "lo"
-        return this.$store.state.trilab.interfaces.filter((i: any) => i.GENERAL.DEVICE != 'lo') ?? []
+        return this.$store.state.trilab?.interfaces?.filter((i: any) => i.GENERAL.DEVICE != 'lo') ?? []
     }
     /// watch change of interfaces deep
     @Watch('$store.state.trilab.interfaces', { deep: true })
@@ -742,12 +742,12 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
         })
 
         if (response.status == 200) {
-            await this.$store.dispatch('trilab/getInterfaces')
+            await this.$store.dispatch('trilab/loadInterfaces')
             item.connecting = false
             this.$forceUpdate()
             this.activeView = 'connections_list'
             /// toast success message
-            this.$toast.success('Connected to: ' + item.SSID)
+            this.$toast.success(this.$t('App.Trilab.Settings.Network.InterfacesPanel.ConnectedTo').toString() + " " + item.SSID);
         }
     }
 
@@ -788,7 +788,7 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
             method: 'GET',
         })
         if (responselist.status != 200) {
-            this.$toast.error('Error while loading wifi networks')
+            this.$toast.error(this.$t('App.Trilab.Settings.Network.InterfacesPanel.ErrorWhileLoadingWifi').toString())
             this.wifiListLoading = false
             return
         }
@@ -796,13 +796,13 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
         try {
             var responseData = await responselist.json()
         } catch (e) {
-            this.$toast.error('Error - bad response from printer')
+            this.$toast.error(this.$t('App.Trilab.Settings.Network.InterfacesPanel.ErrorBadResponse').toString())
             this.wifiListLoading = false
             return
         }
         /// if not connections in responseData then show toast error
         if (!responseData['connections']) {
-            this.$toast.error('Error - bad response from printer - no connections')
+            this.$toast.error(this.$t('App.Trilab.Settings.Network.InterfacesPanel.ErrorNoConnections').toString())
             this.wifiListLoading = false
             return
         }
@@ -836,7 +836,9 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
         const translateTable = {}
 
         //console.log(differences)
-        /*fetch(this.$store.getters['trilab/trilabPrefix'] + 'network-manager/modify-connection/' + this.selectedConnectionCopy.details.connection.id, {
+        console.log("SELECTED CONNECTION COPY: ");
+        console.log(this.selectedConnectionCopy);
+        fetch(this.$store.getters['trilab/trilabPrefix'] + '/network-manager/modify-connection/' + this.selectedConnectionCopy.details.connection.uuid, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -844,9 +846,12 @@ export default class SettingsInterfacesPanel extends Mixins(BaseMixin, TrilabMix
 			body: JSON.stringify(differences)
 		}).then((response) => {
 			if (response.status == 200) {
-				this.$store.dispatch('trilab/getInterfaces');
+				this.$store.dispatch('trilab/loadInterfaces');
+                this.unselectConnection();
+                /// show toast success
+                this.$toast.success(this.$t('App.Trilab.Settings.Network.InterfacesPanel.ProfileSaved').toString())
 			}
-		});*/
+		});
     }
 
     findDataDifferences(obj1: any, obj2: any, parentKey = '', diffObject = {}) {

@@ -1,42 +1,24 @@
 <template>
     <div v-if="klipperState !== 'ready' && socketIsConnected">
-        <template v-if="klippyIsConnected">
-            <v-alert
-                :color="messageType.color"
-                dense
-                text
-                border="left"
-                class="mb-0 mb-6">
+            <v-alert v-if="klippyIsConnected" :color="messageType.color" dense text border="left" class="mb-0 mb-6">
                 <!-- KLIPPER MESSAGE TITLE -->
                 <p class="font-weight-medium d-flex align-center">
-                    <v-icon
-                        :color="messageType.color"
-                        class="pr-2">
-                        {{ messageType.icon }}
-                    </v-icon>
-                    {{ $t('Panels.KlippyStatePanel.ServiceReports', { service: 'Klipper' }) }}:
-                    {{ klipperState.toUpperCase() }}
-                </p>
+                <v-icon :color="messageType.color" class="pr-2">{{ messageType.icon }}</v-icon>
+                {{ serviceReportsKlipper }}
+            </p>
                 <!-- KLIPPER MESSAGE -->
                 <div v-if="klippy_message !== null">
                     <pre style="white-space: pre-wrap">{{ klippy_message.trim() }}</pre>
-                    <v-divider
-                        v-if="klippy_message.indexOf('ADC out of range') != -1"
-                        class="mt-2 mb-2"></v-divider>
+                    <v-divider v-if="klippy_message.indexOf('ADC out of range') != -1" class="mt-2 mb-2"></v-divider>
                     <div v-if="klippy_message.indexOf('ADC out of range') != -1">
                         <!--- TRILAB ADDITION --->
                         <p class="font-weight-medium">
-                            <v-icon
-                                :color="messageType.color"
-                                class="pr-2">
+                            <v-icon :color="messageType.color" class="pr-2">
                                 {{ mdiFireAlert }}
                             </v-icon>
                             Last known temps (Current/Min - Max):
                         </p>
-                        <pre
-                            v-for="heater in fullHeatingObjects"
-                            :key="heater.name"
-                            style="white-space: pre-wrap"
+                        <pre v-for="heater in fullHeatingObjects" :key="heater.name" style="white-space: pre-wrap"
                             >{{ heater.name ?? 'UNKNOWN' }}: {{ heater.temperature ?? '?' }}°C / {{
                                 heater?.settings?.min_temp ?? '?'
                             }} to {{ heater?.settings?.max_temp ?? '?' }}°C</pre
@@ -95,61 +77,36 @@
                     </v-row>
                 </div>
                 <!-- LOADER -->
-                <v-card-text
-                    v-else
-                    class="text-center py-3">
-                    <v-progress-circular
-                        indeterminate
-                        :color="messageType.color"></v-progress-circular>
+                <v-card-text v-else class="text-center py-3">
+                    <v-progress-circular indeterminate :color="messageType.color"></v-progress-circular>
                 </v-card-text>
             </v-alert>
-        </template>
         <!-- Power OFF panel -->
-        <template v-else-if="isPrinterPowerOff">
-            <v-alert
-                dense
-                text
-                border="left"
-                class="mb-6">
-                <p class="font-weight-medium d-flex align-center">
-                    <v-icon class="pr-2">{{ messageType.icon }}</v-icon>
-                    {{ $t('Panels.KlippyStatePanel.PrinterSwitchedOff') }}
-                </p>
-                <p>{{ $t('Panels.KlippyStatePanel.PrinterSwitchedOffDescription') }}</p>
-                <v-row>
-                    <v-col class="text-center">
-                        <v-btn
-                            small
-                            outlined
-                            text
-                            :class="`${messageType.color}--text my-1`"
-                            @click="powerOn">
-                            <v-icon class="mr-sm-2">{{ mdiPower }}</v-icon>
-                            {{ $t('Panels.KlippyStatePanel.PowerOn') }}
-                        </v-btn>
-                    </v-col>
-                </v-row>
-            </v-alert>
-        </template>
+        <v-alert v-else-if="isPrinterPowerOff" dense text border="left" class="mb-6">
+            <p class="font-weight-medium d-flex align-center">
+                <v-icon class="pr-2">{{ messageType.icon }}</v-icon>
+                {{ $t('Panels.KlippyStatePanel.PrinterSwitchedOff') }}
+            </p>
+            <p>{{ $t('Panels.KlippyStatePanel.PrinterSwitchedOffDescription') }}</p>
+            <v-row>
+                <v-col class="text-center">
+                    <v-btn small outlined text :class="`${messageType.color}--text my-1`" @click="powerOn">
+                        <v-icon class="mr-sm-2">{{ mdiPower }}</v-icon>
+                        {{ $t('Panels.KlippyStatePanel.PowerOn') }}
+                    </v-btn>
+                </v-col>
+            </v-row>
+        </v-alert>
         <!-- DISCONNECTED INFOGRAPHIC -->
-        <template v-else-if="klipperState === 'disconnected'">
-            <v-alert
-                dense
-                text
-                border="left"
-                class="mb-6">
-                <p class="font-weight-medium d-flex align-center">
-                    <v-icon class="pr-2">{{ messageType.icon }}</v-icon>
-                    {{ $t('Panels.KlippyStatePanel.ServiceReports', { service: 'Moonraker' }) }}:
-                    {{ klipperState.toUpperCase() }}
-                </p>
-                <connection-status
-                    :moonraker="true"
-                    :klipper="false"></connection-status>
-                <p class="mt-2 mb-0 text-center">{{ $t('Panels.KlippyStatePanel.MoonrakerCannotConnect') }}</p>
-                <p class="mb-0 text-center">{{ $t('Panels.KlippyStatePanel.CheckKlippyAndUdsAddress') }}</p>
-            </v-alert>
-        </template>
+        <v-alert v-else-if="klipperState === 'disconnected'" dense text border="left" class="mb-6">
+            <p class="font-weight-medium d-flex align-center">
+                <v-icon class="pr-2">{{ messageType.icon }}</v-icon>
+                {{ serviceReportsMoonraker }}
+            </p>
+            <connection-status :moonraker="true" :klipper="false" />
+            <p class="mt-2 mb-0 text-center">{{ $t('Panels.KlippyStatePanel.MoonrakerCannotConnect') }}</p>
+            <p class="mb-0 text-center">{{ $t('Panels.KlippyStatePanel.CheckKlippyAndUdsAddress') }}</p>
+        </v-alert>
     </div>
 </template>
 
@@ -203,7 +160,7 @@ export default class KlippyStatePanel extends Mixins(BaseMixin, TrilabMixin) {
         return heaterNamesList
     }
 
-    get klippy_message() {
+    get klippy_message(): string | null {
         return this.$store.state.server.klippy_message ?? null
     }
 
@@ -220,6 +177,22 @@ export default class KlippyStatePanel extends Mixins(BaseMixin, TrilabMixin) {
             default:
                 return { color: '', icon: mdiMessageOutline }
         }
+    }
+
+    get buttonClasses() {
+        return [this.messageType.color + '--text', 'my-1', 'w-100']
+    }
+
+    get serviceReportsKlipper() {
+        return `${this.$t('Panels.KlippyStatePanel.ServiceReports', {
+            service: 'Klipper',
+        })}: ${this.klipperState.toUpperCase()}`
+    }
+
+    get serviceReportsMoonraker() {
+        return `${this.$t('Panels.KlippyStatePanel.ServiceReports', {
+            service: 'Moonraker',
+        })}: ${this.klipperState.toUpperCase()}`
     }
 
     restart() {

@@ -9,7 +9,8 @@
         "DeprecatedOptionHeadline": "Eskimiş Klipper Seçeneği",
         "DeprecatedValue": "'{section}' bölümündeki '{option}' seçeneğindeki '{value}' değeri eskimiştir ve gelecekteki bir sürümde kaldırılacaktır.",
         "DeprecatedValueHeadline": "Eskimiş Klipper Değeri",
-        "KlipperWarning": "Klipper uyarısı"
+        "KlipperWarning": "Klipper uyarısı",
+        "KlipperRuntimeWarning": "Clipper Çalışma Zamanı Uyarısı"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "BrowserWarnings": {
         "Description": "{name} güncel değil ve tam olarak desteklenmiyor. \nMevcut sürüm: {version}, ancak Mainsail, {minVersion} veya daha yüksek bir sürümü gerektiriyor.",
         "Headline": "Eski Tarayıcı"
-      }
+      },
+      "ShowDetails": "ayrıntıları göster",
+      "OneHourShort": "1 saat",
+      "OneDayShort": "1 boyutlu",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "Bakım Hatırlatıcısı",
+      "MaintenanceReminderText": "\"{name}\" bakımının zamanı geldi.",
+      "TmcOtFlag": "Step sürücü hatası: OT bayrağı ayarlandı",
+      "TmcOtFlagText": "'{name}' step sürücüsü OT bayrağını tetikledi ve çalışmayı durdurdu. \nBu çok yüksek bir akımdan kaynaklanabilir. \nLütfen step sürücü ayarlarını ve soğutmayı kontrol edin.",
+      "TmcOtpwFlag": "Step sürücüsü uyarısı: OTPW bayrağı ayarlandı",
+      "TmcOtpwFlagText": "Step sürücüsü '{name}' OTPW bayrağını tetikledi ve daha fazla ısınırsa çalışmayı durdurabilir. \nBu aşırı sıcaklık durumunun bir göstergesidir. \nBu çok yüksek bir akımdan kaynaklanabilir. \nLütfen step sürücü ayarlarını ve soğutmayı kontrol edin."
     },
     "NumberInput": {
       "GreaterOrEqualError": " {min}değerinden büyük veya eşit olmalıdır!",
@@ -123,7 +134,7 @@
       "TopBar": {
         "LightBtn": "Işık"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Gelişmiş Özellikler",
       "ConnectionStatus": {
         "Mainsail": "Ana yelken"
       },
@@ -216,6 +227,25 @@
           "PrinterNameRequired": "Yazıcı adı gerekli",
           "PrinterNameMaxLength": "İzin verilen maksimum ad uzunluğu 63 karakterdir",
           "PrinterNameInvalid": "Yazıcı adı geçersiz. \nYalnızca temel karakterlere, sayılara ve kısa çizgilere izin verilir."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Ağ profili başarılı bir şekilde kaydedildi!",
+            "ErrorNoConnections": "Hata - Kötü Yanıt - Bağlantı Yok",
+            "ErrorBadResponse": "Hata - Kötü Yanıt",
+            "ErrorWhileLoadingWifi": "WiFi ağlarını yüklerken hata",
+            "ConnectedTo": "Bağlı:",
+            "InvalidMacFormat": "Geçersiz MAC Adres Biçimi",
+            "invalidIP6Format": "Geçersiz IPv6 Adres Biçimi",
+            "invalidIP4PatternFormat": "Geçersiz format. \nX.x.x.x, x.x.x.x biçimine girin",
+            "invalidIP4Format": "Geçersiz format. \nX.x.x.x biçimini girin",
+            "DiscardChanges": "Değişiklikleri at",
+            "ProfileSettingsTitle": "Profil Ayarları",
+            "interface": "Arayüz",
+            "connectionInProgress": "Devam eden bağlantı ..",
+            "signal": "Sinyal",
+            "AvailableWirelessNetworks": "Mevcut kablosuz ağlar"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -301,7 +331,7 @@
           "UP_TO_DATE": "EN YENİ VERSİYON",
           "USB_UNPACKING": "PAKETTEN AÇILMA GÜNCELLEMESİ",
           "USB_UPDATE_AVAILABLE": "USB - YENİ GÜNCELLEME",
-          "UNPACKING_FAILED": "Ambalajın Çıkarma Başarısız Oldu"
+          "UNPACKING_FAILED": "PAKETTEN ÇIKARMA BAŞARISIZ"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -651,7 +681,39 @@
     "TotalPrinttime": "Toplam Baskı Süresi",
     "TotalTime": "Toplam zaman",
     "AddToQueueSuccessful": "{filename} dosyası Kuyruğa eklendi.",
-    "LoadCompleteHistory": "Geçmişin tamamını yükle"
+    "LoadCompleteHistory": "Geçmişin tamamını yükle",
+    "AddMaintenance": "Bakım Ekle",
+    "Name": "İsim",
+    "AddANote": "Not ekle",
+    "DateBasedReminder": "Tarih",
+    "DateBasedReminderDescription": "Bu hatırlatma tarihe dayanmaktadır.",
+    "Days": "günler",
+    "EditMaintenance": "Bakımı Düzenle",
+    "EntryCreatedAt": "{date} tarihinde oluşturuldu.",
+    "EntryNextPerform": "Sonraki performans:",
+    "EntryPerformedAt": "{date} tarihinde gerçekleştirildi.",
+    "EntrySince": "Şu tarihten beri kullanılıyor:",
+    "Filament": "filaman",
+    "FilamentBasedReminder": "filaman",
+    "FilamentBasedReminderDescription": "Bu hatırlatma filament kullanımına dayanmaktadır.",
+    "Hours": "saat",
+    "InvalidNameEmpty": "Geçersiz ad. \nİsim boş olmamalıdır!",
+    "Maintenance": "Bakım",
+    "MaintenanceEntries": "Bakım Girişleri",
+    "Meter": "metre",
+    "NoReminder": "Hatırlatma yok",
+    "OneTime": "Tek seferlik",
+    "Perform": "rol yapmak",
+    "PerformMaintenance": "Bakım Gerçekleştirin",
+    "Performed": "gerçekleştirilen",
+    "PerformedAndReschedule": "gerçekleştirildi ve yeniden planlandı",
+    "PrintJobs": "Yazdırma İşleri",
+    "PrinttimeBasedReminder": "Yazdırma Süresi",
+    "PrinttimeBasedReminderDescription": "Bu hatırlatma baskı zamanına dayanmaktadır.",
+    "Reminder": "Hatırlatma",
+    "Repeat": "Tekrarlamak",
+    "Settings": "Ayarlar",
+    "Time": "Zaman"
   },
   "JobQueue": {
     "AllJobs": "Tüm işler",
@@ -797,7 +859,7 @@
       "WebClientUpdateQuestion": "Web istemciyi güncelleme, uyumsuzluklara neden olabilecek değişiklikler içerebilir. Daha fazla bilgi için sürüm notlarına bakın.",
       "ERROR": "Hata",
       "Corrupt": "yozlaşmış",
-      "PackagesCanBeUpgraded": ""
+      "PackagesCanBeUpgraded": "Paketler yükseltilebilir"
     }
   },
   "ManualProbe": {
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "Yazıcı şu anda kapalı ve Klipper bağlanamıyor. Yazıcıyı açmak için aşağıdaki düğmeye tıklayın:",
       "Restart": "Yeniden Başlat",
       "ServiceReports": "{service} raporları",
-      "KlipperCheck": ""
+      "KlipperCheck": "Klipper hizmetinin çalıştığını ve bir UDS'nin (Unix Etki Alanı Soketi) yapılandırıldığını doğrulayın.",
+      "KlipperLog": "Kırpıcı Günlüğü",
+      "MoonrakerLog": "Moonraker Günlüğü"
     },
     "MachineSettingsPanel": {
       "Headline": "Makine",
@@ -1218,9 +1282,11 @@
       "RestoreDialog": "Lütfen geri yüklemek istediğiniz tüm bölümleri seçin:",
       "TimeFormat": "Saat Biçimi",
       "DBNavigation": "Navigasyon",
-      "DbWebcams": "",
+      "DbWebcams": "Web kameraları",
       "Everything": "Her şey",
-      "MoonrakerDb": ""
+      "MoonrakerDb": "Moonraker veritabanı",
+      "DbMaintenance": "Bakım",
+      "DbNavigation": "Navigasyon"
     },
     "InterfaceSettings": "Arayüz Ayarları",
     "MacrosTab": {
@@ -1310,7 +1376,10 @@
       "Port": "Port",
       "RemotePrinters": "Yazıcılar",
       "UpdatePrinter": "Yazıcıyı Güncelle",
-      "UseConfigJson": "InstanceDB = JSON algılandı. Lütfen yazıcı listesini düzenlemek için config.json dosyasını kullanın."
+      "UseConfigJson": "InstanceDB = JSON algılandı. Lütfen yazıcı listesini düzenlemek için config.json dosyasını kullanın.",
+      "Path": "Yol",
+      "Name": "İsim",
+      "NameDescription": "Bu ad GUI'de görüntülenmeyecek ve yalnızca yönlendirmeler için kullanılacaktır."
     },
     "Store": "Mağaza",
     "TimelapseTab": {
@@ -1383,7 +1452,12 @@
       "RulesMin": "Değer minimum {min} olmalıdır!",
       "RulesPositive": "Değer pozitif olmalı!",
       "RulesRequired": "Değer gerekli!",
-      "RulesZeroAndPositive": "Değer 0 veya daha büyük olmalıdır!"
+      "RulesZeroAndPositive": "Değer 0 veya daha büyük olmalıdır!",
+      "CameraDescriptionWithSnapshotUrl": "Hangi kameranın (anlık görüntü URL'si ile) kullanılması gerektiğini seçin",
+      "CameraWarningAlreadySet": "Bu değer Moonraker yapılandırma dosyasında zaten ayarlıdır",
+      "CameraWarningAlreadySetSmall": "[timelapse] bölümündeki anlık görüntü turu",
+      "NoWebcamFound": "Web kamerası yok",
+      "SelectWebcam": "Web kamerasını seç..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Tabla Vidaları Diyaloğu",
@@ -1434,11 +1508,32 @@
       "DefaultNavigationStateAlwaysOpen": "daima açık",
       "DefaultNavigationStateDescription": "Varsayılan olarak gezinmenin hangi eyalette olması gerektiği.",
       "DefaultNavigationStateLastState": "son durum",
-      "ShowWebcamInNavigation": "Navigasyonda web kamerasını göster",
+      "ShowWebcamInNavigation": "Web kamerasını navigasyonda göster",
       "Theme": "Tema",
       "ThemeDark": "Karanlık",
       "ThemeDescription": "Uygulamanın genel görünümünü ve hissini değiştirin",
-      "ThemeLight": "Işık"
+      "ThemeLight": "Işık",
+      "Mode": "Mod",
+      "PrintstatusThumbnailZoom": "Büyük küçük resim yakınlaştırma",
+      "PrintstatusThumbnailZoomDescription": "Bu, durum panelindeki küçük resmin yakınlaştırma efektini devre dışı bırakacaktır.",
+      "ProgressAsFavicon": "İlerlemeyi sık kullanılan simge olarak göster",
+      "ProgressAsFaviconDescription": "Ana Yelken logosu favicon'unu ilerleme çemberi olarak değiştirin.",
+      "ModeDescription": "Uygulamanın genel görünümünü ve hissini değiştirin.",
+      "DashboardFilesFilter": "Gösterge Tablosu Dosyaları Filtresi",
+      "DashboardFilesFilterCompleted": "Tamamlanmış",
+      "DashboardFilesFilterDescription": "Gösterge tablosu durum panelindeki dosyaları son durumlarına göre filtreleyin.",
+      "DashboardFilesFilterFailed": "Arızalı",
+      "DashboardFilesFilterNew": "Yeni",
+      "DashboardFilesLimit": "Gösterge Tablosu Dosyaları Sınırı",
+      "DashboardFilesLimitDescription": "Gösterge Tablosu Durum Panelinde görüntülenecek maksimum dosya sayısını seçin. \n(0 Dosyalar sekmesini gizler)",
+      "DashboardFilesLimitLabel": "{Count} dosyaları",
+      "DashboardHistoryLimit": "Gösterge paneli geçmiş sınırı",
+      "DashboardHistoryLimitDescription": "Durum panelindeki gösterge tablosunda görüntülenecek maksimum iş sayısını seçin. \n(0 Geçmiş sekmesini gizler)",
+      "DashboardHistoryLimitLabel": "{Count} işleri",
+      "HideOtherInstances": "Diğer örnekleri saklayın",
+      "HideOtherInstancesDescription": "Klipper'in diğer örneklerini gizle",
+      "ConfirmOnCancelJob": "İptal işini onaylamayı gerektirin",
+      "ConfirmOnCancelJobDescription": "İptal işinde bir onay iletişim kutusu göster"
     },
     "Update": "Güncelleme",
     "WebcamsTab": {
@@ -1491,6 +1586,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Bahar"
+      },
+      "DefaultOrientationDescription": "Yatak örtüsü görselleştirmesi için varsayılan yönü seçin.",
+      "DefaultOrientation": "Varsayılan yönelim",
+      "Orientations": {
+        "Front": "Ön",
+        "LeftFront": "Sol ön taraf",
+        "RightFront": "Sağ ön tarafta",
+        "Top": "Tepe"
       }
     }
   },
@@ -1567,5 +1670,10 @@
     "Refresh": "yenileme",
     "Resolutions": "Çözünürlükler"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Fabrika Ayarlarına Sıfırlama"
+    }
+  }
 }

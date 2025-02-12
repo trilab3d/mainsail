@@ -13,7 +13,8 @@
         "DeprecatedOptionHeadline": "Option Klipper obsolète",
         "DeprecatedValue": "La valeur '{value}' dans l'option '{option}' de la section '{section}' est obsolète et sera supprimée dans une prochaine version.",
         "DeprecatedValueHeadline": "Valeur d'une option Klipper obsolète",
-        "KlipperWarning": "Avertissement Klipper"
+        "KlipperWarning": "Avertissement Klipper",
+        "KlipperRuntimeWarning": "Avertissement d'exécution de Clipper"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "NextReboot": "prochain redémarrage",
       "NoNotification": "Pas de notification disponible",
       "Notifications": "Notifications",
-      "Remind": "Rappel:"
+      "Remind": "Rappel:",
+      "ShowDetails": "afficher les détails",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "Rappel d'entretien",
+      "MaintenanceReminderText": "La maintenance \"{name}\" est due.",
+      "TmcOtFlag": "Erreur du pilote pas à pas : indicateur OT défini",
+      "TmcOtFlagText": "Le pilote pas à pas '{name}' a déclenché l'indicateur OT et a cessé de fonctionner. \nCela peut être dû à un courant trop élevé. \nVeuillez vérifier les paramètres du pilote pas à pas et le refroidissement.",
+      "TmcOtpwFlag": "Avertissement du pilote pas à pas : indicateur OTPW défini",
+      "TmcOtpwFlagText": "Le pilote pas à pas '{name}' a déclenché l'indicateur OTPW et peut cesser de fonctionner s'il devient plus chaud. \nCeci est une indication d’une condition de surchauffe. \nCela peut être dû à un courant trop élevé. \nVeuillez vérifier les paramètres du pilote pas à pas et le refroidissement."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Doit être supérieur ou égal à {min}!",
@@ -123,7 +134,7 @@
       "TopBar": {
         "LightBtn": "Lumière"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Fonctionnalités avancées",
       "ConnectionStatus": {
         "Mainsail": "Grand-voile"
       },
@@ -216,6 +227,25 @@
           "PrinterNameRequired": "Le nom de l'imprimante est requis",
           "PrinterNameMaxLength": "La longueur maximale autorisée du nom est de 63 caractères.",
           "PrinterNameInvalid": "Le nom de l'imprimante n'est pas valide. \nSeuls les caractères de base, les chiffres et les traits d'union sont autorisés."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Le profil de réseau a été réussi à enregistrer!",
+            "ErrorNoConnections": "Erreur - Mauvaise réponse - pas de connexions",
+            "ErrorBadResponse": "Erreur - Mauvaise réponse",
+            "ErrorWhileLoadingWifi": "Erreur lors du chargement des réseaux WiFi",
+            "ConnectedTo": "Connecté à:",
+            "InvalidMacFormat": "Format d'adresse MAC non valide",
+            "invalidIP6Format": "Format d'adresse IPv6 non valide",
+            "invalidIP4PatternFormat": "Format non valide. \nEntrez dans le format x.x.x.x, x.x.x.x",
+            "invalidIP4Format": "Format non valide. \nEntrez dans le format x.x.x.x",
+            "DiscardChanges": "Jeter les changements",
+            "ProfileSettingsTitle": "Paramètres de profil",
+            "interface": "Interface",
+            "connectionInProgress": "Connexion en cours.",
+            "signal": "SIGNAL",
+            "AvailableWirelessNetworks": "Réseaux sans fil disponibles"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -301,7 +331,7 @@
           "UP_TO_DATE": "DERNIÈRE VERSION",
           "USB_UNPACKING": "MISE À JOUR DE DÉBALLAGE",
           "USB_UPDATE_AVAILABLE": "USB - NOUVELLE MISE À JOUR",
-          "UNPACKING_FAILED": "Le déballage a échoué"
+          "UNPACKING_FAILED": "ÉCHEC DU DÉBALLAGE"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -651,7 +681,39 @@
     "TotalPrinttime": "Total temps d'impression",
     "TotalTime": "Durée totale",
     "AddToQueueSuccessful": "Fichier {filename} ajouté à la file d'attente.",
-    "LoadCompleteHistory": "Charger l'historique complet"
+    "LoadCompleteHistory": "Charger l'historique complet",
+    "AddMaintenance": "Ajouter une maintenance",
+    "Name": "Nom",
+    "AddANote": "Ajouter une remarque",
+    "DateBasedReminder": "Date",
+    "DateBasedReminderDescription": "Ce rappel est basé sur la date.",
+    "Days": "jours",
+    "EditMaintenance": "Modifier la maintenance",
+    "EntryCreatedAt": "Créé à {date}.",
+    "EntryNextPerform": "Effectuer ensuite :",
+    "EntryPerformedAt": "Joué à {date}.",
+    "EntrySince": "Utilisé depuis :",
+    "Filament": "Filament",
+    "FilamentBasedReminder": "Filament",
+    "FilamentBasedReminderDescription": "Ce rappel est basé sur l'utilisation du filament.",
+    "Hours": "heures",
+    "InvalidNameEmpty": "Nom invalide. \nLe nom ne doit pas être vide !",
+    "Maintenance": "Entretien",
+    "MaintenanceEntries": "Entrées d'entretien",
+    "Meter": "mètre",
+    "NoReminder": "Aucun rappel",
+    "OneTime": "Une fois",
+    "Perform": "effectuer",
+    "PerformMaintenance": "Effectuer la maintenance",
+    "Performed": "effectué",
+    "PerformedAndReschedule": "effectué et reprogrammer",
+    "PrintJobs": "Travaux d'impression",
+    "PrinttimeBasedReminder": "Temps d'impression",
+    "PrinttimeBasedReminderDescription": "Ce rappel est basé sur l'heure d'impression.",
+    "Reminder": "Rappel",
+    "Repeat": "Répéter",
+    "Settings": "Paramètres",
+    "Time": "Temps"
   },
   "JobQueue": {
     "AllJobs": "Tous",
@@ -794,10 +856,10 @@
       "WebClientUpdateQuestion": "Dans certains cas, la mise à jour du client web peut entraîner des modifications susceptibles de provoquer une incompatibilité. Voir les notes de version pour plus d'informations.",
       "ERROR": "Erreur",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Détaché",
+        "Dirty": "Sale"
       },
-      "PackagesCanBeUpgraded": ""
+      "PackagesCanBeUpgraded": "Les forfaits peuvent être mis à niveau"
     }
   },
   "ManualProbe": {
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "L'imprimante est actuellement hors tension et Klipper ne peut pas se connecter. Pour mettre l'imprimante sous tension, cliquez sur le bouton ci-dessous:",
       "Restart": "Redémarrage",
       "ServiceReports": "rapports de {service}",
-      "KlipperCheck": ""
+      "KlipperCheck": "Vérifiez que le service Klipper est en cours d'exécution et qu'un UDS (Unix Domain Socket) est configuré.",
+      "KlipperLog": "Journal de coupe",
+      "MoonrakerLog": "Journal de Moonraker"
     },
     "MachineSettingsPanel": {
       "Headline": "Réglages machine",
@@ -1039,8 +1103,8 @@
       "SaveInfoDescription": "Le nouveau décalage Z a été calculé et enregistré. Cliquez sur \"SAVE CONFIG\" pour l'enregistrer dans le fichier printer.cfg et redémarrer Klipper.",
       "SaveInfoDescriptionPrint": "Le nouveau décalage Z a été calculé et enregistré. Après l'impression, cliquez sur \"SAVE CONFIG\" dans la barre supérieure pour l'enregistrer dans le fichier printer.cfg et redémarrer Klipper.",
       "SaveInfoHeadline": "Information",
-      "ToEndstop": "À fin",
-      "ToProbe": "En sonder"
+      "ToEndstop": "Pour terminer",
+      "ToProbe": "sonder"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1219,8 +1283,10 @@
       "Restore": "Restaurer",
       "RestoreDialog": "Veuillez sélectionner toutes les sections que vous souhaitez restaurer:",
       "TimeFormat": "Format de l'heure",
-      "DbWebcams": "",
-      "MoonrakerDb": ""
+      "DbWebcams": "Webcam",
+      "MoonrakerDb": "Base de données Moonraker",
+      "DbMaintenance": "Entretien",
+      "DbNavigation": "Navigation"
     },
     "HeightmapTab": {
       "ColorSchemes": "Schémas de couleurs",
@@ -1232,6 +1298,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Printemps"
+      },
+      "DefaultOrientationDescription": "Sélectionnez l'orientation par défaut pour la visualisation du maillage de lit.",
+      "DefaultOrientation": "Orientation par défaut",
+      "Orientations": {
+        "Front": "Devant",
+        "LeftFront": "Avant gauche",
+        "RightFront": "Avant droit",
+        "Top": "Haut"
       }
     },
     "InterfaceSettings": "Réglages interface",
@@ -1322,7 +1396,10 @@
       "Port": "Port",
       "RemotePrinters": "Imprimantes",
       "UpdatePrinter": "Mise à jour de l'imprimante",
-      "UseConfigJson": "InstanceDB = JSON détectée. Veuillez utiliser le fichier config.json pour modifier la liste des imprimantes."
+      "UseConfigJson": "InstanceDB = JSON détectée. Veuillez utiliser le fichier config.json pour modifier la liste des imprimantes.",
+      "Path": "Chemin",
+      "Name": "Nom",
+      "NameDescription": "Ce nom ne sera pas affiché dans l'interface graphique et ne sera utilisé que pour les redirections."
     },
     "Store": "magasin",
     "TimelapseTab": {
@@ -1395,7 +1472,12 @@
       "RulesMin": "La valeur doit être minimale de {min} !",
       "RulesPositive": "La valeur doit être positive !",
       "RulesRequired": "Valeur est requise!",
-      "RulesZeroAndPositive": "La valeur doit être 0 ou supérieure !"
+      "RulesZeroAndPositive": "La valeur doit être 0 ou supérieure !",
+      "CameraDescriptionWithSnapshotUrl": "Sélectionnez quelle caméra (avec l'URL de l'instantané) doit être utilisée",
+      "CameraWarningAlreadySet": "Cette valeur est déjà définie dans le fichier de configuration Moonraker",
+      "CameraWarningAlreadySetSmall": "snapshoturl dans la section [timelapse]",
+      "NoWebcamFound": "Aucune webcam disponible",
+      "SelectWebcam": "Sélectionnez une webcam..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Bed Screws",
@@ -1446,11 +1528,32 @@
       "UiSettings": "Interface",
       "ConfirmOnCoolDown": "Exiger une confirmation lors du CoolDown",
       "ConfirmOnCoolDownDescription": "Afficher une boîte de dialogue de confirmation lors de CoolDown",
-      "ShowWebcamInNavigation": "Afficher la webcam en navigation",
+      "ShowWebcamInNavigation": "Afficher la webcam dans la navigation",
       "Theme": "Thème",
       "ThemeDark": "Sombre",
       "ThemeDescription": "Modifier l'apparence générale de l'application",
-      "ThemeLight": "Lumière"
+      "ThemeLight": "Lumière",
+      "Mode": "Mode",
+      "PrintstatusThumbnailZoom": "Grand zoom miniature",
+      "PrintstatusThumbnailZoomDescription": "Cela désactivera l'effet de zoom de la vignette dans le panneau d'état.",
+      "ProgressAsFavicon": "Afficher la progression sous forme de favicon",
+      "ProgressAsFaviconDescription": "Remplacez le favicon du logo Mainsail par un cercle de progression.",
+      "ModeDescription": "Modifiez l'apparence globale de l'application.",
+      "DashboardFilesFilter": "Filtre de fichiers de tableau de bord",
+      "DashboardFilesFilterCompleted": "Complété",
+      "DashboardFilesFilterDescription": "Filtrez les fichiers du panneau d'état du tableau de bord par leur dernier statut.",
+      "DashboardFilesFilterFailed": "Échoué",
+      "DashboardFilesFilterNew": "Nouveau",
+      "DashboardFilesLimit": "Limite des fichiers de tableau de bord",
+      "DashboardFilesLimitDescription": "Sélectionnez le nombre maximum de fichiers à afficher dans le panneau d'état du tableau de bord. \n(0 cache l'onglet Fichiers)",
+      "DashboardFilesLimitLabel": "{count} fichiers",
+      "DashboardHistoryLimit": "Limite d'historique du tableau de bord",
+      "DashboardHistoryLimitDescription": "Sélectionnez le nombre maximum de travaux à afficher sur le tableau de bord dans le panneau d'état. \n(0 cache l'onglet Historique)",
+      "DashboardHistoryLimitLabel": "{count} Jobs",
+      "HideOtherInstances": "Cacher d'autres instances",
+      "HideOtherInstancesDescription": "Cacher d'autres instances de Klipper",
+      "ConfirmOnCancelJob": "Exiger la confirmation du travail d'annulation",
+      "ConfirmOnCancelJobDescription": "Afficher une boîte de dialogue de confirmation sur le travail d'annulation"
     },
     "Update": "mise à jour",
     "WebcamsTab": {
@@ -1566,5 +1669,10 @@
     "Refresh": "rafraîchir",
     "Resolutions": "Résolutions"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Réinitialisation d'usine"
+    }
+  }
 }

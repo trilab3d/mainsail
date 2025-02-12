@@ -9,7 +9,8 @@
         "DeprecatedOptionHeadline": "Opção obsoleta do Klipper",
         "DeprecatedValue": "O valor '{value}' na opção '{option}' na seção '{section}' está obsoleto e será removido em uma liberação futura.",
         "DeprecatedValueHeadline": "Valor obsoleto do Klipper",
-        "KlipperWarning": "Aviso do Klipper"
+        "KlipperWarning": "Aviso do Klipper",
+        "KlipperRuntimeWarning": "Aviso de tempo de execução do Klipper"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "BrowserWarnings": {
         "Description": "{name} está desatualizado e não é totalmente compatível. \nA versão atual é {version}, mas o Mainsail requer a versão {minVersion} ou superior.",
         "Headline": "Navegador desatualizado"
-      }
+      },
+      "ShowDetails": "mostrar detalhes",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "Lembrete de manutenção",
+      "MaintenanceReminderText": "A manutenção \"{name}\" está vencida.",
+      "TmcOtFlag": "Erro do driver de passo: sinalizador OT definido",
+      "TmcOtFlagText": "O driver de passo '{name}' acionou o sinalizador OT e parou de funcionar. \nIsto pode ser causado por uma corrente muito alta. \nVerifique as configurações do driver de passo e o resfriamento.",
+      "TmcOtpwFlag": "Aviso do driver de passo: sinalizador OTPW definido",
+      "TmcOtpwFlagText": "O driver de passo '{name}' acionou o sinalizador OTPW e pode parar de funcionar se ficar mais quente. \nEsta é uma indicação de uma condição de superaquecimento. \nIsto pode ser causado por uma corrente muito alta. \nVerifique as configurações do driver de passo e o resfriamento."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Deve ser maior ou igual a {min}!",
@@ -118,7 +129,7 @@
       "TopBar": {
         "LightBtn": "Luz"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Recursos avançados",
       "ConnectionStatus": {
         "Mainsail": "Vela grande"
       },
@@ -211,6 +222,25 @@
           "PrinterNameRequired": "O nome da impressora é obrigatório",
           "PrinterNameMaxLength": "O comprimento máximo permitido do nome é de 63 caracteres",
           "PrinterNameInvalid": "O nome da impressora é inválido. \nSomente caracteres básicos, números e hifens são permitidos."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "O perfil de rede foi bem -sucedido!",
+            "ErrorNoConnections": "Erro - Resposta ruim - Sem conexões",
+            "ErrorBadResponse": "Erro - Resposta ruim",
+            "ErrorWhileLoadingWifi": "Erro ao carregar redes de wifi",
+            "ConnectedTo": "Conectado a:",
+            "InvalidMacFormat": "Formato de endereço MAC inválido",
+            "invalidIP6Format": "Formato de endereço IPv6 inválido",
+            "invalidIP4PatternFormat": "Formato inválido. \nDigite o formato x.x.x.x, x.x.x.x",
+            "invalidIP4Format": "Formato inválido. \nDigite no formato x.x.x.x",
+            "DiscardChanges": "Descarte as mudanças",
+            "ProfileSettingsTitle": "Configurações de perfil",
+            "interface": "Interface",
+            "connectionInProgress": "Conexão em andamento ..",
+            "signal": "SINAL",
+            "AvailableWirelessNetworks": "Redes sem fio disponíveis"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -296,7 +326,7 @@
           "UP_TO_DATE": "VERSÃO MAIS RECENTE",
           "USB_UNPACKING": "ATUALIZAÇÃO DE DESEMBALAGEM",
           "USB_UPDATE_AVAILABLE": "USB - NOVA ATUALIZAÇÃO",
-          "UNPACKING_FAILED": "Desmarcar falhou"
+          "UNPACKING_FAILED": "FALHA NA DESEMBALAGEM"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -651,7 +681,39 @@
     "TotalTime": "Total Time",
     "AddToQueueSuccessful": "Arquivo {filename} adicionado à fila.",
     "DeleteSingleJobQuestion": "Você realmente deseja excluir o trabalho?",
-    "LoadCompleteHistory": "Carregar histórico completo"
+    "LoadCompleteHistory": "Carregar histórico completo",
+    "AddMaintenance": "Adicionar manutenção",
+    "Name": "Nome",
+    "AddANote": "Adicione uma nota",
+    "DateBasedReminder": "Data",
+    "DateBasedReminderDescription": "Este lembrete é baseado na data.",
+    "Days": "dias",
+    "EditMaintenance": "Editar manutenção",
+    "EntryCreatedAt": "Criado em {data}.",
+    "EntryNextPerform": "Próxima execução:",
+    "EntryPerformedAt": "Realizado em {data}.",
+    "EntrySince": "Usado desde:",
+    "Filament": "Filamento",
+    "FilamentBasedReminder": "Filamento",
+    "FilamentBasedReminderDescription": "Este lembrete é baseado no uso do filamento.",
+    "Hours": "horas",
+    "InvalidNameEmpty": "Nome inválido. \nO nome não deve estar vazio!",
+    "Maintenance": "Manutenção",
+    "MaintenanceEntries": "Entradas de manutenção",
+    "Meter": "medidor",
+    "NoReminder": "Nenhum lembrete",
+    "OneTime": "Único",
+    "Perform": "executar",
+    "PerformMaintenance": "Realizar manutenção",
+    "Performed": "realizado",
+    "PerformedAndReschedule": "realizado e reprogramado",
+    "PrintJobs": "Imprimir trabalhos",
+    "PrinttimeBasedReminder": "Hora de impressão",
+    "PrinttimeBasedReminderDescription": "Este lembrete é baseado no tempo de impressão.",
+    "Reminder": "Lembrete",
+    "Repeat": "Repita",
+    "Settings": "Configurações",
+    "Time": "Tempo"
   },
   "JobQueue": {
     "AllJobs": "Todos os trabalhos",
@@ -789,8 +851,8 @@
       "MoonrakerUpdateQuestion": "Isso atualizará a API Moonraker. \nPodem ser necessárias alterações no arquivo moonraker.conf para continuar usando a máquina.",
       "MoreCommitsInfo": "Um máximo de 30 commits podem ser exibidos aqui. \nPara ver todos os commits, clique no link a seguir:",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Desanexado",
+        "Dirty": "Sujo"
       },
       "SoftRecovery": "Recuperação Suave",
       "StartUpdate": "Começar atualização",
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "A impressora está desligada no momento e o Klipper não consegue se conectar. Para ligar a impressora, clique no botão abaixo:",
       "Restart": "Reiniciar",
       "ServiceReports": "{service} relatórios",
-      "KlipperCheck": ""
+      "KlipperCheck": "Verifique se o serviço Klipper está em execução e se um UDS (Unix Domain Socket) está configurado.",
+      "KlipperLog": "Registro do Clipper",
+      "MoonrakerLog": "Registro do Moonraker"
     },
     "MachineSettingsPanel": {
       "Headline": "Máquina",
@@ -1220,7 +1284,9 @@
       "TimeFormat": "Formato de Hora",
       "DBNavigation": "Navegação",
       "Everything": "Tudo",
-      "MainsailSettingsMoonrakerDb": "Configurações da vela principal no Moonraker DB"
+      "MainsailSettingsMoonrakerDb": "Configurações da vela principal no Moonraker DB",
+      "DbMaintenance": "Manutenção",
+      "DbNavigation": "Navegação"
     },
     "InterfaceSettings": "Configs. Interface",
     "MacrosTab": {
@@ -1310,7 +1376,10 @@
       "Port": "Porta",
       "RemotePrinters": "Impressoras",
       "UpdatePrinter": "Atualiza Impressora",
-      "UseConfigJson": "InstanceDB =JSON detectada. Por favor, utilize o arquivo config.json para modificar a lista de impressoras."
+      "UseConfigJson": "InstanceDB =JSON detectada. Por favor, utilize o arquivo config.json para modificar a lista de impressoras.",
+      "Path": "Caminho",
+      "Name": "Nome",
+      "NameDescription": "Este nome não será exibido na GUI e será usado apenas para redirecionamentos."
     },
     "Store": "armazenna",
     "TimelapseTab": {
@@ -1383,7 +1452,12 @@
       "RulesMin": "O valor deve ser mínimo {min}!",
       "RulesPositive": "O valor deve ser positivo!",
       "RulesRequired": "Valor é requerido!",
-      "RulesZeroAndPositive": "O valor deve ser 0 ou maior!"
+      "RulesZeroAndPositive": "O valor deve ser 0 ou maior!",
+      "CameraDescriptionWithSnapshotUrl": "Selecione qual câmera (com URL do instantâneo) deve ser usada",
+      "CameraWarningAlreadySet": "Este valor já está definido no arquivo de configuração do Moonraker",
+      "CameraWarningAlreadySetSmall": "snapshoturl na seção [timelapse]",
+      "NoWebcamFound": "Nenhuma webcam disponível",
+      "SelectWebcam": "Selecione webcam..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Configs. dos Fusos da Mesa",
@@ -1434,11 +1508,32 @@
       "DefaultNavigationStateLastState": "último estado",
       "HideUpdateWarnings": "Ocultar avisos de atualização",
       "HideUpdateWarningsDescription": "Esta opção ocultará todos os avisos de atualização no gerenciador de atualização.",
-      "ShowWebcamInNavigation": "Mostrar webcam em navegação",
+      "ShowWebcamInNavigation": "Mostrar webcam na navegação",
       "Theme": "Tema",
       "ThemeDark": "Escuro",
       "ThemeDescription": "Altere a aparência geral do aplicativo",
-      "ThemeLight": "Luz"
+      "ThemeLight": "Luz",
+      "Mode": "Modo",
+      "PrintstatusThumbnailZoom": "Zoom de miniatura grande",
+      "PrintstatusThumbnailZoomDescription": "Isto desativará o efeito de zoom da miniatura no painel de status.",
+      "ProgressAsFavicon": "Mostrar progresso como favicon",
+      "ProgressAsFaviconDescription": "Altere o favicon do logotipo da vela principal para um círculo de progresso.",
+      "ModeDescription": "Altere a aparência geral do aplicativo.",
+      "DashboardFilesFilter": "Filtro de arquivos do painel",
+      "DashboardFilesFilterCompleted": "Concluído",
+      "DashboardFilesFilterDescription": "Filtre os arquivos no painel de status do painel por seu último status.",
+      "DashboardFilesFilterFailed": "Fracassado",
+      "DashboardFilesFilterNew": "Novo",
+      "DashboardFilesLimit": "Limite de arquivos do painel",
+      "DashboardFilesLimitDescription": "Selecione o número máximo de arquivos a serem exibidos no painel de status do painel. \n(0 esconde a guia Arquivos)",
+      "DashboardFilesLimitLabel": "{count} arquivos",
+      "DashboardHistoryLimit": "Limite de histórico do painel",
+      "DashboardHistoryLimitDescription": "Selecione o número máximo de trabalhos a serem exibidos no painel no painel de status. \n(0 esconde a guia História)",
+      "DashboardHistoryLimitLabel": "{count} trabalhos",
+      "HideOtherInstances": "Ocultar outras instâncias",
+      "HideOtherInstancesDescription": "Esconda outras instâncias de Klipper",
+      "ConfirmOnCancelJob": "Requer confirmar no trabalho de cancelar trabalho",
+      "ConfirmOnCancelJobDescription": "Mostre uma caixa de diálogo de confirmação no trabalho de cancelamento"
     },
     "Update": "atualizar",
     "WebcamsTab": {
@@ -1491,6 +1586,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Primavera"
+      },
+      "DefaultOrientationDescription": "Selecione a orientação padrão para a visualização da malha do leito.",
+      "DefaultOrientation": "Orientação padrão",
+      "Orientations": {
+        "Front": "Frente",
+        "LeftFront": "Frente esquerda",
+        "RightFront": "Frente direita",
+        "Top": "Principal"
       }
     }
   },
@@ -1567,5 +1670,10 @@
     "Refresh": "atualizar",
     "Resolutions": "Resoluções"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Redefinição de fábrica"
+    }
+  }
 }

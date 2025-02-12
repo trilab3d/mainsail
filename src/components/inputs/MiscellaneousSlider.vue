@@ -3,16 +3,23 @@
         <v-row>
             <v-col :class="pwm ? 'pb-1' : 'pb-3'">
                 <v-subheader class="_fan-slider-subheader">
-                    <v-icon v-if="type === 'led' && target > 0" class="mr-2" small :retain-focus-on-click="true"
+                    <v-icon
+                        v-if="type === 'led' && target > 0"
+                        class="mr-2"
+                        small
+                        :retain-focus-on-click="true"
                         @click="ledOff">
                         {{ mdiLightbulbOnOutline }}
                     </v-icon>
                     <v-icon v-else-if="type === 'led'" class="mr-2" small :retain-focus-on-click="true" @click="ledOn">
                         {{ mdiLightbulbOutline }}
                     </v-icon>
-                    <div v-else-if="type === 'servo_flap' || type == 'stepper_flap'" style="width:16px; height:16px"
-                        class="mr-2" :retain-focus-on-click="true" v-html="flapIcon">
-                    </div>
+                    <div
+                        v-else-if="type === 'servo_flap' || type == 'stepper_flap'"
+                        style="width: 16px; height: 16px"
+                        class="mr-2"
+                        :retain-focus-on-click="true"
+                        v-html="flapIcon"></div>
                     <v-icon v-else-if="type !== 'output_pin'" small :class="fanClasses">{{ mdiFan }}</v-icon>
                     <span>{{ convertNameTrilab(convertName(name)) }}</span>
                     <v-spacer></v-spacer>
@@ -24,9 +31,19 @@
                         {{ value ? mdiToggleSwitch : mdiToggleSwitchOffOutline }}
                     </v-icon>
                     <form @submit.prevent="submitInput">
-                        <v-text-field v-if="controllable && pwm" v-model="inputValue" :error="errors.length > 0" suffix="%"
-                            type="number" hide-spin-buttons hide-details outlined dense class="_slider-input pt-1"
-                            @blur="inputValue = Math.round(parseFloat(sliderValue) * 100)" @focus="$event.target.select()"
+                        <v-text-field
+                            v-if="controllable && pwm"
+                            v-model="inputValue"
+                            :error="errors.length > 0"
+                            suffix="%"
+                            type="number"
+                            hide-spin-buttons
+                            hide-details
+                            outlined
+                            dense
+                            class="_slider-input pt-1"
+                            @blur="inputValue = Math.round(parseFloat(sliderValue) * 100)"
+                            @focus="$event.target.select()"
                             @keydown="checkInvalidChars" />
                     </form>
                 </v-subheader>
@@ -37,15 +54,27 @@
                     </div>
                 </transition>
                 <v-card-text v-if="controllable && pwm" class="py-0 pb-2 d-flex align-center">
-                    <v-btn v-if="lockSliders && isTouchDevice && pwm" plain small icon class="_lock-button"
+                    <v-btn
+                        v-if="lockSliders && isTouchDevice && pwm"
+                        plain
+                        small
+                        icon
+                        class="_lock-button"
                         @click="isLocked = !isLocked">
                         <v-icon small :color="isLocked ? 'red' : ''">
                             {{ isLocked ? mdiLockOutline : mdiLockOpenVariantOutline }}
                         </v-icon>
                     </v-btn>
-                    <v-slider v-model="sliderValue" v-touch="{ start: resetLockTimer }" :disabled="isLocked" :min="0.0"
-                        :max="1.0" :step="0.01" :color="sliderValue < off_below && sliderValue > 0 ? 'red' : undefined"
-                        hide-details @change="changeSliderValue">
+                    <v-slider
+                        v-model="sliderValue"
+                        v-touch="{ start: resetLockTimer }"
+                        :disabled="isLocked"
+                        :min="0.0"
+                        :max="1.0"
+                        :step="0.01"
+                        :color="sliderValue < off_below && sliderValue > 0 ? 'red' : undefined"
+                        hide-details
+                        @change="changeSliderValue">
                         <template #prepend>
                             <v-icon :disabled="isLocked || sliderValue <= min" @click="decrement">
                                 {{ mdiMinus }}
@@ -107,7 +136,7 @@ fill="#ffffff" stroke="none">
 -194 -194z"/>
 </g>
 </svg>
-`;
+`
     convertName = convertName
     private declare timeout: ReturnType<typeof setTimeout>
     private isLocked: boolean = false
@@ -151,12 +180,11 @@ fill="#ffffff" stroke="none">
         return Math.round((this.target / this.max) * 100) / 100
     }
 
-
-    convertNameTrilab(input:string){
-        if(input == "Intake Flap"){
-            return "Chamber intake flap";
+    convertNameTrilab(input: string) {
+        if (input == 'Intake Flap') {
+            return 'Chamber intake flap'
         }
-        return input;
+        return input
     }
 
     @Watch('lockSliders', { immediate: true })
@@ -201,11 +229,13 @@ fill="#ffffff" stroke="none">
     sendCmd(newVal: number): void {
         if (this.value === newVal) return
 
-        let gcode = `SET_PIN PIN=${this.name} VALUE=${newVal.toFixed(2)}`
         if (newVal < this.min) newVal = 0
         newVal = newVal * this.multi
+
+        let gcode = `SET_PIN PIN=${this.name} VALUE=${newVal.toFixed(2)}`
         if (this.type === 'fan') gcode = `M106 S${newVal.toFixed(0)}`
-        if (this.type === 'fan_generic' || this.type === 'servo_flap' || this.type === 'stepper_flap') gcode = `SET_FAN_SPEED FAN=${this.name} SPEED=${newVal}`
+        if (this.type === 'fan_generic' || this.type === 'servo_flap' || this.type === 'stepper_flap')
+            gcode = `SET_FAN_SPEED FAN=${this.name} SPEED=${newVal}`
         if (this.type === 'heater_fan') gcode = `HEATER_FAN_SET_SPEED FAN=${this.name} SPEED=${newVal}`
         if (this.type === 'output_pin') gcode = `SET_PIN PIN=${this.name} VALUE=${newVal.toFixed(2)}`
         if (this.type === 'led')
@@ -266,7 +296,6 @@ fill="#ffffff" stroke="none">
         if (this.min >= 0) this.invalidChars.push('-')
         if (this.invalidChars.includes(event.key)) event.preventDefault()
     }
-
 
     get errors() {
         const errors = []

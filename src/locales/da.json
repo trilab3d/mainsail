@@ -13,7 +13,8 @@
         "DeprecatedOptionHeadline": "Forældet Klipper mulighed",
         "DeprecatedValue": "Værdien \"{value}\" i muligheden \"{option}\" i sektion \"{section}\" er forældet.",
         "DeprecatedValueHeadline": "Forældet Klipper værdi",
-        "KlipperWarning": "Klipper advarsel"
+        "KlipperWarning": "Klipper advarsel",
+        "KlipperRuntimeWarning": "Klipper Runtime Advarsel"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "NextReboot": "næste genstart",
       "NoNotification": "Ingen tilgængelig notifikationer",
       "Notifications": "Notifikationer",
-      "Remind": "Påmind mig om:"
+      "Remind": "Påmind mig om:",
+      "ShowDetails": "vise detaljer",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "Påmindelse om vedligeholdelse",
+      "MaintenanceReminderText": "Vedligeholdelse \"{name}\" er forfalden.",
+      "TmcOtFlag": "Stepper driver fejl: OT flag sat",
+      "TmcOtFlagText": "Stepdriveren '{name}' har udløst OT-flaget og holdt op med at fungere. \nDette kan skyldes en for høj strøm. \nKontroller venligst stepper-driverens indstillinger og køling.",
+      "TmcOtpwFlag": "Stepper driver advarsel: OTPW flag sat",
+      "TmcOtpwFlagText": "Stepdriveren '{name}' har udløst OTPW-flaget og holder muligvis op med at virke, hvis det bliver varmere. \nDette er en indikation af en overtemperaturtilstand. \nDette kan skyldes en for høj strøm. \nKontroller venligst stepper-driverens indstillinger og køling."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Skal være større eller lig med {min}!",
@@ -142,6 +153,25 @@
           "PrinterNameRequired": "Printernavn er påkrævet",
           "PrinterNameMaxLength": "Den maksimale tilladte navnelængde er 63 tegn",
           "PrinterNameInvalid": "Printernavnet er ugyldigt. \nKun grundlæggende tegn, tal og bindestreger er tilladt."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Netværksprofil har været vellykket gemt!",
+            "ErrorNoConnections": "Fejl - dårlig respons - ingen forbindelser",
+            "ErrorBadResponse": "Fejl - Dårligt svar",
+            "ErrorWhileLoadingWifi": "Fejl under indlæsning af wifi -netværk",
+            "ConnectedTo": "Forbundet til:",
+            "InvalidMacFormat": "Ugyldigt MAC -adresseformat",
+            "invalidIP6Format": "Ugyldigt IPv6 -adresseformat",
+            "invalidIP4PatternFormat": "Ugyldigt format. \nGå ind i formatet X.X.X.X, X.X.X.X",
+            "invalidIP4Format": "Ugyldigt format. \nIndtast formatet X.X.X.X",
+            "DiscardChanges": "Kasser ændringer",
+            "ProfileSettingsTitle": "Profilindstillinger",
+            "interface": "Interface",
+            "connectionInProgress": "Forbindelsesforbindelse ..",
+            "signal": "SIGNAL",
+            "AvailableWirelessNetworks": "Tilgængelige trådløse netværk"
+          }
         }
       },
       "SettingsGeneralTab": {
@@ -195,9 +225,10 @@
       },
       "TrilabLiveUpdate": {
         "statuses": {
-          "UNPACKING_FAILED": "Udpakning mislykkedes"
+          "UNPACKING_FAILED": "UPAKNING MISLYKKES"
         }
-      }
+      },
+      "AdvancedFeatures": "Avancerede funktioner"
     }
   },
   "BedScrews": {
@@ -470,7 +501,39 @@
     "TotalPrinttime": "Total printtid",
     "TotalTime": "Total Tid",
     "TitleRefreshHistory": "Opdater historie",
-    "TitleSettings": "Indstillinger"
+    "TitleSettings": "Indstillinger",
+    "AddMaintenance": "Tilføj vedligeholdelse",
+    "Name": "Navn",
+    "AddANote": "Tilføj en note",
+    "DateBasedReminder": "Dato",
+    "DateBasedReminderDescription": "Denne påmindelse er baseret på datoen.",
+    "Days": "dage",
+    "EditMaintenance": "Rediger vedligeholdelse",
+    "EntryCreatedAt": "Oprettet {date}.",
+    "EntryNextPerform": "Næste optræden:",
+    "EntryPerformedAt": "Udført den {date}.",
+    "EntrySince": "Brugt siden:",
+    "Filament": "Filament",
+    "FilamentBasedReminder": "Filament",
+    "FilamentBasedReminderDescription": "Denne påmindelse er baseret på filamentbrugen.",
+    "Hours": "timer",
+    "InvalidNameEmpty": "Ugyldigt navn. \nNavn må ikke være tomt!",
+    "Maintenance": "Opretholdelse",
+    "MaintenanceEntries": "Vedligeholdelsesposter",
+    "Meter": "måler",
+    "NoReminder": "Ingen påmindelse",
+    "OneTime": "Engangs",
+    "Perform": "udføre",
+    "PerformMaintenance": "Udfør vedligeholdelse",
+    "Performed": "udført",
+    "PerformedAndReschedule": "udføres og omplanlægge",
+    "PrintJobs": "Udskriftsjob",
+    "PrinttimeBasedReminder": "Udskrivningstid",
+    "PrinttimeBasedReminderDescription": "Denne påmindelse er baseret på udskrivningstidspunktet.",
+    "Reminder": "Påmindelse",
+    "Repeat": "Gentage",
+    "Settings": "Indstillinger",
+    "Time": "Tid"
   },
   "JobQueue": {
     "AllJobs": "Alle Jobs",
@@ -610,7 +673,12 @@
       "UpgradeableSystemPackages": "Systempakker med opdateringer",
       "UpToDate": "up-to-date",
       "WebClientUpdateQuestion": "I visse tilfælde kan opdateringer til webklienten forårsage problemer med inkompatibilitet. Se ændingsloggen for yderligere information",
-      "ERROR": "Fejl"
+      "ERROR": "Fejl",
+      "Notification": {
+        "Detached": "Fritliggende",
+        "Dirty": "Snavset"
+      },
+      "PackagesCanBeUpgraded": "Pakker kan opgraderes"
     }
   },
   "ManualProbe": {
@@ -665,7 +733,10 @@
       "PrinterSwitchedOff": "Printeren er slukket",
       "PrinterSwitchedOffDescription": "Printeren er slukket og Klipper kan ikke forbinde til den. Tryk på nedenstående knap for at tænde printeren",
       "Restart": "Genstart",
-      "ServiceReports": "{service} rapporter"
+      "ServiceReports": "{service} rapporter",
+      "KlipperLog": "Klipper Log",
+      "MoonrakerLog": "Moonraker Log",
+      "KlipperCheck": "Bekræft, at Klipper-tjenesten kører, og at en UDS (Unix Domain Socket) er konfigureret."
     },
     "MachineSettingsPanel": {
       "Headline": "Printer indstillinger",
@@ -851,8 +922,8 @@
       "SaveInfoDescription": "Det nye z-offset er blevet beregnet og registreret. Klik på \"GEM KONFIGURATION\" for at gemme det nye z-offset i CONFIG og genstarte Klipper.",
       "SaveInfoDescriptionPrint": "Det nye z-offset er blevet beregnet og registreret. Klik på \"GEM KONFIGURATION\" i topbaren efter endt print for at gemme det nye z-offset i CONFIG og genstarte Klipper.",
       "SaveInfoHeadline": "Information",
-      "ToEndstop": "Til endstop",
-      "ToProbe": "At undersøge"
+      "ToEndstop": "Til endestop",
+      "ToProbe": "at sondere"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1027,7 +1098,11 @@
       "Reset": "Nulstil",
       "Restore": "Gendan",
       "RestoreDialog": "Vælg de sektioner du ønsker at gendanne fra backup:",
-      "TimeFormat": "Tidsformat"
+      "TimeFormat": "Tidsformat",
+      "DbMaintenance": "Opretholdelse",
+      "DbNavigation": "Navigation",
+      "DbWebcams": "Webcams",
+      "MoonrakerDb": "Moonraker database"
     },
     "HeightmapTab": {
       "ColorSchemes": "Farvetemaer",
@@ -1039,6 +1114,14 @@
         "Hsv": "TMV",
         "Portland": "Portland",
         "Spring": "Forår"
+      },
+      "DefaultOrientationDescription": "Vælg standardorientering for visualiseringen af ​​sengen mesh.",
+      "DefaultOrientation": "Standardorientering",
+      "Orientations": {
+        "Front": "Front",
+        "LeftFront": "Venstre foran",
+        "RightFront": "Højre front",
+        "Top": "Top"
       }
     },
     "InterfaceSettings": "Interfaceindstillinger",
@@ -1129,7 +1212,10 @@
       "Port": "Port",
       "RemotePrinters": "Printere",
       "UpdatePrinter": "Opdater printer",
-      "UseConfigJson": "InstanceDB = JSON fundet. Brug venligst config.json til at ændre på printerlisten."
+      "UseConfigJson": "InstanceDB = JSON fundet. Brug venligst config.json til at ændre på printerlisten.",
+      "Path": "Sti",
+      "Name": "Navn",
+      "NameDescription": "Dette navn vil ikke blive vist i GUI og vil kun blive brugt til omdirigeringer."
     },
     "Store": "Gem",
     "TimelapseTab": {
@@ -1197,7 +1283,12 @@
       "VariableFpsMax": "Variabel FPS maks",
       "VariableFpsMaxDescription": "Største værdi for variabel FPS",
       "VariableFpsMin": "Variabel FPS min",
-      "VariableFpsMinDescription": "Mindste værdi for variabel FPS"
+      "VariableFpsMinDescription": "Mindste værdi for variabel FPS",
+      "CameraDescriptionWithSnapshotUrl": "Vælg hvilket kamera (med snapshot-URL) der skal bruges",
+      "CameraWarningAlreadySet": "Denne værdi er allerede indstillet i Moonraker-konfigurationsfilen",
+      "CameraWarningAlreadySetSmall": "snapshoturl i [timelapse]-sektionen",
+      "NoWebcamFound": "Intet webcam tilgængeligt",
+      "SelectWebcam": "Vælg webcam..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Bed-skrue justeringsvindue",
@@ -1250,7 +1341,28 @@
       "ThemeDescription": "Ændr grundfarverne og tonen af applikationen",
       "ThemeLight": "Lyst",
       "UiSettings": "UI-indstillinger",
-      "ShowWebcamInNavigation": "Vis webcam i navigation"
+      "Mode": "Mode",
+      "PrintstatusThumbnailZoom": "Stor thumbnail zoom",
+      "PrintstatusThumbnailZoomDescription": "Dette vil deaktivere zoom-effekten af ​​miniaturebilledet i statuspanelet.",
+      "ProgressAsFavicon": "Vis fremskridt som favicon",
+      "ProgressAsFaviconDescription": "Skift storsejlets logofavicon til en fremskridtscirkel.",
+      "ShowWebcamInNavigation": "Vis webcam i navigation",
+      "ModeDescription": "Skift applikationens overordnede udseende og fornemmelse.",
+      "DashboardFilesFilter": "Dashboard Files Filter",
+      "DashboardFilesFilterCompleted": "Afsluttet",
+      "DashboardFilesFilterDescription": "Filtrer filerne i panelet Dashboard Status efter deres sidste status.",
+      "DashboardFilesFilterFailed": "Mislykkedes",
+      "DashboardFilesFilterNew": "Ny",
+      "DashboardFilesLimit": "Dashboard -filer grænser",
+      "DashboardFilesLimitDescription": "Vælg det maksimale antal filer, der skal vises på panelet Dashboard Status. \n(0 skjuler fanen Files)",
+      "DashboardFilesLimitLabel": "{count} filer",
+      "DashboardHistoryLimit": "Dashboard History Limit",
+      "DashboardHistoryLimitDescription": "Vælg det maksimale antal job, der skal vises på instrumentbrættet i statuspanelet. \n(0 skjuler fanen historie)",
+      "DashboardHistoryLimitLabel": "{count} Jobs",
+      "HideOtherInstances": "Skjul andre tilfælde",
+      "HideOtherInstancesDescription": "Skjul andre tilfælde af Klipper",
+      "ConfirmOnCancelJob": "Kræver bekræftelse på annulleringsjob",
+      "ConfirmOnCancelJobDescription": "Vis en bekræftelsesdialog om annulleringsjob"
     },
     "Update": "Opdater",
     "WebcamsTab": {
@@ -1346,5 +1458,10 @@
     "Variable": "Variabel",
     "Video": "Video"
   },
-  "title": "Dansk"
+  "title": "Dansk",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Fabriksindstilling"
+    }
+  }
 }

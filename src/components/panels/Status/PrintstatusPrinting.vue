@@ -221,8 +221,8 @@ export default class StatusPanelPrintstatusPrinting extends Mixins(BaseMixin, Tr
         return this.$store.getters['printer/getEstimatedTimeSlicerTLB']
     }
 
-    get eta_tlb(){
-        return this.formatETAnew(this.estimated_time_slicer_tlb); 
+    get eta_tlb() {
+        return this.formatETAnew(this.estimated_time_slicer_tlb)
     }
 
     get estimated_time_avg() {
@@ -259,11 +259,11 @@ export default class StatusPanelPrintstatusPrinting extends Mixins(BaseMixin, Tr
         let prefix = seconds < 0 ? '-' : ''
         let absSeconds = Math.abs(seconds)
 
-        let h = Math.floor(absSeconds / 3600)
+        const h = Math.floor(absSeconds / 3600)
         absSeconds %= 3600
         let m = ('0' + Math.floor(absSeconds / 60)).slice(-2)
         let s = ('0' + (absSeconds % 60).toFixed(0)).slice(-2)
-        if(!showSeconds){
+        if (!showSeconds) {
             return prefix + h + ':' + m
         }
 

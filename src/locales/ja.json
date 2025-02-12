@@ -9,7 +9,8 @@
         "DeprecatedOptionHeadline": "推奨されないKlipperオプション",
         "DeprecatedValue": "'セクション[{section}]/オプション'{option}'の変数'{value}'は推奨されません。将来的に廃止される予定です。",
         "DeprecatedValueHeadline": "推奨されないKlipper変数",
-        "KlipperWarning": "Klipper警告"
+        "KlipperWarning": "Klipper警告",
+        "KlipperRuntimeWarning": "Klipper ランタイム警告"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "BrowserWarnings": {
         "Description": "{name} は古いため、完全にはサポートされていません。\n現在のバージョンは {version} ですが、Mainsail にはバージョン {minVersion} 以降が必要です。",
         "Headline": "古いブラウザ"
-      }
+      },
+      "ShowDetails": "詳細を表示",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "メンテナンスのリマインダー",
+      "MaintenanceReminderText": "メンテナンス「{name}」の期限が迫っています。",
+      "TmcOtFlag": "ステッパー ドライバー エラー: OT フラグが設定されました",
+      "TmcOtFlagText": "ステッパー ドライバー '{name}' が OT フラグをトリガーし、動作を停止しました。\nこれは、電流が高すぎることが原因である可能性があります。\nステッピングドライバーの設定と冷却を確認してください。",
+      "TmcOtpwFlag": "ステッパー ドライバーの警告: OTPW フラグが設定されました",
+      "TmcOtpwFlagText": "ステッパー ドライバー「{name}」は OTPW フラグをトリガーしたため、温度がさらに高くなると動作を停止する可能性があります。\nこれは過熱状態を示しています。\nこれは、電流が高すぎることが原因である可能性があります。\nステッピングドライバーの設定と冷却を確認してください。"
     },
     "NumberInput": {
       "GreaterOrEqualError": "{min}以上の値が必要です!",
@@ -118,7 +129,7 @@
       "TopBar": {
         "LightBtn": "ライト"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "高度な機能",
       "ConnectionStatus": {
         "Mainsail": "メインセール"
       },
@@ -211,6 +222,25 @@
           "PrinterNameRequired": "プリンター名は必須です",
           "PrinterNameMaxLength": "許可される名前の最大長は 63 文字です",
           "PrinterNameInvalid": "プリンター名が無効です。\n基本的な文字、数字、ハイフンのみが使用できます。"
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "ネットワークプロファイルは保存されました！",
+            "ErrorNoConnections": "エラー - 反応が悪い - 接続なし",
+            "ErrorBadResponse": "エラー - 反応が悪い",
+            "ErrorWhileLoadingWifi": "WiFiネットワークの読み込み中のエラー",
+            "ConnectedTo": "接続：",
+            "InvalidMacFormat": "無効なMacアドレス形式",
+            "invalidIP6Format": "無効なIPv6アドレス形式",
+            "invalidIP4PatternFormat": "無効な形式。\nフォーマットx.x.x.x、x.x.x.xを入力してください",
+            "invalidIP4Format": "無効な形式。\nフォーマットx.x.x.xを入力します",
+            "DiscardChanges": "変更を破棄します",
+            "ProfileSettingsTitle": "プロファイル設定",
+            "interface": "インタフェース",
+            "connectionInProgress": "進行中の接続..",
+            "signal": "信号",
+            "AvailableWirelessNetworks": "利用可能なワイヤレスネットワーク"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -651,7 +681,39 @@
     "TotalTime": "総時間",
     "AddToQueueSuccessful": "ファイル {filename} がキューに追加されました。",
     "DeleteSingleJobQuestion": "本当にジョブを削除してもよろしいですか?",
-    "LoadCompleteHistory": "完全な履歴をロードする"
+    "LoadCompleteHistory": "完全な履歴をロードする",
+    "AddMaintenance": "メンテナンスの追加",
+    "Name": "名前",
+    "AddANote": "メモを追加する",
+    "DateBasedReminder": "日付",
+    "DateBasedReminderDescription": "このリマインダーは日付に基づいています。",
+    "Days": "日",
+    "EditMaintenance": "メンテナンスの編集",
+    "EntryCreatedAt": "{日付}に作成されました。",
+    "EntryNextPerform": "次に実行します:",
+    "EntryPerformedAt": "{日付}に実行されます {date}。",
+    "EntrySince": "使用以来:",
+    "Filament": "フィラメント",
+    "FilamentBasedReminder": "フィラメント",
+    "FilamentBasedReminderDescription": "このリマインダーはフィラメントの使用状況に基づいています。",
+    "Hours": "時間",
+    "InvalidNameEmpty": "無効な名前です。\n名前を空にすることはできません。",
+    "Maintenance": "メンテナンス",
+    "MaintenanceEntries": "メンテナンスエントリー",
+    "Meter": "メーター",
+    "NoReminder": "リマインダーなし",
+    "OneTime": "一度",
+    "Perform": "実行する",
+    "PerformMaintenance": "メンテナンスの実行",
+    "Performed": "実行されました",
+    "PerformedAndReschedule": "実行して再スケジュールする",
+    "PrintJobs": "印刷ジョブ",
+    "PrinttimeBasedReminder": "印刷時間",
+    "PrinttimeBasedReminderDescription": "このリマインダーは印刷時間に基づいています。",
+    "Reminder": "リマインダー",
+    "Repeat": "繰り返す",
+    "Settings": "設定",
+    "Time": "時間"
   },
   "JobQueue": {
     "AllJobs": "全ジョブ",
@@ -789,8 +851,8 @@
       "MoonrakerUpdateQuestion": "これにより、Moonraker API が更新されます。\nマシンを引き続き使用するには、moonraker.conf ファイルの変更が必要になる場合があります。",
       "MoreCommitsInfo": "ここには最大 30 件のコミットが表示されます。\nすべてのコミットを表示するには、次のリンクをクリックしてください。",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "独立した",
+        "Dirty": "汚い"
       },
       "SoftRecovery": "ソフトリカバリ",
       "StartUpdate": "アップデートの開始",
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "現在、プリンターの電源がオフになっており、Klipperは接続することができません。プリンターの電源を入れるには、下のボタンをクリックしてください。:",
       "Restart": "再始動",
       "ServiceReports": "{service} レポート",
-      "KlipperCheck": ""
+      "KlipperCheck": "Klipper サービスが実行中であること、および UDS (Unix Domain Socket) が構成されていることを確認します。",
+      "KlipperLog": "クリッパーログ",
+      "MoonrakerLog": "ムーンレイカーログ"
     },
     "MachineSettingsPanel": {
       "Headline": "機器設定",
@@ -1220,7 +1284,9 @@
       "TimeFormat": "時間フォーマット",
       "DBNavigation": "ナビゲーション",
       "Everything": "すべて",
-      "MainsailSettingsMoonrakerDb": "Moonraker DB のメインセイル設定"
+      "MainsailSettingsMoonrakerDb": "Moonraker DB のメインセイル設定",
+      "DbMaintenance": "メンテナンス",
+      "DbNavigation": "ナビゲーション"
     },
     "InterfaceSettings": "インターフェース設定",
     "MacrosTab": {
@@ -1307,7 +1373,10 @@
       "Port": "ポート",
       "RemotePrinters": "プリンター",
       "UpdatePrinter": "プリンター更新",
-      "UseConfigJson": "InstanceDB = JSONが検出されました。プリンターリストはconfig.jsonで変更してください。"
+      "UseConfigJson": "InstanceDB = JSONが検出されました。プリンターリストはconfig.jsonで変更してください。",
+      "Path": "パス",
+      "Name": "名前",
+      "NameDescription": "この名前は GUI には表示されず、リダイレクトにのみ使用されます。"
     },
     "Store": "保存",
     "TimelapseTab": {
@@ -1380,7 +1449,12 @@
       "RulesMin": "値は最小値 {min} である必要があります。",
       "RulesPositive": "値は正でなければなりません。",
       "RulesRequired": "値が要求されます！",
-      "RulesZeroAndPositive": "値は 0 以上である必要があります。"
+      "RulesZeroAndPositive": "値は 0 以上である必要があります。",
+      "CameraDescriptionWithSnapshotUrl": "使用するカメラ (スナップショット URL 付き) を選択します",
+      "CameraWarningAlreadySet": "この値はすでに Moonraker 構成ファイルに設定されています",
+      "CameraWarningAlreadySetSmall": "[タイムラプス]セクションのsnapshoturl",
+      "NoWebcamFound": "ウェブカメラは利用できません",
+      "SelectWebcam": "ウェブカメラを選択..."
     },
     "UiSettingsTab": {
       "BoolBigThumbnail": "大きなサムネイル",
@@ -1435,7 +1509,28 @@
       "Theme": "テーマ",
       "ThemeDark": "暗い",
       "ThemeDescription": "アプリケーション全体のルックアンドフィールを変更する",
-      "ThemeLight": "ライト"
+      "ThemeLight": "ライト",
+      "Mode": "モード",
+      "PrintstatusThumbnailZoom": "サムネイルを大きくズーム",
+      "PrintstatusThumbnailZoomDescription": "これにより、ステータス パネルのサムネイルのズーム効果が無効になります。",
+      "ProgressAsFavicon": "進行状況をファビコンとして表示",
+      "ProgressAsFaviconDescription": "Mainsail ロゴのファビコンを進行状況サークルに変更します。",
+      "ModeDescription": "アプリケーションの全体的なルックアンドフィールを変更します。",
+      "DashboardFilesFilter": "ダッシュボードファイルフィルター",
+      "DashboardFilesFilterCompleted": "完了しました",
+      "DashboardFilesFilterDescription": "ダッシュボードステータスパネルのファイルを最後のステータスでフィルタリングします。",
+      "DashboardFilesFilterFailed": "失敗した",
+      "DashboardFilesFilterNew": "新しい",
+      "DashboardFilesLimit": "ダッシュボードファイルの制限",
+      "DashboardFilesLimitDescription": "ダッシュボードステータスパネルに表示するファイルの最大数を選択します。 \n（0はファイルタブを隠します）",
+      "DashboardFilesLimitLabel": "{count}ファイル",
+      "DashboardHistoryLimit": "ダッシュボードの履歴制限",
+      "DashboardHistoryLimitDescription": "ステータスパネルのダッシュボードに表示する最大ジョブ数を選択します。 \n（0は履歴タブを隠します）",
+      "DashboardHistoryLimitLabel": "{count}ジョブ",
+      "HideOtherInstances": "他のインスタンスを非表示にします",
+      "HideOtherInstancesDescription": "クリッパーの他のインスタンスを非表示にします",
+      "ConfirmOnCancelJob": "キャンセルジョブで確認が必要です",
+      "ConfirmOnCancelJobDescription": "キャンセルジョブに確認ダイアログを表示します"
     },
     "Update": "更新",
     "WebcamsTab": {
@@ -1488,6 +1583,14 @@
         "Hsv": "HSV",
         "Portland": "ポートランド",
         "Spring": "春"
+      },
+      "DefaultOrientationDescription": "ベッドメッシュの視覚化のデフォルトの方向を選択します。",
+      "DefaultOrientation": "デフォルトの方向",
+      "Orientations": {
+        "Front": "フロント",
+        "LeftFront": "左正面",
+        "RightFront": "右前面",
+        "Top": "トップ"
       }
     },
     "NavigationTab": {
@@ -1567,5 +1670,10 @@
     "Refresh": "リフレッシュする",
     "Resolutions": "決議"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "工場出荷時設定にリセット"
+    }
+  }
 }

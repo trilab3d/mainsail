@@ -13,7 +13,8 @@
         "DeprecatedOptionHeadline": "Veralterte Klipper Option",
         "DeprecatedValue": "Wert '{value}' in Option '{option}' im Abschnitt '{section}' ist veraltet und wird in einem zukünftigen Release entfernt.",
         "DeprecatedValueHeadline": "Veralteter Klipper Wert",
-        "KlipperWarning": "Klipper Warnung"
+        "KlipperWarning": "Klipper Warnung",
+        "KlipperRuntimeWarning": "Klipper-Laufzeitwarnung"
       },
       "MoonrakerWarnings": {
         "MoonrakerComponent": "Moonraker: {component}",
@@ -28,7 +29,17 @@
       "NextReboot": "nächsten Reboot",
       "NoNotification": "Keine Benachrichtigung vorhanden",
       "Notifications": "Benachrichtigungen",
-      "Remind": "Errinnere:"
+      "Remind": "Errinnere:",
+      "ShowDetails": "Details anzeigen",
+      "OneHourShort": "1H",
+      "OneDayShort": "1D",
+      "OneWeekShort": "1W",
+      "MaintenanceReminder": "Wartungserinnerung",
+      "MaintenanceReminderText": "Die Wartung „{name}“ ist fällig.",
+      "TmcOtFlag": "Schrittmotortreiberfehler: OT-Flag gesetzt",
+      "TmcOtFlagText": "Der Schrittmotortreiber „{name}“ hat das OT-Flag ausgelöst und funktioniert nicht mehr. \nDies kann durch einen zu hohen Strom verursacht werden. \nBitte überprüfen Sie die Einstellungen des Schritttreibers und die Kühlung.",
+      "TmcOtpwFlag": "Schritttreiberwarnung: OTPW-Flag gesetzt",
+      "TmcOtpwFlagText": "Der Schrittmotortreiber „{name}“ hat das OTPW-Flag ausgelöst und funktioniert möglicherweise nicht mehr, wenn es heißer wird. \nDies ist ein Hinweis auf einen Übertemperaturzustand. \nDies kann durch einen zu hohen Strom verursacht werden. \nBitte überprüfen Sie die Einstellungen des Schritttreibers und die Kühlung."
     },
     "NumberInput": {
       "GreaterOrEqualError": "Muss größer oder gleich {min} sein!",
@@ -123,7 +134,7 @@
       "TopBar": {
         "LightBtn": "Licht"
       },
-      "AdvancedFeatures": "",
+      "AdvancedFeatures": "Erweiterte Funktionen",
       "ConnectionStatus": {
         "Mainsail": "Großsegel"
       },
@@ -216,6 +227,25 @@
           "PrinterNameRequired": "Der Druckername ist erforderlich",
           "PrinterNameMaxLength": "Die maximal zulässige Namenslänge beträgt 63 Zeichen",
           "PrinterNameInvalid": "Der Druckername ist ungültig. \nEs sind nur einfache Zeichen, Zahlen und Bindestriche zulässig."
+        },
+        "Network": {
+          "InterfacesPanel": {
+            "ProfileSaved": "Das Netzwerkprofil wurde erfolgreich gespeichert!",
+            "ErrorNoConnections": "Fehler - schlechte Antwort - Keine Verbindungen",
+            "ErrorBadResponse": "Fehler - schlechte Antwort",
+            "ErrorWhileLoadingWifi": "Fehler beim Laden von WLAN -Netzwerken",
+            "ConnectedTo": "Verbunden mit:",
+            "InvalidMacFormat": "Ungültiges MAC -Adressformat",
+            "invalidIP6Format": "Ungültiges IPv6 -Adressformat",
+            "invalidIP4PatternFormat": "Ungültiges Format. \nGeben Sie im Format X.x.x.x, X.x.x.x ein",
+            "invalidIP4Format": "Ungültiges Format. \nGeben Sie im Format X.x.x.x ein",
+            "DiscardChanges": "Veränderungen verwerfen",
+            "ProfileSettingsTitle": "Profileinstellungen",
+            "interface": "Schnittstelle",
+            "connectionInProgress": "Verbindung in Arbeit ..",
+            "signal": "SIGNAL",
+            "AvailableWirelessNetworks": "Verfügbare drahtlose Netzwerke"
+          }
         }
       },
       "SettingsAccessPasswordPanel": {
@@ -301,7 +331,7 @@
           "UP_TO_DATE": "NEUESTE VERSION",
           "USB_UNPACKING": "UPDATE AUSPACKEN",
           "USB_UPDATE_AVAILABLE": "USB – NEUES UPDATE",
-          "UNPACKING_FAILED": "Auspacken fehlgeschlagen"
+          "UNPACKING_FAILED": "AUSPACKEN FEHLGESCHLAGEN"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -651,7 +681,39 @@
     "TotalTime": "Gesamtzeit",
     "TitleRefreshHistory": "Verlauf aktualisieren",
     "TitleSettings": "Einstellungen",
-    "AddToQueueSuccessful": "Datei {filename} zur Warteschlange hinzugefügt."
+    "AddToQueueSuccessful": "Datei {filename} zur Warteschlange hinzugefügt.",
+    "AddMaintenance": "Wartung hinzufügen",
+    "Name": "Name",
+    "AddANote": "Fügen Sie eine Notiz hinzu",
+    "DateBasedReminder": "Datum",
+    "DateBasedReminderDescription": "Diese Erinnerung basiert auf dem Datum.",
+    "Days": "Tage",
+    "EditMaintenance": "Wartung bearbeiten",
+    "EntryCreatedAt": "Erstellt am {Datum}.",
+    "EntryNextPerform": "Als nächstes ausführen:",
+    "EntryPerformedAt": "Aufgeführt am {date}.",
+    "EntrySince": "Verwendet seit:",
+    "Filament": "Filament",
+    "FilamentBasedReminder": "Filament",
+    "FilamentBasedReminderDescription": "Diese Erinnerung basiert auf der Filamentverwendung.",
+    "Hours": "Std.",
+    "InvalidNameEmpty": "Ungültiger Name. \nName darf nicht leer sein!",
+    "Maintenance": "Wartung",
+    "MaintenanceEntries": "Wartungseinträge",
+    "Meter": "Meter",
+    "NoReminder": "Keine Erinnerung",
+    "OneTime": "Einmalig",
+    "Perform": "durchführen",
+    "PerformMaintenance": "Führen Sie die Wartung durch",
+    "Performed": "durchgeführt",
+    "PerformedAndReschedule": "durchführen und neu planen",
+    "PrintJobs": "Druckaufträge",
+    "PrinttimeBasedReminder": "Druckzeit",
+    "PrinttimeBasedReminderDescription": "Diese Erinnerung basiert auf der Druckzeit.",
+    "Reminder": "Erinnerung",
+    "Repeat": "Wiederholen",
+    "Settings": "Einstellungen",
+    "Time": "Zeit"
   },
   "JobQueue": {
     "Cancel": "abbrechen",
@@ -794,10 +856,10 @@
       "WebClientUpdateQuestion": "In einigen Fällen kann die Aktualisierung des Webclients Änderungen mit sich bringen, die zu Inkompatibilitäten führen können. Weitere Informationen sind in den Veröffentlichungshinweisen zu finden.",
       "ERROR": "Fehler",
       "Notification": {
-        "Detached": "",
-        "Dirty": ""
+        "Detached": "Losgelöst",
+        "Dirty": "Schmutzig"
       },
-      "PackagesCanBeUpgraded": ""
+      "PackagesCanBeUpgraded": "Pakete können aktualisiert werden"
     }
   },
   "ManualProbe": {
@@ -853,7 +915,9 @@
       "PrinterSwitchedOffDescription": "Der Drucker ist ausgeschaltet und es kann keine Verbindung zu Klipper hergestellt werden. Um den Drucker einzuschalten, auf die Schaltfläche unten klicken:",
       "Restart": "Neustart",
       "ServiceReports": "{service} meldet",
-      "KlipperCheck": ""
+      "KlipperCheck": "Stellen Sie sicher, dass der Klipper-Dienst ausgeführt wird und ein UDS (Unix Domain Socket) konfiguriert ist.",
+      "KlipperLog": "Klipper-Protokoll",
+      "MoonrakerLog": "Moonraker-Protokoll"
     },
     "MachineSettingsPanel": {
       "Headline": "Maschine",
@@ -1039,8 +1103,8 @@
       "SaveInfoDescription": "Der neue Z-Versatz wurde berechnet und registriert. Auf \"SAVE CONFIG\", klicken um den neuen Z-Versatz in der printer.cfg zu speichern und Klipper neu zu starten.",
       "SaveInfoDescriptionPrint": "Der neue Z-Versatz wurde berechnet und registriert. Nach dem Drucken auf \"SAVE CONFIG\" in der oberen Leiste klicken um den neuen Z-Versatz in der printer.cfg zu speichern und Klipper neu zu starten.",
       "SaveInfoHeadline": "Information",
-      "ToEndstop": "Zum Ende",
-      "ToProbe": "Zu erforschen"
+      "ToEndstop": "Zum Endstopp",
+      "ToProbe": "sondieren"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1217,7 +1281,11 @@
       "Reset": "zurücksetzen",
       "Restore": "Wiederherstellung",
       "RestoreDialog": "Bitte wähle alle Abschnitte aus, die du wiederherstellen möchtest:",
-      "TimeFormat": "Zeitformat"
+      "TimeFormat": "Zeitformat",
+      "DbMaintenance": "Wartung",
+      "DbNavigation": "Navigation",
+      "DbWebcams": "Webcams",
+      "MoonrakerDb": "Moonraker-Datenbank"
     },
     "HeightmapTab": {
       "ColorSchemes": "Farbschemen",
@@ -1229,6 +1297,14 @@
         "Hsv": "Hsv",
         "Portland": "Portland",
         "Spring": "Frühling"
+      },
+      "DefaultOrientationDescription": "Wählen Sie die Standardausrichtung für die Bettgittervisualisierung aus.",
+      "DefaultOrientation": "Standardausrichtung",
+      "Orientations": {
+        "Front": "Front",
+        "LeftFront": "Links vorne",
+        "RightFront": "Vorne vorne",
+        "Top": "Spitze"
       }
     },
     "InterfaceSettings": "Interface Einstellungen",
@@ -1319,7 +1395,10 @@
       "Port": "Port",
       "RemotePrinters": "Remote Drucker",
       "UpdatePrinter": "Drucker aktualisieren",
-      "UseConfigJson": "InstanceDB = JSON erkannt. Bitte bearbeite die config.json um die Druckerliste zu modifizieren."
+      "UseConfigJson": "InstanceDB = JSON erkannt. Bitte bearbeite die config.json um die Druckerliste zu modifizieren.",
+      "Path": "Weg",
+      "Name": "Name",
+      "NameDescription": "Dieser Name wird nicht in der GUI angezeigt und nur für Weiterleitungen verwendet."
     },
     "Store": "anlegen",
     "TimelapseTab": {
@@ -1392,7 +1471,12 @@
       "VariableFpsMax": "Max. Variable FPS",
       "VariableFpsMaxDescription": "",
       "VariableFpsMin": "Min. Variable FPS",
-      "VariableFpsMinDescription": ""
+      "VariableFpsMinDescription": "",
+      "CameraDescriptionWithSnapshotUrl": "Wählen Sie aus, welche Kamera (mit Snapshot-URL) verwendet werden soll",
+      "CameraWarningAlreadySet": "Dieser Wert ist bereits in der Moonraker-Konfigurationsdatei festgelegt",
+      "CameraWarningAlreadySetSmall": "snapshoturl im Abschnitt [Zeitraffer].",
+      "NoWebcamFound": "Keine Webcam verfügbar",
+      "SelectWebcam": "Webcam auswählen..."
     },
     "UiSettingsTab": {
       "BedScrewsDialog": "Hilfsfenster für Bettschraubenjustierung",
@@ -1445,7 +1529,28 @@
       "ThemeDescription": "Ändern Sie das allgemeine Erscheinungsbild der Anwendung.",
       "ThemeLight": "Hell",
       "UiSettings": "UI-Einstellungen",
-      "ShowWebcamInNavigation": "Webcam in der Navigation anzeigen"
+      "ShowWebcamInNavigation": "Webcam in der Navigation anzeigen",
+      "Mode": "Modus",
+      "PrintstatusThumbnailZoom": "Großer Miniaturansicht-Zoom",
+      "PrintstatusThumbnailZoomDescription": "Dadurch wird der Zoomeffekt der Miniaturansicht im Statusfeld deaktiviert.",
+      "ProgressAsFavicon": "Fortschritt als Favicon anzeigen",
+      "ProgressAsFaviconDescription": "Ändern Sie das Favicon des Mainsail-Logos in einen Fortschrittskreis.",
+      "ModeDescription": "Ändern Sie das allgemeine Erscheinungsbild der Anwendung.",
+      "DashboardFilesFilter": "Dashboard -Dateien Filter",
+      "DashboardFilesFilterCompleted": "Vollendet",
+      "DashboardFilesFilterDescription": "Filtern Sie die Dateien im Dashboard -Statusbereich nach dem letzten Status.",
+      "DashboardFilesFilterFailed": "Fehlgeschlagen",
+      "DashboardFilesFilterNew": "Neu",
+      "DashboardFilesLimit": "Dashboard -Dateien limitieren",
+      "DashboardFilesLimitDescription": "Wählen Sie die maximale Anzahl von Dateien aus, die im Dashboard -Statusbereich angezeigt werden sollen. \n(0 verbirgt die Registerkarte \"Dateien))",
+      "DashboardFilesLimitLabel": "{count} Dateien",
+      "DashboardHistoryLimit": "Dashboard -Verlauf",
+      "DashboardHistoryLimitDescription": "Wählen Sie die maximale Anzahl von Jobs aus, die im Dashboard im Statusbereich angezeigt werden sollen. \n(0 verbirgt die Registerkarte Geschichte)",
+      "DashboardHistoryLimitLabel": "{count} Jobs",
+      "HideOtherInstances": "Andere Fälle verstecken",
+      "HideOtherInstancesDescription": "Andere Fälle von Klipper verstecken",
+      "ConfirmOnCancelJob": "Erfordern Sie die Bestätigung des Auftrags",
+      "ConfirmOnCancelJobDescription": "Zeigen Sie einen Bestätigungsdialog zum Abbrechen von Jobs an"
     },
     "Update": "speichern",
     "WebcamsTab": {
@@ -1562,5 +1667,10 @@
     "Refresh": "Aktualisierung",
     "Resolutions": "Vorsätze"
   },
-  "_last_update": ""
+  "_last_update": "",
+  "panel": {
+    "settingsGeneral": {
+      "factoryReset": "Werksreset"
+    }
+  }
 }
