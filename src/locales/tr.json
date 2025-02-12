@@ -939,7 +939,8 @@
       "HideTimelapse": "Timelapse'ı Gizle",
       "SendCode": "Kod Gönder...",
       "SetupConsole": "Konsolu Ayarla",
-      "Autoscroll": "Otomatik kaydırma"
+      "Autoscroll": "Otomatik kaydırma",
+      "RawOutput": "RAW çıktı (hata ayıklama için)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Lütfen printer.cfg dosyanızda mainsail.cfg dosyasını eklediğinizden emin olun.",

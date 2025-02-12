@@ -939,7 +939,8 @@
       "HideTimelapse": "タイムラプス報告を隠す",
       "SendCode": "コード送信...",
       "SetupConsole": "コンソール設定",
-      "Autoscroll": "自動スクロール"
+      "Autoscroll": "自動スクロール",
+      "RawOutput": "生の出力（デバッグ用）"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "printer.cfgにmainsail.cfgがインクルードされているか確認してください。",

@@ -50,7 +50,7 @@
                             :label="filter.name"
                             @change="toggleFilter(index, filter)" />
                     </v-list-item>
-                    <v-list-item class="minHeight36">
+                    <v-list-item v-if="TrilabServiceView" class="minHeight36">
                         <v-checkbox
                             v-model="rawOutput"
                             class="mt-0"
@@ -93,6 +93,7 @@ import Panel from '@/components/ui/Panel.vue'
 import { mdiCog, mdiConsoleLine, mdiTrashCan } from '@mdi/js'
 import CommandHelpModal from '@/components/console/CommandHelpModal.vue'
 import ConsoleMixin from '@/components/mixins/console'
+import TrilabMixin from '@/components/mixins/trilab'
 import ConsoleTextarea from '@/components/inputs/ConsoleTextarea.vue'
 
 @Component({
@@ -102,7 +103,7 @@ import ConsoleTextarea from '@/components/inputs/ConsoleTextarea.vue'
         CommandHelpModal,
     },
 })
-export default class MiniconsolePanel extends Mixins(BaseMixin, ConsoleMixin) {
+export default class MiniconsolePanel extends Mixins(BaseMixin, ConsoleMixin, TrilabMixin) {
     mdiTrashCan = mdiTrashCan
     mdiConsoleLine = mdiConsoleLine
     mdiCog = mdiCog

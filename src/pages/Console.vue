@@ -63,6 +63,7 @@
                         </v-list-item>
                         <v-list-item class="minHeight36">
                             <v-checkbox
+                                v-if="TrilabServiceView"
                                 v-model="rawOutput"
                                 class="mt-0"
                                 hide-details
@@ -97,7 +98,9 @@ import ConsoleTable from '@/components/console/ConsoleTable.vue'
 import CommandHelpModal from '@/components/console/CommandHelpModal.vue'
 import { mdiCog, mdiTrashCan } from '@mdi/js'
 import ConsoleMixin from '@/components/mixins/console'
+import TrilabMixin from '@/components/mixins/trilab'
 import ConsoleTextarea from '@/components/inputs/ConsoleTextarea.vue'
+
 
 @Component({
     components: {
@@ -105,7 +108,7 @@ import ConsoleTextarea from '@/components/inputs/ConsoleTextarea.vue'
         ConsoleTable,
     },
 })
-export default class PageConsole extends Mixins(BaseMixin, ConsoleMixin) {
+export default class PageConsole extends Mixins(BaseMixin, ConsoleMixin, TrilabMixin) {
     mdiCog = mdiCog
     mdiTrashCan = mdiTrashCan
 

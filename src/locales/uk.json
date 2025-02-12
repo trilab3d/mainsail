@@ -953,7 +953,8 @@
       "HideTemperatures": "Сховати температуру",
       "HideTimelapse": "Сховати таймлапс",
       "SendCode": "Надіслати код...",
-      "SetupConsole": "Налаштувати Консоль"
+      "SetupConsole": "Налаштувати Консоль",
+      "RawOutput": "Raw-Output (для налагодження)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Переконайтеся, що ви включили mainsail.cfg у свій файл printer.cfg.",

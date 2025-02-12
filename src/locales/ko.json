@@ -939,7 +939,8 @@
       "HideTimelapse": "타임랩스 숨김",
       "SendCode": "제어 명령 입력 후 엔터를 눌러 주세요..",
       "SetupConsole": "콘솔 명령 설정",
-      "Autoscroll": "자동 스크롤"
+      "Autoscroll": "자동 스크롤",
+      "RawOutput": "원시 출력 (디버깅 용)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "printer.cfg안에 mainsail.cfg를 포함시켜야 합니다",

@@ -939,7 +939,8 @@
       "HideTimelapse": "Skrýt Timelapse",
       "SendCode": "Odeslat kód...",
       "SetupConsole": "Nastavit konzoli",
-      "Autoscroll": "Autoscroll"
+      "Autoscroll": "Autoscroll",
+      "RawOutput": "Surová data (pro diagnostiku)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Ujistěte se, že jste v souboru printer.cfg zahrnuli mainsail.cfg.",

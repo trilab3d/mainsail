@@ -939,7 +939,8 @@
       "HideTimelapse": "Ocultar timelapse",
       "SendCode": "Enviar código...",
       "SetupConsole": "Configurar consola",
-      "Autoscroll": "Desplazamiento automático"
+      "Autoscroll": "Desplazamiento automático",
+      "RawOutput": "Raw-output (para la depuración)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Asegúrese de incluir mainsail.cfg en su archivo printer.cfg.",

@@ -707,7 +707,8 @@
       "HideTemperatures": "Dölj temperaturer",
       "HideTimelapse": "Dölj Timelapse",
       "SendCode": "Skicka kod...",
-      "SetupConsole": "Installationskonsol"
+      "SetupConsole": "Installationskonsol",
+      "RawOutput": "RAW-Output (vearrogeahpádus)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Säkerhetställ att du inkluderar mainsail.cfg i filen printer.cfg.",

@@ -939,7 +939,8 @@
       "HideTemperatures": "Temperaturmeldungen ausblenden",
       "HideTimelapse": "Timelapse ausblenden",
       "SendCode": "Befehl senden...",
-      "SetupConsole": "Einstellungen"
+      "SetupConsole": "Einstellungen",
+      "RawOutput": "Rohausgabe (zum Debuggen)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Stelle sicher dass die Datei mainsail.cfg in der printer.cfg-Datei aufgeführt ist.",

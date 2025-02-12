@@ -758,7 +758,8 @@
       "HideTemperatures": "Skjul temperaturer",
       "HideTimelapse": "Skjul Timelapse",
       "SendCode": "Send kode...",
-      "SetupConsole": "Terminalindstillinger"
+      "SetupConsole": "Terminalindstillinger",
+      "RawOutput": "Raw-output (til fejlsøgning)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Husk at inkludere mainsail.cfg i din CONFIG fil.",

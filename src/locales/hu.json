@@ -922,7 +922,8 @@
       "HideTimelapse": "Idővonal elrejtése",
       "SendCode": "Kód küldése...",
       "SetupConsole": "Konzol beállítása",
-      "Autoscroll": "Automatikus görgetés"
+      "Autoscroll": "Automatikus görgetés",
+      "RawOutput": "Nyers-output (hibakereséshez)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Tedd bele a mainsail.cfg fájlt a printer.cfg fájlba!",

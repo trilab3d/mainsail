@@ -939,7 +939,8 @@
       "HideTemperatures": "Nascondi Temperature",
       "HideTimelapse": "Nascondi Timelapse",
       "SendCode": "Invia codice...",
-      "SetupConsole": "Impostazioni Console"
+      "SetupConsole": "Impostazioni Console",
+      "RawOutput": "RAW-Output (per il debug)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Assicurati di includere il file mainsail.cfg nel file printer.cfg.",

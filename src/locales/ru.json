@@ -939,7 +939,8 @@
       "HideTimelapse": "Скрыть таймлапсы",
       "SendCode": "Команда...",
       "SetupConsole": "Настройки консоли",
-      "Autoscroll": "Автопрокрутка"
+      "Autoscroll": "Автопрокрутка",
+      "RawOutput": "Необработанный (для отладки)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Убедитесь, что включили mainsail.cfg в файл printer.cfg.",

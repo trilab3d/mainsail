@@ -940,7 +940,8 @@
       "HideTimelapse": "Verberg Timelapse",
       "SendCode": "Verzend code...",
       "SetupConsole": "Console Instellingen",
-      "Autoscroll": "Automatisch scrollen"
+      "Autoscroll": "Automatisch scrollen",
+      "RawOutput": "Raw-output (voor foutopsporing)"
     },
     "MinSettingsPanel": {
       "IncludeMainsailCfg": "Zorg dat je mainsail.cfg in je printer.cfg geïnclude hebt.",
