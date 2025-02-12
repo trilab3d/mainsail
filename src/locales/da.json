@@ -192,6 +192,11 @@
       "PrintStartOpenDoorsDialogTitle": "Dørene åbnes",
       "PrintStartOpenDoorsDialog": {
         "Text": "Dørene er åbne, og printet kan ikke startes. \nDeaktiver enten dørsensoren eller luk døren og tryk på Forsøg igen"
+      },
+      "TrilabLiveUpdate": {
+        "statuses": {
+          "UNPACKING_FAILED": "Udpakning mislykkedes"
+        }
       }
     }
   },
@@ -700,7 +705,8 @@
       },
       "RunoutSensor": {
         "Detected": "Fundet",
-        "Empty": "Tom"
+        "Empty": "Tom",
+        "Disabled": "Handicappet"
       }
     },
     "PowerControlPanel": {
@@ -844,7 +850,9 @@
       "SaveConfig": "GEM KONFIGURATION",
       "SaveInfoDescription": "Det nye z-offset er blevet beregnet og registreret. Klik på \"GEM KONFIGURATION\" for at gemme det nye z-offset i CONFIG og genstarte Klipper.",
       "SaveInfoDescriptionPrint": "Det nye z-offset er blevet beregnet og registreret. Klik på \"GEM KONFIGURATION\" i topbaren efter endt print for at gemme det nye z-offset i CONFIG og genstarte Klipper.",
-      "SaveInfoHeadline": "Information"
+      "SaveInfoHeadline": "Information",
+      "ToEndstop": "Til endstop",
+      "ToProbe": "At undersøge"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1241,7 +1249,8 @@
       "ThemeDark": "Mørkt",
       "ThemeDescription": "Ændr grundfarverne og tonen af applikationen",
       "ThemeLight": "Lyst",
-      "UiSettings": "UI-indstillinger"
+      "UiSettings": "UI-indstillinger",
+      "ShowWebcamInNavigation": "Vis webcam i navigation"
     },
     "Update": "Opdater",
     "WebcamsTab": {

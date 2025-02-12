@@ -300,7 +300,8 @@
           "UPDATE_AVAILABLE": "DOSTĘPNA NOWA AKTUALIZACJA",
           "UP_TO_DATE": "NAJNOWSZA WERSJA",
           "USB_UNPACKING": "AKTUALIZACJA ROZPAKOWANIA",
-          "USB_UPDATE_AVAILABLE": "USB - NOWA AKTUALIZACJA"
+          "USB_UPDATE_AVAILABLE": "USB - NOWA AKTUALIZACJA",
+          "UNPACKING_FAILED": "Rozpakowanie nie powiodło się"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -1038,8 +1039,8 @@
       "SaveInfoDescription": "Nowe przesunięcie Z zostało obliczone i zarejestrowane. Kliknij przycisk \"ZAPISZ KONFIGURACJĘ\", aby zapisać ją w pliku printer.cfg i zrestartować Klipper.",
       "SaveInfoDescriptionPrint": "Nowe przesunięcie Z zostało obliczone i zarejestrowane. Po wydrukowaniu kliknij \"ZAPISZ KONFIGURACJĘ\" na górnym pasku, aby zapisać ją w pliku printer.cfg i zrestartować Klipper.",
       "SaveInfoHeadline": "Informacja",
-      "ToEndstop": "",
-      "ToProbe": ""
+      "ToEndstop": "Do endstop",
+      "ToProbe": "Do zbadania"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1433,7 +1434,7 @@
       "UiSettings": "Interfejs",
       "ConfirmOnCoolDown": "Wymagaj potwierdzenia w CoolDown",
       "ConfirmOnCoolDownDescription": "Pokaż okno dialogowe potwierdzenia w CoolDown",
-      "ShowWebcamInNavigation": "",
+      "ShowWebcamInNavigation": "Pokaż kamerę internetową w nawigacji",
       "Theme": "Temat",
       "ThemeDark": "Ciemny",
       "ThemeDescription": "Zmień ogólny wygląd i działanie aplikacji",

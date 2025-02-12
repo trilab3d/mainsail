@@ -295,7 +295,8 @@
           "UPDATE_AVAILABLE": "새로운 업데이트 이용 가능",
           "UP_TO_DATE": "최신 버전",
           "USB_UNPACKING": "포장 풀기 업데이트",
-          "USB_UPDATE_AVAILABLE": "USB - 새로운 업데이트"
+          "USB_UPDATE_AVAILABLE": "USB - 새로운 업데이트",
+          "UNPACKING_FAILED": "포장 풀기 실패"
         }
       },
       "TrilabSelectFilamentDialog": {

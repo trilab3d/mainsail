@@ -54,7 +54,7 @@ export default class MiscellaneousPanel extends Mixins(BaseMixin, TrilabMixin) {
     get miscellaneous() {
         /// filter miscellaneous with name "pson" if it is not serviceView
         if (!this.TrilabServiceView) {
-            return this.$store.getters['printer/getMiscellaneous'].filter((item: any) => item.name !== 'pson') ?? []
+            return this.$store.getters['printer/getMiscellaneous'].filter((item: any) => (item.name ?? "").toLowerCase() !== 'pson') ?? []
         }
         return this.$store.getters['printer/getMiscellaneous'] ?? []
     }

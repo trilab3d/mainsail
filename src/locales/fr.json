@@ -300,7 +300,8 @@
           "UPDATE_AVAILABLE": "NOUVELLE MISE À JOUR DISPONIBLE",
           "UP_TO_DATE": "DERNIÈRE VERSION",
           "USB_UNPACKING": "MISE À JOUR DE DÉBALLAGE",
-          "USB_UPDATE_AVAILABLE": "USB - NOUVELLE MISE À JOUR"
+          "USB_UPDATE_AVAILABLE": "USB - NOUVELLE MISE À JOUR",
+          "UNPACKING_FAILED": "Le déballage a échoué"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -1038,8 +1039,8 @@
       "SaveInfoDescription": "Le nouveau décalage Z a été calculé et enregistré. Cliquez sur \"SAVE CONFIG\" pour l'enregistrer dans le fichier printer.cfg et redémarrer Klipper.",
       "SaveInfoDescriptionPrint": "Le nouveau décalage Z a été calculé et enregistré. Après l'impression, cliquez sur \"SAVE CONFIG\" dans la barre supérieure pour l'enregistrer dans le fichier printer.cfg et redémarrer Klipper.",
       "SaveInfoHeadline": "Information",
-      "ToEndstop": "",
-      "ToProbe": ""
+      "ToEndstop": "À fin",
+      "ToProbe": "En sonder"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1445,7 +1446,7 @@
       "UiSettings": "Interface",
       "ConfirmOnCoolDown": "Exiger une confirmation lors du CoolDown",
       "ConfirmOnCoolDownDescription": "Afficher une boîte de dialogue de confirmation lors de CoolDown",
-      "ShowWebcamInNavigation": "",
+      "ShowWebcamInNavigation": "Afficher la webcam en navigation",
       "Theme": "Thème",
       "ThemeDark": "Sombre",
       "ThemeDescription": "Modifier l'apparence générale de l'application",

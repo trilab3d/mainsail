@@ -300,7 +300,8 @@
           "UPDATE_AVAILABLE": "NUEVA ACTUALIZACIÓN DISPONIBLE",
           "UP_TO_DATE": "LA VERSIÓN MÁS NUEVA",
           "USB_UNPACKING": "ACTUALIZACIÓN DE DESEMBALAJE",
-          "USB_UPDATE_AVAILABLE": "USB - NUEVA ACTUALIZACIÓN"
+          "USB_UPDATE_AVAILABLE": "USB - NUEVA ACTUALIZACIÓN",
+          "UNPACKING_FAILED": "El desempaquetado falló"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -1433,7 +1434,7 @@
       "BigThumbnailBackground": "Color de fondo de miniatura grande",
       "ConfirmOnCoolDown": "Requerir confirmación en CoolDown",
       "ConfirmOnCoolDownDescription": "Mostrar un cuadro de diálogo de confirmación en CoolDown",
-      "ShowWebcamInNavigation": "",
+      "ShowWebcamInNavigation": "Mostrar webcam en navegación",
       "Theme": "Tema",
       "ThemeDark": "Oscuro",
       "ThemeDescription": "Cambiar la apariencia general de la aplicación.",

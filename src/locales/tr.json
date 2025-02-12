@@ -300,7 +300,8 @@
           "UPDATE_AVAILABLE": "YENİ GÜNCELLEME MEVCUT",
           "UP_TO_DATE": "EN YENİ VERSİYON",
           "USB_UNPACKING": "PAKETTEN AÇILMA GÜNCELLEMESİ",
-          "USB_UPDATE_AVAILABLE": "USB - YENİ GÜNCELLEME"
+          "USB_UPDATE_AVAILABLE": "USB - YENİ GÜNCELLEME",
+          "UNPACKING_FAILED": "Ambalajın Çıkarma Başarısız Oldu"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -1433,7 +1434,7 @@
       "DefaultNavigationStateAlwaysOpen": "daima açık",
       "DefaultNavigationStateDescription": "Varsayılan olarak gezinmenin hangi eyalette olması gerektiği.",
       "DefaultNavigationStateLastState": "son durum",
-      "ShowWebcamInNavigation": "",
+      "ShowWebcamInNavigation": "Navigasyonda web kamerasını göster",
       "Theme": "Tema",
       "ThemeDark": "Karanlık",
       "ThemeDescription": "Uygulamanın genel görünümünü ve hissini değiştirin",

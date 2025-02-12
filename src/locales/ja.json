@@ -295,7 +295,8 @@
           "UPDATE_AVAILABLE": "新しいアップデートが利用可能になりました",
           "UP_TO_DATE": "最新バージョン",
           "USB_UNPACKING": "開梱アップデート",
-          "USB_UPDATE_AVAILABLE": "USB - 新しいアップデート"
+          "USB_UPDATE_AVAILABLE": "USB - 新しいアップデート",
+          "UNPACKING_FAILED": "開梱に失敗しました"
         }
       },
       "TrilabSelectFilamentDialog": {

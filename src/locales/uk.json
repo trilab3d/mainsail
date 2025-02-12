@@ -303,7 +303,8 @@
           "UPDATE_AVAILABLE": "ДОСТУПНЕ НОВЕ ОНОВЛЕННЯ",
           "UP_TO_DATE": "НАЙНОВІША ВЕРСІЯ",
           "USB_UNPACKING": "РОЗПАКУВАННЯ ОНОВЛЕННЯ",
-          "USB_UPDATE_AVAILABLE": "USB - НОВЕ ОНОВЛЕННЯ"
+          "USB_UPDATE_AVAILABLE": "USB - НОВЕ ОНОВЛЕННЯ",
+          "UNPACKING_FAILED": "Розпакування не вдалося"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -907,7 +908,7 @@
       "RunoutSensor": {
         "Detected": "виявлено",
         "Empty": "Порожньо",
-        "Disabled": ""
+        "Disabled": "Інвалід"
       }
     },
     "PowerControlPanel": {
@@ -1052,8 +1053,8 @@
       "SaveInfoDescription": "Новий Z-Offset був обчислений та зареєстрований. Натисніть на \"ЗБЕРЕГТИ КОНФІГУРАЦІЮ\" Щоб зберегти його на printer.cfg та перезапустити Klipper.",
       "SaveInfoDescriptionPrint": "Новий Z-Offset був обчислений та зареєстрований. Після друку натисніть на \"ЗБЕРЕГТИ КОНФІГУРАЦІЮ\" у верхній панелі, щоб зберегти його у printer.cfg та перезапустити Klipper.",
       "SaveInfoHeadline": "Інформація",
-      "ToEndstop": "",
-      "ToProbe": ""
+      "ToEndstop": "До кінця",
+      "ToProbe": "Зондувати"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1462,7 +1463,8 @@
       "ThemeLight": "Світла",
       "UiSettings": "Налаштування в інтерфейсі",
       "ConfirmOnCoolDown": "Вимагати підтвердження на CoolDown",
-      "ConfirmOnCoolDownDescription": "Показати діалогове вікно підтвердження на CoolDown"
+      "ConfirmOnCoolDownDescription": "Показати діалогове вікно підтвердження на CoolDown",
+      "ShowWebcamInNavigation": "Показати веб -камеру в навігації"
     },
     "Update": "оновлення",
     "WebcamsTab": {

@@ -296,7 +296,8 @@
           "UPDATE_AVAILABLE": "NIEUWE UPDATE BESCHIKBAAR",
           "UP_TO_DATE": "NIEUWSTE VERSIE",
           "USB_UNPACKING": "UPDATE UITPAKKEN",
-          "USB_UPDATE_AVAILABLE": "USB-NIEUWE UPDATE"
+          "USB_UPDATE_AVAILABLE": "USB-NIEUWE UPDATE",
+          "UNPACKING_FAILED": "Uitpakken is mislukt"
         }
       },
       "TrilabSelectFilamentDialog": {

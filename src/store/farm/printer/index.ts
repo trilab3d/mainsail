@@ -18,7 +18,7 @@ export const getDefaultState = (): FarmPrinterState => {
             isConnecting: false,
             reconnects: 0,
             maxReconnects: 2,
-            reconnectInterval: 1000,
+            reconnectInterval: 10000,
             wsData: [],
         },
         server: {

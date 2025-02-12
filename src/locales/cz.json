@@ -295,7 +295,8 @@
           "UPDATE_AVAILABLE": "NOVÁ AKTUALIZACE",
           "UP_TO_DATE": "NEJNOVĚJŠÍ VERZE",
           "USB_UNPACKING": "ROZBALOVÁNÍ AKTUALIZACE",
-          "USB_UPDATE_AVAILABLE": "USB - NOVÁ AKTUALIZACE"
+          "USB_UPDATE_AVAILABLE": "USB - NOVÁ AKTUALIZACE",
+          "UNPACKING_FAILED": "ROZBALOVÁNÍ SELHALO"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -831,12 +832,12 @@
       "Retract": "Vytáhnout",
       "TooLargeExtrusion": "Příliš velká extruze!",
       "UnloadFilament": "Vyjmout filament",
-      "CleanNozzle": "Clean Nozzle",
-      "ExtruderControl": "Extruder Control",
+      "CleanNozzle": "Vyčistit trysku",
+      "ExtruderControl": "Ovládání extruderu",
       "FirmwareRetraction": "Firmware Retraction",
       "PressureAdvance": "Pressure Advance",
-      "PurgeFilament": "Purge Filament",
-      "Tools": "Tools"
+      "PurgeFilament": "Vytlačit filament",
+      "Tools": "Nástroje"
     },
     "FarmPrinterPanel": {
       "ReconnectToPrinter": "Připojit znovu",
@@ -949,6 +950,7 @@
       "Speed": "Rychlost",
       "Status": "Stav",
       "Total": "Celkem",
+      "TotalTime": "Celkový čas",
       "Unknown": "Neznámý"
     },
     "TemperaturePanel": {
@@ -976,8 +978,8 @@
       "TemperaturesInChart": "Teplota [°C]",
       "TempTooHigh": "Teplota pro {name} je příliš vysoká! (max.: {max})",
       "TempTooLow": "Teplota pro {name} je příliš nízká! (min.: {min})",
-      "HideMcuHostSensors": "Hide Host/MCU Sensors",
-      "HideMonitors": "Hide Monitors"
+      "HideMcuHostSensors": "Schovat Host/MCU senzory",
+      "HideMonitors": "Schovat monitory"
     },
     "ToolheadControlPanel": {
       "Absolute": "absolutní",
@@ -990,8 +992,8 @@
       "SettingsInterfaceControl": "Nastavení > Rozhraní > Ovládání",
       "SpeedFactor": "Rychlost",
       "ZTilt": "Z-tilt",
-      "ControlButtons": "Control buttons",
-      "CoordinateFields": "Coordinate fields",
+      "ControlButtons": "Ovládací tlačítka",
+      "CoordinateFields": "Pole souřadnic",
       "PositionOutput": "Position output",
       "ZOffset": "Z-Offset"
     },
@@ -1024,10 +1026,10 @@
       "Filament": "Filament",
       "FilamentTypeMismatch": "The material of the active spool ({spoolType}) does not match the material of the G-Code ({fileType}).",
       "Headline": "Spoolman",
-      "LastUsed": "Last Used",
-      "Location": "Location",
-      "Material": "Material",
-      "Never": "Never",
+      "LastUsed": "Poslední použití",
+      "Location": "Umístění",
+      "Material": "Materiál",
+      "Never": "Nikdy",
       "NoActiveSpool": "Filament tracking is inactive. To get started, please select a spool.",
       "NoResults": "No spool found with the current search criteria.",
       "NoSpoolSelected": "No spool selected. Please select a spool or this print will not be tracked.",
@@ -1060,8 +1062,8 @@
     "Printers": "Tiskárny",
     "Timelapse": "Time-lapse",
     "Webcam": "Webkamera",
-    "Calibration": "Calibration",
-    "Diagnostics": "Diagnostics",
+    "Calibration": "Kalibrace",
+    "Diagnostics": "Diagnostika",
     "Slicers": "Slicer"
   },
   "ScrewsTiltAdjust": {
@@ -1217,8 +1219,8 @@
       "Restore": "Obnovit",
       "RestoreDialog": "Prosím zvolte všechny sekce, které chcete obnovit:",
       "TimeFormat": "Formát času",
-      "DBNavigation": "Navigation",
-      "Everything": "Everything",
+      "DBNavigation": "Navigace",
+      "Everything": "Vše",
       "MainsailSettingsMoonrakerDb": "Mainsail Settings in Moonraker DB"
     },
     "InterfaceSettings": "Nastavení rozhraní",

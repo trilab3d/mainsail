@@ -295,7 +295,8 @@
           "UPDATE_AVAILABLE": "ДОСТУПНО НОВОЕ ОБНОВЛЕНИЕ",
           "UP_TO_DATE": "НОВАЯ ВЕРСИЯ",
           "USB_UNPACKING": "РАСПАКОВКА ОБНОВЛЕНИЯ",
-          "USB_UPDATE_AVAILABLE": "USB – НОВОЕ ОБНОВЛЕНИЕ"
+          "USB_UPDATE_AVAILABLE": "USB – НОВОЕ ОБНОВЛЕНИЕ",
+          "UNPACKING_FAILED": "Распаковка не удалась"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -1433,7 +1434,7 @@
       "DefaultNavigationStateLastState": "последнее состояние",
       "HideUpdateWarnings": "Скрыть предупреждения об обновлениях",
       "HideUpdateWarningsDescription": "Эта опция скроет все предупреждения об обновлениях в диспетчере обновлений.",
-      "ShowWebcamInNavigation": "",
+      "ShowWebcamInNavigation": "Показать веб -камеру в навигации",
       "Theme": "Тема",
       "ThemeDark": "Темный",
       "ThemeDescription": "Измените общий внешний вид приложения.",

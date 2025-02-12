@@ -907,7 +907,8 @@
       },
       "RunoutSensor": {
         "Detected": "Detected",
-        "Empty": "Empty"
+        "Empty": "Empty",
+        "Disabled": "Disabled"
       }
     },
     "PowerControlPanel": {
@@ -989,6 +990,7 @@
       "Speed": "Speed",
       "Status": "Status",
       "Total": "Total",
+      "TotalTime": "Total Time",
       "Unknown": "Unknown"
     },
     "TemperaturePanel": {
@@ -1051,7 +1053,9 @@
       "SaveConfig": "SAVE CONFIG",
       "SaveInfoDescription": "The new Z-Offset has been calculated and registered. Select \"SAVE CONFIG\" to save it to the printer.cfg file and restart Klipper.",
       "SaveInfoDescriptionPrint": "The new Z-Offset has been calculated and registered. After printing, select \"SAVE CONFIG\" in the top bar to save it to the printer.cfg file and restart Klipper.",
-      "SaveInfoHeadline": "Information"
+      "SaveInfoHeadline": "Information",
+      "ToEndstop": "To endstop",
+      "ToProbe": "To probe"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1458,7 +1462,8 @@
       "ThemeDark": "Dark",
       "ThemeDescription": "Change the overall look and feel of the application",
       "ThemeLight": "Light",
-      "UiSettings": "UI-Settings"
+      "UiSettings": "UI-Settings",
+      "ShowWebcamInNavigation": "Show webcam in navigation"
     },
     "Update": "update",
     "WebcamsTab": {

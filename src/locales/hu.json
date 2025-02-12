@@ -295,7 +295,8 @@
           "UPDATE_AVAILABLE": "ÚJ FRISSÍTÉS ELÉRHETŐ",
           "UP_TO_DATE": "LEGÚJABB VERZIÓ",
           "USB_UNPACKING": "KICSOMAGOLÁSI FRISSÍTÉS",
-          "USB_UPDATE_AVAILABLE": "USB - ÚJ FRISSÍTÉS"
+          "USB_UPDATE_AVAILABLE": "USB - ÚJ FRISSÍTÉS",
+          "UNPACKING_FAILED": "A kicsomagolás sikertelen"
         }
       },
       "TrilabSelectFilamentDialog": {

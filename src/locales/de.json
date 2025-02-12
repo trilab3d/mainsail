@@ -300,7 +300,8 @@
           "UPDATE_AVAILABLE": "NEUES UPDATE VERFÜGBAR",
           "UP_TO_DATE": "NEUESTE VERSION",
           "USB_UNPACKING": "UPDATE AUSPACKEN",
-          "USB_UPDATE_AVAILABLE": "USB – NEUES UPDATE"
+          "USB_UPDATE_AVAILABLE": "USB – NEUES UPDATE",
+          "UNPACKING_FAILED": "Auspacken fehlgeschlagen"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -893,7 +894,7 @@
       "RunoutSensor": {
         "Detected": "erkannt",
         "Empty": "leer",
-        "Disabled": ""
+        "Disabled": "Deaktiviert"
       }
     },
     "PowerControlPanel": {
@@ -1038,8 +1039,8 @@
       "SaveInfoDescription": "Der neue Z-Versatz wurde berechnet und registriert. Auf \"SAVE CONFIG\", klicken um den neuen Z-Versatz in der printer.cfg zu speichern und Klipper neu zu starten.",
       "SaveInfoDescriptionPrint": "Der neue Z-Versatz wurde berechnet und registriert. Nach dem Drucken auf \"SAVE CONFIG\" in der oberen Leiste klicken um den neuen Z-Versatz in der printer.cfg zu speichern und Klipper neu zu starten.",
       "SaveInfoHeadline": "Information",
-      "ToEndstop": "",
-      "ToProbe": ""
+      "ToEndstop": "Zum Ende",
+      "ToProbe": "Zu erforschen"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1444,7 +1445,7 @@
       "ThemeDescription": "Ändern Sie das allgemeine Erscheinungsbild der Anwendung.",
       "ThemeLight": "Hell",
       "UiSettings": "UI-Einstellungen",
-      "ShowWebcamInNavigation": ""
+      "ShowWebcamInNavigation": "Webcam in der Navigation anzeigen"
     },
     "Update": "speichern",
     "WebcamsTab": {

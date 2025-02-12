@@ -300,7 +300,8 @@
           "UPDATE_AVAILABLE": "NUOVO AGGIORNAMENTO DISPONIBILE",
           "UP_TO_DATE": "ULTIMA VERSIONE",
           "USB_UNPACKING": "AGGIORNAMENTO DISIMBALLAGGIO",
-          "USB_UPDATE_AVAILABLE": "USB - NUOVO AGGIORNAMENTO"
+          "USB_UPDATE_AVAILABLE": "USB - NUOVO AGGIORNAMENTO",
+          "UNPACKING_FAILED": "Disimballaggio fallito"
         }
       },
       "TrilabSelectFilamentDialog": {
@@ -893,7 +894,7 @@
       "RunoutSensor": {
         "Detected": "rilevato",
         "Empty": "vuoto",
-        "Disabled": ""
+        "Disabled": "Disabile"
       }
     },
     "PowerControlPanel": {
@@ -1038,8 +1039,8 @@
       "SaveInfoDescription": "Il nuovo z-offset è stato calcolato e registrato. Fai clic su \"SAVE CONFIG\" per memorizzare il nuovo z-offset nel tuo printer.cfg e riavviare Klipper.",
       "SaveInfoDescriptionPrint": "Il nuovo Z offset è stato calcolato e registrato. Dopo la stampa, fai clic su \"SAVE CONFIG\" nella barra in alto per salvarlo in printer.cfg e riavviare Klipper.",
       "SaveInfoHeadline": "Informazione",
-      "ToEndstop": "",
-      "ToProbe": ""
+      "ToEndstop": "Per eliminare",
+      "ToProbe": "Per sondare"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1449,7 +1450,7 @@
       "UiSettings": "Impostazioni Interfaccia Utente",
       "ConfirmOnCoolDown": "Richiedi conferma su CoolDown",
       "ConfirmOnCoolDownDescription": "Mostra una finestra di dialogo di conferma su CoolDown",
-      "ShowWebcamInNavigation": ""
+      "ShowWebcamInNavigation": "Mostra webcam in navigazione"
     },
     "Update": "update",
     "WebcamsTab": {

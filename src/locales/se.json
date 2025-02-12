@@ -142,6 +142,11 @@
         "DoorSensor": {
           "Disabled": "Bargonávccaheapme"
         }
+      },
+      "TrilabLiveUpdate": {
+        "statuses": {
+          "UNPACKING_FAILED": "UNPÁLAŠVUOĐA FAILEJUVVON"
+        }
       }
     }
   },
@@ -655,7 +660,7 @@
       "RunoutSensor": {
         "Detected": "upptäckt",
         "Empty": "Tom",
-        "Disabled": ""
+        "Disabled": "Bargonávccaheapme"
       }
     },
     "PowerControlPanel": {
@@ -800,8 +805,8 @@
       "SaveInfoDescription": "Den nya z-offset har beräknats och registrerats. Klicka på SAVE_CONFIG för att lagra den nya z-offset i din printer.cfg och starta om Klipper.",
       "SaveInfoDescriptionPrint": "Den nya Z-offseten har beräknats och registrerats. Efter utskrift, klicka på SAVE_CONFIG i den övre raden för att lagra den i printer.cfg och starta om Klipper.",
       "SaveInfoHeadline": "Information",
-      "ToEndstop": "",
-      "ToProbe": ""
+      "ToEndstop": "Loahppastohpu",
+      "ToProbe": "Sondda"
     }
   },
   "PowerDeviceChangeDialog": {
@@ -1201,7 +1206,7 @@
       "ThemeDescription": "Ändra applikationens övergripande utseende och känsla",
       "ThemeLight": "Ljus",
       "UiSettings": "Användargränssnittsinställningar",
-      "ShowWebcamInNavigation": ""
+      "ShowWebcamInNavigation": "Čájet webkamera navigašuvnnas"
     },
     "Update": "uppdatering",
     "WebcamsTab": {
