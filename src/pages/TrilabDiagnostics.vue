@@ -1230,7 +1230,7 @@ export default class PageTrilabDiagnostics extends Mixins(BaseMixin, TrilabMixin
         let speed = 0.5
         let temp = 30
         if (status == 0) {
-            speed = 0
+            //speed = 0  - do not set speed to 0 never, this breaks the hardware
             temp = 0
         }
 
